@@ -1,5 +1,5 @@
 # source: https://us1.prisma.sh/peterson-jean-48f374/api-lakayou/api-lakayou
-# timestamp: Sat Jul 28 2018 16:00:41 GMT-0400 (Eastern Daylight Time)
+# timestamp: Sat Aug 18 2018 00:46:29 GMT-0400 (Eastern Daylight Time)
 
 type AggregateAmenities {
   count: Int!
@@ -34,6 +34,10 @@ type AggregateHouse_Favorited {
 }
 
 type AggregateLocation {
+  count: Int!
+}
+
+type AggregateNegotiation {
   count: Int!
 }
 
@@ -687,7 +691,7 @@ type BatchPayload {
 type Booking implements Node {
   id: ID!
   createdAt: DateTime!
-  bookee(where: UserWhereInput): User
+  bookee(where: UserWhereInput): User!
   House(where: HouseWhereInput): House!
   startDate: DateTime!
   endDate: DateTime!
@@ -707,7 +711,7 @@ type BookingConnection {
 input BookingCreateInput {
   startDate: DateTime!
   endDate: DateTime!
-  bookee: UserCreateOneWithoutBookingsInput
+  bookee: UserCreateOneWithoutBookingsInput!
   House: HouseCreateOneWithoutBookingsInput!
   payment: PaymentHouseCreateOneWithoutBookingInput!
 }
@@ -737,14 +741,14 @@ input BookingCreateWithoutBookeeInput {
 input BookingCreateWithoutHouseInput {
   startDate: DateTime!
   endDate: DateTime!
-  bookee: UserCreateOneWithoutBookingsInput
+  bookee: UserCreateOneWithoutBookingsInput!
   payment: PaymentHouseCreateOneWithoutBookingInput!
 }
 
 input BookingCreateWithoutPaymentInput {
   startDate: DateTime!
   endDate: DateTime!
-  bookee: UserCreateOneWithoutBookingsInput
+  bookee: UserCreateOneWithoutBookingsInput!
   House: HouseCreateOneWithoutBookingsInput!
 }
 
@@ -2211,9 +2215,9 @@ type House implements Node {
   host(where: UserWhereInput): User!
   pricing(where: PricingWhereInput): Pricing!
   location(where: LocationWhereInput): Location!
-  leaseType: House_LEASE_TYPE
+  leaseType: HOUSE_LEASE_TYPE
   verified: Boolean!
-  type: House_TYPES
+  type: HOUSE_TYPES
   residency: House_RESIDENCY
   lease: Int!
   rooms(where: RoomWhereInput, orderBy: RoomOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Room!]
@@ -2392,7 +2396,7 @@ input House_FavoritedWhereUniqueInput {
   id: ID
 }
 
-enum House_LEASE_TYPE {
+enum HOUSE_LEASE_TYPE {
   WEEKLY
   MONTHLY
   YEARLY
@@ -2403,7 +2407,7 @@ enum House_RESIDENCY {
   RESIDENCE
 }
 
-enum House_TYPES {
+enum HOUSE_TYPES {
   APARTMENT
   VILLA
   STUDIO
@@ -2428,9 +2432,9 @@ input HouseCreateInput {
   maxGuests: Int!
   numBedrooms: Int!
   numBaths: Int!
-  leaseType: House_LEASE_TYPE
+  leaseType: HOUSE_LEASE_TYPE
   verified: Boolean
-  type: House_TYPES
+  type: HOUSE_TYPES
   residency: House_RESIDENCY
   lease: Int!
   popularity: Int
@@ -2500,9 +2504,9 @@ input HouseCreateWithoutAmenitiesInput {
   maxGuests: Int!
   numBedrooms: Int!
   numBaths: Int!
-  leaseType: House_LEASE_TYPE
+  leaseType: HOUSE_LEASE_TYPE
   verified: Boolean
-  type: House_TYPES
+  type: HOUSE_TYPES
   residency: House_RESIDENCY
   lease: Int!
   popularity: Int
@@ -2526,9 +2530,9 @@ input HouseCreateWithoutBookingsInput {
   maxGuests: Int!
   numBedrooms: Int!
   numBaths: Int!
-  leaseType: House_LEASE_TYPE
+  leaseType: HOUSE_LEASE_TYPE
   verified: Boolean
-  type: House_TYPES
+  type: HOUSE_TYPES
   residency: House_RESIDENCY
   lease: Int!
   popularity: Int
@@ -2552,9 +2556,9 @@ input HouseCreateWithoutContactInfoPaymentsInput {
   maxGuests: Int!
   numBedrooms: Int!
   numBaths: Int!
-  leaseType: House_LEASE_TYPE
+  leaseType: HOUSE_LEASE_TYPE
   verified: Boolean
-  type: House_TYPES
+  type: HOUSE_TYPES
   residency: House_RESIDENCY
   lease: Int!
   popularity: Int
@@ -2578,9 +2582,9 @@ input HouseCreateWithoutHostInput {
   maxGuests: Int!
   numBedrooms: Int!
   numBaths: Int!
-  leaseType: House_LEASE_TYPE
+  leaseType: HOUSE_LEASE_TYPE
   verified: Boolean
-  type: House_TYPES
+  type: HOUSE_TYPES
   residency: House_RESIDENCY
   lease: Int!
   popularity: Int
@@ -2604,9 +2608,9 @@ input HouseCreateWithoutPricingInput {
   maxGuests: Int!
   numBedrooms: Int!
   numBaths: Int!
-  leaseType: House_LEASE_TYPE
+  leaseType: HOUSE_LEASE_TYPE
   verified: Boolean
-  type: House_TYPES
+  type: HOUSE_TYPES
   residency: House_RESIDENCY
   lease: Int!
   popularity: Int
@@ -2630,9 +2634,9 @@ input HouseCreateWithoutReviewsInput {
   maxGuests: Int!
   numBedrooms: Int!
   numBaths: Int!
-  leaseType: House_LEASE_TYPE
+  leaseType: HOUSE_LEASE_TYPE
   verified: Boolean
-  type: House_TYPES
+  type: HOUSE_TYPES
   residency: House_RESIDENCY
   lease: Int!
   popularity: Int
@@ -2656,9 +2660,9 @@ input HouseCreateWithoutRoomsInput {
   maxGuests: Int!
   numBedrooms: Int!
   numBaths: Int!
-  leaseType: House_LEASE_TYPE
+  leaseType: HOUSE_LEASE_TYPE
   verified: Boolean
-  type: House_TYPES
+  type: HOUSE_TYPES
   residency: House_RESIDENCY
   lease: Int!
   popularity: Int
@@ -2682,9 +2686,9 @@ input HouseCreateWithoutViewsInput {
   maxGuests: Int!
   numBedrooms: Int!
   numBaths: Int!
-  leaseType: House_LEASE_TYPE
+  leaseType: HOUSE_LEASE_TYPE
   verified: Boolean
-  type: House_TYPES
+  type: HOUSE_TYPES
   residency: House_RESIDENCY
   lease: Int!
   popularity: Int
@@ -2755,9 +2759,9 @@ type HousePreviousValues {
   maxGuests: Int!
   numBedrooms: Int!
   numBaths: Int!
-  leaseType: House_LEASE_TYPE
+  leaseType: HOUSE_LEASE_TYPE
   verified: Boolean!
-  type: House_TYPES
+  type: HOUSE_TYPES
   residency: House_RESIDENCY
   lease: Int!
   popularity: Int!
@@ -2811,9 +2815,9 @@ input HouseUpdateDataInput {
   maxGuests: Int
   numBedrooms: Int
   numBaths: Int
-  leaseType: House_LEASE_TYPE
+  leaseType: HOUSE_LEASE_TYPE
   verified: Boolean
-  type: House_TYPES
+  type: HOUSE_TYPES
   residency: House_RESIDENCY
   lease: Int
   popularity: Int
@@ -2838,9 +2842,9 @@ input HouseUpdateInput {
   maxGuests: Int
   numBedrooms: Int
   numBaths: Int
-  leaseType: House_LEASE_TYPE
+  leaseType: HOUSE_LEASE_TYPE
   verified: Boolean
-  type: House_TYPES
+  type: HOUSE_TYPES
   residency: House_RESIDENCY
   lease: Int
   popularity: Int
@@ -2938,9 +2942,9 @@ input HouseUpdateWithoutAmenitiesDataInput {
   maxGuests: Int
   numBedrooms: Int
   numBaths: Int
-  leaseType: House_LEASE_TYPE
+  leaseType: HOUSE_LEASE_TYPE
   verified: Boolean
-  type: House_TYPES
+  type: HOUSE_TYPES
   residency: House_RESIDENCY
   lease: Int
   popularity: Int
@@ -2964,9 +2968,9 @@ input HouseUpdateWithoutBookingsDataInput {
   maxGuests: Int
   numBedrooms: Int
   numBaths: Int
-  leaseType: House_LEASE_TYPE
+  leaseType: HOUSE_LEASE_TYPE
   verified: Boolean
-  type: House_TYPES
+  type: HOUSE_TYPES
   residency: House_RESIDENCY
   lease: Int
   popularity: Int
@@ -2990,9 +2994,9 @@ input HouseUpdateWithoutContactInfoPaymentsDataInput {
   maxGuests: Int
   numBedrooms: Int
   numBaths: Int
-  leaseType: House_LEASE_TYPE
+  leaseType: HOUSE_LEASE_TYPE
   verified: Boolean
-  type: House_TYPES
+  type: HOUSE_TYPES
   residency: House_RESIDENCY
   lease: Int
   popularity: Int
@@ -3016,9 +3020,9 @@ input HouseUpdateWithoutHostDataInput {
   maxGuests: Int
   numBedrooms: Int
   numBaths: Int
-  leaseType: House_LEASE_TYPE
+  leaseType: HOUSE_LEASE_TYPE
   verified: Boolean
-  type: House_TYPES
+  type: HOUSE_TYPES
   residency: House_RESIDENCY
   lease: Int
   popularity: Int
@@ -3042,9 +3046,9 @@ input HouseUpdateWithoutPricingDataInput {
   maxGuests: Int
   numBedrooms: Int
   numBaths: Int
-  leaseType: House_LEASE_TYPE
+  leaseType: HOUSE_LEASE_TYPE
   verified: Boolean
-  type: House_TYPES
+  type: HOUSE_TYPES
   residency: House_RESIDENCY
   lease: Int
   popularity: Int
@@ -3068,9 +3072,9 @@ input HouseUpdateWithoutReviewsDataInput {
   maxGuests: Int
   numBedrooms: Int
   numBaths: Int
-  leaseType: House_LEASE_TYPE
+  leaseType: HOUSE_LEASE_TYPE
   verified: Boolean
-  type: House_TYPES
+  type: HOUSE_TYPES
   residency: House_RESIDENCY
   lease: Int
   popularity: Int
@@ -3094,9 +3098,9 @@ input HouseUpdateWithoutRoomsDataInput {
   maxGuests: Int
   numBedrooms: Int
   numBaths: Int
-  leaseType: House_LEASE_TYPE
+  leaseType: HOUSE_LEASE_TYPE
   verified: Boolean
-  type: House_TYPES
+  type: HOUSE_TYPES
   residency: House_RESIDENCY
   lease: Int
   popularity: Int
@@ -3120,9 +3124,9 @@ input HouseUpdateWithoutViewsDataInput {
   maxGuests: Int
   numBedrooms: Int
   numBaths: Int
-  leaseType: House_LEASE_TYPE
+  leaseType: HOUSE_LEASE_TYPE
   verified: Boolean
-  type: House_TYPES
+  type: HOUSE_TYPES
   residency: House_RESIDENCY
   lease: Int
   popularity: Int
@@ -3467,30 +3471,30 @@ input HouseWhereInput {
 
   """All values greater than or equal the given value."""
   numBaths_gte: Int
-  leaseType: House_LEASE_TYPE
+  leaseType: HOUSE_LEASE_TYPE
 
   """All values that are not equal to given value."""
-  leaseType_not: House_LEASE_TYPE
+  leaseType_not: HOUSE_LEASE_TYPE
 
   """All values that are contained in given list."""
-  leaseType_in: [House_LEASE_TYPE!]
+  leaseType_in: [HOUSE_LEASE_TYPE!]
 
   """All values that are not contained in given list."""
-  leaseType_not_in: [House_LEASE_TYPE!]
+  leaseType_not_in: [HOUSE_LEASE_TYPE!]
   verified: Boolean
 
   """All values that are not equal to given value."""
   verified_not: Boolean
-  type: House_TYPES
+  type: HOUSE_TYPES
 
   """All values that are not equal to given value."""
-  type_not: House_TYPES
+  type_not: HOUSE_TYPES
 
   """All values that are contained in given list."""
-  type_in: [House_TYPES!]
+  type_in: [HOUSE_TYPES!]
 
   """All values that are not contained in given list."""
-  type_not_in: [House_TYPES!]
+  type_not_in: [HOUSE_TYPES!]
   residency: House_RESIDENCY
 
   """All values that are not equal to given value."""
@@ -3853,6 +3857,7 @@ type Mutation {
   createReview(data: ReviewCreateInput!): Review!
   createBooking(data: BookingCreateInput!): Booking!
   createHouse_Favorited(data: House_FavoritedCreateInput!): House_Favorited!
+  createNegotiation(data: NegotiationCreateInput!): Negotiation!
   createPaymentHouse(data: PaymentHouseCreateInput!): PaymentHouse!
   createPaymentAccount(data: PaymentAccountCreateInput!): PaymentAccount!
   createPaypalInformation(data: PaypalInformationCreateInput!): PaypalInformation!
@@ -3862,9 +3867,9 @@ type Mutation {
   createLocation(data: LocationCreateInput!): Location!
   createCommune(data: CommuneCreateInput!): Commune!
   createCountry(data: CountryCreateInput!): Country!
-  createHouse(data: HouseCreateInput!): House!
   createState(data: StateCreateInput!): State!
   createUser(data: UserCreateInput!): User!
+  createHouse(data: HouseCreateInput!): House!
   createVideo(data: VideoCreateInput!): Video!
   createPicture(data: PictureCreateInput!): Picture!
   createCity(data: CityCreateInput!): City!
@@ -3875,6 +3880,7 @@ type Mutation {
   updateReview(data: ReviewUpdateInput!, where: ReviewWhereUniqueInput!): Review
   updateBooking(data: BookingUpdateInput!, where: BookingWhereUniqueInput!): Booking
   updateHouse_Favorited(data: House_FavoritedUpdateInput!, where: House_FavoritedWhereUniqueInput!): House_Favorited
+  updateNegotiation(data: NegotiationUpdateInput!, where: NegotiationWhereUniqueInput!): Negotiation
   updatePaymentHouse(data: PaymentHouseUpdateInput!, where: PaymentHouseWhereUniqueInput!): PaymentHouse
   updatePaymentAccount(data: PaymentAccountUpdateInput!, where: PaymentAccountWhereUniqueInput!): PaymentAccount
   updatePaypalInformation(data: PaypalInformationUpdateInput!, where: PaypalInformationWhereUniqueInput!): PaypalInformation
@@ -3884,9 +3890,9 @@ type Mutation {
   updateLocation(data: LocationUpdateInput!, where: LocationWhereUniqueInput!): Location
   updateCommune(data: CommuneUpdateInput!, where: CommuneWhereUniqueInput!): Commune
   updateCountry(data: CountryUpdateInput!, where: CountryWhereUniqueInput!): Country
-  updateHouse(data: HouseUpdateInput!, where: HouseWhereUniqueInput!): House
   updateState(data: StateUpdateInput!, where: StateWhereUniqueInput!): State
   updateUser(data: UserUpdateInput!, where: UserWhereUniqueInput!): User
+  updateHouse(data: HouseUpdateInput!, where: HouseWhereUniqueInput!): House
   updateCity(data: CityUpdateInput!, where: CityWhereUniqueInput!): City
   deleteRoom(where: RoomWhereUniqueInput!): Room
   deletePricing(where: PricingWhereUniqueInput!): Pricing
@@ -3895,6 +3901,7 @@ type Mutation {
   deleteReview(where: ReviewWhereUniqueInput!): Review
   deleteBooking(where: BookingWhereUniqueInput!): Booking
   deleteHouse_Favorited(where: House_FavoritedWhereUniqueInput!): House_Favorited
+  deleteNegotiation(where: NegotiationWhereUniqueInput!): Negotiation
   deletePaymentHouse(where: PaymentHouseWhereUniqueInput!): PaymentHouse
   deletePaymentAccount(where: PaymentAccountWhereUniqueInput!): PaymentAccount
   deletePaypalInformation(where: PaypalInformationWhereUniqueInput!): PaypalInformation
@@ -3904,9 +3911,9 @@ type Mutation {
   deleteLocation(where: LocationWhereUniqueInput!): Location
   deleteCommune(where: CommuneWhereUniqueInput!): Commune
   deleteCountry(where: CountryWhereUniqueInput!): Country
-  deleteHouse(where: HouseWhereUniqueInput!): House
   deleteState(where: StateWhereUniqueInput!): State
   deleteUser(where: UserWhereUniqueInput!): User
+  deleteHouse(where: HouseWhereUniqueInput!): House
   deleteCity(where: CityWhereUniqueInput!): City
   upsertRoom(where: RoomWhereUniqueInput!, create: RoomCreateInput!, update: RoomUpdateInput!): Room!
   upsertPricing(where: PricingWhereUniqueInput!, create: PricingCreateInput!, update: PricingUpdateInput!): Pricing!
@@ -3915,6 +3922,7 @@ type Mutation {
   upsertReview(where: ReviewWhereUniqueInput!, create: ReviewCreateInput!, update: ReviewUpdateInput!): Review!
   upsertBooking(where: BookingWhereUniqueInput!, create: BookingCreateInput!, update: BookingUpdateInput!): Booking!
   upsertHouse_Favorited(where: House_FavoritedWhereUniqueInput!, create: House_FavoritedCreateInput!, update: House_FavoritedUpdateInput!): House_Favorited!
+  upsertNegotiation(where: NegotiationWhereUniqueInput!, create: NegotiationCreateInput!, update: NegotiationUpdateInput!): Negotiation!
   upsertPaymentHouse(where: PaymentHouseWhereUniqueInput!, create: PaymentHouseCreateInput!, update: PaymentHouseUpdateInput!): PaymentHouse!
   upsertPaymentAccount(where: PaymentAccountWhereUniqueInput!, create: PaymentAccountCreateInput!, update: PaymentAccountUpdateInput!): PaymentAccount!
   upsertPaypalInformation(where: PaypalInformationWhereUniqueInput!, create: PaypalInformationCreateInput!, update: PaypalInformationUpdateInput!): PaypalInformation!
@@ -3924,9 +3932,9 @@ type Mutation {
   upsertLocation(where: LocationWhereUniqueInput!, create: LocationCreateInput!, update: LocationUpdateInput!): Location!
   upsertCommune(where: CommuneWhereUniqueInput!, create: CommuneCreateInput!, update: CommuneUpdateInput!): Commune!
   upsertCountry(where: CountryWhereUniqueInput!, create: CountryCreateInput!, update: CountryUpdateInput!): Country!
-  upsertHouse(where: HouseWhereUniqueInput!, create: HouseCreateInput!, update: HouseUpdateInput!): House!
   upsertState(where: StateWhereUniqueInput!, create: StateCreateInput!, update: StateUpdateInput!): State!
   upsertUser(where: UserWhereUniqueInput!, create: UserCreateInput!, update: UserUpdateInput!): User!
+  upsertHouse(where: HouseWhereUniqueInput!, create: HouseCreateInput!, update: HouseUpdateInput!): House!
   upsertCity(where: CityWhereUniqueInput!, create: CityCreateInput!, update: CityUpdateInput!): City!
   updateManyRooms(data: RoomUpdateInput!, where: RoomWhereInput): BatchPayload!
   updateManyPricings(data: PricingUpdateInput!, where: PricingWhereInput): BatchPayload!
@@ -3935,6 +3943,7 @@ type Mutation {
   updateManyReviews(data: ReviewUpdateInput!, where: ReviewWhereInput): BatchPayload!
   updateManyBookings(data: BookingUpdateInput!, where: BookingWhereInput): BatchPayload!
   updateManyHouse_Favoriteds(data: House_FavoritedUpdateInput!, where: House_FavoritedWhereInput): BatchPayload!
+  updateManyNegotiations(data: NegotiationUpdateInput!, where: NegotiationWhereInput): BatchPayload!
   updateManyPaymentHouses(data: PaymentHouseUpdateInput!, where: PaymentHouseWhereInput): BatchPayload!
   updateManyPaymentAccounts(data: PaymentAccountUpdateInput!, where: PaymentAccountWhereInput): BatchPayload!
   updateManyPaypalInformations(data: PaypalInformationUpdateInput!, where: PaypalInformationWhereInput): BatchPayload!
@@ -3944,9 +3953,9 @@ type Mutation {
   updateManyLocations(data: LocationUpdateInput!, where: LocationWhereInput): BatchPayload!
   updateManyCommunes(data: CommuneUpdateInput!, where: CommuneWhereInput): BatchPayload!
   updateManyCountries(data: CountryUpdateInput!, where: CountryWhereInput): BatchPayload!
-  updateManyHouses(data: HouseUpdateInput!, where: HouseWhereInput): BatchPayload!
   updateManyStates(data: StateUpdateInput!, where: StateWhereInput): BatchPayload!
   updateManyUsers(data: UserUpdateInput!, where: UserWhereInput): BatchPayload!
+  updateManyHouses(data: HouseUpdateInput!, where: HouseWhereInput): BatchPayload!
   updateManyVideos(data: VideoUpdateInput!, where: VideoWhereInput): BatchPayload!
   updateManyPictures(data: PictureUpdateInput!, where: PictureWhereInput): BatchPayload!
   updateManyCities(data: CityUpdateInput!, where: CityWhereInput): BatchPayload!
@@ -3957,6 +3966,7 @@ type Mutation {
   deleteManyReviews(where: ReviewWhereInput): BatchPayload!
   deleteManyBookings(where: BookingWhereInput): BatchPayload!
   deleteManyHouse_Favoriteds(where: House_FavoritedWhereInput): BatchPayload!
+  deleteManyNegotiations(where: NegotiationWhereInput): BatchPayload!
   deleteManyPaymentHouses(where: PaymentHouseWhereInput): BatchPayload!
   deleteManyPaymentAccounts(where: PaymentAccountWhereInput): BatchPayload!
   deleteManyPaypalInformations(where: PaypalInformationWhereInput): BatchPayload!
@@ -3966,9 +3976,9 @@ type Mutation {
   deleteManyLocations(where: LocationWhereInput): BatchPayload!
   deleteManyCommunes(where: CommuneWhereInput): BatchPayload!
   deleteManyCountries(where: CountryWhereInput): BatchPayload!
-  deleteManyHouses(where: HouseWhereInput): BatchPayload!
   deleteManyStates(where: StateWhereInput): BatchPayload!
   deleteManyUsers(where: UserWhereInput): BatchPayload!
+  deleteManyHouses(where: HouseWhereInput): BatchPayload!
   deleteManyVideos(where: VideoWhereInput): BatchPayload!
   deleteManyPictures(where: PictureWhereInput): BatchPayload!
   deleteManyCities(where: CityWhereInput): BatchPayload!
@@ -3978,6 +3988,224 @@ enum MutationType {
   CREATED
   UPDATED
   DELETED
+}
+
+type Negotiation implements Node {
+  id: ID!
+  createdAt: DateTime!
+  negotiator(where: UserWhereInput): User!
+  House(where: HouseWhereInput): House!
+  offer: Float!
+  status: NEGOTIATION_TYPE
+}
+
+enum NEGOTIATION_TYPE {
+  PENDING
+  ACCEPTED
+  REFUSED
+}
+
+"""A connection to a list of items."""
+type NegotiationConnection {
+  """Information to aid in pagination."""
+  pageInfo: PageInfo!
+
+  """A list of edges."""
+  edges: [NegotiationEdge]!
+  aggregate: AggregateNegotiation!
+}
+
+input NegotiationCreateInput {
+  offer: Float!
+  status: NEGOTIATION_TYPE
+  negotiator: UserCreateOneInput!
+  House: HouseCreateOneInput!
+}
+
+"""An edge in a connection."""
+type NegotiationEdge {
+  """The item at the end of the edge."""
+  node: Negotiation!
+
+  """A cursor for use in pagination."""
+  cursor: String!
+}
+
+enum NegotiationOrderByInput {
+  id_ASC
+  id_DESC
+  createdAt_ASC
+  createdAt_DESC
+  offer_ASC
+  offer_DESC
+  status_ASC
+  status_DESC
+  updatedAt_ASC
+  updatedAt_DESC
+}
+
+type NegotiationPreviousValues {
+  id: ID!
+  createdAt: DateTime!
+  offer: Float!
+  status: NEGOTIATION_TYPE
+}
+
+type NegotiationSubscriptionPayload {
+  mutation: MutationType!
+  node: Negotiation
+  updatedFields: [String!]
+  previousValues: NegotiationPreviousValues
+}
+
+input NegotiationSubscriptionWhereInput {
+  """Logical AND on all given filters."""
+  AND: [NegotiationSubscriptionWhereInput!]
+
+  """Logical OR on all given filters."""
+  OR: [NegotiationSubscriptionWhereInput!]
+
+  """Logical NOT on all given filters combined by AND."""
+  NOT: [NegotiationSubscriptionWhereInput!]
+
+  """
+  The subscription event gets dispatched when it's listed in mutation_in
+  """
+  mutation_in: [MutationType!]
+
+  """
+  The subscription event gets only dispatched when one of the updated fields names is included in this list
+  """
+  updatedFields_contains: String
+
+  """
+  The subscription event gets only dispatched when all of the field names included in this list have been updated
+  """
+  updatedFields_contains_every: [String!]
+
+  """
+  The subscription event gets only dispatched when some of the field names included in this list have been updated
+  """
+  updatedFields_contains_some: [String!]
+  node: NegotiationWhereInput
+}
+
+input NegotiationUpdateInput {
+  offer: Float
+  status: NEGOTIATION_TYPE
+  negotiator: UserUpdateOneInput
+  House: HouseUpdateOneInput
+}
+
+input NegotiationWhereInput {
+  """Logical AND on all given filters."""
+  AND: [NegotiationWhereInput!]
+
+  """Logical OR on all given filters."""
+  OR: [NegotiationWhereInput!]
+
+  """Logical NOT on all given filters combined by AND."""
+  NOT: [NegotiationWhereInput!]
+  id: ID
+
+  """All values that are not equal to given value."""
+  id_not: ID
+
+  """All values that are contained in given list."""
+  id_in: [ID!]
+
+  """All values that are not contained in given list."""
+  id_not_in: [ID!]
+
+  """All values less than the given value."""
+  id_lt: ID
+
+  """All values less than or equal the given value."""
+  id_lte: ID
+
+  """All values greater than the given value."""
+  id_gt: ID
+
+  """All values greater than or equal the given value."""
+  id_gte: ID
+
+  """All values containing the given string."""
+  id_contains: ID
+
+  """All values not containing the given string."""
+  id_not_contains: ID
+
+  """All values starting with the given string."""
+  id_starts_with: ID
+
+  """All values not starting with the given string."""
+  id_not_starts_with: ID
+
+  """All values ending with the given string."""
+  id_ends_with: ID
+
+  """All values not ending with the given string."""
+  id_not_ends_with: ID
+  createdAt: DateTime
+
+  """All values that are not equal to given value."""
+  createdAt_not: DateTime
+
+  """All values that are contained in given list."""
+  createdAt_in: [DateTime!]
+
+  """All values that are not contained in given list."""
+  createdAt_not_in: [DateTime!]
+
+  """All values less than the given value."""
+  createdAt_lt: DateTime
+
+  """All values less than or equal the given value."""
+  createdAt_lte: DateTime
+
+  """All values greater than the given value."""
+  createdAt_gt: DateTime
+
+  """All values greater than or equal the given value."""
+  createdAt_gte: DateTime
+  offer: Float
+
+  """All values that are not equal to given value."""
+  offer_not: Float
+
+  """All values that are contained in given list."""
+  offer_in: [Float!]
+
+  """All values that are not contained in given list."""
+  offer_not_in: [Float!]
+
+  """All values less than the given value."""
+  offer_lt: Float
+
+  """All values less than or equal the given value."""
+  offer_lte: Float
+
+  """All values greater than the given value."""
+  offer_gt: Float
+
+  """All values greater than or equal the given value."""
+  offer_gte: Float
+  status: NEGOTIATION_TYPE
+
+  """All values that are not equal to given value."""
+  status_not: NEGOTIATION_TYPE
+
+  """All values that are contained in given list."""
+  status_in: [NEGOTIATION_TYPE!]
+
+  """All values that are not contained in given list."""
+  status_not_in: [NEGOTIATION_TYPE!]
+  negotiator: UserWhereInput
+  House: HouseWhereInput
+}
+
+input NegotiationWhereUniqueInput {
+  id: ID
 }
 
 """An object with an ID"""
@@ -5853,6 +6081,7 @@ type Query {
   reviews(where: ReviewWhereInput, orderBy: ReviewOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Review]!
   bookings(where: BookingWhereInput, orderBy: BookingOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Booking]!
   house_Favoriteds(where: House_FavoritedWhereInput, orderBy: House_FavoritedOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [House_Favorited]!
+  negotiations(where: NegotiationWhereInput, orderBy: NegotiationOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Negotiation]!
   paymentHouses(where: PaymentHouseWhereInput, orderBy: PaymentHouseOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [PaymentHouse]!
   paymentAccounts(where: PaymentAccountWhereInput, orderBy: PaymentAccountOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [PaymentAccount]!
   paypalInformations(where: PaypalInformationWhereInput, orderBy: PaypalInformationOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [PaypalInformation]!
@@ -5862,9 +6091,9 @@ type Query {
   locations(where: LocationWhereInput, orderBy: LocationOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Location]!
   communes(where: CommuneWhereInput, orderBy: CommuneOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Commune]!
   countries(where: CountryWhereInput, orderBy: CountryOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Country]!
-  houses(where: HouseWhereInput, orderBy: HouseOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [House]!
   states(where: StateWhereInput, orderBy: StateOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [State]!
   users(where: UserWhereInput, orderBy: UserOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [User]!
+  houses(where: HouseWhereInput, orderBy: HouseOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [House]!
   videos(where: VideoWhereInput, orderBy: VideoOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Video]!
   pictures(where: PictureWhereInput, orderBy: PictureOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Picture]!
   cities(where: CityWhereInput, orderBy: CityOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [City]!
@@ -5875,6 +6104,7 @@ type Query {
   review(where: ReviewWhereUniqueInput!): Review
   booking(where: BookingWhereUniqueInput!): Booking
   house_Favorited(where: House_FavoritedWhereUniqueInput!): House_Favorited
+  negotiation(where: NegotiationWhereUniqueInput!): Negotiation
   paymentHouse(where: PaymentHouseWhereUniqueInput!): PaymentHouse
   paymentAccount(where: PaymentAccountWhereUniqueInput!): PaymentAccount
   paypalInformation(where: PaypalInformationWhereUniqueInput!): PaypalInformation
@@ -5884,9 +6114,9 @@ type Query {
   location(where: LocationWhereUniqueInput!): Location
   commune(where: CommuneWhereUniqueInput!): Commune
   country(where: CountryWhereUniqueInput!): Country
-  house(where: HouseWhereUniqueInput!): House
   state(where: StateWhereUniqueInput!): State
   user(where: UserWhereUniqueInput!): User
+  house(where: HouseWhereUniqueInput!): House
   city(where: CityWhereUniqueInput!): City
   roomsConnection(where: RoomWhereInput, orderBy: RoomOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): RoomConnection!
   pricingsConnection(where: PricingWhereInput, orderBy: PricingOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): PricingConnection!
@@ -5895,6 +6125,7 @@ type Query {
   reviewsConnection(where: ReviewWhereInput, orderBy: ReviewOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): ReviewConnection!
   bookingsConnection(where: BookingWhereInput, orderBy: BookingOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): BookingConnection!
   house_FavoritedsConnection(where: House_FavoritedWhereInput, orderBy: House_FavoritedOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): House_FavoritedConnection!
+  negotiationsConnection(where: NegotiationWhereInput, orderBy: NegotiationOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): NegotiationConnection!
   paymentHousesConnection(where: PaymentHouseWhereInput, orderBy: PaymentHouseOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): PaymentHouseConnection!
   paymentAccountsConnection(where: PaymentAccountWhereInput, orderBy: PaymentAccountOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): PaymentAccountConnection!
   paypalInformationsConnection(where: PaypalInformationWhereInput, orderBy: PaypalInformationOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): PaypalInformationConnection!
@@ -5904,9 +6135,9 @@ type Query {
   locationsConnection(where: LocationWhereInput, orderBy: LocationOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): LocationConnection!
   communesConnection(where: CommuneWhereInput, orderBy: CommuneOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): CommuneConnection!
   countriesConnection(where: CountryWhereInput, orderBy: CountryOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): CountryConnection!
-  housesConnection(where: HouseWhereInput, orderBy: HouseOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): HouseConnection!
   statesConnection(where: StateWhereInput, orderBy: StateOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): StateConnection!
   usersConnection(where: UserWhereInput, orderBy: UserOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): UserConnection!
+  housesConnection(where: HouseWhereInput, orderBy: HouseOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): HouseConnection!
   videosConnection(where: VideoWhereInput, orderBy: VideoOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): VideoConnection!
   picturesConnection(where: PictureWhereInput, orderBy: PictureOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): PictureConnection!
   citiesConnection(where: CityWhereInput, orderBy: CityOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): CityConnection!
@@ -6793,6 +7024,7 @@ type Subscription {
   review(where: ReviewSubscriptionWhereInput): ReviewSubscriptionPayload
   booking(where: BookingSubscriptionWhereInput): BookingSubscriptionPayload
   house_Favorited(where: House_FavoritedSubscriptionWhereInput): House_FavoritedSubscriptionPayload
+  negotiation(where: NegotiationSubscriptionWhereInput): NegotiationSubscriptionPayload
   paymentHouse(where: PaymentHouseSubscriptionWhereInput): PaymentHouseSubscriptionPayload
   paymentAccount(where: PaymentAccountSubscriptionWhereInput): PaymentAccountSubscriptionPayload
   paypalInformation(where: PaypalInformationSubscriptionWhereInput): PaypalInformationSubscriptionPayload
@@ -6802,9 +7034,9 @@ type Subscription {
   location(where: LocationSubscriptionWhereInput): LocationSubscriptionPayload
   commune(where: CommuneSubscriptionWhereInput): CommuneSubscriptionPayload
   country(where: CountrySubscriptionWhereInput): CountrySubscriptionPayload
-  house(where: HouseSubscriptionWhereInput): HouseSubscriptionPayload
   state(where: StateSubscriptionWhereInput): StateSubscriptionPayload
   user(where: UserSubscriptionWhereInput): UserSubscriptionPayload
+  house(where: HouseSubscriptionWhereInput): HouseSubscriptionPayload
   video(where: VideoSubscriptionWhereInput): VideoSubscriptionPayload
   picture(where: PictureSubscriptionWhereInput): PictureSubscriptionPayload
   city(where: CitySubscriptionWhereInput): CitySubscriptionPayload
@@ -6814,11 +7046,12 @@ type User implements Node {
   id: ID!
   createdAt: DateTime!
   updatedAt: DateTime!
+  facebookUserId: String
   firstName: String!
   lastName: String!
-  email: String!
-  password: String!
-  phone1: String!
+  email: String
+  password: String
+  phone1: String
   phone2: String
   primaryPhone: Int!
   responseTime: Int
@@ -6842,11 +7075,12 @@ type UserConnection {
 }
 
 input UserCreateInput {
+  facebookUserId: String
   firstName: String!
   lastName: String!
-  email: String!
-  password: String!
-  phone1: String!
+  email: String
+  password: String
+  phone1: String
   phone2: String
   primaryPhone: Int
   responseTime: Int
@@ -6885,11 +7119,12 @@ input UserCreateOneWithoutPaidContactsInput {
 }
 
 input UserCreateWithoutBookingsInput {
+  facebookUserId: String
   firstName: String!
   lastName: String!
-  email: String!
-  password: String!
-  phone1: String!
+  email: String
+  password: String
+  phone1: String
   phone2: String
   primaryPhone: Int
   responseTime: Int
@@ -6902,11 +7137,12 @@ input UserCreateWithoutBookingsInput {
 }
 
 input UserCreateWithoutNotificationsInput {
+  facebookUserId: String
   firstName: String!
   lastName: String!
-  email: String!
-  password: String!
-  phone1: String!
+  email: String
+  password: String
+  phone1: String
   phone2: String
   primaryPhone: Int
   responseTime: Int
@@ -6919,11 +7155,12 @@ input UserCreateWithoutNotificationsInput {
 }
 
 input UserCreateWithoutOwnedHousesInput {
+  facebookUserId: String
   firstName: String!
   lastName: String!
-  email: String!
-  password: String!
-  phone1: String!
+  email: String
+  password: String
+  phone1: String
   phone2: String
   primaryPhone: Int
   responseTime: Int
@@ -6936,11 +7173,12 @@ input UserCreateWithoutOwnedHousesInput {
 }
 
 input UserCreateWithoutPaidContactsInput {
+  facebookUserId: String
   firstName: String!
   lastName: String!
-  email: String!
-  password: String!
-  phone1: String!
+  email: String
+  password: String
+  phone1: String
   phone2: String
   primaryPhone: Int
   responseTime: Int
@@ -6968,6 +7206,8 @@ enum UserOrderByInput {
   createdAt_DESC
   updatedAt_ASC
   updatedAt_DESC
+  facebookUserId_ASC
+  facebookUserId_DESC
   firstName_ASC
   firstName_DESC
   lastName_ASC
@@ -6992,11 +7232,12 @@ type UserPreviousValues {
   id: ID!
   createdAt: DateTime!
   updatedAt: DateTime!
+  facebookUserId: String
   firstName: String!
   lastName: String!
-  email: String!
-  password: String!
-  phone1: String!
+  email: String
+  password: String
+  phone1: String
   phone2: String
   primaryPhone: Int!
   responseTime: Int
@@ -7043,6 +7284,7 @@ input UserSubscriptionWhereInput {
 }
 
 input UserUpdateDataInput {
+  facebookUserId: String
   firstName: String
   lastName: String
   email: String
@@ -7061,6 +7303,7 @@ input UserUpdateDataInput {
 }
 
 input UserUpdateInput {
+  facebookUserId: String
   firstName: String
   lastName: String
   email: String
@@ -7089,7 +7332,6 @@ input UserUpdateOneInput {
 input UserUpdateOneWithoutBookingsInput {
   create: UserCreateWithoutBookingsInput
   connect: UserWhereUniqueInput
-  disconnect: Boolean
   delete: Boolean
   update: UserUpdateWithoutBookingsDataInput
   upsert: UserUpsertWithoutBookingsInput
@@ -7120,6 +7362,7 @@ input UserUpdateOneWithoutPaidContactsInput {
 }
 
 input UserUpdateWithoutBookingsDataInput {
+  facebookUserId: String
   firstName: String
   lastName: String
   email: String
@@ -7137,6 +7380,7 @@ input UserUpdateWithoutBookingsDataInput {
 }
 
 input UserUpdateWithoutNotificationsDataInput {
+  facebookUserId: String
   firstName: String
   lastName: String
   email: String
@@ -7154,6 +7398,7 @@ input UserUpdateWithoutNotificationsDataInput {
 }
 
 input UserUpdateWithoutOwnedHousesDataInput {
+  facebookUserId: String
   firstName: String
   lastName: String
   email: String
@@ -7171,6 +7416,7 @@ input UserUpdateWithoutOwnedHousesDataInput {
 }
 
 input UserUpdateWithoutPaidContactsDataInput {
+  facebookUserId: String
   firstName: String
   lastName: String
   email: String
@@ -7305,6 +7551,46 @@ input UserWhereInput {
 
   """All values greater than or equal the given value."""
   updatedAt_gte: DateTime
+  facebookUserId: String
+
+  """All values that are not equal to given value."""
+  facebookUserId_not: String
+
+  """All values that are contained in given list."""
+  facebookUserId_in: [String!]
+
+  """All values that are not contained in given list."""
+  facebookUserId_not_in: [String!]
+
+  """All values less than the given value."""
+  facebookUserId_lt: String
+
+  """All values less than or equal the given value."""
+  facebookUserId_lte: String
+
+  """All values greater than the given value."""
+  facebookUserId_gt: String
+
+  """All values greater than or equal the given value."""
+  facebookUserId_gte: String
+
+  """All values containing the given string."""
+  facebookUserId_contains: String
+
+  """All values not containing the given string."""
+  facebookUserId_not_contains: String
+
+  """All values starting with the given string."""
+  facebookUserId_starts_with: String
+
+  """All values not starting with the given string."""
+  facebookUserId_not_starts_with: String
+
+  """All values ending with the given string."""
+  facebookUserId_ends_with: String
+
+  """All values not ending with the given string."""
+  facebookUserId_not_ends_with: String
   firstName: String
 
   """All values that are not equal to given value."""
@@ -7611,6 +7897,7 @@ input UserWhereInput {
 
 input UserWhereUniqueInput {
   id: ID
+  facebookUserId: String
   email: String
 }
 

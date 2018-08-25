@@ -1,37 +1,85 @@
-import * as bcrypt from 'bcryptjs'
-import { AuthError, Context } from '../../utils'
-import * as jwt from 'jsonwebtoken'
+import * as bcrypt from "bcryptjs";
+import { AuthError, Context } from "../../utils";
+import * as jwt from "jsonwebtoken";
 
-export const auth = {
-
-    //signup mutation which return token and user 
-    async signup(parent, args, context:Context, info) {
-        const password = await bcrypt.hash(args.password, 10)
-        const user = await context.db.mutation.createUser({
-            data:{...args, password}
-        })
-
-        return {
-            token: jwt.sign( {userId: user.id} , process.env.APP_SECRET),
-            user,
-        }
-    },
-
-    //loging mutation which returns token based on userid and user
-    async login(parent, args, context: Context, info) {
-        const user = await context.db.query.user({where: {email: args.email}})
-        const valid = await bcrypt.compare(args.password, user? user.password: '')
-
-        if (!valid || !user) {
-            throw new AuthError()
-            
-        }
-
-        return {
-            token: jwt.sign({userId: user.id}, process.env.APP_SECRET),
-            user
-        }
-    }
-
+//facebook user fields interface
+interface FacebookUser {
+  id: string;
+  email: string | null;
+  first_name: string | null;
+  last_name: string | null;
 }
 
+export const auth = {
+  //signup mutation which return token and user
+  async signup(parent, args, context: Context, info) {
+    const password = await bcrypt.hash(args.password, 10);
+    const user = await context.db.mutation.createUser({
+      data: { ...args, password }
+    });
+
+    return {
+      token: jwt.sign({ userId: user.id }, process.env.APP_SECRET),
+      user
+    };
+  },
+
+  //loging mutation which returns token based on userid and user
+  async login(parent, args, context: Context, info) {
+    const user = await context.db.query.user({ where: { email: args.email } });
+    const valid = await bcrypt.compare(
+      args.password,
+      user ? user.password : ""
+    );
+
+    if (!valid || !user) {
+      throw new AuthError();
+    }
+
+    return {
+      token: jwt.sign({ userId: user.id }, process.env.APP_SECRET),
+      user
+    };
+  },
+
+  //authenticate with facebook received access token
+  async authenticateFBUser(parent, args, context: Context, info) {
+    //getting the facebook userdata
+    const facebookUser = await getFacebookUser(args.facebookToken);
+
+    //query for facebookuser
+    const user = await context.db.query.user({
+      where: { facebookUserId: facebookUser.id }
+    });
+
+    let userforToken = user;
+    //check if user exits if not create new user
+    if (!user) {
+      const newUser = await context.db.mutation.createUser({
+        data: {
+          facebookUserId: facebookUser.email,
+          email: facebookUser.email,
+          firstName: facebookUser.first_name,
+          lastName: facebookUser.last_name
+        }
+      });
+      userforToken = newUser;
+    }
+    return {
+      token: jwt.sign({ userId: userforToken.id }, process.env.APP_SECRET),
+      user
+    };
+  }
+};
+
+//getting the facebook user #inspired from graphcool implementation
+async function getFacebookUser(facebookToken: string): Promise<FacebookUser> {
+  const endpoint = `https://graph.facebook.com/v2.9/me?fields=id%2Cemail%2Cfirst_name%2Clast_name&access_token=${facebookToken}`;
+  const data = await fetch(endpoint).then(response => response.json());
+
+  if (data.error) {
+    throw new Error(JSON.stringify(data.error));
+  }
+
+  return data;
+}

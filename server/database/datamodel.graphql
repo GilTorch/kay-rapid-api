@@ -2,11 +2,12 @@ type User {
   id: ID! @unique
   createdAt: DateTime!
   updatedAt: DateTime!
+  facebookUserId: String @unique
   firstName: String!
   lastName: String!
-  email: String! @unique
-  password: String!
-  phone1: String!
+  email: String @unique
+  password: String
+  phone1: String
   phone2: String
   primaryPhone: Int! @default(value: 1)
   responseTime: Int
@@ -34,9 +35,9 @@ type House {
   host: User!
   pricing: Pricing!
   location: Location!
-  leaseType: House_LEASE_TYPE
+  leaseType: HOUSE_LEASE_TYPE
   verified: Boolean! @default(value: "false")
-  type: House_TYPES
+  type: HOUSE_TYPES
   residency: House_RESIDENCY
   lease: Int!
   rooms: [Room!]!
@@ -165,7 +166,7 @@ type Review {
 type Booking {
   id: ID! @unique
   createdAt: DateTime!
-  bookee: User
+  bookee: User!
   House: House!
   startDate: DateTime!
   endDate: DateTime!
@@ -177,6 +178,15 @@ type House_Favorited {
   createdAt: DateTime!
   user: User!
   house: House!
+}
+
+type Negotiation {
+  id: ID! @unique
+  createdAt: DateTime!
+  negotiator: User!
+  House: House!
+  offer: Float!
+  status: NEGOTIATION_TYPE @default(value: "PENDING")
 }
 
 type PaymentHouse {
@@ -241,13 +251,13 @@ enum CURRENCY {
   USD
 }
 
-enum House_TYPES {
+enum HOUSE_TYPES {
   APARTMENT
   VILLA
   STUDIO
 }
 
-enum Room_LABELS {
+enum ROOM_LABELS {
   LIVING_ROOM
   DINIG_ROOM
   BEDROOM
@@ -260,7 +270,7 @@ enum FREQUENCY {
   ALWAYS
 }
 
-enum House_LEASE_TYPE {
+enum HOUSE_LEASE_TYPE {
   WEEKLY
   MONTHLY
   YEARLY
@@ -277,6 +287,12 @@ enum NOTIFICATION_TYPE {
   RESPONSIVENESS
   NEW_AMENITIES
   HOUSE_RULES
+}
+
+enum NEGOTIATION_TYPE {
+  PENDING
+  ACCEPTED
+  REFUSED
 }
 
 enum PAYMENT_PROVIDER {

@@ -20,6 +20,7 @@ type Mutation {
     phone1: String!
   ): AuthPayLoad
   login(email: String!, password: String!): AuthPayLoad!
+  authenticateFBUser(facebookToken: String!): AuthPayLoad!
   createCountry(name: String!): Country
   createState(name: String!, idCountry: ID!): State
   createCity(name: String!, idState: ID!): City
@@ -41,9 +42,31 @@ type Mutation {
     lng: Float
     address: String
     communeId: String
-    leaseType: House_LEASE_TYPE
-    type: House_TYPES
+    leaseType: HOUSE_LEASE_TYPE
+    type: HOUSE_TYPES
     residency: House_RESIDENCY
     lease: Int!
+  ): House
+  updateHouse(
+    name: String
+    area: Int
+    age: Int
+    shortDescription: String
+    description: String
+    maxGuests: Int
+    numBedrooms: Int
+    numBaths: Int
+    basePrice: Int
+    highestPrice: Int
+    currency: CURRENCY
+    income: Int
+    lat: Float
+    lng: Float
+    address: String
+    communeId: String
+    leaseType: HOUSE_LEASE_TYPE
+    type: HOUSE_TYPES
+    residency: House_RESIDENCY
+    lease: Int
   ): House
 }

@@ -88,5 +88,32 @@ export const CustomMutation = {
       },
       info
     );
+  },
+  async updateHouse(parent, args, context: Context, info) {
+    return context.db.mutation.updateHouse({
+      data: {
+        name: args.name,
+        area: args.area,
+        age: args.age,
+        shortDescription: args.shortDescription,
+        description: args.description,
+        maxGuests: args.maxGuests,
+        numBedrooms: args.numBedrooms,
+        numBaths: args.numBaths,
+        leaseType: args.leaseType,
+        type: args.type,
+        residency: args.residency,
+        amenities: {},
+        lease: args.lease,
+        pricing: {},
+        location: {},
+        views: {},
+        bookings: {},
+        pictures: {}
+      },
+      where: {
+        id: args.houseId
+      }
+    });
   }
 };
