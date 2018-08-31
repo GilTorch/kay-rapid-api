@@ -1,0 +1,45 @@
+.card {
+  width: 90%;
+  min-height: 100px;
+  margin: auto;
+  padding: 0.5%;
+  box-shadow: -2px 5px 3px #eee;
+  border: 1px solid #eee; }
+
+.stack-screen {
+  width: 10%;
+  padding: 0.5%; }
+
+.close-icon {
+  background: transparent;
+  border: none;
+  align-self: flex-start; }
+
+.authentication {
+  display: block;
+  font-size: 1em; }
+
+.authentication__signin, .authentication__signin-with-socialmedia, .authentication__signin-without-socialmedia {
+  display: flex;
+  flex-direction: column; }
+
+.authentication__button {
+  width: 100%; }
+
+.authentication__signin {
+  justify-content: center; }
+
+.authentication__signin-methods {
+  justify-content: space-between; }
+
+.authentication__form-group {
+  width: 95%;
+  margin: auto; }
+
+.authentication__button {
+  padding: 2.5%; }
+
+.facebook-connect-button {
+  background-color: #3b5998;
+  border: none;
+  color: white; }

@@ -296,3 +296,8 @@ template {
    */
 [hidden] {
   display: none; }
+
+  input{
+    padding:2%;
+box-sizing:border-box;
+  }
