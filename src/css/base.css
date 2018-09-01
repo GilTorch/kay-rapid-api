@@ -22,7 +22,26 @@ label{
 }
 
 
-    /* button{
-      min-height:70px;
-    } */
+.stack-screen {
+  width:100vw;
+  min-height: 100vh;
+  padding: 1%;
+  position:absolute;
+  top:0;
+  left:0;
+  z-index:1;
+}
 
+.card {
+  width: 100%;
+  margin:auto;
+  box-shadow: -2px 5px 8px #aaa
+
+}
+
+.close-icon {
+  background: transparent;
+  border: none;
+  align-self: flex-start;
+  font-size:1.1em;
+}

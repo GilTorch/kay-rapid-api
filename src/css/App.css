@@ -1,63 +1,15 @@
 @import "normalize.css";
 @import "base.css";
+@import "navigation.css";
 @import "home.css";
 
 /*NAVIGATION*/
-  .header-bar{
-    width:100vw;
-    position:absolute;
-    top:0;
-    left:0;
-    background-color:var(--main-bg-color);
-    color:white;
-    margin:0;
-    height:69px;
-    display: flex;
-    justify-content: center;
-    align-items:center;
-  }
 
-
-  .navigation-bar{
-    width:100vw;
-    position:fixed;
-    bottom:0;
-    left:0;
-    background-color:#333;
-    color:white;
-    margin:0;
-    height:90px;
-    display: flex;
-    justify-content: space-around;
-    align-items:center;
-  }
-
-  .navigation-button{
-    background:transparent;
-    color:#666;
-    border:none;
-    padding:0;
-    cursor:pointer;
-  }
-
-  .navigation-button--hightlighted{
-    color:#ff9900;
-    border:1;
-  }
-
-  .navigation-button__title{
-    display:block;
-  }
   /**HOME**/
 
 /** SIGN IN CARD **/
 
-.card {
-  width: 100%;
-  margin:auto;
-  box-shadow: -2px 5px 8px #aaa
 
-}
 
 .signin-card__wrapper{
   width:95%;
@@ -95,22 +47,6 @@
 
 
 /******/
-.stack-screen {
-  width:100vw;
-  min-height: 100vh;
-  padding: 1%;
-  position:absolute;
-  top:0;
-  left:0;
-  z-index:1;
-}
-
-.close-icon {
-  background: transparent;
-  border: none;
-  align-self: flex-start;
-  font-size:1.1em;
-}
 
 
 
@@ -216,6 +152,7 @@ margin:1% auto 10%;
   color:white;
   font-weight:bold;
   text-align:center;
+  height:50px;
 }
 
 .socialmedia-connect-screen__create-account-button,.socialmedia-connect-screen__sign-in-button{
@@ -293,6 +230,7 @@ justify-content: space-around;
     height:100%;
     background-color:transparent;
     border:none;
+
   }
 
   /* .socialmedia-connect-screen__sign-in-button{
