@@ -19,12 +19,14 @@
   display: block;
   font-size: 1em; }
 
-.authentication__signin, .authentication__signin-with-socialmedia, .authentication__signin-without-socialmedia {
+/*.authentication__signin, .authentication__signin-with-socialmedia, .authentication__signin-without-socialmedia {
   display: flex;
-  flex-direction: column; }
+  flex-direction: column; }*/
 
 .authentication__button {
-  width: 100%; }
+  width: 100%;
+  padding: 2.5%;
+}
 
 .authentication__signin {
   justify-content: center; }
@@ -36,8 +38,6 @@
   width: 95%;
   margin: auto; }
 
-.authentication__button {
-  padding: 2.5%; }
 
 .facebook-connect-button {
   background-color: #3b5998;

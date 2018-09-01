@@ -9,5 +9,4 @@ export const ACCOUNT_CREATION = gql`
     }
   }
 }
-
 `;

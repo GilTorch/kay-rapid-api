@@ -1,6 +1,8 @@
 import React from 'react';
 import Navigation from '../components/Navigation';
+import Neighborhood from '../components/Neighborhood';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
 
 const Home=({ title })=>{
     return(
@@ -17,6 +19,14 @@ const Home=({ title })=>{
                 </form>
             </div>
             </header>
+            <div className="neighborhood-container">
+                <Neighborhood name="Port-au-Prince"/>
+                <Neighborhood name="Gonaives"/>
+                <Neighborhood name="Cap-Haitien"/>
+                <Neighborhood name="Fort-Liberte"/>
+                <Neighborhood name="Les Cayes"/>
+                <Neighborhood name="Jeremie"/>
+            </div>
             <Navigation currentPage="home"/>
         </div>
     )

@@ -1,5 +1,8 @@
 :root {
   --main-bg-color:#662d91; 
+  --header-color:#662d91;
+  --button-success-color:#3add7c;
+  --button-danger-color:#ff7373;
 }
 
 
@@ -13,7 +16,7 @@ body{
   
 input{
   padding:2%;
-box-sizing:border-box;
+  box-sizing:border-box;
 }
 
 label{
@@ -21,6 +24,10 @@ label{
   letter-spacing: 2px;
 }
 
+
+button{
+  cursor: pointer;
+}
 
 .stack-screen {
   width:100vw;
@@ -45,3 +52,4 @@ label{
   align-self: flex-start;
   font-size:1.1em;
 }
+

@@ -1,7 +1,10 @@
 @import "normalize.css";
 @import "base.css";
-@import "navigation.css";
 @import "home.css";
+@import "neighborhood.css";
+@import "navigation.css";
+@import "header-bar.css";
+
 
 /*NAVIGATION*/
 
