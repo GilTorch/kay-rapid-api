@@ -17,7 +17,7 @@ const Home=({ title })=>{
                 </form>
             </div>
             </header>
-            <Navigation/>
+            <Navigation currentPage="home"/>
         </div>
     )
 }  ;

@@ -37,6 +37,12 @@
     color:#666;
     border:none;
     padding:0;
+    cursor:pointer;
+  }
+
+  .navigation-button--hightlighted{
+    color:#ff9900;
+    border:1;
   }
 
   .navigation-button__title{
@@ -77,6 +83,7 @@
   color:white;
   font-weight:bold;
   text-align:center;
+  height:50px;
 }
 
 
@@ -167,26 +174,26 @@ margin:1% auto 20%;
   box-sizing:border-box;
   }
 
-  .signin-without-socialmedia-screen__input:focus,.account-creation-screen__input:focus,.signin-without-socialmedia-screen__input:focus{
-    border:2px solid green;
-    box-shadow:inset 0 0 10px #aaa;
-    }
-      
-
-  .socialmedia-connect-screen__link{
-   color:black;
-   font-size:15px;
-   text-decoration:none; 
-   display:block;
-   width:50%;
-   text-align:center;
-   cursor:pointer;
-   height:69px;
+.signin-without-socialmedia-screen__input:focus,.account-creation-screen__input:focus,.signin-without-socialmedia-screen__input:focus{
+  border:2px solid green;
+  box-shadow:inset 0 0 10px #aaa;
   }
+    
 
-  .socialmedia-connect-screen__link:nth-of-type(2){
-    border-left:1px solid #aaa;
-  }
+.socialmedia-connect-screen__link{
+ color:black;
+ font-size:15px;
+ text-decoration:none; 
+ display:block;
+ width:50%;
+ text-align:center;
+ cursor:pointer;
+ height:69px;
+}
+
+.socialmedia-connect-screen__link:nth-of-type(2){
+  border-left:1px solid #aaa;
+}
 
 
 /****/

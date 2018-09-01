@@ -1,42 +1,24 @@
 import React from 'react';
-import SignIn from './SignIn';
-import { BrowserRouter as Router,Route } from 'react-router-dom';
-import SignInWithSocialMedia from './SignInWithSocialMedia';
-import SignInWithoutSocialMedia from './SignInWithoutSocialMedia';
-import AccountCreation from './AccountCreation';
-import HeaderBar from './HeaderBar';
-import Navigation from './Navigation';
-
+import { Link } from 'react-router-dom';
 
 class Authentication extends React.Component{
-
     constructor(props){
         super(props);
-        this.closeCard=this.closeCard.bind(this);
-        // $('.authentication__signin-with-socialmedia').hide();
-        // $('.authentication__signin-without-socialmedia').hide();
-        // $('.authenctication__account-creation').hide();
-        this.state={
-            userIsSignedIn:false,
-        }
     }
 
-
-    closeCard(){
-        
-    }
 
     render(){
-       return(
-        <div className="authentication">
-          <HeaderBar title="Profile"/>
-          <SignIn/>
-          <Navigation/>
+        return(
+        <div className="card signin-card">
+            <div className="signin-card__wrapper">
+                <p> Konekte kounya pou ou ka genyen yon pi bon eksperyans.</p>
+                <Link to="/authentication/sign-in-with-social-media">                                                    
+                    <button className="authentication__button signin-card__button">KONEKTE</button>
+                </Link>
+            </div>
         </div>
         )
     }
-
 }
-
 
 export default Authentication;

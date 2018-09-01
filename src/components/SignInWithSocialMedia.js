@@ -13,7 +13,7 @@ class SignInWithSocialMedia extends React.Component{
         return(
             <div className="stack-screen socialmedia-connect-screen">
                <div>
-                <Link to="/authentication">
+                <Link to="/profile">
                     <button className="close-icon">&times;</button>
                 </Link>
                </div>
