@@ -2,6 +2,7 @@
 @import "base.css";
 @import "home.css";
 
+/*NAVIGATION*/
   .header-bar{
     width:100vw;
     position:absolute;
@@ -16,6 +17,31 @@
     align-items:center;
   }
 
+
+  .navigation-bar{
+    width:100vw;
+    position:fixed;
+    bottom:0;
+    left:0;
+    background-color:#333;
+    color:white;
+    margin:0;
+    height:90px;
+    display: flex;
+    justify-content: space-around;
+    align-items:center;
+  }
+
+  .navigation-button{
+    background:transparent;
+    color:#666;
+    border:none;
+    padding:0;
+  }
+
+  .navigation-button__title{
+    display:block;
+  }
   /**HOME**/
 
 /** SIGN IN CARD **/
@@ -59,6 +85,8 @@
   justify-content: center;
   align-items:center;
 }
+
+
 /******/
 .stack-screen {
   width:100vw;
@@ -139,6 +167,12 @@ margin:1% auto 20%;
   box-sizing:border-box;
   }
 
+  .signin-without-socialmedia-screen__input:focus,.account-creation-screen__input:focus,.signin-without-socialmedia-screen__input:focus{
+    border:2px solid green;
+    box-shadow:inset 0 0 10px #aaa;
+    }
+      
+
   .socialmedia-connect-screen__link{
    color:black;
    font-size:15px;
@@ -147,6 +181,7 @@ margin:1% auto 20%;
    width:50%;
    text-align:center;
    cursor:pointer;
+   height:69px;
   }
 
   .socialmedia-connect-screen__link:nth-of-type(2){
@@ -219,12 +254,14 @@ justify-content: space-around;
   padding: 2.5%; }
 
 .socialmedia-connect-screen__facebook-connect-button {
-  background-color: var(--main-bg-color);
+  background-color: #3b5998;
+  margin:auto;
   border: none;
   height:100px;
   color: white;
-
+  font-size:1.5em;
   margin-bottom:10px;
+  
 }
 
   .socialmedia-connect-screen__buttons-container-2{

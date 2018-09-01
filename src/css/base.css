@@ -11,21 +11,17 @@ body{
   
   
   
-    input{
-      padding:2%;
-  box-sizing:border-box;
-    }
-  
-    label{
-      font-weight:bold;
-      letter-spacing: 2px;
-    }
-  
-  input:focus{
-    border:2px solid green;
-    box-shadow:inset 0 0 10px #aaa;
-  }
-  
+input{
+  padding:2%;
+box-sizing:border-box;
+}
+
+label{
+  font-weight:bold;
+  letter-spacing: 2px;
+}
+
+
     /* button{
       min-height:70px;
     } */

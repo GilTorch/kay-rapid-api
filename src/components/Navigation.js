@@ -1,15 +1,22 @@
 import React from 'react';
 import NavigationButton from './NavigationButton';
-
+import { Link, BrowserRouter as Router,Route} from 'react-router-dom';
 
 const Navigation=()=>{
+
     return(
-        <nav className="navigation-menu">
-          <ul>
-              <li><NavigationButton name="home" size="2x"/></li>
-              {/* <li><NavigationButton name="home" size={2x}/></li>
-              <li><NavigationButton name="user" size={2x}/></li> */}
-          </ul>
+        <nav className="navigation-bar">
+             <React.Fragment>
+                <Link to="/">
+                    <NavigationButton name="Akey" iconName="home"/>
+                </Link>
+                <Link to="/favorites">
+                    <NavigationButton name="Favori" iconName="heart"/>
+                </Link>
+                <Link to="/authentication">
+                    <NavigationButton name="Pwofil" iconName="user"/>
+                </Link>
+             </React.Fragment>
         </nav>
     )
 }

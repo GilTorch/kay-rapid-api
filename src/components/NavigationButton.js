@@ -1,11 +1,11 @@
 import React from 'react';
-import Icon from './Icon';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-
-const NavigationButton=({name,size,onButtonClick})=>{
+const NavigationButton=({name,iconName})=>{
     return(
-        <button onClick={onButtonClick}>
-            <Icon name={name} size={size}></Icon>
+        <button className="navigation-button">
+            <FontAwesomeIcon icon={iconName} size="2x"/>
+            <span className="navigation-button__title">{name}</span>
         </button>
     )
 }

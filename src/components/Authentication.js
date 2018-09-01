@@ -4,6 +4,8 @@ import { BrowserRouter as Router,Route } from 'react-router-dom';
 import SignInWithSocialMedia from './SignInWithSocialMedia';
 import SignInWithoutSocialMedia from './SignInWithoutSocialMedia';
 import AccountCreation from './AccountCreation';
+import HeaderBar from './HeaderBar';
+import Navigation from './Navigation';
 
 
 class Authentication extends React.Component{
@@ -27,14 +29,9 @@ class Authentication extends React.Component{
     render(){
        return(
         <div className="authentication">
-        <Router>
-        <React.Fragment>
-          <Route exact={true} path="/authentication" component={SignIn}/>
-          <Route exact={true} path="/authentication/sign-in-with-social-media" component={SignInWithSocialMedia}/>
-          <Route exact={true} path="/authentication/sign-in-without-social-media" component={SignInWithoutSocialMedia}/>
-          <Route exact={true} path="/authentication/account-creation" component={AccountCreation}/>
-        </React.Fragment>
-      </Router>
+          <HeaderBar title="Profile"/>
+          <SignIn/>
+          <Navigation/>
         </div>
         )
     }
