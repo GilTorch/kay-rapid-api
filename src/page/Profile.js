@@ -8,14 +8,19 @@ import Authentication from '../components/Authentication';
 
 
 
-const Profile=({ title })=>{
-    return(
-        <div className="profile">
-            <HeaderBar title="Profile"/>
-            <Authentication/>
-            <Navigation currentPage="profile"/>
-        </div>
-    )
-}  ;
+class Profile extends React.Component{
+    
+
+    render(){
+        return(
+            <div className="profile">
+                <HeaderBar title="Profile"/>
+                <Authentication/>
+                <Navigation currentPage="profile"/>
+            </div>
+        )
+    }
+   
+}  
 
 export default Profile;

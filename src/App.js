@@ -13,6 +13,7 @@ import { faSearch, faHome, faHeart, faUser } from '@fortawesome/free-solid-svg-i
 import SignInWithoutSocialMedia from './components/SignInWithoutSocialMedia';
 import SignInWithSocialMedia from './components/SignInWithSocialMedia';
 import AccountCreation from './components/AccountCreation';
+import FacebookLoginRedirection from './components/FacebookLoginRedirection';
 
 
 import Profile from './page/Profile';
@@ -30,12 +31,15 @@ class App extends Component {
       <ApolloProvider client={client}>
         <Router>
           <React.Fragment>
+            <div className="app">
             <Route exact={true} path="/" component={Home}/>
             <Route exact={true} path="/profile" component={Profile}/>
             <Route exact={true} path="/favorites" component={Favorites}/>
             <Route exact={true} path="/authentication/sign-in-with-social-media" component={SignInWithSocialMedia}/>
             <Route exact={true} path="/authentication/sign-in-without-social-media" component={SignInWithoutSocialMedia}/>
             <Route exact={true} path="/authentication/account-creation" component={AccountCreation}/>
+            <Route exact={true} path="/redirect-auth" component={FacebookLoginRedirection}/>
+            </div>
           </React.Fragment>
         </Router>
       </ApolloProvider>

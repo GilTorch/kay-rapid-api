@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 // import FacebookSignInButton from './FacebookSignInButton';
+import FacebookLogin from 'react-facebook-login/dist/facebook-login-render-props';
 
 
 class SignInWithSocialMedia extends React.Component{
@@ -23,8 +24,13 @@ class SignInWithSocialMedia extends React.Component{
                    </div>
                </div>
                <div className="socialmedia-connect-screen__buttons-container">
-                {/* <FacebookSignInButton/> */}
-                <button className="authentication__button socialmedia-connect-screen__facebook-connect-button"><i class="fab fa-facebook-square"></i> KONEKTE AK FACEBOOK</button>
+                <FacebookLogin 
+                appId="266227067534365"  
+                autoLoad={true}
+                render={renderProps =>(
+                    <button onClick={renderProps.onClick} className="authentication__button socialmedia-connect-screen__facebook-connect-button"><i class="fab fa-facebook-square"></i> KONEKTE AK FACEBOOK</button>
+                )}
+                /> 
                 <div className="socialmedia-connect-screen__buttons-container-2">
                 <Link className="socialmedia-connect-screen__link" to="/authentication/sign-in-without-social-media">
                     <button className="socialmedia-connect-screen__sign-in-button">

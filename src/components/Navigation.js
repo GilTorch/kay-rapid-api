@@ -6,7 +6,6 @@ const Navigation=({ currentPage })=>{
 
     return(
         <nav className="navigation-bar">
-             <React.Fragment>
                 <Link to="/">
                     <NavigationButton highlighted={currentPage=="home"?true:false} name="Akey" iconName="home"/>
                 </Link>
@@ -16,7 +15,6 @@ const Navigation=({ currentPage })=>{
                 <Link to="/profile">                                                                                   
                     <NavigationButton highlighted={currentPage=="profile"?true:false} name="Pwofil" iconName="user"/>
                 </Link>
-             </React.Fragment>
         </nav>
     )
 }
