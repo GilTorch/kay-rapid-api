@@ -4,7 +4,7 @@ import { HttpLink } from "apollo-link-http";
 import { InMemoryCache } from "apollo-cache-inmemory";
 
 const client = new ApolloClient({
-  uri: "https://graphql-boilerplate-xutqjutspf.now.sh/",
+  uri: "https://graphql-boilerplate-ajkpmeahlg.now.sh/",
   link: new HttpLink(),
   cache: new InMemoryCache(),
 });

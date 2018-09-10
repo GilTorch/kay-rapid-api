@@ -10,3 +10,16 @@ export const ACCOUNT_CREATION = gql`
   }
 }
 `;
+
+export const FB_AUTH = gql`
+mutation authenticateFBUser($facebookToken: String!){
+  authenticateFBUser(facebookToken:$facebookToken){
+    token
+    user{
+      id
+      lastName
+      firstName
+    }
+  }
+}
+`
