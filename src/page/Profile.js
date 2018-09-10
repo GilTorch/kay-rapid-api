@@ -10,6 +10,11 @@ import Authentication from '../components/Authentication';
 
 class Profile extends React.Component{
     
+    constructor(props){
+        super(props);
+    }
+
+    
 
     render(){
         return(

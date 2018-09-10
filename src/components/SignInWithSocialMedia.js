@@ -1,19 +1,23 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-// import FacebookSignInButton from './FacebookSignInButton';
 import FacebookLogin from 'react-facebook-login';
-import { Mutation } from 'react-apollo';
 import { FB_AUTH } from '../queries/queries';
 import {graphql} from 'react-apollo';
 
 
-const SignInWithSocialMedia=({ mutate,history })=>{
+const SignInWithSocialMedia=({ mutate, history})=>{
   
 
     const responseFacebook=(response)=>{
         mutate({ 
-            variables: { facebookToken: response.accessToken }
-          }).then(()=> history.push('/profile'));
+            variables: { facebookToken: response.accessToken },
+            update:(store,{data:{ token }}) =>{
+                store.writeQuery({ 
+                    data: token
+                })
+            }
+          })
+          .then(()=> history.push('/profile'))   
     }
 
     return(
@@ -34,7 +38,9 @@ const SignInWithSocialMedia=({ mutate,history })=>{
             autoLoad={true}
             callback={responseFacebook}
             fields="name,email,picture"
-            icon = "fa fa-facebook"
+            icon="fa fa-facebook"
+            textButton=" KONEKTE AK FACEBOOK"
+            cssClass="socialmedia-connect-screen__facebook-connect-button"
             /> 
             <div className="socialmedia-connect-screen__buttons-container-2">
             <Link className="socialmedia-connect-screen__link" to="/authentication/sign-in-without-social-media">

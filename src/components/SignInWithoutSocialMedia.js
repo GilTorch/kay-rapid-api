@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const SignInWithoutSocialMedia =()=>{
+const SignInWithoutSocialMedia=()=>{
 
     return(
     <div className="stack-screen signin-without-socialmedia-screen">

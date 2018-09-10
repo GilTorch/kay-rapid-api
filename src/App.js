@@ -26,6 +26,15 @@ library.add(faSearch,faHome, faHeart, faUser)
 
 
 class App extends Component {
+
+  constructor(props){
+    super(props)
+  }
+
+  updateCacheWithToken(){
+    console.log("called");
+  }
+
   render() {
     return (
       <ApolloProvider client={client}>
@@ -35,7 +44,7 @@ class App extends Component {
             <Route exact={true} path="/" component={Home}/>
             <Route exact={true} path="/profile" component={Profile}/>
             <Route exact={true} path="/favorites" component={Favorites}/>
-            <Route exact={true} path="/authentication/sign-in-with-social-media" component={SignInWithSocialMedia}/>
+            <Route exact={true} path="/authentication/sign-in-with-social-media" component={SignInWithSocialMedia} updateCacheWithToken={this.updateCacheWithToken}/>
             <Route exact={true} path="/authentication/sign-in-without-social-media" component={SignInWithoutSocialMedia}/>
             <Route exact={true} path="/authentication/account-creation" component={AccountCreation}/>
             <Route exact={true} path="/redirect-auth" component={FacebookLoginRedirection}/>
