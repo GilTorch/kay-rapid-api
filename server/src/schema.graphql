@@ -21,6 +21,7 @@ type Mutation {
   ): AuthPayLoad
   login(email: String!, password: String!): AuthPayLoad!
   authenticateFBUser(facebookToken: String!): AuthPayLoad!
+  disableUser(id: String!): Boolean!
   createCountry(name: String!): Country
   createState(name: String!, idCountry: ID!): State
   createCity(name: String!, idState: ID!): City

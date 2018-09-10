@@ -7328,6 +7328,7 @@ type User implements Node {
   id: ID!
   createdAt: DateTime!
   updatedAt: DateTime!
+  status: Boolean
   facebookUserId: String
   firstName: String!
   lastName: String!
@@ -7357,6 +7358,7 @@ type UserConnection {
 }
 
 input UserCreateInput {
+  status: Boolean
   facebookUserId: String
   firstName: String!
   lastName: String!
@@ -7401,6 +7403,7 @@ input UserCreateOneWithoutPaidContactsInput {
 }
 
 input UserCreateWithoutBookingsInput {
+  status: Boolean
   facebookUserId: String
   firstName: String!
   lastName: String!
@@ -7419,6 +7422,7 @@ input UserCreateWithoutBookingsInput {
 }
 
 input UserCreateWithoutNotificationsInput {
+  status: Boolean
   facebookUserId: String
   firstName: String!
   lastName: String!
@@ -7437,6 +7441,7 @@ input UserCreateWithoutNotificationsInput {
 }
 
 input UserCreateWithoutOwnedHousesInput {
+  status: Boolean
   facebookUserId: String
   firstName: String!
   lastName: String!
@@ -7455,6 +7460,7 @@ input UserCreateWithoutOwnedHousesInput {
 }
 
 input UserCreateWithoutPaidContactsInput {
+  status: Boolean
   facebookUserId: String
   firstName: String!
   lastName: String!
@@ -7488,6 +7494,8 @@ enum UserOrderByInput {
   createdAt_DESC
   updatedAt_ASC
   updatedAt_DESC
+  status_ASC
+  status_DESC
   facebookUserId_ASC
   facebookUserId_DESC
   firstName_ASC
@@ -7514,6 +7522,7 @@ type UserPreviousValues {
   id: ID!
   createdAt: DateTime!
   updatedAt: DateTime!
+  status: Boolean
   facebookUserId: String
   firstName: String!
   lastName: String!
@@ -7566,6 +7575,7 @@ input UserSubscriptionWhereInput {
 }
 
 input UserUpdateDataInput {
+  status: Boolean
   facebookUserId: String
   firstName: String
   lastName: String
@@ -7585,6 +7595,7 @@ input UserUpdateDataInput {
 }
 
 input UserUpdateInput {
+  status: Boolean
   facebookUserId: String
   firstName: String
   lastName: String
@@ -7644,6 +7655,7 @@ input UserUpdateOneWithoutPaidContactsInput {
 }
 
 input UserUpdateWithoutBookingsDataInput {
+  status: Boolean
   facebookUserId: String
   firstName: String
   lastName: String
@@ -7662,6 +7674,7 @@ input UserUpdateWithoutBookingsDataInput {
 }
 
 input UserUpdateWithoutNotificationsDataInput {
+  status: Boolean
   facebookUserId: String
   firstName: String
   lastName: String
@@ -7680,6 +7693,7 @@ input UserUpdateWithoutNotificationsDataInput {
 }
 
 input UserUpdateWithoutOwnedHousesDataInput {
+  status: Boolean
   facebookUserId: String
   firstName: String
   lastName: String
@@ -7698,6 +7712,7 @@ input UserUpdateWithoutOwnedHousesDataInput {
 }
 
 input UserUpdateWithoutPaidContactsDataInput {
+  status: Boolean
   facebookUserId: String
   firstName: String
   lastName: String
@@ -7833,6 +7848,10 @@ input UserWhereInput {
 
   """All values greater than or equal the given value."""
   updatedAt_gte: DateTime
+  status: Boolean
+
+  """All values that are not equal to given value."""
+  status_not: Boolean
   facebookUserId: String
 
   """All values that are not equal to given value."""
@@ -8907,6 +8926,8 @@ export type UserOrderByInput =   'id_ASC' |
   'createdAt_DESC' |
   'updatedAt_ASC' |
   'updatedAt_DESC' |
+  'status_ASC' |
+  'status_DESC' |
   'facebookUserId_ASC' |
   'facebookUserId_DESC' |
   'firstName_ASC' |
@@ -9714,6 +9735,8 @@ export interface UserWhereInput {
   updatedAt_lte?: DateTime
   updatedAt_gt?: DateTime
   updatedAt_gte?: DateTime
+  status?: Boolean
+  status_not?: Boolean
   facebookUserId?: String
   facebookUserId_not?: String
   facebookUserId_in?: String[] | String
@@ -9847,6 +9870,7 @@ export interface UserWhereInput {
 }
 
 export interface UserCreateWithoutPaidContactsInput {
+  status?: Boolean
   facebookUserId?: String
   firstName: String
   lastName: String
@@ -10092,6 +10116,7 @@ export interface BookingWhereUniqueInput {
 }
 
 export interface UserCreateWithoutBookingsInput {
+  status?: Boolean
   facebookUserId?: String
   firstName: String
   lastName: String
@@ -10205,6 +10230,7 @@ export interface PaymentHouseCreateOneWithoutBookingInput {
 }
 
 export interface UserUpdateInput {
+  status?: Boolean
   facebookUserId?: String
   firstName?: String
   lastName?: String
@@ -10252,6 +10278,7 @@ export interface PaymentAccountCreateWithoutPaymentsInput {
 }
 
 export interface UserUpdateWithoutNotificationsDataInput {
+  status?: Boolean
   facebookUserId?: String
   firstName?: String
   lastName?: String
@@ -10282,6 +10309,7 @@ export interface NotificationUpdateInput {
 }
 
 export interface UserCreateInput {
+  status?: Boolean
   facebookUserId?: String
   firstName: String
   lastName: String
@@ -10900,6 +10928,7 @@ export interface PaypalInformationCreateInput {
 }
 
 export interface UserUpdateDataInput {
+  status?: Boolean
   facebookUserId?: String
   firstName?: String
   lastName?: String
@@ -11032,6 +11061,7 @@ export interface PaymentAccountCreateWithoutCreditcardInput {
 }
 
 export interface UserCreateWithoutOwnedHousesInput {
+  status?: Boolean
   facebookUserId?: String
   firstName: String
   lastName: String
@@ -11110,6 +11140,7 @@ export interface ViewsWhereInput {
 }
 
 export interface UserCreateWithoutNotificationsInput {
+  status?: Boolean
   facebookUserId?: String
   firstName: String
   lastName: String
@@ -11564,6 +11595,7 @@ export interface ViewsWhereUniqueInput {
 }
 
 export interface UserUpdateWithoutOwnedHousesDataInput {
+  status?: Boolean
   facebookUserId?: String
   firstName?: String
   lastName?: String
@@ -12217,6 +12249,7 @@ export interface PaymentHouseUpdateManyWithoutPaymentMethodInput {
 }
 
 export interface UserUpdateWithoutPaidContactsDataInput {
+  status?: Boolean
   facebookUserId?: String
   firstName?: String
   lastName?: String
@@ -12377,6 +12410,7 @@ export interface UserSubscriptionWhereInput {
 }
 
 export interface UserUpdateWithoutBookingsDataInput {
+  status?: Boolean
   facebookUserId?: String
   firstName?: String
   lastName?: String
@@ -13756,6 +13790,7 @@ export interface UserPreviousValues {
   id: ID_Output
   createdAt: DateTime
   updatedAt: DateTime
+  status?: Boolean
   facebookUserId?: String
   firstName: String
   lastName: String
@@ -13810,6 +13845,7 @@ export interface User extends Node {
   id: ID_Output
   createdAt: DateTime
   updatedAt: DateTime
+  status?: Boolean
   facebookUserId?: String
   firstName: String
   lastName: String

@@ -32,13 +32,28 @@ export const auth = {
       user ? user.password : ""
     );
 
-    if (!valid || !user) {
+    if (!valid || !user || !user.status) {
       throw new AuthError();
     }
 
     return {
       token: jwt.sign({ userId: user.id }, process.env.APP_SECRET),
       user
+    };
+  },
+
+  //DisableUser mutation which returns  userid of disabled user,This user can't log back
+  async disableUser(parent, args, context: Context, info) {
+    const user = await context.db.mutation.updateUser({
+      data: { status: false },
+      where: { id: args.id }
+    });
+    if (!user) {
+      throw new AuthError();
+    }
+
+    return {
+      status: user.status === false ? true : false
     };
   },
 
@@ -57,7 +72,7 @@ export const auth = {
     if (!user) {
       const newUser = await context.db.mutation.createUser({
         data: {
-          facebookUserId: facebookUser.email,
+          facebookUserId: facebookUser.id,
           email: facebookUser.email,
           firstName: facebookUser.first_name,
           lastName: facebookUser.last_name

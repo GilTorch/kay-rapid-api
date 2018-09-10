@@ -1,5 +1,5 @@
 # source: https://us1.prisma.sh/peterson-jean-48f374/api-lakayou/api-lakayou
-# timestamp: Sat Aug 18 2018 00:46:29 GMT-0400 (Eastern Daylight Time)
+# timestamp: Sat Sep 08 2018 00:10:46 GMT-0400 (Eastern Daylight Time)
 
 type AggregateAmenities {
   count: Int!
@@ -7046,6 +7046,7 @@ type User implements Node {
   id: ID!
   createdAt: DateTime!
   updatedAt: DateTime!
+  status: Boolean
   facebookUserId: String
   firstName: String!
   lastName: String!
@@ -7075,6 +7076,7 @@ type UserConnection {
 }
 
 input UserCreateInput {
+  status: Boolean
   facebookUserId: String
   firstName: String!
   lastName: String!
@@ -7119,6 +7121,7 @@ input UserCreateOneWithoutPaidContactsInput {
 }
 
 input UserCreateWithoutBookingsInput {
+  status: Boolean
   facebookUserId: String
   firstName: String!
   lastName: String!
@@ -7137,6 +7140,7 @@ input UserCreateWithoutBookingsInput {
 }
 
 input UserCreateWithoutNotificationsInput {
+  status: Boolean
   facebookUserId: String
   firstName: String!
   lastName: String!
@@ -7155,6 +7159,7 @@ input UserCreateWithoutNotificationsInput {
 }
 
 input UserCreateWithoutOwnedHousesInput {
+  status: Boolean
   facebookUserId: String
   firstName: String!
   lastName: String!
@@ -7173,6 +7178,7 @@ input UserCreateWithoutOwnedHousesInput {
 }
 
 input UserCreateWithoutPaidContactsInput {
+  status: Boolean
   facebookUserId: String
   firstName: String!
   lastName: String!
@@ -7206,6 +7212,8 @@ enum UserOrderByInput {
   createdAt_DESC
   updatedAt_ASC
   updatedAt_DESC
+  status_ASC
+  status_DESC
   facebookUserId_ASC
   facebookUserId_DESC
   firstName_ASC
@@ -7232,6 +7240,7 @@ type UserPreviousValues {
   id: ID!
   createdAt: DateTime!
   updatedAt: DateTime!
+  status: Boolean
   facebookUserId: String
   firstName: String!
   lastName: String!
@@ -7284,6 +7293,7 @@ input UserSubscriptionWhereInput {
 }
 
 input UserUpdateDataInput {
+  status: Boolean
   facebookUserId: String
   firstName: String
   lastName: String
@@ -7303,6 +7313,7 @@ input UserUpdateDataInput {
 }
 
 input UserUpdateInput {
+  status: Boolean
   facebookUserId: String
   firstName: String
   lastName: String
@@ -7362,6 +7373,7 @@ input UserUpdateOneWithoutPaidContactsInput {
 }
 
 input UserUpdateWithoutBookingsDataInput {
+  status: Boolean
   facebookUserId: String
   firstName: String
   lastName: String
@@ -7380,6 +7392,7 @@ input UserUpdateWithoutBookingsDataInput {
 }
 
 input UserUpdateWithoutNotificationsDataInput {
+  status: Boolean
   facebookUserId: String
   firstName: String
   lastName: String
@@ -7398,6 +7411,7 @@ input UserUpdateWithoutNotificationsDataInput {
 }
 
 input UserUpdateWithoutOwnedHousesDataInput {
+  status: Boolean
   facebookUserId: String
   firstName: String
   lastName: String
@@ -7416,6 +7430,7 @@ input UserUpdateWithoutOwnedHousesDataInput {
 }
 
 input UserUpdateWithoutPaidContactsDataInput {
+  status: Boolean
   facebookUserId: String
   firstName: String
   lastName: String
@@ -7551,6 +7566,10 @@ input UserWhereInput {
 
   """All values greater than or equal the given value."""
   updatedAt_gte: DateTime
+  status: Boolean
+
+  """All values that are not equal to given value."""
+  status_not: Boolean
   facebookUserId: String
 
   """All values that are not equal to given value."""
