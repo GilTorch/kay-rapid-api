@@ -1,0 +1,49 @@
+# import State, Country ,House from "./generated/prisma.graphql"
+
+type Query {
+  countries: [Country!]!
+  states: [State!]!
+  cities: [City!]!
+  communes: [Commune!]!
+}
+type AuthPayLoad {
+  token: String!
+  user: User!
+}
+
+type Mutation {
+  signup(
+    email: String!
+    password: String!
+    firstName: String!
+    lastName: String!
+    phone1: String!
+  ): AuthPayLoad
+  login(email: String!, password: String!): AuthPayLoad!
+  createCountry(name: String!): Country
+  createState(name: String!, idCountry: ID!): State
+  createCity(name: String!, idState: ID!): City
+  createCommune(name: String!, idCity: ID!): Commune
+  createHouse(
+    name: String
+    area: Int
+    age: Int!
+    shortDescription: String!
+    description: String!
+    maxGuests: Int!
+    numBedrooms: Int!
+    numBaths: Int!
+    basePrice: Int!
+    highestPrice: Int!
+    currency: CURRENCY
+    income: Int!
+    lat: Float
+    lng: Float
+    address: String
+    communeId: String
+    leaseType: House_LEASE_TYPE
+    type: House_TYPES
+    residency: House_RESIDENCY
+    lease: Int!
+  ): House
+}
