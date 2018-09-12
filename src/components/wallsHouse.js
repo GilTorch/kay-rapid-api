@@ -21,7 +21,7 @@ class HouseProfile extends React.Component {
                     
                 <ul>
                     <li>
-                        <img src={this.props.image} alt="" />
+                <img src={this.props.image} alt="" />
                     </li>
                     <li><h2>Prix en Us</h2></li>
                     <li><p>{this.props.PrixHouseUs}</p></li>
