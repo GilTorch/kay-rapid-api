@@ -11,11 +11,11 @@ const SignInWithSocialMedia=({ mutate, history})=>{
     const responseFacebook=(response)=>{
         mutate({ 
             variables: { facebookToken: response.accessToken },
-            update:(store,{data:{ token }}) =>{
-                store.writeQuery({ 
-                    data: token
-                })
-            }
+            // update:(store,{data:{ token }}) =>{
+            //     store.writeQuery({ 
+            //         data: response.accessToken
+            //     })
+            // }
           })
           .then(()=> history.push('/profile'))   
     }
