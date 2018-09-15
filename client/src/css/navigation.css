@@ -1,0 +1,31 @@
+
+.navigation-bar{
+  width:100%;
+  height:60px;
+  position:fixed;
+  bottom:0;
+  left:0;
+  background-color:#333;
+  color:white;
+  font-size:0.8em;
+  margin:0;
+  display: flex;
+  justify-content: space-around;
+  align-items:center;
+}
+
+.navigation-button{
+  background:transparent;
+  color:#666;
+  border:none;
+  padding:0;
+  cursor:pointer;
+}
+
+.navigation-button--hightlighted{
+  color:#ff9900;
+}
+
+.navigation-button__title{
+  display:block;
+}

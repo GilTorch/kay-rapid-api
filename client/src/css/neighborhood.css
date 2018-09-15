@@ -1,0 +1,23 @@
+.neighborhood-container{
+
+    background-color:var(--main-bg-color);
+	width:100%;
+    display: flex;
+	flex-wrap:wrap;
+	margin-bottom:90px;
+    /*justify-content: space-around;*/
+   /* margin-bottom:90px;*/
+
+}
+
+.neighborhood{
+	width:40%;
+	min-height: 100px;
+	margin:10px;
+	padding:1%;
+	background-color:white;
+}
+
+.neighborhood__title{
+	font-size:1em;
+}
