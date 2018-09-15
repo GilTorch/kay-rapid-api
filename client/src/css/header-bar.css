@@ -1,0 +1,14 @@
+.header-bar{
+  width:100vw;
+  position:absolute;
+  top:0;
+  left:0;
+  background-color:var(--header-color);
+  color:white;
+  margin:0;
+  height:69px;
+  display: flex;
+  justify-content: center;
+  align-items:center;
+}
+
