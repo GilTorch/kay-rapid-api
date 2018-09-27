@@ -104,10 +104,12 @@ type Country {
 }
 
 type Picture {
+  id: ID! @unique
   url: String!
 }
 
 type Video {
+  id: ID! @unique
   url: String!
 }
 

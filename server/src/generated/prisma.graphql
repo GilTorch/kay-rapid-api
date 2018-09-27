@@ -1,5 +1,5 @@
 # source: https://us1.prisma.sh/peterson-jean-48f374/api-lakayou/api-lakayou
-# timestamp: Sat Sep 08 2018 00:10:46 GMT-0400 (Eastern Daylight Time)
+# timestamp: Sat Sep 22 2018 09:31:42 GMT-0400 (Eastern Daylight Time)
 
 type AggregateAmenities {
   count: Int!
@@ -427,13 +427,12 @@ input AmenitiesUpdateInput {
   buzzerWirelessIntercom: Boolean
   bathtub: Boolean
   crib: Boolean
-  House: HouseUpdateOneWithoutAmenitiesInput
+  House: HouseUpdateOneRequiredWithoutAmenitiesInput
 }
 
-input AmenitiesUpdateOneWithoutHouseInput {
+input AmenitiesUpdateOneRequiredWithoutHouseInput {
   create: AmenitiesCreateWithoutHouseInput
   connect: AmenitiesWhereUniqueInput
-  delete: Boolean
   update: AmenitiesUpdateWithoutHouseDataInput
   upsert: AmenitiesUpsertWithoutHouseInput
 }
@@ -823,9 +822,9 @@ input BookingSubscriptionWhereInput {
 input BookingUpdateInput {
   startDate: DateTime
   endDate: DateTime
-  bookee: UserUpdateOneWithoutBookingsInput
-  House: HouseUpdateOneWithoutBookingsInput
-  payment: PaymentHouseUpdateOneWithoutBookingInput
+  bookee: UserUpdateOneRequiredWithoutBookingsInput
+  House: HouseUpdateOneRequiredWithoutBookingsInput
+  payment: PaymentHouseUpdateOneRequiredWithoutBookingInput
 }
 
 input BookingUpdateManyWithoutBookeeInput {
@@ -846,10 +845,9 @@ input BookingUpdateManyWithoutHouseInput {
   upsert: [BookingUpsertWithWhereUniqueWithoutHouseInput!]
 }
 
-input BookingUpdateOneWithoutPaymentInput {
+input BookingUpdateOneRequiredWithoutPaymentInput {
   create: BookingCreateWithoutPaymentInput
   connect: BookingWhereUniqueInput
-  delete: Boolean
   update: BookingUpdateWithoutPaymentDataInput
   upsert: BookingUpsertWithoutPaymentInput
 }
@@ -857,22 +855,22 @@ input BookingUpdateOneWithoutPaymentInput {
 input BookingUpdateWithoutBookeeDataInput {
   startDate: DateTime
   endDate: DateTime
-  House: HouseUpdateOneWithoutBookingsInput
-  payment: PaymentHouseUpdateOneWithoutBookingInput
+  House: HouseUpdateOneRequiredWithoutBookingsInput
+  payment: PaymentHouseUpdateOneRequiredWithoutBookingInput
 }
 
 input BookingUpdateWithoutHouseDataInput {
   startDate: DateTime
   endDate: DateTime
-  bookee: UserUpdateOneWithoutBookingsInput
-  payment: PaymentHouseUpdateOneWithoutBookingInput
+  bookee: UserUpdateOneRequiredWithoutBookingsInput
+  payment: PaymentHouseUpdateOneRequiredWithoutBookingInput
 }
 
 input BookingUpdateWithoutPaymentDataInput {
   startDate: DateTime
   endDate: DateTime
-  bookee: UserUpdateOneWithoutBookingsInput
-  House: HouseUpdateOneWithoutBookingsInput
+  bookee: UserUpdateOneRequiredWithoutBookingsInput
+  House: HouseUpdateOneRequiredWithoutBookingsInput
 }
 
 input BookingUpdateWithWhereUniqueWithoutBookeeInput {
@@ -1118,18 +1116,17 @@ input CitySubscriptionWhereInput {
 
 input CityUpdateDataInput {
   name: String
-  state: StateUpdateOneInput
+  state: StateUpdateOneRequiredInput
 }
 
 input CityUpdateInput {
   name: String
-  state: StateUpdateOneInput
+  state: StateUpdateOneRequiredInput
 }
 
-input CityUpdateOneInput {
+input CityUpdateOneRequiredInput {
   create: CityCreateInput
   connect: CityWhereUniqueInput
-  delete: Boolean
   update: CityUpdateDataInput
   upsert: CityUpsertNestedInput
 }
@@ -1327,12 +1324,12 @@ input CommuneSubscriptionWhereInput {
 
 input CommuneUpdateDataInput {
   name: String
-  city: CityUpdateOneInput
+  city: CityUpdateOneRequiredInput
 }
 
 input CommuneUpdateInput {
   name: String
-  city: CityUpdateOneInput
+  city: CityUpdateOneRequiredInput
 }
 
 input CommuneUpdateOneInput {
@@ -1541,10 +1538,9 @@ input CountryUpdateInput {
   name: String
 }
 
-input CountryUpdateOneInput {
+input CountryUpdateOneRequiredInput {
   create: CountryCreateInput
   connect: CountryWhereUniqueInput
-  delete: Boolean
   update: CountryUpdateDataInput
   upsert: CountryUpsertNestedInput
 }
@@ -2313,8 +2309,8 @@ input House_FavoritedSubscriptionWhereInput {
 }
 
 input House_FavoritedUpdateInput {
-  user: UserUpdateOneInput
-  house: HouseUpdateOneInput
+  user: UserUpdateOneRequiredInput
+  house: HouseUpdateOneRequiredInput
 }
 
 input House_FavoritedWhereInput {
@@ -2822,10 +2818,10 @@ input HouseUpdateDataInput {
   lease: Int
   popularity: Int
   reviews: ReviewUpdateManyWithoutHouseInput
-  amenities: AmenitiesUpdateOneWithoutHouseInput
-  host: UserUpdateOneWithoutOwnedHousesInput
-  pricing: PricingUpdateOneWithoutHouseInput
-  location: LocationUpdateOneInput
+  amenities: AmenitiesUpdateOneRequiredWithoutHouseInput
+  host: UserUpdateOneRequiredWithoutOwnedHousesInput
+  pricing: PricingUpdateOneRequiredWithoutHouseInput
+  location: LocationUpdateOneRequiredInput
   rooms: RoomUpdateManyWithoutHouseInput
   views: ViewsUpdateOneWithoutHouseInput
   bookings: BookingUpdateManyWithoutHouseInput
@@ -2849,10 +2845,10 @@ input HouseUpdateInput {
   lease: Int
   popularity: Int
   reviews: ReviewUpdateManyWithoutHouseInput
-  amenities: AmenitiesUpdateOneWithoutHouseInput
-  host: UserUpdateOneWithoutOwnedHousesInput
-  pricing: PricingUpdateOneWithoutHouseInput
-  location: LocationUpdateOneInput
+  amenities: AmenitiesUpdateOneRequiredWithoutHouseInput
+  host: UserUpdateOneRequiredWithoutOwnedHousesInput
+  pricing: PricingUpdateOneRequiredWithoutHouseInput
+  location: LocationUpdateOneRequiredInput
   rooms: RoomUpdateManyWithoutHouseInput
   views: ViewsUpdateOneWithoutHouseInput
   bookings: BookingUpdateManyWithoutHouseInput
@@ -2869,66 +2865,58 @@ input HouseUpdateManyWithoutHostInput {
   upsert: [HouseUpsertWithWhereUniqueWithoutHostInput!]
 }
 
-input HouseUpdateOneInput {
+input HouseUpdateOneRequiredInput {
   create: HouseCreateInput
   connect: HouseWhereUniqueInput
-  delete: Boolean
   update: HouseUpdateDataInput
   upsert: HouseUpsertNestedInput
 }
 
-input HouseUpdateOneWithoutAmenitiesInput {
+input HouseUpdateOneRequiredWithoutAmenitiesInput {
   create: HouseCreateWithoutAmenitiesInput
   connect: HouseWhereUniqueInput
-  delete: Boolean
   update: HouseUpdateWithoutAmenitiesDataInput
   upsert: HouseUpsertWithoutAmenitiesInput
 }
 
-input HouseUpdateOneWithoutBookingsInput {
+input HouseUpdateOneRequiredWithoutBookingsInput {
   create: HouseCreateWithoutBookingsInput
   connect: HouseWhereUniqueInput
-  delete: Boolean
   update: HouseUpdateWithoutBookingsDataInput
   upsert: HouseUpsertWithoutBookingsInput
 }
 
-input HouseUpdateOneWithoutContactInfoPaymentsInput {
+input HouseUpdateOneRequiredWithoutContactInfoPaymentsInput {
   create: HouseCreateWithoutContactInfoPaymentsInput
   connect: HouseWhereUniqueInput
-  delete: Boolean
   update: HouseUpdateWithoutContactInfoPaymentsDataInput
   upsert: HouseUpsertWithoutContactInfoPaymentsInput
 }
 
-input HouseUpdateOneWithoutPricingInput {
+input HouseUpdateOneRequiredWithoutPricingInput {
   create: HouseCreateWithoutPricingInput
   connect: HouseWhereUniqueInput
-  delete: Boolean
   update: HouseUpdateWithoutPricingDataInput
   upsert: HouseUpsertWithoutPricingInput
 }
 
-input HouseUpdateOneWithoutReviewsInput {
+input HouseUpdateOneRequiredWithoutReviewsInput {
   create: HouseCreateWithoutReviewsInput
   connect: HouseWhereUniqueInput
-  delete: Boolean
   update: HouseUpdateWithoutReviewsDataInput
   upsert: HouseUpsertWithoutReviewsInput
 }
 
-input HouseUpdateOneWithoutRoomsInput {
+input HouseUpdateOneRequiredWithoutRoomsInput {
   create: HouseCreateWithoutRoomsInput
   connect: HouseWhereUniqueInput
-  delete: Boolean
   update: HouseUpdateWithoutRoomsDataInput
   upsert: HouseUpsertWithoutRoomsInput
 }
 
-input HouseUpdateOneWithoutViewsInput {
+input HouseUpdateOneRequiredWithoutViewsInput {
   create: HouseCreateWithoutViewsInput
   connect: HouseWhereUniqueInput
-  delete: Boolean
   update: HouseUpdateWithoutViewsDataInput
   upsert: HouseUpsertWithoutViewsInput
 }
@@ -2949,9 +2937,9 @@ input HouseUpdateWithoutAmenitiesDataInput {
   lease: Int
   popularity: Int
   reviews: ReviewUpdateManyWithoutHouseInput
-  host: UserUpdateOneWithoutOwnedHousesInput
-  pricing: PricingUpdateOneWithoutHouseInput
-  location: LocationUpdateOneInput
+  host: UserUpdateOneRequiredWithoutOwnedHousesInput
+  pricing: PricingUpdateOneRequiredWithoutHouseInput
+  location: LocationUpdateOneRequiredInput
   rooms: RoomUpdateManyWithoutHouseInput
   views: ViewsUpdateOneWithoutHouseInput
   bookings: BookingUpdateManyWithoutHouseInput
@@ -2975,10 +2963,10 @@ input HouseUpdateWithoutBookingsDataInput {
   lease: Int
   popularity: Int
   reviews: ReviewUpdateManyWithoutHouseInput
-  amenities: AmenitiesUpdateOneWithoutHouseInput
-  host: UserUpdateOneWithoutOwnedHousesInput
-  pricing: PricingUpdateOneWithoutHouseInput
-  location: LocationUpdateOneInput
+  amenities: AmenitiesUpdateOneRequiredWithoutHouseInput
+  host: UserUpdateOneRequiredWithoutOwnedHousesInput
+  pricing: PricingUpdateOneRequiredWithoutHouseInput
+  location: LocationUpdateOneRequiredInput
   rooms: RoomUpdateManyWithoutHouseInput
   views: ViewsUpdateOneWithoutHouseInput
   pictures: PictureUpdateManyInput
@@ -3001,10 +2989,10 @@ input HouseUpdateWithoutContactInfoPaymentsDataInput {
   lease: Int
   popularity: Int
   reviews: ReviewUpdateManyWithoutHouseInput
-  amenities: AmenitiesUpdateOneWithoutHouseInput
-  host: UserUpdateOneWithoutOwnedHousesInput
-  pricing: PricingUpdateOneWithoutHouseInput
-  location: LocationUpdateOneInput
+  amenities: AmenitiesUpdateOneRequiredWithoutHouseInput
+  host: UserUpdateOneRequiredWithoutOwnedHousesInput
+  pricing: PricingUpdateOneRequiredWithoutHouseInput
+  location: LocationUpdateOneRequiredInput
   rooms: RoomUpdateManyWithoutHouseInput
   views: ViewsUpdateOneWithoutHouseInput
   bookings: BookingUpdateManyWithoutHouseInput
@@ -3027,9 +3015,9 @@ input HouseUpdateWithoutHostDataInput {
   lease: Int
   popularity: Int
   reviews: ReviewUpdateManyWithoutHouseInput
-  amenities: AmenitiesUpdateOneWithoutHouseInput
-  pricing: PricingUpdateOneWithoutHouseInput
-  location: LocationUpdateOneInput
+  amenities: AmenitiesUpdateOneRequiredWithoutHouseInput
+  pricing: PricingUpdateOneRequiredWithoutHouseInput
+  location: LocationUpdateOneRequiredInput
   rooms: RoomUpdateManyWithoutHouseInput
   views: ViewsUpdateOneWithoutHouseInput
   bookings: BookingUpdateManyWithoutHouseInput
@@ -3053,9 +3041,9 @@ input HouseUpdateWithoutPricingDataInput {
   lease: Int
   popularity: Int
   reviews: ReviewUpdateManyWithoutHouseInput
-  amenities: AmenitiesUpdateOneWithoutHouseInput
-  host: UserUpdateOneWithoutOwnedHousesInput
-  location: LocationUpdateOneInput
+  amenities: AmenitiesUpdateOneRequiredWithoutHouseInput
+  host: UserUpdateOneRequiredWithoutOwnedHousesInput
+  location: LocationUpdateOneRequiredInput
   rooms: RoomUpdateManyWithoutHouseInput
   views: ViewsUpdateOneWithoutHouseInput
   bookings: BookingUpdateManyWithoutHouseInput
@@ -3078,10 +3066,10 @@ input HouseUpdateWithoutReviewsDataInput {
   residency: House_RESIDENCY
   lease: Int
   popularity: Int
-  amenities: AmenitiesUpdateOneWithoutHouseInput
-  host: UserUpdateOneWithoutOwnedHousesInput
-  pricing: PricingUpdateOneWithoutHouseInput
-  location: LocationUpdateOneInput
+  amenities: AmenitiesUpdateOneRequiredWithoutHouseInput
+  host: UserUpdateOneRequiredWithoutOwnedHousesInput
+  pricing: PricingUpdateOneRequiredWithoutHouseInput
+  location: LocationUpdateOneRequiredInput
   rooms: RoomUpdateManyWithoutHouseInput
   views: ViewsUpdateOneWithoutHouseInput
   bookings: BookingUpdateManyWithoutHouseInput
@@ -3105,10 +3093,10 @@ input HouseUpdateWithoutRoomsDataInput {
   lease: Int
   popularity: Int
   reviews: ReviewUpdateManyWithoutHouseInput
-  amenities: AmenitiesUpdateOneWithoutHouseInput
-  host: UserUpdateOneWithoutOwnedHousesInput
-  pricing: PricingUpdateOneWithoutHouseInput
-  location: LocationUpdateOneInput
+  amenities: AmenitiesUpdateOneRequiredWithoutHouseInput
+  host: UserUpdateOneRequiredWithoutOwnedHousesInput
+  pricing: PricingUpdateOneRequiredWithoutHouseInput
+  location: LocationUpdateOneRequiredInput
   views: ViewsUpdateOneWithoutHouseInput
   bookings: BookingUpdateManyWithoutHouseInput
   pictures: PictureUpdateManyInput
@@ -3131,10 +3119,10 @@ input HouseUpdateWithoutViewsDataInput {
   lease: Int
   popularity: Int
   reviews: ReviewUpdateManyWithoutHouseInput
-  amenities: AmenitiesUpdateOneWithoutHouseInput
-  host: UserUpdateOneWithoutOwnedHousesInput
-  pricing: PricingUpdateOneWithoutHouseInput
-  location: LocationUpdateOneInput
+  amenities: AmenitiesUpdateOneRequiredWithoutHouseInput
+  host: UserUpdateOneRequiredWithoutOwnedHousesInput
+  pricing: PricingUpdateOneRequiredWithoutHouseInput
+  location: LocationUpdateOneRequiredInput
   rooms: RoomUpdateManyWithoutHouseInput
   bookings: BookingUpdateManyWithoutHouseInput
   pictures: PictureUpdateManyInput
@@ -3698,6 +3686,13 @@ input LocationUpdateOneInput {
   upsert: LocationUpsertNestedInput
 }
 
+input LocationUpdateOneRequiredInput {
+  create: LocationCreateInput
+  connect: LocationWhereUniqueInput
+  update: LocationUpdateDataInput
+  upsert: LocationUpsertNestedInput
+}
+
 input LocationUpsertNestedInput {
   update: LocationUpdateDataInput!
   create: LocationCreateInput!
@@ -3893,6 +3888,8 @@ type Mutation {
   updateState(data: StateUpdateInput!, where: StateWhereUniqueInput!): State
   updateUser(data: UserUpdateInput!, where: UserWhereUniqueInput!): User
   updateHouse(data: HouseUpdateInput!, where: HouseWhereUniqueInput!): House
+  updateVideo(data: VideoUpdateInput!, where: VideoWhereUniqueInput!): Video
+  updatePicture(data: PictureUpdateInput!, where: PictureWhereUniqueInput!): Picture
   updateCity(data: CityUpdateInput!, where: CityWhereUniqueInput!): City
   deleteRoom(where: RoomWhereUniqueInput!): Room
   deletePricing(where: PricingWhereUniqueInput!): Pricing
@@ -3914,6 +3911,8 @@ type Mutation {
   deleteState(where: StateWhereUniqueInput!): State
   deleteUser(where: UserWhereUniqueInput!): User
   deleteHouse(where: HouseWhereUniqueInput!): House
+  deleteVideo(where: VideoWhereUniqueInput!): Video
+  deletePicture(where: PictureWhereUniqueInput!): Picture
   deleteCity(where: CityWhereUniqueInput!): City
   upsertRoom(where: RoomWhereUniqueInput!, create: RoomCreateInput!, update: RoomUpdateInput!): Room!
   upsertPricing(where: PricingWhereUniqueInput!, create: PricingCreateInput!, update: PricingUpdateInput!): Pricing!
@@ -3935,6 +3934,8 @@ type Mutation {
   upsertState(where: StateWhereUniqueInput!, create: StateCreateInput!, update: StateUpdateInput!): State!
   upsertUser(where: UserWhereUniqueInput!, create: UserCreateInput!, update: UserUpdateInput!): User!
   upsertHouse(where: HouseWhereUniqueInput!, create: HouseCreateInput!, update: HouseUpdateInput!): House!
+  upsertVideo(where: VideoWhereUniqueInput!, create: VideoCreateInput!, update: VideoUpdateInput!): Video!
+  upsertPicture(where: PictureWhereUniqueInput!, create: PictureCreateInput!, update: PictureUpdateInput!): Picture!
   upsertCity(where: CityWhereUniqueInput!, create: CityCreateInput!, update: CityUpdateInput!): City!
   updateManyRooms(data: RoomUpdateInput!, where: RoomWhereInput): BatchPayload!
   updateManyPricings(data: PricingUpdateInput!, where: PricingWhereInput): BatchPayload!
@@ -4093,8 +4094,8 @@ input NegotiationSubscriptionWhereInput {
 input NegotiationUpdateInput {
   offer: Float
   status: NEGOTIATION_TYPE
-  negotiator: UserUpdateOneInput
-  House: HouseUpdateOneInput
+  negotiator: UserUpdateOneRequiredInput
+  House: HouseUpdateOneRequiredInput
 }
 
 input NegotiationWhereInput {
@@ -4334,7 +4335,7 @@ input NotificationUpdateInput {
   type: NOTIFICATION_TYPE
   link: String
   readDate: DateTime
-  user: UserUpdateOneWithoutNotificationsInput
+  user: UserUpdateOneRequiredWithoutNotificationsInput
 }
 
 input NotificationUpdateManyWithoutUserInput {
@@ -4664,10 +4665,24 @@ input PaymentAccountSubscriptionWhereInput {
 
 input PaymentAccountUpdateInput {
   type: PAYMENT_PROVIDER
-  user: UserUpdateOneInput
+  user: UserUpdateOneRequiredInput
   payments: PaymentHouseUpdateManyWithoutPaymentMethodInput
   paypal: PaypalInformationUpdateOneWithoutPaymentAccountInput
   creditcard: CreditCardInformationUpdateOneWithoutPaymentAccountInput
+}
+
+input PaymentAccountUpdateOneRequiredWithoutPaymentsInput {
+  create: PaymentAccountCreateWithoutPaymentsInput
+  connect: PaymentAccountWhereUniqueInput
+  update: PaymentAccountUpdateWithoutPaymentsDataInput
+  upsert: PaymentAccountUpsertWithoutPaymentsInput
+}
+
+input PaymentAccountUpdateOneRequiredWithoutPaypalInput {
+  create: PaymentAccountCreateWithoutPaypalInput
+  connect: PaymentAccountWhereUniqueInput
+  update: PaymentAccountUpdateWithoutPaypalDataInput
+  upsert: PaymentAccountUpsertWithoutPaypalInput
 }
 
 input PaymentAccountUpdateOneWithoutCreditcardInput {
@@ -4679,39 +4694,23 @@ input PaymentAccountUpdateOneWithoutCreditcardInput {
   upsert: PaymentAccountUpsertWithoutCreditcardInput
 }
 
-input PaymentAccountUpdateOneWithoutPaymentsInput {
-  create: PaymentAccountCreateWithoutPaymentsInput
-  connect: PaymentAccountWhereUniqueInput
-  delete: Boolean
-  update: PaymentAccountUpdateWithoutPaymentsDataInput
-  upsert: PaymentAccountUpsertWithoutPaymentsInput
-}
-
-input PaymentAccountUpdateOneWithoutPaypalInput {
-  create: PaymentAccountCreateWithoutPaypalInput
-  connect: PaymentAccountWhereUniqueInput
-  delete: Boolean
-  update: PaymentAccountUpdateWithoutPaypalDataInput
-  upsert: PaymentAccountUpsertWithoutPaypalInput
-}
-
 input PaymentAccountUpdateWithoutCreditcardDataInput {
   type: PAYMENT_PROVIDER
-  user: UserUpdateOneInput
+  user: UserUpdateOneRequiredInput
   payments: PaymentHouseUpdateManyWithoutPaymentMethodInput
   paypal: PaypalInformationUpdateOneWithoutPaymentAccountInput
 }
 
 input PaymentAccountUpdateWithoutPaymentsDataInput {
   type: PAYMENT_PROVIDER
-  user: UserUpdateOneInput
+  user: UserUpdateOneRequiredInput
   paypal: PaypalInformationUpdateOneWithoutPaymentAccountInput
   creditcard: CreditCardInformationUpdateOneWithoutPaymentAccountInput
 }
 
 input PaymentAccountUpdateWithoutPaypalDataInput {
   type: PAYMENT_PROVIDER
-  user: UserUpdateOneInput
+  user: UserUpdateOneRequiredInput
   payments: PaymentHouseUpdateManyWithoutPaymentMethodInput
   creditcard: CreditCardInformationUpdateOneWithoutPaymentAccountInput
 }
@@ -4935,8 +4934,8 @@ input PaymentHouseSubscriptionWhereInput {
 
 input PaymentHouseUpdateInput {
   totalPrice: Float
-  booking: BookingUpdateOneWithoutPaymentInput
-  paymentMethod: PaymentAccountUpdateOneWithoutPaymentsInput
+  booking: BookingUpdateOneRequiredWithoutPaymentInput
+  paymentMethod: PaymentAccountUpdateOneRequiredWithoutPaymentsInput
 }
 
 input PaymentHouseUpdateManyWithoutPaymentMethodInput {
@@ -4948,22 +4947,21 @@ input PaymentHouseUpdateManyWithoutPaymentMethodInput {
   upsert: [PaymentHouseUpsertWithWhereUniqueWithoutPaymentMethodInput!]
 }
 
-input PaymentHouseUpdateOneWithoutBookingInput {
+input PaymentHouseUpdateOneRequiredWithoutBookingInput {
   create: PaymentHouseCreateWithoutBookingInput
   connect: PaymentHouseWhereUniqueInput
-  delete: Boolean
   update: PaymentHouseUpdateWithoutBookingDataInput
   upsert: PaymentHouseUpsertWithoutBookingInput
 }
 
 input PaymentHouseUpdateWithoutBookingDataInput {
   totalPrice: Float
-  paymentMethod: PaymentAccountUpdateOneWithoutPaymentsInput
+  paymentMethod: PaymentAccountUpdateOneRequiredWithoutPaymentsInput
 }
 
 input PaymentHouseUpdateWithoutPaymentMethodDataInput {
   totalPrice: Float
-  booking: BookingUpdateOneWithoutPaymentInput
+  booking: BookingUpdateOneRequiredWithoutPaymentInput
 }
 
 input PaymentHouseUpdateWithWhereUniqueWithoutPaymentMethodInput {
@@ -5202,8 +5200,8 @@ input PaymentLanlordInfoSubscriptionWhereInput {
 input PaymentLanlordInfoUpdateInput {
   totalPrice: Float
   moncashTransactId: String
-  client: UserUpdateOneWithoutPaidContactsInput
-  House: HouseUpdateOneWithoutContactInfoPaymentsInput
+  client: UserUpdateOneRequiredWithoutPaidContactsInput
+  House: HouseUpdateOneRequiredWithoutContactInfoPaymentsInput
 }
 
 input PaymentLanlordInfoUpdateManyWithoutClientInput {
@@ -5227,13 +5225,13 @@ input PaymentLanlordInfoUpdateManyWithoutHouseInput {
 input PaymentLanlordInfoUpdateWithoutClientDataInput {
   totalPrice: Float
   moncashTransactId: String
-  House: HouseUpdateOneWithoutContactInfoPaymentsInput
+  House: HouseUpdateOneRequiredWithoutContactInfoPaymentsInput
 }
 
 input PaymentLanlordInfoUpdateWithoutHouseDataInput {
   totalPrice: Float
   moncashTransactId: String
-  client: UserUpdateOneWithoutPaidContactsInput
+  client: UserUpdateOneRequiredWithoutPaidContactsInput
 }
 
 input PaymentLanlordInfoUpdateWithWhereUniqueWithoutClientInput {
@@ -5497,7 +5495,7 @@ input PaypalInformationSubscriptionWhereInput {
 
 input PaypalInformationUpdateInput {
   email: String
-  paymentAccount: PaymentAccountUpdateOneWithoutPaypalInput
+  paymentAccount: PaymentAccountUpdateOneRequiredWithoutPaypalInput
 }
 
 input PaypalInformationUpdateOneWithoutPaymentAccountInput {
@@ -5636,7 +5634,8 @@ input PaypalInformationWhereUniqueInput {
   id: ID
 }
 
-type Picture {
+type Picture implements Node {
+  id: ID!
   url: String!
 }
 
@@ -5656,10 +5655,12 @@ input PictureCreateInput {
 
 input PictureCreateManyInput {
   create: [PictureCreateInput!]
+  connect: [PictureWhereUniqueInput!]
 }
 
 input PictureCreateOneInput {
   create: PictureCreateInput
+  connect: PictureWhereUniqueInput
 }
 
 """An edge in a connection."""
@@ -5672,10 +5673,10 @@ type PictureEdge {
 }
 
 enum PictureOrderByInput {
-  url_ASC
-  url_DESC
   id_ASC
   id_DESC
+  url_ASC
+  url_DESC
   updatedAt_ASC
   updatedAt_DESC
   createdAt_ASC
@@ -5683,6 +5684,7 @@ enum PictureOrderByInput {
 }
 
 type PicturePreviousValues {
+  id: ID!
   url: String!
 }
 
@@ -5735,17 +5737,34 @@ input PictureUpdateInput {
 
 input PictureUpdateManyInput {
   create: [PictureCreateInput!]
+  connect: [PictureWhereUniqueInput!]
+  disconnect: [PictureWhereUniqueInput!]
+  delete: [PictureWhereUniqueInput!]
+  update: [PictureUpdateWithWhereUniqueNestedInput!]
+  upsert: [PictureUpsertWithWhereUniqueNestedInput!]
 }
 
 input PictureUpdateOneInput {
   create: PictureCreateInput
+  connect: PictureWhereUniqueInput
   disconnect: Boolean
   delete: Boolean
   update: PictureUpdateDataInput
   upsert: PictureUpsertNestedInput
 }
 
+input PictureUpdateWithWhereUniqueNestedInput {
+  where: PictureWhereUniqueInput!
+  data: PictureUpdateDataInput!
+}
+
 input PictureUpsertNestedInput {
+  update: PictureUpdateDataInput!
+  create: PictureCreateInput!
+}
+
+input PictureUpsertWithWhereUniqueNestedInput {
+  where: PictureWhereUniqueInput!
   update: PictureUpdateDataInput!
   create: PictureCreateInput!
 }
@@ -5759,6 +5778,46 @@ input PictureWhereInput {
 
   """Logical NOT on all given filters combined by AND."""
   NOT: [PictureWhereInput!]
+  id: ID
+
+  """All values that are not equal to given value."""
+  id_not: ID
+
+  """All values that are contained in given list."""
+  id_in: [ID!]
+
+  """All values that are not contained in given list."""
+  id_not_in: [ID!]
+
+  """All values less than the given value."""
+  id_lt: ID
+
+  """All values less than or equal the given value."""
+  id_lte: ID
+
+  """All values greater than the given value."""
+  id_gt: ID
+
+  """All values greater than or equal the given value."""
+  id_gte: ID
+
+  """All values containing the given string."""
+  id_contains: ID
+
+  """All values not containing the given string."""
+  id_not_contains: ID
+
+  """All values starting with the given string."""
+  id_starts_with: ID
+
+  """All values not starting with the given string."""
+  id_not_starts_with: ID
+
+  """All values ending with the given string."""
+  id_ends_with: ID
+
+  """All values not ending with the given string."""
+  id_not_ends_with: ID
   url: String
 
   """All values that are not equal to given value."""
@@ -5799,6 +5858,10 @@ input PictureWhereInput {
 
   """All values not ending with the given string."""
   url_not_ends_with: String
+}
+
+input PictureWhereUniqueInput {
+  id: ID
 }
 
 type Pricing implements Node {
@@ -5918,13 +5981,12 @@ input PricingUpdateInput {
   highestPrice: Int
   currency: CURRENCY
   income: Int
-  House: HouseUpdateOneWithoutPricingInput
+  House: HouseUpdateOneRequiredWithoutPricingInput
 }
 
-input PricingUpdateOneWithoutHouseInput {
+input PricingUpdateOneRequiredWithoutHouseInput {
   create: PricingCreateWithoutHouseInput
   connect: PricingWhereUniqueInput
-  delete: Boolean
   update: PricingUpdateWithoutHouseDataInput
   upsert: PricingUpsertWithoutHouseInput
 }
@@ -6117,6 +6179,8 @@ type Query {
   state(where: StateWhereUniqueInput!): State
   user(where: UserWhereUniqueInput!): User
   house(where: HouseWhereUniqueInput!): House
+  video(where: VideoWhereUniqueInput!): Video
+  picture(where: PictureWhereUniqueInput!): Picture
   city(where: CityWhereUniqueInput!): City
   roomsConnection(where: RoomWhereInput, orderBy: RoomOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): RoomConnection!
   pricingsConnection(where: PricingWhereInput, orderBy: PricingOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): PricingConnection!
@@ -6289,7 +6353,7 @@ input ReviewUpdateInput {
   checkIn: Int
   value: Int
   communication: Int
-  House: HouseUpdateOneWithoutReviewsInput
+  House: HouseUpdateOneRequiredWithoutReviewsInput
 }
 
 input ReviewUpdateManyWithoutHouseInput {
@@ -6674,7 +6738,7 @@ input RoomSubscriptionWhereInput {
 
 input RoomUpdateInput {
   label: String
-  house: HouseUpdateOneWithoutRoomsInput
+  house: HouseUpdateOneRequiredWithoutRoomsInput
   picture_previews: PictureUpdateManyInput
   video_previews: VideoUpdateManyInput
 }
@@ -6899,18 +6963,17 @@ input StateSubscriptionWhereInput {
 
 input StateUpdateDataInput {
   name: String
-  country: CountryUpdateOneInput
+  country: CountryUpdateOneRequiredInput
 }
 
 input StateUpdateInput {
   name: String
-  country: CountryUpdateOneInput
+  country: CountryUpdateOneRequiredInput
 }
 
-input StateUpdateOneInput {
+input StateUpdateOneRequiredInput {
   create: StateCreateInput
   connect: StateWhereUniqueInput
-  delete: Boolean
   update: StateUpdateDataInput
   upsert: StateUpsertNestedInput
 }
@@ -7332,42 +7395,37 @@ input UserUpdateInput {
   profilePicture: PictureUpdateOneInput
 }
 
-input UserUpdateOneInput {
+input UserUpdateOneRequiredInput {
   create: UserCreateInput
   connect: UserWhereUniqueInput
-  delete: Boolean
   update: UserUpdateDataInput
   upsert: UserUpsertNestedInput
 }
 
-input UserUpdateOneWithoutBookingsInput {
+input UserUpdateOneRequiredWithoutBookingsInput {
   create: UserCreateWithoutBookingsInput
   connect: UserWhereUniqueInput
-  delete: Boolean
   update: UserUpdateWithoutBookingsDataInput
   upsert: UserUpsertWithoutBookingsInput
 }
 
-input UserUpdateOneWithoutNotificationsInput {
+input UserUpdateOneRequiredWithoutNotificationsInput {
   create: UserCreateWithoutNotificationsInput
   connect: UserWhereUniqueInput
-  delete: Boolean
   update: UserUpdateWithoutNotificationsDataInput
   upsert: UserUpsertWithoutNotificationsInput
 }
 
-input UserUpdateOneWithoutOwnedHousesInput {
+input UserUpdateOneRequiredWithoutOwnedHousesInput {
   create: UserCreateWithoutOwnedHousesInput
   connect: UserWhereUniqueInput
-  delete: Boolean
   update: UserUpdateWithoutOwnedHousesDataInput
   upsert: UserUpsertWithoutOwnedHousesInput
 }
 
-input UserUpdateOneWithoutPaidContactsInput {
+input UserUpdateOneRequiredWithoutPaidContactsInput {
   create: UserCreateWithoutPaidContactsInput
   connect: UserWhereUniqueInput
-  delete: Boolean
   update: UserUpdateWithoutPaidContactsDataInput
   upsert: UserUpsertWithoutPaidContactsInput
 }
@@ -7920,7 +7978,8 @@ input UserWhereUniqueInput {
   email: String
 }
 
-type Video {
+type Video implements Node {
+  id: ID!
   url: String!
 }
 
@@ -7940,6 +7999,7 @@ input VideoCreateInput {
 
 input VideoCreateManyInput {
   create: [VideoCreateInput!]
+  connect: [VideoWhereUniqueInput!]
 }
 
 """An edge in a connection."""
@@ -7952,10 +8012,10 @@ type VideoEdge {
 }
 
 enum VideoOrderByInput {
-  url_ASC
-  url_DESC
   id_ASC
   id_DESC
+  url_ASC
+  url_DESC
   updatedAt_ASC
   updatedAt_DESC
   createdAt_ASC
@@ -7963,6 +8023,7 @@ enum VideoOrderByInput {
 }
 
 type VideoPreviousValues {
+  id: ID!
   url: String!
 }
 
@@ -8005,12 +8066,32 @@ input VideoSubscriptionWhereInput {
   node: VideoWhereInput
 }
 
+input VideoUpdateDataInput {
+  url: String
+}
+
 input VideoUpdateInput {
   url: String
 }
 
 input VideoUpdateManyInput {
   create: [VideoCreateInput!]
+  connect: [VideoWhereUniqueInput!]
+  disconnect: [VideoWhereUniqueInput!]
+  delete: [VideoWhereUniqueInput!]
+  update: [VideoUpdateWithWhereUniqueNestedInput!]
+  upsert: [VideoUpsertWithWhereUniqueNestedInput!]
+}
+
+input VideoUpdateWithWhereUniqueNestedInput {
+  where: VideoWhereUniqueInput!
+  data: VideoUpdateDataInput!
+}
+
+input VideoUpsertWithWhereUniqueNestedInput {
+  where: VideoWhereUniqueInput!
+  update: VideoUpdateDataInput!
+  create: VideoCreateInput!
 }
 
 input VideoWhereInput {
@@ -8022,6 +8103,46 @@ input VideoWhereInput {
 
   """Logical NOT on all given filters combined by AND."""
   NOT: [VideoWhereInput!]
+  id: ID
+
+  """All values that are not equal to given value."""
+  id_not: ID
+
+  """All values that are contained in given list."""
+  id_in: [ID!]
+
+  """All values that are not contained in given list."""
+  id_not_in: [ID!]
+
+  """All values less than the given value."""
+  id_lt: ID
+
+  """All values less than or equal the given value."""
+  id_lte: ID
+
+  """All values greater than the given value."""
+  id_gt: ID
+
+  """All values greater than or equal the given value."""
+  id_gte: ID
+
+  """All values containing the given string."""
+  id_contains: ID
+
+  """All values not containing the given string."""
+  id_not_contains: ID
+
+  """All values starting with the given string."""
+  id_starts_with: ID
+
+  """All values not starting with the given string."""
+  id_not_starts_with: ID
+
+  """All values ending with the given string."""
+  id_ends_with: ID
+
+  """All values not ending with the given string."""
+  id_not_ends_with: ID
   url: String
 
   """All values that are not equal to given value."""
@@ -8062,6 +8183,10 @@ input VideoWhereInput {
 
   """All values not ending with the given string."""
   url_not_ends_with: String
+}
+
+input VideoWhereUniqueInput {
+  id: ID
 }
 
 type Views implements Node {
@@ -8160,7 +8285,7 @@ input ViewsSubscriptionWhereInput {
 
 input ViewsUpdateInput {
   lastWeek: Int
-  House: HouseUpdateOneWithoutViewsInput
+  House: HouseUpdateOneRequiredWithoutViewsInput
 }
 
 input ViewsUpdateOneWithoutHouseInput {

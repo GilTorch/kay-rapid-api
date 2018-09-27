@@ -8,6 +8,7 @@ interface FacebookUser {
   email: string | null;
   first_name: string | null;
   last_name: string | null;
+  picture: string | null;
 }
 
 export const auth = {
@@ -75,7 +76,12 @@ export const auth = {
           facebookUserId: facebookUser.id,
           email: facebookUser.email,
           firstName: facebookUser.first_name,
-          lastName: facebookUser.last_name
+          lastName: facebookUser.last_name,
+          profilePicture: {
+            create: {
+              url: facebookUser.picture
+            }
+          }
         }
       });
       userforToken = newUser;
@@ -89,12 +95,18 @@ export const auth = {
 
 //getting the facebook user #inspired from graphcool implementation
 async function getFacebookUser(facebookToken: string): Promise<FacebookUser> {
-  const endpoint = `https://graph.facebook.com/v2.9/me?fields=id%2Cemail%2Cfirst_name%2Clast_name&access_token=${facebookToken}`;
+  const endpoint = `https://graph.facebook.com/v2.9/me?fields=id%2Cemail%2Cfirst_name%2Clast_name%2Cpicture&access_token=${facebookToken}`;
   const data = await fetch(endpoint).then(response => response.json());
 
   if (data.error) {
     throw new Error(JSON.stringify(data.error));
   }
 
-  return data;
+  return {
+    id: data.id,
+    email: data.email,
+    last_name: data.last_name,
+    first_name: data.first_name,
+    picture: data.picture.data.url
+  };
 }

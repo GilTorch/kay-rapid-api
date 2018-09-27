@@ -47,6 +47,8 @@ export interface Query {
     state: <T = State | null>(args: { where: StateWhereUniqueInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
     user: <T = User | null>(args: { where: UserWhereUniqueInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
     house: <T = House | null>(args: { where: HouseWhereUniqueInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
+    video: <T = Video | null>(args: { where: VideoWhereUniqueInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
+    picture: <T = Picture | null>(args: { where: PictureWhereUniqueInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
     city: <T = City | null>(args: { where: CityWhereUniqueInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
     roomsConnection: <T = RoomConnection>(args: { where?: RoomWhereInput, orderBy?: RoomOrderByInput, skip?: Int, after?: String, before?: String, first?: Int, last?: Int }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
     pricingsConnection: <T = PricingConnection>(args: { where?: PricingWhereInput, orderBy?: PricingOrderByInput, skip?: Int, after?: String, before?: String, first?: Int, last?: Int }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
@@ -118,6 +120,8 @@ export interface Mutation {
     updateState: <T = State | null>(args: { data: StateUpdateInput, where: StateWhereUniqueInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
     updateUser: <T = User | null>(args: { data: UserUpdateInput, where: UserWhereUniqueInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
     updateHouse: <T = House | null>(args: { data: HouseUpdateInput, where: HouseWhereUniqueInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
+    updateVideo: <T = Video | null>(args: { data: VideoUpdateInput, where: VideoWhereUniqueInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
+    updatePicture: <T = Picture | null>(args: { data: PictureUpdateInput, where: PictureWhereUniqueInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
     updateCity: <T = City | null>(args: { data: CityUpdateInput, where: CityWhereUniqueInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
     deleteRoom: <T = Room | null>(args: { where: RoomWhereUniqueInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
     deletePricing: <T = Pricing | null>(args: { where: PricingWhereUniqueInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
@@ -139,6 +143,8 @@ export interface Mutation {
     deleteState: <T = State | null>(args: { where: StateWhereUniqueInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
     deleteUser: <T = User | null>(args: { where: UserWhereUniqueInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
     deleteHouse: <T = House | null>(args: { where: HouseWhereUniqueInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
+    deleteVideo: <T = Video | null>(args: { where: VideoWhereUniqueInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
+    deletePicture: <T = Picture | null>(args: { where: PictureWhereUniqueInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
     deleteCity: <T = City | null>(args: { where: CityWhereUniqueInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
     upsertRoom: <T = Room>(args: { where: RoomWhereUniqueInput, create: RoomCreateInput, update: RoomUpdateInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
     upsertPricing: <T = Pricing>(args: { where: PricingWhereUniqueInput, create: PricingCreateInput, update: PricingUpdateInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
@@ -160,6 +166,8 @@ export interface Mutation {
     upsertState: <T = State>(args: { where: StateWhereUniqueInput, create: StateCreateInput, update: StateUpdateInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
     upsertUser: <T = User>(args: { where: UserWhereUniqueInput, create: UserCreateInput, update: UserUpdateInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
     upsertHouse: <T = House>(args: { where: HouseWhereUniqueInput, create: HouseCreateInput, update: HouseUpdateInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
+    upsertVideo: <T = Video>(args: { where: VideoWhereUniqueInput, create: VideoCreateInput, update: VideoUpdateInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
+    upsertPicture: <T = Picture>(args: { where: PictureWhereUniqueInput, create: PictureCreateInput, update: PictureUpdateInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
     upsertCity: <T = City>(args: { where: CityWhereUniqueInput, create: CityCreateInput, update: CityUpdateInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
     updateManyRooms: <T = BatchPayload>(args: { data: RoomUpdateInput, where?: RoomWhereInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
     updateManyPricings: <T = BatchPayload>(args: { data: PricingUpdateInput, where?: PricingWhereInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
@@ -709,13 +717,12 @@ input AmenitiesUpdateInput {
   buzzerWirelessIntercom: Boolean
   bathtub: Boolean
   crib: Boolean
-  House: HouseUpdateOneWithoutAmenitiesInput
+  House: HouseUpdateOneRequiredWithoutAmenitiesInput
 }
 
-input AmenitiesUpdateOneWithoutHouseInput {
+input AmenitiesUpdateOneRequiredWithoutHouseInput {
   create: AmenitiesCreateWithoutHouseInput
   connect: AmenitiesWhereUniqueInput
-  delete: Boolean
   update: AmenitiesUpdateWithoutHouseDataInput
   upsert: AmenitiesUpsertWithoutHouseInput
 }
@@ -1105,9 +1112,9 @@ input BookingSubscriptionWhereInput {
 input BookingUpdateInput {
   startDate: DateTime
   endDate: DateTime
-  bookee: UserUpdateOneWithoutBookingsInput
-  House: HouseUpdateOneWithoutBookingsInput
-  payment: PaymentHouseUpdateOneWithoutBookingInput
+  bookee: UserUpdateOneRequiredWithoutBookingsInput
+  House: HouseUpdateOneRequiredWithoutBookingsInput
+  payment: PaymentHouseUpdateOneRequiredWithoutBookingInput
 }
 
 input BookingUpdateManyWithoutBookeeInput {
@@ -1128,10 +1135,9 @@ input BookingUpdateManyWithoutHouseInput {
   upsert: [BookingUpsertWithWhereUniqueWithoutHouseInput!]
 }
 
-input BookingUpdateOneWithoutPaymentInput {
+input BookingUpdateOneRequiredWithoutPaymentInput {
   create: BookingCreateWithoutPaymentInput
   connect: BookingWhereUniqueInput
-  delete: Boolean
   update: BookingUpdateWithoutPaymentDataInput
   upsert: BookingUpsertWithoutPaymentInput
 }
@@ -1139,22 +1145,22 @@ input BookingUpdateOneWithoutPaymentInput {
 input BookingUpdateWithoutBookeeDataInput {
   startDate: DateTime
   endDate: DateTime
-  House: HouseUpdateOneWithoutBookingsInput
-  payment: PaymentHouseUpdateOneWithoutBookingInput
+  House: HouseUpdateOneRequiredWithoutBookingsInput
+  payment: PaymentHouseUpdateOneRequiredWithoutBookingInput
 }
 
 input BookingUpdateWithoutHouseDataInput {
   startDate: DateTime
   endDate: DateTime
-  bookee: UserUpdateOneWithoutBookingsInput
-  payment: PaymentHouseUpdateOneWithoutBookingInput
+  bookee: UserUpdateOneRequiredWithoutBookingsInput
+  payment: PaymentHouseUpdateOneRequiredWithoutBookingInput
 }
 
 input BookingUpdateWithoutPaymentDataInput {
   startDate: DateTime
   endDate: DateTime
-  bookee: UserUpdateOneWithoutBookingsInput
-  House: HouseUpdateOneWithoutBookingsInput
+  bookee: UserUpdateOneRequiredWithoutBookingsInput
+  House: HouseUpdateOneRequiredWithoutBookingsInput
 }
 
 input BookingUpdateWithWhereUniqueWithoutBookeeInput {
@@ -1400,18 +1406,17 @@ input CitySubscriptionWhereInput {
 
 input CityUpdateDataInput {
   name: String
-  state: StateUpdateOneInput
+  state: StateUpdateOneRequiredInput
 }
 
 input CityUpdateInput {
   name: String
-  state: StateUpdateOneInput
+  state: StateUpdateOneRequiredInput
 }
 
-input CityUpdateOneInput {
+input CityUpdateOneRequiredInput {
   create: CityCreateInput
   connect: CityWhereUniqueInput
-  delete: Boolean
   update: CityUpdateDataInput
   upsert: CityUpsertNestedInput
 }
@@ -1609,12 +1614,12 @@ input CommuneSubscriptionWhereInput {
 
 input CommuneUpdateDataInput {
   name: String
-  city: CityUpdateOneInput
+  city: CityUpdateOneRequiredInput
 }
 
 input CommuneUpdateInput {
   name: String
-  city: CityUpdateOneInput
+  city: CityUpdateOneRequiredInput
 }
 
 input CommuneUpdateOneInput {
@@ -1823,10 +1828,9 @@ input CountryUpdateInput {
   name: String
 }
 
-input CountryUpdateOneInput {
+input CountryUpdateOneRequiredInput {
   create: CountryCreateInput
   connect: CountryWhereUniqueInput
-  delete: Boolean
   update: CountryUpdateDataInput
   upsert: CountryUpsertNestedInput
 }
@@ -2595,8 +2599,8 @@ input House_FavoritedSubscriptionWhereInput {
 }
 
 input House_FavoritedUpdateInput {
-  user: UserUpdateOneInput
-  house: HouseUpdateOneInput
+  user: UserUpdateOneRequiredInput
+  house: HouseUpdateOneRequiredInput
 }
 
 input House_FavoritedWhereInput {
@@ -3104,10 +3108,10 @@ input HouseUpdateDataInput {
   lease: Int
   popularity: Int
   reviews: ReviewUpdateManyWithoutHouseInput
-  amenities: AmenitiesUpdateOneWithoutHouseInput
-  host: UserUpdateOneWithoutOwnedHousesInput
-  pricing: PricingUpdateOneWithoutHouseInput
-  location: LocationUpdateOneInput
+  amenities: AmenitiesUpdateOneRequiredWithoutHouseInput
+  host: UserUpdateOneRequiredWithoutOwnedHousesInput
+  pricing: PricingUpdateOneRequiredWithoutHouseInput
+  location: LocationUpdateOneRequiredInput
   rooms: RoomUpdateManyWithoutHouseInput
   views: ViewsUpdateOneWithoutHouseInput
   bookings: BookingUpdateManyWithoutHouseInput
@@ -3131,10 +3135,10 @@ input HouseUpdateInput {
   lease: Int
   popularity: Int
   reviews: ReviewUpdateManyWithoutHouseInput
-  amenities: AmenitiesUpdateOneWithoutHouseInput
-  host: UserUpdateOneWithoutOwnedHousesInput
-  pricing: PricingUpdateOneWithoutHouseInput
-  location: LocationUpdateOneInput
+  amenities: AmenitiesUpdateOneRequiredWithoutHouseInput
+  host: UserUpdateOneRequiredWithoutOwnedHousesInput
+  pricing: PricingUpdateOneRequiredWithoutHouseInput
+  location: LocationUpdateOneRequiredInput
   rooms: RoomUpdateManyWithoutHouseInput
   views: ViewsUpdateOneWithoutHouseInput
   bookings: BookingUpdateManyWithoutHouseInput
@@ -3151,66 +3155,58 @@ input HouseUpdateManyWithoutHostInput {
   upsert: [HouseUpsertWithWhereUniqueWithoutHostInput!]
 }
 
-input HouseUpdateOneInput {
+input HouseUpdateOneRequiredInput {
   create: HouseCreateInput
   connect: HouseWhereUniqueInput
-  delete: Boolean
   update: HouseUpdateDataInput
   upsert: HouseUpsertNestedInput
 }
 
-input HouseUpdateOneWithoutAmenitiesInput {
+input HouseUpdateOneRequiredWithoutAmenitiesInput {
   create: HouseCreateWithoutAmenitiesInput
   connect: HouseWhereUniqueInput
-  delete: Boolean
   update: HouseUpdateWithoutAmenitiesDataInput
   upsert: HouseUpsertWithoutAmenitiesInput
 }
 
-input HouseUpdateOneWithoutBookingsInput {
+input HouseUpdateOneRequiredWithoutBookingsInput {
   create: HouseCreateWithoutBookingsInput
   connect: HouseWhereUniqueInput
-  delete: Boolean
   update: HouseUpdateWithoutBookingsDataInput
   upsert: HouseUpsertWithoutBookingsInput
 }
 
-input HouseUpdateOneWithoutContactInfoPaymentsInput {
+input HouseUpdateOneRequiredWithoutContactInfoPaymentsInput {
   create: HouseCreateWithoutContactInfoPaymentsInput
   connect: HouseWhereUniqueInput
-  delete: Boolean
   update: HouseUpdateWithoutContactInfoPaymentsDataInput
   upsert: HouseUpsertWithoutContactInfoPaymentsInput
 }
 
-input HouseUpdateOneWithoutPricingInput {
+input HouseUpdateOneRequiredWithoutPricingInput {
   create: HouseCreateWithoutPricingInput
   connect: HouseWhereUniqueInput
-  delete: Boolean
   update: HouseUpdateWithoutPricingDataInput
   upsert: HouseUpsertWithoutPricingInput
 }
 
-input HouseUpdateOneWithoutReviewsInput {
+input HouseUpdateOneRequiredWithoutReviewsInput {
   create: HouseCreateWithoutReviewsInput
   connect: HouseWhereUniqueInput
-  delete: Boolean
   update: HouseUpdateWithoutReviewsDataInput
   upsert: HouseUpsertWithoutReviewsInput
 }
 
-input HouseUpdateOneWithoutRoomsInput {
+input HouseUpdateOneRequiredWithoutRoomsInput {
   create: HouseCreateWithoutRoomsInput
   connect: HouseWhereUniqueInput
-  delete: Boolean
   update: HouseUpdateWithoutRoomsDataInput
   upsert: HouseUpsertWithoutRoomsInput
 }
 
-input HouseUpdateOneWithoutViewsInput {
+input HouseUpdateOneRequiredWithoutViewsInput {
   create: HouseCreateWithoutViewsInput
   connect: HouseWhereUniqueInput
-  delete: Boolean
   update: HouseUpdateWithoutViewsDataInput
   upsert: HouseUpsertWithoutViewsInput
 }
@@ -3231,9 +3227,9 @@ input HouseUpdateWithoutAmenitiesDataInput {
   lease: Int
   popularity: Int
   reviews: ReviewUpdateManyWithoutHouseInput
-  host: UserUpdateOneWithoutOwnedHousesInput
-  pricing: PricingUpdateOneWithoutHouseInput
-  location: LocationUpdateOneInput
+  host: UserUpdateOneRequiredWithoutOwnedHousesInput
+  pricing: PricingUpdateOneRequiredWithoutHouseInput
+  location: LocationUpdateOneRequiredInput
   rooms: RoomUpdateManyWithoutHouseInput
   views: ViewsUpdateOneWithoutHouseInput
   bookings: BookingUpdateManyWithoutHouseInput
@@ -3257,10 +3253,10 @@ input HouseUpdateWithoutBookingsDataInput {
   lease: Int
   popularity: Int
   reviews: ReviewUpdateManyWithoutHouseInput
-  amenities: AmenitiesUpdateOneWithoutHouseInput
-  host: UserUpdateOneWithoutOwnedHousesInput
-  pricing: PricingUpdateOneWithoutHouseInput
-  location: LocationUpdateOneInput
+  amenities: AmenitiesUpdateOneRequiredWithoutHouseInput
+  host: UserUpdateOneRequiredWithoutOwnedHousesInput
+  pricing: PricingUpdateOneRequiredWithoutHouseInput
+  location: LocationUpdateOneRequiredInput
   rooms: RoomUpdateManyWithoutHouseInput
   views: ViewsUpdateOneWithoutHouseInput
   pictures: PictureUpdateManyInput
@@ -3283,10 +3279,10 @@ input HouseUpdateWithoutContactInfoPaymentsDataInput {
   lease: Int
   popularity: Int
   reviews: ReviewUpdateManyWithoutHouseInput
-  amenities: AmenitiesUpdateOneWithoutHouseInput
-  host: UserUpdateOneWithoutOwnedHousesInput
-  pricing: PricingUpdateOneWithoutHouseInput
-  location: LocationUpdateOneInput
+  amenities: AmenitiesUpdateOneRequiredWithoutHouseInput
+  host: UserUpdateOneRequiredWithoutOwnedHousesInput
+  pricing: PricingUpdateOneRequiredWithoutHouseInput
+  location: LocationUpdateOneRequiredInput
   rooms: RoomUpdateManyWithoutHouseInput
   views: ViewsUpdateOneWithoutHouseInput
   bookings: BookingUpdateManyWithoutHouseInput
@@ -3309,9 +3305,9 @@ input HouseUpdateWithoutHostDataInput {
   lease: Int
   popularity: Int
   reviews: ReviewUpdateManyWithoutHouseInput
-  amenities: AmenitiesUpdateOneWithoutHouseInput
-  pricing: PricingUpdateOneWithoutHouseInput
-  location: LocationUpdateOneInput
+  amenities: AmenitiesUpdateOneRequiredWithoutHouseInput
+  pricing: PricingUpdateOneRequiredWithoutHouseInput
+  location: LocationUpdateOneRequiredInput
   rooms: RoomUpdateManyWithoutHouseInput
   views: ViewsUpdateOneWithoutHouseInput
   bookings: BookingUpdateManyWithoutHouseInput
@@ -3335,9 +3331,9 @@ input HouseUpdateWithoutPricingDataInput {
   lease: Int
   popularity: Int
   reviews: ReviewUpdateManyWithoutHouseInput
-  amenities: AmenitiesUpdateOneWithoutHouseInput
-  host: UserUpdateOneWithoutOwnedHousesInput
-  location: LocationUpdateOneInput
+  amenities: AmenitiesUpdateOneRequiredWithoutHouseInput
+  host: UserUpdateOneRequiredWithoutOwnedHousesInput
+  location: LocationUpdateOneRequiredInput
   rooms: RoomUpdateManyWithoutHouseInput
   views: ViewsUpdateOneWithoutHouseInput
   bookings: BookingUpdateManyWithoutHouseInput
@@ -3360,10 +3356,10 @@ input HouseUpdateWithoutReviewsDataInput {
   residency: House_RESIDENCY
   lease: Int
   popularity: Int
-  amenities: AmenitiesUpdateOneWithoutHouseInput
-  host: UserUpdateOneWithoutOwnedHousesInput
-  pricing: PricingUpdateOneWithoutHouseInput
-  location: LocationUpdateOneInput
+  amenities: AmenitiesUpdateOneRequiredWithoutHouseInput
+  host: UserUpdateOneRequiredWithoutOwnedHousesInput
+  pricing: PricingUpdateOneRequiredWithoutHouseInput
+  location: LocationUpdateOneRequiredInput
   rooms: RoomUpdateManyWithoutHouseInput
   views: ViewsUpdateOneWithoutHouseInput
   bookings: BookingUpdateManyWithoutHouseInput
@@ -3387,10 +3383,10 @@ input HouseUpdateWithoutRoomsDataInput {
   lease: Int
   popularity: Int
   reviews: ReviewUpdateManyWithoutHouseInput
-  amenities: AmenitiesUpdateOneWithoutHouseInput
-  host: UserUpdateOneWithoutOwnedHousesInput
-  pricing: PricingUpdateOneWithoutHouseInput
-  location: LocationUpdateOneInput
+  amenities: AmenitiesUpdateOneRequiredWithoutHouseInput
+  host: UserUpdateOneRequiredWithoutOwnedHousesInput
+  pricing: PricingUpdateOneRequiredWithoutHouseInput
+  location: LocationUpdateOneRequiredInput
   views: ViewsUpdateOneWithoutHouseInput
   bookings: BookingUpdateManyWithoutHouseInput
   pictures: PictureUpdateManyInput
@@ -3413,10 +3409,10 @@ input HouseUpdateWithoutViewsDataInput {
   lease: Int
   popularity: Int
   reviews: ReviewUpdateManyWithoutHouseInput
-  amenities: AmenitiesUpdateOneWithoutHouseInput
-  host: UserUpdateOneWithoutOwnedHousesInput
-  pricing: PricingUpdateOneWithoutHouseInput
-  location: LocationUpdateOneInput
+  amenities: AmenitiesUpdateOneRequiredWithoutHouseInput
+  host: UserUpdateOneRequiredWithoutOwnedHousesInput
+  pricing: PricingUpdateOneRequiredWithoutHouseInput
+  location: LocationUpdateOneRequiredInput
   rooms: RoomUpdateManyWithoutHouseInput
   bookings: BookingUpdateManyWithoutHouseInput
   pictures: PictureUpdateManyInput
@@ -3980,6 +3976,13 @@ input LocationUpdateOneInput {
   upsert: LocationUpsertNestedInput
 }
 
+input LocationUpdateOneRequiredInput {
+  create: LocationCreateInput
+  connect: LocationWhereUniqueInput
+  update: LocationUpdateDataInput
+  upsert: LocationUpsertNestedInput
+}
+
 input LocationUpsertNestedInput {
   update: LocationUpdateDataInput!
   create: LocationCreateInput!
@@ -4175,6 +4178,8 @@ type Mutation {
   updateState(data: StateUpdateInput!, where: StateWhereUniqueInput!): State
   updateUser(data: UserUpdateInput!, where: UserWhereUniqueInput!): User
   updateHouse(data: HouseUpdateInput!, where: HouseWhereUniqueInput!): House
+  updateVideo(data: VideoUpdateInput!, where: VideoWhereUniqueInput!): Video
+  updatePicture(data: PictureUpdateInput!, where: PictureWhereUniqueInput!): Picture
   updateCity(data: CityUpdateInput!, where: CityWhereUniqueInput!): City
   deleteRoom(where: RoomWhereUniqueInput!): Room
   deletePricing(where: PricingWhereUniqueInput!): Pricing
@@ -4196,6 +4201,8 @@ type Mutation {
   deleteState(where: StateWhereUniqueInput!): State
   deleteUser(where: UserWhereUniqueInput!): User
   deleteHouse(where: HouseWhereUniqueInput!): House
+  deleteVideo(where: VideoWhereUniqueInput!): Video
+  deletePicture(where: PictureWhereUniqueInput!): Picture
   deleteCity(where: CityWhereUniqueInput!): City
   upsertRoom(where: RoomWhereUniqueInput!, create: RoomCreateInput!, update: RoomUpdateInput!): Room!
   upsertPricing(where: PricingWhereUniqueInput!, create: PricingCreateInput!, update: PricingUpdateInput!): Pricing!
@@ -4217,6 +4224,8 @@ type Mutation {
   upsertState(where: StateWhereUniqueInput!, create: StateCreateInput!, update: StateUpdateInput!): State!
   upsertUser(where: UserWhereUniqueInput!, create: UserCreateInput!, update: UserUpdateInput!): User!
   upsertHouse(where: HouseWhereUniqueInput!, create: HouseCreateInput!, update: HouseUpdateInput!): House!
+  upsertVideo(where: VideoWhereUniqueInput!, create: VideoCreateInput!, update: VideoUpdateInput!): Video!
+  upsertPicture(where: PictureWhereUniqueInput!, create: PictureCreateInput!, update: PictureUpdateInput!): Picture!
   upsertCity(where: CityWhereUniqueInput!, create: CityCreateInput!, update: CityUpdateInput!): City!
   updateManyRooms(data: RoomUpdateInput!, where: RoomWhereInput): BatchPayload!
   updateManyPricings(data: PricingUpdateInput!, where: PricingWhereInput): BatchPayload!
@@ -4375,8 +4384,8 @@ input NegotiationSubscriptionWhereInput {
 input NegotiationUpdateInput {
   offer: Float
   status: NEGOTIATION_TYPE
-  negotiator: UserUpdateOneInput
-  House: HouseUpdateOneInput
+  negotiator: UserUpdateOneRequiredInput
+  House: HouseUpdateOneRequiredInput
 }
 
 input NegotiationWhereInput {
@@ -4616,7 +4625,7 @@ input NotificationUpdateInput {
   type: NOTIFICATION_TYPE
   link: String
   readDate: DateTime
-  user: UserUpdateOneWithoutNotificationsInput
+  user: UserUpdateOneRequiredWithoutNotificationsInput
 }
 
 input NotificationUpdateManyWithoutUserInput {
@@ -4946,10 +4955,24 @@ input PaymentAccountSubscriptionWhereInput {
 
 input PaymentAccountUpdateInput {
   type: PAYMENT_PROVIDER
-  user: UserUpdateOneInput
+  user: UserUpdateOneRequiredInput
   payments: PaymentHouseUpdateManyWithoutPaymentMethodInput
   paypal: PaypalInformationUpdateOneWithoutPaymentAccountInput
   creditcard: CreditCardInformationUpdateOneWithoutPaymentAccountInput
+}
+
+input PaymentAccountUpdateOneRequiredWithoutPaymentsInput {
+  create: PaymentAccountCreateWithoutPaymentsInput
+  connect: PaymentAccountWhereUniqueInput
+  update: PaymentAccountUpdateWithoutPaymentsDataInput
+  upsert: PaymentAccountUpsertWithoutPaymentsInput
+}
+
+input PaymentAccountUpdateOneRequiredWithoutPaypalInput {
+  create: PaymentAccountCreateWithoutPaypalInput
+  connect: PaymentAccountWhereUniqueInput
+  update: PaymentAccountUpdateWithoutPaypalDataInput
+  upsert: PaymentAccountUpsertWithoutPaypalInput
 }
 
 input PaymentAccountUpdateOneWithoutCreditcardInput {
@@ -4961,39 +4984,23 @@ input PaymentAccountUpdateOneWithoutCreditcardInput {
   upsert: PaymentAccountUpsertWithoutCreditcardInput
 }
 
-input PaymentAccountUpdateOneWithoutPaymentsInput {
-  create: PaymentAccountCreateWithoutPaymentsInput
-  connect: PaymentAccountWhereUniqueInput
-  delete: Boolean
-  update: PaymentAccountUpdateWithoutPaymentsDataInput
-  upsert: PaymentAccountUpsertWithoutPaymentsInput
-}
-
-input PaymentAccountUpdateOneWithoutPaypalInput {
-  create: PaymentAccountCreateWithoutPaypalInput
-  connect: PaymentAccountWhereUniqueInput
-  delete: Boolean
-  update: PaymentAccountUpdateWithoutPaypalDataInput
-  upsert: PaymentAccountUpsertWithoutPaypalInput
-}
-
 input PaymentAccountUpdateWithoutCreditcardDataInput {
   type: PAYMENT_PROVIDER
-  user: UserUpdateOneInput
+  user: UserUpdateOneRequiredInput
   payments: PaymentHouseUpdateManyWithoutPaymentMethodInput
   paypal: PaypalInformationUpdateOneWithoutPaymentAccountInput
 }
 
 input PaymentAccountUpdateWithoutPaymentsDataInput {
   type: PAYMENT_PROVIDER
-  user: UserUpdateOneInput
+  user: UserUpdateOneRequiredInput
   paypal: PaypalInformationUpdateOneWithoutPaymentAccountInput
   creditcard: CreditCardInformationUpdateOneWithoutPaymentAccountInput
 }
 
 input PaymentAccountUpdateWithoutPaypalDataInput {
   type: PAYMENT_PROVIDER
-  user: UserUpdateOneInput
+  user: UserUpdateOneRequiredInput
   payments: PaymentHouseUpdateManyWithoutPaymentMethodInput
   creditcard: CreditCardInformationUpdateOneWithoutPaymentAccountInput
 }
@@ -5217,8 +5224,8 @@ input PaymentHouseSubscriptionWhereInput {
 
 input PaymentHouseUpdateInput {
   totalPrice: Float
-  booking: BookingUpdateOneWithoutPaymentInput
-  paymentMethod: PaymentAccountUpdateOneWithoutPaymentsInput
+  booking: BookingUpdateOneRequiredWithoutPaymentInput
+  paymentMethod: PaymentAccountUpdateOneRequiredWithoutPaymentsInput
 }
 
 input PaymentHouseUpdateManyWithoutPaymentMethodInput {
@@ -5230,22 +5237,21 @@ input PaymentHouseUpdateManyWithoutPaymentMethodInput {
   upsert: [PaymentHouseUpsertWithWhereUniqueWithoutPaymentMethodInput!]
 }
 
-input PaymentHouseUpdateOneWithoutBookingInput {
+input PaymentHouseUpdateOneRequiredWithoutBookingInput {
   create: PaymentHouseCreateWithoutBookingInput
   connect: PaymentHouseWhereUniqueInput
-  delete: Boolean
   update: PaymentHouseUpdateWithoutBookingDataInput
   upsert: PaymentHouseUpsertWithoutBookingInput
 }
 
 input PaymentHouseUpdateWithoutBookingDataInput {
   totalPrice: Float
-  paymentMethod: PaymentAccountUpdateOneWithoutPaymentsInput
+  paymentMethod: PaymentAccountUpdateOneRequiredWithoutPaymentsInput
 }
 
 input PaymentHouseUpdateWithoutPaymentMethodDataInput {
   totalPrice: Float
-  booking: BookingUpdateOneWithoutPaymentInput
+  booking: BookingUpdateOneRequiredWithoutPaymentInput
 }
 
 input PaymentHouseUpdateWithWhereUniqueWithoutPaymentMethodInput {
@@ -5484,8 +5490,8 @@ input PaymentLanlordInfoSubscriptionWhereInput {
 input PaymentLanlordInfoUpdateInput {
   totalPrice: Float
   moncashTransactId: String
-  client: UserUpdateOneWithoutPaidContactsInput
-  House: HouseUpdateOneWithoutContactInfoPaymentsInput
+  client: UserUpdateOneRequiredWithoutPaidContactsInput
+  House: HouseUpdateOneRequiredWithoutContactInfoPaymentsInput
 }
 
 input PaymentLanlordInfoUpdateManyWithoutClientInput {
@@ -5509,13 +5515,13 @@ input PaymentLanlordInfoUpdateManyWithoutHouseInput {
 input PaymentLanlordInfoUpdateWithoutClientDataInput {
   totalPrice: Float
   moncashTransactId: String
-  House: HouseUpdateOneWithoutContactInfoPaymentsInput
+  House: HouseUpdateOneRequiredWithoutContactInfoPaymentsInput
 }
 
 input PaymentLanlordInfoUpdateWithoutHouseDataInput {
   totalPrice: Float
   moncashTransactId: String
-  client: UserUpdateOneWithoutPaidContactsInput
+  client: UserUpdateOneRequiredWithoutPaidContactsInput
 }
 
 input PaymentLanlordInfoUpdateWithWhereUniqueWithoutClientInput {
@@ -5779,7 +5785,7 @@ input PaypalInformationSubscriptionWhereInput {
 
 input PaypalInformationUpdateInput {
   email: String
-  paymentAccount: PaymentAccountUpdateOneWithoutPaypalInput
+  paymentAccount: PaymentAccountUpdateOneRequiredWithoutPaypalInput
 }
 
 input PaypalInformationUpdateOneWithoutPaymentAccountInput {
@@ -5918,7 +5924,8 @@ input PaypalInformationWhereUniqueInput {
   id: ID
 }
 
-type Picture {
+type Picture implements Node {
+  id: ID!
   url: String!
 }
 
@@ -5938,10 +5945,12 @@ input PictureCreateInput {
 
 input PictureCreateManyInput {
   create: [PictureCreateInput!]
+  connect: [PictureWhereUniqueInput!]
 }
 
 input PictureCreateOneInput {
   create: PictureCreateInput
+  connect: PictureWhereUniqueInput
 }
 
 """An edge in a connection."""
@@ -5954,10 +5963,10 @@ type PictureEdge {
 }
 
 enum PictureOrderByInput {
-  url_ASC
-  url_DESC
   id_ASC
   id_DESC
+  url_ASC
+  url_DESC
   updatedAt_ASC
   updatedAt_DESC
   createdAt_ASC
@@ -5965,6 +5974,7 @@ enum PictureOrderByInput {
 }
 
 type PicturePreviousValues {
+  id: ID!
   url: String!
 }
 
@@ -6017,17 +6027,34 @@ input PictureUpdateInput {
 
 input PictureUpdateManyInput {
   create: [PictureCreateInput!]
+  connect: [PictureWhereUniqueInput!]
+  disconnect: [PictureWhereUniqueInput!]
+  delete: [PictureWhereUniqueInput!]
+  update: [PictureUpdateWithWhereUniqueNestedInput!]
+  upsert: [PictureUpsertWithWhereUniqueNestedInput!]
 }
 
 input PictureUpdateOneInput {
   create: PictureCreateInput
+  connect: PictureWhereUniqueInput
   disconnect: Boolean
   delete: Boolean
   update: PictureUpdateDataInput
   upsert: PictureUpsertNestedInput
 }
 
+input PictureUpdateWithWhereUniqueNestedInput {
+  where: PictureWhereUniqueInput!
+  data: PictureUpdateDataInput!
+}
+
 input PictureUpsertNestedInput {
+  update: PictureUpdateDataInput!
+  create: PictureCreateInput!
+}
+
+input PictureUpsertWithWhereUniqueNestedInput {
+  where: PictureWhereUniqueInput!
   update: PictureUpdateDataInput!
   create: PictureCreateInput!
 }
@@ -6041,6 +6068,46 @@ input PictureWhereInput {
 
   """Logical NOT on all given filters combined by AND."""
   NOT: [PictureWhereInput!]
+  id: ID
+
+  """All values that are not equal to given value."""
+  id_not: ID
+
+  """All values that are contained in given list."""
+  id_in: [ID!]
+
+  """All values that are not contained in given list."""
+  id_not_in: [ID!]
+
+  """All values less than the given value."""
+  id_lt: ID
+
+  """All values less than or equal the given value."""
+  id_lte: ID
+
+  """All values greater than the given value."""
+  id_gt: ID
+
+  """All values greater than or equal the given value."""
+  id_gte: ID
+
+  """All values containing the given string."""
+  id_contains: ID
+
+  """All values not containing the given string."""
+  id_not_contains: ID
+
+  """All values starting with the given string."""
+  id_starts_with: ID
+
+  """All values not starting with the given string."""
+  id_not_starts_with: ID
+
+  """All values ending with the given string."""
+  id_ends_with: ID
+
+  """All values not ending with the given string."""
+  id_not_ends_with: ID
   url: String
 
   """All values that are not equal to given value."""
@@ -6081,6 +6148,10 @@ input PictureWhereInput {
 
   """All values not ending with the given string."""
   url_not_ends_with: String
+}
+
+input PictureWhereUniqueInput {
+  id: ID
 }
 
 type Pricing implements Node {
@@ -6200,13 +6271,12 @@ input PricingUpdateInput {
   highestPrice: Int
   currency: CURRENCY
   income: Int
-  House: HouseUpdateOneWithoutPricingInput
+  House: HouseUpdateOneRequiredWithoutPricingInput
 }
 
-input PricingUpdateOneWithoutHouseInput {
+input PricingUpdateOneRequiredWithoutHouseInput {
   create: PricingCreateWithoutHouseInput
   connect: PricingWhereUniqueInput
-  delete: Boolean
   update: PricingUpdateWithoutHouseDataInput
   upsert: PricingUpsertWithoutHouseInput
 }
@@ -6399,6 +6469,8 @@ type Query {
   state(where: StateWhereUniqueInput!): State
   user(where: UserWhereUniqueInput!): User
   house(where: HouseWhereUniqueInput!): House
+  video(where: VideoWhereUniqueInput!): Video
+  picture(where: PictureWhereUniqueInput!): Picture
   city(where: CityWhereUniqueInput!): City
   roomsConnection(where: RoomWhereInput, orderBy: RoomOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): RoomConnection!
   pricingsConnection(where: PricingWhereInput, orderBy: PricingOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): PricingConnection!
@@ -6571,7 +6643,7 @@ input ReviewUpdateInput {
   checkIn: Int
   value: Int
   communication: Int
-  House: HouseUpdateOneWithoutReviewsInput
+  House: HouseUpdateOneRequiredWithoutReviewsInput
 }
 
 input ReviewUpdateManyWithoutHouseInput {
@@ -6956,7 +7028,7 @@ input RoomSubscriptionWhereInput {
 
 input RoomUpdateInput {
   label: String
-  house: HouseUpdateOneWithoutRoomsInput
+  house: HouseUpdateOneRequiredWithoutRoomsInput
   picture_previews: PictureUpdateManyInput
   video_previews: VideoUpdateManyInput
 }
@@ -7181,18 +7253,17 @@ input StateSubscriptionWhereInput {
 
 input StateUpdateDataInput {
   name: String
-  country: CountryUpdateOneInput
+  country: CountryUpdateOneRequiredInput
 }
 
 input StateUpdateInput {
   name: String
-  country: CountryUpdateOneInput
+  country: CountryUpdateOneRequiredInput
 }
 
-input StateUpdateOneInput {
+input StateUpdateOneRequiredInput {
   create: StateCreateInput
   connect: StateWhereUniqueInput
-  delete: Boolean
   update: StateUpdateDataInput
   upsert: StateUpsertNestedInput
 }
@@ -7614,42 +7685,37 @@ input UserUpdateInput {
   profilePicture: PictureUpdateOneInput
 }
 
-input UserUpdateOneInput {
+input UserUpdateOneRequiredInput {
   create: UserCreateInput
   connect: UserWhereUniqueInput
-  delete: Boolean
   update: UserUpdateDataInput
   upsert: UserUpsertNestedInput
 }
 
-input UserUpdateOneWithoutBookingsInput {
+input UserUpdateOneRequiredWithoutBookingsInput {
   create: UserCreateWithoutBookingsInput
   connect: UserWhereUniqueInput
-  delete: Boolean
   update: UserUpdateWithoutBookingsDataInput
   upsert: UserUpsertWithoutBookingsInput
 }
 
-input UserUpdateOneWithoutNotificationsInput {
+input UserUpdateOneRequiredWithoutNotificationsInput {
   create: UserCreateWithoutNotificationsInput
   connect: UserWhereUniqueInput
-  delete: Boolean
   update: UserUpdateWithoutNotificationsDataInput
   upsert: UserUpsertWithoutNotificationsInput
 }
 
-input UserUpdateOneWithoutOwnedHousesInput {
+input UserUpdateOneRequiredWithoutOwnedHousesInput {
   create: UserCreateWithoutOwnedHousesInput
   connect: UserWhereUniqueInput
-  delete: Boolean
   update: UserUpdateWithoutOwnedHousesDataInput
   upsert: UserUpsertWithoutOwnedHousesInput
 }
 
-input UserUpdateOneWithoutPaidContactsInput {
+input UserUpdateOneRequiredWithoutPaidContactsInput {
   create: UserCreateWithoutPaidContactsInput
   connect: UserWhereUniqueInput
-  delete: Boolean
   update: UserUpdateWithoutPaidContactsDataInput
   upsert: UserUpsertWithoutPaidContactsInput
 }
@@ -8202,7 +8268,8 @@ input UserWhereUniqueInput {
   email: String
 }
 
-type Video {
+type Video implements Node {
+  id: ID!
   url: String!
 }
 
@@ -8222,6 +8289,7 @@ input VideoCreateInput {
 
 input VideoCreateManyInput {
   create: [VideoCreateInput!]
+  connect: [VideoWhereUniqueInput!]
 }
 
 """An edge in a connection."""
@@ -8234,10 +8302,10 @@ type VideoEdge {
 }
 
 enum VideoOrderByInput {
-  url_ASC
-  url_DESC
   id_ASC
   id_DESC
+  url_ASC
+  url_DESC
   updatedAt_ASC
   updatedAt_DESC
   createdAt_ASC
@@ -8245,6 +8313,7 @@ enum VideoOrderByInput {
 }
 
 type VideoPreviousValues {
+  id: ID!
   url: String!
 }
 
@@ -8287,12 +8356,32 @@ input VideoSubscriptionWhereInput {
   node: VideoWhereInput
 }
 
+input VideoUpdateDataInput {
+  url: String
+}
+
 input VideoUpdateInput {
   url: String
 }
 
 input VideoUpdateManyInput {
   create: [VideoCreateInput!]
+  connect: [VideoWhereUniqueInput!]
+  disconnect: [VideoWhereUniqueInput!]
+  delete: [VideoWhereUniqueInput!]
+  update: [VideoUpdateWithWhereUniqueNestedInput!]
+  upsert: [VideoUpsertWithWhereUniqueNestedInput!]
+}
+
+input VideoUpdateWithWhereUniqueNestedInput {
+  where: VideoWhereUniqueInput!
+  data: VideoUpdateDataInput!
+}
+
+input VideoUpsertWithWhereUniqueNestedInput {
+  where: VideoWhereUniqueInput!
+  update: VideoUpdateDataInput!
+  create: VideoCreateInput!
 }
 
 input VideoWhereInput {
@@ -8304,6 +8393,46 @@ input VideoWhereInput {
 
   """Logical NOT on all given filters combined by AND."""
   NOT: [VideoWhereInput!]
+  id: ID
+
+  """All values that are not equal to given value."""
+  id_not: ID
+
+  """All values that are contained in given list."""
+  id_in: [ID!]
+
+  """All values that are not contained in given list."""
+  id_not_in: [ID!]
+
+  """All values less than the given value."""
+  id_lt: ID
+
+  """All values less than or equal the given value."""
+  id_lte: ID
+
+  """All values greater than the given value."""
+  id_gt: ID
+
+  """All values greater than or equal the given value."""
+  id_gte: ID
+
+  """All values containing the given string."""
+  id_contains: ID
+
+  """All values not containing the given string."""
+  id_not_contains: ID
+
+  """All values starting with the given string."""
+  id_starts_with: ID
+
+  """All values not starting with the given string."""
+  id_not_starts_with: ID
+
+  """All values ending with the given string."""
+  id_ends_with: ID
+
+  """All values not ending with the given string."""
+  id_not_ends_with: ID
   url: String
 
   """All values that are not equal to given value."""
@@ -8344,6 +8473,10 @@ input VideoWhereInput {
 
   """All values not ending with the given string."""
   url_not_ends_with: String
+}
+
+input VideoWhereUniqueInput {
+  id: ID
 }
 
 type Views implements Node {
@@ -8442,7 +8575,7 @@ input ViewsSubscriptionWhereInput {
 
 input ViewsUpdateInput {
   lastWeek: Int
-  House: HouseUpdateOneWithoutViewsInput
+  House: HouseUpdateOneRequiredWithoutViewsInput
 }
 
 input ViewsUpdateOneWithoutHouseInput {
@@ -8695,10 +8828,10 @@ export type CountryOrderByInput =   'id_ASC' |
   'createdAt_ASC' |
   'createdAt_DESC'
 
-export type VideoOrderByInput =   'url_ASC' |
-  'url_DESC' |
-  'id_ASC' |
+export type VideoOrderByInput =   'id_ASC' |
   'id_DESC' |
+  'url_ASC' |
+  'url_DESC' |
   'updatedAt_ASC' |
   'updatedAt_DESC' |
   'createdAt_ASC' |
@@ -8743,10 +8876,10 @@ export type CreditCardInformationOrderByInput =   'id_ASC' |
   'updatedAt_ASC' |
   'updatedAt_DESC'
 
-export type PictureOrderByInput =   'url_ASC' |
-  'url_DESC' |
-  'id_ASC' |
+export type PictureOrderByInput =   'id_ASC' |
   'id_DESC' |
+  'url_ASC' |
+  'url_DESC' |
   'updatedAt_ASC' |
   'updatedAt_DESC' |
   'createdAt_ASC' |
@@ -8949,15 +9082,30 @@ export type UserOrderByInput =   'id_ASC' |
   'isSuperHost_ASC' |
   'isSuperHost_DESC'
 
-export interface ReviewCreateInput {
-  text: String
-  stars: Int
-  accuracy: Int
-  location: Int
-  checkIn: Int
-  value: Int
-  communication: Int
-  House: HouseCreateOneWithoutReviewsInput
+export interface HouseCreateWithoutReviewsInput {
+  name?: String
+  area?: Int
+  age?: Int
+  shortDescription: String
+  description: String
+  maxGuests: Int
+  numBedrooms: Int
+  numBaths: Int
+  leaseType?: HOUSE_LEASE_TYPE
+  verified?: Boolean
+  type?: HOUSE_TYPES
+  residency?: House_RESIDENCY
+  lease: Int
+  popularity?: Int
+  amenities: AmenitiesCreateOneWithoutHouseInput
+  host: UserCreateOneWithoutOwnedHousesInput
+  pricing: PricingCreateOneWithoutHouseInput
+  location: LocationCreateOneInput
+  rooms?: RoomCreateManyWithoutHouseInput
+  views?: ViewsCreateOneWithoutHouseInput
+  bookings?: BookingCreateManyWithoutHouseInput
+  pictures?: PictureCreateManyInput
+  contactInfoPayments?: PaymentLanlordInfoCreateManyWithoutHouseInput
 }
 
 export interface RoomWhereInput {
@@ -9001,22 +9149,31 @@ export interface RoomWhereInput {
   video_previews_none?: VideoWhereInput
 }
 
-export interface CreditCardInformationCreateInput {
-  cardNumber: String
-  expiresOnMonth: Int
-  expiresOnYear: Int
-  securityCode: String
-  firstName: String
-  lastName: String
-  postalCode: String
-  country: String
-  paymentAccount?: PaymentAccountCreateOneWithoutCreditcardInput
+export interface PaymentAccountCreateWithoutCreditcardInput {
+  type?: PAYMENT_PROVIDER
+  user: UserCreateOneInput
+  payments?: PaymentHouseCreateManyWithoutPaymentMethodInput
+  paypal?: PaypalInformationCreateOneWithoutPaymentAccountInput
 }
 
 export interface VideoWhereInput {
   AND?: VideoWhereInput[] | VideoWhereInput
   OR?: VideoWhereInput[] | VideoWhereInput
   NOT?: VideoWhereInput[] | VideoWhereInput
+  id?: ID_Input
+  id_not?: ID_Input
+  id_in?: ID_Input[] | ID_Input
+  id_not_in?: ID_Input[] | ID_Input
+  id_lt?: ID_Input
+  id_lte?: ID_Input
+  id_gt?: ID_Input
+  id_gte?: ID_Input
+  id_contains?: ID_Input
+  id_not_contains?: ID_Input
+  id_starts_with?: ID_Input
+  id_not_starts_with?: ID_Input
+  id_ends_with?: ID_Input
+  id_not_ends_with?: ID_Input
   url?: String
   url_not?: String
   url_in?: String[] | String
@@ -9033,32 +9190,32 @@ export interface VideoWhereInput {
   url_not_ends_with?: String
 }
 
-export interface CityCreateInput {
+export interface StateCreateInput {
   name: String
-  state: StateCreateOneInput
+  country: CountryCreateOneInput
 }
 
-export interface PaymentHouseUpdateOneWithoutBookingInput {
+export interface PaymentHouseUpdateOneRequiredWithoutBookingInput {
   create?: PaymentHouseCreateWithoutBookingInput
   connect?: PaymentHouseWhereUniqueInput
-  delete?: Boolean
   update?: PaymentHouseUpdateWithoutBookingDataInput
   upsert?: PaymentHouseUpsertWithoutBookingInput
 }
 
-export interface StateCreateOneInput {
-  create?: StateCreateInput
-  connect?: StateWhereUniqueInput
+export interface CountryCreateOneInput {
+  create?: CountryCreateInput
+  connect?: CountryWhereUniqueInput
 }
 
-export interface PaymentAccountCreateOneWithoutCreditcardInput {
-  create?: PaymentAccountCreateWithoutCreditcardInput
-  connect?: PaymentAccountWhereUniqueInput
+export interface PaymentLanlordInfoCreateInput {
+  totalPrice: Float
+  moncashTransactId: String
+  client: UserCreateOneWithoutPaidContactsInput
+  House: HouseCreateOneWithoutContactInfoPaymentsInput
 }
 
-export interface StateCreateInput {
+export interface CountryCreateInput {
   name: String
-  country: CountryCreateOneInput
 }
 
 export interface CitySubscriptionWhereInput {
@@ -9072,9 +9229,9 @@ export interface CitySubscriptionWhereInput {
   node?: CityWhereInput
 }
 
-export interface CountryCreateOneInput {
-  create?: CountryCreateInput
-  connect?: CountryWhereUniqueInput
+export interface BookingCreateManyWithoutBookeeInput {
+  create?: BookingCreateWithoutBookeeInput[] | BookingCreateWithoutBookeeInput
+  connect?: BookingWhereUniqueInput[] | BookingWhereUniqueInput
 }
 
 export interface VideoSubscriptionWhereInput {
@@ -9088,8 +9245,11 @@ export interface VideoSubscriptionWhereInput {
   node?: VideoWhereInput
 }
 
-export interface CountryCreateInput {
-  name: String
+export interface BookingCreateWithoutBookeeInput {
+  startDate: DateTime
+  endDate: DateTime
+  House: HouseCreateOneWithoutBookingsInput
+  payment: PaymentHouseCreateOneWithoutBookingInput
 }
 
 export interface HouseSubscriptionWhereInput {
@@ -9103,9 +9263,9 @@ export interface HouseSubscriptionWhereInput {
   node?: HouseWhereInput
 }
 
-export interface BookingCreateManyWithoutBookeeInput {
-  create?: BookingCreateWithoutBookeeInput[] | BookingCreateWithoutBookeeInput
-  connect?: BookingWhereUniqueInput[] | BookingWhereUniqueInput
+export interface HouseCreateOneWithoutBookingsInput {
+  create?: HouseCreateWithoutBookingsInput
+  connect?: HouseWhereUniqueInput
 }
 
 export interface StateSubscriptionWhereInput {
@@ -9117,40 +9277,6 @@ export interface StateSubscriptionWhereInput {
   updatedFields_contains_every?: String[] | String
   updatedFields_contains_some?: String[] | String
   node?: StateWhereInput
-}
-
-export interface BookingCreateWithoutBookeeInput {
-  startDate: DateTime
-  endDate: DateTime
-  House: HouseCreateOneWithoutBookingsInput
-  payment: PaymentHouseCreateOneWithoutBookingInput
-}
-
-export interface CommuneSubscriptionWhereInput {
-  AND?: CommuneSubscriptionWhereInput[] | CommuneSubscriptionWhereInput
-  OR?: CommuneSubscriptionWhereInput[] | CommuneSubscriptionWhereInput
-  NOT?: CommuneSubscriptionWhereInput[] | CommuneSubscriptionWhereInput
-  mutation_in?: MutationType[] | MutationType
-  updatedFields_contains?: String
-  updatedFields_contains_every?: String[] | String
-  updatedFields_contains_some?: String[] | String
-  node?: CommuneWhereInput
-}
-
-export interface HouseCreateOneWithoutBookingsInput {
-  create?: HouseCreateWithoutBookingsInput
-  connect?: HouseWhereUniqueInput
-}
-
-export interface LocationSubscriptionWhereInput {
-  AND?: LocationSubscriptionWhereInput[] | LocationSubscriptionWhereInput
-  OR?: LocationSubscriptionWhereInput[] | LocationSubscriptionWhereInput
-  NOT?: LocationSubscriptionWhereInput[] | LocationSubscriptionWhereInput
-  mutation_in?: MutationType[] | MutationType
-  updatedFields_contains?: String
-  updatedFields_contains_every?: String[] | String
-  updatedFields_contains_some?: String[] | String
-  node?: LocationWhereInput
 }
 
 export interface HouseCreateWithoutBookingsInput {
@@ -9179,6 +9305,40 @@ export interface HouseCreateWithoutBookingsInput {
   contactInfoPayments?: PaymentLanlordInfoCreateManyWithoutHouseInput
 }
 
+export interface CommuneSubscriptionWhereInput {
+  AND?: CommuneSubscriptionWhereInput[] | CommuneSubscriptionWhereInput
+  OR?: CommuneSubscriptionWhereInput[] | CommuneSubscriptionWhereInput
+  NOT?: CommuneSubscriptionWhereInput[] | CommuneSubscriptionWhereInput
+  mutation_in?: MutationType[] | MutationType
+  updatedFields_contains?: String
+  updatedFields_contains_every?: String[] | String
+  updatedFields_contains_some?: String[] | String
+  node?: CommuneWhereInput
+}
+
+export interface PricingCreateOneWithoutHouseInput {
+  create?: PricingCreateWithoutHouseInput
+  connect?: PricingWhereUniqueInput
+}
+
+export interface LocationSubscriptionWhereInput {
+  AND?: LocationSubscriptionWhereInput[] | LocationSubscriptionWhereInput
+  OR?: LocationSubscriptionWhereInput[] | LocationSubscriptionWhereInput
+  NOT?: LocationSubscriptionWhereInput[] | LocationSubscriptionWhereInput
+  mutation_in?: MutationType[] | MutationType
+  updatedFields_contains?: String
+  updatedFields_contains_every?: String[] | String
+  updatedFields_contains_some?: String[] | String
+  node?: LocationWhereInput
+}
+
+export interface PricingCreateWithoutHouseInput {
+  basePrice: Int
+  highestPrice: Int
+  currency?: CURRENCY
+  income: Int
+}
+
 export interface PaymentLanlordInfoSubscriptionWhereInput {
   AND?: PaymentLanlordInfoSubscriptionWhereInput[] | PaymentLanlordInfoSubscriptionWhereInput
   OR?: PaymentLanlordInfoSubscriptionWhereInput[] | PaymentLanlordInfoSubscriptionWhereInput
@@ -9190,9 +9350,9 @@ export interface PaymentLanlordInfoSubscriptionWhereInput {
   node?: PaymentLanlordInfoWhereInput
 }
 
-export interface PricingCreateOneWithoutHouseInput {
-  create?: PricingCreateWithoutHouseInput
-  connect?: PricingWhereUniqueInput
+export interface RoomCreateManyWithoutHouseInput {
+  create?: RoomCreateWithoutHouseInput[] | RoomCreateWithoutHouseInput
+  connect?: RoomWhereUniqueInput[] | RoomWhereUniqueInput
 }
 
 export interface CreditCardInformationSubscriptionWhereInput {
@@ -9206,11 +9366,10 @@ export interface CreditCardInformationSubscriptionWhereInput {
   node?: CreditCardInformationWhereInput
 }
 
-export interface PricingCreateWithoutHouseInput {
-  basePrice: Int
-  highestPrice: Int
-  currency?: CURRENCY
-  income: Int
+export interface RoomCreateWithoutHouseInput {
+  label: String
+  picture_previews?: PictureCreateManyInput
+  video_previews?: VideoCreateManyInput
 }
 
 export interface PaymentLanlordInfoWhereInput {
@@ -9265,9 +9424,9 @@ export interface PaymentLanlordInfoWhereInput {
   House?: HouseWhereInput
 }
 
-export interface RoomCreateManyWithoutHouseInput {
-  create?: RoomCreateWithoutHouseInput[] | RoomCreateWithoutHouseInput
-  connect?: RoomWhereUniqueInput[] | RoomWhereUniqueInput
+export interface PictureCreateManyInput {
+  create?: PictureCreateInput[] | PictureCreateInput
+  connect?: PictureWhereUniqueInput[] | PictureWhereUniqueInput
 }
 
 export interface CreditCardInformationWhereInput {
@@ -9399,10 +9558,8 @@ export interface CreditCardInformationWhereInput {
   paymentAccount?: PaymentAccountWhereInput
 }
 
-export interface RoomCreateWithoutHouseInput {
-  label: String
-  picture_previews?: PictureCreateManyInput
-  video_previews?: VideoCreateManyInput
+export interface PictureCreateInput {
+  url: String
 }
 
 export interface NegotiationSubscriptionWhereInput {
@@ -9416,8 +9573,9 @@ export interface NegotiationSubscriptionWhereInput {
   node?: NegotiationWhereInput
 }
 
-export interface PictureCreateManyInput {
-  create?: PictureCreateInput[] | PictureCreateInput
+export interface VideoCreateManyInput {
+  create?: VideoCreateInput[] | VideoCreateInput
+  connect?: VideoWhereUniqueInput[] | VideoWhereUniqueInput
 }
 
 export interface BookingSubscriptionWhereInput {
@@ -9431,7 +9589,7 @@ export interface BookingSubscriptionWhereInput {
   node?: BookingWhereInput
 }
 
-export interface PictureCreateInput {
+export interface VideoCreateInput {
   url: String
 }
 
@@ -9473,8 +9631,9 @@ export interface PaymentAccountWhereInput {
   creditcard?: CreditCardInformationWhereInput
 }
 
-export interface VideoCreateManyInput {
-  create?: VideoCreateInput[] | VideoCreateInput
+export interface ViewsCreateOneWithoutHouseInput {
+  create?: ViewsCreateWithoutHouseInput
+  connect?: ViewsWhereUniqueInput
 }
 
 export interface PaymentHouseWhereInput {
@@ -9515,8 +9674,8 @@ export interface PaymentHouseWhereInput {
   paymentMethod?: PaymentAccountWhereInput
 }
 
-export interface VideoCreateInput {
-  url: String
+export interface ViewsCreateWithoutHouseInput {
+  lastWeek: Int
 }
 
 export interface CountryWhereInput {
@@ -9553,9 +9712,9 @@ export interface CountryWhereInput {
   name_not_ends_with?: String
 }
 
-export interface ViewsCreateOneWithoutHouseInput {
-  create?: ViewsCreateWithoutHouseInput
-  connect?: ViewsWhereUniqueInput
+export interface PaymentLanlordInfoCreateManyWithoutHouseInput {
+  create?: PaymentLanlordInfoCreateWithoutHouseInput[] | PaymentLanlordInfoCreateWithoutHouseInput
+  connect?: PaymentLanlordInfoWhereUniqueInput[] | PaymentLanlordInfoWhereUniqueInput
 }
 
 export interface StateWhereInput {
@@ -9593,8 +9752,10 @@ export interface StateWhereInput {
   country?: CountryWhereInput
 }
 
-export interface ViewsCreateWithoutHouseInput {
-  lastWeek: Int
+export interface PaymentLanlordInfoCreateWithoutHouseInput {
+  totalPrice: Float
+  moncashTransactId: String
+  client: UserCreateOneWithoutPaidContactsInput
 }
 
 export interface NegotiationWhereInput {
@@ -9639,9 +9800,9 @@ export interface NegotiationWhereInput {
   House?: HouseWhereInput
 }
 
-export interface PaymentLanlordInfoCreateManyWithoutHouseInput {
-  create?: PaymentLanlordInfoCreateWithoutHouseInput[] | PaymentLanlordInfoCreateWithoutHouseInput
-  connect?: PaymentLanlordInfoWhereUniqueInput[] | PaymentLanlordInfoWhereUniqueInput
+export interface UserCreateOneWithoutPaidContactsInput {
+  create?: UserCreateWithoutPaidContactsInput
+  connect?: UserWhereUniqueInput
 }
 
 export interface CommuneWhereInput {
@@ -9679,10 +9840,23 @@ export interface CommuneWhereInput {
   city?: CityWhereInput
 }
 
-export interface PaymentLanlordInfoCreateWithoutHouseInput {
-  totalPrice: Float
-  moncashTransactId: String
-  client: UserCreateOneWithoutPaidContactsInput
+export interface UserCreateWithoutPaidContactsInput {
+  status?: Boolean
+  facebookUserId?: String
+  firstName: String
+  lastName: String
+  email?: String
+  password?: String
+  phone1?: String
+  phone2?: String
+  primaryPhone?: Int
+  responseTime?: Int
+  isSuperHost?: Boolean
+  ownedHouses?: HouseCreateManyWithoutHostInput
+  location?: LocationCreateOneInput
+  bookings?: BookingCreateManyWithoutBookeeInput
+  notifications?: NotificationCreateManyWithoutUserInput
+  profilePicture?: PictureCreateOneInput
 }
 
 export interface PricingSubscriptionWhereInput {
@@ -9696,9 +9870,9 @@ export interface PricingSubscriptionWhereInput {
   node?: PricingWhereInput
 }
 
-export interface UserCreateOneWithoutPaidContactsInput {
-  create?: UserCreateWithoutPaidContactsInput
-  connect?: UserWhereUniqueInput
+export interface HouseCreateManyWithoutHostInput {
+  create?: HouseCreateWithoutHostInput[] | HouseCreateWithoutHostInput
+  connect?: HouseWhereUniqueInput[] | HouseWhereUniqueInput
 }
 
 export interface UserWhereInput {
@@ -9869,45 +10043,6 @@ export interface UserWhereInput {
   profilePicture?: PictureWhereInput
 }
 
-export interface UserCreateWithoutPaidContactsInput {
-  status?: Boolean
-  facebookUserId?: String
-  firstName: String
-  lastName: String
-  email?: String
-  password?: String
-  phone1?: String
-  phone2?: String
-  primaryPhone?: Int
-  responseTime?: Int
-  isSuperHost?: Boolean
-  ownedHouses?: HouseCreateManyWithoutHostInput
-  location?: LocationCreateOneInput
-  bookings?: BookingCreateManyWithoutBookeeInput
-  notifications?: NotificationCreateManyWithoutUserInput
-  profilePicture?: PictureCreateOneInput
-}
-
-export interface RoomSubscriptionWhereInput {
-  AND?: RoomSubscriptionWhereInput[] | RoomSubscriptionWhereInput
-  OR?: RoomSubscriptionWhereInput[] | RoomSubscriptionWhereInput
-  NOT?: RoomSubscriptionWhereInput[] | RoomSubscriptionWhereInput
-  mutation_in?: MutationType[] | MutationType
-  updatedFields_contains?: String
-  updatedFields_contains_every?: String[] | String
-  updatedFields_contains_some?: String[] | String
-  node?: RoomWhereInput
-}
-
-export interface HouseCreateManyWithoutHostInput {
-  create?: HouseCreateWithoutHostInput[] | HouseCreateWithoutHostInput
-  connect?: HouseWhereUniqueInput[] | HouseWhereUniqueInput
-}
-
-export interface PictureUpdateInput {
-  url?: String
-}
-
 export interface HouseCreateWithoutHostInput {
   name?: String
   area?: Int
@@ -9932,6 +10067,34 @@ export interface HouseCreateWithoutHostInput {
   bookings?: BookingCreateManyWithoutHouseInput
   pictures?: PictureCreateManyInput
   contactInfoPayments?: PaymentLanlordInfoCreateManyWithoutHouseInput
+}
+
+export interface RoomSubscriptionWhereInput {
+  AND?: RoomSubscriptionWhereInput[] | RoomSubscriptionWhereInput
+  OR?: RoomSubscriptionWhereInput[] | RoomSubscriptionWhereInput
+  NOT?: RoomSubscriptionWhereInput[] | RoomSubscriptionWhereInput
+  mutation_in?: MutationType[] | MutationType
+  updatedFields_contains?: String
+  updatedFields_contains_every?: String[] | String
+  updatedFields_contains_some?: String[] | String
+  node?: RoomWhereInput
+}
+
+export interface BookingCreateManyWithoutHouseInput {
+  create?: BookingCreateWithoutHouseInput[] | BookingCreateWithoutHouseInput
+  connect?: BookingWhereUniqueInput[] | BookingWhereUniqueInput
+}
+
+export interface CityUpdateInput {
+  name?: String
+  state?: StateUpdateOneRequiredInput
+}
+
+export interface BookingCreateWithoutHouseInput {
+  startDate: DateTime
+  endDate: DateTime
+  bookee: UserCreateOneWithoutBookingsInput
+  payment: PaymentHouseCreateOneWithoutBookingInput
 }
 
 export interface HouseWhereInput {
@@ -10086,32 +10249,12 @@ export interface HouseWhereInput {
   contactInfoPayments_none?: PaymentLanlordInfoWhereInput
 }
 
-export interface BookingCreateManyWithoutHouseInput {
-  create?: BookingCreateWithoutHouseInput[] | BookingCreateWithoutHouseInput
-  connect?: BookingWhereUniqueInput[] | BookingWhereUniqueInput
-}
-
-export interface PricingWhereUniqueInput {
-  id?: ID_Input
-}
-
-export interface BookingCreateWithoutHouseInput {
-  startDate: DateTime
-  endDate: DateTime
-  bookee: UserCreateOneWithoutBookingsInput
-  payment: PaymentHouseCreateOneWithoutBookingInput
-}
-
-export interface AmenitiesWhereUniqueInput {
-  id?: ID_Input
-}
-
 export interface UserCreateOneWithoutBookingsInput {
   create?: UserCreateWithoutBookingsInput
   connect?: UserWhereUniqueInput
 }
 
-export interface BookingWhereUniqueInput {
+export interface PricingWhereUniqueInput {
   id?: ID_Input
 }
 
@@ -10134,7 +10277,7 @@ export interface UserCreateWithoutBookingsInput {
   profilePicture?: PictureCreateOneInput
 }
 
-export interface NegotiationWhereUniqueInput {
+export interface AmenitiesWhereUniqueInput {
   id?: ID_Input
 }
 
@@ -10143,7 +10286,7 @@ export interface PaymentLanlordInfoCreateManyWithoutClientInput {
   connect?: PaymentLanlordInfoWhereUniqueInput[] | PaymentLanlordInfoWhereUniqueInput
 }
 
-export interface PaymentAccountWhereUniqueInput {
+export interface BookingWhereUniqueInput {
   id?: ID_Input
 }
 
@@ -10153,7 +10296,7 @@ export interface PaymentLanlordInfoCreateWithoutClientInput {
   House: HouseCreateOneWithoutContactInfoPaymentsInput
 }
 
-export interface CreditCardInformationWhereUniqueInput {
+export interface NegotiationWhereUniqueInput {
   id?: ID_Input
 }
 
@@ -10162,7 +10305,7 @@ export interface HouseCreateOneWithoutContactInfoPaymentsInput {
   connect?: HouseWhereUniqueInput
 }
 
-export interface NotificationWhereUniqueInput {
+export interface PaymentAccountWhereUniqueInput {
   id?: ID_Input
 }
 
@@ -10192,7 +10335,7 @@ export interface HouseCreateWithoutContactInfoPaymentsInput {
   pictures?: PictureCreateManyInput
 }
 
-export interface CommuneWhereUniqueInput {
+export interface CreditCardInformationWhereUniqueInput {
   id?: ID_Input
 }
 
@@ -10201,7 +10344,7 @@ export interface NotificationCreateManyWithoutUserInput {
   connect?: NotificationWhereUniqueInput[] | NotificationWhereUniqueInput
 }
 
-export interface StateWhereUniqueInput {
+export interface NotificationWhereUniqueInput {
   id?: ID_Input
 }
 
@@ -10211,22 +10354,51 @@ export interface NotificationCreateWithoutUserInput {
   readDate: DateTime
 }
 
-export interface HouseWhereUniqueInput {
+export interface CommuneWhereUniqueInput {
   id?: ID_Input
 }
 
 export interface PictureCreateOneInput {
   create?: PictureCreateInput
+  connect?: PictureWhereUniqueInput
 }
 
-export interface CityUpdateInput {
-  name?: String
-  state?: StateUpdateOneInput
+export interface StateWhereUniqueInput {
+  id?: ID_Input
 }
 
 export interface PaymentHouseCreateOneWithoutBookingInput {
   create?: PaymentHouseCreateWithoutBookingInput
   connect?: PaymentHouseWhereUniqueInput
+}
+
+export interface HouseWhereUniqueInput {
+  id?: ID_Input
+}
+
+export interface PaymentHouseCreateWithoutBookingInput {
+  totalPrice: Float
+  paymentMethod: PaymentAccountCreateOneWithoutPaymentsInput
+}
+
+export interface PictureWhereUniqueInput {
+  id?: ID_Input
+}
+
+export interface PaymentAccountCreateOneWithoutPaymentsInput {
+  create?: PaymentAccountCreateWithoutPaymentsInput
+  connect?: PaymentAccountWhereUniqueInput
+}
+
+export interface VideoUpdateInput {
+  url?: String
+}
+
+export interface PaymentAccountCreateWithoutPaymentsInput {
+  type?: PAYMENT_PROVIDER
+  user: UserCreateOneInput
+  paypal?: PaypalInformationCreateOneWithoutPaymentAccountInput
+  creditcard?: CreditCardInformationCreateOneWithoutPaymentAccountInput
 }
 
 export interface UserUpdateInput {
@@ -10249,63 +10421,13 @@ export interface UserUpdateInput {
   profilePicture?: PictureUpdateOneInput
 }
 
-export interface PaymentHouseCreateWithoutBookingInput {
-  totalPrice: Float
-  paymentMethod: PaymentAccountCreateOneWithoutPaymentsInput
-}
-
-export interface CountryUpdateInput {
-  name?: String
-}
-
-export interface PaymentAccountCreateOneWithoutPaymentsInput {
-  create?: PaymentAccountCreateWithoutPaymentsInput
-  connect?: PaymentAccountWhereUniqueInput
-}
-
-export interface LocationUpdateInput {
-  lat?: Float
-  lng?: Float
-  address?: String
-  commune?: CommuneUpdateOneInput
-}
-
-export interface PaymentAccountCreateWithoutPaymentsInput {
-  type?: PAYMENT_PROVIDER
-  user: UserCreateOneInput
-  paypal?: PaypalInformationCreateOneWithoutPaymentAccountInput
-  creditcard?: CreditCardInformationCreateOneWithoutPaymentAccountInput
-}
-
-export interface UserUpdateWithoutNotificationsDataInput {
-  status?: Boolean
-  facebookUserId?: String
-  firstName?: String
-  lastName?: String
-  email?: String
-  password?: String
-  phone1?: String
-  phone2?: String
-  primaryPhone?: Int
-  responseTime?: Int
-  isSuperHost?: Boolean
-  ownedHouses?: HouseUpdateManyWithoutHostInput
-  location?: LocationUpdateOneInput
-  bookings?: BookingUpdateManyWithoutBookeeInput
-  paidContacts?: PaymentLanlordInfoUpdateManyWithoutClientInput
-  profilePicture?: PictureUpdateOneInput
-}
-
 export interface UserCreateOneInput {
   create?: UserCreateInput
   connect?: UserWhereUniqueInput
 }
 
-export interface NotificationUpdateInput {
-  type?: NOTIFICATION_TYPE
-  link?: String
-  readDate?: DateTime
-  user?: UserUpdateOneWithoutNotificationsInput
+export interface CountryUpdateInput {
+  name?: String
 }
 
 export interface UserCreateInput {
@@ -10328,9 +10450,11 @@ export interface UserCreateInput {
   profilePicture?: PictureCreateOneInput
 }
 
-export interface PaymentAccountUpsertWithoutCreditcardInput {
-  update: PaymentAccountUpdateWithoutCreditcardDataInput
-  create: PaymentAccountCreateWithoutCreditcardInput
+export interface LocationUpdateInput {
+  lat?: Float
+  lng?: Float
+  address?: String
+  commune?: CommuneUpdateOneInput
 }
 
 export interface PaypalInformationCreateOneWithoutPaymentAccountInput {
@@ -10338,22 +10462,34 @@ export interface PaypalInformationCreateOneWithoutPaymentAccountInput {
   connect?: PaypalInformationWhereUniqueInput
 }
 
-export interface PaymentAccountUpdateOneWithoutCreditcardInput {
-  create?: PaymentAccountCreateWithoutCreditcardInput
-  connect?: PaymentAccountWhereUniqueInput
-  disconnect?: Boolean
-  delete?: Boolean
-  update?: PaymentAccountUpdateWithoutCreditcardDataInput
-  upsert?: PaymentAccountUpsertWithoutCreditcardInput
+export interface UserUpdateWithoutNotificationsDataInput {
+  status?: Boolean
+  facebookUserId?: String
+  firstName?: String
+  lastName?: String
+  email?: String
+  password?: String
+  phone1?: String
+  phone2?: String
+  primaryPhone?: Int
+  responseTime?: Int
+  isSuperHost?: Boolean
+  ownedHouses?: HouseUpdateManyWithoutHostInput
+  location?: LocationUpdateOneInput
+  bookings?: BookingUpdateManyWithoutBookeeInput
+  paidContacts?: PaymentLanlordInfoUpdateManyWithoutClientInput
+  profilePicture?: PictureUpdateOneInput
 }
 
 export interface PaypalInformationCreateWithoutPaymentAccountInput {
   email: String
 }
 
-export interface PaymentAccountUpsertWithoutPaypalInput {
-  update: PaymentAccountUpdateWithoutPaypalDataInput
-  create: PaymentAccountCreateWithoutPaypalInput
+export interface NotificationUpdateInput {
+  type?: NOTIFICATION_TYPE
+  link?: String
+  readDate?: DateTime
+  user?: UserUpdateOneRequiredWithoutNotificationsInput
 }
 
 export interface CreditCardInformationCreateOneWithoutPaymentAccountInput {
@@ -10361,12 +10497,9 @@ export interface CreditCardInformationCreateOneWithoutPaymentAccountInput {
   connect?: CreditCardInformationWhereUniqueInput
 }
 
-export interface PaymentAccountUpdateOneWithoutPaypalInput {
-  create?: PaymentAccountCreateWithoutPaypalInput
-  connect?: PaymentAccountWhereUniqueInput
-  delete?: Boolean
-  update?: PaymentAccountUpdateWithoutPaypalDataInput
-  upsert?: PaymentAccountUpsertWithoutPaypalInput
+export interface PaymentAccountUpsertWithoutCreditcardInput {
+  update: PaymentAccountUpdateWithoutCreditcardDataInput
+  create: PaymentAccountCreateWithoutCreditcardInput
 }
 
 export interface CreditCardInformationCreateWithoutPaymentAccountInput {
@@ -10380,10 +10513,13 @@ export interface CreditCardInformationCreateWithoutPaymentAccountInput {
   country: String
 }
 
-export interface PaymentHouseUpsertWithWhereUniqueWithoutPaymentMethodInput {
-  where: PaymentHouseWhereUniqueInput
-  update: PaymentHouseUpdateWithoutPaymentMethodDataInput
-  create: PaymentHouseCreateWithoutPaymentMethodInput
+export interface PaymentAccountUpdateOneWithoutCreditcardInput {
+  create?: PaymentAccountCreateWithoutCreditcardInput
+  connect?: PaymentAccountWhereUniqueInput
+  disconnect?: Boolean
+  delete?: Boolean
+  update?: PaymentAccountUpdateWithoutCreditcardDataInput
+  upsert?: PaymentAccountUpsertWithoutCreditcardInput
 }
 
 export interface PricingCreateInput {
@@ -10394,9 +10530,9 @@ export interface PricingCreateInput {
   House: HouseCreateOneWithoutPricingInput
 }
 
-export interface PaymentHouseUpdateWithWhereUniqueWithoutPaymentMethodInput {
-  where: PaymentHouseWhereUniqueInput
-  data: PaymentHouseUpdateWithoutPaymentMethodDataInput
+export interface PaymentAccountUpsertWithoutPaypalInput {
+  update: PaymentAccountUpdateWithoutPaypalDataInput
+  create: PaymentAccountCreateWithoutPaypalInput
 }
 
 export interface HouseCreateOneWithoutPricingInput {
@@ -10404,12 +10540,11 @@ export interface HouseCreateOneWithoutPricingInput {
   connect?: HouseWhereUniqueInput
 }
 
-export interface PaymentAccountUpdateInput {
-  type?: PAYMENT_PROVIDER
-  user?: UserUpdateOneInput
-  payments?: PaymentHouseUpdateManyWithoutPaymentMethodInput
-  paypal?: PaypalInformationUpdateOneWithoutPaymentAccountInput
-  creditcard?: CreditCardInformationUpdateOneWithoutPaymentAccountInput
+export interface PaymentAccountUpdateOneRequiredWithoutPaypalInput {
+  create?: PaymentAccountCreateWithoutPaypalInput
+  connect?: PaymentAccountWhereUniqueInput
+  update?: PaymentAccountUpdateWithoutPaypalDataInput
+  upsert?: PaymentAccountUpsertWithoutPaypalInput
 }
 
 export interface HouseCreateWithoutPricingInput {
@@ -10438,11 +10573,10 @@ export interface HouseCreateWithoutPricingInput {
   contactInfoPayments?: PaymentLanlordInfoCreateManyWithoutHouseInput
 }
 
-export interface BookingUpdateWithoutPaymentDataInput {
-  startDate?: DateTime
-  endDate?: DateTime
-  bookee?: UserUpdateOneWithoutBookingsInput
-  House?: HouseUpdateOneWithoutBookingsInput
+export interface PaymentHouseUpsertWithWhereUniqueWithoutPaymentMethodInput {
+  where: PaymentHouseWhereUniqueInput
+  update: PaymentHouseUpdateWithoutPaymentMethodDataInput
+  create: PaymentHouseCreateWithoutPaymentMethodInput
 }
 
 export interface ViewsCreateInput {
@@ -10450,10 +10584,9 @@ export interface ViewsCreateInput {
   House: HouseCreateOneWithoutViewsInput
 }
 
-export interface PaymentHouseUpdateInput {
-  totalPrice?: Float
-  booking?: BookingUpdateOneWithoutPaymentInput
-  paymentMethod?: PaymentAccountUpdateOneWithoutPaymentsInput
+export interface PaymentHouseUpdateWithWhereUniqueWithoutPaymentMethodInput {
+  where: PaymentHouseWhereUniqueInput
+  data: PaymentHouseUpdateWithoutPaymentMethodDataInput
 }
 
 export interface HouseCreateOneWithoutViewsInput {
@@ -10461,9 +10594,12 @@ export interface HouseCreateOneWithoutViewsInput {
   connect?: HouseWhereUniqueInput
 }
 
-export interface HouseUpsertNestedInput {
-  update: HouseUpdateDataInput
-  create: HouseCreateInput
+export interface PaymentAccountUpdateInput {
+  type?: PAYMENT_PROVIDER
+  user?: UserUpdateOneRequiredInput
+  payments?: PaymentHouseUpdateManyWithoutPaymentMethodInput
+  paypal?: PaypalInformationUpdateOneWithoutPaymentAccountInput
+  creditcard?: CreditCardInformationUpdateOneWithoutPaymentAccountInput
 }
 
 export interface HouseCreateWithoutViewsInput {
@@ -10492,12 +10628,11 @@ export interface HouseCreateWithoutViewsInput {
   contactInfoPayments?: PaymentLanlordInfoCreateManyWithoutHouseInput
 }
 
-export interface HouseUpdateOneInput {
-  create?: HouseCreateInput
-  connect?: HouseWhereUniqueInput
-  delete?: Boolean
-  update?: HouseUpdateDataInput
-  upsert?: HouseUpsertNestedInput
+export interface BookingUpdateWithoutPaymentDataInput {
+  startDate?: DateTime
+  endDate?: DateTime
+  bookee?: UserUpdateOneRequiredWithoutBookingsInput
+  House?: HouseUpdateOneRequiredWithoutBookingsInput
 }
 
 export interface AmenitiesCreateInput {
@@ -10539,12 +10674,10 @@ export interface AmenitiesCreateInput {
   House: HouseCreateOneWithoutAmenitiesInput
 }
 
-export interface BookingUpdateInput {
-  startDate?: DateTime
-  endDate?: DateTime
-  bookee?: UserUpdateOneWithoutBookingsInput
-  House?: HouseUpdateOneWithoutBookingsInput
-  payment?: PaymentHouseUpdateOneWithoutBookingInput
+export interface PaymentHouseUpdateInput {
+  totalPrice?: Float
+  booking?: BookingUpdateOneRequiredWithoutPaymentInput
+  paymentMethod?: PaymentAccountUpdateOneRequiredWithoutPaymentsInput
 }
 
 export interface HouseCreateOneWithoutAmenitiesInput {
@@ -10552,30 +10685,9 @@ export interface HouseCreateOneWithoutAmenitiesInput {
   connect?: HouseWhereUniqueInput
 }
 
-export interface HouseUpdateWithoutReviewsDataInput {
-  name?: String
-  area?: Int
-  age?: Int
-  shortDescription?: String
-  description?: String
-  maxGuests?: Int
-  numBedrooms?: Int
-  numBaths?: Int
-  leaseType?: HOUSE_LEASE_TYPE
-  verified?: Boolean
-  type?: HOUSE_TYPES
-  residency?: House_RESIDENCY
-  lease?: Int
-  popularity?: Int
-  amenities?: AmenitiesUpdateOneWithoutHouseInput
-  host?: UserUpdateOneWithoutOwnedHousesInput
-  pricing?: PricingUpdateOneWithoutHouseInput
-  location?: LocationUpdateOneInput
-  rooms?: RoomUpdateManyWithoutHouseInput
-  views?: ViewsUpdateOneWithoutHouseInput
-  bookings?: BookingUpdateManyWithoutHouseInput
-  pictures?: PictureUpdateManyInput
-  contactInfoPayments?: PaymentLanlordInfoUpdateManyWithoutHouseInput
+export interface HouseUpsertNestedInput {
+  update: HouseUpdateDataInput
+  create: HouseCreateInput
 }
 
 export interface HouseCreateWithoutAmenitiesInput {
@@ -10604,6 +10716,70 @@ export interface HouseCreateWithoutAmenitiesInput {
   contactInfoPayments?: PaymentLanlordInfoCreateManyWithoutHouseInput
 }
 
+export interface HouseUpdateOneRequiredInput {
+  create?: HouseCreateInput
+  connect?: HouseWhereUniqueInput
+  update?: HouseUpdateDataInput
+  upsert?: HouseUpsertNestedInput
+}
+
+export interface ReviewCreateInput {
+  text: String
+  stars: Int
+  accuracy: Int
+  location: Int
+  checkIn: Int
+  value: Int
+  communication: Int
+  House: HouseCreateOneWithoutReviewsInput
+}
+
+export interface BookingUpdateInput {
+  startDate?: DateTime
+  endDate?: DateTime
+  bookee?: UserUpdateOneRequiredWithoutBookingsInput
+  House?: HouseUpdateOneRequiredWithoutBookingsInput
+  payment?: PaymentHouseUpdateOneRequiredWithoutBookingInput
+}
+
+export interface HouseCreateOneWithoutReviewsInput {
+  create?: HouseCreateWithoutReviewsInput
+  connect?: HouseWhereUniqueInput
+}
+
+export interface HouseUpdateWithoutReviewsDataInput {
+  name?: String
+  area?: Int
+  age?: Int
+  shortDescription?: String
+  description?: String
+  maxGuests?: Int
+  numBedrooms?: Int
+  numBaths?: Int
+  leaseType?: HOUSE_LEASE_TYPE
+  verified?: Boolean
+  type?: HOUSE_TYPES
+  residency?: House_RESIDENCY
+  lease?: Int
+  popularity?: Int
+  amenities?: AmenitiesUpdateOneRequiredWithoutHouseInput
+  host?: UserUpdateOneRequiredWithoutOwnedHousesInput
+  pricing?: PricingUpdateOneRequiredWithoutHouseInput
+  location?: LocationUpdateOneRequiredInput
+  rooms?: RoomUpdateManyWithoutHouseInput
+  views?: ViewsUpdateOneWithoutHouseInput
+  bookings?: BookingUpdateManyWithoutHouseInput
+  pictures?: PictureUpdateManyInput
+  contactInfoPayments?: PaymentLanlordInfoUpdateManyWithoutHouseInput
+}
+
+export interface PaymentAccountUpdateWithoutPaymentsDataInput {
+  type?: PAYMENT_PROVIDER
+  user?: UserUpdateOneRequiredInput
+  paypal?: PaypalInformationUpdateOneWithoutPaymentAccountInput
+  creditcard?: CreditCardInformationUpdateOneWithoutPaymentAccountInput
+}
+
 export interface ReviewUpdateInput {
   text?: String
   stars?: Int
@@ -10612,14 +10788,15 @@ export interface ReviewUpdateInput {
   checkIn?: Int
   value?: Int
   communication?: Int
-  House?: HouseUpdateOneWithoutReviewsInput
+  House?: HouseUpdateOneRequiredWithoutReviewsInput
 }
 
-export interface PaymentAccountUpdateWithoutPaymentsDataInput {
-  type?: PAYMENT_PROVIDER
-  user?: UserUpdateOneInput
-  paypal?: PaypalInformationUpdateOneWithoutPaymentAccountInput
-  creditcard?: CreditCardInformationUpdateOneWithoutPaymentAccountInput
+export interface BookingCreateInput {
+  startDate: DateTime
+  endDate: DateTime
+  bookee: UserCreateOneWithoutBookingsInput
+  House: HouseCreateOneWithoutBookingsInput
+  payment: PaymentHouseCreateOneWithoutBookingInput
 }
 
 export interface HouseUpdateWithoutAmenitiesDataInput {
@@ -10638,9 +10815,9 @@ export interface HouseUpdateWithoutAmenitiesDataInput {
   lease?: Int
   popularity?: Int
   reviews?: ReviewUpdateManyWithoutHouseInput
-  host?: UserUpdateOneWithoutOwnedHousesInput
-  pricing?: PricingUpdateOneWithoutHouseInput
-  location?: LocationUpdateOneInput
+  host?: UserUpdateOneRequiredWithoutOwnedHousesInput
+  pricing?: PricingUpdateOneRequiredWithoutHouseInput
+  location?: LocationUpdateOneRequiredInput
   rooms?: RoomUpdateManyWithoutHouseInput
   views?: ViewsUpdateOneWithoutHouseInput
   bookings?: BookingUpdateManyWithoutHouseInput
@@ -10648,9 +10825,9 @@ export interface HouseUpdateWithoutAmenitiesDataInput {
   contactInfoPayments?: PaymentLanlordInfoUpdateManyWithoutHouseInput
 }
 
-export interface HouseCreateOneWithoutReviewsInput {
-  create?: HouseCreateWithoutReviewsInput
-  connect?: HouseWhereUniqueInput
+export interface House_FavoritedCreateInput {
+  user: UserCreateOneInput
+  house: HouseCreateOneInput
 }
 
 export interface AmenitiesUpdateInput {
@@ -10689,33 +10866,12 @@ export interface AmenitiesUpdateInput {
   buzzerWirelessIntercom?: Boolean
   bathtub?: Boolean
   crib?: Boolean
-  House?: HouseUpdateOneWithoutAmenitiesInput
+  House?: HouseUpdateOneRequiredWithoutAmenitiesInput
 }
 
-export interface HouseCreateWithoutReviewsInput {
-  name?: String
-  area?: Int
-  age?: Int
-  shortDescription: String
-  description: String
-  maxGuests: Int
-  numBedrooms: Int
-  numBaths: Int
-  leaseType?: HOUSE_LEASE_TYPE
-  verified?: Boolean
-  type?: HOUSE_TYPES
-  residency?: House_RESIDENCY
-  lease: Int
-  popularity?: Int
-  amenities: AmenitiesCreateOneWithoutHouseInput
-  host: UserCreateOneWithoutOwnedHousesInput
-  pricing: PricingCreateOneWithoutHouseInput
-  location: LocationCreateOneInput
-  rooms?: RoomCreateManyWithoutHouseInput
-  views?: ViewsCreateOneWithoutHouseInput
-  bookings?: BookingCreateManyWithoutHouseInput
-  pictures?: PictureCreateManyInput
-  contactInfoPayments?: PaymentLanlordInfoCreateManyWithoutHouseInput
+export interface HouseCreateOneInput {
+  create?: HouseCreateInput
+  connect?: HouseWhereUniqueInput
 }
 
 export interface HouseUpdateWithoutViewsDataInput {
@@ -10734,71 +10890,14 @@ export interface HouseUpdateWithoutViewsDataInput {
   lease?: Int
   popularity?: Int
   reviews?: ReviewUpdateManyWithoutHouseInput
-  amenities?: AmenitiesUpdateOneWithoutHouseInput
-  host?: UserUpdateOneWithoutOwnedHousesInput
-  pricing?: PricingUpdateOneWithoutHouseInput
-  location?: LocationUpdateOneInput
+  amenities?: AmenitiesUpdateOneRequiredWithoutHouseInput
+  host?: UserUpdateOneRequiredWithoutOwnedHousesInput
+  pricing?: PricingUpdateOneRequiredWithoutHouseInput
+  location?: LocationUpdateOneRequiredInput
   rooms?: RoomUpdateManyWithoutHouseInput
   bookings?: BookingUpdateManyWithoutHouseInput
   pictures?: PictureUpdateManyInput
   contactInfoPayments?: PaymentLanlordInfoUpdateManyWithoutHouseInput
-}
-
-export interface BookingCreateInput {
-  startDate: DateTime
-  endDate: DateTime
-  bookee: UserCreateOneWithoutBookingsInput
-  House: HouseCreateOneWithoutBookingsInput
-  payment: PaymentHouseCreateOneWithoutBookingInput
-}
-
-export interface ViewsUpdateInput {
-  lastWeek?: Int
-  House?: HouseUpdateOneWithoutViewsInput
-}
-
-export interface House_FavoritedCreateInput {
-  user: UserCreateOneInput
-  house: HouseCreateOneInput
-}
-
-export interface HouseUpdateWithoutPricingDataInput {
-  name?: String
-  area?: Int
-  age?: Int
-  shortDescription?: String
-  description?: String
-  maxGuests?: Int
-  numBedrooms?: Int
-  numBaths?: Int
-  leaseType?: HOUSE_LEASE_TYPE
-  verified?: Boolean
-  type?: HOUSE_TYPES
-  residency?: House_RESIDENCY
-  lease?: Int
-  popularity?: Int
-  reviews?: ReviewUpdateManyWithoutHouseInput
-  amenities?: AmenitiesUpdateOneWithoutHouseInput
-  host?: UserUpdateOneWithoutOwnedHousesInput
-  location?: LocationUpdateOneInput
-  rooms?: RoomUpdateManyWithoutHouseInput
-  views?: ViewsUpdateOneWithoutHouseInput
-  bookings?: BookingUpdateManyWithoutHouseInput
-  pictures?: PictureUpdateManyInput
-  contactInfoPayments?: PaymentLanlordInfoUpdateManyWithoutHouseInput
-}
-
-export interface HouseCreateOneInput {
-  create?: HouseCreateInput
-  connect?: HouseWhereUniqueInput
-}
-
-export interface PricingUpdateInput {
-  basePrice?: Int
-  highestPrice?: Int
-  currency?: CURRENCY
-  income?: Int
-  House?: HouseUpdateOneWithoutPricingInput
 }
 
 export interface HouseCreateInput {
@@ -10828,9 +10927,9 @@ export interface HouseCreateInput {
   contactInfoPayments?: PaymentLanlordInfoCreateManyWithoutHouseInput
 }
 
-export interface UserUpsertWithoutOwnedHousesInput {
-  update: UserUpdateWithoutOwnedHousesDataInput
-  create: UserCreateWithoutOwnedHousesInput
+export interface ViewsUpdateInput {
+  lastWeek?: Int
+  House?: HouseUpdateOneRequiredWithoutViewsInput
 }
 
 export interface NegotiationCreateInput {
@@ -10840,9 +10939,30 @@ export interface NegotiationCreateInput {
   House: HouseCreateOneInput
 }
 
-export interface HouseUpsertWithoutBookingsInput {
-  update: HouseUpdateWithoutBookingsDataInput
-  create: HouseCreateWithoutBookingsInput
+export interface HouseUpdateWithoutPricingDataInput {
+  name?: String
+  area?: Int
+  age?: Int
+  shortDescription?: String
+  description?: String
+  maxGuests?: Int
+  numBedrooms?: Int
+  numBaths?: Int
+  leaseType?: HOUSE_LEASE_TYPE
+  verified?: Boolean
+  type?: HOUSE_TYPES
+  residency?: House_RESIDENCY
+  lease?: Int
+  popularity?: Int
+  reviews?: ReviewUpdateManyWithoutHouseInput
+  amenities?: AmenitiesUpdateOneRequiredWithoutHouseInput
+  host?: UserUpdateOneRequiredWithoutOwnedHousesInput
+  location?: LocationUpdateOneRequiredInput
+  rooms?: RoomUpdateManyWithoutHouseInput
+  views?: ViewsUpdateOneWithoutHouseInput
+  bookings?: BookingUpdateManyWithoutHouseInput
+  pictures?: PictureUpdateManyInput
+  contactInfoPayments?: PaymentLanlordInfoUpdateManyWithoutHouseInput
 }
 
 export interface PaymentHouseCreateInput {
@@ -10851,9 +10971,12 @@ export interface PaymentHouseCreateInput {
   paymentMethod: PaymentAccountCreateOneWithoutPaymentsInput
 }
 
-export interface UserUpsertWithoutPaidContactsInput {
-  update: UserUpdateWithoutPaidContactsDataInput
-  create: UserCreateWithoutPaidContactsInput
+export interface PricingUpdateInput {
+  basePrice?: Int
+  highestPrice?: Int
+  currency?: CURRENCY
+  income?: Int
+  House?: HouseUpdateOneRequiredWithoutPricingInput
 }
 
 export interface BookingCreateOneWithoutPaymentInput {
@@ -10861,10 +10984,9 @@ export interface BookingCreateOneWithoutPaymentInput {
   connect?: BookingWhereUniqueInput
 }
 
-export interface BookingUpsertWithWhereUniqueWithoutHouseInput {
-  where: BookingWhereUniqueInput
-  update: BookingUpdateWithoutHouseDataInput
-  create: BookingCreateWithoutHouseInput
+export interface UserUpsertWithoutOwnedHousesInput {
+  update: UserUpdateWithoutOwnedHousesDataInput
+  create: UserCreateWithoutOwnedHousesInput
 }
 
 export interface BookingCreateWithoutPaymentInput {
@@ -10874,9 +10996,9 @@ export interface BookingCreateWithoutPaymentInput {
   House: HouseCreateOneWithoutBookingsInput
 }
 
-export interface PaymentAccountUpsertWithoutPaymentsInput {
-  update: PaymentAccountUpdateWithoutPaymentsDataInput
-  create: PaymentAccountCreateWithoutPaymentsInput
+export interface HouseUpsertWithoutBookingsInput {
+  update: HouseUpdateWithoutBookingsDataInput
+  create: HouseCreateWithoutBookingsInput
 }
 
 export interface PaymentAccountCreateInput {
@@ -10885,6 +11007,37 @@ export interface PaymentAccountCreateInput {
   payments?: PaymentHouseCreateManyWithoutPaymentMethodInput
   paypal?: PaypalInformationCreateOneWithoutPaymentAccountInput
   creditcard?: CreditCardInformationCreateOneWithoutPaymentAccountInput
+}
+
+export interface UserUpsertWithoutPaidContactsInput {
+  update: UserUpdateWithoutPaidContactsDataInput
+  create: UserCreateWithoutPaidContactsInput
+}
+
+export interface PaymentHouseCreateManyWithoutPaymentMethodInput {
+  create?: PaymentHouseCreateWithoutPaymentMethodInput[] | PaymentHouseCreateWithoutPaymentMethodInput
+  connect?: PaymentHouseWhereUniqueInput[] | PaymentHouseWhereUniqueInput
+}
+
+export interface BookingUpsertWithWhereUniqueWithoutHouseInput {
+  where: BookingWhereUniqueInput
+  update: BookingUpdateWithoutHouseDataInput
+  create: BookingCreateWithoutHouseInput
+}
+
+export interface PaymentHouseCreateWithoutPaymentMethodInput {
+  totalPrice: Float
+  booking: BookingCreateOneWithoutPaymentInput
+}
+
+export interface PaymentAccountUpsertWithoutPaymentsInput {
+  update: PaymentAccountUpdateWithoutPaymentsDataInput
+  create: PaymentAccountCreateWithoutPaymentsInput
+}
+
+export interface PaypalInformationCreateInput {
+  email: String
+  paymentAccount: PaymentAccountCreateOneWithoutPaypalInput
 }
 
 export interface CreditCardInformationUpdateWithoutPaymentAccountDataInput {
@@ -10898,9 +11051,9 @@ export interface CreditCardInformationUpdateWithoutPaymentAccountDataInput {
   country?: String
 }
 
-export interface PaymentHouseCreateManyWithoutPaymentMethodInput {
-  create?: PaymentHouseCreateWithoutPaymentMethodInput[] | PaymentHouseCreateWithoutPaymentMethodInput
-  connect?: PaymentHouseWhereUniqueInput[] | PaymentHouseWhereUniqueInput
+export interface PaymentAccountCreateOneWithoutPaypalInput {
+  create?: PaymentAccountCreateWithoutPaypalInput
+  connect?: PaymentAccountWhereUniqueInput
 }
 
 export interface PaypalInformationUpsertWithoutPaymentAccountInput {
@@ -10908,9 +11061,11 @@ export interface PaypalInformationUpsertWithoutPaymentAccountInput {
   create: PaypalInformationCreateWithoutPaymentAccountInput
 }
 
-export interface PaymentHouseCreateWithoutPaymentMethodInput {
-  totalPrice: Float
-  booking: BookingCreateOneWithoutPaymentInput
+export interface PaymentAccountCreateWithoutPaypalInput {
+  type?: PAYMENT_PROVIDER
+  user: UserCreateOneInput
+  payments?: PaymentHouseCreateManyWithoutPaymentMethodInput
+  creditcard?: CreditCardInformationCreateOneWithoutPaymentAccountInput
 }
 
 export interface PaypalInformationUpdateOneWithoutPaymentAccountInput {
@@ -10922,9 +11077,16 @@ export interface PaypalInformationUpdateOneWithoutPaymentAccountInput {
   upsert?: PaypalInformationUpsertWithoutPaymentAccountInput
 }
 
-export interface PaypalInformationCreateInput {
-  email: String
-  paymentAccount: PaymentAccountCreateOneWithoutPaypalInput
+export interface CreditCardInformationCreateInput {
+  cardNumber: String
+  expiresOnMonth: Int
+  expiresOnYear: Int
+  securityCode: String
+  firstName: String
+  lastName: String
+  postalCode: String
+  country: String
+  paymentAccount?: PaymentAccountCreateOneWithoutCreditcardInput
 }
 
 export interface UserUpdateDataInput {
@@ -10947,8 +11109,8 @@ export interface UserUpdateDataInput {
   profilePicture?: PictureUpdateOneInput
 }
 
-export interface PaymentAccountCreateOneWithoutPaypalInput {
-  create?: PaymentAccountCreateWithoutPaypalInput
+export interface PaymentAccountCreateOneWithoutCreditcardInput {
+  create?: PaymentAccountCreateWithoutCreditcardInput
   connect?: PaymentAccountWhereUniqueInput
 }
 
@@ -10959,11 +11121,11 @@ export interface RoomCreateInput {
   video_previews?: VideoCreateManyInput
 }
 
-export interface PaymentAccountCreateWithoutPaypalInput {
-  type?: PAYMENT_PROVIDER
-  user: UserCreateOneInput
-  payments?: PaymentHouseCreateManyWithoutPaymentMethodInput
-  creditcard?: CreditCardInformationCreateOneWithoutPaymentAccountInput
+export interface PaymentAccountUpdateOneRequiredWithoutPaymentsInput {
+  create?: PaymentAccountCreateWithoutPaymentsInput
+  connect?: PaymentAccountWhereUniqueInput
+  update?: PaymentAccountUpdateWithoutPaymentsDataInput
+  upsert?: PaymentAccountUpsertWithoutPaymentsInput
 }
 
 export interface HouseCreateWithoutRoomsInput {
@@ -10992,12 +11154,9 @@ export interface HouseCreateWithoutRoomsInput {
   contactInfoPayments?: PaymentLanlordInfoCreateManyWithoutHouseInput
 }
 
-export interface PaymentAccountUpdateOneWithoutPaymentsInput {
-  create?: PaymentAccountCreateWithoutPaymentsInput
-  connect?: PaymentAccountWhereUniqueInput
-  delete?: Boolean
-  update?: PaymentAccountUpdateWithoutPaymentsDataInput
-  upsert?: PaymentAccountUpsertWithoutPaymentsInput
+export interface PaymentHouseUpdateWithoutBookingDataInput {
+  totalPrice?: Float
+  paymentMethod?: PaymentAccountUpdateOneRequiredWithoutPaymentsInput
 }
 
 export interface ReviewCreateWithoutHouseInput {
@@ -11010,9 +11169,11 @@ export interface ReviewCreateWithoutHouseInput {
   communication: Int
 }
 
-export interface PaymentHouseUpdateWithoutBookingDataInput {
-  totalPrice?: Float
-  paymentMethod?: PaymentAccountUpdateOneWithoutPaymentsInput
+export interface NotificationCreateInput {
+  type?: NOTIFICATION_TYPE
+  link: String
+  readDate: DateTime
+  user: UserCreateOneWithoutNotificationsInput
 }
 
 export interface AmenitiesCreateWithoutHouseInput {
@@ -11053,11 +11214,9 @@ export interface AmenitiesCreateWithoutHouseInput {
   crib?: Boolean
 }
 
-export interface PaymentAccountCreateWithoutCreditcardInput {
-  type?: PAYMENT_PROVIDER
-  user: UserCreateOneInput
-  payments?: PaymentHouseCreateManyWithoutPaymentMethodInput
-  paypal?: PaypalInformationCreateOneWithoutPaymentAccountInput
+export interface UserCreateOneWithoutNotificationsInput {
+  create?: UserCreateWithoutNotificationsInput
+  connect?: UserWhereUniqueInput
 }
 
 export interface UserCreateWithoutOwnedHousesInput {
@@ -11079,11 +11238,23 @@ export interface UserCreateWithoutOwnedHousesInput {
   profilePicture?: PictureCreateOneInput
 }
 
-export interface PaymentLanlordInfoCreateInput {
-  totalPrice: Float
-  moncashTransactId: String
-  client: UserCreateOneWithoutPaidContactsInput
-  House: HouseCreateOneWithoutContactInfoPaymentsInput
+export interface UserCreateWithoutNotificationsInput {
+  status?: Boolean
+  facebookUserId?: String
+  firstName: String
+  lastName: String
+  email?: String
+  password?: String
+  phone1?: String
+  phone2?: String
+  primaryPhone?: Int
+  responseTime?: Int
+  isSuperHost?: Boolean
+  ownedHouses?: HouseCreateManyWithoutHostInput
+  location?: LocationCreateOneInput
+  bookings?: BookingCreateManyWithoutBookeeInput
+  paidContacts?: PaymentLanlordInfoCreateManyWithoutClientInput
+  profilePicture?: PictureCreateOneInput
 }
 
 export interface LocationCreateInput {
@@ -11093,11 +11264,11 @@ export interface LocationCreateInput {
   commune?: CommuneCreateOneInput
 }
 
-export interface NotificationCreateInput {
-  type?: NOTIFICATION_TYPE
-  link: String
-  readDate: DateTime
-  user: UserCreateOneWithoutNotificationsInput
+export interface RoomUpdateInput {
+  label?: String
+  house?: HouseUpdateOneRequiredWithoutRoomsInput
+  picture_previews?: PictureUpdateManyInput
+  video_previews?: VideoUpdateManyInput
 }
 
 export interface CommuneCreateInput {
@@ -11105,9 +11276,42 @@ export interface CommuneCreateInput {
   city: CityCreateOneInput
 }
 
-export interface UserCreateOneWithoutNotificationsInput {
-  create?: UserCreateWithoutNotificationsInput
-  connect?: UserWhereUniqueInput
+export interface HouseUpdateOneRequiredWithoutRoomsInput {
+  create?: HouseCreateWithoutRoomsInput
+  connect?: HouseWhereUniqueInput
+  update?: HouseUpdateWithoutRoomsDataInput
+  upsert?: HouseUpsertWithoutRoomsInput
+}
+
+export interface CityCreateInput {
+  name: String
+  state: StateCreateOneInput
+}
+
+export interface HouseUpdateWithoutRoomsDataInput {
+  name?: String
+  area?: Int
+  age?: Int
+  shortDescription?: String
+  description?: String
+  maxGuests?: Int
+  numBedrooms?: Int
+  numBaths?: Int
+  leaseType?: HOUSE_LEASE_TYPE
+  verified?: Boolean
+  type?: HOUSE_TYPES
+  residency?: House_RESIDENCY
+  lease?: Int
+  popularity?: Int
+  reviews?: ReviewUpdateManyWithoutHouseInput
+  amenities?: AmenitiesUpdateOneRequiredWithoutHouseInput
+  host?: UserUpdateOneRequiredWithoutOwnedHousesInput
+  pricing?: PricingUpdateOneRequiredWithoutHouseInput
+  location?: LocationUpdateOneRequiredInput
+  views?: ViewsUpdateOneWithoutHouseInput
+  bookings?: BookingUpdateManyWithoutHouseInput
+  pictures?: PictureUpdateManyInput
+  contactInfoPayments?: PaymentLanlordInfoUpdateManyWithoutHouseInput
 }
 
 export interface ViewsWhereInput {
@@ -11139,23 +11343,13 @@ export interface ViewsWhereInput {
   House?: HouseWhereInput
 }
 
-export interface UserCreateWithoutNotificationsInput {
-  status?: Boolean
-  facebookUserId?: String
-  firstName: String
-  lastName: String
-  email?: String
-  password?: String
-  phone1?: String
-  phone2?: String
-  primaryPhone?: Int
-  responseTime?: Int
-  isSuperHost?: Boolean
-  ownedHouses?: HouseCreateManyWithoutHostInput
-  location?: LocationCreateOneInput
-  bookings?: BookingCreateManyWithoutBookeeInput
-  paidContacts?: PaymentLanlordInfoCreateManyWithoutClientInput
-  profilePicture?: PictureCreateOneInput
+export interface ReviewUpdateManyWithoutHouseInput {
+  create?: ReviewCreateWithoutHouseInput[] | ReviewCreateWithoutHouseInput
+  connect?: ReviewWhereUniqueInput[] | ReviewWhereUniqueInput
+  disconnect?: ReviewWhereUniqueInput[] | ReviewWhereUniqueInput
+  delete?: ReviewWhereUniqueInput[] | ReviewWhereUniqueInput
+  update?: ReviewUpdateWithWhereUniqueWithoutHouseInput[] | ReviewUpdateWithWhereUniqueWithoutHouseInput
+  upsert?: ReviewUpsertWithWhereUniqueWithoutHouseInput[] | ReviewUpsertWithWhereUniqueWithoutHouseInput
 }
 
 export interface PricingWhereInput {
@@ -11207,11 +11401,9 @@ export interface PricingWhereInput {
   House?: HouseWhereInput
 }
 
-export interface RoomUpdateInput {
-  label?: String
-  house?: HouseUpdateOneWithoutRoomsInput
-  picture_previews?: PictureUpdateManyInput
-  video_previews?: VideoUpdateManyInput
+export interface ReviewUpdateWithWhereUniqueWithoutHouseInput {
+  where: ReviewWhereUniqueInput
+  data: ReviewUpdateWithoutHouseDataInput
 }
 
 export interface CountrySubscriptionWhereInput {
@@ -11225,12 +11417,14 @@ export interface CountrySubscriptionWhereInput {
   node?: CountryWhereInput
 }
 
-export interface HouseUpdateOneWithoutRoomsInput {
-  create?: HouseCreateWithoutRoomsInput
-  connect?: HouseWhereUniqueInput
-  delete?: Boolean
-  update?: HouseUpdateWithoutRoomsDataInput
-  upsert?: HouseUpsertWithoutRoomsInput
+export interface ReviewUpdateWithoutHouseDataInput {
+  text?: String
+  stars?: Int
+  accuracy?: Int
+  location?: Int
+  checkIn?: Int
+  value?: Int
+  communication?: Int
 }
 
 export interface NotificationSubscriptionWhereInput {
@@ -11244,30 +11438,10 @@ export interface NotificationSubscriptionWhereInput {
   node?: NotificationWhereInput
 }
 
-export interface HouseUpdateWithoutRoomsDataInput {
-  name?: String
-  area?: Int
-  age?: Int
-  shortDescription?: String
-  description?: String
-  maxGuests?: Int
-  numBedrooms?: Int
-  numBaths?: Int
-  leaseType?: HOUSE_LEASE_TYPE
-  verified?: Boolean
-  type?: HOUSE_TYPES
-  residency?: House_RESIDENCY
-  lease?: Int
-  popularity?: Int
-  reviews?: ReviewUpdateManyWithoutHouseInput
-  amenities?: AmenitiesUpdateOneWithoutHouseInput
-  host?: UserUpdateOneWithoutOwnedHousesInput
-  pricing?: PricingUpdateOneWithoutHouseInput
-  location?: LocationUpdateOneInput
-  views?: ViewsUpdateOneWithoutHouseInput
-  bookings?: BookingUpdateManyWithoutHouseInput
-  pictures?: PictureUpdateManyInput
-  contactInfoPayments?: PaymentLanlordInfoUpdateManyWithoutHouseInput
+export interface ReviewUpsertWithWhereUniqueWithoutHouseInput {
+  where: ReviewWhereUniqueInput
+  update: ReviewUpdateWithoutHouseDataInput
+  create: ReviewCreateWithoutHouseInput
 }
 
 export interface PaypalInformationSubscriptionWhereInput {
@@ -11281,13 +11455,11 @@ export interface PaypalInformationSubscriptionWhereInput {
   node?: PaypalInformationWhereInput
 }
 
-export interface ReviewUpdateManyWithoutHouseInput {
-  create?: ReviewCreateWithoutHouseInput[] | ReviewCreateWithoutHouseInput
-  connect?: ReviewWhereUniqueInput[] | ReviewWhereUniqueInput
-  disconnect?: ReviewWhereUniqueInput[] | ReviewWhereUniqueInput
-  delete?: ReviewWhereUniqueInput[] | ReviewWhereUniqueInput
-  update?: ReviewUpdateWithWhereUniqueWithoutHouseInput[] | ReviewUpdateWithWhereUniqueWithoutHouseInput
-  upsert?: ReviewUpsertWithWhereUniqueWithoutHouseInput[] | ReviewUpsertWithWhereUniqueWithoutHouseInput
+export interface AmenitiesUpdateOneRequiredWithoutHouseInput {
+  create?: AmenitiesCreateWithoutHouseInput
+  connect?: AmenitiesWhereUniqueInput
+  update?: AmenitiesUpdateWithoutHouseDataInput
+  upsert?: AmenitiesUpsertWithoutHouseInput
 }
 
 export interface PaymentHouseSubscriptionWhereInput {
@@ -11301,9 +11473,42 @@ export interface PaymentHouseSubscriptionWhereInput {
   node?: PaymentHouseWhereInput
 }
 
-export interface ReviewUpdateWithWhereUniqueWithoutHouseInput {
-  where: ReviewWhereUniqueInput
-  data: ReviewUpdateWithoutHouseDataInput
+export interface AmenitiesUpdateWithoutHouseDataInput {
+  electricity?: Boolean
+  electricity_frequency?: FREQUENCY
+  elevator?: Boolean
+  petsAllowed?: Boolean
+  internet?: Boolean
+  kitchen?: Boolean
+  wirelessInternet?: Boolean
+  familyKidFriendly?: Boolean
+  freeParkingOnPremises?: Boolean
+  hotTub?: Boolean
+  pool?: Boolean
+  smokingAllowed?: Boolean
+  wheelchairAccessible?: Boolean
+  cableTv?: Boolean
+  suitableForEvents?: Boolean
+  dryer?: Boolean
+  washer?: Boolean
+  indoorFireHouse?: Boolean
+  tv?: Boolean
+  heating?: Boolean
+  hangers?: Boolean
+  iron?: Boolean
+  hairDryer?: Boolean
+  doorman?: Boolean
+  paidParkingOffPremises?: Boolean
+  freeParkingOnStreet?: Boolean
+  gym?: Boolean
+  airConditioning?: Boolean
+  shampoo?: Boolean
+  essentials?: Boolean
+  laptopFriendlyWorkspace?: Boolean
+  privateEntrance?: Boolean
+  buzzerWirelessIntercom?: Boolean
+  bathtub?: Boolean
+  crib?: Boolean
 }
 
 export interface PaypalInformationWhereInput {
@@ -11349,14 +11554,9 @@ export interface PaypalInformationWhereInput {
   paymentAccount?: PaymentAccountWhereInput
 }
 
-export interface ReviewUpdateWithoutHouseDataInput {
-  text?: String
-  stars?: Int
-  accuracy?: Int
-  location?: Int
-  checkIn?: Int
-  value?: Int
-  communication?: Int
+export interface AmenitiesUpsertWithoutHouseInput {
+  update: AmenitiesUpdateWithoutHouseDataInput
+  create: AmenitiesCreateWithoutHouseInput
 }
 
 export interface BookingWhereInput {
@@ -11406,10 +11606,11 @@ export interface BookingWhereInput {
   payment?: PaymentHouseWhereInput
 }
 
-export interface ReviewUpsertWithWhereUniqueWithoutHouseInput {
-  where: ReviewWhereUniqueInput
-  update: ReviewUpdateWithoutHouseDataInput
-  create: ReviewCreateWithoutHouseInput
+export interface UserUpdateOneRequiredWithoutOwnedHousesInput {
+  create?: UserCreateWithoutOwnedHousesInput
+  connect?: UserWhereUniqueInput
+  update?: UserUpdateWithoutOwnedHousesDataInput
+  upsert?: UserUpsertWithoutOwnedHousesInput
 }
 
 export interface AmenitiesSubscriptionWhereInput {
@@ -11423,12 +11624,23 @@ export interface AmenitiesSubscriptionWhereInput {
   node?: AmenitiesWhereInput
 }
 
-export interface AmenitiesUpdateOneWithoutHouseInput {
-  create?: AmenitiesCreateWithoutHouseInput
-  connect?: AmenitiesWhereUniqueInput
-  delete?: Boolean
-  update?: AmenitiesUpdateWithoutHouseDataInput
-  upsert?: AmenitiesUpsertWithoutHouseInput
+export interface UserUpdateWithoutOwnedHousesDataInput {
+  status?: Boolean
+  facebookUserId?: String
+  firstName?: String
+  lastName?: String
+  email?: String
+  password?: String
+  phone1?: String
+  phone2?: String
+  primaryPhone?: Int
+  responseTime?: Int
+  isSuperHost?: Boolean
+  location?: LocationUpdateOneInput
+  bookings?: BookingUpdateManyWithoutBookeeInput
+  paidContacts?: PaymentLanlordInfoUpdateManyWithoutClientInput
+  notifications?: NotificationUpdateManyWithoutUserInput
+  profilePicture?: PictureUpdateOneInput
 }
 
 export interface ViewsSubscriptionWhereInput {
@@ -11442,42 +11654,13 @@ export interface ViewsSubscriptionWhereInput {
   node?: ViewsWhereInput
 }
 
-export interface AmenitiesUpdateWithoutHouseDataInput {
-  electricity?: Boolean
-  electricity_frequency?: FREQUENCY
-  elevator?: Boolean
-  petsAllowed?: Boolean
-  internet?: Boolean
-  kitchen?: Boolean
-  wirelessInternet?: Boolean
-  familyKidFriendly?: Boolean
-  freeParkingOnPremises?: Boolean
-  hotTub?: Boolean
-  pool?: Boolean
-  smokingAllowed?: Boolean
-  wheelchairAccessible?: Boolean
-  cableTv?: Boolean
-  suitableForEvents?: Boolean
-  dryer?: Boolean
-  washer?: Boolean
-  indoorFireHouse?: Boolean
-  tv?: Boolean
-  heating?: Boolean
-  hangers?: Boolean
-  iron?: Boolean
-  hairDryer?: Boolean
-  doorman?: Boolean
-  paidParkingOffPremises?: Boolean
-  freeParkingOnStreet?: Boolean
-  gym?: Boolean
-  airConditioning?: Boolean
-  shampoo?: Boolean
-  essentials?: Boolean
-  laptopFriendlyWorkspace?: Boolean
-  privateEntrance?: Boolean
-  buzzerWirelessIntercom?: Boolean
-  bathtub?: Boolean
-  crib?: Boolean
+export interface LocationUpdateOneInput {
+  create?: LocationCreateInput
+  connect?: LocationWhereUniqueInput
+  disconnect?: Boolean
+  delete?: Boolean
+  update?: LocationUpdateDataInput
+  upsert?: LocationUpsertNestedInput
 }
 
 export interface AmenitiesWhereInput {
@@ -11573,63 +11756,6 @@ export interface AmenitiesWhereInput {
   House?: HouseWhereInput
 }
 
-export interface AmenitiesUpsertWithoutHouseInput {
-  update: AmenitiesUpdateWithoutHouseDataInput
-  create: AmenitiesCreateWithoutHouseInput
-}
-
-export interface VideoUpdateInput {
-  url?: String
-}
-
-export interface UserUpdateOneWithoutOwnedHousesInput {
-  create?: UserCreateWithoutOwnedHousesInput
-  connect?: UserWhereUniqueInput
-  delete?: Boolean
-  update?: UserUpdateWithoutOwnedHousesDataInput
-  upsert?: UserUpsertWithoutOwnedHousesInput
-}
-
-export interface ViewsWhereUniqueInput {
-  id?: ID_Input
-}
-
-export interface UserUpdateWithoutOwnedHousesDataInput {
-  status?: Boolean
-  facebookUserId?: String
-  firstName?: String
-  lastName?: String
-  email?: String
-  password?: String
-  phone1?: String
-  phone2?: String
-  primaryPhone?: Int
-  responseTime?: Int
-  isSuperHost?: Boolean
-  location?: LocationUpdateOneInput
-  bookings?: BookingUpdateManyWithoutBookeeInput
-  paidContacts?: PaymentLanlordInfoUpdateManyWithoutClientInput
-  notifications?: NotificationUpdateManyWithoutUserInput
-  profilePicture?: PictureUpdateOneInput
-}
-
-export interface House_FavoritedWhereUniqueInput {
-  id?: ID_Input
-}
-
-export interface LocationUpdateOneInput {
-  create?: LocationCreateInput
-  connect?: LocationWhereUniqueInput
-  disconnect?: Boolean
-  delete?: Boolean
-  update?: LocationUpdateDataInput
-  upsert?: LocationUpsertNestedInput
-}
-
-export interface PaypalInformationWhereUniqueInput {
-  id?: ID_Input
-}
-
 export interface LocationUpdateDataInput {
   lat?: Float
   lng?: Float
@@ -11637,8 +11763,8 @@ export interface LocationUpdateDataInput {
   commune?: CommuneUpdateOneInput
 }
 
-export interface LocationWhereUniqueInput {
-  id?: ID_Input
+export interface PictureUpdateInput {
+  url?: String
 }
 
 export interface CommuneUpdateOneInput {
@@ -11650,18 +11776,157 @@ export interface CommuneUpdateOneInput {
   upsert?: CommuneUpsertNestedInput
 }
 
+export interface ViewsWhereUniqueInput {
+  id?: ID_Input
+}
+
+export interface CommuneUpdateDataInput {
+  name?: String
+  city?: CityUpdateOneRequiredInput
+}
+
+export interface House_FavoritedWhereUniqueInput {
+  id?: ID_Input
+}
+
+export interface CityUpdateOneRequiredInput {
+  create?: CityCreateInput
+  connect?: CityWhereUniqueInput
+  update?: CityUpdateDataInput
+  upsert?: CityUpsertNestedInput
+}
+
+export interface PaypalInformationWhereUniqueInput {
+  id?: ID_Input
+}
+
+export interface CityUpdateDataInput {
+  name?: String
+  state?: StateUpdateOneRequiredInput
+}
+
+export interface LocationWhereUniqueInput {
+  id?: ID_Input
+}
+
+export interface StateUpdateOneRequiredInput {
+  create?: StateCreateInput
+  connect?: StateWhereUniqueInput
+  update?: StateUpdateDataInput
+  upsert?: StateUpsertNestedInput
+}
+
 export interface UserWhereUniqueInput {
   id?: ID_Input
   facebookUserId?: String
   email?: String
 }
 
-export interface CommuneUpdateDataInput {
+export interface StateUpdateDataInput {
   name?: String
-  city?: CityUpdateOneInput
+  country?: CountryUpdateOneRequiredInput
 }
 
-export interface HouseUpdateInput {
+export interface CityWhereUniqueInput {
+  id?: ID_Input
+}
+
+export interface CountryUpdateOneRequiredInput {
+  create?: CountryCreateInput
+  connect?: CountryWhereUniqueInput
+  update?: CountryUpdateDataInput
+  upsert?: CountryUpsertNestedInput
+}
+
+export interface StateUpdateInput {
+  name?: String
+  country?: CountryUpdateOneRequiredInput
+}
+
+export interface CountryUpdateDataInput {
+  name?: String
+}
+
+export interface UserUpsertWithoutNotificationsInput {
+  update: UserUpdateWithoutNotificationsDataInput
+  create: UserCreateWithoutNotificationsInput
+}
+
+export interface CountryUpsertNestedInput {
+  update: CountryUpdateDataInput
+  create: CountryCreateInput
+}
+
+export interface PaymentLanlordInfoUpdateInput {
+  totalPrice?: Float
+  moncashTransactId?: String
+  client?: UserUpdateOneRequiredWithoutPaidContactsInput
+  House?: HouseUpdateOneRequiredWithoutContactInfoPaymentsInput
+}
+
+export interface StateUpsertNestedInput {
+  update: StateUpdateDataInput
+  create: StateCreateInput
+}
+
+export interface CreditCardInformationUpdateInput {
+  cardNumber?: String
+  expiresOnMonth?: Int
+  expiresOnYear?: Int
+  securityCode?: String
+  firstName?: String
+  lastName?: String
+  postalCode?: String
+  country?: String
+  paymentAccount?: PaymentAccountUpdateOneWithoutCreditcardInput
+}
+
+export interface CityUpsertNestedInput {
+  update: CityUpdateDataInput
+  create: CityCreateInput
+}
+
+export interface PaypalInformationUpdateInput {
+  email?: String
+  paymentAccount?: PaymentAccountUpdateOneRequiredWithoutPaypalInput
+}
+
+export interface CommuneUpsertNestedInput {
+  update: CommuneUpdateDataInput
+  create: CommuneCreateInput
+}
+
+export interface PaymentHouseUpdateManyWithoutPaymentMethodInput {
+  create?: PaymentHouseCreateWithoutPaymentMethodInput[] | PaymentHouseCreateWithoutPaymentMethodInput
+  connect?: PaymentHouseWhereUniqueInput[] | PaymentHouseWhereUniqueInput
+  disconnect?: PaymentHouseWhereUniqueInput[] | PaymentHouseWhereUniqueInput
+  delete?: PaymentHouseWhereUniqueInput[] | PaymentHouseWhereUniqueInput
+  update?: PaymentHouseUpdateWithWhereUniqueWithoutPaymentMethodInput[] | PaymentHouseUpdateWithWhereUniqueWithoutPaymentMethodInput
+  upsert?: PaymentHouseUpsertWithWhereUniqueWithoutPaymentMethodInput[] | PaymentHouseUpsertWithWhereUniqueWithoutPaymentMethodInput
+}
+
+export interface LocationUpsertNestedInput {
+  update: LocationUpdateDataInput
+  create: LocationCreateInput
+}
+
+export interface BookingUpdateOneRequiredWithoutPaymentInput {
+  create?: BookingCreateWithoutPaymentInput
+  connect?: BookingWhereUniqueInput
+  update?: BookingUpdateWithoutPaymentDataInput
+  upsert?: BookingUpsertWithoutPaymentInput
+}
+
+export interface BookingUpdateManyWithoutBookeeInput {
+  create?: BookingCreateWithoutBookeeInput[] | BookingCreateWithoutBookeeInput
+  connect?: BookingWhereUniqueInput[] | BookingWhereUniqueInput
+  disconnect?: BookingWhereUniqueInput[] | BookingWhereUniqueInput
+  delete?: BookingWhereUniqueInput[] | BookingWhereUniqueInput
+  update?: BookingUpdateWithWhereUniqueWithoutBookeeInput[] | BookingUpdateWithWhereUniqueWithoutBookeeInput
+  upsert?: BookingUpsertWithWhereUniqueWithoutBookeeInput[] | BookingUpsertWithWhereUniqueWithoutBookeeInput
+}
+
+export interface HouseUpdateDataInput {
   name?: String
   area?: Int
   age?: Int
@@ -11677,10 +11942,10 @@ export interface HouseUpdateInput {
   lease?: Int
   popularity?: Int
   reviews?: ReviewUpdateManyWithoutHouseInput
-  amenities?: AmenitiesUpdateOneWithoutHouseInput
-  host?: UserUpdateOneWithoutOwnedHousesInput
-  pricing?: PricingUpdateOneWithoutHouseInput
-  location?: LocationUpdateOneInput
+  amenities?: AmenitiesUpdateOneRequiredWithoutHouseInput
+  host?: UserUpdateOneRequiredWithoutOwnedHousesInput
+  pricing?: PricingUpdateOneRequiredWithoutHouseInput
+  location?: LocationUpdateOneRequiredInput
   rooms?: RoomUpdateManyWithoutHouseInput
   views?: ViewsUpdateOneWithoutHouseInput
   bookings?: BookingUpdateManyWithoutHouseInput
@@ -11688,194 +11953,38 @@ export interface HouseUpdateInput {
   contactInfoPayments?: PaymentLanlordInfoUpdateManyWithoutHouseInput
 }
 
-export interface CityUpdateOneInput {
-  create?: CityCreateInput
-  connect?: CityWhereUniqueInput
-  delete?: Boolean
-  update?: CityUpdateDataInput
-  upsert?: CityUpsertNestedInput
-}
-
-export interface CommuneUpdateInput {
-  name?: String
-  city?: CityUpdateOneInput
-}
-
-export interface CityUpdateDataInput {
-  name?: String
-  state?: StateUpdateOneInput
-}
-
-export interface UserUpdateOneWithoutNotificationsInput {
-  create?: UserCreateWithoutNotificationsInput
-  connect?: UserWhereUniqueInput
-  delete?: Boolean
-  update?: UserUpdateWithoutNotificationsDataInput
-  upsert?: UserUpsertWithoutNotificationsInput
-}
-
-export interface StateUpdateOneInput {
-  create?: StateCreateInput
-  connect?: StateWhereUniqueInput
-  delete?: Boolean
-  update?: StateUpdateDataInput
-  upsert?: StateUpsertNestedInput
-}
-
-export interface PaymentAccountUpdateWithoutCreditcardDataInput {
-  type?: PAYMENT_PROVIDER
-  user?: UserUpdateOneInput
-  payments?: PaymentHouseUpdateManyWithoutPaymentMethodInput
-  paypal?: PaypalInformationUpdateOneWithoutPaymentAccountInput
-}
-
-export interface StateUpdateDataInput {
-  name?: String
-  country?: CountryUpdateOneInput
-}
-
-export interface PaymentAccountUpdateWithoutPaypalDataInput {
-  type?: PAYMENT_PROVIDER
-  user?: UserUpdateOneInput
-  payments?: PaymentHouseUpdateManyWithoutPaymentMethodInput
-  creditcard?: CreditCardInformationUpdateOneWithoutPaymentAccountInput
-}
-
-export interface CountryUpdateOneInput {
-  create?: CountryCreateInput
-  connect?: CountryWhereUniqueInput
-  delete?: Boolean
-  update?: CountryUpdateDataInput
-  upsert?: CountryUpsertNestedInput
-}
-
-export interface PaymentHouseUpdateWithoutPaymentMethodDataInput {
-  totalPrice?: Float
-  booking?: BookingUpdateOneWithoutPaymentInput
-}
-
-export interface CountryUpdateDataInput {
-  name?: String
-}
-
-export interface BookingUpsertWithoutPaymentInput {
-  update: BookingUpdateWithoutPaymentDataInput
-  create: BookingCreateWithoutPaymentInput
-}
-
-export interface CountryUpsertNestedInput {
-  update: CountryUpdateDataInput
-  create: CountryCreateInput
-}
-
-export interface NegotiationUpdateInput {
-  offer?: Float
-  status?: NEGOTIATION_TYPE
-  negotiator?: UserUpdateOneInput
-  House?: HouseUpdateOneInput
-}
-
-export interface StateUpsertNestedInput {
-  update: StateUpdateDataInput
-  create: StateCreateInput
-}
-
-export interface House_FavoritedUpdateInput {
-  user?: UserUpdateOneInput
-  house?: HouseUpdateOneInput
-}
-
-export interface CityUpsertNestedInput {
-  update: CityUpdateDataInput
-  create: CityCreateInput
-}
-
-export interface HouseUpdateOneWithoutReviewsInput {
-  create?: HouseCreateWithoutReviewsInput
-  connect?: HouseWhereUniqueInput
-  delete?: Boolean
-  update?: HouseUpdateWithoutReviewsDataInput
-  upsert?: HouseUpsertWithoutReviewsInput
-}
-
-export interface CommuneUpsertNestedInput {
-  update: CommuneUpdateDataInput
-  create: CommuneCreateInput
-}
-
-export interface HouseUpdateOneWithoutAmenitiesInput {
-  create?: HouseCreateWithoutAmenitiesInput
-  connect?: HouseWhereUniqueInput
-  delete?: Boolean
-  update?: HouseUpdateWithoutAmenitiesDataInput
-  upsert?: HouseUpsertWithoutAmenitiesInput
-}
-
-export interface LocationUpsertNestedInput {
-  update: LocationUpdateDataInput
-  create: LocationCreateInput
-}
-
-export interface HouseUpdateOneWithoutViewsInput {
-  create?: HouseCreateWithoutViewsInput
-  connect?: HouseWhereUniqueInput
-  delete?: Boolean
-  update?: HouseUpdateWithoutViewsDataInput
-  upsert?: HouseUpsertWithoutViewsInput
-}
-
-export interface BookingUpdateManyWithoutBookeeInput {
-  create?: BookingCreateWithoutBookeeInput[] | BookingCreateWithoutBookeeInput
-  connect?: BookingWhereUniqueInput[] | BookingWhereUniqueInput
-  disconnect?: BookingWhereUniqueInput[] | BookingWhereUniqueInput
-  delete?: BookingWhereUniqueInput[] | BookingWhereUniqueInput
-  update?: BookingUpdateWithWhereUniqueWithoutBookeeInput[] | BookingUpdateWithWhereUniqueWithoutBookeeInput
-  upsert?: BookingUpsertWithWhereUniqueWithoutBookeeInput[] | BookingUpsertWithWhereUniqueWithoutBookeeInput
-}
-
-export interface HouseUpdateOneWithoutPricingInput {
-  create?: HouseCreateWithoutPricingInput
-  connect?: HouseWhereUniqueInput
-  delete?: Boolean
-  update?: HouseUpdateWithoutPricingDataInput
-  upsert?: HouseUpsertWithoutPricingInput
-}
-
 export interface BookingUpdateWithWhereUniqueWithoutBookeeInput {
   where: BookingWhereUniqueInput
   data: BookingUpdateWithoutBookeeDataInput
 }
 
-export interface BookingUpsertWithWhereUniqueWithoutBookeeInput {
-  where: BookingWhereUniqueInput
-  update: BookingUpdateWithoutBookeeDataInput
-  create: BookingCreateWithoutBookeeInput
+export interface HouseUpsertWithoutReviewsInput {
+  update: HouseUpdateWithoutReviewsDataInput
+  create: HouseCreateWithoutReviewsInput
 }
 
 export interface BookingUpdateWithoutBookeeDataInput {
   startDate?: DateTime
   endDate?: DateTime
-  House?: HouseUpdateOneWithoutBookingsInput
-  payment?: PaymentHouseUpdateOneWithoutBookingInput
+  House?: HouseUpdateOneRequiredWithoutBookingsInput
+  payment?: PaymentHouseUpdateOneRequiredWithoutBookingInput
 }
 
-export interface HouseUpsertWithWhereUniqueWithoutHostInput {
-  where: HouseWhereUniqueInput
-  update: HouseUpdateWithoutHostDataInput
-  create: HouseCreateWithoutHostInput
+export interface HouseUpsertWithoutAmenitiesInput {
+  update: HouseUpdateWithoutAmenitiesDataInput
+  create: HouseCreateWithoutAmenitiesInput
 }
 
-export interface HouseUpdateOneWithoutBookingsInput {
+export interface HouseUpdateOneRequiredWithoutBookingsInput {
   create?: HouseCreateWithoutBookingsInput
   connect?: HouseWhereUniqueInput
-  delete?: Boolean
   update?: HouseUpdateWithoutBookingsDataInput
   upsert?: HouseUpsertWithoutBookingsInput
 }
 
-export interface CreditCardInformationUpsertWithoutPaymentAccountInput {
-  update: CreditCardInformationUpdateWithoutPaymentAccountDataInput
-  create: CreditCardInformationCreateWithoutPaymentAccountInput
+export interface HouseUpsertWithoutViewsInput {
+  update: HouseUpdateWithoutViewsDataInput
+  create: HouseCreateWithoutViewsInput
 }
 
 export interface HouseUpdateWithoutBookingsDataInput {
@@ -11894,34 +12003,31 @@ export interface HouseUpdateWithoutBookingsDataInput {
   lease?: Int
   popularity?: Int
   reviews?: ReviewUpdateManyWithoutHouseInput
-  amenities?: AmenitiesUpdateOneWithoutHouseInput
-  host?: UserUpdateOneWithoutOwnedHousesInput
-  pricing?: PricingUpdateOneWithoutHouseInput
-  location?: LocationUpdateOneInput
+  amenities?: AmenitiesUpdateOneRequiredWithoutHouseInput
+  host?: UserUpdateOneRequiredWithoutOwnedHousesInput
+  pricing?: PricingUpdateOneRequiredWithoutHouseInput
+  location?: LocationUpdateOneRequiredInput
   rooms?: RoomUpdateManyWithoutHouseInput
   views?: ViewsUpdateOneWithoutHouseInput
   pictures?: PictureUpdateManyInput
   contactInfoPayments?: PaymentLanlordInfoUpdateManyWithoutHouseInput
 }
 
-export interface PaypalInformationUpdateWithoutPaymentAccountDataInput {
-  email?: String
+export interface HouseUpsertWithoutPricingInput {
+  update: HouseUpdateWithoutPricingDataInput
+  create: HouseCreateWithoutPricingInput
 }
 
-export interface PricingUpdateOneWithoutHouseInput {
+export interface PricingUpdateOneRequiredWithoutHouseInput {
   create?: PricingCreateWithoutHouseInput
   connect?: PricingWhereUniqueInput
-  delete?: Boolean
   update?: PricingUpdateWithoutHouseDataInput
   upsert?: PricingUpsertWithoutHouseInput
 }
 
-export interface UserUpdateOneInput {
-  create?: UserCreateInput
-  connect?: UserWhereUniqueInput
-  delete?: Boolean
-  update?: UserUpdateDataInput
-  upsert?: UserUpsertNestedInput
+export interface HouseUpsertWithoutRoomsInput {
+  update: HouseUpdateWithoutRoomsDataInput
+  create: HouseCreateWithoutRoomsInput
 }
 
 export interface PricingUpdateWithoutHouseDataInput {
@@ -11931,9 +12037,10 @@ export interface PricingUpdateWithoutHouseDataInput {
   income?: Int
 }
 
-export interface ReviewCreateManyWithoutHouseInput {
-  create?: ReviewCreateWithoutHouseInput[] | ReviewCreateWithoutHouseInput
-  connect?: ReviewWhereUniqueInput[] | ReviewWhereUniqueInput
+export interface PaymentLanlordInfoUpsertWithWhereUniqueWithoutHouseInput {
+  where: PaymentLanlordInfoWhereUniqueInput
+  update: PaymentLanlordInfoUpdateWithoutHouseDataInput
+  create: PaymentLanlordInfoCreateWithoutHouseInput
 }
 
 export interface PricingUpsertWithoutHouseInput {
@@ -11941,9 +12048,25 @@ export interface PricingUpsertWithoutHouseInput {
   create: PricingCreateWithoutHouseInput
 }
 
-export interface UserCreateOneWithoutOwnedHousesInput {
-  create?: UserCreateWithoutOwnedHousesInput
-  connect?: UserWhereUniqueInput
+export interface PaymentHouseUpsertWithoutBookingInput {
+  update: PaymentHouseUpdateWithoutBookingDataInput
+  create: PaymentHouseCreateWithoutBookingInput
+}
+
+export interface LocationUpdateOneRequiredInput {
+  create?: LocationCreateInput
+  connect?: LocationWhereUniqueInput
+  update?: LocationUpdateDataInput
+  upsert?: LocationUpsertNestedInput
+}
+
+export interface CreditCardInformationUpdateOneWithoutPaymentAccountInput {
+  create?: CreditCardInformationCreateWithoutPaymentAccountInput
+  connect?: CreditCardInformationWhereUniqueInput
+  disconnect?: Boolean
+  delete?: Boolean
+  update?: CreditCardInformationUpdateWithoutPaymentAccountDataInput
+  upsert?: CreditCardInformationUpsertWithoutPaymentAccountInput
 }
 
 export interface RoomUpdateManyWithoutHouseInput {
@@ -11955,14 +12078,58 @@ export interface RoomUpdateManyWithoutHouseInput {
   upsert?: RoomUpsertWithWhereUniqueWithoutHouseInput[] | RoomUpsertWithWhereUniqueWithoutHouseInput
 }
 
-export interface CommuneCreateOneInput {
-  create?: CommuneCreateInput
-  connect?: CommuneWhereUniqueInput
+export interface UserUpsertNestedInput {
+  update: UserUpdateDataInput
+  create: UserCreateInput
 }
 
 export interface RoomUpdateWithWhereUniqueWithoutHouseInput {
   where: RoomWhereUniqueInput
   data: RoomUpdateWithoutHouseDataInput
+}
+
+export interface HouseCreateOneWithoutRoomsInput {
+  create?: HouseCreateWithoutRoomsInput
+  connect?: HouseWhereUniqueInput
+}
+
+export interface RoomUpdateWithoutHouseDataInput {
+  label?: String
+  picture_previews?: PictureUpdateManyInput
+  video_previews?: VideoUpdateManyInput
+}
+
+export interface AmenitiesCreateOneWithoutHouseInput {
+  create?: AmenitiesCreateWithoutHouseInput
+  connect?: AmenitiesWhereUniqueInput
+}
+
+export interface PictureUpdateManyInput {
+  create?: PictureCreateInput[] | PictureCreateInput
+  connect?: PictureWhereUniqueInput[] | PictureWhereUniqueInput
+  disconnect?: PictureWhereUniqueInput[] | PictureWhereUniqueInput
+  delete?: PictureWhereUniqueInput[] | PictureWhereUniqueInput
+  update?: PictureUpdateWithWhereUniqueNestedInput[] | PictureUpdateWithWhereUniqueNestedInput
+  upsert?: PictureUpsertWithWhereUniqueNestedInput[] | PictureUpsertWithWhereUniqueNestedInput
+}
+
+export interface LocationCreateOneInput {
+  create?: LocationCreateInput
+  connect?: LocationWhereUniqueInput
+}
+
+export interface PictureUpdateWithWhereUniqueNestedInput {
+  where: PictureWhereUniqueInput
+  data: PictureUpdateDataInput
+}
+
+export interface CityCreateOneInput {
+  create?: CityCreateInput
+  connect?: CityWhereUniqueInput
+}
+
+export interface PictureUpdateDataInput {
+  url?: String
 }
 
 export interface PictureSubscriptionWhereInput {
@@ -11976,16 +12143,30 @@ export interface PictureSubscriptionWhereInput {
   node?: PictureWhereInput
 }
 
-export interface RoomUpdateWithoutHouseDataInput {
-  label?: String
-  picture_previews?: PictureUpdateManyInput
-  video_previews?: VideoUpdateManyInput
+export interface PictureUpsertWithWhereUniqueNestedInput {
+  where: PictureWhereUniqueInput
+  update: PictureUpdateDataInput
+  create: PictureCreateInput
 }
 
 export interface PictureWhereInput {
   AND?: PictureWhereInput[] | PictureWhereInput
   OR?: PictureWhereInput[] | PictureWhereInput
   NOT?: PictureWhereInput[] | PictureWhereInput
+  id?: ID_Input
+  id_not?: ID_Input
+  id_in?: ID_Input[] | ID_Input
+  id_not_in?: ID_Input[] | ID_Input
+  id_lt?: ID_Input
+  id_lte?: ID_Input
+  id_gt?: ID_Input
+  id_gte?: ID_Input
+  id_contains?: ID_Input
+  id_not_contains?: ID_Input
+  id_starts_with?: ID_Input
+  id_not_starts_with?: ID_Input
+  id_ends_with?: ID_Input
+  id_not_ends_with?: ID_Input
   url?: String
   url_not?: String
   url_in?: String[] | String
@@ -12002,8 +12183,13 @@ export interface PictureWhereInput {
   url_not_ends_with?: String
 }
 
-export interface PictureUpdateManyInput {
-  create?: PictureCreateInput[] | PictureCreateInput
+export interface VideoUpdateManyInput {
+  create?: VideoCreateInput[] | VideoCreateInput
+  connect?: VideoWhereUniqueInput[] | VideoWhereUniqueInput
+  disconnect?: VideoWhereUniqueInput[] | VideoWhereUniqueInput
+  delete?: VideoWhereUniqueInput[] | VideoWhereUniqueInput
+  update?: VideoUpdateWithWhereUniqueNestedInput[] | VideoUpdateWithWhereUniqueNestedInput
+  upsert?: VideoUpsertWithWhereUniqueNestedInput[] | VideoUpsertWithWhereUniqueNestedInput
 }
 
 export interface PaymentAccountSubscriptionWhereInput {
@@ -12017,8 +12203,9 @@ export interface PaymentAccountSubscriptionWhereInput {
   node?: PaymentAccountWhereInput
 }
 
-export interface VideoUpdateManyInput {
-  create?: VideoCreateInput[] | VideoCreateInput
+export interface VideoUpdateWithWhereUniqueNestedInput {
+  where: VideoWhereUniqueInput
+  data: VideoUpdateDataInput
 }
 
 export interface ReviewSubscriptionWhereInput {
@@ -12032,10 +12219,8 @@ export interface ReviewSubscriptionWhereInput {
   node?: ReviewWhereInput
 }
 
-export interface RoomUpsertWithWhereUniqueWithoutHouseInput {
-  where: RoomWhereUniqueInput
-  update: RoomUpdateWithoutHouseDataInput
-  create: RoomCreateWithoutHouseInput
+export interface VideoUpdateDataInput {
+  url?: String
 }
 
 export interface CityWhereInput {
@@ -12073,13 +12258,10 @@ export interface CityWhereInput {
   state?: StateWhereInput
 }
 
-export interface ViewsUpdateOneWithoutHouseInput {
-  create?: ViewsCreateWithoutHouseInput
-  connect?: ViewsWhereUniqueInput
-  disconnect?: Boolean
-  delete?: Boolean
-  update?: ViewsUpdateWithoutHouseDataInput
-  upsert?: ViewsUpsertWithoutHouseInput
+export interface VideoUpsertWithWhereUniqueNestedInput {
+  where: VideoWhereUniqueInput
+  update: VideoUpdateDataInput
+  create: VideoCreateInput
 }
 
 export interface ReviewWhereInput {
@@ -12173,11 +12355,34 @@ export interface ReviewWhereInput {
   House?: HouseWhereInput
 }
 
+export interface RoomUpsertWithWhereUniqueWithoutHouseInput {
+  where: RoomWhereUniqueInput
+  update: RoomUpdateWithoutHouseDataInput
+  create: RoomCreateWithoutHouseInput
+}
+
+export interface ReviewWhereUniqueInput {
+  id?: ID_Input
+}
+
+export interface ViewsUpdateOneWithoutHouseInput {
+  create?: ViewsCreateWithoutHouseInput
+  connect?: ViewsWhereUniqueInput
+  disconnect?: Boolean
+  delete?: Boolean
+  update?: ViewsUpdateWithoutHouseDataInput
+  upsert?: ViewsUpsertWithoutHouseInput
+}
+
+export interface PaymentLanlordInfoWhereUniqueInput {
+  id?: ID_Input
+}
+
 export interface ViewsUpdateWithoutHouseDataInput {
   lastWeek?: Int
 }
 
-export interface ReviewWhereUniqueInput {
+export interface VideoWhereUniqueInput {
   id?: ID_Input
 }
 
@@ -12186,8 +12391,9 @@ export interface ViewsUpsertWithoutHouseInput {
   create: ViewsCreateWithoutHouseInput
 }
 
-export interface PaymentLanlordInfoWhereUniqueInput {
-  id?: ID_Input
+export interface CommuneUpdateInput {
+  name?: String
+  city?: CityUpdateOneRequiredInput
 }
 
 export interface PaymentLanlordInfoUpdateManyWithoutHouseInput {
@@ -12199,8 +12405,11 @@ export interface PaymentLanlordInfoUpdateManyWithoutHouseInput {
   upsert?: PaymentLanlordInfoUpsertWithWhereUniqueWithoutHouseInput[] | PaymentLanlordInfoUpsertWithWhereUniqueWithoutHouseInput
 }
 
-export interface CityWhereUniqueInput {
-  id?: ID_Input
+export interface PaymentAccountUpdateWithoutCreditcardDataInput {
+  type?: PAYMENT_PROVIDER
+  user?: UserUpdateOneRequiredInput
+  payments?: PaymentHouseUpdateManyWithoutPaymentMethodInput
+  paypal?: PaypalInformationUpdateOneWithoutPaymentAccountInput
 }
 
 export interface PaymentLanlordInfoUpdateWithWhereUniqueWithoutHouseInput {
@@ -12208,44 +12417,36 @@ export interface PaymentLanlordInfoUpdateWithWhereUniqueWithoutHouseInput {
   data: PaymentLanlordInfoUpdateWithoutHouseDataInput
 }
 
-export interface UserUpsertWithoutNotificationsInput {
-  update: UserUpdateWithoutNotificationsDataInput
-  create: UserCreateWithoutNotificationsInput
+export interface PaymentHouseUpdateWithoutPaymentMethodDataInput {
+  totalPrice?: Float
+  booking?: BookingUpdateOneRequiredWithoutPaymentInput
 }
 
 export interface PaymentLanlordInfoUpdateWithoutHouseDataInput {
   totalPrice?: Float
   moncashTransactId?: String
-  client?: UserUpdateOneWithoutPaidContactsInput
+  client?: UserUpdateOneRequiredWithoutPaidContactsInput
 }
 
-export interface CreditCardInformationUpdateInput {
-  cardNumber?: String
-  expiresOnMonth?: Int
-  expiresOnYear?: Int
-  securityCode?: String
-  firstName?: String
-  lastName?: String
-  postalCode?: String
-  country?: String
-  paymentAccount?: PaymentAccountUpdateOneWithoutCreditcardInput
+export interface NegotiationUpdateInput {
+  offer?: Float
+  status?: NEGOTIATION_TYPE
+  negotiator?: UserUpdateOneRequiredInput
+  House?: HouseUpdateOneRequiredInput
 }
 
-export interface UserUpdateOneWithoutPaidContactsInput {
+export interface UserUpdateOneRequiredWithoutPaidContactsInput {
   create?: UserCreateWithoutPaidContactsInput
   connect?: UserWhereUniqueInput
-  delete?: Boolean
   update?: UserUpdateWithoutPaidContactsDataInput
   upsert?: UserUpsertWithoutPaidContactsInput
 }
 
-export interface PaymentHouseUpdateManyWithoutPaymentMethodInput {
-  create?: PaymentHouseCreateWithoutPaymentMethodInput[] | PaymentHouseCreateWithoutPaymentMethodInput
-  connect?: PaymentHouseWhereUniqueInput[] | PaymentHouseWhereUniqueInput
-  disconnect?: PaymentHouseWhereUniqueInput[] | PaymentHouseWhereUniqueInput
-  delete?: PaymentHouseWhereUniqueInput[] | PaymentHouseWhereUniqueInput
-  update?: PaymentHouseUpdateWithWhereUniqueWithoutPaymentMethodInput[] | PaymentHouseUpdateWithWhereUniqueWithoutPaymentMethodInput
-  upsert?: PaymentHouseUpsertWithWhereUniqueWithoutPaymentMethodInput[] | PaymentHouseUpsertWithWhereUniqueWithoutPaymentMethodInput
+export interface HouseUpdateOneRequiredWithoutReviewsInput {
+  create?: HouseCreateWithoutReviewsInput
+  connect?: HouseWhereUniqueInput
+  update?: HouseUpdateWithoutReviewsDataInput
+  upsert?: HouseUpsertWithoutReviewsInput
 }
 
 export interface UserUpdateWithoutPaidContactsDataInput {
@@ -12267,31 +12468,11 @@ export interface UserUpdateWithoutPaidContactsDataInput {
   profilePicture?: PictureUpdateOneInput
 }
 
-export interface HouseUpdateDataInput {
-  name?: String
-  area?: Int
-  age?: Int
-  shortDescription?: String
-  description?: String
-  maxGuests?: Int
-  numBedrooms?: Int
-  numBaths?: Int
-  leaseType?: HOUSE_LEASE_TYPE
-  verified?: Boolean
-  type?: HOUSE_TYPES
-  residency?: House_RESIDENCY
-  lease?: Int
-  popularity?: Int
-  reviews?: ReviewUpdateManyWithoutHouseInput
-  amenities?: AmenitiesUpdateOneWithoutHouseInput
-  host?: UserUpdateOneWithoutOwnedHousesInput
-  pricing?: PricingUpdateOneWithoutHouseInput
-  location?: LocationUpdateOneInput
-  rooms?: RoomUpdateManyWithoutHouseInput
-  views?: ViewsUpdateOneWithoutHouseInput
-  bookings?: BookingUpdateManyWithoutHouseInput
-  pictures?: PictureUpdateManyInput
-  contactInfoPayments?: PaymentLanlordInfoUpdateManyWithoutHouseInput
+export interface HouseUpdateOneRequiredWithoutViewsInput {
+  create?: HouseCreateWithoutViewsInput
+  connect?: HouseWhereUniqueInput
+  update?: HouseUpdateWithoutViewsDataInput
+  upsert?: HouseUpsertWithoutViewsInput
 }
 
 export interface HouseUpdateManyWithoutHostInput {
@@ -12303,9 +12484,10 @@ export interface HouseUpdateManyWithoutHostInput {
   upsert?: HouseUpsertWithWhereUniqueWithoutHostInput[] | HouseUpsertWithWhereUniqueWithoutHostInput
 }
 
-export interface HouseUpsertWithoutAmenitiesInput {
-  update: HouseUpdateWithoutAmenitiesDataInput
-  create: HouseCreateWithoutAmenitiesInput
+export interface BookingUpsertWithWhereUniqueWithoutBookeeInput {
+  where: BookingWhereUniqueInput
+  update: BookingUpdateWithoutBookeeDataInput
+  create: BookingCreateWithoutBookeeInput
 }
 
 export interface HouseUpdateWithWhereUniqueWithoutHostInput {
@@ -12313,9 +12495,9 @@ export interface HouseUpdateWithWhereUniqueWithoutHostInput {
   data: HouseUpdateWithoutHostDataInput
 }
 
-export interface HouseUpsertWithoutPricingInput {
-  update: HouseUpdateWithoutPricingDataInput
-  create: HouseCreateWithoutPricingInput
+export interface CreditCardInformationUpsertWithoutPaymentAccountInput {
+  update: CreditCardInformationUpdateWithoutPaymentAccountDataInput
+  create: CreditCardInformationCreateWithoutPaymentAccountInput
 }
 
 export interface HouseUpdateWithoutHostDataInput {
@@ -12334,9 +12516,9 @@ export interface HouseUpdateWithoutHostDataInput {
   lease?: Int
   popularity?: Int
   reviews?: ReviewUpdateManyWithoutHouseInput
-  amenities?: AmenitiesUpdateOneWithoutHouseInput
-  pricing?: PricingUpdateOneWithoutHouseInput
-  location?: LocationUpdateOneInput
+  amenities?: AmenitiesUpdateOneRequiredWithoutHouseInput
+  pricing?: PricingUpdateOneRequiredWithoutHouseInput
+  location?: LocationUpdateOneRequiredInput
   rooms?: RoomUpdateManyWithoutHouseInput
   views?: ViewsUpdateOneWithoutHouseInput
   bookings?: BookingUpdateManyWithoutHouseInput
@@ -12344,10 +12526,11 @@ export interface HouseUpdateWithoutHostDataInput {
   contactInfoPayments?: PaymentLanlordInfoUpdateManyWithoutHouseInput
 }
 
-export interface PaymentLanlordInfoUpsertWithWhereUniqueWithoutHouseInput {
-  where: PaymentLanlordInfoWhereUniqueInput
-  update: PaymentLanlordInfoUpdateWithoutHouseDataInput
-  create: PaymentLanlordInfoCreateWithoutHouseInput
+export interface UserUpdateOneRequiredInput {
+  create?: UserCreateInput
+  connect?: UserWhereUniqueInput
+  update?: UserUpdateDataInput
+  upsert?: UserUpsertNestedInput
 }
 
 export interface BookingUpdateManyWithoutHouseInput {
@@ -12359,13 +12542,9 @@ export interface BookingUpdateManyWithoutHouseInput {
   upsert?: BookingUpsertWithWhereUniqueWithoutHouseInput[] | BookingUpsertWithWhereUniqueWithoutHouseInput
 }
 
-export interface CreditCardInformationUpdateOneWithoutPaymentAccountInput {
-  create?: CreditCardInformationCreateWithoutPaymentAccountInput
-  connect?: CreditCardInformationWhereUniqueInput
-  disconnect?: Boolean
-  delete?: Boolean
-  update?: CreditCardInformationUpdateWithoutPaymentAccountDataInput
-  upsert?: CreditCardInformationUpsertWithoutPaymentAccountInput
+export interface UserCreateOneWithoutOwnedHousesInput {
+  create?: UserCreateWithoutOwnedHousesInput
+  connect?: UserWhereUniqueInput
 }
 
 export interface BookingUpdateWithWhereUniqueWithoutHouseInput {
@@ -12373,336 +12552,16 @@ export interface BookingUpdateWithWhereUniqueWithoutHouseInput {
   data: BookingUpdateWithoutHouseDataInput
 }
 
-export interface HouseCreateOneWithoutRoomsInput {
-  create?: HouseCreateWithoutRoomsInput
-  connect?: HouseWhereUniqueInput
+export interface StateCreateOneInput {
+  create?: StateCreateInput
+  connect?: StateWhereUniqueInput
 }
 
 export interface BookingUpdateWithoutHouseDataInput {
   startDate?: DateTime
   endDate?: DateTime
-  bookee?: UserUpdateOneWithoutBookingsInput
-  payment?: PaymentHouseUpdateOneWithoutBookingInput
-}
-
-export interface LocationCreateOneInput {
-  create?: LocationCreateInput
-  connect?: LocationWhereUniqueInput
-}
-
-export interface UserUpdateOneWithoutBookingsInput {
-  create?: UserCreateWithoutBookingsInput
-  connect?: UserWhereUniqueInput
-  delete?: Boolean
-  update?: UserUpdateWithoutBookingsDataInput
-  upsert?: UserUpsertWithoutBookingsInput
-}
-
-export interface UserSubscriptionWhereInput {
-  AND?: UserSubscriptionWhereInput[] | UserSubscriptionWhereInput
-  OR?: UserSubscriptionWhereInput[] | UserSubscriptionWhereInput
-  NOT?: UserSubscriptionWhereInput[] | UserSubscriptionWhereInput
-  mutation_in?: MutationType[] | MutationType
-  updatedFields_contains?: String
-  updatedFields_contains_every?: String[] | String
-  updatedFields_contains_some?: String[] | String
-  node?: UserWhereInput
-}
-
-export interface UserUpdateWithoutBookingsDataInput {
-  status?: Boolean
-  facebookUserId?: String
-  firstName?: String
-  lastName?: String
-  email?: String
-  password?: String
-  phone1?: String
-  phone2?: String
-  primaryPhone?: Int
-  responseTime?: Int
-  isSuperHost?: Boolean
-  ownedHouses?: HouseUpdateManyWithoutHostInput
-  location?: LocationUpdateOneInput
-  paidContacts?: PaymentLanlordInfoUpdateManyWithoutClientInput
-  notifications?: NotificationUpdateManyWithoutUserInput
-  profilePicture?: PictureUpdateOneInput
-}
-
-export interface House_FavoritedSubscriptionWhereInput {
-  AND?: House_FavoritedSubscriptionWhereInput[] | House_FavoritedSubscriptionWhereInput
-  OR?: House_FavoritedSubscriptionWhereInput[] | House_FavoritedSubscriptionWhereInput
-  NOT?: House_FavoritedSubscriptionWhereInput[] | House_FavoritedSubscriptionWhereInput
-  mutation_in?: MutationType[] | MutationType
-  updatedFields_contains?: String
-  updatedFields_contains_every?: String[] | String
-  updatedFields_contains_some?: String[] | String
-  node?: House_FavoritedWhereInput
-}
-
-export interface PaymentLanlordInfoUpdateManyWithoutClientInput {
-  create?: PaymentLanlordInfoCreateWithoutClientInput[] | PaymentLanlordInfoCreateWithoutClientInput
-  connect?: PaymentLanlordInfoWhereUniqueInput[] | PaymentLanlordInfoWhereUniqueInput
-  disconnect?: PaymentLanlordInfoWhereUniqueInput[] | PaymentLanlordInfoWhereUniqueInput
-  delete?: PaymentLanlordInfoWhereUniqueInput[] | PaymentLanlordInfoWhereUniqueInput
-  update?: PaymentLanlordInfoUpdateWithWhereUniqueWithoutClientInput[] | PaymentLanlordInfoUpdateWithWhereUniqueWithoutClientInput
-  upsert?: PaymentLanlordInfoUpsertWithWhereUniqueWithoutClientInput[] | PaymentLanlordInfoUpsertWithWhereUniqueWithoutClientInput
-}
-
-export interface LocationWhereInput {
-  AND?: LocationWhereInput[] | LocationWhereInput
-  OR?: LocationWhereInput[] | LocationWhereInput
-  NOT?: LocationWhereInput[] | LocationWhereInput
-  id?: ID_Input
-  id_not?: ID_Input
-  id_in?: ID_Input[] | ID_Input
-  id_not_in?: ID_Input[] | ID_Input
-  id_lt?: ID_Input
-  id_lte?: ID_Input
-  id_gt?: ID_Input
-  id_gte?: ID_Input
-  id_contains?: ID_Input
-  id_not_contains?: ID_Input
-  id_starts_with?: ID_Input
-  id_not_starts_with?: ID_Input
-  id_ends_with?: ID_Input
-  id_not_ends_with?: ID_Input
-  lat?: Float
-  lat_not?: Float
-  lat_in?: Float[] | Float
-  lat_not_in?: Float[] | Float
-  lat_lt?: Float
-  lat_lte?: Float
-  lat_gt?: Float
-  lat_gte?: Float
-  lng?: Float
-  lng_not?: Float
-  lng_in?: Float[] | Float
-  lng_not_in?: Float[] | Float
-  lng_lt?: Float
-  lng_lte?: Float
-  lng_gt?: Float
-  lng_gte?: Float
-  address?: String
-  address_not?: String
-  address_in?: String[] | String
-  address_not_in?: String[] | String
-  address_lt?: String
-  address_lte?: String
-  address_gt?: String
-  address_gte?: String
-  address_contains?: String
-  address_not_contains?: String
-  address_starts_with?: String
-  address_not_starts_with?: String
-  address_ends_with?: String
-  address_not_ends_with?: String
-  commune?: CommuneWhereInput
-}
-
-export interface PaymentLanlordInfoUpdateWithWhereUniqueWithoutClientInput {
-  where: PaymentLanlordInfoWhereUniqueInput
-  data: PaymentLanlordInfoUpdateWithoutClientDataInput
-}
-
-export interface PaymentHouseWhereUniqueInput {
-  id?: ID_Input
-}
-
-export interface PaymentLanlordInfoUpdateWithoutClientDataInput {
-  totalPrice?: Float
-  moncashTransactId?: String
-  House?: HouseUpdateOneWithoutContactInfoPaymentsInput
-}
-
-export interface StateUpdateInput {
-  name?: String
-  country?: CountryUpdateOneInput
-}
-
-export interface HouseUpdateOneWithoutContactInfoPaymentsInput {
-  create?: HouseCreateWithoutContactInfoPaymentsInput
-  connect?: HouseWhereUniqueInput
-  delete?: Boolean
-  update?: HouseUpdateWithoutContactInfoPaymentsDataInput
-  upsert?: HouseUpsertWithoutContactInfoPaymentsInput
-}
-
-export interface PaypalInformationUpdateInput {
-  email?: String
-  paymentAccount?: PaymentAccountUpdateOneWithoutPaypalInput
-}
-
-export interface HouseUpdateWithoutContactInfoPaymentsDataInput {
-  name?: String
-  area?: Int
-  age?: Int
-  shortDescription?: String
-  description?: String
-  maxGuests?: Int
-  numBedrooms?: Int
-  numBaths?: Int
-  leaseType?: HOUSE_LEASE_TYPE
-  verified?: Boolean
-  type?: HOUSE_TYPES
-  residency?: House_RESIDENCY
-  lease?: Int
-  popularity?: Int
-  reviews?: ReviewUpdateManyWithoutHouseInput
-  amenities?: AmenitiesUpdateOneWithoutHouseInput
-  host?: UserUpdateOneWithoutOwnedHousesInput
-  pricing?: PricingUpdateOneWithoutHouseInput
-  location?: LocationUpdateOneInput
-  rooms?: RoomUpdateManyWithoutHouseInput
-  views?: ViewsUpdateOneWithoutHouseInput
-  bookings?: BookingUpdateManyWithoutHouseInput
-  pictures?: PictureUpdateManyInput
-}
-
-export interface HouseUpsertWithoutReviewsInput {
-  update: HouseUpdateWithoutReviewsDataInput
-  create: HouseCreateWithoutReviewsInput
-}
-
-export interface HouseUpsertWithoutContactInfoPaymentsInput {
-  update: HouseUpdateWithoutContactInfoPaymentsDataInput
-  create: HouseCreateWithoutContactInfoPaymentsInput
-}
-
-export interface HouseUpsertWithoutRoomsInput {
-  update: HouseUpdateWithoutRoomsDataInput
-  create: HouseCreateWithoutRoomsInput
-}
-
-export interface PaymentLanlordInfoUpsertWithWhereUniqueWithoutClientInput {
-  where: PaymentLanlordInfoWhereUniqueInput
-  update: PaymentLanlordInfoUpdateWithoutClientDataInput
-  create: PaymentLanlordInfoCreateWithoutClientInput
-}
-
-export interface UserUpsertNestedInput {
-  update: UserUpdateDataInput
-  create: UserCreateInput
-}
-
-export interface NotificationUpdateManyWithoutUserInput {
-  create?: NotificationCreateWithoutUserInput[] | NotificationCreateWithoutUserInput
-  connect?: NotificationWhereUniqueInput[] | NotificationWhereUniqueInput
-  disconnect?: NotificationWhereUniqueInput[] | NotificationWhereUniqueInput
-  delete?: NotificationWhereUniqueInput[] | NotificationWhereUniqueInput
-  update?: NotificationUpdateWithWhereUniqueWithoutUserInput[] | NotificationUpdateWithWhereUniqueWithoutUserInput
-  upsert?: NotificationUpsertWithWhereUniqueWithoutUserInput[] | NotificationUpsertWithWhereUniqueWithoutUserInput
-}
-
-export interface CityCreateOneInput {
-  create?: CityCreateInput
-  connect?: CityWhereUniqueInput
-}
-
-export interface NotificationUpdateWithWhereUniqueWithoutUserInput {
-  where: NotificationWhereUniqueInput
-  data: NotificationUpdateWithoutUserDataInput
-}
-
-export interface House_FavoritedWhereInput {
-  AND?: House_FavoritedWhereInput[] | House_FavoritedWhereInput
-  OR?: House_FavoritedWhereInput[] | House_FavoritedWhereInput
-  NOT?: House_FavoritedWhereInput[] | House_FavoritedWhereInput
-  id?: ID_Input
-  id_not?: ID_Input
-  id_in?: ID_Input[] | ID_Input
-  id_not_in?: ID_Input[] | ID_Input
-  id_lt?: ID_Input
-  id_lte?: ID_Input
-  id_gt?: ID_Input
-  id_gte?: ID_Input
-  id_contains?: ID_Input
-  id_not_contains?: ID_Input
-  id_starts_with?: ID_Input
-  id_not_starts_with?: ID_Input
-  id_ends_with?: ID_Input
-  id_not_ends_with?: ID_Input
-  createdAt?: DateTime
-  createdAt_not?: DateTime
-  createdAt_in?: DateTime[] | DateTime
-  createdAt_not_in?: DateTime[] | DateTime
-  createdAt_lt?: DateTime
-  createdAt_lte?: DateTime
-  createdAt_gt?: DateTime
-  createdAt_gte?: DateTime
-  user?: UserWhereInput
-  house?: HouseWhereInput
-}
-
-export interface NotificationUpdateWithoutUserDataInput {
-  type?: NOTIFICATION_TYPE
-  link?: String
-  readDate?: DateTime
-}
-
-export interface CountryWhereUniqueInput {
-  id?: ID_Input
-}
-
-export interface NotificationUpsertWithWhereUniqueWithoutUserInput {
-  where: NotificationWhereUniqueInput
-  update: NotificationUpdateWithoutUserDataInput
-  create: NotificationCreateWithoutUserInput
-}
-
-export interface BookingUpdateOneWithoutPaymentInput {
-  create?: BookingCreateWithoutPaymentInput
-  connect?: BookingWhereUniqueInput
-  delete?: Boolean
-  update?: BookingUpdateWithoutPaymentDataInput
-  upsert?: BookingUpsertWithoutPaymentInput
-}
-
-export interface PaymentHouseUpsertWithoutBookingInput {
-  update: PaymentHouseUpdateWithoutBookingDataInput
-  create: PaymentHouseCreateWithoutBookingInput
-}
-
-export interface UserUpsertWithoutBookingsInput {
-  update: UserUpdateWithoutBookingsDataInput
-  create: UserCreateWithoutBookingsInput
-}
-
-export interface PictureUpsertNestedInput {
-  update: PictureUpdateDataInput
-  create: PictureCreateInput
-}
-
-export interface PictureUpdateDataInput {
-  url?: String
-}
-
-export interface PictureUpdateOneInput {
-  create?: PictureCreateInput
-  disconnect?: Boolean
-  delete?: Boolean
-  update?: PictureUpdateDataInput
-  upsert?: PictureUpsertNestedInput
-}
-
-export interface AmenitiesCreateOneWithoutHouseInput {
-  create?: AmenitiesCreateWithoutHouseInput
-  connect?: AmenitiesWhereUniqueInput
-}
-
-export interface HouseUpsertWithoutViewsInput {
-  update: HouseUpdateWithoutViewsDataInput
-  create: HouseCreateWithoutViewsInput
-}
-
-export interface PaymentLanlordInfoUpdateInput {
-  totalPrice?: Float
-  moncashTransactId?: String
-  client?: UserUpdateOneWithoutPaidContactsInput
-  House?: HouseUpdateOneWithoutContactInfoPaymentsInput
-}
-
-export interface RoomWhereUniqueInput {
-  id?: ID_Input
+  bookee?: UserUpdateOneRequiredWithoutBookingsInput
+  payment?: PaymentHouseUpdateOneRequiredWithoutBookingInput
 }
 
 export interface NotificationWhereInput {
@@ -12760,6 +12619,341 @@ export interface NotificationWhereInput {
   user?: UserWhereInput
 }
 
+export interface UserUpdateOneRequiredWithoutBookingsInput {
+  create?: UserCreateWithoutBookingsInput
+  connect?: UserWhereUniqueInput
+  update?: UserUpdateWithoutBookingsDataInput
+  upsert?: UserUpsertWithoutBookingsInput
+}
+
+export interface House_FavoritedWhereInput {
+  AND?: House_FavoritedWhereInput[] | House_FavoritedWhereInput
+  OR?: House_FavoritedWhereInput[] | House_FavoritedWhereInput
+  NOT?: House_FavoritedWhereInput[] | House_FavoritedWhereInput
+  id?: ID_Input
+  id_not?: ID_Input
+  id_in?: ID_Input[] | ID_Input
+  id_not_in?: ID_Input[] | ID_Input
+  id_lt?: ID_Input
+  id_lte?: ID_Input
+  id_gt?: ID_Input
+  id_gte?: ID_Input
+  id_contains?: ID_Input
+  id_not_contains?: ID_Input
+  id_starts_with?: ID_Input
+  id_not_starts_with?: ID_Input
+  id_ends_with?: ID_Input
+  id_not_ends_with?: ID_Input
+  createdAt?: DateTime
+  createdAt_not?: DateTime
+  createdAt_in?: DateTime[] | DateTime
+  createdAt_not_in?: DateTime[] | DateTime
+  createdAt_lt?: DateTime
+  createdAt_lte?: DateTime
+  createdAt_gt?: DateTime
+  createdAt_gte?: DateTime
+  user?: UserWhereInput
+  house?: HouseWhereInput
+}
+
+export interface UserUpdateWithoutBookingsDataInput {
+  status?: Boolean
+  facebookUserId?: String
+  firstName?: String
+  lastName?: String
+  email?: String
+  password?: String
+  phone1?: String
+  phone2?: String
+  primaryPhone?: Int
+  responseTime?: Int
+  isSuperHost?: Boolean
+  ownedHouses?: HouseUpdateManyWithoutHostInput
+  location?: LocationUpdateOneInput
+  paidContacts?: PaymentLanlordInfoUpdateManyWithoutClientInput
+  notifications?: NotificationUpdateManyWithoutUserInput
+  profilePicture?: PictureUpdateOneInput
+}
+
+export interface RoomWhereUniqueInput {
+  id?: ID_Input
+}
+
+export interface PaymentLanlordInfoUpdateManyWithoutClientInput {
+  create?: PaymentLanlordInfoCreateWithoutClientInput[] | PaymentLanlordInfoCreateWithoutClientInput
+  connect?: PaymentLanlordInfoWhereUniqueInput[] | PaymentLanlordInfoWhereUniqueInput
+  disconnect?: PaymentLanlordInfoWhereUniqueInput[] | PaymentLanlordInfoWhereUniqueInput
+  delete?: PaymentLanlordInfoWhereUniqueInput[] | PaymentLanlordInfoWhereUniqueInput
+  update?: PaymentLanlordInfoUpdateWithWhereUniqueWithoutClientInput[] | PaymentLanlordInfoUpdateWithWhereUniqueWithoutClientInput
+  upsert?: PaymentLanlordInfoUpsertWithWhereUniqueWithoutClientInput[] | PaymentLanlordInfoUpsertWithWhereUniqueWithoutClientInput
+}
+
+export interface CountryWhereUniqueInput {
+  id?: ID_Input
+}
+
+export interface PaymentLanlordInfoUpdateWithWhereUniqueWithoutClientInput {
+  where: PaymentLanlordInfoWhereUniqueInput
+  data: PaymentLanlordInfoUpdateWithoutClientDataInput
+}
+
+export interface UserUpdateOneRequiredWithoutNotificationsInput {
+  create?: UserCreateWithoutNotificationsInput
+  connect?: UserWhereUniqueInput
+  update?: UserUpdateWithoutNotificationsDataInput
+  upsert?: UserUpsertWithoutNotificationsInput
+}
+
+export interface PaymentLanlordInfoUpdateWithoutClientDataInput {
+  totalPrice?: Float
+  moncashTransactId?: String
+  House?: HouseUpdateOneRequiredWithoutContactInfoPaymentsInput
+}
+
+export interface BookingUpsertWithoutPaymentInput {
+  update: BookingUpdateWithoutPaymentDataInput
+  create: BookingCreateWithoutPaymentInput
+}
+
+export interface HouseUpdateOneRequiredWithoutContactInfoPaymentsInput {
+  create?: HouseCreateWithoutContactInfoPaymentsInput
+  connect?: HouseWhereUniqueInput
+  update?: HouseUpdateWithoutContactInfoPaymentsDataInput
+  upsert?: HouseUpsertWithoutContactInfoPaymentsInput
+}
+
+export interface HouseUpdateOneRequiredWithoutAmenitiesInput {
+  create?: HouseCreateWithoutAmenitiesInput
+  connect?: HouseWhereUniqueInput
+  update?: HouseUpdateWithoutAmenitiesDataInput
+  upsert?: HouseUpsertWithoutAmenitiesInput
+}
+
+export interface HouseUpdateWithoutContactInfoPaymentsDataInput {
+  name?: String
+  area?: Int
+  age?: Int
+  shortDescription?: String
+  description?: String
+  maxGuests?: Int
+  numBedrooms?: Int
+  numBaths?: Int
+  leaseType?: HOUSE_LEASE_TYPE
+  verified?: Boolean
+  type?: HOUSE_TYPES
+  residency?: House_RESIDENCY
+  lease?: Int
+  popularity?: Int
+  reviews?: ReviewUpdateManyWithoutHouseInput
+  amenities?: AmenitiesUpdateOneRequiredWithoutHouseInput
+  host?: UserUpdateOneRequiredWithoutOwnedHousesInput
+  pricing?: PricingUpdateOneRequiredWithoutHouseInput
+  location?: LocationUpdateOneRequiredInput
+  rooms?: RoomUpdateManyWithoutHouseInput
+  views?: ViewsUpdateOneWithoutHouseInput
+  bookings?: BookingUpdateManyWithoutHouseInput
+  pictures?: PictureUpdateManyInput
+}
+
+export interface HouseUpsertWithWhereUniqueWithoutHostInput {
+  where: HouseWhereUniqueInput
+  update: HouseUpdateWithoutHostDataInput
+  create: HouseCreateWithoutHostInput
+}
+
+export interface HouseUpsertWithoutContactInfoPaymentsInput {
+  update: HouseUpdateWithoutContactInfoPaymentsDataInput
+  create: HouseCreateWithoutContactInfoPaymentsInput
+}
+
+export interface ReviewCreateManyWithoutHouseInput {
+  create?: ReviewCreateWithoutHouseInput[] | ReviewCreateWithoutHouseInput
+  connect?: ReviewWhereUniqueInput[] | ReviewWhereUniqueInput
+}
+
+export interface PaymentLanlordInfoUpsertWithWhereUniqueWithoutClientInput {
+  where: PaymentLanlordInfoWhereUniqueInput
+  update: PaymentLanlordInfoUpdateWithoutClientDataInput
+  create: PaymentLanlordInfoCreateWithoutClientInput
+}
+
+export interface UserSubscriptionWhereInput {
+  AND?: UserSubscriptionWhereInput[] | UserSubscriptionWhereInput
+  OR?: UserSubscriptionWhereInput[] | UserSubscriptionWhereInput
+  NOT?: UserSubscriptionWhereInput[] | UserSubscriptionWhereInput
+  mutation_in?: MutationType[] | MutationType
+  updatedFields_contains?: String
+  updatedFields_contains_every?: String[] | String
+  updatedFields_contains_some?: String[] | String
+  node?: UserWhereInput
+}
+
+export interface NotificationUpdateManyWithoutUserInput {
+  create?: NotificationCreateWithoutUserInput[] | NotificationCreateWithoutUserInput
+  connect?: NotificationWhereUniqueInput[] | NotificationWhereUniqueInput
+  disconnect?: NotificationWhereUniqueInput[] | NotificationWhereUniqueInput
+  delete?: NotificationWhereUniqueInput[] | NotificationWhereUniqueInput
+  update?: NotificationUpdateWithWhereUniqueWithoutUserInput[] | NotificationUpdateWithWhereUniqueWithoutUserInput
+  upsert?: NotificationUpsertWithWhereUniqueWithoutUserInput[] | NotificationUpsertWithWhereUniqueWithoutUserInput
+}
+
+export interface LocationWhereInput {
+  AND?: LocationWhereInput[] | LocationWhereInput
+  OR?: LocationWhereInput[] | LocationWhereInput
+  NOT?: LocationWhereInput[] | LocationWhereInput
+  id?: ID_Input
+  id_not?: ID_Input
+  id_in?: ID_Input[] | ID_Input
+  id_not_in?: ID_Input[] | ID_Input
+  id_lt?: ID_Input
+  id_lte?: ID_Input
+  id_gt?: ID_Input
+  id_gte?: ID_Input
+  id_contains?: ID_Input
+  id_not_contains?: ID_Input
+  id_starts_with?: ID_Input
+  id_not_starts_with?: ID_Input
+  id_ends_with?: ID_Input
+  id_not_ends_with?: ID_Input
+  lat?: Float
+  lat_not?: Float
+  lat_in?: Float[] | Float
+  lat_not_in?: Float[] | Float
+  lat_lt?: Float
+  lat_lte?: Float
+  lat_gt?: Float
+  lat_gte?: Float
+  lng?: Float
+  lng_not?: Float
+  lng_in?: Float[] | Float
+  lng_not_in?: Float[] | Float
+  lng_lt?: Float
+  lng_lte?: Float
+  lng_gt?: Float
+  lng_gte?: Float
+  address?: String
+  address_not?: String
+  address_in?: String[] | String
+  address_not_in?: String[] | String
+  address_lt?: String
+  address_lte?: String
+  address_gt?: String
+  address_gte?: String
+  address_contains?: String
+  address_not_contains?: String
+  address_starts_with?: String
+  address_not_starts_with?: String
+  address_ends_with?: String
+  address_not_ends_with?: String
+  commune?: CommuneWhereInput
+}
+
+export interface NotificationUpdateWithWhereUniqueWithoutUserInput {
+  where: NotificationWhereUniqueInput
+  data: NotificationUpdateWithoutUserDataInput
+}
+
+export interface HouseUpdateInput {
+  name?: String
+  area?: Int
+  age?: Int
+  shortDescription?: String
+  description?: String
+  maxGuests?: Int
+  numBedrooms?: Int
+  numBaths?: Int
+  leaseType?: HOUSE_LEASE_TYPE
+  verified?: Boolean
+  type?: HOUSE_TYPES
+  residency?: House_RESIDENCY
+  lease?: Int
+  popularity?: Int
+  reviews?: ReviewUpdateManyWithoutHouseInput
+  amenities?: AmenitiesUpdateOneRequiredWithoutHouseInput
+  host?: UserUpdateOneRequiredWithoutOwnedHousesInput
+  pricing?: PricingUpdateOneRequiredWithoutHouseInput
+  location?: LocationUpdateOneRequiredInput
+  rooms?: RoomUpdateManyWithoutHouseInput
+  views?: ViewsUpdateOneWithoutHouseInput
+  bookings?: BookingUpdateManyWithoutHouseInput
+  pictures?: PictureUpdateManyInput
+  contactInfoPayments?: PaymentLanlordInfoUpdateManyWithoutHouseInput
+}
+
+export interface NotificationUpdateWithoutUserDataInput {
+  type?: NOTIFICATION_TYPE
+  link?: String
+  readDate?: DateTime
+}
+
+export interface House_FavoritedUpdateInput {
+  user?: UserUpdateOneRequiredInput
+  house?: HouseUpdateOneRequiredInput
+}
+
+export interface PaypalInformationUpdateWithoutPaymentAccountDataInput {
+  email?: String
+}
+
+export interface UserUpsertWithoutBookingsInput {
+  update: UserUpdateWithoutBookingsDataInput
+  create: UserCreateWithoutBookingsInput
+}
+
+export interface PictureUpsertNestedInput {
+  update: PictureUpdateDataInput
+  create: PictureCreateInput
+}
+
+export interface PictureUpdateOneInput {
+  create?: PictureCreateInput
+  connect?: PictureWhereUniqueInput
+  disconnect?: Boolean
+  delete?: Boolean
+  update?: PictureUpdateDataInput
+  upsert?: PictureUpsertNestedInput
+}
+
+export interface NotificationUpsertWithWhereUniqueWithoutUserInput {
+  where: NotificationWhereUniqueInput
+  update: NotificationUpdateWithoutUserDataInput
+  create: NotificationCreateWithoutUserInput
+}
+
+export interface CommuneCreateOneInput {
+  create?: CommuneCreateInput
+  connect?: CommuneWhereUniqueInput
+}
+
+export interface HouseUpdateOneRequiredWithoutPricingInput {
+  create?: HouseCreateWithoutPricingInput
+  connect?: HouseWhereUniqueInput
+  update?: HouseUpdateWithoutPricingDataInput
+  upsert?: HouseUpsertWithoutPricingInput
+}
+
+export interface PaymentAccountUpdateWithoutPaypalDataInput {
+  type?: PAYMENT_PROVIDER
+  user?: UserUpdateOneRequiredInput
+  payments?: PaymentHouseUpdateManyWithoutPaymentMethodInput
+  creditcard?: CreditCardInformationUpdateOneWithoutPaymentAccountInput
+}
+
+export interface PaymentHouseWhereUniqueInput {
+  id?: ID_Input
+}
+
+export interface House_FavoritedSubscriptionWhereInput {
+  AND?: House_FavoritedSubscriptionWhereInput[] | House_FavoritedSubscriptionWhereInput
+  OR?: House_FavoritedSubscriptionWhereInput[] | House_FavoritedSubscriptionWhereInput
+  NOT?: House_FavoritedSubscriptionWhereInput[] | House_FavoritedSubscriptionWhereInput
+  mutation_in?: MutationType[] | MutationType
+  updatedFields_contains?: String
+  updatedFields_contains_every?: String[] | String
+  updatedFields_contains_some?: String[] | String
+  node?: House_FavoritedWhereInput
+}
+
 /*
  * An object with an ID
 
@@ -12768,35 +12962,9 @@ export interface Node {
   id: ID_Output
 }
 
-export interface BatchPayload {
-  count: Long
-}
-
 export interface CityPreviousValues {
   id: ID_Output
   name: String
-}
-
-/*
- * A connection to a list of items.
-
- */
-export interface RoomConnection {
-  pageInfo: PageInfo
-  edges: RoomEdge[]
-  aggregate: AggregateRoom
-}
-
-export interface VideoPreviousValues {
-  url: String
-}
-
-export interface Room extends Node {
-  id: ID_Output
-  label: String
-  house: House
-  picture_previews?: Picture[]
-  video_previews?: Video[]
 }
 
 export interface House extends Node {
@@ -12827,107 +12995,14 @@ export interface House extends Node {
   popularity: Int
 }
 
-export interface AggregateCity {
-  count: Int
-}
-
 /*
  * A connection to a list of items.
 
  */
-export interface CityConnection {
+export interface RoomConnection {
   pageInfo: PageInfo
-  edges: CityEdge[]
-  aggregate: AggregateCity
-}
-
-export interface CitySubscriptionPayload {
-  mutation: MutationType
-  node?: City
-  updatedFields?: String[]
-  previousValues?: CityPreviousValues
-}
-
-/*
- * An edge in a connection.
-
- */
-export interface PictureEdge {
-  node: Picture
-  cursor: String
-}
-
-export interface Review extends Node {
-  id: ID_Output
-  createdAt: DateTime
-  text: String
-  stars: Int
-  accuracy: Int
-  location: Int
-  checkIn: Int
-  value: Int
-  communication: Int
-  House: House
-}
-
-export interface AggregateVideo {
-  count: Int
-}
-
-export interface PicturePreviousValues {
-  url: String
-}
-
-/*
- * A connection to a list of items.
-
- */
-export interface VideoConnection {
-  pageInfo: PageInfo
-  edges: VideoEdge[]
-  aggregate: AggregateVideo
-}
-
-export interface PictureSubscriptionPayload {
-  mutation: MutationType
-  node?: Picture
-  updatedFields?: String[]
-  previousValues?: PicturePreviousValues
-}
-
-/*
- * An edge in a connection.
-
- */
-export interface HouseEdge {
-  node: House
-  cursor: String
-}
-
-export interface RoomSubscriptionPayload {
-  mutation: MutationType
-  node?: Room
-  updatedFields?: String[]
-  previousValues?: RoomPreviousValues
-}
-
-export interface AggregateUser {
-  count: Int
-}
-
-export interface RoomPreviousValues {
-  id: ID_Output
-  label: String
-}
-
-/*
- * A connection to a list of items.
-
- */
-export interface UserConnection {
-  pageInfo: PageInfo
-  edges: UserEdge[]
-  aggregate: AggregateUser
+  edges: RoomEdge[]
+  aggregate: AggregateRoom
 }
 
 export interface Amenities extends Node {
@@ -12970,6 +13045,115 @@ export interface Amenities extends Node {
   crib: Boolean
 }
 
+export interface Room extends Node {
+  id: ID_Output
+  label: String
+  house: House
+  picture_previews?: Picture[]
+  video_previews?: Video[]
+}
+
+/*
+ * A connection to a list of items.
+
+ */
+export interface CityConnection {
+  pageInfo: PageInfo
+  edges: CityEdge[]
+  aggregate: AggregateCity
+}
+
+export interface AggregateCity {
+  count: Int
+}
+
+/*
+ * An edge in a connection.
+
+ */
+export interface PictureEdge {
+  node: Picture
+  cursor: String
+}
+
+export interface BatchPayload {
+  count: Long
+}
+
+export interface AggregateVideo {
+  count: Int
+}
+
+export interface CitySubscriptionPayload {
+  mutation: MutationType
+  node?: City
+  updatedFields?: String[]
+  previousValues?: CityPreviousValues
+}
+
+/*
+ * A connection to a list of items.
+
+ */
+export interface VideoConnection {
+  pageInfo: PageInfo
+  edges: VideoEdge[]
+  aggregate: AggregateVideo
+}
+
+export interface Review extends Node {
+  id: ID_Output
+  createdAt: DateTime
+  text: String
+  stars: Int
+  accuracy: Int
+  location: Int
+  checkIn: Int
+  value: Int
+  communication: Int
+  House: House
+}
+
+/*
+ * An edge in a connection.
+
+ */
+export interface HouseEdge {
+  node: House
+  cursor: String
+}
+
+export interface PicturePreviousValues {
+  id: ID_Output
+  url: String
+}
+
+export interface AggregateUser {
+  count: Int
+}
+
+export interface RoomSubscriptionPayload {
+  mutation: MutationType
+  node?: Room
+  updatedFields?: String[]
+  previousValues?: RoomPreviousValues
+}
+
+/*
+ * A connection to a list of items.
+
+ */
+export interface UserConnection {
+  pageInfo: PageInfo
+  edges: UserEdge[]
+  aggregate: AggregateUser
+}
+
+export interface RoomPreviousValues {
+  id: ID_Output
+  label: String
+}
+
 /*
  * An edge in a connection.
 
@@ -12979,23 +13163,22 @@ export interface StateEdge {
   cursor: String
 }
 
-export interface PricingSubscriptionPayload {
+export interface PictureSubscriptionPayload {
   mutation: MutationType
-  node?: Pricing
+  node?: Picture
   updatedFields?: String[]
-  previousValues?: PricingPreviousValues
+  previousValues?: PicturePreviousValues
 }
 
 export interface AggregateCountry {
   count: Int
 }
 
-export interface PricingPreviousValues {
-  id: ID_Output
-  basePrice: Int
-  highestPrice: Int
-  currency?: CURRENCY
-  income: Int
+export interface PricingSubscriptionPayload {
+  mutation: MutationType
+  node?: Pricing
+  updatedFields?: String[]
+  previousValues?: PricingPreviousValues
 }
 
 /*
@@ -13008,13 +13191,12 @@ export interface CountryConnection {
   aggregate: AggregateCountry
 }
 
-export interface Negotiation extends Node {
+export interface PricingPreviousValues {
   id: ID_Output
-  createdAt: DateTime
-  negotiator: User
-  House: House
-  offer: Float
-  status?: NEGOTIATION_TYPE
+  basePrice: Int
+  highestPrice: Int
+  currency?: CURRENCY
+  income: Int
 }
 
 /*
@@ -13026,20 +13208,24 @@ export interface CommuneEdge {
   cursor: String
 }
 
-export interface ViewsSubscriptionPayload {
-  mutation: MutationType
-  node?: Views
-  updatedFields?: String[]
-  previousValues?: ViewsPreviousValues
+export interface Negotiation extends Node {
+  id: ID_Output
+  createdAt: DateTime
+  negotiator: User
+  House: House
+  offer: Float
+  status?: NEGOTIATION_TYPE
 }
 
 export interface AggregateLocation {
   count: Int
 }
 
-export interface ViewsPreviousValues {
-  id: ID_Output
-  lastWeek: Int
+export interface ViewsSubscriptionPayload {
+  mutation: MutationType
+  node?: Views
+  updatedFields?: String[]
+  previousValues?: ViewsPreviousValues
 }
 
 /*
@@ -13052,11 +13238,9 @@ export interface LocationConnection {
   aggregate: AggregateLocation
 }
 
-export interface House_Favorited extends Node {
+export interface ViewsPreviousValues {
   id: ID_Output
-  createdAt: DateTime
-  user: User
-  house: House
+  lastWeek: Int
 }
 
 /*
@@ -13068,6 +13252,17 @@ export interface NotificationEdge {
   cursor: String
 }
 
+export interface House_Favorited extends Node {
+  id: ID_Output
+  createdAt: DateTime
+  user: User
+  house: House
+}
+
+export interface AggregatePaymentLanlordInfo {
+  count: Int
+}
+
 export interface AmenitiesSubscriptionPayload {
   mutation: MutationType
   node?: Amenities
@@ -13075,8 +13270,14 @@ export interface AmenitiesSubscriptionPayload {
   previousValues?: AmenitiesPreviousValues
 }
 
-export interface AggregatePaymentLanlordInfo {
-  count: Int
+/*
+ * A connection to a list of items.
+
+ */
+export interface PaymentLanlordInfoConnection {
+  pageInfo: PageInfo
+  edges: PaymentLanlordInfoEdge[]
+  aggregate: AggregatePaymentLanlordInfo
 }
 
 export interface AmenitiesPreviousValues {
@@ -13119,26 +13320,21 @@ export interface AmenitiesPreviousValues {
 }
 
 /*
- * A connection to a list of items.
-
- */
-export interface PaymentLanlordInfoConnection {
-  pageInfo: PageInfo
-  edges: PaymentLanlordInfoEdge[]
-  aggregate: AggregatePaymentLanlordInfo
-}
-
-export interface Video {
-  url: String
-}
-
-/*
  * An edge in a connection.
 
  */
 export interface CreditCardInformationEdge {
   node: CreditCardInformation
   cursor: String
+}
+
+export interface Video extends Node {
+  id: ID_Output
+  url: String
+}
+
+export interface AggregatePaypalInformation {
+  count: Int
 }
 
 export interface ReviewSubscriptionPayload {
@@ -13148,8 +13344,14 @@ export interface ReviewSubscriptionPayload {
   previousValues?: ReviewPreviousValues
 }
 
-export interface AggregatePaypalInformation {
-  count: Int
+/*
+ * A connection to a list of items.
+
+ */
+export interface PaypalInformationConnection {
+  pageInfo: PageInfo
+  edges: PaypalInformationEdge[]
+  aggregate: AggregatePaypalInformation
 }
 
 export interface ReviewPreviousValues {
@@ -13165,22 +13367,6 @@ export interface ReviewPreviousValues {
 }
 
 /*
- * A connection to a list of items.
-
- */
-export interface PaypalInformationConnection {
-  pageInfo: PageInfo
-  edges: PaypalInformationEdge[]
-  aggregate: AggregatePaypalInformation
-}
-
-export interface Views extends Node {
-  id: ID_Output
-  lastWeek: Int
-  House: House
-}
-
-/*
  * An edge in a connection.
 
  */
@@ -13189,22 +13375,21 @@ export interface PaymentAccountEdge {
   cursor: String
 }
 
-export interface BookingSubscriptionPayload {
-  mutation: MutationType
-  node?: Booking
-  updatedFields?: String[]
-  previousValues?: BookingPreviousValues
+export interface Views extends Node {
+  id: ID_Output
+  lastWeek: Int
+  House: House
 }
 
 export interface AggregatePaymentHouse {
   count: Int
 }
 
-export interface BookingPreviousValues {
-  id: ID_Output
-  createdAt: DateTime
-  startDate: DateTime
-  endDate: DateTime
+export interface BookingSubscriptionPayload {
+  mutation: MutationType
+  node?: Booking
+  updatedFields?: String[]
+  previousValues?: BookingPreviousValues
 }
 
 /*
@@ -13217,13 +13402,11 @@ export interface PaymentHouseConnection {
   aggregate: AggregatePaymentHouse
 }
 
-export interface Pricing extends Node {
+export interface BookingPreviousValues {
   id: ID_Output
-  House: House
-  basePrice: Int
-  highestPrice: Int
-  currency?: CURRENCY
-  income: Int
+  createdAt: DateTime
+  startDate: DateTime
+  endDate: DateTime
 }
 
 /*
@@ -13235,20 +13418,24 @@ export interface NegotiationEdge {
   cursor: String
 }
 
-export interface House_FavoritedSubscriptionPayload {
-  mutation: MutationType
-  node?: House_Favorited
-  updatedFields?: String[]
-  previousValues?: House_FavoritedPreviousValues
+export interface Pricing extends Node {
+  id: ID_Output
+  House: House
+  basePrice: Int
+  highestPrice: Int
+  currency?: CURRENCY
+  income: Int
 }
 
 export interface AggregateHouse_Favorited {
   count: Int
 }
 
-export interface House_FavoritedPreviousValues {
-  id: ID_Output
-  createdAt: DateTime
+export interface House_FavoritedSubscriptionPayload {
+  mutation: MutationType
+  node?: House_Favorited
+  updatedFields?: String[]
+  previousValues?: House_FavoritedPreviousValues
 }
 
 /*
@@ -13261,8 +13448,9 @@ export interface House_FavoritedConnection {
   aggregate: AggregateHouse_Favorited
 }
 
-export interface Picture {
-  url: String
+export interface House_FavoritedPreviousValues {
+  id: ID_Output
+  createdAt: DateTime
 }
 
 /*
@@ -13274,22 +13462,20 @@ export interface BookingEdge {
   cursor: String
 }
 
-export interface NegotiationSubscriptionPayload {
-  mutation: MutationType
-  node?: Negotiation
-  updatedFields?: String[]
-  previousValues?: NegotiationPreviousValues
+export interface Picture extends Node {
+  id: ID_Output
+  url: String
 }
 
 export interface AggregateReview {
   count: Int
 }
 
-export interface NegotiationPreviousValues {
-  id: ID_Output
-  createdAt: DateTime
-  offer: Float
-  status?: NEGOTIATION_TYPE
+export interface NegotiationSubscriptionPayload {
+  mutation: MutationType
+  node?: Negotiation
+  updatedFields?: String[]
+  previousValues?: NegotiationPreviousValues
 }
 
 /*
@@ -13302,13 +13488,11 @@ export interface ReviewConnection {
   aggregate: AggregateReview
 }
 
-export interface Notification extends Node {
+export interface NegotiationPreviousValues {
   id: ID_Output
   createdAt: DateTime
-  type?: NOTIFICATION_TYPE
-  user: User
-  link: String
-  readDate: DateTime
+  offer: Float
+  status?: NEGOTIATION_TYPE
 }
 
 /*
@@ -13320,21 +13504,24 @@ export interface AmenitiesEdge {
   cursor: String
 }
 
-export interface PaymentHouseSubscriptionPayload {
-  mutation: MutationType
-  node?: PaymentHouse
-  updatedFields?: String[]
-  previousValues?: PaymentHousePreviousValues
+export interface Notification extends Node {
+  id: ID_Output
+  createdAt: DateTime
+  type?: NOTIFICATION_TYPE
+  user: User
+  link: String
+  readDate: DateTime
 }
 
 export interface AggregateViews {
   count: Int
 }
 
-export interface PaymentHousePreviousValues {
-  id: ID_Output
-  createdAt: DateTime
-  totalPrice: Float
+export interface PaymentHouseSubscriptionPayload {
+  mutation: MutationType
+  node?: PaymentHouse
+  updatedFields?: String[]
+  previousValues?: PaymentHousePreviousValues
 }
 
 /*
@@ -13347,13 +13534,10 @@ export interface ViewsConnection {
   aggregate: AggregateViews
 }
 
-export interface PaymentLanlordInfo extends Node {
+export interface PaymentHousePreviousValues {
   id: ID_Output
   createdAt: DateTime
   totalPrice: Float
-  client: User
-  House: House
-  moncashTransactId: String
 }
 
 /*
@@ -13365,21 +13549,24 @@ export interface PricingEdge {
   cursor: String
 }
 
-export interface PaymentAccountSubscriptionPayload {
-  mutation: MutationType
-  node?: PaymentAccount
-  updatedFields?: String[]
-  previousValues?: PaymentAccountPreviousValues
+export interface PaymentLanlordInfo extends Node {
+  id: ID_Output
+  createdAt: DateTime
+  totalPrice: Float
+  client: User
+  House: House
+  moncashTransactId: String
 }
 
 export interface AggregateRoom {
   count: Int
 }
 
-export interface PaymentAccountPreviousValues {
-  id: ID_Output
-  createdAt: DateTime
-  type?: PAYMENT_PROVIDER
+export interface PaymentAccountSubscriptionPayload {
+  mutation: MutationType
+  node?: PaymentAccount
+  updatedFields?: String[]
+  previousValues?: PaymentAccountPreviousValues
 }
 
 /*
@@ -13391,6 +13578,16 @@ export interface PageInfo {
   hasPreviousPage: Boolean
   startCursor?: String
   endCursor?: String
+}
+
+export interface PaymentAccountPreviousValues {
+  id: ID_Output
+  createdAt: DateTime
+  type?: PAYMENT_PROVIDER
+}
+
+export interface AggregatePicture {
+  count: Int
 }
 
 export interface CreditCardInformation extends Node {
@@ -13407,17 +13604,6 @@ export interface CreditCardInformation extends Node {
   paymentAccount?: PaymentAccount
 }
 
-export interface AggregatePicture {
-  count: Int
-}
-
-export interface PaypalInformationSubscriptionPayload {
-  mutation: MutationType
-  node?: PaypalInformation
-  updatedFields?: String[]
-  previousValues?: PaypalInformationPreviousValues
-}
-
 /*
  * An edge in a connection.
 
@@ -13427,10 +13613,11 @@ export interface VideoEdge {
   cursor: String
 }
 
-export interface PaypalInformationPreviousValues {
-  id: ID_Output
-  createdAt: DateTime
-  email: String
+export interface PaypalInformationSubscriptionPayload {
+  mutation: MutationType
+  node?: PaypalInformation
+  updatedFields?: String[]
+  previousValues?: PaypalInformationPreviousValues
 }
 
 /*
@@ -13443,6 +13630,16 @@ export interface HouseConnection {
   aggregate: AggregateHouse
 }
 
+export interface PaypalInformationPreviousValues {
+  id: ID_Output
+  createdAt: DateTime
+  email: String
+}
+
+export interface AggregateState {
+  count: Int
+}
+
 export interface PaypalInformation extends Node {
   id: ID_Output
   createdAt: DateTime
@@ -13450,8 +13647,13 @@ export interface PaypalInformation extends Node {
   paymentAccount: PaymentAccount
 }
 
-export interface AggregateState {
-  count: Int
+/*
+ * An edge in a connection.
+
+ */
+export interface CountryEdge {
+  node: Country
+  cursor: String
 }
 
 export interface CreditCardInformationSubscriptionPayload {
@@ -13462,12 +13664,13 @@ export interface CreditCardInformationSubscriptionPayload {
 }
 
 /*
- * An edge in a connection.
+ * A connection to a list of items.
 
  */
-export interface CountryEdge {
-  node: Country
-  cursor: String
+export interface CommuneConnection {
+  pageInfo: PageInfo
+  edges: CommuneEdge[]
+  aggregate: AggregateCommune
 }
 
 export interface CreditCardInformationPreviousValues {
@@ -13483,14 +13686,8 @@ export interface CreditCardInformationPreviousValues {
   country: String
 }
 
-/*
- * A connection to a list of items.
-
- */
-export interface CommuneConnection {
-  pageInfo: PageInfo
-  edges: CommuneEdge[]
-  aggregate: AggregateCommune
+export interface AggregateNotification {
+  count: Int
 }
 
 export interface PaymentAccount extends Node {
@@ -13503,17 +13700,6 @@ export interface PaymentAccount extends Node {
   creditcard?: CreditCardInformation
 }
 
-export interface AggregateNotification {
-  count: Int
-}
-
-export interface PaymentLanlordInfoSubscriptionPayload {
-  mutation: MutationType
-  node?: PaymentLanlordInfo
-  updatedFields?: String[]
-  previousValues?: PaymentLanlordInfoPreviousValues
-}
-
 /*
  * An edge in a connection.
 
@@ -13523,11 +13709,11 @@ export interface PaymentLanlordInfoEdge {
   cursor: String
 }
 
-export interface PaymentLanlordInfoPreviousValues {
-  id: ID_Output
-  createdAt: DateTime
-  totalPrice: Float
-  moncashTransactId: String
+export interface PaymentLanlordInfoSubscriptionPayload {
+  mutation: MutationType
+  node?: PaymentLanlordInfo
+  updatedFields?: String[]
+  previousValues?: PaymentLanlordInfoPreviousValues
 }
 
 /*
@@ -13540,23 +13726,23 @@ export interface CreditCardInformationConnection {
   aggregate: AggregateCreditCardInformation
 }
 
-export interface PaymentHouse extends Node {
+export interface PaymentLanlordInfoPreviousValues {
   id: ID_Output
   createdAt: DateTime
   totalPrice: Float
-  booking: Booking
-  paymentMethod: PaymentAccount
+  moncashTransactId: String
 }
 
 export interface AggregatePaymentAccount {
   count: Int
 }
 
-export interface NotificationSubscriptionPayload {
-  mutation: MutationType
-  node?: Notification
-  updatedFields?: String[]
-  previousValues?: NotificationPreviousValues
+export interface PaymentHouse extends Node {
+  id: ID_Output
+  createdAt: DateTime
+  totalPrice: Float
+  booking: Booking
+  paymentMethod: PaymentAccount
 }
 
 /*
@@ -13568,12 +13754,11 @@ export interface PaymentHouseEdge {
   cursor: String
 }
 
-export interface NotificationPreviousValues {
-  id: ID_Output
-  createdAt: DateTime
-  type?: NOTIFICATION_TYPE
-  link: String
-  readDate: DateTime
+export interface NotificationSubscriptionPayload {
+  mutation: MutationType
+  node?: Notification
+  updatedFields?: String[]
+  previousValues?: NotificationPreviousValues
 }
 
 /*
@@ -13586,6 +13771,18 @@ export interface NegotiationConnection {
   aggregate: AggregateNegotiation
 }
 
+export interface NotificationPreviousValues {
+  id: ID_Output
+  createdAt: DateTime
+  type?: NOTIFICATION_TYPE
+  link: String
+  readDate: DateTime
+}
+
+export interface AggregateBooking {
+  count: Int
+}
+
 export interface Booking extends Node {
   id: ID_Output
   createdAt: DateTime
@@ -13594,17 +13791,6 @@ export interface Booking extends Node {
   startDate: DateTime
   endDate: DateTime
   payment: PaymentHouse
-}
-
-export interface AggregateBooking {
-  count: Int
-}
-
-export interface LocationSubscriptionPayload {
-  mutation: MutationType
-  node?: Location
-  updatedFields?: String[]
-  previousValues?: LocationPreviousValues
 }
 
 /*
@@ -13616,11 +13802,11 @@ export interface ReviewEdge {
   cursor: String
 }
 
-export interface LocationPreviousValues {
-  id: ID_Output
-  lat?: Float
-  lng?: Float
-  address?: String
+export interface LocationSubscriptionPayload {
+  mutation: MutationType
+  node?: Location
+  updatedFields?: String[]
+  previousValues?: LocationPreviousValues
 }
 
 /*
@@ -13633,20 +13819,20 @@ export interface AmenitiesConnection {
   aggregate: AggregateAmenities
 }
 
-export interface Country extends Node {
+export interface LocationPreviousValues {
   id: ID_Output
-  name: String
+  lat?: Float
+  lng?: Float
+  address?: String
 }
 
 export interface AggregatePricing {
   count: Int
 }
 
-export interface CommuneSubscriptionPayload {
-  mutation: MutationType
-  node?: Commune
-  updatedFields?: String[]
-  previousValues?: CommunePreviousValues
+export interface Country extends Node {
+  id: ID_Output
+  name: String
 }
 
 /*
@@ -13658,9 +13844,11 @@ export interface RoomEdge {
   cursor: String
 }
 
-export interface CommunePreviousValues {
-  id: ID_Output
-  name: String
+export interface CommuneSubscriptionPayload {
+  mutation: MutationType
+  node?: Commune
+  updatedFields?: String[]
+  previousValues?: CommunePreviousValues
 }
 
 /*
@@ -13673,10 +13861,9 @@ export interface PictureConnection {
   aggregate: AggregatePicture
 }
 
-export interface State extends Node {
+export interface CommunePreviousValues {
   id: ID_Output
   name: String
-  country: Country
 }
 
 /*
@@ -13688,20 +13875,21 @@ export interface UserEdge {
   cursor: String
 }
 
-export interface CountrySubscriptionPayload {
-  mutation: MutationType
-  node?: Country
-  updatedFields?: String[]
-  previousValues?: CountryPreviousValues
+export interface State extends Node {
+  id: ID_Output
+  name: String
+  country: Country
 }
 
 export interface AggregateCommune {
   count: Int
 }
 
-export interface CountryPreviousValues {
-  id: ID_Output
-  name: String
+export interface CountrySubscriptionPayload {
+  mutation: MutationType
+  node?: Country
+  updatedFields?: String[]
+  previousValues?: CountryPreviousValues
 }
 
 /*
@@ -13714,10 +13902,9 @@ export interface NotificationConnection {
   aggregate: AggregateNotification
 }
 
-export interface City extends Node {
+export interface CountryPreviousValues {
   id: ID_Output
   name: String
-  state: State
 }
 
 /*
@@ -13729,20 +13916,21 @@ export interface PaypalInformationEdge {
   cursor: String
 }
 
-export interface StateSubscriptionPayload {
-  mutation: MutationType
-  node?: State
-  updatedFields?: String[]
-  previousValues?: StatePreviousValues
+export interface City extends Node {
+  id: ID_Output
+  name: String
+  state: State
 }
 
 export interface AggregateNegotiation {
   count: Int
 }
 
-export interface StatePreviousValues {
-  id: ID_Output
-  name: String
+export interface StateSubscriptionPayload {
+  mutation: MutationType
+  node?: State
+  updatedFields?: String[]
+  previousValues?: StatePreviousValues
 }
 
 /*
@@ -13755,10 +13943,9 @@ export interface BookingConnection {
   aggregate: AggregateBooking
 }
 
-export interface Commune extends Node {
+export interface StatePreviousValues {
   id: ID_Output
   name: String
-  city: City
 }
 
 /*
@@ -13770,11 +13957,10 @@ export interface ViewsEdge {
   cursor: String
 }
 
-export interface UserSubscriptionPayload {
-  mutation: MutationType
-  node?: User
-  updatedFields?: String[]
-  previousValues?: UserPreviousValues
+export interface Commune extends Node {
+  id: ID_Output
+  name: String
+  city: City
 }
 
 /*
@@ -13784,6 +13970,23 @@ export interface UserSubscriptionPayload {
 export interface CityEdge {
   node: City
   cursor: String
+}
+
+export interface UserSubscriptionPayload {
+  mutation: MutationType
+  node?: User
+  updatedFields?: String[]
+  previousValues?: UserPreviousValues
+}
+
+/*
+ * A connection to a list of items.
+
+ */
+export interface StateConnection {
+  pageInfo: PageInfo
+  edges: StateEdge[]
+  aggregate: AggregateState
 }
 
 export interface UserPreviousValues {
@@ -13803,14 +14006,8 @@ export interface UserPreviousValues {
   isSuperHost: Boolean
 }
 
-/*
- * A connection to a list of items.
-
- */
-export interface StateConnection {
-  pageInfo: PageInfo
-  edges: StateEdge[]
-  aggregate: AggregateState
+export interface AggregateCreditCardInformation {
+  count: Int
 }
 
 export interface Location extends Node {
@@ -13821,10 +14018,6 @@ export interface Location extends Node {
   commune?: Commune
 }
 
-export interface AggregateCreditCardInformation {
-  count: Int
-}
-
 /*
  * An edge in a connection.
 
@@ -13832,6 +14025,28 @@ export interface AggregateCreditCardInformation {
 export interface House_FavoritedEdge {
   node: House_Favorited
   cursor: String
+}
+
+export interface HouseSubscriptionPayload {
+  mutation: MutationType
+  node?: House
+  updatedFields?: String[]
+  previousValues?: HousePreviousValues
+}
+
+/*
+ * A connection to a list of items.
+
+ */
+export interface PricingConnection {
+  pageInfo: PageInfo
+  edges: PricingEdge[]
+  aggregate: AggregatePricing
+}
+
+export interface VideoPreviousValues {
+  id: ID_Output
+  url: String
 }
 
 export interface VideoSubscriptionPayload {
@@ -13882,11 +14097,8 @@ export interface HousePreviousValues {
   popularity: Int
 }
 
-export interface HouseSubscriptionPayload {
-  mutation: MutationType
-  node?: House
-  updatedFields?: String[]
-  previousValues?: HousePreviousValues
+export interface AggregateHouse {
+  count: Int
 }
 
 export interface AggregateAmenities {
@@ -13912,25 +14124,15 @@ export interface LocationEdge {
   cursor: String
 }
 
-export interface AggregateHouse {
-  count: Int
-}
-
 /*
- * A connection to a list of items.
-
- */
-export interface PricingConnection {
-  pageInfo: PageInfo
-  edges: PricingEdge[]
-  aggregate: AggregatePricing
-}
-
-/*
-The `Long` scalar type represents non-fractional signed whole numeric values.
-Long can represent values between -(2^63) and 2^63 - 1.
+The `Boolean` scalar type represents `true` or `false`.
 */
-export type Long = string
+export type Boolean = boolean
+
+/*
+The `Int` scalar type represents non-fractional signed whole numeric values. Int can represent values between -(2^31) and 2^31 - 1. 
+*/
+export type Int = number
 
 /*
 The `ID` scalar type represents a unique identifier, often used to refetch an object or as key for a cache. The ID type appears in a JSON response as a String; however, it is not intended to be human-readable. When expected as an input type, any string (such as `"4"`) or integer (such as `4`) input value will be accepted as an ID.
@@ -13939,14 +14141,10 @@ export type ID_Input = string | number
 export type ID_Output = string
 
 /*
-The `Int` scalar type represents non-fractional signed whole numeric values. Int can represent values between -(2^31) and 2^31 - 1. 
+The `Long` scalar type represents non-fractional signed whole numeric values.
+Long can represent values between -(2^63) and 2^63 - 1.
 */
-export type Int = number
-
-/*
-The `Boolean` scalar type represents `true` or `false`.
-*/
-export type Boolean = boolean
+export type Long = string
 
 export type DateTime = Date | string
 
