@@ -1,21 +1,29 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import FacebookLogin from 'react-facebook-login';
-import { FB_AUTH } from '../queries/queries';
-import {graphql} from 'react-apollo';
+import { FB_AUTH, FB_AUTH_CLIENT } from '../queries/queries';
+import { graphql,compose } from 'react-apollo';
 
 
-const SignInWithSocialMedia=({ mutate, history})=>{
+const SignInWithSocialMedia=({ sendFBTokenToServer,writeUserAuthInfoToCache, history})=>{
   
 
-    const responseFacebook=(response)=>{
-        mutate({ 
-            variables: { facebookToken: response.accessToken },
-            // update:(store,{data:{ token }}) =>{
-            //     store.writeQuery({ 
-            //         data: response.accessToken
-            //     })
-            // }
+    const responseFacebook=(facebookResponse)=>{
+        // console.log((facebookResponse.accessToken))
+        sendFBTokenToServer({ 
+            variables: { facebookToken: facebookResponse.accessToken },
+            update:(store,{data:{authenticateFBUser}})=>{
+                let token = authenticateFBUser.token;
+                let firstName = authenticateFBUser.user.firstName;
+                let lastName=authenticateFBUser.user.lastName;
+                let email=authenticateFBUser.user.email;
+                let profilePic=authenticateFBUser.user.profilePicture.url;
+                let userObject = {token,firstName,lastName,email,profilePic}
+                console.log(userObject)
+                // writeUserAuthInfoToCache(userObject)
+                store.writeData(userObject);
+
+            }
           })
           .then(()=> history.push('/profile'))   
     }
@@ -59,8 +67,9 @@ const SignInWithSocialMedia=({ mutate, history})=>{
         ) 
 }
 
-const SignInWithSocialMediaWithMutation = graphql(
-    FB_AUTH
+const SignInWithSocialMediaWithMutation = compose(
+    graphql( FB_AUTH,{"name":"sendFBTokenToServer"}),
+    graphql( FB_AUTH_CLIENT,{"name":"writeUserAuthInfoToCache"})
 )(SignInWithSocialMedia)
 
 

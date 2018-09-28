@@ -12,14 +12,34 @@ export const ACCOUNT_CREATION = gql`
 `;
 
 export const FB_AUTH = gql`
-mutation authenticateFBUser($facebookToken: String!){
+mutation authenticateFBUser($facebookToken:String!) {
   authenticateFBUser(facebookToken:$facebookToken){
     token
     user{
       id
-      lastName
       firstName
+      lastName
+      email
+      profilePicture{
+        url
+      }
     }
   }
 }
+`
+
+
+
+export const FB_AUTH_CLIENT = gql`
+  mutation writeUserAuthInfoToCache($userAuthInfo:Object!){
+    writeUserAuthInfoToCache(userAuthInfo:$userAuthInfo) @client{
+      user{
+        token
+        firstName
+        lastName
+        email
+        profilePicture
+      }
+    }
+  }
 `
