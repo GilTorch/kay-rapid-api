@@ -115,5 +115,12 @@ export const CustomMutation = {
         id: args.houseId
       }
     });
+  },
+  async deleteHouse(parent, args, context: Context, info) {
+    return context.db.mutation.deleteHouse({
+      where: {
+        id: args.houseId
+      }
+    });
   }
 };

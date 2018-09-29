@@ -5,7 +5,9 @@ type Query {
   states: [State!]!
   cities: [City!]!
   communes: [Commune!]!
+  getToken(id: String!): String!
 }
+
 type AuthPayLoad {
   token: String!
   user: User!
@@ -70,4 +72,5 @@ type Mutation {
     residency: House_RESIDENCY
     lease: Int
   ): House
+  deleteHouse(id: String!): House
 }

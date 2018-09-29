@@ -2,7 +2,7 @@ import { extractFragmentReplacements } from "prisma-binding";
 import { Query } from "./Query";
 import { CustomMutation } from "./Mutation/CustomMutation";
 import { auth } from "./Mutation/auth";
-import { AuthPayLoad } from "./AuthPayload";
+import { AuthPayLoad } from "./AuthPayLoad";
 
 export const resolvers = {
   Query,
