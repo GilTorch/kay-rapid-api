@@ -2,8 +2,27 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import FacebookLogin from 'react-facebook-login';
 import { FB_AUTH, FB_AUTH_CLIENT } from '../queries/queries';
-import { graphql,compose } from 'react-apollo';
+import axios from 'axios';
+import { graphql,compose,ApolloConsumer } from 'react-apollo';
+import { mkdir } from 'file-system';
 
+
+async function getBase64ImageFromUrl(imageUrl) {
+    var res = await fetch(imageUrl);
+    var blob = await res.blob();
+  
+    return new Promise((resolve, reject) => {
+      var reader  = new FileReader();
+      reader.addEventListener("load", function () {
+          resolve(reader.result);
+      }, false);
+  
+      reader.onerror = () => {
+        return reject(this);
+      };
+      reader.readAsDataURL(blob);
+    })
+  }
 
 const SignInWithSocialMedia=({ sendFBTokenToServer,writeUserAuthInfoToCache, history})=>{
   
@@ -17,15 +36,21 @@ const SignInWithSocialMedia=({ sendFBTokenToServer,writeUserAuthInfoToCache, his
                 let firstName = authenticateFBUser.user.firstName;
                 let lastName=authenticateFBUser.user.lastName;
                 let email=authenticateFBUser.user.email;
-                let profilePic=authenticateFBUser.user.profilePicture.url;
+                let profilePicURL=authenticateFBUser.user.profilePicture.url;
+                let profilePic;
+                // let image = new Image()
+                console.log(profilePic);
+                
+                getBase64ImageFromUrl(profilePicURL)
+                    .then((result)=>{
+                        profilePic=result;
+                    })
+                
                 let userObject = {token,firstName,lastName,email,profilePic}
-                console.log(userObject)
-                // writeUserAuthInfoToCache(userObject)
-                store.writeData(userObject);
 
             }
           })
-          .then(()=> history.push('/profile'))   
+        //   .then(()=> history.push('/profile'))   
     }
 
     return(

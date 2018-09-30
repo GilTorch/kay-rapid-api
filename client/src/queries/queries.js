@@ -11,6 +11,20 @@ export const ACCOUNT_CREATION = gql`
 }
 `;
 
+export const AUTH_WITHOUT_SOCIAL_MEDIA=gql`
+mutation($email:String!,$password:String!) {
+  login(email:$email,password:$password) {
+    token 
+    user{
+      id
+      firstName
+      lastName
+      email
+    }
+  }
+}
+`
+
 export const FB_AUTH = gql`
 mutation authenticateFBUser($facebookToken:String!) {
   authenticateFBUser(facebookToken:$facebookToken){
@@ -30,16 +44,8 @@ mutation authenticateFBUser($facebookToken:String!) {
 
 
 
-export const FB_AUTH_CLIENT = gql`
-  mutation writeUserAuthInfoToCache($userAuthInfo:Object!){
-    writeUserAuthInfoToCache(userAuthInfo:$userAuthInfo) @client{
-      user{
-        token
-        firstName
-        lastName
-        email
-        profilePicture
-      }
-    }
-  }
+export const FB_AUTH_CLIENT= gql`
+mutation writeUserInfoToCache($userAuthInfo:Object!) {
+  writeUserInfoToCache(userAuthInfo:$userAuhtInfo) @client
+}
 `

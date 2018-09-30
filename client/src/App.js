@@ -47,7 +47,6 @@ class App extends Component {
             <Route exact={true} path="/authentication/sign-in-with-social-media" component={SignInWithSocialMedia} updateCacheWithToken={this.updateCacheWithToken}/>
             <Route exact={true} path="/authentication/sign-in-without-social-media" component={SignInWithoutSocialMedia}/>
             <Route exact={true} path="/authentication/account-creation" component={AccountCreation}/>
-            <Route exact={true} path="/redirect-auth" component={FacebookLoginRedirection}/>
             </div>
           </React.Fragment>
         </Router>

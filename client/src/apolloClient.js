@@ -18,8 +18,8 @@ const stateLink = withClientState({
     resolvers:{
         Mutation :{
             __typename:"UserAuthInfo",
-            writeUserAuthInfoToCache:(_,{token},{cache})=>{
-                console.log("Cache got it:"+token);
+            writeUserInfoToCache:(_,userAuthInfo,{cache})=>{
+                console.log("Cache got it:"+JSON.stringify(userAuthInfo));
             }
         }
     }
