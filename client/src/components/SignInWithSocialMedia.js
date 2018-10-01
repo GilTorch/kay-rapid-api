@@ -39,7 +39,6 @@ const SignInWithSocialMedia=({ sendFBTokenToServer,writeUserAuthInfoToCache, his
                 let profilePicURL=authenticateFBUser.user.profilePicture.url;
                 let profilePic;
                 // let image = new Image()
-                console.log(profilePic);
                 
                 getBase64ImageFromUrl(profilePicURL)
                     .then((result)=>{
@@ -47,7 +46,8 @@ const SignInWithSocialMedia=({ sendFBTokenToServer,writeUserAuthInfoToCache, his
                     })
                 
                 let userObject = {token,firstName,lastName,email,profilePic}
-
+                console.log(JSON.stringify(userObject));
+                store.writeData({data:{userObject}});
             }
           })
         //   .then(()=> history.push('/profile'))   

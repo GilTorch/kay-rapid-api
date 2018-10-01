@@ -26,7 +26,7 @@ mutation($email:String!,$password:String!) {
 `
 
 export const FB_AUTH = gql`
-mutation authenticateFBUser($facebookToken:String!) {
+  mutation authenticateFBUser($facebookToken:String!) {
   authenticateFBUser(facebookToken:$facebookToken){
     token
     user{
@@ -48,4 +48,16 @@ export const FB_AUTH_CLIENT= gql`
 mutation writeUserInfoToCache($userAuthInfo:Object!) {
   writeUserInfoToCache(userAuthInfo:$userAuhtInfo) @client
 }
+`
+
+export const READ_AUTH_INFO = gql`
+  query{
+    userAuthInfo @client{
+      token
+      email
+      firstName
+      lastName
+      profilePic
+    }
+  }
 `

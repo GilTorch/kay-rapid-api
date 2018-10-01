@@ -8,21 +8,25 @@ const cache= new InMemoryCache();
 const defaultState={
     userAuthInfo:{
         __typename:'UserAuthInfo',
-        userObject:null
+        token:"my token",
+        email:"my email",
+        firstName:"my first name",
+        lastName:"mhy last name",
+        profilePic:null,
     }
 }
 
 const stateLink = withClientState({
     cache,
     defaults:defaultState,
-    resolvers:{
-        Mutation :{
-            __typename:"UserAuthInfo",
-            writeUserInfoToCache:(_,userAuthInfo,{cache})=>{
-                console.log("Cache got it:"+JSON.stringify(userAuthInfo));
-            }
-        }
-    }
+    // resolvers:{
+    //     Mutation :{
+    //         __typename:"UserAuthInfo",
+    //         writeUserInfoToCache:(_,userAuthInfo,{cache})=>{
+    //             console.log("Cache got it:"+JSON.stringify(userAuthInfo));
+    //         }
+    //     }
+    // }
 })
 
 const client = new ApolloClient({
