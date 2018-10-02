@@ -44,9 +44,15 @@ export const FB_AUTH = gql`
 
 
 
-export const FB_AUTH_CLIENT= gql`
-mutation writeUserInfoToCache($userAuthInfo:Object!) {
-  writeUserInfoToCache(userAuthInfo:$userAuhtInfo) @client
+export const WRITE_AUTH_INFO= gql`
+mutation updateAuthInfo($userAuthInfo:Object!){
+  updateAuthInfo(userAuthInfo:$userAuthInfo) @client{
+    token
+    email
+    firstName
+    lastName
+    profilePicture
+  }
 }
 `
 
@@ -57,7 +63,7 @@ export const READ_AUTH_INFO = gql`
       email
       firstName
       lastName
-      profilePic
+      profilePicture
     }
   }
 `

@@ -1,0 +1,8 @@
+.profile-info{
+    display:flex;
+    justify-content: center;
+}
+
+.profile-name{
+    text-align:center;
+}

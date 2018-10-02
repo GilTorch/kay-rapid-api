@@ -7,32 +7,19 @@ import Authentication from '../components/Authentication';
 
 import { graphql } from 'react-apollo';
 import { READ_AUTH_INFO } from '../queries/queries';
+import UserInfo from '../components/UserInfo';
 
 
 
 
-class Profile extends React.Component{
-    
-    constructor(props){
-        super(props);
-    }
-
-    
-
-    render(){
-
-        const { userAuthInfo }=this.props
-
-        return(
-            <div className="profile">
-                { console.log("FROM PROFILE:"+JSON.stringify(userAuthInfo))}
-                <HeaderBar title="Profile"/>
-                <Authentication/>
-                <Navigation currentPage="profile"/>
-            </div>
-        )
-    }
-   
+const Profile =({userAuthInfo})=>{
+    return(
+        <div className="profile">
+            <HeaderBar title="Profile"/>
+            {!userAuthInfo.email ? <Authentication/> : <UserInfo {...userAuthInfo} />}
+            <Navigation currentPage="profile"/>
+        </div>
+    )
 }  
 
 let ProfileWithQuery=graphql(

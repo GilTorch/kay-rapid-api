@@ -31,10 +31,6 @@ class App extends Component {
     super(props)
   }
 
-  updateCacheWithToken(){
-    console.log("called");
-  }
-
   render() {
     return (
       <ApolloProvider client={client}>

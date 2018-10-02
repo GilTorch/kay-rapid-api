@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import FacebookLogin from 'react-facebook-login';
-import { FB_AUTH, FB_AUTH_CLIENT } from '../queries/queries';
+import { FB_AUTH, WRITE_AUTH_INFO } from '../queries/queries';
 import axios from 'axios';
 import { graphql,compose,ApolloConsumer } from 'react-apollo';
 import { mkdir } from 'file-system';
@@ -37,20 +37,19 @@ const SignInWithSocialMedia=({ sendFBTokenToServer,writeUserAuthInfoToCache, his
                 let lastName=authenticateFBUser.user.lastName;
                 let email=authenticateFBUser.user.email;
                 let profilePicURL=authenticateFBUser.user.profilePicture.url;
-                let profilePic;
-                // let image = new Image()
-                
+                let profilePicture;
+            
                 getBase64ImageFromUrl(profilePicURL)
                     .then((result)=>{
-                        profilePic=result;
+                        profilePicture=result;
+                        let userObject = {token,firstName,lastName,email,profilePicture}
+                        console.log("AUTH TO SAVE"+JSON.stringify(userObject));
+                        writeUserAuthInfoToCache({variables:{ userAuthInfo: userObject }})
                     })
+                    .then(()=>{console.log("Successfuly saved to the cache")})
                 
-                let userObject = {token,firstName,lastName,email,profilePic}
-                console.log(JSON.stringify(userObject));
-                store.writeData({data:{userObject}});
             }
-          })
-        //   .then(()=> history.push('/profile'))   
+          }).then(()=> history.push('/profile'))   
     }
 
     return(
@@ -94,7 +93,7 @@ const SignInWithSocialMedia=({ sendFBTokenToServer,writeUserAuthInfoToCache, his
 
 const SignInWithSocialMediaWithMutation = compose(
     graphql( FB_AUTH,{"name":"sendFBTokenToServer"}),
-    graphql( FB_AUTH_CLIENT,{"name":"writeUserAuthInfoToCache"})
+    graphql( WRITE_AUTH_INFO,{"name":"writeUserAuthInfoToCache"})
 )(SignInWithSocialMedia)
 
 
