@@ -18,6 +18,7 @@ class Area extends React.Component {
 const House =(props) => {
     return (
         <div>   <p className="titleCharacteristic">Chanm</p>
+        
                 <select>
                 <option value={props.HousesNumber}>{props.HousesNumbers[0]}</option>
                 <option value={props.HousesNumber}>{props.HousesNumbers[1]}</option>

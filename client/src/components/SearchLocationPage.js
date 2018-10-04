@@ -14,7 +14,6 @@ const LocationHouses =()=> {
             
              <LocationByVille TopVille={TopVille} />
              <LocationByTown  Town ={Town}/>
-             <ButtonLocation />
          </div>
      </div>
  )
@@ -53,8 +52,5 @@ const LocationByTown = (props)=> {
      </div>
  )
 }
-const ButtonLocation = () => {
-    return <button className="ButtonLocation">Valide</button>
-} 
 
 export default LocationHouses;
