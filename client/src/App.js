@@ -3,11 +3,13 @@ import './css/App.css';
 import './css/carousel.css';
 import './css/infoHouse.css';
 import './css/wallHouse.css';
-import './css/SearchFilterPage.css';
-import { SearchFilterPage } from './components/SearchFilterPage';
+import './css/SearchPage.css';
+import './css/SearchLocationPage.css';
+import LocationHouses from './components/SearchLocationPage';
 
 
 /*
+import SearchFilterPage from './components/SearchFilterPage';
 import { ApolloProvider } from 'react-apollo';
 import client from './apolloClient';
 import { BrowserRouter as Router,Route } from 'react-router-dom';
@@ -78,7 +80,7 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <SearchFilterPage />
+        <LocationHouses />
       </div>
     )
   }
