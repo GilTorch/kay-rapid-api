@@ -1,10 +1,11 @@
 import React from 'react';
+import ImageLoader from 'react-image-file';
 
 const UserInfo=({ firstName,lastName,profilePicture })=>{
    return( 
     <div className="profile-info">
-        <img src={profilePicture}/>
-        <h2><span>{firstName}</span> <span>{lastName}</span></h2>
+        <ImageLoader file={profilePicture}/>
+        <p>{firstName} {lastName}</p>
     </div>
    )
 }

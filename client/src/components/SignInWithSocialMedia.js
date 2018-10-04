@@ -5,24 +5,7 @@ import { FB_AUTH, WRITE_AUTH_INFO } from '../queries/queries';
 import axios from 'axios';
 import { graphql,compose,ApolloConsumer } from 'react-apollo';
 import { mkdir } from 'file-system';
-
-
-async function getBase64ImageFromUrl(imageUrl) {
-    var res = await fetch(imageUrl);
-    var blob = await res.blob();
-  
-    return new Promise((resolve, reject) => {
-      var reader  = new FileReader();
-      reader.addEventListener("load", function () {
-          resolve(reader.result);
-      }, false);
-  
-      reader.onerror = () => {
-        return reject(this);
-      };
-      reader.readAsDataURL(blob);
-    })
-  }
+import getBase64ImageFromUrl from '../utils/getBase64ImageFromUrl';
 
 const SignInWithSocialMedia=({ sendFBTokenToServer,writeUserAuthInfoToCache, history})=>{
   
@@ -38,15 +21,24 @@ const SignInWithSocialMedia=({ sendFBTokenToServer,writeUserAuthInfoToCache, his
                 let email=authenticateFBUser.user.email;
                 let profilePicURL=authenticateFBUser.user.profilePicture.url;
                 let profilePicture;
-            
-                getBase64ImageFromUrl(profilePicURL)
-                    .then((result)=>{
-                        profilePicture=result;
-                        let userObject = {token,firstName,lastName,email,profilePicture}
-                        console.log("AUTH TO SAVE"+JSON.stringify(userObject));
-                        writeUserAuthInfoToCache({variables:{ userAuthInfo: userObject }})
-                    })
-                    .then(()=>{console.log("Successfuly saved to the cache")})
+
+                axios.get(profilePicURL)
+                .then((response)=>{
+                    const data = response.data 
+                    profilePicture = data; 
+                    let userObject = {token,firstName,lastName,email,profilePicture};
+                    console.log("AUTH TO SAVE"+JSON.stringify(userObject));
+                    writeUserAuthInfoToCache({variables:{ userAuthInfo: userObject }})
+                }).then(()=>{console.log("Successfuly saved to the cache")})
+
+                // getBase64ImageFromUrl(profilePicURL)
+                //     .then((result)=>{
+                //         profilePicture=result;
+                //         let userObject = {token,firstName,lastName,email,profilePicture}
+                //         console.log("AUTH TO SAVE"+JSON.stringify(userObject));
+                //         writeUserAuthInfoToCache({variables:{ userAuthInfo: userObject }})
+                //     })
+                //     .then(()=>{console.log("Successfuly saved to the cache")})
                 
             }
           }).then(()=> history.push('/profile'))   
@@ -66,13 +58,13 @@ const SignInWithSocialMedia=({ sendFBTokenToServer,writeUserAuthInfoToCache, his
             </div>
             <div className="socialmedia-connect-screen__buttons-container">
             <FacebookLogin 
-            appId="266227067534365"  
-            autoLoad={true}
-            callback={responseFacebook}
-            fields="name,email,picture"
-            icon="fa fa-facebook"
-            textButton=" KONEKTE AK FACEBOOK"
-            cssClass="socialmedia-connect-screen__facebook-connect-button"
+                appId="266227067534365"  
+                autoLoad={true}
+                callback={responseFacebook}
+                fields="name,email,picture"
+                icon="fa fa-facebook"
+                textButton=" KONEKTE AK FACEBOOK"
+                cssClass="socialmedia-connect-screen__facebook-connect-button"
             /> 
             <div className="socialmedia-connect-screen__buttons-container-2">
             <Link className="socialmedia-connect-screen__link" to="/authentication/sign-in-without-social-media">

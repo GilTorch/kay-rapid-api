@@ -19,6 +19,7 @@ import FacebookLoginRedirection from './components/FacebookLoginRedirection';
 import Profile from './page/Profile';
 import Favorites from './page/Favorites';
 import Home  from './page/Home';
+import UserInfo from './components/UserInfo';
 
 
 
@@ -43,6 +44,7 @@ class App extends Component {
             <Route exact={true} path="/authentication/sign-in-with-social-media" component={SignInWithSocialMedia} updateCacheWithToken={this.updateCacheWithToken}/>
             <Route exact={true} path="/authentication/sign-in-without-social-media" component={SignInWithoutSocialMedia}/>
             <Route exact={true} path="/authentication/account-creation" component={AccountCreation}/>
+            <Route exact={true} path="/profile/user-info" component={UserInfo}/>
             </div>
           </React.Fragment>
         </Router>

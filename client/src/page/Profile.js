@@ -16,13 +16,13 @@ const Profile =({userAuthInfo})=>{
     return(
         <div className="profile">
             <HeaderBar title="Profile"/>
-            {!userAuthInfo.email ? <Authentication/> : <UserInfo {...userAuthInfo} />}
+            { userAuthInfo.email ? <UserInfo {...userAuthInfo} />:<Authentication/>}
             <Navigation currentPage="profile"/>
         </div>
     )
 }  
 
-let ProfileWithQuery=graphql(
+const ProfileWithQuery=graphql(
     READ_AUTH_INFO,{
         props:({data:{ userAuthInfo }})=>({
             userAuthInfo
