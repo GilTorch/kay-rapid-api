@@ -1,3 +1,37 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    background-color: #fff;
+}
+/* Area */
+.addAreaButton {
+     background-color:#fff;
+     border: solid;
+     border-color:#662d91;
+    border-width: 1px;
+     color: #662d91;
+     padding: 10px 22px;
+     text-align: center;
+     text-decoration: none;
+     display: inline-block;
+     font-size: 9px;
+     border-radius: 25px;
+     margin-left: 10px;
+     max-width: 100%;
+}
+.listAreaButton {
+    background-color: #662d91;
+    border: none;
+    color: white;
+    padding: 10px 22px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 9px;
+    max-width: 100%;
+}
+/* end of Area buttons */
+
 /*House */
 .Numbers {
  display: flex;
@@ -5,37 +39,99 @@
  justify-content: space-around;
 }
 /* the slider Howmuchmoney*/
-.slidecontainer {
-    width: 100%;
+input[type=number] {
+width: 100%;
+border-style: solid;
+border-color: #662d91;
+}
+/* FingthoseHouseButton */
+.FindThoseHousesButton {
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 22px;
+    margin-top: 20px;
+    width:100%;
+}
+/* Characteristic */
+.ContainerCharacteristic {
+   max-width: 100%;
+   margin:20px;
+}
+.Numbers {
+    margin-bottom: 20px;
+}
+.titleCharacteristic {
+margin-bottom: 10px;
+}
+select {
+    width: 60px;
+    border:solid;
+    border-color: #662d91;
+    background-color: #fff;
+    border-width: 1px;
+    color:#662d91;
 }
 
-.slider {
-    -webkit-appearance: none;
-    width: 100%;
-    height: 25px;
-    background: #d3d3d3;
-    outline: none;
-    opacity: 0.7;
-    -webkit-transition: .2s;
-    transition: opacity .2s;
+/* end of characteristic */
+
+/* button for whichTypeOfProprietorship   */
+.button{
+    background-color:#fff;
+     border: solid;
+     border-color:#662d91;
+    border-width: 1px;
+     color: #662d91;
+     padding: 4px 2px;
+     text-align: center;
+     text-decoration: none;
+     display: inline-block;
+     font-size: 12px;
+     border-radius: 35px;
+     margin: 2px;
+    
 }
 
-.slider:hover {
-    opacity: 1;
-}
 
-.slider::-webkit-slider-thumb {
-    -webkit-appearance: none;
-    appearance: none;
-    width: 25px;
-    height: 25px;
-    background: #4CAF50;
-    cursor: pointer;
+@media screen  and (min-width: 320px) and (max-width: 800px){
+.containerArea {
+    padding-bottom: 20px;
 }
+.addAreaButton {
+     background-color:#fff;
+     border: solid;
+     border-color:#662d91;
+    border-width: 1px;
+     color: #662d91;
+     padding: 10px 22px;
+     text-align: center;
+     text-decoration: none;
+     display: inline-block;
+     font-size: 12px;
+     border-radius: 25px;
+     margin-left: 3px;
+      
 
-.slider::-moz-range-thumb {
-    width: 25px;
-    height: 25px;
-    background: #4CAF50;
-    cursor: pointer;
+}
+.listAreaButton {
+    max-width: 100%;
+    background-color: #662d91;
+    border: none;
+    color: white;
+    padding: 10px 22px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 12px;
+}
+/* end of Area buttons */
+
+.gridButton{
+    display: flex;
+}
+ h1 { font-size: 18px !important; }
 }
