@@ -1,7 +1,13 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
+import React from 'react';
 import './css/App.css';
+import './css/carousel.css';
+import './css/infoHouse.css';
+import './css/wallHouse.css';
+import './css/SearchFilterPage.css';
+import { SearchFilterPage } from './components/SearchFilterPage';
 
+
+/*
 import { ApolloProvider } from 'react-apollo';
 import client from './apolloClient';
 import { BrowserRouter as Router,Route } from 'react-router-dom';
@@ -19,12 +25,13 @@ import FacebookLoginRedirection from './components/FacebookLoginRedirection';
 import Profile from './page/Profile';
 import Favorites from './page/Favorites';
 import Home  from './page/Home';
+*/
 
 
 
-library.add(faSearch,faHome, faHeart, faUser)
 
-
+/*
+library.add(faSearch, faHome, faHeart, faUser)
 class App extends Component {
 
   constructor(props){
@@ -34,9 +41,17 @@ class App extends Component {
   updateCacheWithToken(){
     console.log("called");
   }
+=======
+import './css/carousel.css';
+import './css/infoHouse.css';
+import './css/wallHouse.css';
+import './css/SearchFilter.css';
+import { SearchFilterPage } from './components/SearchFilterPage';
+>>>>>>> Stashed changes
 
   render() {
     return (
+<<<<<<< Updated upstream
       <ApolloProvider client={client}>
         <Router>
           <React.Fragment>
@@ -53,7 +68,19 @@ class App extends Component {
         </Router>
       </ApolloProvider>
     );
+      
+    )
+>>>>>>> Stashed changes
   }
 }
-
+*/
+class App extends React.Component {
+  render() {
+    return (
+      <div>
+        <SearchFilterPage />
+      </div>
+    )
+  }
+}
 export default App;
