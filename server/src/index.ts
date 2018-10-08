@@ -2,6 +2,7 @@ import { GraphQLServer } from "graphql-yoga";
 import { importSchema } from "graphql-import";
 import { Prisma } from "./generated/prisma";
 import { resolvers, fragmentReplacements } from "./resolvers";
+import { mymiddlepermission } from "./permissions";
 
 if (process.env.NODE_ENV !== "production") {
   require("dotenv").load();
@@ -10,6 +11,7 @@ if (process.env.NODE_ENV !== "production") {
 const server = new GraphQLServer({
   typeDefs: "./src/schema.graphql",
   resolvers,
+  middlewares: [mymiddlepermission],
   context: req => ({
     ...req,
     db: new Prisma({

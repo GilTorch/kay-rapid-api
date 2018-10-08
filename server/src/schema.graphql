@@ -6,6 +6,7 @@ type Query {
   cities: [City!]!
   communes: [Commune!]!
   getToken(id: String!): String!
+  Houses: House!
 }
 
 type AuthPayLoad {

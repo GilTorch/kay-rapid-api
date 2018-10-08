@@ -385,7 +385,7 @@ type AggregateViews {
 
 type Amenities implements Node {
   id: ID!
-  House(where: HouseWhereInput): House!
+  House: House!
   electricity: Boolean!
   electricity_frequency: FREQUENCY
   elevator: Boolean!
@@ -980,11 +980,11 @@ type BatchPayload {
 type Booking implements Node {
   id: ID!
   createdAt: DateTime!
-  bookee(where: UserWhereInput): User!
-  House(where: HouseWhereInput): House!
+  bookee: User!
+  House: House!
   startDate: DateTime!
   endDate: DateTime!
-  payment(where: PaymentHouseWhereInput): PaymentHouse!
+  payment: PaymentHouse!
 }
 
 """A connection to a list of items."""
@@ -1317,7 +1317,7 @@ input BookingWhereUniqueInput {
 type City implements Node {
   id: ID!
   name: String!
-  state(where: StateWhereInput): State!
+  state: State!
 }
 
 """A connection to a list of items."""
@@ -1525,7 +1525,7 @@ input CityWhereUniqueInput {
 type Commune implements Node {
   id: ID!
   name: String!
-  city(where: CityWhereInput): City!
+  city: City!
 }
 
 """A connection to a list of items."""
@@ -1946,7 +1946,7 @@ type CreditCardInformation implements Node {
   lastName: String!
   postalCode: String!
   country: String!
-  paymentAccount(where: PaymentAccountWhereInput): PaymentAccount
+  paymentAccount: PaymentAccount
 }
 
 """A connection to a list of items."""
@@ -2497,17 +2497,17 @@ type House implements Node {
   numBedrooms: Int!
   numBaths: Int!
   reviews(where: ReviewWhereInput, orderBy: ReviewOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Review!]
-  amenities(where: AmenitiesWhereInput): Amenities!
-  host(where: UserWhereInput): User!
-  pricing(where: PricingWhereInput): Pricing!
-  location(where: LocationWhereInput): Location!
+  amenities: Amenities!
+  host: User!
+  pricing: Pricing!
+  location: Location!
   leaseType: HOUSE_LEASE_TYPE
   verified: Boolean!
   type: HOUSE_TYPES
   residency: House_RESIDENCY
   lease: Int!
   rooms(where: RoomWhereInput, orderBy: RoomOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Room!]
-  views(where: ViewsWhereInput): Views
+  views: Views
   bookings(where: BookingWhereInput, orderBy: BookingOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Booking!]
   pictures(where: PictureWhereInput, orderBy: PictureOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Picture!]
   contactInfoPayments(where: PaymentLanlordInfoWhereInput, orderBy: PaymentLanlordInfoOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [PaymentLanlordInfo!]
@@ -2517,8 +2517,8 @@ type House implements Node {
 type House_Favorited implements Node {
   id: ID!
   createdAt: DateTime!
-  user(where: UserWhereInput): User!
-  house(where: HouseWhereInput): House!
+  user: User!
+  house: House!
 }
 
 """A connection to a list of items."""
@@ -3858,7 +3858,7 @@ type Location implements Node {
   lat: Float
   lng: Float
   address: String
-  commune(where: CommuneWhereInput): Commune
+  commune: Commune
 }
 
 """A connection to a list of items."""
@@ -4284,8 +4284,8 @@ enum MutationType {
 type Negotiation implements Node {
   id: ID!
   createdAt: DateTime!
-  negotiator(where: UserWhereInput): User!
-  House(where: HouseWhereInput): House!
+  negotiator: User!
+  House: House!
   offer: Float!
   status: NEGOTIATION_TYPE
 }
@@ -4509,7 +4509,7 @@ type Notification implements Node {
   id: ID!
   createdAt: DateTime!
   type: NOTIFICATION_TYPE
-  user(where: UserWhereInput): User!
+  user: User!
   link: String!
   readDate: DateTime!
 }
@@ -4828,10 +4828,10 @@ type PaymentAccount implements Node {
   id: ID!
   createdAt: DateTime!
   type: PAYMENT_PROVIDER
-  user(where: UserWhereInput): User!
+  user: User!
   payments(where: PaymentHouseWhereInput, orderBy: PaymentHouseOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [PaymentHouse!]
-  paypal(where: PaypalInformationWhereInput): PaypalInformation
-  creditcard(where: CreditCardInformationWhereInput): CreditCardInformation
+  paypal: PaypalInformation
+  creditcard: CreditCardInformation
 }
 
 """A connection to a list of items."""
@@ -5117,8 +5117,8 @@ type PaymentHouse implements Node {
   id: ID!
   createdAt: DateTime!
   totalPrice: Float!
-  booking(where: BookingWhereInput): Booking!
-  paymentMethod(where: PaymentAccountWhereInput): PaymentAccount!
+  booking: Booking!
+  paymentMethod: PaymentAccount!
 }
 
 """A connection to a list of items."""
@@ -5375,8 +5375,8 @@ type PaymentLanlordInfo implements Node {
   id: ID!
   createdAt: DateTime!
   totalPrice: Float!
-  client(where: UserWhereInput): User!
-  House(where: HouseWhereInput): House!
+  client: User!
+  House: House!
   moncashTransactId: String!
 }
 
@@ -5691,7 +5691,7 @@ type PaypalInformation implements Node {
   id: ID!
   createdAt: DateTime!
   email: String!
-  paymentAccount(where: PaymentAccountWhereInput): PaymentAccount!
+  paymentAccount: PaymentAccount!
 }
 
 """A connection to a list of items."""
@@ -6156,7 +6156,7 @@ input PictureWhereUniqueInput {
 
 type Pricing implements Node {
   id: ID!
-  House(where: HouseWhereInput): House!
+  House: House!
   basePrice: Int!
   highestPrice: Int!
   currency: CURRENCY
@@ -6513,7 +6513,7 @@ type Review implements Node {
   checkIn: Int!
   value: Int!
   communication: Int!
-  House(where: HouseWhereInput): House!
+  House: House!
 }
 
 """A connection to a list of items."""
@@ -6929,7 +6929,7 @@ input ReviewWhereUniqueInput {
 type Room implements Node {
   id: ID!
   label: String!
-  house(where: HouseWhereInput): House!
+  house: House!
   picture_previews(where: PictureWhereInput, orderBy: PictureOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Picture!]
   video_previews(where: VideoWhereInput, orderBy: VideoOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Video!]
 }
@@ -7164,7 +7164,7 @@ input RoomWhereUniqueInput {
 type State implements Node {
   id: ID!
   name: String!
-  country(where: CountryWhereInput): Country!
+  country: Country!
 }
 
 """A connection to a list of items."""
@@ -7399,6 +7399,7 @@ type User implements Node {
   id: ID!
   createdAt: DateTime!
   updatedAt: DateTime!
+  role: String
   status: Boolean
   facebookUserId: String
   firstName: String!
@@ -7411,11 +7412,11 @@ type User implements Node {
   responseTime: Int
   isSuperHost: Boolean!
   ownedHouses(where: HouseWhereInput, orderBy: HouseOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [House!]
-  location(where: LocationWhereInput): Location
+  location: Location
   bookings(where: BookingWhereInput, orderBy: BookingOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Booking!]
   paidContacts(where: PaymentLanlordInfoWhereInput, orderBy: PaymentLanlordInfoOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [PaymentLanlordInfo!]
   notifications(where: NotificationWhereInput, orderBy: NotificationOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Notification!]
-  profilePicture(where: PictureWhereInput): Picture
+  profilePicture: Picture
 }
 
 """A connection to a list of items."""
@@ -7429,6 +7430,7 @@ type UserConnection {
 }
 
 input UserCreateInput {
+  role: String
   status: Boolean
   facebookUserId: String
   firstName: String!
@@ -7474,6 +7476,7 @@ input UserCreateOneWithoutPaidContactsInput {
 }
 
 input UserCreateWithoutBookingsInput {
+  role: String
   status: Boolean
   facebookUserId: String
   firstName: String!
@@ -7493,6 +7496,7 @@ input UserCreateWithoutBookingsInput {
 }
 
 input UserCreateWithoutNotificationsInput {
+  role: String
   status: Boolean
   facebookUserId: String
   firstName: String!
@@ -7512,6 +7516,7 @@ input UserCreateWithoutNotificationsInput {
 }
 
 input UserCreateWithoutOwnedHousesInput {
+  role: String
   status: Boolean
   facebookUserId: String
   firstName: String!
@@ -7531,6 +7536,7 @@ input UserCreateWithoutOwnedHousesInput {
 }
 
 input UserCreateWithoutPaidContactsInput {
+  role: String
   status: Boolean
   facebookUserId: String
   firstName: String!
@@ -7565,6 +7571,8 @@ enum UserOrderByInput {
   createdAt_DESC
   updatedAt_ASC
   updatedAt_DESC
+  role_ASC
+  role_DESC
   status_ASC
   status_DESC
   facebookUserId_ASC
@@ -7593,6 +7601,7 @@ type UserPreviousValues {
   id: ID!
   createdAt: DateTime!
   updatedAt: DateTime!
+  role: String
   status: Boolean
   facebookUserId: String
   firstName: String!
@@ -7646,6 +7655,7 @@ input UserSubscriptionWhereInput {
 }
 
 input UserUpdateDataInput {
+  role: String
   status: Boolean
   facebookUserId: String
   firstName: String
@@ -7666,6 +7676,7 @@ input UserUpdateDataInput {
 }
 
 input UserUpdateInput {
+  role: String
   status: Boolean
   facebookUserId: String
   firstName: String
@@ -7721,6 +7732,7 @@ input UserUpdateOneRequiredWithoutPaidContactsInput {
 }
 
 input UserUpdateWithoutBookingsDataInput {
+  role: String
   status: Boolean
   facebookUserId: String
   firstName: String
@@ -7740,6 +7752,7 @@ input UserUpdateWithoutBookingsDataInput {
 }
 
 input UserUpdateWithoutNotificationsDataInput {
+  role: String
   status: Boolean
   facebookUserId: String
   firstName: String
@@ -7759,6 +7772,7 @@ input UserUpdateWithoutNotificationsDataInput {
 }
 
 input UserUpdateWithoutOwnedHousesDataInput {
+  role: String
   status: Boolean
   facebookUserId: String
   firstName: String
@@ -7778,6 +7792,7 @@ input UserUpdateWithoutOwnedHousesDataInput {
 }
 
 input UserUpdateWithoutPaidContactsDataInput {
+  role: String
   status: Boolean
   facebookUserId: String
   firstName: String
@@ -7914,6 +7929,46 @@ input UserWhereInput {
 
   """All values greater than or equal the given value."""
   updatedAt_gte: DateTime
+  role: String
+
+  """All values that are not equal to given value."""
+  role_not: String
+
+  """All values that are contained in given list."""
+  role_in: [String!]
+
+  """All values that are not contained in given list."""
+  role_not_in: [String!]
+
+  """All values less than the given value."""
+  role_lt: String
+
+  """All values less than or equal the given value."""
+  role_lte: String
+
+  """All values greater than the given value."""
+  role_gt: String
+
+  """All values greater than or equal the given value."""
+  role_gte: String
+
+  """All values containing the given string."""
+  role_contains: String
+
+  """All values not containing the given string."""
+  role_not_contains: String
+
+  """All values starting with the given string."""
+  role_starts_with: String
+
+  """All values not starting with the given string."""
+  role_not_starts_with: String
+
+  """All values ending with the given string."""
+  role_ends_with: String
+
+  """All values not ending with the given string."""
+  role_not_ends_with: String
   status: Boolean
 
   """All values that are not equal to given value."""
@@ -8482,7 +8537,7 @@ input VideoWhereUniqueInput {
 type Views implements Node {
   id: ID!
   lastWeek: Int!
-  House(where: HouseWhereInput): House!
+  House: House!
 }
 
 """A connection to a list of items."""
@@ -9059,6 +9114,8 @@ export type UserOrderByInput =   'id_ASC' |
   'createdAt_DESC' |
   'updatedAt_ASC' |
   'updatedAt_DESC' |
+  'role_ASC' |
+  'role_DESC' |
   'status_ASC' |
   'status_DESC' |
   'facebookUserId_ASC' |
@@ -9841,6 +9898,7 @@ export interface CommuneWhereInput {
 }
 
 export interface UserCreateWithoutPaidContactsInput {
+  role?: String
   status?: Boolean
   facebookUserId?: String
   firstName: String
@@ -9909,6 +9967,20 @@ export interface UserWhereInput {
   updatedAt_lte?: DateTime
   updatedAt_gt?: DateTime
   updatedAt_gte?: DateTime
+  role?: String
+  role_not?: String
+  role_in?: String[] | String
+  role_not_in?: String[] | String
+  role_lt?: String
+  role_lte?: String
+  role_gt?: String
+  role_gte?: String
+  role_contains?: String
+  role_not_contains?: String
+  role_starts_with?: String
+  role_not_starts_with?: String
+  role_ends_with?: String
+  role_not_ends_with?: String
   status?: Boolean
   status_not?: Boolean
   facebookUserId?: String
@@ -10259,6 +10331,7 @@ export interface PricingWhereUniqueInput {
 }
 
 export interface UserCreateWithoutBookingsInput {
+  role?: String
   status?: Boolean
   facebookUserId?: String
   firstName: String
@@ -10402,6 +10475,7 @@ export interface PaymentAccountCreateWithoutPaymentsInput {
 }
 
 export interface UserUpdateInput {
+  role?: String
   status?: Boolean
   facebookUserId?: String
   firstName?: String
@@ -10431,6 +10505,7 @@ export interface CountryUpdateInput {
 }
 
 export interface UserCreateInput {
+  role?: String
   status?: Boolean
   facebookUserId?: String
   firstName: String
@@ -10463,6 +10538,7 @@ export interface PaypalInformationCreateOneWithoutPaymentAccountInput {
 }
 
 export interface UserUpdateWithoutNotificationsDataInput {
+  role?: String
   status?: Boolean
   facebookUserId?: String
   firstName?: String
@@ -11090,6 +11166,7 @@ export interface CreditCardInformationCreateInput {
 }
 
 export interface UserUpdateDataInput {
+  role?: String
   status?: Boolean
   facebookUserId?: String
   firstName?: String
@@ -11220,6 +11297,7 @@ export interface UserCreateOneWithoutNotificationsInput {
 }
 
 export interface UserCreateWithoutOwnedHousesInput {
+  role?: String
   status?: Boolean
   facebookUserId?: String
   firstName: String
@@ -11239,6 +11317,7 @@ export interface UserCreateWithoutOwnedHousesInput {
 }
 
 export interface UserCreateWithoutNotificationsInput {
+  role?: String
   status?: Boolean
   facebookUserId?: String
   firstName: String
@@ -11625,6 +11704,7 @@ export interface AmenitiesSubscriptionWhereInput {
 }
 
 export interface UserUpdateWithoutOwnedHousesDataInput {
+  role?: String
   status?: Boolean
   facebookUserId?: String
   firstName?: String
@@ -12450,6 +12530,7 @@ export interface HouseUpdateOneRequiredWithoutReviewsInput {
 }
 
 export interface UserUpdateWithoutPaidContactsDataInput {
+  role?: String
   status?: Boolean
   facebookUserId?: String
   firstName?: String
@@ -12657,6 +12738,7 @@ export interface House_FavoritedWhereInput {
 }
 
 export interface UserUpdateWithoutBookingsDataInput {
+  role?: String
   status?: Boolean
   facebookUserId?: String
   firstName?: String
@@ -13993,6 +14075,7 @@ export interface UserPreviousValues {
   id: ID_Output
   createdAt: DateTime
   updatedAt: DateTime
+  role?: String
   status?: Boolean
   facebookUserId?: String
   firstName: String
@@ -14060,6 +14143,7 @@ export interface User extends Node {
   id: ID_Output
   createdAt: DateTime
   updatedAt: DateTime
+  role?: String
   status?: Boolean
   facebookUserId?: String
   firstName: String

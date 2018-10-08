@@ -2,6 +2,7 @@ type User {
   id: ID! @unique
   createdAt: DateTime!
   updatedAt: DateTime!
+  role: String @default(value: "STANDARD")
   status: Boolean @default(value: "true")
   facebookUserId: String @unique
   firstName: String!
@@ -301,4 +302,9 @@ enum NEGOTIATION_TYPE {
 enum PAYMENT_PROVIDER {
   PAYPAL
   CREDIT_CARD
+}
+enum ROLE_TYPE {
+  STANDARD
+  LANDLORD
+  ADMIN
 }
