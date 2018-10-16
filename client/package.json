@@ -12,6 +12,7 @@
     "apollo-cache-inmemory": "^1.2.9",
     "apollo-cache-persist": "^0.1.1",
     "apollo-link-state": "^0.4.2",
+    "dotenv": "^6.1.0",
     "file-saver": "^2.0.0-rc.3",
     "file-system": "^2.2.2",
     "fsos": "^1.1.3",

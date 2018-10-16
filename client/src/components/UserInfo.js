@@ -6,6 +6,7 @@ const UserInfo=({ firstName,lastName,profilePicture })=>{
     <div className="profile-info">
         <ImageLoader file={profilePicture}/>
         <p>{firstName} {lastName}</p>
+        <button className="authentication-button profile-info__logout-button">Log Out</button>
     </div>
    )
 }

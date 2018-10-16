@@ -1,18 +1,16 @@
 import React from 'react';
 
 function PrixUS(props){
-
     return(
         <div className="PrixUs">
             <div>
                 <h1>Prix en Us</h1>
                 <p>{props.prixenUs} {props.annee} {props.negosye[props.index]}</p>
             </div>
-            
-         
         </div>
     )
 }
+
 function Name(props){
     return(
         <div className="Name">  
@@ -38,25 +36,20 @@ function DescriptionHouse(props){
     )
 }
 
-
-
 function ZonKomante(props){
     return (
-        <div>
-           
-<div className = "ajoute_yon_komante" > 
-    <h1 className="zon_yon_komante_title">Zon komante</h1>
-</div>
-            <h2 className="ajoute_yon_komante_title">Ajoute yon komante</h2>
-                <form className="komanteForm">
-                    <textarea id="subject" name="subject" placeholder="Bay yon komante sou kay sa"> </textarea>
-                    <div className="input_textarea">
-                        <input type="submit" value="Soumet" ></input>
-                     </div>
-                </form>
-               
+    <div>           
+    <div className = "ajoute_yon_komante" > 
+        <h1 className="zon_yon_komante_title">Zon komante</h1>
+    </div>
+    <h2 className="ajoute_yon_komante_title">Ajoute yon komante</h2>
+    <form className="komanteForm">
+        <textarea id="subject" name="subject" placeholder="Bay yon komante sou kay sa"> </textarea>
+        <div className="input_textarea">
+            <input type="submit" value="Soumet" ></input>
             </div>
-       
+    </form>
+    </div>
     )
 }
 
@@ -67,7 +60,6 @@ function InfoHouse(props){
             <Name nom ={"Jean Jacques Kenley"} />
             <DescriptionHouse  desciptionInfo={["3 chanm akouche","1 salon", "1 sal a manje", " 2 douch"].join(", ")}  klasmans={["stars","stars"]} />
             <ZonKomante />
-     
         </div>
     )
 }

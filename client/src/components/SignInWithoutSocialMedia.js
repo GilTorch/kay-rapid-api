@@ -8,7 +8,6 @@ import { AUTH_WITHOUT_SOCIAL_MEDIA,WRITE_AUTH_INFO } from '../queries/queries';
 const SignInWithoutSocialMedia = ({ signIn,writeUserAuthInfoToCache })=>{
 
     const signUserIn=(e)=>{
-        e.preventDefault();
         // console.log("Email:"+this.refs.email.value+",password:"+this.refs.password.value);
         const email = this.emailInput.value;
         const password= this.passwordInput.value;
@@ -23,7 +22,7 @@ const SignInWithoutSocialMedia = ({ signIn,writeUserAuthInfoToCache })=>{
                     email:login.user.email,
                     profilePicture:profilePicture
                 };
-                console.log("AUTH TO SAVE"+JSON.stringify(userObject));
+                // console.log("AUTH TO SAVE"+JSON.stringify(userObject));
                 writeUserAuthInfoToCache({variables:{ userAuthInfo: userObject }})
             }
         })
@@ -44,8 +43,6 @@ const SignInWithoutSocialMedia = ({ signIn,writeUserAuthInfoToCache })=>{
     )
 
 }
-
-
 
 export default compose(
     graphql(AUTH_WITHOUT_SOCIAL_MEDIA,{name:"signIn"}),

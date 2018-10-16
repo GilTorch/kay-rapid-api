@@ -42,7 +42,9 @@ export const FB_AUTH = gql`
 }
 `
 
-
+/**
+ * =-=-=-=-=-CLIENT SIDE QUERIES AND MUTATIONS=-=-=-
+ */
 
 export const WRITE_AUTH_INFO= gql`
 mutation updateAuthInfo($userAuthInfo:Object!){

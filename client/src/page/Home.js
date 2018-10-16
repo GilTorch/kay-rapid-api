@@ -2,6 +2,9 @@ import React from 'react';
 import Navigation from '../components/Navigation';
 import Neighborhood from '../components/Neighborhood';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import AddHouse from '../images/add-house.png';
+import AppLogo from '../svg/lakay-ou-logo.svg';
+import Link from 'react-router-dom/Link';
 
 
 const Home=({ title })=>{
@@ -9,7 +12,7 @@ const Home=({ title })=>{
         <div className="home">
             <header className="home__header">
             <div className="home__header-wrapper">
-                <img className="app-logo" src="http://res.cloudinary.com/dejyp5iex/image/upload/v1535720361/LAKAY-OU_LOGO_zs0xlj.png" />
+                <img  src={AppLogo} />
                 <h1 className="home__title">{ title }</h1>
                 <form className="home__form">
                     <div className="home__form-wrapper">
@@ -27,6 +30,9 @@ const Home=({ title })=>{
                 <Neighborhood name="Les Cayes"/>
                 <Neighborhood name="Jeremie"/>
             </div>
+            <Link to="/add-house">
+                <button className="home__button-post-house"><i className="fa fa-home fa-2x">+</i></button>
+            </Link>
             <Navigation currentPage="home"/>
         </div>
     )

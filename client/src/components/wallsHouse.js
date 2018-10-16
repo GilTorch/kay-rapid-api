@@ -6,7 +6,6 @@ class HouseProfile extends React.Component {
         this.state = {
             red: true
         }
-    
     }
     changeColor() {
         this.setState({ red: !this.state.red })
@@ -15,10 +14,9 @@ class HouseProfile extends React.Component {
     render() {
         let btn_class = this.state.red ? "whiteButton" :"redButton";
          return (
-            <div className="card"> 
+            <div className="wallsHouse__card"> 
         <div className="cardProfileHouses">
-                <div className="PhotoProfileHousesAndPrice">
-                    
+            <div className="PhotoProfileHousesAndPrice">
                 <ul>
                     <li>
                 <img src={this.props.image} alt="" />
@@ -27,11 +25,9 @@ class HouseProfile extends React.Component {
                     <li><p>{this.props.PrixHouseUs}</p></li>
                 </ul>
             </div>
-
             <div>
-             
                 <ul className="infosHouseCard">
-                             <div className={btn_class} onClick={this.changeColor.bind(this)} ><span><i class="fas fa-heart"></i></span></div>
+                             <div className={btn_class} onClick={this.changeColor.bind(this)} ><span><i className="fas fa-heart"></i></span></div>
                     <li><h2>Propriyetè a:  </h2><span>{this.props.nom.NomPropriete}</span></li>
                     <li><h2>Adrès</h2> <span>{this.props.address}</span> </li>
                     <li><h2>Deskripsyon</h2><span>{this.props.description}</span> </li>
@@ -40,19 +36,14 @@ class HouseProfile extends React.Component {
                         <span className="fa fa-star checked"></span>
                         <span className="fa fa-star"></span>
                       </h2> </li>
-
                     <li>
-                            <span className="icons"><i class="fas fa-map-marker-alt"></i></span>Gade zòn nan sou yon map</li>
+                        <span className="icons"><i className="fas fa-map-marker-alt"></i></span>Gade zòn nan sou yon map</li>
                     <li>
-                            <span className="icons"><i class="fas fa-eye"></i></span>Vizitel ak telefòn ou!
-                        </li>
-                        <li><span className="icons"><i class="fas fa-camera"></i></span>Gade kèk foto/video kay la</li>
+                        <span className="icons"><i className="fas fa-eye"></i></span>Vizitel ak telefòn ou!
+                    </li>
+                    <li><span className="icons"><i className="fas fa-camera"></i></span>Gade kèk foto/video kay la</li>
                 </ul>
-                
-               
             </div>
-            
-         
         </div>
         <div className="center-Button">
                 <button className="button" type="submit">M'enterese</button>

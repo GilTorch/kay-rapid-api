@@ -1,0 +1,21 @@
+.add-house-card{
+    background-color:white;
+    display:flex;
+    flex-direction:column;
+    margin-top:90px;
+    margin-left:auto;
+    margin-right:auto;
+    padding:0.5%;
+}
+
+.add-house-card__button{
+    background-color:var(--button-success-color);
+    border:none;
+    color:white;
+}
+
+.add-house-card__form-group{
+    display:flex;
+    flex-direction: column;
+    margin:auto;
+}

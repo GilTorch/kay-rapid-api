@@ -1,22 +1,4 @@
- img {
-     width: 100px;
-     padding-top: 20px;
- }
- ul {
-     list-style-type: none;
-     margin: 0;
-     padding: 0;
- }
 
- li,
- h2 {
-     margin: 0;
- }
-
- li,
- p {
-     margin: 0;
- }
 
  /* cardProfileHouses */
  .cardProfileHouses {
@@ -24,6 +6,7 @@
      grid-template-columns: 1fr 2fr;
      grid-column-gap: 1px;
      padding: 22px;
+     background-color:white;
  }
 
  /* end of cardProfilesHouses */
@@ -34,7 +17,7 @@
      font-size: 10px;
  }
 
- .card {
+ .wallHouse__card {
 
      margin-top: 50px;
      margin-left: 10px;

@@ -6,12 +6,11 @@ class Authentication extends React.Component{
         super(props);
     }
 
-
     render(){
         return(
         <div className="card signin-card">
             <div className="signin-card__wrapper">
-                <p> Konekte kounya pou ou ka genyen yon pi bon eksperyans.</p>
+                <p>Konekte kounya pou ou ka genyen yon pi bon eksperyans.</p>
                 <Link to="/authentication/sign-in-with-social-media">                                                    
                     <button className="authentication__button signin-card__button">KONEKTE</button>
                 </Link>

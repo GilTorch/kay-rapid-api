@@ -39,8 +39,6 @@ const stateLink = withClientState({
               `
                 const previousState= cache.readQuery({ query });
 
-                
-
                 const data = {
                     ...previousState,
                     userAuthInfo:{

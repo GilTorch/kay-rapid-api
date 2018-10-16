@@ -3,9 +3,8 @@ import { Link } from 'react-router-dom';
 import FacebookLogin from 'react-facebook-login';
 import { FB_AUTH, WRITE_AUTH_INFO } from '../queries/queries';
 import axios from 'axios';
-import { graphql,compose,ApolloConsumer } from 'react-apollo';
-import { mkdir } from 'file-system';
-import getBase64ImageFromUrl from '../utils/getBase64ImageFromUrl';
+import { graphql,compose } from 'react-apollo';
+import HouseIllustration from '../svg/houses-sunshine-green-pasture.svg'
 
 const SignInWithSocialMedia=({ sendFBTokenToServer,writeUserAuthInfoToCache, history})=>{
   
@@ -31,15 +30,6 @@ const SignInWithSocialMedia=({ sendFBTokenToServer,writeUserAuthInfoToCache, his
                     writeUserAuthInfoToCache({variables:{ userAuthInfo: userObject }})
                 }).then(()=>{console.log("Successfuly saved to the cache")})
 
-                // getBase64ImageFromUrl(profilePicURL)
-                //     .then((result)=>{
-                //         profilePicture=result;
-                //         let userObject = {token,firstName,lastName,email,profilePicture}
-                //         console.log("AUTH TO SAVE"+JSON.stringify(userObject));
-                //         writeUserAuthInfoToCache({variables:{ userAuthInfo: userObject }})
-                //     })
-                //     .then(()=>{console.log("Successfuly saved to the cache")})
-                
             }
           }).then(()=> history.push('/profile'))   
     }
@@ -53,12 +43,13 @@ const SignInWithSocialMedia=({ sendFBTokenToServer,writeUserAuthInfoToCache, his
             </div>
             <div>
                 <div className="house-graphic-container">
-                <img src="http://res.cloudinary.com/dejyp5iex/image/upload/v1534953341/graphique-maison_oebfhb.png" />
+                {/* <img src="http://res.cloudinary.com/dejyp5iex/image/upload/v1534953341/graphique-maison_oebfhb.png" /> */}
+                    <img className="house-illustration" src={HouseIllustration}/>
                 </div>
             </div>
             <div className="socialmedia-connect-screen__buttons-container">
             <FacebookLogin 
-                appId="266227067534365"  
+                appId="266227067534365"
                 autoLoad={true}
                 callback={responseFacebook}
                 fields="name,email,picture"
