@@ -1,13 +1,6 @@
 import React from 'react';
 import './css/App.css';
-import './css/carousel.css';
-import './css/infoHouse.css';
-import './css/wallHouse.css';
-import './css/SearchPage.css';
-import './css/SearchLocationPage.css';
-import LocationHouses from './components/SearchLocationPage';
-
-
+import SearchFilterPage from "./components/SearchPage";
 /*
 import SearchFilterPage from './components/SearchFilterPage';
 import { ApolloProvider } from 'react-apollo';
@@ -79,10 +72,12 @@ import { SearchFilterPage } from './components/SearchFilterPage';
 class App extends React.Component {
   render() {
     return (
-      <div>
-        <LocationHouses />
-      </div>
-    )
+    <div>
+      
+        <SearchFilterPage />
+     
+    </div>
+    );
   }
 }
 export default App;

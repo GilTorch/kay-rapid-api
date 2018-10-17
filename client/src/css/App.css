@@ -4,7 +4,11 @@
 @import "neighborhood.css";
 @import "navigation.css";
 @import "header-bar.css";
-
+@import "HouseUser.css";
+@import 'OfferUser.css';
+@import 'Negotiable.css';
+@import 'infoHouse.css';
+@import 'SearchPage.css';
 
 /*NAVIGATION*/
 
@@ -32,7 +36,7 @@ margin-bottom:90px;
   background-color:white;
   display:flex;
   flex-direction:column;
-  justify-content: 
+  
 }
 
 .signin-card__button{

@@ -1,4 +1,18 @@
 import React from 'react';
+import AmenitiesApartement from './amenities/AmenitiesApartement';
+import MensRooms from './amenities/MensRooms';
+import IndependentHouseOrVilla from './amenities/IndependentHouseOrVilla';
+import Parking from './amenities/Parking';
+import Furniture from './amenities/Furniture';
+import TapWater from './amenities/TapWater';
+import Counters from './amenities/Counters';
+import Tank from './amenities/Tank';
+import Always from './amenities/Always';
+import Sometimes from './amenities/Sometimes';
+import Rarely from './amenities/Rarely';
+import Villa from './amenities/Villa';
+
+
 
 class Area extends React.Component {
 
@@ -6,8 +20,8 @@ class Area extends React.Component {
         return(
             <div>
                 <h1>Z&#242;n</h1>
-                <div className="containerArea">
-                    <button className="listAreaButton">{this.props.lokalite} <span><i class="fas fa-times"></i></span></button>  <button className="addAreaButton">Ajoute Lokalite</button>
+                <div className="Area-container">
+                    <button className="Area-container__ButtonList">{this.props.lokalite} <span><i className="fas fa-times"></i></span></button>  <button className="Area-container__ButtonAdd">Ajoute Lokalite</button>
                 </div>
                 
             </div>
@@ -16,60 +30,42 @@ class Area extends React.Component {
 }
 
 const House =(props) => {
+   const num= props.HousesNumbers.map((numbers)=> {
+       return <option  value={numbers} key={numbers.toString()}>{numbers}</option>
+    })
     return (
-        <div>   <p className="titleCharacteristic">Chanm</p>
+        <div>   <div className="titleCharacteristic">Chanm</div>
         
-                <select>
-                <option value={props.HousesNumber}>{props.HousesNumbers[0]}</option>
-                <option value={props.HousesNumber}>{props.HousesNumbers[1]}</option>
-                <option value={props.HousesNumber}>{props.HousesNumbers[2]}</option>
-                <option value={props.HousesNumber}>{props.HousesNumbers[3]}</option>
-                <option value={props.HousesNumber}>{props.HousesNumbers[4]}</option>
-                <option value={props.HousesNumber}>{props.HousesNumbers[5]}</option>
-                <option value={props.HousesNumber}>{props.HousesNumbers[6]}</option>
-                <option value={props.HousesNumber}>{props.HousesNumbers[7]}</option>
-                <option value={props.HousesNumber}>{props.HousesNumbers[8]}</option>
-                <option value={props.HousesNumber}>{props.HousesNumbers[9]}</option>
+            <select className="select">
+                    {num}
                 </select>
                 
         </div>
     )
 }
 const Showers =(props) => {
+    const num = props.ShowersNumber.map((numbers) => {
+        return <option value={numbers} key={numbers.toString()}>{numbers}</option>
+    })
         return(
             <div>
-                <p className="titleCharacteristic">Douch</p>
-                <select>
-                    <option value={props.ShowersNumber}>{props.ShowersNumber[0]}</option>
-                    <option value={props.ShowersNumber}>{props.ShowersNumber[1]}</option>
-                    <option value={props.ShowersNumber}>{props.ShowersNumber[2]}</option>
-                    <option value={props.ShowersNumber}>{props.ShowersNumber[4]}</option>
-                    <option value={props.ShowersNumber}>{props.ShowersNumber[5]}</option>
-                    <option value={props.ShowersNumber}>{props.ShowersNumber[3]}</option>
-                    <option value={props.ShowersNumber}>{props.ShowersNumber[6]}</option>
-                    <option value={props.ShowersNumber}>{props.ShowersNumber[7]}</option>
-                    <option value={props.ShowersNumber}>{props.ShowersNumber[8]}</option>
-                    <option value={props.ShowersNumber}>{props.ShowersNumber[9]}</option>
+                <div className="titleCharacteristic">Douch</div>
+                <select className="select">
+                   {num}
                 </select>
             </div>
         )
     
 }
 const Salon =(props) => {
+    const num = props.SalonNumbers.map((numbers) => {
+        return <option value={numbers} key={numbers.toString()}>{numbers}</option>
+    })
     return (
         <div>
-            <p className="titleCharacteristic">Salon</p>
-                <select>
-                    <option value={props.SalonNumbers}>{props.SalonNumbers[0]}</option>
-                    <option value={props.SalonNumbers}>{props.SalonNumbers[1]}</option>
-                    <option value={props.SalonNumbers}>{props.SalonNumbers[2]}</option>
-                    <option value={props.SalonNumbers}>{props.SalonNumbers[4]}</option>
-                    <option value={props.SalonNumbers}>{props.SalonNumbers[5]}</option>
-                    <option value={props.SalonNumbers}>{props.SalonNumbers[3]}</option>
-                    <option value={props.SalonNumbers}>{props.SalonNumbers[6]}</option>
-                    <option value={props.SalonNumbers}>{props.SalonNumbers[7]}</option>
-                    <option value={props.SalonNumbers}>{props.SalonNumbers[8]}</option>
-                    <option value={props.SalonNumbers}>{props.SalonNumbers[9]}</option>
+            <div className="titleCharacteristic">Salon</div>
+            <select className="select">
+                    {num}
                 </select>
         </div>
     )
@@ -77,20 +73,14 @@ const Salon =(props) => {
 
 
 const  Diningroom =(props) => {
+    const num = props.DiningroomNumbers.map((numbers) => {
+        return <option value={numbers} key={numbers.toString()}>{numbers}</option>
+    })
     return (
         <div>
-            <p className="titleCharacteristic">Sal a manje</p>
-                <select>
-                    <option value={props.DiningroomNumbers}>{props.DiningroomNumbers[0]}</option>
-                    <option value={props.DiningroomNumbers}>{props.DiningroomNumbers[1]}</option>
-                    <option value={props.DiningroomNumbers}>{props.DiningroomNumbers[2]}</option>
-                    <option value={props.DiningroomNumbers}>{props.DiningroomNumbers[4]}</option>
-                    <option value={props.DiningroomNumbers}>{props.DiningroomNumbers[5]}</option>
-                    <option value={props.DiningroomNumbers}>{props.DiningroomNumbers[3]}</option>
-                    <option value={props.DiningroomNumbers}>{props.DiningroomNumbers[6]}</option>
-                    <option value={props.DiningroomNumbers}>{props.DiningroomNumbers[7]}</option>
-                    <option value={props.DiningroomNumbers}>{props.DiningroomNumbers[8]}</option>
-                    <option value={props.DiningroomNumbers}>{props.DiningroomNumbers[9]}</option>
+            <div className="titleCharacteristic">Sal a manje</div>
+            <select className="select">
+                    {num}
                 </select>
         </div>
     )
@@ -99,59 +89,44 @@ const  Diningroom =(props) => {
 
 const AnyHouse = () => {
     return (
-        <div className="containerAnyHouse">
-        <label >Nenpot
+        <div className="AnyHouse-container">
+            <label >Nenpot ?
+            
+        </label>
             <input type="checkbox" />
             <span className="checkmark"></span>
-        </label>
         </div>
     )
 }
-  /*class Howmuchmoney  extends React.Component {
-    render(){
-        
+
+class  WhichTypeOfProprietorship extends React.Component {
+    render() {
         return (
+
             <div>
-                <h1>Konbyen K&#242;b kay la ye?</h1>
-                <div className="HowMuchMoney_Container">
-                    <form action="/action_page.php">
-                        <input type="number" placeholder="Antre kantite K&#242;b la" className="HowMuchMoney_Input"/>
-                    
-                    
-</form> 
-                   </div>
+                <h1>Ki tip propriyete  Kay ou vle?</h1>
+                <AmenitiesApartement />
+                <Villa />
+                <IndependentHouseOrVilla />
+                <MensRooms />
             </div>
-        )
+        );
     }
+    
 }
 
-*/
-const WhichTypeOfProprietorship = () => {
-    return (
-    
-        <div>
-            <div><h1>Ki tip propriyete a Kay la ye?</h1></div>
-            <div className="gridButton">
-                <button className="button">Apatman</button>
-                <button className="button">Kay endepan / Villa</button>
-                <button className="button">Chanm Gason</button>
-            </div>
-            
-        </div>
-    );
-}
 
 
 const DoesTheHouseHave = () => {
     return (
         <div>
-            <h1>Eske Kay la gen ?</h1>
-            <div class="gridButton">
-                <button className="button">Parking</button>
-                <button className="button">M&egrave;b</button>
-                <button className="button">Tiyo</button>
-                <button className="button">Konte</button>
-                <button className="button">Res&egrave;vwa</button>
+            <h1>Eske ou  vle Kay la gen ?</h1>
+            <div className="Amenities">
+                <Parking />
+               <Furniture />
+                <TapWater />
+                <Counters />
+                <Tank />
             </div>
             
         </div> 
@@ -159,14 +134,16 @@ const DoesTheHouseHave = () => {
 }
 
 
+
+
 const Electricity = () => {
     return (
         <div>
-            <h1>Eske gen Kouran EDH ?</h1>
-            <div className="gridButton">
-                <button className="button">Toutan</button>
-                <button className="button">K&egrave;k Fwa</button>
-                <button className="button">Raman</button>
+            <h1>Eske ou vle Kay la toujou gen Kouran (EDH)?</h1>
+            <div className="Aminities">
+                <Always />
+                <Sometimes />
+                <Rarely />
             </div>
         </div>
     )
@@ -182,12 +159,12 @@ class Characteristic extends React.Component {
         return (
             <div> 
                 <Area lokalite="Port-au-Prince"/>
-                <h1>Karakteristik kay w'ap chache a</h1>
-                <div className="Numbers">
+                <h1>Ki Karakteristik kay w'ap chache ?</h1>
+                <div className="Characteristic-Numbers">
                     <House HousesNumbers={Number} />
                     <Showers ShowersNumber={Number} />
                     <Salon SalonNumbers={Number} />
-                    <Diningroom DiningroomNumbers={Number} />
+                    <Diningroom Diningrocd omNumbers={Number} />
                 </div>            
             </div>
         )
@@ -202,7 +179,7 @@ class SearchFilterPage extends React.Component {
 <div className = "ContainerCharacteristic" >
                
                <Characteristic />
-                <div >
+                <div>
                     <AnyHouse />
                     <WhichTypeOfProprietorship />
                     <DoesTheHouseHave />

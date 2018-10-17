@@ -1,9 +1,11 @@
 import React from 'react';
+import Sliders from './carousel';
 
-function PrixUS(props){
+function Price(props){
 
     return(
-        <div className="PrixUs">
+        <div className="InfoHouse__price">
+           
             <div>
                 <h1>Prix en Us</h1>
                 <p>{props.prixenUs} {props.annee} {props.negosye[props.index]}</p>
@@ -15,24 +17,24 @@ function PrixUS(props){
 }
 function Name(props){
     return(
-        <div className="Name">  
+        <div className="InfoHouse__name">  
             <h1>Nom Propriete a</h1>
             <p>{props.nom}</p>
         </div>
     )
 }
-function DescriptionHouse(props){
+function Description(props){
     return(
-        <div className="descriptionHouse">
+        <div className="InfoHouse__description">
           <h1>Description</h1>
           <p>{props.desciptionInfo}</p>
           <div>
                 <h3>{props.klasman_title}</h3>
-                <p><span class="fa fa-star checked"></span>
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star"></span>
-                    <span class="fa fa-star"></span></p>
+                <p><span className="fa fa-star checked"></span>
+                    <span className="fa fa-star checked"></span>
+                    <span className="fa fa-star checked"></span>
+                    <span className="fa fa-star"></span>
+                    <span className="fa fa-star"></span></p>
           </div>
         </div>
     )
@@ -40,19 +42,17 @@ function DescriptionHouse(props){
 
 
 
-function ZonKomante(props){
+function Comment(){
     return (
-        <div>
+       
            
-<div className = "ajoute_yon_komante" > 
-    <h1 className="zon_yon_komante_title">Zon komante</h1>
-</div>
-            <h2 className="ajoute_yon_komante_title">Ajoute yon komante</h2>
-                <form className="komanteForm">
-                    <textarea id="subject" name="subject" placeholder="Bay yon komante sou kay sa"> </textarea>
-                    <div className="input_textarea">
-                        <input type="submit" value="Soumet" ></input>
-                     </div>
+<div > 
+    <h1>Zon komante</h1>
+
+            <h2>Ajoute yon komante</h2>
+                <form className="InfoHouse-Comment__form">
+                <textarea className="InfoHouse-comment__form--textarea" id="subject" name="subject"> </textarea>
+                <input className="InfoHouse__Button InfoHouse__Button--color " type="submit" value="Soumet" ></input>
                 </form>
                
             </div>
@@ -62,13 +62,18 @@ function ZonKomante(props){
 
 function InfoHouse(props){
     return(
-        <div className="container_houseinfo">
-            <PrixUS  prixenUs={["25550 "]} annee={" /an"} index="1" negosye={[" negosyab"," Pa negosyab"]}/>
-            <Name nom ={"Jean Jacques Kenley"} />
-            <DescriptionHouse  desciptionInfo={["3 chanm akouche","1 salon", "1 sal a manje", " 2 douch"].join(", ")}  klasmans={["stars","stars"]} />
-            <ZonKomante />
-     
+        <div>
+            <Sliders />
+            <div className="InfoHouse--margin-left-right">
+               
+                <Price prixenUs={["25550 "]} annee={" /an"} index="1" negosye={[" negosyab", " Pa negosyab"]} />
+                <Name nom={"Jean Jacques Kenley"} />
+                <Description desciptionInfo={["3 chanm akouche", "1 salon", "1 sal a manje", " 2 douch"].join(", ")} klasmans={["stars", "stars"]} />
+                <Comment />
+
+            </div>
         </div>
+        
     )
 }
 

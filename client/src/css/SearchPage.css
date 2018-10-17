@@ -4,7 +4,7 @@ body, html {
     background-color: #fff;
 }
 /* Area */
-.addAreaButton {
+.Area-container__ButtonAdd {
      background-color:#fff;
      border: solid;
      border-color:#662d91;
@@ -14,12 +14,14 @@ body, html {
      text-align: center;
      text-decoration: none;
      display: inline-block;
-     font-size: 9px;
+     font-size: 16px;
      border-radius: 25px;
-     margin-left: 10px;
-     max-width: 100%;
+     margin-left: 3px;
+    
 }
-.listAreaButton {
+
+.Area-container__ButtonList {
+    max-width: 100%;
     background-color: #662d91;
     border: none;
     color: white;
@@ -27,33 +29,28 @@ body, html {
     text-align: center;
     text-decoration: none;
     display: inline-block;
-    font-size: 9px;
-    max-width: 100%;
+    font-size: 12px;
 }
 /* end of Area buttons */
 
-/*House */
-.Numbers {
+/*characteristic */
+.Characteristic-Numbers{
  display: flex;
  flex-wrap: wrap;
  justify-content: space-around;
 }
-/* the slider Howmuchmoney*/
-input[type=number] {
-width: 100%;
-border-style: solid;
-border-color: #662d91;
-}
+/* end characteristic */
+
 /* FingthoseHouseButton */
 .FindThoseHousesButton {
-    background-color: #4CAF50; /* Green */
+    background-color: #4CAF50; 
     border: none;
     color: white;
     padding: 15px 32px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
-    font-size: 22px;
+    font-size: 16px;
     margin-top: 20px;
     width:100%;
 }
@@ -68,19 +65,20 @@ border-color: #662d91;
 .titleCharacteristic {
 margin-bottom: 10px;
 }
-select {
+.select {
     width: 60px;
     border:solid;
     border-color: #662d91;
     background-color: #fff;
     border-width: 1px;
     color:#662d91;
+    margin-bottom: 20px;
 }
 
 /* end of characteristic */
 
 /* button for whichTypeOfProprietorship   */
-.button{
+.Amenities__button{
     background-color:#fff;
      border: solid;
      border-color:#662d91;
@@ -90,18 +88,36 @@ select {
      text-align: center;
      text-decoration: none;
      display: inline-block;
-     font-size: 12px;
+     font-size: 14px;
      border-radius: 35px;
-     margin: 2px;
+    margin:2px;
+     width: 29%;
     
 }
-
+.Amenities__button--color{
+    background-color:#662d91;
+     border: solid;
+     border-color:#662d91;
+    border-width: 1px;
+     color: #fff;
+     padding: 4px 2px;
+     text-align: center;
+     text-decoration: none;
+     display: inline-block;
+     font-size: 14px;
+     border-radius: 35px;
+    margin:2px;
+    width: 29%;
+}
+.AnyHouse-container {
+    margin-bottom: 20px;
+}
 
 @media screen  and (min-width: 320px) and (max-width: 800px){
-.containerArea {
+.Area-container {
     padding-bottom: 20px;
 }
-.addAreaButton {
+.Area-container__ButtonAdd{
      background-color:#fff;
      border: solid;
      border-color:#662d91;
@@ -117,7 +133,7 @@ select {
       
 
 }
-.listAreaButton {
+.Area-container__ButtonList {
     max-width: 100%;
     background-color: #662d91;
     border: none;
@@ -130,8 +146,8 @@ select {
 }
 /* end of Area buttons */
 
-.gridButton{
+.Amenities {
     display: flex;
 }
- h1 { font-size: 18px !important; }
+ h1 { font-size: 16px  }
 }
