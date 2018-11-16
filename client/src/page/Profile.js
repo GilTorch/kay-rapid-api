@@ -15,7 +15,7 @@ import UserInfo from '../components/UserInfo';
 const Profile =({userAuthInfo})=>{
     return(
         <div className="profile">
-            <HeaderBar title="Profile"/>
+            <HeaderBar title="Profil Ou"/>
             { userAuthInfo.email ? <UserInfo {...userAuthInfo} />:<Authentication/>}
             <Navigation currentPage="profile"/>
         </div>

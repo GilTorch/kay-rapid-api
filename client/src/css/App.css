@@ -243,6 +243,15 @@ justify-content: space-around;
 
   }
 
+  .success-button{
+    background-color: var(--button-success-color);
+    border: none;
+    color: white;
+    font-weight: bold;
+    text-align: center;
+    height: 50px;
+  }
+
   /* .socialmedia-connect-screen__sign-in-button{
     border-right:0.2px solid #aaa
   } */

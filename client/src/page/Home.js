@@ -2,7 +2,6 @@ import React from 'react';
 import Navigation from '../components/Navigation';
 import Neighborhood from '../components/Neighborhood';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import AddHouse from '../images/add-house.png';
 import AppLogo from '../svg/lakay-ou-logo.svg';
 import Link from 'react-router-dom/Link';
 
@@ -23,12 +22,12 @@ const Home=({ title })=>{
             </div>
             </header>
             <div className="neighborhood-container">
-                <Neighborhood name="Port-au-Prince"/>
-                <Neighborhood name="Gonaives"/>
-                <Neighborhood name="Cap-Haitien"/>
-                <Neighborhood name="Fort-Liberte"/>
-                <Neighborhood name="Les Cayes"/>
-                <Neighborhood name="Jeremie"/>
+                <Neighborhood name="Pòtoprens"/>
+                <Neighborhood name="Gonayiv"/>
+                <Neighborhood name="Kap Ayisyen"/>
+                <Neighborhood name="Fo Libète"/>
+                <Neighborhood name="Okay"/>
+                <Neighborhood name="Jeremi"/>
             </div>
             <Link to="/add-house">
                 <button className="home__button-post-house"><i className="fa fa-home fa-2x">+</i></button>

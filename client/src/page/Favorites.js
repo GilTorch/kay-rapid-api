@@ -10,7 +10,7 @@ import HeaderBar from '../components/HeaderBar';
 const Favorites=({ title })=>{
     return(
         <div className="favorites">
-            <HeaderBar title="Favorites"/>
+            <HeaderBar title="Kay Favori'w Yo"/>
             <Navigation currentPage="favorites"/>
         </div>
     )

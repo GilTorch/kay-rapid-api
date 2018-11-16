@@ -1,21 +1,90 @@
 .add-house-card{
     background-color:white;
-    display:flex;
-    flex-direction:column;
-    margin-top:90px;
-    margin-left:auto;
-    margin-right:auto;
-    padding:0.5%;
-}
-
-.add-house-card__button{
-    background-color:var(--button-success-color);
-    border:none;
-    color:white;
+    margin-top:69px;
+    padding:1%;
+    width:100%;
+    padding-top:20px;
 }
 
 .add-house-card__form-group{
     display:flex;
-    flex-direction: column;
+    flex-direction:column;
+    width:90%;
     margin:auto;
 }
+
+.add-house-card__input{
+    width: 100%; 
+    margin: auto;
+    margin-bottom:7px;
+    border: 1px solid #bbb;
+    padding: 2%;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.authentication__button .success-button{
+    background-color: #3add7c;
+    border: none;
+    color: white;
+    font-weight: bold;
+    text-align: center;
+    height: 50px;
+}
+
+.add-house-card__label{
+    margin-bottom:10px;
+}
+
+.add-house-card__electricity{
+    display:flex;
+    justify-content: space-between;
+    margin-top:10px;
+    margin-bottom:20px;
+}
+
+.add-house-card__localisation-button{
+    background-color:#ddd;
+    color:black;
+    font-weight: bold;
+    border:none;
+    height:60px;
+    margin-bottom:10px;
+}
+
+.add-house-card__negotiation-box{
+    height:50px;
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.add-house-card__when-to-pay-box{
+    display:flex;
+    justify-content: space-between;
+}
+
+.add-house-card__when-to-pay-checkbox-group{
+    display:flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+/* .checkbox-form-group{
+    justify-content: space-around;
+} */
+
+.add-house-card__form-group{
+     min-height:40px;
+     margin-top:30px;
+     margin-bottom:30px;
+}
+
+
+
+/*
+
+.add-house-card__form-group input[type="text"]{
+    width:90%;
+    margin:auto;
+} */
