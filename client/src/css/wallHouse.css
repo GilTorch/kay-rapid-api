@@ -1,30 +1,14 @@
 
 
  /* cardProfileHouses */
- .cardProfileHouses {
-     display: grid;
-     grid-template-columns: 1fr 2fr;
-     grid-column-gap: 1px;
-     padding: 22px;
-     background-color:white;
- }
 
  /* end of cardProfilesHouses */
  /* PhotoProfileHouses */
 
- .fa-star {
-     color: goldenrod;
-     font-size: 10px;
- }
 
- .wallHouse__card {
+ /** HOUSE COMPONENT **/
 
-     margin-top: 50px;
-     margin-left: 10px;
-     margin-right: 10px;
-     padding-bottom: 10px;
-     box-shadow: 1px 0px 10px 0px grey;
- }
+/***/
 
  .button {
      width: 90%;
@@ -38,35 +22,11 @@
      font-size: 25px;
  }
 
- .center-Button {
-     text-align: center;
- }
+
 
  .icons {
      padding-right: 10px;
  }
 
- .infosHouseCard {
-     padding-bottom: 40px;
-     margin: 12px;
- }
-
+ 
  /* for the heart changing color to red when clicked */
- .redButton {
-     color: red;
-     font-size: 25px;
-     position: absolute;
-     right: 20px;
-     padding-top: 1px;
-
- }
-
- .whiteButton {
-
-     columns: #f2f3;
-     font-size: 25px;
-     position: absolute;
-     right: 20px;
-     padding-top: 1px;
-
- }

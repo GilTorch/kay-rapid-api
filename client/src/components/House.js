@@ -1,5 +1,5 @@
 import React from 'react';
-
+import '../css/house.css';
 
 class House extends React.Component {
     constructor(props){
@@ -16,43 +16,46 @@ class House extends React.Component {
     render() {
         let btn_class = this.state.liked ? "whiteButton" :"redButton";
          return (
-            <div className="wallsHouse__card"> 
-        <div className="cardProfileHouses">
-            <div className="PhotoProfileHousesAndPrice">
-                <ul>
-                    <li>
-                <img src={this.props.image} alt="" />
-                    </li>
-                    <li><h2>Prix en Us</h2></li>
-                    <li><p>{this.props.price} {this.props.currency}/{this.props.leaseType}</p></li>
-                </ul>
+            <div className="house-card"> 
+                <div className="house-card__image-preview-container">
+                    <img className="house-card__image-preview" src={this.props.image} alt="" />
+                </div>
+                <div className="house-card__inner-wrapper">
+                <div className="house-card__price-container">
+                    <h2>Pri</h2>
+                    <span className="house-card__price">{this.props.price} {this.props.currency}/{this.props.leaseType}</span>
+                </div>
+                <div className="house-card__owner-group">
+                    <h2>Propriyetè a</h2>
+                    <span className="house-card__owner-name">{this.props.ownerName}</span>
+                </div>
+                <div className="house-card__address-group">
+                    <h2>Adrès</h2>
+                    <span className="house-card__address">{this.props.address}</span>
+                </div>
+                {/* <div className="house-card__description-group">
+                    <h2>Deskripsyon</h2>
+                    <span className="house-card__description">
+                        {this.props.numBathRooms} sal de ben, {this.props.numBedRooms} chanm a kouche
+                    </span> 
+                </div>
+                <div className="house-card__rating-group">
+                    <h2>Klasman</h2> 
+                    <div className="house-card__rating">
+                        <span className="fa fa-star checked"></span>
+                        <span className="fa fa-star checked"></span>
+                        <span className="fa fa-star checked"></span>
+                        <span className="fa fa-star"></span>
+                    </div>
+                </div> */}
+                {/* <div className="house-card__actions">
+                    <span className="icons"><i className="fas fa-map-marker-alt"></i> Gade zòn nan sou yon map</span>
+                    <span className="icons"><i className="fas fa-eye"></i> Vizitel ak telefòn ou!</span>
+                    <span className="icons"><i className="fas fa-camera"></i> Gade kèk foto/video kay la</span>
+                </div>
+                */}
+                <button className="house-card__submit button" type="submit">PLIS DETAY</button>
             </div>
-            <div>
-                <ul className="infosHouseCard">
-                  <div className={btn_class} onClick={this.changeColor.bind(this)} ><span><i className="fas fa-heart"></i></span></div>
-                    <li><h2>Propriyetè a:</h2><span>{this.props.ownerName}</span></li>
-                    <li><h2>Adrès:</h2> <span>{this.props.address}</span> </li>
-                    <li><h2>Deskripsyon:</h2><span>{this.props.description}</span> </li>
-                    <li>
-                        <h2>Klasman:<span className="fa fa-star checked"></span>
-                            <span className="fa fa-star checked"></span>
-                            <span className="fa fa-star checked"></span>
-                            <span className="fa fa-star"></span>
-                        </h2> 
-                    </li>
-                    <li>
-                        <span className="icons"><i className="fas fa-map-marker-alt"></i></span>Gade zòn nan sou yon map</li>
-                    <li>
-                        <span className="icons"><i className="fas fa-eye"></i></span>Vizitel ak telefòn ou!
-                    </li>
-                    <li><span className="icons"><i className="fas fa-camera"></i></span>Gade kèk foto/video kay la</li>
-                </ul>
-            </div>
-        </div>
-        <div className="center-Button">
-                <button className="button" type="submit">M'enterese</button>
-        </div>
-           
         </div>
     )
 }

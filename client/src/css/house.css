@@ -1,0 +1,46 @@
+
+ .fa-star {
+    color: goldenrod;
+    font-size: 10px;
+}
+
+.house-card {
+  width:90%;
+  margin-top:10px;
+  margin:auto;
+  background-color:white;
+}
+
+.house-card__image-preview{
+    width:100%;
+    height:200px;
+    background:#ddd;
+}
+
+.house-card__inner-wrapper {
+    padding:3%;
+}
+
+.center-Button {
+   text-align: center;
+}
+
+.house-card__actions {
+   padding-bottom: 40px;
+   margin: 12px;
+}
+
+.redButton {
+   color: red;
+   font-size: 25px;
+   position: absolute;
+   right: 20px;
+   padding-top: 1px;
+
+}
+
+.house-card__submit {
+    width:100%;
+    margin-top:30px;
+
+}
