@@ -10,7 +10,7 @@ const SignInWithSocialMedia=({ sendFBTokenToServer,writeUserAuthInfoToCache, his
   
 
     const responseFacebook=(facebookResponse)=>{
-        // console.log((facebookResponse.accessToken))
+        console.log((facebookResponse.accessToken))
         sendFBTokenToServer({ 
             variables: { facebookToken: facebookResponse.accessToken },
             update:(store,{data:{authenticateFBUser}})=>{

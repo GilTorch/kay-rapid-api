@@ -11,7 +11,7 @@ class CardHouses extends React.Component {
                     nom={houseinfo.ProfilePropriete} address={houseinfo.Address} description={houseinfo.Description} />
                 <HouseProfile PrixHouseUs={houseinfo.PrixHouseUs} image={houseinfo.image}
                     nom={houseinfo.ProfilePropriete} address={houseinfo.Address} description={houseinfo.Description} /> */}
-                <House ownerName="Gilbert" price="2000" currency="US" leaseType="an" address="Fermathe 52, rue Puzot #2" phone="48550669" numberOfBedrooms={3} numberOfBathrooms={2}/>
+                <House previewImage="https://bit.ly/2zoDdGA" ownerName="Gilbert" numberOfBedrooms={3} numberOfBathrooms={2} rating={4} price="2000" currency="US" leaseType="an" address="Fermathe 52, rue Puzot #2" phone="48550669" />
             </div>
         )
 

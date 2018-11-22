@@ -42,6 +42,33 @@ export const FB_AUTH = gql`
 }
 `
 
+export const HOUSE_CREATION=gql`
+mutation {
+  createHouse(
+    age:10,
+    basePrice:2000,
+    currency:USD,
+    communeId:"cjk5081nkqbic0b02estuemao",
+    highestPrice:4000,
+    maxGuests:8,lease:12,leaseType:YEARLY,
+    numBedrooms:3,numBaths:2,lng:39,lat:140,address:"Fermathe 52, rue Puzot #2",
+    numDiningrooms:1,
+    numLivingrooms:1,
+    electricity:true,
+    electricity_frequency:OFTEN,
+    water_tank:true,
+    freeParkingOnPremises:true,
+    water_pipe:true,
+    income:10
+  ){
+    id,
+    maxGuests,
+    numBedrooms,
+    numBaths
+  }
+}
+`
+
 /**
  * =-=-=-=-=-CLIENT SIDE QUERIES AND MUTATIONS=-=-=-
  */
