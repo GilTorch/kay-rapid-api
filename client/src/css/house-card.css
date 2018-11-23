@@ -6,20 +6,22 @@
 
 .house-card {
   width:90%;
-  margin-top:10px;
+  padding:0;
+  /* margin-top:10px; */
   margin-bottom:30px;
   margin-left:auto;
   margin-right:auto;
-  background-color:white;
 }
 
 .house-card__image-preview{
+    margin:0;
     width:100%;
     height:200px;
     background:#ddd;
 }
 
 .house-card__inner-wrapper {
+    background-color:white;
     padding:3%;
 }
 
@@ -32,21 +34,19 @@
 }
 
 
-.whiteButton {
-    color: black;
+.heart-liked,.heart-not-liked{
     font-size: 25px;
-    position: absolute;
-    right: 20px;
-    padding-top: 1px;
+    position: relative;
+    right: -160px;
+    top:20px;
+}
+
+.heart-not-liked {
+    color: black;
  }
 
-.redButton {
+.heart-liked {
    color: red;
-   font-size: 25px;
-   position: absolute;
-   right: 20px;
-   padding-top: 1px;
-
 }
 
 .house-card__rating-container{
@@ -69,6 +69,7 @@
     width:100%;
     background-color:#3add7c;
     color: white;
+    font-weight: bold;
     padding: 15px 32px;
     text-align: center;
     text-decoration: none;
