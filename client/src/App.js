@@ -7,7 +7,7 @@ import client from './apolloClient';
 import { BrowserRouter as Router,Route } from 'react-router-dom';
 
 import { library } from '@fortawesome/fontawesome-svg-core'
-import { faSearch, faHome, faHeart, faUser, faMapMarkerAlt } from '@fortawesome/free-solid-svg-icons';
+import { faSearch, faHome, faHeart, faUser, faMapMarkerAlt, faVideo } from '@fortawesome/free-solid-svg-icons';
 
 import SignInWithoutSocialMedia from './components/SignInWithoutSocialMedia';
 import SignInWithSocialMedia from './components/SignInWithSocialMedia';
@@ -17,14 +17,13 @@ import Profile from './page/Profile';
 import Favorites from './page/Favorites';
 import Home  from './page/Home';
 import UserInfo from './components/UserInfo';
-import House from './components/House';
 import AddHouse from './components/AddHouse';
 import wallsHouse from './components/wallsHouse';
 
 require('dotenv').config()
 
 
-library.add(faSearch,faHome, faHeart, faUser,faMapMarkerAlt)
+library.add(faSearch,faHome, faHeart, faUser,faMapMarkerAlt,faVideo)
 
 
 class App extends Component {

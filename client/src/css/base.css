@@ -10,7 +10,6 @@ body{
     background:#eee;
     width: 100vw;
     margin:0;
-    overflow: hidden;
     max-height:768px;
     font-family: 'Encode Sans Condensed', sans-serif;
   }
