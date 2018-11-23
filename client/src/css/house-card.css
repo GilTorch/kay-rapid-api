@@ -37,7 +37,7 @@
 .heart-liked,.heart-not-liked{
     font-size: 25px;
     position: relative;
-    right: -160px;
+    left:45%;
     top:20px;
 }
 
