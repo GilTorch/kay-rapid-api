@@ -12,7 +12,9 @@ class HouseCard extends React.Component {
     }
 
     changeColor() {
-        this.setState({ liked: !this.state.liked })
+        let stateCopy=this.state;
+        stateCopy.liked=!stateCopy.liked;
+        this.setState(stateCopy);
     }
 
     render() {

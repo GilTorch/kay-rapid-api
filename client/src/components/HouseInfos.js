@@ -63,7 +63,7 @@ export function Rating({value}){
     }
     return(
         <div className="house-card__rating-container">
-            <h2 className="house-card__label house-card__title">Klasman kay la</h2> 
+            <h2 className="house-card__label house-card__rating-title">Klasman kay la</h2> 
             <div>
                 {stars}
             </div>

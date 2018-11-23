@@ -13,6 +13,10 @@
   margin-right:auto;
 }
 
+.house-card__price{
+    font-weight:700;
+}
+
 .house-card__image-preview{
     margin:0;
     width:100%;
@@ -42,7 +46,8 @@
 }
 
 .heart-not-liked {
-    color: black;
+    color: #555;
+    opacity:0.3%;
  }
 
 .heart-liked {
@@ -59,6 +64,10 @@
 .house-card__rating{
     font-size:17px;
     margin-left:3px;
+}
+
+.house-card__rating-title{
+    font-weight:600;
 }
 
 .house-card__label{
@@ -92,6 +101,7 @@
     height:40px;
     border:none;
     background-color:transparent;
+    font-size:15px;
 }
 
 
