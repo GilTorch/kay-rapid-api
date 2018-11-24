@@ -15,9 +15,23 @@ export const Query = {
     return context.db.query.communes({}, info);
   },
   getToken(parent, { id }, context: Context, info) {
-    return jwt.sign({ userId: id }, process.env.APP_SECRET);
+    return jwt.sign(
+      {
+        userId: id
+      },
+      process.env.APP_SECRET
+    );
   },
   Houses(parent, {}, context: Context, info) {
     return context.db.query.houses({}, info);
+  },
+  topCommunes(parent, { c }, context: Context, info) {
+    return context.db.query.communes(
+      {
+        orderBy: "rank_DESC",
+        first: c
+      },
+      info
+    );
   }
 };

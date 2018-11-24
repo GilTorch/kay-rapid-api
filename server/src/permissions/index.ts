@@ -1,8 +1,5 @@
 import { shield, and, not } from "graphql-shield";
 import * as rules from "./rules";
-import { middleware } from "graphql-middleware";
-import { resolvers, fragmentReplacements } from "../resolvers";
-import { makeExecutableSchema } from "graphql-tools";
 
 //TODO permissions to be added
 // export const middlepermission = shield({
@@ -13,7 +10,11 @@ import { makeExecutableSchema } from "graphql-tools";
 
 const myImiddleware = shield({
   Query: {
-    Houses: not(rules.isAuthenticated)
+    Houses: not(rules.isAuthenticated),
+    communes: rules.isAuthenticated
+  },
+  Mutation: {
+    createHouse: rules.isStandard
   }
 });
 

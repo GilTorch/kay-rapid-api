@@ -24,14 +24,15 @@ type User {
 
 type House {
   id: ID! @unique
-  name: String
   area: Int @default(value: 0)
-  age: Int! @default(value: 0)
-  shortDescription: String!
-  description: String!
+  age: Int @default(value: 0)
+  shortDescription: String
+  description: String
   maxGuests: Int!
   numBedrooms: Int!
   numBaths: Int!
+  numLivingrooms: Int
+  numDiningrooms: Int
   reviews: [Review!]!
   amenities: Amenities!
   host: User!
@@ -61,10 +62,10 @@ type Room {
 type Pricing {
   id: ID! @unique
   House: House!
-  basePrice: Int!
-  highestPrice: Int!
-  currency: CURRENCY
-  income: Int!
+  basePrice: Float
+  highestPrice: Float!
+  currency: CURRENCY!
+  income: Float
 }
 
 type Views {
@@ -84,18 +85,21 @@ type Location {
 type Commune {
   id: ID! @unique
   name: String!
+  rank: Int
   city: City!
 }
 
 type City {
   id: ID! @unique
   name: String!
+  rank: Int
   state: State!
 }
 
 type State {
   id: ID! @unique
   name: String!
+  rank: Int
   country: Country!
 }
 
@@ -119,6 +123,9 @@ type Amenities {
   House: House!
   electricity: Boolean! @default(value: "false")
   electricity_frequency: FREQUENCY
+  water_pipe: Boolean! @default(value: "false")
+  water_tank: Boolean! @default(value: "false")
+  water_frequency: FREQUENCY
   elevator: Boolean! @default(value: "false")
   petsAllowed: Boolean! @default(value: "false")
   internet: Boolean! @default(value: "false")
