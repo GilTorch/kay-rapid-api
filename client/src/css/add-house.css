@@ -9,7 +9,9 @@
 .add-house-card__form-group{
     display:flex;
     flex-direction:column;
+    justify-content:center;
     width:90%;
+    /* height:100vh; */
     margin:auto;
 }
 
@@ -33,6 +35,7 @@
 }
 
 .add-house-card__label{
+    /* font-size:40px; */
     margin-bottom:10px;
 }
 

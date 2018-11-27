@@ -45,8 +45,17 @@ button{
   width: 100%;
   margin:auto;
   box-shadow: -2px 5px 8px #aaa
-
 }
+
+/* .card {
+  width: 100%;
+  min-height: 100px;
+  margin: auto;
+  padding: 0.5%;
+  box-shadow: -2px 5px 3px #eee;
+  border: 1px solid #eee; 
+} */
+
 
 .close-icon {
   background: transparent;

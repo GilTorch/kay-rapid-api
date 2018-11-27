@@ -7,7 +7,7 @@ import client from './apolloClient';
 import { BrowserRouter as Router,Route } from 'react-router-dom';
 
 import { library } from '@fortawesome/fontawesome-svg-core'
-import { faSearch, faHome, faHeart, faUser, faMapMarkerAlt, faVideo } from '@fortawesome/free-solid-svg-icons';
+import { faSearch, faHome, faHeart, faUser, faMapMarkerAlt, faVideo,faArrowCircleLeft } from '@fortawesome/free-solid-svg-icons';
 
 import SignInWithoutSocialMedia from './components/SignInWithoutSocialMedia';
 import SignInWithSocialMedia from './components/SignInWithSocialMedia';
@@ -20,10 +20,13 @@ import UserInfo from './components/UserInfo';
 import AddHouse from './components/AddHouse';
 import wallsHouse from './components/wallsHouse';
 
+import "./css/normalize.css";
+import "./css/base.css";
+
 require('dotenv').config()
 
 
-library.add(faSearch,faHome, faHeart, faUser,faMapMarkerAlt,faVideo)
+library.add(faSearch,faHome, faHeart, faUser,faMapMarkerAlt,faVideo,faArrowCircleLeft)
 
 
 class App extends Component {
@@ -37,7 +40,6 @@ class App extends Component {
       <ApolloProvider client={client}>
         <Router>
           <React.Fragment>
-            <div className="app">
             <Route exact={true} path="/" component={Home}/>
             <Route exact={true} path="/profile" component={Profile}/>
             <Route exact={true} path="/favorites" component={Favorites}/>
@@ -46,7 +48,6 @@ class App extends Component {
             <Route exact={true} path="/authentication/account-creation" component={AccountCreation}/>
             <Route exact={true} path="/add-house" component={AddHouse}/>
             <Route exact={true} path="/walls-house" component={wallsHouse}/>
-            </div>
           </React.Fragment>
         </Router>
       </ApolloProvider>

@@ -5,6 +5,9 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import AppLogo from '../svg/lakay-ou-logo.svg';
 import Link from 'react-router-dom/Link';
 
+import "../css/home.css";
+import AddHouse from '../svg/add-house-illustration.svg';
+
 
 const Home=({ title })=>{
     return(
@@ -30,7 +33,9 @@ const Home=({ title })=>{
                 <Neighborhood name="Jeremi"/>
             </div>
             <Link to="/add-house">
-                <button className="home__button-post-house"><i className="fa fa-home fa-2x">+</i></button>
+                <button className="home__button-post-house">
+                    <img src={AddHouse} classname="home__add-house-illustration"/>
+                </button>
             </Link>
             <Navigation currentPage="home"/>
         </div>

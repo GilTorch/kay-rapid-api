@@ -48,14 +48,18 @@
   }
 
   .home__button-post-house{
-    background-color:#e28c29;
+    background-color:#FF9900;
     border:none;
     color:white;
     position:fixed;
     z-index: 1;
     bottom:70px;
-    right:10px;
+    right:33px;
     border-radius: 50%;
     width:70px;
     height:70px;
+  }
+
+  .home__add-house-illustration{
+    margin:auto;
   }

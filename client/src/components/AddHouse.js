@@ -79,10 +79,14 @@ class AddHouse extends Component{
 
         return (
             <div>
-            <HeaderBar title="Ajoute Kay Ou"/>
+            <HeaderBar title="Ajoute Kay Ou" hasBack={true}/>
                 <div className="card add-house-screen">
                     <div className="add-house-card">
                         <form>
+                            <div className="add-house-card__form-group">
+                                <label>Chwazi imaj kay la nan galri a:</label>
+                                <input type="file" accpet=".jpg,.png"/>
+                            </div>
                             <div className="add-house-card__form-group">
                                 {price}                         
                                 <div className="add-house-card__negotiation-box">
