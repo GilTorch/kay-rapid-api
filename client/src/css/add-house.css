@@ -75,10 +75,6 @@
     justify-content: space-between;
 }
 
-/* .checkbox-form-group{
-    justify-content: space-around;
-} */
-
 .add-house-card__form-group{
      min-height:40px;
      margin-top:30px;
@@ -91,18 +87,16 @@
     margin:auto;
 }
 
+
+.add-house-card__upload-button{
+    margin-top:10px;
+    background-color:#eee;
+    padding:2%;
+    border-radius:3px;
+}
+
 .add-house-card__delete-house-image{
     color:red;
     border:none;
     background-color:transparent;
 }
-/* .clip-circle{
-    /* clip-path: circle(60px at center); */
-/*} 
-
-/*
-
-.add-house-card__form-group input[type="text"]{
-    width:90%;
-    margin:auto;
-} */

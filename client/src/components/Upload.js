@@ -52,20 +52,23 @@ class Upload extends React.Component {
             {imagesTags}
             {
                 warningMessage==""?
-                <input 
-                className="add-house-card__upload-button" 
-                type="file" accept="image/*" 
-                onChange={this.handleChange}
-                multiple={true}
-                style={{display:"inline-block"}}
-            />:warningMessage
+                <label className="add-house-card__upload-button" >
+                        <i className="fas fa-camera"></i>
+                    <input 
+                        style={{display:"none"}}
+                        type="file" accept="image/*" 
+                        onChange={this.handleChange}
+                        multiple={true}
+                    />
+                </label>
+                :warningMessage
             }
-            {/* <i className="fas fa-camera"></i> */}
             {
                 images.length!=0?
-                <button className="add-house-card__delete-house-image" type="button" onClick={this.removePhoto}>
-                    <i className="fas fa-trash"></i>
-                </button>:""
+                    <button type="button" onClick={this.removePhoto}>
+                        <i className="fas fa-trash"></i>
+                    </button>
+                :""
             }
 
       </div>

@@ -6,7 +6,7 @@ import Select from 'react-select';
 export const HouseImages=({numberLimit})=>{
     return(
         <div className="add-house-card__form-group">
-            <label>Chwazi imaj kay la (10 maximum):</label>
+            <label className="add-house-card__label">Chwazi imaj kay la (10 maximum):</label>
             <Upload lengthLimit={numberLimit}/>
         </div>
     )
@@ -83,12 +83,12 @@ export const Localisation=({longitude,latitude,getCurrentPosition})=>{
     return(            
         <div className="add-house-card__form-group">
             {!(longitude==null && latitude==null) ? 
-                <div className="add-house-card__form-group">
+                <React.Fragment>
                     <label className="add-house-card__label">Longitid:</label>
                     <input className="add-house-card__input" type="text" name="longititude" value={longitude} readOnly/> 
                     <label className="add-house-card__label">Latitid:</label>
                     <input className="add-house-card__input" type="text" name="latitude" value={latitude} readOnly/>
-                </div>
+                </React.Fragment>
                 :"" 
             }
 
@@ -103,6 +103,7 @@ export const Localisation=({longitude,latitude,getCurrentPosition})=>{
 export const HouseCity=({options})=>{
     return(
         <div className="add-house-card__form-group">
+            <label className="add-house-card__label">Nan ki komin(vil) kay ou a ye:</label>
             <Select options={options}/>
         </div> 
     )

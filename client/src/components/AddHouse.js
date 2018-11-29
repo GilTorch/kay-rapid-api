@@ -1,20 +1,9 @@
 import React,{ Component } from 'react';
 import HeaderBar from './HeaderBar';
 import '../css/add-house.css';
-
 import { 
-    HouseImages,
-    Price,
-    MaxGuests,
-    WhenToPayHouse,
-    NumberOfRooms,
-    NumberOfBathrooms,
-    Localisation,
-    HouseCity,
-    HouseAddress,
-    Amenities,
-    NextQuestion,
-    PreviousQuestion 
+HouseImages,Price,MaxGuests,WhenToPayHouse,NumberOfRooms,NumberOfBathrooms,
+Localisation,HouseCity,HouseAddress,Amenities,NextQuestion,PreviousQuestion 
 } from './AddHouseFormGroups';
 
 
@@ -51,7 +40,7 @@ class AddHouse extends Component{
     componentDidMount(){
        const formGroups=document.querySelectorAll('.add-house-card__form-group');
        const numberOfQuestions=formGroups.length-1;
-
+       
        formGroups.forEach((formGroup)=>{
         formGroup.style.display="none";
        })
