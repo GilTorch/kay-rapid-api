@@ -85,8 +85,8 @@ class AddHouse extends Component{
                     <div className="add-house-card">
                         <form>
                             <div className="add-house-card__form-group">
-                                <label>Chwazi yon imaj prensipal pou kay la:</label>
-                                <Upload/>
+                                <label>Chwazi imaj kay la (10 maximum):</label>
+                                <Upload lengthLimit={10}/>
                             </div>
                             <div className="add-house-card__form-group">
                                 {price}                         

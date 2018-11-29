@@ -4,40 +4,64 @@ class Upload extends React.Component {
   constructor(props){
     super(props)
     this.state = {
-      images:[]
+      images:[],
+      warningMessage:""
     }
     this.handleChange = this.handleChange.bind(this)
+    this.removePhoto=this.removePhoto.bind(this)
   }
 
   handleChange(event) {
     
-    console.log(event.target.files.length+" files exist");
-    
-    let imagesCopy=this.state.images
-
-    for(var i=0;i<event.target.files.length;i++){
-        imagesCopy.push(URL.createObjectURL(event.target.files[i]))
+    if(this.state.images.length<this.props.lengthLimit)
+    {
+        let imagesCopy=this.state.images
+        for(var i=0;i<event.target.files.length;i++){
+            imagesCopy.push(URL.createObjectURL(event.target.files[i]))
+        }
+        this.setState({
+          images:imagesCopy
+        })
+    }else{
+        this.setState({
+            warningMessage:"Ou pa ka met plis foto ke 10."
+        })
     }
-
-    this.setState({
-      images:imagesCopy
-    })
   }
 
+  removePhoto(){
+      let imagesCopy=this.state.images;
+      imagesCopy.pop();
+      this.setState({
+          images:imagesCopy
+      })
+  }
+
+
   render() {
-    const {images}=this.state; 
-    // let imagesTags;
-    // if(images==[]){
-      let  imagesTags=images.map((file)=>{return <img className="add-house-card__house-preview" src={file}/>})
-    // }
+    const {images,warningMessage}=this.state; 
+    let  imagesTags=images.map((file,index)=>{
+        return <img 
+                className="add-house-card__house-preview clip-circle" 
+                src={file} 
+                key={index}
+                />
+    })
     return (
       <div>
             {imagesTags}
-            <input className="add-house-card__upload-button" 
-            type="file" accept="image/*" onChange={this.handleChange}
-            multiple={true}
-            />
+            {
+                warningMessage==""?
+                <input 
+                className="add-house-card__upload-button" 
+                type="file" accept="image/*" 
+                onChange={this.handleChange}
+                multiple={true}
+                style={{display:"inline-block"}}
+            />:warningMessage
+            }
             <i className="fas fa-camera"></i>
+            <input type="button" value="EFASE" onClick={this.removePhoto}/>
       </div>
     );
   }
