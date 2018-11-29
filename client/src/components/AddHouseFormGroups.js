@@ -119,18 +119,20 @@ export const HouseAddress=()=>{
 
 export const Amenities=()=>{
     return(
+        <div>
         <div className="add-house-card__form-group">
             <label className="add-house-card__label">Eske kay la gen:</label>
             <label className="add-house-card__label">Kontè:<input className="add-house-card__checkbox" type="checkbox"/></label>
-            
-            <div style={{marginTop:"10px"}}>
-                <label>Kouran:</label>
-                <div className="add-house-card__electricity">
-                    <label>Kèk Fwa:<input name="electricity" type="radio"/></label>
-                    <label>Toutan:<input name="electricity" type="radio"/></label>
-                    <label>Raman:<input name="electricity" type="radio"/></label>
-                </div>
+        </div>
+        <div className="add-house-card__form-group" style={{marginTop:"10px"}}>
+            <label>Kouran:</label>
+            <div className="add-house-card__electricity">
+                <label>Kèk Fwa:<input name="electricity" type="radio"/></label>
+                <label>Toutan:<input name="electricity" type="radio"/></label>
+                <label>Raman:<input name="electricity" type="radio"/></label>
             </div>
+        </div>
+        <div className="add-house-card__form-group">
             <label className="add-house-card__label">Rezèvwa:<input className="add-house-card__checkbox" type="checkbox"/></label>
             <label className="add-house-card__label">Kizin:<input className="add-house-card__checkbox" type="checkbox"/></label>
             <label className="add-house-card__label">Pakin:<input className="add-house-card__checkbox" type="checkbox"/></label>
@@ -138,6 +140,7 @@ export const Amenities=()=>{
             <label className="add-house-card__label">Sal a manje:<input className="add-house-card__checkbox" type="checkbox"/></label>
             <label className="add-house-card__label">Salon:<input className="add-house-card__checkbox" type="checkbox"/></label>
             <button className="authentication__button success-button">SOUMET</button>
+        </div>
         </div>
     )
 }
@@ -162,67 +165,3 @@ export const PreviousQuestion=({currentQuestion,handlePreviousQuestion})=>{
         :""
     )
 }
-
-{/* 
-
-
-<div className="add-house-card__form-group">
-<label className="add-house-card__label">Konbyen chanm a kouche kay la genyen:</label>
-<input className="add-house-card__input" type="number"/>
-</div>
-<div className="add-house-card__form-group">
-<label className="add-house-card__label">Konbyen sal de ben kay la genyen:</label>
-<input className="add-house-card__input" type="number"/> 
-</div>  
-{!(this.state.long==null && this.state.latitude==null) ? 
-<div className="add-house-card__form-group">
-    <label className="add-house-card__label">Longitid:</label>
-    <input className="add-house-card__input" type="text" name="longititude" value={this.state.longitude} readOnly/> 
-    <label className="add-house-card__label">Latitid:</label>
-    <input className="add-house-card__input" type="text" name="latitude" value={this.state.latitude} readOnly/>
-</div>
-:"" 
-}
-<div className="add-house-card__form-group">
-<label className="add-house-card__label">Lokalizasyon:</label>
-<button className="add-house-card__localisation-button" onClick={this.getCurrentPosition}>
-<FontAwesomeIcon icon="map-marker-alt"/>  Lokalize kote'm ye a
-</button>
-</div>
-<div className="add-house-card__form-group">
-<Select options={options}/>
-</div>
-<div className="add-house-card__form-group">
-<label className="add-house-card__label">Adr&egrave;s:</label>
-<input className="add-house-card__input" type="text"/>
-</div> 
-<div className="add-house-card__form-group">
-<label className="add-house-card__label">Eske kay la gen:</label>
-<label className="add-house-card__label">Kontè:<input className="add-house-card__checkbox" type="checkbox"/></label>
-
-<div style={{marginTop:"10px"}}>
-    <label>Kouran:</label>
-    <div className="add-house-card__electricity">
-        <label>Kèk Fwa:<input name="electricity" type="radio"/></label>
-        <label>Toutan:<input name="electricity" type="radio"/></label>
-        <label>Raman:<input name="electricity" type="radio"/></label>
-    </div>
-</div>
-<label className="add-house-card__label">Rezèvwa:<input className="add-house-card__checkbox" type="checkbox"/></label>
-<label className="add-house-card__label">Kizin:<input className="add-house-card__checkbox" type="checkbox"/></label>
-<label className="add-house-card__label">Pakin:<input className="add-house-card__checkbox" type="checkbox"/></label>
-<label className="add-house-card__label">Tiyo:<input className="add-house-card__checkbox" type="checkbox"/></label>
-<label className="add-house-card__label">Sal a manje:<input className="add-house-card__checkbox" type="checkbox"/></label>
-<label className="add-house-card__label">Salon:<input className="add-house-card__checkbox" type="checkbox"/></label>
-<button className="authentication__button success-button">SOUMET</button>
-</div>
-{(currentQuestion<numberOfQuestions)?
-<button className="add-house-card__next-question-button" onClick={this.displayNext}>
-APRE
-</button>
-:""}
-{(currentQuestion>0)?
-<button className="add-house-card__next-question-button" onClick={this.displayPrevious}>
-AVAN
-</button>
-:""} */}
