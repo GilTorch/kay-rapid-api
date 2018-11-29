@@ -14,7 +14,7 @@ const Home=({ title })=>{
         <div className="home">
             <header className="home__header">
             <div className="home__header-wrapper">
-                <img  src={AppLogo} />
+                <img  src={AppLogo} className="home__header__logo" />
                 <h1 className="home__title">{ title }</h1>
                 <form className="home__form">
                     <div className="home__form-wrapper">

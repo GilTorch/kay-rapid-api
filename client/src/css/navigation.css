@@ -16,15 +16,21 @@
 
 .navigation-button{
   background:transparent;
-  color:#666;
   border:none;
+  color:#606060;
   padding:0;
   cursor:pointer;
 }
 
-.navigation-button--hightlighted{
-  color:#ff9900;
+.navigation-button--highlighted{
+  background:transparent;
+  border:none;
+  padding:0;
+  cursor:pointer;
+  color:#9E7B41;
+  font-weight: bold;
 }
+
 
 .navigation-button__title{
   display:block;

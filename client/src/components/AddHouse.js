@@ -3,6 +3,7 @@ import HeaderBar from './HeaderBar';
 import '../css/add-house.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Select from 'react-select';
+import Upload from './Upload';
 
 
 const options=[
@@ -84,8 +85,8 @@ class AddHouse extends Component{
                     <div className="add-house-card">
                         <form>
                             <div className="add-house-card__form-group">
-                                <label>Chwazi imaj kay la nan galri a:</label>
-                                <input type="file" accpet=".jpg,.png"/>
+                                <label>Chwazi yon imaj prensipal pou kay la:</label>
+                                <Upload/>
                             </div>
                             <div className="add-house-card__form-group">
                                 {price}                         
