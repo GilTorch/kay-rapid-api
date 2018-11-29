@@ -60,8 +60,14 @@ class Upload extends React.Component {
                 style={{display:"inline-block"}}
             />:warningMessage
             }
-            <i className="fas fa-camera"></i>
-            <input type="button" value="EFASE" onClick={this.removePhoto}/>
+            {/* <i className="fas fa-camera"></i> */}
+            {
+                images.length!=0?
+                <button className="add-house-card__delete-house-image" type="button" onClick={this.removePhoto}>
+                    <i className="fas fa-trash"></i>
+                </button>:""
+            }
+
       </div>
     );
   }

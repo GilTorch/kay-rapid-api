@@ -1,8 +1,17 @@
+.search-icon{
+  color:rgba(102, 45, 145,1);
+}
+
 .home{
     background:url("http://res.cloudinary.com/dejyp5iex/image/upload/v1535152859/negre-marron_ndndgz.jpg") center top no-repeat;
   }
   .home__header{
     background-color:rgba(102, 45, 145, 0.95);
+  }
+
+  .home__header-logo{
+    min-width:300px;
+    margin-top:100px;
   }
   
   .home__header-wrapper{
@@ -11,9 +20,6 @@
     justify-content: center;
     align-items: center;
   }
-  
-
-  
 
   .home__title{
     color:white;
@@ -57,7 +63,7 @@
     position:fixed;
     z-index: 1;
     bottom:70px;
-    right:33px;
+    right:10px;
     border-radius: 50%;
     width:70px;
     height:70px;

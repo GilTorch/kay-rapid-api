@@ -26,20 +26,80 @@ class AddHouse extends Component{
         this.state={
             longitude:null,
             latitude:null,
-            negotiable:false
+            negotiable:false,
+            currentQuestion:0,
+            numberOfQuestions:0
         }
 
-        this.toggleNegotiation=this.toggleNegotiation.bind(this)
+        this.toggleNegotiation=this.toggleNegotiation.bind(this);
+        this.displayNext=this.displayNext.bind(this);
+        this.displayPrevious=this.displayPrevious.bind(this);
     }
 
-    // getCurrentPosition(){
+    componentDidMount(){
+       const formGroups=document.querySelectorAll('.add-house-card__form-group');
+       const numberOfQuestions=formGroups.length-1;
 
-    // }
+       formGroups.forEach((formGroup)=>{
+        formGroup.style.display="none";
+       })
+       formGroups[0].style.display="block";
+
+       this.setState({
+           numberOfQuestions
+       })
+    }
 
     toggleNegotiation(){
         this.setState({
             negotiable:!this.state.negotiable
         })
+    }
+
+    displayNext(event){
+        event.preventDefault();
+        const formGroups=document.querySelectorAll('.add-house-card__form-group');
+
+        let { currentQuestion }=this.state;
+
+        this.setState({
+            previousButtonVisible:true
+        })
+
+        if(currentQuestion<formGroups.length){
+            formGroups[currentQuestion].style.display="none";
+            currentQuestion++;
+            formGroups[currentQuestion].style.display="block";
+            this.setState({
+                currentQuestion
+            })
+        }else{
+            this.setState({
+                nextButtonVisible:false,
+            })
+        }
+        
+    }
+
+    displayPrevious(event){
+        event.preventDefault();
+        const formGroups=document.querySelectorAll('.add-house-card__form-group');
+        let { currentQuestion }=this.state;
+        if(currentQuestion>0){
+            formGroups[currentQuestion].style.display="none";
+            currentQuestion--;
+
+            formGroups[currentQuestion].style.display="block";
+            this.setState({
+                currentQuestion
+            })
+        }else{
+            this.setState({
+                previousButtonVisible:false,
+                nextButtonVisible:true
+            })
+        }     
+        
     }
 
     getCurrentPosition(event){
@@ -59,7 +119,7 @@ class AddHouse extends Component{
     }
 
     render(){
-
+        const { currentQuestion,numberOfQuestions }=this.state;        
         let price
 
         if(!this.state.negotiable){
@@ -77,7 +137,7 @@ class AddHouse extends Component{
                 <input className="add-house-card__input" type="number"/>
             </div>
         }   
-
+       
         return (
             <div>
             <HeaderBar title="Ajoute Kay Ou" hasBack={true}/>
@@ -154,8 +214,18 @@ class AddHouse extends Component{
                                 <label className="add-house-card__label">Tiyo:<input className="add-house-card__checkbox" type="checkbox"/></label>
                                 <label className="add-house-card__label">Sal a manje:<input className="add-house-card__checkbox" type="checkbox"/></label>
                                 <label className="add-house-card__label">Salon:<input className="add-house-card__checkbox" type="checkbox"/></label>
+                                <button className="authentication__button success-button">SOUMET</button>
                             </div>
-                            <button className="authentication__button success-button">SOUMET</button>
+                            {(currentQuestion<numberOfQuestions)?
+                                <button className="add-house-card__next-question-button" onClick={this.displayNext}>
+                                APRE
+                                </button>
+                            :""}
+                            {(currentQuestion>0)?
+                                <button className="add-house-card__next-question-button" onClick={this.displayPrevious}>
+                                AVAN
+                                </button>
+                            :""}
                         </form>
                     </div>
                 </div>
