@@ -40,7 +40,7 @@ class AddHouse extends Component{
     componentDidMount(){
        const formGroups=document.querySelectorAll('.add-house-card__form-group');
        const numberOfQuestions=formGroups.length-1;
-       
+
        formGroups.forEach((formGroup)=>{
         formGroup.style.display="none";
        })
@@ -142,12 +142,12 @@ class AddHouse extends Component{
                             <HouseCity options={options}/>
                             <HouseAddress/>
                             <Amenities/>
+                            <PreviousQuestion currentQuestion={currentQuestion} handlePreviousQuestion={this.displayPrevious}/>
                             <NextQuestion 
                                 currentQuestion={currentQuestion} 
                                 numberOfQuestions={numberOfQuestions}
                                 handleNextQuestion={this.displayNext}
                             />
-                            <PreviousQuestion currentQuestion={currentQuestion} handlePreviousQuestion={this.displayPrevious}/>
                         </form>
                     </div>
                 </div>

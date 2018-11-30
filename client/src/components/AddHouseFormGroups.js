@@ -160,7 +160,7 @@ export const NextQuestion=({currentQuestion,numberOfQuestions,handleNextQuestion
 export const PreviousQuestion=({currentQuestion,handlePreviousQuestion})=>{
     return(
         (currentQuestion>0)?
-        <button className="add-house-card__next-question-button" onClick={handlePreviousQuestion}>
+        <button className="add-house-card__previous-question-button" onClick={handlePreviousQuestion}>
         AVAN
         </button>
         :""
