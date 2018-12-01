@@ -2,8 +2,8 @@ import React,{ Component } from 'react';
 import HeaderBar from './HeaderBar';
 import '../css/add-house.css';
 import { 
-HouseImages,Price,MaxGuests,WhenToPayHouse,NumberOfRooms,NumberOfBathrooms,
-Localisation,HouseCity,HouseAddress,Amenities,NextQuestion,PreviousQuestion 
+    HouseImages,Price,MaxGuests,WhenToPayHouse,NumberOfRooms,NumberOfBathrooms,
+    Localisation,HouseCity,HouseAddress,Amenities,NextQuestion,PreviousQuestion 
 } from './AddHouseFormGroups';
 
 
@@ -103,7 +103,6 @@ class AddHouse extends Component{
     }
 
     getCurrentPosition(event){
-        console.log("This is called!")
         event.preventDefault();
         const that=this
         if (navigator.geolocation) {

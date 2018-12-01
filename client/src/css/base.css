@@ -32,7 +32,8 @@ button{
 }
 
 .stack-screen {
-  width:100vw;
+  width:99%;
+  margin:auto;
   min-height: 100vh;
   padding: 1%;
   position:absolute;
@@ -42,7 +43,7 @@ button{
 }
 
 .card {
-  width: 100%;
+  width:99%;
   margin:auto;
   box-shadow: -2px 5px 8px #aaa
 }
