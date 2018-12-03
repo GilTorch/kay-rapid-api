@@ -14,7 +14,7 @@ import "../css/profile.css";
 const Profile =({userAuthInfo})=>{
     return(
         <div>
-            <HeaderBar title="Profil Ou"/>
+            <HeaderBar title="Pwofil Ou"/>
             { userAuthInfo.email ? <UserInfo {...userAuthInfo} />:<Authentication/>}
             <Navigation currentPage="profile"/>
         </div>

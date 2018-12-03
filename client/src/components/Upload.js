@@ -31,10 +31,10 @@ class Upload extends React.Component {
   }
 
   removePhoto(){
-      let imagesCopy=this.state.images;
-      imagesCopy.pop();
+      let { images }=this.state;
+      images.pop();
       this.setState({
-          images:imagesCopy,
+          images,
           warningMessage:""
       })
   }

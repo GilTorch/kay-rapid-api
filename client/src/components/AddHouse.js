@@ -2,13 +2,14 @@ import React,{ Component } from 'react';
 import HeaderBar from './HeaderBar';
 import '../css/add-house.css';
 import { 
+    Submit,
     HouseImages,Price,MaxGuests,WhenToPayHouse,NumberOfRooms,NumberOfBathrooms,
     Localisation,HouseCity,HouseAddress,Amenities,NextQuestion,PreviousQuestion 
 } from './AddHouseFormGroups';
 
 
 const options=[
-    {value:'',label:"Pòtoprens"},
+    {value:'p-au-p',label:"Pòtoprens"},
     {value:'',label:"Fò Libète"},
     {value:'',label:"Jakmèl"},
     {value:'',label:"Gonayiv"},
@@ -32,9 +33,10 @@ class AddHouse extends Component{
             numberOfQuestions:0
         }
 
-        this.toggleNegotiation=this.toggleNegotiation.bind(this);
         this.displayNext=this.displayNext.bind(this);
         this.displayPrevious=this.displayPrevious.bind(this);
+        this.handleChange=this.handleChange.bind(this);
+        this.onSubmit=this.onSubmit.bind(this);
     }
 
     componentDidMount(){
@@ -51,11 +53,15 @@ class AddHouse extends Component{
        })
     }
 
-    toggleNegotiation(){
+    handleChange(event) {
+        const target = event.target;
+        const value = target.type === 'checkbox' ? target.checked : target.value;
+        const name = target.name;
+    
         this.setState({
-            negotiable:!this.state.negotiable
-        })
-    }
+          [name]: value
+        });
+      }
 
     displayNext(event){
         event.preventDefault();
@@ -118,8 +124,18 @@ class AddHouse extends Component{
         }
     }
 
+
+    onSubmit(event){
+        event.preventDefault();
+        console.log(event);
+    }
+
+
     render(){
-        const { currentQuestion,numberOfQuestions }=this.state;        
+
+        const { currentQuestion,numberOfQuestions }=this.state;       
+        
+        const updateState=(whatever)=>{this.setState(whatever)}
 
         return (
             <div>
@@ -128,25 +144,38 @@ class AddHouse extends Component{
                     <div className="add-house-card">
                         <form>
                             <HouseImages numberLimit={10}/>
-                            <Price negotiable={this.state.negotiable} toggleNegotiation={this.toggleNegotiation}/>
-                            <MaxGuests/>
-                            <WhenToPayHouse/>
-                            <NumberOfRooms/>
-                            <NumberOfBathrooms/>  
+                            <Price 
+                                negotiable={this.state.negotiable} 
+                                toggleNegotiation={this.toggleNegotiation}
+                                handleChange={this.handleChange}
+                            />
+                            <MaxGuests handleChange={this.handleChange}/>
+                            <WhenToPayHouse 
+                                handleChange={this.handleChange}
+                            />
+                            <NumberOfRooms handleChange={this.handleChange}/>
+                            <NumberOfBathrooms handleChange={this.handleChange}/>  
                             <Localisation 
                                 longitude={this.state.longitude} 
                                 latitude={this.state.latitude}
+                                handleChange={this.handleChange}
                                 getCurrentPosition={this.getCurrentPosition}
                             />
-                            <HouseCity options={options}/>
-                            <HouseAddress/>
-                            <Amenities/>
-                            <PreviousQuestion currentQuestion={currentQuestion} handlePreviousQuestion={this.displayPrevious}/>
-                            <NextQuestion 
-                                currentQuestion={currentQuestion} 
-                                numberOfQuestions={numberOfQuestions}
-                                handleNextQuestion={this.displayNext}
+                            <HouseCity options={options} handleChange={(selectedOption)=>console.log(selectedOption.value)}/>
+                            <HouseAddress handleChange={(event)=>{updateState({address:event.target.value})}}/>
+                            <Amenities
+                                handleChange={this.handleChange}
                             />
+                            <Submit handleSubmit={this.onSubmit}/>
+                            <div className="add-house-card__question-management">
+                                <p><b>{currentQuestion+1}/{numberOfQuestions+1}</b> Kesyon</p>
+                                <PreviousQuestion currentQuestion={currentQuestion} handlePreviousQuestion={this.displayPrevious}/>
+                                <NextQuestion 
+                                    currentQuestion={currentQuestion} 
+                                    numberOfQuestions={numberOfQuestions}
+                                    handleNextQuestion={this.displayNext}
+                                /> 
+                            </div>
                         </form>
                     </div>
                 </div>
@@ -156,3 +185,6 @@ class AddHouse extends Component{
 }
 
 export default AddHouse;
+
+
+

@@ -1,10 +1,10 @@
 import React from 'react';
 
-export function Heart({value,like}){
-    let btn_class = value ? "heart-not-liked" :"heart-liked";
+export function Heart({value,handleClick}){
+    let btn_class = !value ? "heart-not-liked" :"heart-liked";
     return(
         <div className={btn_class}>
-            <span className={btn_class} onClick={like}><i className="fas fa-heart"></i></span>
+            <span className={btn_class} onClick={handleClick}><i className="fas fa-heart"></i></span>
         </div>
     )
 }

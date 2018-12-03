@@ -11,6 +11,14 @@ class HouseCard extends React.Component {
         this.changeColor=this.changeColor.bind(this);
     }
 
+    componentDidMount(){
+        const { liked }=this.props; 
+
+        this.setState({
+            liked
+        })
+    }
+
     changeColor() {
         let stateCopy=this.state;
         stateCopy.liked=!stateCopy.liked;
@@ -20,7 +28,7 @@ class HouseCard extends React.Component {
     render() {
          return (
             <div className="house-card"> 
-                <Heart value={this.state.liked} like={this.changeColor}/>
+                <Heart value={this.state.liked} handleClick={this.changeColor}/>
                 <PreviewImage url={this.props.previewImage} />
                 <div className="house-card__inner-wrapper">
                     <Price value={this.props.price} currency={this.props.currency} leaseType={this.props.leaseType}/>

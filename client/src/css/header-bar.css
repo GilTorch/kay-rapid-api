@@ -1,6 +1,6 @@
 .header-bar{
   width:100vw;
-  position:absolute;
+  position:fixed;
   top:0;
   left:0;
   background-color:var(--header-color);
@@ -10,6 +10,7 @@
   display: flex;
   justify-content:center;
   align-items:center; 
+  z-index:100;
 }
 
 
