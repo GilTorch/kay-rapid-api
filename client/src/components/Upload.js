@@ -1,5 +1,7 @@
 import React from 'react';
 
+import HouseImage from './HouseImage';
+
 class Upload extends React.Component {
   constructor(props){
     super(props)
@@ -8,7 +10,7 @@ class Upload extends React.Component {
       images:[],
     }
     this.handleChange = this.handleChange.bind(this)
-    this.removePhoto=this.removePhoto.bind(this)
+    this.handleRemove=this.handleRemove.bind(this)
   }
 
   componentDidMount(){
@@ -30,24 +32,20 @@ class Upload extends React.Component {
     })
   }
 
-  removePhoto(){
-      let { images }=this.state;
-      images.pop();
-      this.setState({
-          images,
-          warningMessage:""
-      })
+ handleRemove(who){
+     let { images }=this.state; 
+
+     images.splice(who.key,1);
+     this.setState({
+         images
+     })
   }
 
 
   render() {
     const {images,lengthLimit}=this.state; 
     let  imagesTags=images.map((file,index)=>{
-        return <img 
-                className="add-house-card__house-preview clip-circle" 
-                src={file} 
-                key={index}
-                />
+        return <HouseImage url={file} key={index} removePhoto={this.handleRemove}/>
     })
     return (
       <div>
@@ -63,14 +61,7 @@ class Upload extends React.Component {
                         multiple={true}
                     />
                 </label>
-                :<p className="add-house-card__photo-upload-warning">Ou pa ka met plis foto ke 10</p>
-            }
-            {
-                images.length>0?
-                    <button className="add-house-card__delete-button" type="button" onClick={this.removePhoto}>
-                        <i className="upload-icon fas fa-trash"></i>
-                    </button>
-                :""
+                :<p className="add-house-card__photo-upload-warning">Ou pa ka met plis foto ke {lengthLimit}</p>
             }
 
       </div>

@@ -10,7 +10,7 @@ const SignInWithSocialMedia=({ sendFBTokenToServer,writeUserAuthInfoToCache, his
   
 
     const responseFacebook=(facebookResponse)=>{
-        console.log((facebookResponse.accessToken))
+        alert((facebookResponse.accessToken))
         sendFBTokenToServer({ 
             variables: { facebookToken: facebookResponse.accessToken },
             update:(store,{data:{authenticateFBUser}})=>{
@@ -21,15 +21,19 @@ const SignInWithSocialMedia=({ sendFBTokenToServer,writeUserAuthInfoToCache, his
                 let profilePicURL=authenticateFBUser.user.profilePicture.url;
                 let profilePicture;
 
-                axios.get(profilePicURL)
-                .then((response)=>{
-                    const data = response.data 
-                    profilePicture = data; 
-                    let userObject = {token,firstName,lastName,email,profilePicture};
-                    console.log("AUTH TO SAVE"+JSON.stringify(userObject));
-                    writeUserAuthInfoToCache({variables:{ userAuthInfo: userObject }})
-                }).then(()=>{console.log("Successfuly saved to the cache")})
 
+                alert(firstName,lastName,email);
+                let userObject = {token,firstName,lastName,email,profilePicURL};
+                alert(JSON.stringify(userObject));
+                // axios.get(profilePicURL)
+                // .then((response)=>{
+                //     const data = response.data 
+                //     profilePicture = data; 
+                //     let userObject = {token,firstName,lastName,email};
+                //     console.log("AUTH TO SAVE"+JSON.stringify(userObject));
+                   
+                // }).then(()=>{console.log("Successfuly saved to the cache")})
+                writeUserAuthInfoToCache({variables:{ userAuthInfo: userObject }})
             }
           }).then(()=> history.push('/profile'))   
     }

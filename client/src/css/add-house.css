@@ -106,7 +106,10 @@
 }
 
 .add-house-card__upload-button{
+    border:1px solid dashed;
     color:#aaa;
+    width:40px;
+    height:40px;
 }
 
 .add-house-card__delete-button{
@@ -120,6 +123,11 @@
     color:#333;
     padding-top:5px;
     padding-bottom:5px;
+}
+
+.add-house-card__delete-button{
+    display: block;
+    width:100%;
 }
 
 .add-house-card__upload-button,.add-house-card__delete-button{
@@ -322,4 +330,10 @@ button{
 
 .mapboxgl-canvas{
     display:block !important;
+}
+
+.add-house-card__house-image-checkbox{
+    position:relative;
+    top:0; 
+    left:0;
 }

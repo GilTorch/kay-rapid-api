@@ -134,8 +134,6 @@ class AddHouse extends Component{
     render(){
 
         const { currentQuestion,numberOfQuestions }=this.state;       
-        
-        const updateState=(whatever)=>{this.setState(whatever)}
 
         return (
             <div>
@@ -161,8 +159,8 @@ class AddHouse extends Component{
                                 handleChange={this.handleChange}
                                 getCurrentPosition={this.getCurrentPosition}
                             />
-                            <HouseCity options={options} handleChange={(selectedOption)=>console.log(selectedOption.value)}/>
-                            <HouseAddress handleChange={(event)=>{updateState({address:event.target.value})}}/>
+                            <HouseCity options={options} handleChange={this.handleChange}/>
+                            <HouseAddress handleChange={this.handleChange}/>
                             <Amenities
                                 handleChange={this.handleChange}
                             />
