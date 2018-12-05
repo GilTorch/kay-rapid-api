@@ -18,12 +18,11 @@ const SignInWithSocialMedia=({ sendFBTokenToServer,writeUserAuthInfoToCache, his
                 let firstName = authenticateFBUser.user.firstName;
                 let lastName=authenticateFBUser.user.lastName;
                 let email=authenticateFBUser.user.email;
-                let profilePicURL=authenticateFBUser.user.profilePicture.url;
-                let profilePicture;
+                let profilePicture=authenticateFBUser.user.profilePicture.url;
 
 
                 alert(firstName,lastName,email);
-                let userObject = {token,firstName,lastName,email,profilePicURL};
+                let userObject = {token,firstName,lastName,email,profilePicture};
                 alert(JSON.stringify(userObject));
                 // axios.get(profilePicURL)
                 // .then((response)=>{

@@ -23,7 +23,7 @@ const stateLink = withClientState({
     resolvers:{
         Mutation:{
             updateAuthInfo:(_,{ userAuthInfo },{cache})=>{
-                console.log("Cache got it:"+JSON.stringify(userAuthInfo));
+                alert("Cache got it:"+JSON.stringify(userAuthInfo));
                 const myData = userAuthInfo;
              
                 const query=gql`
@@ -46,8 +46,13 @@ const stateLink = withClientState({
                         ...myData
                     }
                 }
+
+                alert("MEN DATA FINAL LA! :"+JSON.stringify(data));
                 
-                cache.writeData({data});
+                cache.writeData({
+                  data
+              });
+                return null;
             }
         }
     }
