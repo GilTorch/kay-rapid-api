@@ -4,7 +4,8 @@ import FacebookLogin from 'react-facebook-login';
 import { FB_AUTH, WRITE_AUTH_INFO } from '../queries/queries';
 import axios from 'axios';
 import { graphql,compose } from 'react-apollo';
-import HouseIllustration from '../svg/houses-sunshine-green-pasture.svg'
+import HouseIllustration from '../svg/houses-sunshine-green-pasture.svg';
+import client from '../apolloClient';
 
 const SignInWithSocialMedia=({ sendFBTokenToServer,writeUserAuthInfoToCache, history})=>{
   
@@ -19,11 +20,8 @@ const SignInWithSocialMedia=({ sendFBTokenToServer,writeUserAuthInfoToCache, his
                 let lastName=authenticateFBUser.user.lastName;
                 let email=authenticateFBUser.user.email;
                 let profilePicture=authenticateFBUser.user.profilePicture.url;
-
-
-                alert(firstName,lastName,email);
                 let userObject = {token,firstName,lastName,email,profilePicture};
-                alert(JSON.stringify(userObject));
+                // alert(JSON.stringify(userObject));
                 // axios.get(profilePicURL)
                 // .then((response)=>{
                 //     const data = response.data 
@@ -32,6 +30,9 @@ const SignInWithSocialMedia=({ sendFBTokenToServer,writeUserAuthInfoToCache, his
                 //     console.log("AUTH TO SAVE"+JSON.stringify(userObject));
                    
                 // }).then(()=>{console.log("Successfuly saved to the cache")})
+
+                
+        
                 writeUserAuthInfoToCache({variables:{ userAuthInfo: userObject }})
             }
           }).then(()=> history.push('/profile'))   

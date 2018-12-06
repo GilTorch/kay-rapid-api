@@ -15,7 +15,6 @@ const Profile =({userAuthInfo})=>{
     return(
         <div>
             <HeaderBar title="Pwofil Ou"/>
-            {alert("MEN NI MANMAN"+JSON.stringify(userAuthInfo))}
             { userAuthInfo.email ? <UserInfo {...userAuthInfo} />:<Authentication/>}
             <Navigation currentPage="profile"/>
         </div>

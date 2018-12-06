@@ -3,7 +3,7 @@ import logo from './logo.svg';
 import './css/App.css';
 
 import { ApolloProvider } from 'react-apollo';
-import client from './apolloClient';
+import  client,{persistor} from './apolloClient';
 import { BrowserRouter as Router,Route } from 'react-router-dom';
 
 import { library } from '@fortawesome/fontawesome-svg-core'
@@ -31,27 +31,40 @@ library.add(faSearch,faHome, faHeart, faUser,faMapMarkerAlt,faVideo,faArrowCircl
 
 class App extends Component {
 
-  constructor(props){
+    constructor(props) {
     super(props)
+    this.state = {
+      restored: false,
+    }
+  }
+
+  componentDidMount() {
+    persistor.restore()
+      .then(() => this.setState({ restored: true }))
   }
 
   render() {
-    return (
-      <ApolloProvider client={client}>
-        <Router>
-          <React.Fragment>
-            <Route exact={true} path="/" component={Home}/>
-            <Route exact={true} path="/profile" component={Profile}/>
-            <Route exact={true} path="/favorites" component={Favorites}/>
-            <Route exact={true} path="/authentication/sign-in-with-social-media" component={SignInWithSocialMedia} updateCacheWithToken={this.updateCacheWithToken}/>
-            <Route exact={true} path="/authentication/sign-in-without-social-media" component={SignInWithoutSocialMedia}/>
-            <Route exact={true} path="/authentication/account-creation" component={AccountCreation}/>
-            <Route exact={true} path="/add-house" component={AddHouse}/>
-            <Route exact={true} path="/walls-house" component={wallsHouse}/>
-          </React.Fragment>
-        </Router>
-      </ApolloProvider>
-    );
+    if(!this.state.restored){
+      return <div><p>Loading!</p></div>
+    }else{
+      return (
+        <ApolloProvider client={client}>
+          <Router>
+            <React.Fragment>
+              <Route exact={true} path="/" component={Home}/>
+              <Route exact={true} path="/profile" component={Profile}/>
+              <Route exact={true} path="/favorites" component={Favorites}/>
+              <Route exact={true} path="/authentication/sign-in-with-social-media" component={SignInWithSocialMedia} updateCacheWithToken={this.updateCacheWithToken}/>
+              <Route exact={true} path="/authentication/sign-in-without-social-media" component={SignInWithoutSocialMedia}/>
+              <Route exact={true} path="/authentication/account-creation" component={AccountCreation}/>
+              <Route exact={true} path="/add-house" component={AddHouse}/>
+              <Route exact={true} path="/walls-house" component={wallsHouse}/>
+            </React.Fragment>
+          </Router>
+        </ApolloProvider>
+      )    ;
+    }
+
   }
 }
 
