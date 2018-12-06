@@ -23,7 +23,7 @@ const UserInfo=({ firstName,lastName,profilePicture,writeUserAuthInfoToCache })=
     <div className="profile-info-card">
         <img src={profilePicture}/>
         <p>{firstName} {lastName}</p>
-        <button onClick={logout}className="auth-button danger-button">Log Out</button>
+        <button onClick={logout}className="auth-button danger-button">DEKONEKTE</button>
     </div>
    )
 }

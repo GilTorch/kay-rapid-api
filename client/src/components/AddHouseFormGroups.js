@@ -9,23 +9,23 @@ export const HouseImages=({numberLimit})=>{
         <div>
             <div className="add-house-card__form-group">
                 <label className="add-house-card__label">Chwazi yon imaj prensipal pou kay la</label>
-                <Upload lengthLimit={1}/>
+                <Upload numberOfImagesAllowed={1}/>
             {/* </div>
             <div className="add-house-card__form-groupe"> */}
                 <label className="add-house-card__label">Chwazi imaj pou chanm a kouche yo</label>
-                <Upload lengthLimit={numberLimit}/>
+                <Upload numberOfImagesAllowed={numberLimit}/>
             </div>
             <div className="add-house-card__form-group">
                 <label className="add-house-card__label">Chwazi imaj pou salon an (10 pou pi plis)</label>
-                <Upload lengthLimit={numberLimit}/>
+                <Upload numberOfImagesAllowed={numberLimit}/>
             {/* </div>
             <div className="add-house-card__form-groupe"> */}
             <label className="add-house-card__label">Chwazi imaj pou sal a manje yo (10 pou pi plis)</label>
-                <Upload lengthLimit={numberLimit}/>
+                <Upload numberOfImagesAllowed={numberLimit}/>
             </div>
             <div className="add-house-card__form-group">
             <label className="add-house-card__label">Chwazi imaj pou twalet yo (10 pou plis)</label>
-                <Upload lengthLimit={numberLimit}/>
+                <Upload numberOfImagesAllowed={numberLimit}/>
             </div>
         </div>
     )

@@ -8,7 +8,7 @@ const HeaderBar=({ title,hasBack })=>{
             {
                 hasBack==true ?
                 <Link to="/">
-                    <i className="fas fa-arrow-circle-left back-arrow"></i>
+                    <span className="header-bar-previous-page-button"></span>
                 </Link>:""
             }
 

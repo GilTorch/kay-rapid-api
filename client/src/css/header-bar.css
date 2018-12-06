@@ -13,12 +13,9 @@
   z-index:100;
 }
 
-
-.back-arrow{
-  font-size:30px;
+.header-bar-previous-page-button::before{
+  content:"< ";
+  font-size:50px;
   color:white;
-  align-self: flex-start;
-  /* position:relative;
-  top:0;
-  left:0; */
+  margin-right:30px;
 }
