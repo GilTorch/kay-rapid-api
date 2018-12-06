@@ -9,6 +9,8 @@ import { graphql } from 'react-apollo';
 import { READ_AUTH_INFO } from '../queries/queries';
 import UserInfo from '../components/UserInfo';
 
+import { withRouter } from 'react-router-dom';
+
 import "../css/profile.css";
 
 const Profile =({userAuthInfo})=>{
@@ -30,4 +32,4 @@ const ProfileWithQuery=graphql(
 )(Profile)
 
 
-export default ProfileWithQuery ;
+export default withRouter(ProfileWithQuery) ;

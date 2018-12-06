@@ -8,8 +8,11 @@ import Link from 'react-router-dom/Link';
 import "../css/home.css";
 import AddHouse from '../svg/add-house-illustration.svg';
 
+import { graphql } from 'react-apollo';
+import { READ_AUTH_INFO } from '../queries/queries';
 
-const Home=({ title })=>{
+
+const Home=({ title,userAuthInfo })=>{
     return(
         <div className="home">
             <header className="home__header">
@@ -32,7 +35,7 @@ const Home=({ title })=>{
                 <Neighborhood name="Okay"/>
                 <Neighborhood name="Jeremi"/>
             </div>
-            <Link to="/add-house">
+            <Link to={userAuthInfo.email?"/add-house":"/profile"}>
                 <button className="home__button-post-house">
                     <img src={AddHouse} className="home__add-house-illustration"/>
                 </button>
@@ -42,4 +45,14 @@ const Home=({ title })=>{
     )
 }  ;
 
-export default Home;
+
+const HomeWithQuery=graphql(
+    READ_AUTH_INFO,{
+        props:({data:{ userAuthInfo }})=>({
+            userAuthInfo
+        })
+    }
+)(Home)
+
+
+export default HomeWithQuery;
