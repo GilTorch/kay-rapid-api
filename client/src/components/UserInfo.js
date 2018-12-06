@@ -1,14 +1,35 @@
 import React from 'react';
-import ImageLoader from 'react-image-file';
+import { graphql } from 'react-apollo';
+import { WRITE_AUTH_INFO } from '../queries/queries';
 
-const UserInfo=({ firstName,lastName,profilePicture })=>{
+
+
+
+const UserInfo=({ firstName,lastName,profilePicture,writeUserAuthInfoToCache })=>{
+
+    function logout(){
+        const userObject={
+            token:null,
+            email:null,
+            firstName:null, 
+            lastName:null,
+            profilePicture:null 
+        }
+    
+        writeUserAuthInfoToCache({variables:{ userAuthInfo: userObject }});
+    }
+
    return( 
-    <div className="profile-info" style={{marginTop:"100px"}}>
+    <div className="profile-info-card">
         <img src={profilePicture}/>
         <p>{firstName} {lastName}</p>
-        <button className="authentication-button profile-info__logout-button">Log Out</button>
+        <button onClick={logout}className="auth-button danger-button">Log Out</button>
     </div>
    )
 }
 
-export default UserInfo;
+const UserInfoWithQuery = graphql( WRITE_AUTH_INFO,{"name":"writeUserAuthInfoToCache"})
+(UserInfo)
+
+
+export default UserInfoWithQuery;

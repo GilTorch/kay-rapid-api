@@ -5,14 +5,16 @@ import { AUTH_WITHOUT_SOCIAL_MEDIA,WRITE_AUTH_INFO } from '../queries/queries';
 
 
 
-const SignInWithoutSocialMedia = ({ signIn,writeUserAuthInfoToCache })=>{
+const SignInWithoutSocialMedia = ({ signIn,writeUserAuthInfoToCache,history })=>{
 
     const signUserIn=(e)=>{
-        // console.log("Email:"+this.refs.email.value+",password:"+this.refs.password.value);
+        e.preventDefault();
+        // console.log("Email:"+this.rfs.email.value+",password:"+this.refs.password.value);
         const email = this.emailInput.value;
         const password= this.passwordInput.value;
+      
         signIn({
-            variables:{email,password},
+            variables:{email:email,password:password},
             update:(store,{data:{login}})=>{
                 let profilePicture = null; 
                 let userObject = {
@@ -23,9 +25,11 @@ const SignInWithoutSocialMedia = ({ signIn,writeUserAuthInfoToCache })=>{
                     profilePicture:profilePicture
                 };
                 // console.log("AUTH TO SAVE"+JSON.stringify(userObject));
+                //alert("Sign in is triggerd!")
                 writeUserAuthInfoToCache({variables:{ userAuthInfo: userObject }})
+
             }
-        })
+        }).then(()=>{history.push("/profile")})
         
     }
  
@@ -35,14 +39,16 @@ const SignInWithoutSocialMedia = ({ signIn,writeUserAuthInfoToCache })=>{
             <button className="close-icon">&times;</button>
         </Link>
         <form onSubmit={signUserIn} className="signin-without-socialmedia-screen__form">
-            <div className="signin-without-socialmedia-screen__form-group"><label className="signin-without-socialmedia-screen__label">Imèl</label><input ref={(node)=>{this.emailInput=node}} type="email" placeholder="Tanpri mete imel ou" className="signin-without-socialmedia-screen__input"/></div>
-            <div className="signin-without-socialmedia-screen__form-group"><label className="signin-without-socialmedia-screen__label">Paswòd</label><input ref={(node)=>{this.passwordInput=node}} type="password" placeholder="Tanpri mete passwòd ou" className="signin-without-socialmedia-screen__input"/></div>
-            <div className="signin-without-socialmedia-screen__form-group"><button className="authentication__button signin-without-socialmedia-screen__button" type="submit">KONEKTE</button></div>
+            <div className="signin-without-socialmedia-screen__form-group"><label className="signin-without-socialmedia-screen__label">Imèl</label><input ref={(node)=>{this.emailInput=node}} type="email" placeholder="Tanpri mete imel ou" className="signin-without-socialmedia-screen__input" required/></div>
+            <div className="signin-without-socialmedia-screen__form-group"><label className="signin-without-socialmedia-screen__label">Paswòd</label><input ref={(node)=>{this.passwordInput=node}} type="password" placeholder="Tanpri mete passwòd ou" className="signin-without-socialmedia-screen__input" required/></div>
+            <div className="signin-without-socialmedia-screen__form-group"><button className="auth-button success-button" type="submit">KONEKTE</button></div>
         </form>
     </div>
     )
 
 }
+
+
 
 export default compose(
     graphql(AUTH_WITHOUT_SOCIAL_MEDIA,{name:"signIn"}),

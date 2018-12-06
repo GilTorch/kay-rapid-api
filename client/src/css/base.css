@@ -57,6 +57,23 @@ button{
   border: 1px solid #eee; 
 } */
 
+.success-button{
+  background-color:var(--button-success-color);
+}
+
+.danger-button{
+  background-color:var(--button-danger-color);
+}
+
+.auth-button{
+width:100%;
+border:none;
+font-weight:bold;
+text-align:center;
+height:50px;
+color:white;
+}
+  
 
 .close-icon {
   background: transparent;

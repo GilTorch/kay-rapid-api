@@ -56,14 +56,6 @@
     flex-direction:column; */
   }
   
-  .signin-card__button{
-    background-color:#3add7c;
-    border:none;
-    color:white;
-    font-weight:bold;
-    text-align:center;
-    height:50px;
-  }
   
   
   .house-graphic-container{
@@ -170,16 +162,7 @@
   margin:1% auto 10%;
   }
   
-  
-  .account-creation-screen__button,.signin-without-socialmedia-screen__button{
-    background-color:#3add7c;
-    border:none;
-    color:white;
-    font-weight:bold;
-    text-align:center;
-    height:50px;
-  }
-  
+ 
   .socialmedia-connect-screen__create-account-button,.socialmedia-connect-screen__sign-in-button{
     margin:auto;
     width:100%;
@@ -258,4 +241,19 @@
       background-color:transparent;
       border:none;
   
+    }
+
+
+    .profile-info-card{
+      margin-top:69px;
+      background-color:white;
+      display:flex;
+      flex-direction:column;
+      justify-content: center;
+      align-items: center;
+      padding:5%;
+    }
+
+    .profile-info-card__logout-button{
+      width:100%;
     }
