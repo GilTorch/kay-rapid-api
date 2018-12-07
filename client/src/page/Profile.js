@@ -24,32 +24,26 @@ class Profile extends React.Component{
         super(props)
     }
 
-    // componentDidMount(){
-    
-    // }
-
     render(){
+            const {userAuthInfo}=this.props;
+            let componentToRender;
 
-        const {userAuthInfo}=this.props;
-    
-        let componentToRender;
+            if(userAuthInfo.email){
+                notify('OU KONEKTE',"success")
+                componentToRender=<UserInfo {...userAuthInfo} />
+            }else{
+                notify('OU DEKONEKTE',"error")
+                componentToRender=<Authentication/>
+            }
 
-        if(userAuthInfo.email){
-            notify('OU KONEKTE',"success")
-            componentToRender=<UserInfo {...userAuthInfo} />
-        }else{
-            notify('OU DEKONEKTE',"error")
-            componentToRender=<Authentication/>
-        }
-
-    return(
-        <div>
-            <HeaderBar title="Pwofil Ou"/>
-            {componentToRender}
-            <Navigation currentPage="profile"/>
-            <ToastContainer autoClose={3000}/>
-        </div>
-    )
+            return(
+                <div>
+                    <HeaderBar title="Pwofil Ou"/>
+                    {componentToRender}
+                    <Navigation currentPage="profile"/>
+                    <ToastContainer autoClose={1500}/>
+                </div>
+            )
     }
 }  
 
