@@ -5,7 +5,8 @@ import { FB_AUTH, WRITE_AUTH_INFO } from '../queries/queries';
 import axios from 'axios';
 import { graphql,compose } from 'react-apollo';
 import HouseIllustration from '../svg/houses-sunshine-green-pasture.svg';
-import client from '../apolloClient';
+
+
 
 const SignInWithSocialMedia=({ sendFBTokenToServer,writeUserAuthInfoToCache, history})=>{
   
@@ -35,12 +36,13 @@ const SignInWithSocialMedia=({ sendFBTokenToServer,writeUserAuthInfoToCache, his
         
                 writeUserAuthInfoToCache({variables:{ userAuthInfo: userObject }})
             }
-          }).then(()=> history.push('/profile'))   
+          }).then(()=>history.push('/profile'))
     }
 
     return(
             <div className="stack-screen socialmedia-connect-screen">
             <div>
+
             <Link to="/profile">
                 <button className="close-icon">&times;</button>
             </Link>
