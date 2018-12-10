@@ -8,6 +8,8 @@
 
 body{
     background:#eee;
+    width: 100vw;
+    margin:0;
     max-height:768px;
     font-family: 'Encode Sans Condensed', sans-serif;
   }
@@ -30,7 +32,8 @@ button{
 }
 
 .stack-screen {
-  width:100vw;
+  width:99%;
+  margin:auto;
   min-height: 100vh;
   padding: 1%;
   position:absolute;
@@ -40,11 +43,37 @@ button{
 }
 
 .card {
-  width: 100%;
+  width:99%;
   margin:auto;
   box-shadow: -2px 5px 8px #aaa
-
 }
+
+/* .card {
+  width: 100%;
+  min-height: 100px;
+  margin: auto;
+  padding: 0.5%;
+  box-shadow: -2px 5px 3px #eee;
+  border: 1px solid #eee; 
+} */
+
+.success-button{
+  background-color:var(--button-success-color);
+}
+
+.danger-button{
+  background-color:var(--button-danger-color);
+}
+
+.auth-button{
+width:100%;
+border:none;
+font-weight:bold;
+text-align:center;
+height:50px;
+color:white;
+}
+  
 
 .close-icon {
   background: transparent;

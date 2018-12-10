@@ -3,15 +3,15 @@ import { Link } from 'react-router-dom';
 import FacebookLogin from 'react-facebook-login';
 import { FB_AUTH, WRITE_AUTH_INFO } from '../queries/queries';
 import axios from 'axios';
-import { graphql,compose,ApolloConsumer } from 'react-apollo';
-import { mkdir } from 'file-system';
-import getBase64ImageFromUrl from '../utils/getBase64ImageFromUrl';
+import { graphql,compose } from 'react-apollo';
+import HouseIllustration from '../svg/houses-sunshine-green-pasture.svg';
+import client from '../apolloClient';
 
 const SignInWithSocialMedia=({ sendFBTokenToServer,writeUserAuthInfoToCache, history})=>{
   
 
     const responseFacebook=(facebookResponse)=>{
-        // console.log((facebookResponse.accessToken))
+        alert((facebookResponse.accessToken))
         sendFBTokenToServer({ 
             variables: { facebookToken: facebookResponse.accessToken },
             update:(store,{data:{authenticateFBUser}})=>{
@@ -19,27 +19,21 @@ const SignInWithSocialMedia=({ sendFBTokenToServer,writeUserAuthInfoToCache, his
                 let firstName = authenticateFBUser.user.firstName;
                 let lastName=authenticateFBUser.user.lastName;
                 let email=authenticateFBUser.user.email;
-                let profilePicURL=authenticateFBUser.user.profilePicture.url;
-                let profilePicture;
+                let profilePicture=authenticateFBUser.user.profilePicture.url;
+                let userObject = {token,firstName,lastName,email,profilePicture};
+                // alert(JSON.stringify(userObject));
+                // axios.get(profilePicURL)
+                // .then((response)=>{
+                //     const data = response.data 
+                //     profilePicture = data; 
+                //     let userObject = {token,firstName,lastName,email};
+                //     console.log("AUTH TO SAVE"+JSON.stringify(userObject));
+                   
+                // }).then(()=>{console.log("Successfuly saved to the cache")})
 
-                axios.get(profilePicURL)
-                .then((response)=>{
-                    const data = response.data 
-                    profilePicture = data; 
-                    let userObject = {token,firstName,lastName,email,profilePicture};
-                    console.log("AUTH TO SAVE"+JSON.stringify(userObject));
-                    writeUserAuthInfoToCache({variables:{ userAuthInfo: userObject }})
-                }).then(()=>{console.log("Successfuly saved to the cache")})
-
-                // getBase64ImageFromUrl(profilePicURL)
-                //     .then((result)=>{
-                //         profilePicture=result;
-                //         let userObject = {token,firstName,lastName,email,profilePicture}
-                //         console.log("AUTH TO SAVE"+JSON.stringify(userObject));
-                //         writeUserAuthInfoToCache({variables:{ userAuthInfo: userObject }})
-                //     })
-                //     .then(()=>{console.log("Successfuly saved to the cache")})
                 
+        
+                writeUserAuthInfoToCache({variables:{ userAuthInfo: userObject }})
             }
           }).then(()=> history.push('/profile'))   
     }
@@ -53,12 +47,13 @@ const SignInWithSocialMedia=({ sendFBTokenToServer,writeUserAuthInfoToCache, his
             </div>
             <div>
                 <div className="house-graphic-container">
-                <img src="http://res.cloudinary.com/dejyp5iex/image/upload/v1534953341/graphique-maison_oebfhb.png" />
+                {/* <img src="http://res.cloudinary.com/dejyp5iex/image/upload/v1534953341/graphique-maison_oebfhb.png" /> */}
+                    <img className="house-illustration" src={HouseIllustration}/>
                 </div>
             </div>
             <div className="socialmedia-connect-screen__buttons-container">
             <FacebookLogin 
-                appId="266227067534365"  
+                appId="266227067534365"
                 autoLoad={true}
                 callback={responseFacebook}
                 fields="name,email,picture"
