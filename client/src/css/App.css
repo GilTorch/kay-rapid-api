@@ -1,3 +1,4 @@
+
 @import "normalize.css";
 @import "base.css";
 @import "home.css";
@@ -229,23 +230,11 @@ justify-content: space-around;
     justify-content:center;
   }
 
-  /* .signin-with-social-media__other-actions  a{
-    display:block;
-    width:50%;
-    height:100%;
-  } */
-
-  .socialmedia-connect-screen__sign-in-button,.socialmedia-connect-screen__create-account-button{
-    display:block;
-    width:50%;
-    height:100%;
-    background-color:transparent;
-    border:none;
-
+  .success-button{
+    background-color: var(--button-success-color);
+    border: none;
+    color: white;
+    font-weight: bold;
+    text-align: center;
+    height: 50px;
   }
-
-  /* .socialmedia-connect-screen__sign-in-button{
-    border-right:0.2px solid #aaa
-  } */
-
-  

@@ -5,27 +5,30 @@ import Navigation from '../components/Navigation';
 import HeaderBar from '../components/HeaderBar';
 import Authentication from '../components/Authentication';
 
+import { graphql } from 'react-apollo';
+import { READ_AUTH_INFO } from '../queries/queries';
+import UserInfo from '../components/UserInfo';
 
+import "../css/profile.css";
 
-
-class Profile extends React.Component{
-    
-    constructor(props){
-        super(props);
-    }
-
-    
-
-    render(){
-        return(
-            <div className="profile">
-                <HeaderBar title="Profile"/>
-                <Authentication/>
-                <Navigation currentPage="profile"/>
-            </div>
-        )
-    }
-   
+const Profile =({userAuthInfo})=>{
+    return(
+        <div>
+            <HeaderBar title="Pwofil Ou"/>
+            {alert("MEN NI MANMAN"+JSON.stringify(userAuthInfo))}
+            { userAuthInfo.email ? <UserInfo {...userAuthInfo} />:<Authentication/>}
+            <Navigation currentPage="profile"/>
+        </div>
+    )
 }  
 
-export default Profile;
+const ProfileWithQuery=graphql(
+    READ_AUTH_INFO,{
+        props:({data:{ userAuthInfo }})=>({
+            userAuthInfo
+        })
+    }
+)(Profile)
+
+
+export default ProfileWithQuery ;

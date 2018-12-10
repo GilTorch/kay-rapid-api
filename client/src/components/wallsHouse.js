@@ -1,77 +1,37 @@
 import React from 'react';
+import HouseCard from './HouseCard';
 
-class HouseProfile extends React.Component {
-    constructor(props){
-        super(props)
-        this.state = {
-            red: true
-        }
-    
-    }
-    changeColor() {
-        this.setState({ red: !this.state.red })
-    }
-
-    render() {
-        let btn_class = this.state.red ? "whiteButton" :"redButton";
-         return (
-            <div className="card"> 
-        <div className="cardProfileHouses">
-                <div className="PhotoProfileHousesAndPrice">
-                    
-                <ul>
-                    <li>
-                <img src={this.props.image} alt="" />
-                    </li>
-                    <li><h2>Prix en Us</h2></li>
-                    <li><p>{this.props.PrixHouseUs}</p></li>
-                </ul>
-            </div>
-
-            <div>
-             
-                <ul className="infosHouseCard">
-                             <div className={btn_class} onClick={this.changeColor.bind(this)} ><span><i class="fas fa-heart"></i></span></div>
-                    <li><h2>Propriyetè a:  </h2><span>{this.props.nom.NomPropriete}</span></li>
-                    <li><h2>Adrès</h2> <span>{this.props.address}</span> </li>
-                    <li><h2>Deskripsyon</h2><span>{this.props.description}</span> </li>
-                    <li><h2>klasman <span className="fa fa-star checked"></span>
-                        <span className="fa fa-star checked"></span>
-                        <span className="fa fa-star checked"></span>
-                        <span className="fa fa-star"></span>
-                      </h2> </li>
-
-                    <li>
-                            <span className="icons"><i class="fas fa-map-marker-alt"></i></span>Gade zòn nan sou yon map</li>
-                    <li>
-                            <span className="icons"><i class="fas fa-eye"></i></span>Vizitel ak telefòn ou!
-                        </li>
-                        <li><span className="icons"><i class="fas fa-camera"></i></span>Gade kèk foto/video kay la</li>
-                </ul>
-                
-               
-            </div>
-            
-         
-        </div>
-        <div className="center-Button">
-                <button className="button" type="submit">M'enterese</button>
-        </div>
-           
-        </div>
-    )
-}
-}
 class CardHouses extends React.Component {
     render() {
         return (
             <div>
-                <HouseProfile PrixHouseUs={houseinfo.PrixHouseUs} image={houseinfo.image}
-                    nom={houseinfo.ProfilePropriete} address={houseinfo.Address} description={houseinfo.Description} />
-                <HouseProfile PrixHouseUs={houseinfo.PrixHouseUs} image={houseinfo.image}
-                    nom={houseinfo.ProfilePropriete} address={houseinfo.Address} description={houseinfo.Description} />
-                <HouseProfile PrixHouseUs={houseinfo.PrixHouseUs} image={houseinfo.image}
-                    nom={houseinfo.ProfilePropriete} address={houseinfo.Address} description={houseinfo.Description} />
+                <HouseCard
+                    liked={true} 
+                    previewImage="https://bit.ly/2zoDdGA" ownerName="Gilbert" 
+                    numberOfBedrooms={3} numberOfBathrooms={2} 
+                    numberOfDiningrooms={2} numberOfLivingrooms={1}
+                    rating={4} 
+                    price="2000" currency="US" leaseType="an" 
+                    address="Fermathe 52, rue Puzot #2" phone="48550669" 
+                />
+                 <HouseCard
+                    liked={true} 
+                    previewImage="https://bit.ly/2zoDdGA" ownerName="Stanley" 
+                    numberOfBedrooms={2} numberOfBathrooms={3} 
+                    numberOfDiningrooms={1} numberOfLivingrooms={1}
+                    rating={2} 
+                    price="10000" currency="US" leaseType="an" 
+                    address="Delmas 33,rue Dr. Kernizan #10" phone="46863441" 
+                />
+                 <HouseCard
+                    liked={true} 
+                    previewImage="https://bit.ly/2zoDdGA" ownerName="Peterson" 
+                    numberOfBedrooms={1} numberOfBathrooms={1} 
+                    numberOfDiningrooms={1} numberOfLivingrooms={1}
+                    rating={4} 
+                    price="2000" currency="US" leaseType="an" 
+                    address="Fermathe 52, rue Puzot #2" phone="48550669" 
+                />
             </div>
         )
 

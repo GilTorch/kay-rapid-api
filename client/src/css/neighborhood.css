@@ -4,10 +4,8 @@
 	width:100%;
     display: flex;
 	flex-wrap:wrap;
-	margin-bottom:90px;
-    /*justify-content: space-around;*/
-   /* margin-bottom:90px;*/
-
+	margin-bottom:60px;
+    justify-content: space-around;
 }
 
 .neighborhood{

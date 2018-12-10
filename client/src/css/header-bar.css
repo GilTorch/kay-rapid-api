@@ -1,6 +1,6 @@
 .header-bar{
   width:100vw;
-  position:absolute;
+  position:fixed;
   top:0;
   left:0;
   background-color:var(--header-color);
@@ -8,7 +8,17 @@
   margin:0;
   height:69px;
   display: flex;
-  justify-content: center;
-  align-items:center;
+  justify-content:center;
+  align-items:center; 
+  z-index:100;
 }
 
+
+.back-arrow{
+  font-size:30px;
+  color:white;
+  align-self: flex-start;
+  /* position:relative;
+  top:0;
+  left:0; */
+}
