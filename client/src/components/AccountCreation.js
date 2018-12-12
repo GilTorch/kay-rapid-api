@@ -4,6 +4,8 @@ import { Link } from 'react-router-dom';
 import {Mutation} from 'react-apollo';
 import { ACCOUNT_CREATION } from '../queries/queries';
 
+import Upload from '../components/Upload';
+
 const warningStyle={
     backgroundColor:"green",
     color:"white",
@@ -56,6 +58,7 @@ const AccountCreation = ()=>{
                         <div className="account-creation-screen__form-group"><label className="account-creation-screen__label">Nimewo telefòn</label><input placeholder="Tanpri mete nimewo telefòn ou " type="number" className="account-creation-screen__input" ref={node => {phoneInput = node;}}/></div>
                         <div className="account-creation-screen__form-group"><label className="account-creation-screen__label">Imèl</label><input placeholder="Tanpri mete imèl ou " type="email" className="account-creation-screen__input" ref={node => {emailInput = node;}}/></div>
                         <div className="account-creation-screen__form-group"><label className="account-creation-screen__label">Paswòd</label><input placeholder="Chwazi yon paswòd  " type="password" className="account-creation-screen__input" ref={node => {passwordInput = node;}}/></div>
+                        <div><label className="account-creation-screen__label">Foto Pwofil</label><Upload numberOfImagesAllowed={1} /></div>
                         <div className="account-creation-screen__form-group"><label className="account-creation-screen__label">Konfime Paswòd</label><input placeholder="Konfime paswòd ou fenk mete a " type="password" className="account-creation-screen__input" /></div>
                         <div className="account-creation-screen__form-group"><button className="auth-button success-button" type="submit">KREYE KONT LAN</button></div>
                     </form>
