@@ -13,14 +13,38 @@ import { withRouter } from 'react-router-dom';
 
 import "../css/profile.css";
 
-const Profile =({userAuthInfo})=>{
-    return(
-        <div>
-            <HeaderBar title="Pwofil Ou"/>
-            { userAuthInfo.email ? <UserInfo {...userAuthInfo} />:<Authentication/>}
-            <Navigation currentPage="profile"/>
-        </div>
-    )
+import notify from '../utils/notify';
+import { ToastContainer } from 'react-toastify';
+
+
+
+class Profile extends React.Component{
+    
+    constructor(props){
+        super(props)
+    }
+
+    render(){
+            const {userAuthInfo}=this.props;
+            let componentToRender;
+
+            if(userAuthInfo.email){
+                notify('OU KONEKTE',"success")
+                componentToRender=<UserInfo {...userAuthInfo} />
+            }else{
+                notify('OU DEKONEKTE',"error")
+                componentToRender=<Authentication/>
+            }
+
+            return(
+                <div>
+                    <HeaderBar title="Pwofil Ou"/>
+                    {componentToRender}
+                    <Navigation currentPage="profile"/>
+                    <ToastContainer autoClose={1500}/>
+                </div>
+            )
+    }
 }  
 
 const ProfileWithQuery=graphql(
