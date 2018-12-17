@@ -1,76 +1,118 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import {Mutation} from 'react-apollo';
+import { graphql } from 'react-apollo';
 import { ACCOUNT_CREATION } from '../queries/queries';
 
 import Upload from '../components/Upload';
 
-const warningStyle={
-    backgroundColor:"green",
-    color:"white",
-    display:"flex",
-    justifyContent:"center",
-    alignItems:"center"
-}
+class AccountCreation extends React.Component{
 
-const AccountCreation = ()=>{
+        constructor(props){
+            super(props)
+            this.handleChange=this.handleChange.bind(this);
+            this.handleProfilePicture=this.handleProfilePicture.bind(this);
+            this.submitForm=this.submitForm.bind(this);
+        }
 
-        let emailInput;
-        let firstNameInput;
-        let lastNameInput
-        let phoneInput;
-        let passwordInput;
+        componentDidMount(){
+            console.log("console.log is working");
+        }
+        
+        async submitForm(e){
+            e.preventDefault();
+            alert("called");
 
-        return(
-         <Mutation mutation={ ACCOUNT_CREATION }>
-            {
-                (signup, {data}) =>(
+          const  file=this.state.profilePicture;
+          const data=new FormData();
+           data.append('file',file);
+           data.append('upload_preset','lakayou');
 
+           const res=await fetch("https://api.cloudinary.com/v1_1/dejyp5iex/image/upload",{
+               method:'POST',
+               body:data
+           })
+
+           const returnedResponse=await res.json();
+        //    console.log(JSON.stringify(returnedResponse));
+            this.setState({
+                profilePicture:returnedResponse.secure_url
+            })
+            const { email,password,firstName,lastName,phone,profilePicture }=this.state;
+            const { createAccount }=this.props;
+
+            createAccount({ 
+                variables: { email,password,firstName, lastName, phone1:phone,profilePicture},
+                update:(store,{data:{signup}})=>{
+                    console.log(signup.user.id);
+                }
+    
+        })
+    }
+
+        handleChange(event) {
+            const target = event.target;
+            const value = target.type === 'checkbox' ? target.checked : target.value;
+            const name = target.name;
+        
+            this.setState({
+              [name]: value
+            });
+        }
+    
+       handleProfilePicture(file){
+           // alert("Here is the file!"+file);
+
+           this.setState({
+               profilePicture:file
+           })
+           
+        }
+
+        render(){
+
+            // const { handleChange }=this;
+
+            return(
                 <div className="stack-screen account-creation-screen">
-                    {
-                        data!==undefined?
-                        <div style={{textAlign:"center"}}>KONT OU AN KREYE</div>
-                        :""
-                    }
-                    {/* // <div className="add-house-card__warning-message" style={warningStyle}>
-                    //     <span>&times;</span>
-                    //     <p>KONT OU KREYE KOUNYA</p>
-                    // </div> */}
                     <Link to="/authentication/sign-in-with-social-media"> 
                         <button className="close-icon">&times;</button>
                     </Link>
-                    <form  
-                       className="account-creation-screen__form"
-
-                       onSubmit={e => {
-                          e.preventDefault();
-                          signup({ variables: { email: emailInput.value, password: passwordInput.value,firstName: firstNameInput.value, lastName: lastNameInput.value, phone1: phoneInput.value} });
-                          emailInput.value = "";
-                          firstNameInput.value = "";
-                          lastNameInput.value = "";
-                          phoneInput.value = "";
-                          passwordInput.value = "";
-                        }}
-                      >
-                        <div className="account-creation-screen__form-group"><label className="account-creation-screen__label">Non</label><input placeholder="Tanpri mete non ou " type="text" className="account-creation-screen__input" ref={node => {firstNameInput = node;}}/></div>
-                        <div className="account-creation-screen__form-group"><label className="account-creation-screen__label">Prenon</label><input placeholder="Tanpri mete prenon ou " type="text" className="account-creation-screen__input" ref={node => {lastNameInput = node;}}/></div>
-                        <div className="account-creation-screen__form-group"><label className="account-creation-screen__label">Nimewo telefòn</label><input placeholder="Tanpri mete nimewo telefòn ou " type="number" className="account-creation-screen__input" ref={node => {phoneInput = node;}}/></div>
-                        <div className="account-creation-screen__form-group"><label className="account-creation-screen__label">Imèl</label><input placeholder="Tanpri mete imèl ou " type="email" className="account-creation-screen__input" ref={node => {emailInput = node;}}/></div>
-                        <div className="account-creation-screen__form-group"><label className="account-creation-screen__label">Paswòd</label><input placeholder="Chwazi yon paswòd  " type="password" className="account-creation-screen__input" ref={node => {passwordInput = node;}}/></div>
-                        <div><label className="account-creation-screen__label">Foto Pwofil</label><Upload numberOfImagesAllowed={1} /></div>
-                        <div className="account-creation-screen__form-group"><label className="account-creation-screen__label">Konfime Paswòd</label><input placeholder="Konfime paswòd ou fenk mete a " type="password" className="account-creation-screen__input" /></div>
-                        <div className="account-creation-screen__form-group"><button className="auth-button success-button" type="submit">KREYE KONT LAN</button></div>
+                    <form onSubmit={this.submitForm} className="account-creation-screen__form">
+                        <div className="account-creation-screen__form-group">
+                            <label className="account-creation-screen__label">Non</label>
+                            <input name="lastName" placeholder="Tanpri mete non ou " onChange={this.handleChange} type="text" className="account-creation-screen__input"  required/></div>
+                        <div className="account-creation-screen__form-group">
+                            <label className="account-creation-screen__label">Prenon</label>
+                            <input name="firstName" placeholder="Tanpri mete prenon ou " onChange={this.handleChange} type="text" className="account-creation-screen__input" required/></div>
+                        <div className="account-creation-screen__form-group">
+                            <label className="account-creation-screen__label">Nimewo telefòn</label>
+                            <input name="phone" placeholder="Tanpri mete nimewo telefòn ou " type="number" className="account-creation-screen__input" required/></div>
+                        <div className="account-creation-screen__form-group">
+                            <label className="account-creation-screen__label">Imèl</label>
+                            <input name="email" placeholder="Tanpri mete imèl ou " onChange={this.handleChange} type="email" className="account-creation-screen__input" required/></div>
+                        <div className="account-creation-screen__form-group">
+                            <label className="account-creation-screen__label">Paswòd</label>
+                            <input name="password" placeholder="Chwazi yon paswòd  " onChange={this.handleChange} type="password" className="account-creation-screen__input" required/></div>
+                        <div className="account-creation-screen__form-group">
+                            <label className="account-creation-screen__label">Foto Pwofil</label>
+                            <Upload numberOfImagesAllowed={1} handleImage={(file)=>{this.handleProfilePicture(file)}} /></div>
+                        <div className="account-creation-screen__form-group">
+                            <label className="account-creation-screen__label">Konfime Paswòd</label>
+                            <input name="passwordConfirmation" placeholder="Konfime paswòd ou fenk mete a " onChange={this.handleChange} type="password" className="account-creation-screen__input" required/></div>
+                        <div className="account-creation-screen__form-group">
+                            <button className="auth-button success-button" type="submit">KREYE KONT LAN</button></div>
                     </form>
                 </div>
-
-                  )
-            }
-             
-         </Mutation>
-            
-        )
+              )
+        }
 }
 
 
-export default AccountCreation;
+const withMutation=graphql( 
+    ACCOUNT_CREATION,{"name":"createAccount"}
+)
+
+export default withMutation(AccountCreation);
+
+
