@@ -1,0 +1,16 @@
+.profile-info{
+    display:flex;
+    flex:column;
+    justify-content: center;
+    margin-top:90px;
+} 
+
+.profile-name{
+    text-align:center;
+} 
+
+.profile-info__logout-button{
+    background-color:red;
+    color:white;
+    padding:2%;
+  }

@@ -1,0 +1,240 @@
+
+@import "normalize.css";
+@import "base.css";
+@import "home.css";
+@import "neighborhood.css";
+@import "navigation.css";
+@import "header-bar.css";
+@import "HouseUser.css";
+@import 'OfferUser.css';
+@import 'Negotiable.css';
+@import 'infoHouse.css';
+@import 'SearchPage.css';
+
+/*NAVIGATION*/
+
+  /**HOME**/
+
+/** SIGN IN CARD **/
+
+.app{
+margin-bottom:90px;
+}
+
+
+.signin-card__wrapper{
+  width:95%;
+  height:100%;
+  margin:auto;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-around;
+}
+
+.signin-card{
+  margin-top:69px;
+  height: 200px;
+  background-color:white;
+  display:flex;
+  flex-direction:column;
+  
+}
+
+.signin-card__button{
+  background-color:#3add7c;
+  border:none;
+  color:white;
+  font-weight:bold;
+  text-align:center;
+  height:50px;
+}
+
+
+.house-graphic-container{
+  display:flex;
+  justify-content: center;
+  align-items:center;
+}
+
+
+/******/
+
+
+
+.authentication {
+  display: block;
+  height:100vh;
+  margin-top:0;
+  font-size: 1em; }
+
+.authentication__signin, .socialmedia-connect-screen,.account-creation-screen {
+  background-color:white;
+  display: flex;
+  flex-direction: column; }
+
+  
+/**SIGNIN WITHOUT SOCIAL MEDIA SCREEN**/
+  .signin-without-socialmedia-screen{
+    height: 100vh;
+    background-color:white;
+  }
+
+  .signin-without-socialmedia-screen{
+    height:100vh;
+  }
+
+  /* .signin-without-socialmedia-screen__form{
+    height:100%;
+    display:flex;
+    flex-direction:column;
+    margin-top:10%;
+  } */
+
+
+.signin-without-socialmedia-screen__input{
+  width:100%;
+  margin:auto;
+  border:1px solid black;
+}
+
+.signin-without-socialmedia-screen__form-group{
+  width:95%;
+margin:1% auto 20%;
+}
+
+.account-creation-screen__form{
+  width:88%;
+  margin:auto;
+}
+
+
+.account-creation-screen__label,.signin-without-socialmedia-screen__label{
+  display:inline-block;
+  padding-bottom:2%;
+}
+
+.signin-without-socialmedia-screen__input,.account-creation-screen__input{
+  width:100%;
+  margin:auto;
+  border:1px solid #bbb;
+  padding:2%;
+  box-sizing:border-box;
+  }
+
+.signin-without-socialmedia-screen__input:focus,.account-creation-screen__input:focus,.signin-without-socialmedia-screen__input:focus{
+  border:2px solid green;
+  box-shadow:inset 0 0 10px #aaa;
+  }
+    
+
+.socialmedia-connect-screen__link{
+ color:black;
+ font-size:15px;
+ text-decoration:none; 
+ display:block;
+ width:50%;
+ text-align:center;
+ cursor:pointer;
+ height:69px;
+}
+
+.socialmedia-connect-screen__link:nth-of-type(2){
+  border-left:1px solid #aaa;
+}
+
+
+/****/
+
+.account-creation-screen{
+  justify-content: space-around;
+}
+
+
+
+.account-creation-screen__form-group{
+width:95%;
+margin:1% auto 10%;
+}
+
+
+.account-creation-screen__button,.signin-without-socialmedia-screen__button{
+  background-color:#3add7c;
+  border:none;
+  color:white;
+  font-weight:bold;
+  text-align:center;
+  height:50px;
+}
+
+.socialmedia-connect-screen__create-account-button,.socialmedia-connect-screen__sign-in-button{
+  margin:auto;
+  width:100%;
+}
+/**/
+
+.socialmedia-connect-screen__buttons-container{
+height:20%;
+display:flex;
+flex-direction:column;
+justify-content: space-around;
+}
+
+
+.authentication__signin{
+  padding:1%;
+}
+
+
+.socialmedia-connect-screen{
+  justify-content: space-between;
+}
+
+.authentication__button {
+  width: 100%; }
+
+.authentication__signin {
+  justify-content: center; }
+
+.authentication__signin-methods {
+  justify-content: space-between; }
+
+.authentication__form-group {
+ 
+  width: 95%;
+  margin-bottom:10px; 
+  text-align:center;
+}
+
+.authentication__button {
+  padding: 2.5%; }
+
+.socialmedia-connect-screen__facebook-connect-button {
+  width:100%;
+  margin:auto;
+  border: none;
+  height:70px;
+  color: white;
+  font-size:1.5em;
+  margin-bottom:10px;
+  
+}
+
+
+  .socialmedia-connect-screen__buttons-container-2{
+    width:100%;
+    height:100%;
+    display:flex;
+
+    
+    font-size:10px;
+    justify-content:center;
+  }
+
+  .success-button{
+    background-color: var(--button-success-color);
+    border: none;
+    color: white;
+    font-weight: bold;
+    text-align: center;
+    height: 50px;
+  }
