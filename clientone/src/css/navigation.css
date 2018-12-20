@@ -17,7 +17,7 @@
 .navigation-button{
   background:transparent;
   border:none;
-  color:#606060;
+  color:#fff;
   padding:0;
   cursor:pointer;
 }
@@ -27,7 +27,7 @@
   border:none;
   padding:0;
   cursor:pointer;
-  color:#9E7B41;
+  color:#f90;;
   font-weight: bold;
 }
 

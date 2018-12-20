@@ -14,12 +14,14 @@ const Home=({ title })=>{
         <div className="home">
             <header className="home__header">
             <div className="home__header-wrapper">
-                <img  src={AppLogo} className="home__header-logo" />
+                <img  src={AppLogo} className="home__header-logo" alt="logo" />
                 <h1 className="home__title">{ title }</h1>
                 <form className="home__form">
                     <div className="home__form-wrapper">
-                        <input className="home__input" type="search" placeholder="Tape non vil, komin oswa katye ou vle jwenn kay la..."/>
-                        <button className="home__button"><i className="fas fa-search search-icon"></i></button>
+                            <input className="home__input" type="search" aria-label="Search through site content" placeholder="Tape non vil, komin oswa katye ou vle jwenn kay la..."/>
+                            
+                            <button className="home__button" role="button" aria-hidden="true"><i class="fas fa-search"></i></button>
+                            
                     </div>
                 </form>
             </div>
@@ -34,7 +36,7 @@ const Home=({ title })=>{
             </div>
             <Link to="/add-house">
                 <button className="home__button-post-house">
-                    <img src={AddHouse} className="home__add-house-illustration"/>
+                    <img src={AddHouse} className="home__add-house-illustration" alt="addHouseserve"/>
                 </button>
             </Link>
             <Navigation currentPage="home"/>
