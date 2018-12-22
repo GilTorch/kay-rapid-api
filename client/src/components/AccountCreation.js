@@ -43,7 +43,8 @@ class AccountCreation extends React.Component{
             const { createAccount }=this.props;
 
            createAccount({ 
-                variables: { email:email,password:password,firstName:firstName,lastName:lastName,phone1:phone1,profilePicture:profilePicture}
+                variables: { email:email,password:password,firstName:firstName,lastName:lastName,phone1:phone1,profilePicture:profilePicture},
+                update:(store,{data:{signup}})=>{alert("Hello!")}
         })
     }
 
