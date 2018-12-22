@@ -31,7 +31,7 @@ const SignInWithSocialMedia=({ sendFBTokenToServer,writeUserAuthInfoToCache, his
                 //     console.log("AUTH TO SAVE"+JSON.stringify(userObject));
                    
                 // }).then(()=>{console.log("Successfuly saved to the cache")})
-
+                
                 
         
                 writeUserAuthInfoToCache({variables:{ userAuthInfo: userObject }})

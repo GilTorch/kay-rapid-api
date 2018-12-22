@@ -30,6 +30,10 @@ class Upload extends React.Component {
     this.setState({
         images
     })
+
+    if(this.props.handleImage){
+        this.props.handleImage(event.target.files[0]);
+    }
   }
 
  handleRemove(who){

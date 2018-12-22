@@ -28,6 +28,7 @@ const SignInWithoutSocialMedia = ({ signIn,writeUserAuthInfoToCache,history })=>
                 //alert("Sign in is triggerd!")
                 writeUserAuthInfoToCache({variables:{ userAuthInfo: userObject }})
 
+                
             }
         }).then(()=>{history.push("/profile")})
         
@@ -54,6 +55,7 @@ export default compose(
     graphql(AUTH_WITHOUT_SOCIAL_MEDIA,{name:"signIn"}),
     graphql(WRITE_AUTH_INFO,{name:"writeUserAuthInfoToCache"})
 )(SignInWithoutSocialMedia);
+
 
 
 
