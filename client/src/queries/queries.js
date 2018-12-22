@@ -30,6 +30,9 @@ mutation($email:String!,$password:String!) {
       firstName
       lastName
       email
+      profilePicture{
+        url
+      }
     }
   }
 }

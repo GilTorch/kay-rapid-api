@@ -16,14 +16,15 @@ const SignInWithoutSocialMedia = ({ signIn,writeUserAuthInfoToCache,history })=>
         signIn({
             variables:{email:email,password:password},
             update:(store,{data:{login}})=>{
-                let profilePicture = null; 
                 let userObject = {
                     token:login.token,
                     firstName:login.user.firstName,
                     lastName:login.user.lastName,
                     email:login.user.email,
-                    profilePicture:profilePicture
+                    profilePicture:login.user.profilePicture.url; 
                 };
+                
+                // alert("Hello World");
                 // console.log("AUTH TO SAVE"+JSON.stringify(userObject));
                 //alert("Sign in is triggerd!")
                 writeUserAuthInfoToCache({variables:{ userAuthInfo: userObject }})
