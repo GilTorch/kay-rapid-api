@@ -13,6 +13,7 @@ class AccountCreation extends React.Component{
             this.handleChange=this.handleChange.bind(this);
             this.handleProfilePicture=this.handleProfilePicture.bind(this);
             this.submitForm=this.submitForm.bind(this);
+            console.log(props);
         }
 
         componentDidMount(){
@@ -21,7 +22,7 @@ class AccountCreation extends React.Component{
         
         async submitForm(e){
             e.preventDefault();
-            alert("called");
+            //alert("called");
 
           const  file=this.state.profilePicture;
           const data=new FormData();
@@ -34,19 +35,15 @@ class AccountCreation extends React.Component{
            })
 
            const returnedResponse=await res.json();
-        //    console.log(JSON.stringify(returnedResponse));
+           console.log(JSON.stringify(returnedResponse));
             this.setState({
                 profilePicture:returnedResponse.secure_url
             })
-            const { email,password,firstName,lastName,phone,profilePicture }=this.state;
+            const { email,password,firstName,lastName,phone1,profilePicture }=this.state;
             const { createAccount }=this.props;
 
-            createAccount({ 
-                variables: { email,password,firstName, lastName, phone1:phone,profilePicture},
-                update:(store,{data:{signup}})=>{
-                    console.log(signup.user.id);
-                }
-    
+           createAccount({ 
+                variables: { email:email,password:password,firstName:firstName,lastName:lastName,phone1:phone1,profilePicture:profilePicture}
         })
     }
 
@@ -87,7 +84,7 @@ class AccountCreation extends React.Component{
                             <input name="firstName" placeholder="Tanpri mete prenon ou " onChange={this.handleChange} type="text" className="account-creation-screen__input" required/></div>
                         <div className="account-creation-screen__form-group">
                             <label className="account-creation-screen__label">Nimewo telefòn</label>
-                            <input name="phone" placeholder="Tanpri mete nimewo telefòn ou " type="number" className="account-creation-screen__input" required/></div>
+                            <input name="phone1" placeholder="Tanpri mete nimewo telefòn ou " onChange={this.handleChange} type="number" className="account-creation-screen__input" required/></div>
                         <div className="account-creation-screen__form-group">
                             <label className="account-creation-screen__label">Imèl</label>
                             <input name="email" placeholder="Tanpri mete imèl ou " onChange={this.handleChange} type="email" className="account-creation-screen__input" required/></div>
@@ -110,7 +107,7 @@ class AccountCreation extends React.Component{
 
 
 const withMutation=graphql( 
-    ACCOUNT_CREATION,{"name":"createAccount"}
+    ACCOUNT_CREATION,{name:"createAccount"}
 )
 
 export default withMutation(AccountCreation);
