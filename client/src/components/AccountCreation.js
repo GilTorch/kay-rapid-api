@@ -130,15 +130,15 @@ class AccountCreation extends React.Component{
                             }else{
                                 // alert("Mwen rantre nan else la")
                                 if(profilePictureIsLoaded==false){
-                                notify("OU DWE CHWAZI ON FOTO PWOFIL","error");
-                                }else{
                                     notify("OU DWE CHWAZI ON FOTO PWOFIL","error");
+                                }else{
+                                    notify("OU DWE RANPLI TOUT CHAN YO","error");
                                 }
                             }
                         }}                    
                         className="account-creation-screen__form">
                             {(loading || this.state.isFetchingFromCloudinary)?<Loading/>:""}
-                            {(error)?<Error/>:""} 
+                            {(error)?notify('GEN ON EREU ANPECHE NOU KREYE KONT OU A. REESEYE YON LOT FWA.',"error"):""} 
                             <div className="account-creation-screen__form-group">
                                 <label className="account-creation-screen__label">Non</label>
                                 <input name="lastName" placeholder="Tanpri mete non ou " onChange={this.handleChange} type="text" className="account-creation-screen__input"  required/></div>
@@ -173,56 +173,3 @@ class AccountCreation extends React.Component{
 
 export default AccountCreation;
 
-
-// const AccountCreation = ()=>{
-
-//     let emailInput;
-//     let firstNameInput;
-//     let lastNameInput
-//     let phoneInput;
-//     let passwordInput;
-
-//     return(
-//      <Mutation mutation={ ACCOUNT_CREATION }>
-//         {
-//             (signup, {loading,error}) =>(
-
-//             <div className="stack-screen account-creation-screen">
-//                 <Link to="/authentication/sign-in-with-social-media"> 
-//                     <button className="close-icon">&times;</button>
-//                 </Link>
-//                 <form  
-//                    className="account-creation-screen__form"
-
-//                    onSubmit={e => {
-//                       e.preventDefault();
-//                       signup({ variables: { email: emailInput.value, password: passwordInput.value,firstName: firstNameInput.value, lastName: lastNameInput.value, phone1: phoneInput.value,profilePicture:"asdfsdf.com"} });
-//                       emailInput.value = "";
-//                       firstNameInput.value = "";
-//                       lastNameInput.value = "";
-//                       phoneInput.value = "";
-//                       passwordInput.value = "";
-//                     }}
-//                   >
-//                     <div className="account-creation-screen__form-group"><label className="account-creation-screen__label">Non</label><input placeholder="Tanpri mete non ou " type="text" className="account-creation-screen__input" ref={node => {firstNameInput = node;}} required/></div>
-//                     <div className="account-creation-screen__form-group"><label className="account-creation-screen__label">Prenon</label><input placeholder="Tanpri mete prenon ou " type="text" className="account-creation-screen__input" ref={node => {lastNameInput = node;}} required/></div>
-//                     <div className="account-creation-screen__form-group"><label className="account-creation-screen__label">Nimewo telefòn</label><input placeholder="Tanpri mete nimewo telefòn ou " type="number" className="account-creation-screen__input" ref={node => {phoneInput = node;}} required/></div>
-//                     <div className="account-creation-screen__form-group"><label className="account-creation-screen__label">Imèl</label><input placeholder="Tanpri mete imèl ou " type="email" className="account-creation-screen__input" ref={node => {emailInput = node;}}/></div>
-//                     <div className="account-creation-screen__form-group"><label className="account-creation-screen__label">Paswòd</label><input placeholder="Chwazi yon paswòd  " type="password" className="account-creation-screen__input" ref={node => {passwordInput = node;}} required/></div>
-//                     <div className="account-creation-screen__form-group"><label className="account-creation-screen__label">Konfime Paswòd</label><input placeholder="Konfime paswòd ou fenk mete a " type="password" className="account-creation-screen__input"  required/></div>
-//                     <div className="account-creation-screen__form-group"><button className="authentication__button signin-without-socialmedia-screen__button" type="submit">KREYE KONT LAN</button></div>
-//                     {(loading)?<p><b>Fon ti tann...</b></p>:""}
-//                     {(error)?<p><b>Gen on ti ere ki pase...</b></p>:""}
-//                 </form>
-//             </div>
-
-//               )
-//         }
-         
-//      </Mutation>
-        
-//     )
-// }
-
-
-// export default AccountCreation;
