@@ -2,33 +2,19 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import FacebookLogin from 'react-facebook-login';
 import { FB_AUTH, WRITE_AUTH_INFO } from '../queries/queries';
-import axios from 'axios';
-import { graphql,compose } from 'react-apollo';
+import { graphql,compose,Mutation } from 'react-apollo';
 import HouseIllustration from '../svg/houses-sunshine-green-pasture.svg';
+import Loading from './Loading';
+import notify from '../utils/notify';
+import { ToastContainer } from 'react-toastify';
 
 
+const SignInWithSocialMedia=({writeUserAuthInfoToCache, history})=>{
 
-const SignInWithSocialMedia=({ sendFBTokenToServer,writeUserAuthInfoToCache, history})=>{
-  
-
-    const responseFacebook=(facebookResponse)=>{
-
-        sendFBTokenToServer({ 
-            variables: { facebookToken: facebookResponse.accessToken },
-            update:(store,{data:{authenticateFBUser}})=>{
-                let token = authenticateFBUser.token;
-                let firstName = authenticateFBUser.user.firstName;
-                let lastName=authenticateFBUser.user.lastName;
-                let email=authenticateFBUser.user.email;
-                let profilePicture=facebookResponse.picture.data.url;
-                let userObject = {token,firstName,lastName,email,profilePicture};
-        
-                writeUserAuthInfoToCache({variables:{ userAuthInfo: userObject }})
-            }
-          }).then(()=>history.push('/profile'))
-    }
 
     return(
+        <Mutation mutation={FB_AUTH} >
+            {(authenticateFBUser,{loading,error})=>(
             <div className="stack-screen socialmedia-connect-screen">
             <div>
 
@@ -38,15 +24,30 @@ const SignInWithSocialMedia=({ sendFBTokenToServer,writeUserAuthInfoToCache, his
             </div>
             <div>
                 <div className="house-graphic-container">
-                {/* <img src="http://res.cloudinary.com/dejyp5iex/image/upload/v1534953341/graphique-maison_oebfhb.png" /> */}
                     <img className="house-illustration" src={HouseIllustration}/>
                 </div>
-            </div>
+            </div> 
             <div className="socialmedia-connect-screen__buttons-container">
             <FacebookLogin 
                 appId="266227067534365"
                 autoLoad={false}
-                callback={responseFacebook}
+                callback={(facebookResponse)=>{
+
+                    authenticateFBUser({ 
+                        variables: { facebookToken: facebookResponse.accessToken },
+                        update:(store,{data:{authenticateFBUser}})=>{
+                            let token = authenticateFBUser.token;
+                            let firstName = authenticateFBUser.user.firstName;
+                            let lastName=authenticateFBUser.user.lastName;
+                            let email=authenticateFBUser.user.email;
+                            let profilePicture=facebookResponse.picture.data.url;
+                            let userObject = {token,firstName,lastName,email,profilePicture};
+                    
+                            writeUserAuthInfoToCache({variables:{ userAuthInfo: userObject }})
+                        }
+                      }).then(()=>history.push('/profile'))
+
+            }}
                 fields="name,email,picture"
                 icon="fa fa-facebook"
                 textButton=" KONEKTE AK FACEBOOK"
@@ -65,14 +66,20 @@ const SignInWithSocialMedia=({ sendFBTokenToServer,writeUserAuthInfoToCache, his
             </Link>
             </div>
             </div>
-        </div>
+            <ToastContainer/>
+            {(loading)?<Loading/>:""}
+        {(error)?notify("GEN ON TI ERE KI PASE. TESTE KONEKSYON ENTENET OU EPI REESEYE ON LOT MOMAN","error"):""}
+        </div> 
+        )}
+        </Mutation>
         ) 
 }
 
-const SignInWithSocialMediaWithMutation = compose(
-    graphql( FB_AUTH,{"name":"sendFBTokenToServer"}),
-    graphql( WRITE_AUTH_INFO,{"name":"writeUserAuthInfoToCache"})
-)(SignInWithSocialMedia)
+
+export default compose(
+     graphql(WRITE_AUTH_INFO,{name:"writeUserAuthInfoToCache"})
+)(SignInWithSocialMedia);
 
 
-export default SignInWithSocialMediaWithMutation;
+
+
