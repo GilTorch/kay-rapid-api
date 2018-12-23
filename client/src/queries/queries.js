@@ -22,7 +22,7 @@ mutation signup($email:String!,$password:String!,$firstName:String!,$lastName:St
 
 
 export const AUTH_WITHOUT_SOCIAL_MEDIA=gql`
-mutation($email:String!,$password:String!) {
+mutation login($email:String!,$password:String!) {
   login(email:$email,password:$password) {
     token 
     user{
