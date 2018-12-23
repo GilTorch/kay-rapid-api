@@ -12,7 +12,7 @@ const SignInWithSocialMedia=({ sendFBTokenToServer,writeUserAuthInfoToCache, his
   
 
     const responseFacebook=(facebookResponse)=>{
-        alert((facebookResponse.accessToken))
+
         sendFBTokenToServer({ 
             variables: { facebookToken: facebookResponse.accessToken },
             update:(store,{data:{authenticateFBUser}})=>{
@@ -20,19 +20,8 @@ const SignInWithSocialMedia=({ sendFBTokenToServer,writeUserAuthInfoToCache, his
                 let firstName = authenticateFBUser.user.firstName;
                 let lastName=authenticateFBUser.user.lastName;
                 let email=authenticateFBUser.user.email;
-                let profilePicture=authenticateFBUser.user.profilePicture.url;
+                let profilePicture=facebookResponse.picture.data.url;
                 let userObject = {token,firstName,lastName,email,profilePicture};
-                // alert(JSON.stringify(userObject));
-                // axios.get(profilePicURL)
-                // .then((response)=>{
-                //     const data = response.data 
-                //     profilePicture = data; 
-                //     let userObject = {token,firstName,lastName,email};
-                //     console.log("AUTH TO SAVE"+JSON.stringify(userObject));
-                   
-                // }).then(()=>{console.log("Successfuly saved to the cache")})
-                
-                
         
                 writeUserAuthInfoToCache({variables:{ userAuthInfo: userObject }})
             }
@@ -56,7 +45,7 @@ const SignInWithSocialMedia=({ sendFBTokenToServer,writeUserAuthInfoToCache, his
             <div className="socialmedia-connect-screen__buttons-container">
             <FacebookLogin 
                 appId="266227067534365"
-                autoLoad={true}
+                autoLoad={false}
                 callback={responseFacebook}
                 fields="name,email,picture"
                 icon="fa fa-facebook"
