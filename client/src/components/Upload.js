@@ -32,7 +32,7 @@ class Upload extends React.Component {
     })
 
     if(this.props.handleImage){
-        this.props.handleImage(event.target.files[0]);
+        this.props.handleImage(event);
     }
   }
 
