@@ -1,0 +1,41 @@
+{
+  "short_name": "Lakay ou",
+  "name": "Lakay ou",
+  "icons": [
+    {
+      "src": "lakay-ou-icons/ic_launcher2.png",
+      "type": "image/png",
+      "sizes": "48X48"
+    },
+    {
+      "src": "lakay-ou-icons/ic_launcher1.png",
+      "sizes": "72X72",
+      "type": "image/png"
+    },
+    {
+      "src": "lakay-ou-icons/ic_launcher3.png",
+      "type": "image/png",
+      "sizes": "96X96"
+    },
+    {
+      "src": "lakay-ou-icons/ic_launcher4.png",
+      "type": "image/png",
+      "sizes": "144X144"
+    },
+    {
+      "src": "lakay-ou-icons/ic_launcher5.png",
+      "type": "image/png",
+      "sizes": "192X192"
+    },
+    {
+      "src": "lakay-ou-icons/web_hi_res_512.png",
+      "type": "image/png",
+      "sizes": "512X512"
+    }
+  ],
+  "start_url": "./index.html",
+  "scope": "/",
+  "display": "standalone",
+  "theme_color": "#3367D6",
+  "background_color": "#662d91"
+}
