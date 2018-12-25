@@ -1,5 +1,7 @@
-import React from 'react';
+import React, { Component } from 'react';
+import logo from './logo.svg';
 import './css/App.css';
+
 import { ApolloProvider } from 'react-apollo';
 import  client,{persistor} from './apolloClient';
 import { BrowserRouter as Router,Route } from 'react-router-dom';
@@ -10,6 +12,7 @@ import { faSearch, faHome, faHeart, faUser, faMapMarkerAlt, faVideo,faArrowCircl
 import SignInWithoutSocialMedia from './components/SignInWithoutSocialMedia';
 import SignInWithSocialMedia from './components/SignInWithSocialMedia';
 import AccountCreation from './components/AccountCreation';
+
 import Profile from './page/Profile';
 import Favorites from './page/Favorites';
 import Home  from './page/Home';
@@ -17,7 +20,8 @@ import UserInfo from './components/UserInfo';
 import AddHouse from './components/AddHouse';
 import wallsHouse from './components/wallsHouse';
 
-
+import "./css/normalize.css";
+import "./css/base.css";
 
 require('dotenv').config()
 
@@ -25,9 +29,7 @@ require('dotenv').config()
 library.add(faSearch,faHome, faHeart, faUser,faMapMarkerAlt,faVideo,faArrowCircleLeft,faCamera,faTrash)
 
 
-
-library.add(faSearch, faHome, faHeart, faUser)
-class App extends React.Component {
+class App extends Component {
 
     constructor(props) {
     super(props)
@@ -39,11 +41,6 @@ class App extends React.Component {
   componentDidMount() {
     persistor.restore()
       .then(() => this.setState({ restored: true }))
-  }
-
-
-  updateCacheWithToken(){
-    console.log("called");
   }
 
   render() {
