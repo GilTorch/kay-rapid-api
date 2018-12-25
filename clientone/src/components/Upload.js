@@ -6,7 +6,7 @@ class Upload extends React.Component {
   constructor(props){
     super(props)
     this.state = {
-      lengthLimit:0,
+      numberOfImagesAllowed:0,
       images:[],
     }
     this.handleChange = this.handleChange.bind(this)
@@ -14,9 +14,9 @@ class Upload extends React.Component {
   }
 
   componentDidMount(){
-    const { lengthLimit }=this.props;
+    const { numberOfImagesAllowed }=this.props;
     this.setState({
-        lengthLimit
+        numberOfImagesAllowed
     })
   }
 
@@ -30,6 +30,10 @@ class Upload extends React.Component {
     this.setState({
         images
     })
+
+    if(this.props.handleImage){
+        this.props.handleImage(event);
+    }
   }
 
  handleRemove(who){
@@ -43,7 +47,7 @@ class Upload extends React.Component {
 
 
   render() {
-    const {images,lengthLimit}=this.state; 
+    const {images,numberOfImagesAllowed}=this.state; 
     let  imagesTags=images.map((file,index)=>{
         return <HouseImage url={file} key={index} removePhoto={this.handleRemove}/>
     })
@@ -51,17 +55,17 @@ class Upload extends React.Component {
       <div>
             {imagesTags}
             {
-                (images.length<lengthLimit)?
+                (images.length<numberOfImagesAllowed)?
                 <label style={{display:"inline"}}>
                     <i className="upload-icon fas fa-camera add-house-card__upload-button"></i>
                     <input 
                         style={{display:"none"}}
                         type="file" accept="image/*" 
                         onChange={this.handleChange}
-                        multiple={true}
+                        multiple={numberOfImagesAllowed>1?true:false}
                     />
                 </label>
-                :<p className="add-house-card__photo-upload-warning">Ou pa ka met plis foto ke {lengthLimit}</p>
+                :<p className="add-house-card__photo-upload-warning">Ou pa ka met plis foto ke {numberOfImagesAllowed}</p>
             }
 
       </div>

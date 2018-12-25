@@ -23,7 +23,7 @@ const icons={
 const NavigationButton=({name,iconName,highlighted})=>{
     return(
         <button className={highlighted?iconName+"-icon--hightlighted navigation-button--highlighted":"navigation-button"}>
-            <img src={highlighted?icons["highlighted"][iconName]:icons["normal"][iconName]} alt="button"/>
+            <img src={highlighted?icons["highlighted"][iconName]:icons["normal"][iconName]}/>
             <span className="navigation-button__title">{name}</span>
         </button>
     )

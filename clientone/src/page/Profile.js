@@ -9,17 +9,43 @@ import { graphql } from 'react-apollo';
 import { READ_AUTH_INFO } from '../queries/queries';
 import UserInfo from '../components/UserInfo';
 
+import { withRouter } from 'react-router-dom';
+
 import "../css/profile.css";
 
-const Profile =({userAuthInfo})=>{
-    return(
-        <div>
-            <HeaderBar title="Pwofil Ou"/>
-            {alert("MEN NI MANMAN"+JSON.stringify(userAuthInfo))}
-            { userAuthInfo.email ? <UserInfo {...userAuthInfo} />:<Authentication/>}
-            <Navigation currentPage="profile"/>
-        </div>
-    )
+import notify from '../utils/notify';
+import { ToastContainer } from 'react-toastify';
+
+
+
+class Profile extends React.Component{
+    
+    constructor(props){
+        super(props)
+    }
+
+    render(){
+            const {userAuthInfo}=this.props;
+            let componentToRender;
+            
+            if(userAuthInfo.email){
+                notify('OU KONEKTE',"success")
+                componentToRender=<UserInfo {...userAuthInfo} />
+            }else{
+                notify('OU DEKONEKTE',"error")
+                componentToRender=<Authentication/>
+            }
+
+            return(
+                <div>
+                    <HeaderBar title="Pwofil Ou"/>
+                    {componentToRender}
+                    <pre>{JSON.stringify(userAuthInfo)}</pre>
+                    <Navigation currentPage="profile"/>
+                    <ToastContainer autoClose={1500}/>
+                </div>
+            )
+    }
 }  
 
 const ProfileWithQuery=graphql(
@@ -31,4 +57,4 @@ const ProfileWithQuery=graphql(
 )(Profile)
 
 
-export default ProfileWithQuery ;
+export default withRouter(ProfileWithQuery) ;

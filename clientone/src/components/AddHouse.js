@@ -7,7 +7,6 @@ import {
     Localisation,HouseCity,HouseAddress,Amenities,NextQuestion,PreviousQuestion 
 } from './AddHouseFormGroups';
 
-
 const options=[
     {value:'p-au-p',label:"Pòtoprens"},
     {value:'',label:"Fò Libète"},
@@ -40,6 +39,7 @@ class AddHouse extends Component{
     }
 
     componentDidMount(){
+      
        const formGroups=document.querySelectorAll('.add-house-card__form-group');
        const numberOfQuestions=formGroups.length-1;
 
@@ -133,54 +133,55 @@ class AddHouse extends Component{
 
     render(){
 
-        const { currentQuestion,numberOfQuestions }=this.state;       
-
-        return (
-            <div>
-            <HeaderBar title="Ajoute Kay Ou" hasBack={true}/>
-                <div className="card add-house-screen">
-                    <div className="add-house-card">
-                        <form>
-                            <HouseImages numberLimit={10}/>
-                            <Price 
-                                negotiable={this.state.negotiable} 
-                                toggleNegotiation={this.toggleNegotiation}
-                                handleChange={this.handleChange}
-                            />
-                            <MaxGuests handleChange={this.handleChange}/>
-                            <WhenToPayHouse 
-                                handleChange={this.handleChange}
-                            />
-                            <NumberOfRooms handleChange={this.handleChange}/>
-                            <NumberOfBathrooms handleChange={this.handleChange}/>  
-                            <Localisation 
-                                longitude={this.state.longitude} 
-                                latitude={this.state.latitude}
-                                handleChange={this.handleChange}
-                                getCurrentPosition={this.getCurrentPosition}
-                            />
-                            <HouseCity options={options} handleChange={this.handleChange}/>
-                            <HouseAddress handleChange={this.handleChange}/>
-                            <Amenities
-                                handleChange={this.handleChange}
-                            />
-                            <Submit handleSubmit={this.onSubmit}/>
-                            <div className="add-house-card__question-management">
-                                <p><b>{currentQuestion+1}/{numberOfQuestions+1}</b> Kesyon</p>
-                                <PreviousQuestion currentQuestion={currentQuestion} handlePreviousQuestion={this.displayPrevious}/>
-                                <NextQuestion 
-                                    currentQuestion={currentQuestion} 
-                                    numberOfQuestions={numberOfQuestions}
-                                    handleNextQuestion={this.displayNext}
-                                /> 
-                            </div>
-                        </form>
+        const { currentQuestion,numberOfQuestions }=this.state;      
+    
+            return (
+                <div>
+                <HeaderBar title="Ajoute Kay Ou" hasBack={true}/>
+                    <div className="card add-house-screen">
+                        <div className="add-house-card">
+                            <form>
+                                <HouseImages numberLimit={10}/>
+                                <Price 
+                                    negotiable={this.state.negotiable} 
+                                    toggleNegotiation={this.toggleNegotiation}
+                                    handleChange={this.handleChange}
+                                />
+                                <MaxGuests handleChange={this.handleChange}/>
+                                <WhenToPayHouse 
+                                    handleChange={this.handleChange}
+                                />
+                                <NumberOfRooms handleChange={this.handleChange}/>
+                                <NumberOfBathrooms handleChange={this.handleChange}/>  
+                                <Localisation 
+                                    longitude={this.state.longitude} 
+                                    latitude={this.state.latitude}
+                                    handleChange={this.handleChange}
+                                    getCurrentPosition={this.getCurrentPosition}
+                                />
+                                <HouseCity options={options} handleChange={this.handleChange}/>
+                                <HouseAddress handleChange={this.handleChange}/>
+                                <Amenities
+                                    handleChange={this.handleChange}
+                                />
+                                <Submit handleSubmit={this.onSubmit}/>
+                                <div className="add-house-card__question-management">
+                                    <p><b>{currentQuestion+1}/{numberOfQuestions+1}</b> Kesyon</p>
+                                    <PreviousQuestion currentQuestion={currentQuestion} handlePreviousQuestion={this.displayPrevious}/>
+                                    <NextQuestion 
+                                        currentQuestion={currentQuestion} 
+                                        numberOfQuestions={numberOfQuestions}
+                                        handleNextQuestion={this.displayNext}
+                                    /> 
+                                </div>
+                            </form>
+                        </div>
                     </div>
                 </div>
-            </div>
-            )
+                )
     }
 }
+
 
 export default AddHouse;
 
