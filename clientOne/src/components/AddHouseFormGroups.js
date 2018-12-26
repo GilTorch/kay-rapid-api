@@ -108,14 +108,14 @@ export const NumberOfBathrooms=({handleChange})=>{
     )
 }
 
-export const Localisation=({longitude,latitude,handleChange,getCurrentPosition})=>{
+export const Localisation=({longitude,latitude,zoom,haveUsersLocation,handleChange,getCurrentPosition})=>{
     return(            
         <div className="add-house-card__form-group add-house-card__localisation">
 
             {!(longitude==null && latitude==null) ? 
 
                 <React.Fragment>
-                    <HouseMap lng={longitude} lat={latitude} zoom={1.5}/>
+                    <HouseMap lng={longitude} lat={latitude} zoom={zoom} haveUsersLocation={haveUsersLocation}/>
                     <label className="add-house-card__label">Longitid</label>
                     <input name="longitude" onChange={handleChange}className="add-house-card__input" type="text" name="longititude" value={longitude} readOnly/> 
                     <label className="add-house-card__label">Latitid</label>
