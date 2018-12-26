@@ -1,0 +1,21 @@
+.header-bar{
+  width:100vw;
+  position:fixed;
+  top:0;
+  left:0;
+  background-color:var(--header-color);
+  color:white;
+  margin:0;
+  height:69px;
+  display: flex;
+  justify-content:center;
+  align-items:center; 
+  z-index:100;
+}
+
+.header-bar-previous-page-button::before{
+  content:"< ";
+  font-size:50px;
+  color:white;
+  margin-right:30px;
+}
