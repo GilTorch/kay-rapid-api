@@ -27,6 +27,8 @@ class AddHouse extends Component{
         this.state={
             longitude:null,
             latitude:null,
+            zoom:1,
+            haveUsersLocation:false,
             negotiable:false,
             currentQuestion:0,
             numberOfQuestions:0
@@ -111,17 +113,39 @@ class AddHouse extends Component{
     getCurrentPosition(event){
         event.preventDefault();
         const that=this
-        if (navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition(function(position){
-                console.log("Longitude:"+position.coords.longitude+","+"Latitude:"+position.coords.latitude);
+        // if (navigator.geolocation) {
+        //     navigator.geolocation.getCurrentPosition(function(position){
+        //         console.log("Longitude:"+position.coords.longitude+","+"Latitude:"+position.coords.latitude);
+        //         that.setState({
+        //             longitude:position.coords.longitude,
+        //             latitude:position.coords.latitude
+        //         })
+        //     });
+        // } else {
+        //     alert("Geolocation is not supported by this browser.");
+        // }
+
+        navigator.geolocation.getCurrentPosition(function(position) {
+            that.setState({
+              longitude:position.coords.longitude,
+              latitude:position.coords.latitude,
+              haveUsersLocation:true,
+              zoom:13
+            })
+            // do_something(position.coords.latitude, position.coords.longitude);
+          },()=>{
+            console.log("Location not given")
+            fetch("https://ipapi.co/json")
+              .then(res => res.json())
+              .then((location)=>{
                 that.setState({
-                    longitude:position.coords.longitude,
-                    latitude:position.coords.latitude
+                  longitude:location.longitude,
+                  latitude:location.latitude,
+                  haveUsersLocation:true,
+                  zoom:13
                 })
-            });
-        } else {
-            alert("Geolocation is not supported by this browser.");
-        }
+              })
+          },{enableHighAccuracy: true, maximumAge: 10000});
     }
 
 
@@ -156,6 +180,8 @@ class AddHouse extends Component{
                                 <Localisation 
                                     longitude={this.state.longitude} 
                                     latitude={this.state.latitude}
+                                    zoom={this.state.zoom}
+                                    haveUsersLocation={this.state.haveUsersLocation}
                                     handleChange={this.handleChange}
                                     getCurrentPosition={this.getCurrentPosition}
                                 />
