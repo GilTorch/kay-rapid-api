@@ -6,7 +6,7 @@ import { Mutation } from 'react-apollo';
 import notify from '../utils/notify';
 
 import Loading from './Loading';
-import { ToastContainer } from 'react-toastify';
+import { ToastContainer,toast } from 'react-toastify';
 
 import "../css/request-password.css";
 
@@ -23,6 +23,10 @@ class RequestPassword extends React.Component{
         this.setState({
             email
         })
+    }
+
+    componentWillUnmount(){
+        toast.dismiss();
     }
 
 

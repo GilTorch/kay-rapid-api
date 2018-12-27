@@ -6,7 +6,7 @@ import { AUTH_WITHOUT_SOCIAL_MEDIA,WRITE_AUTH_INFO } from '../queries/queries';
 import Loading from './Loading';
 
 import notify from '../utils/notify';
-import { ToastContainer } from 'react-toastify';
+import { ToastContainer,toast } from 'react-toastify';
 
 import Close from './Close';
 
@@ -28,6 +28,10 @@ class SignInWithoutSocialMedia extends React.Component {
             this.setState({
               [name]: value
             });
+    }
+
+    componentWillUnmount(){
+        toast.dismiss();
     }
     
     render(){

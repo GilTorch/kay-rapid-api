@@ -10,6 +10,7 @@ import Upload from './Upload';
 import Loading from './Loading';
 import Error from './Error';
 import notify from '../utils/notify';
+import { toast } from 'react-toastify';
 
 class AccountCreation extends React.Component{
 
@@ -32,7 +33,10 @@ class AccountCreation extends React.Component{
         componentDidMount(){
             console.log("console.log is working");
         }
-        
+    
+        componentWillUnmount(){
+            toast.dismiss();
+        }
 
         handleChange(event) {
 
