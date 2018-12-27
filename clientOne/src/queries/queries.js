@@ -20,6 +20,13 @@ mutation signup($email:String!,$password:String!,$firstName:String!,$lastName:St
 }
 ` 
 
+export const REQUEST_PASSWORD_TOKEN=gql`
+  mutation requestPWResetToken($email:String!){
+    requestPWResetToken(email:$email){
+      message
+    }
+  }
+`
 
 export const AUTH_WITHOUT_SOCIAL_MEDIA=gql`
 mutation login($email:String!,$password:String!) {

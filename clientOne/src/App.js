@@ -18,6 +18,7 @@ import Home  from './page/Home';
 import UserInfo from './components/UserInfo';
 import AddHouse from './components/AddHouse';
 import wallsHouse from './components/wallsHouse';
+import RequestPassword from './components/RequestPassword';
 
 import "./css/normalize.css";
 import "./css/base.css";
@@ -58,6 +59,7 @@ class App extends Component {
               <Route exact={true} path="/authentication/account-creation" component={AccountCreation}/>
               <Route exact={true} path="/add-house" component={AddHouse}/>
               <Route exact={true} path="/walls-house" component={wallsHouse}/>
+              <Route exact={true} path="/authentication/sign-in-without-social-media/forgot-password" component={RequestPassword}/>
             </React.Fragment>
           </Router>
         </ApolloProvider>

@@ -70,7 +70,7 @@ const client = new ApolloClient({
   link:ApolloLink.from([
     stateLink,
     new HttpLink({
-        uri: "https://lakayou-server-ydxtuxhvvq.now.sh"
+        uri: "https://lakayou-server-jsrmldifev.now.sh/"
     })
   ])
 });

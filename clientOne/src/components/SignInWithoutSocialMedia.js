@@ -8,6 +8,7 @@ import Loading from './Loading';
 import notify from '../utils/notify';
 import { ToastContainer } from 'react-toastify';
 
+import Close from './Close';
 
 class SignInWithoutSocialMedia extends React.Component {
 
@@ -39,9 +40,7 @@ class SignInWithoutSocialMedia extends React.Component {
             {(login,{loading,error})=>(
                
                 <div className="stack-screen signin-without-socialmedia-screen">
-                    <Link to="/authentication/sign-in-with-social-media">
-                        <button className="close-icon">&times;</button>
-                    </Link>
+                    <Close whereToGo="/authentication/sign-in-with-social-media"/>
                     <form onSubmit={(e)=>{
                         e.preventDefault();
                         // console.log("Email:"+this.rfs.email.value+",password:"+this.refs.password.value);                      
@@ -65,6 +64,11 @@ class SignInWithoutSocialMedia extends React.Component {
                         <div className="signin-without-socialmedia-screen__form-group"><label className="signin-without-socialmedia-screen__label">Imèl</label><input name="email" onChange={this.handleChange} type="email" placeholder="Tanpri mete imel ou" className="signin-without-socialmedia-screen__input" required/></div>
                         <div className="signin-without-socialmedia-screen__form-group"><label className="signin-without-socialmedia-screen__label">Paswòd</label><input name="password" onChange={this.handleChange} type="password" placeholder="Tanpri mete passwòd ou" className="signin-without-socialmedia-screen__input" required/></div>
                         <div className="signin-without-socialmedia-screen__form-group"><button className="auth-button success-button" type="submit">KONEKTE</button></div>
+                        <div className="forgot-password-container">
+                            <Link to="/authentication/sign-in-without-social-media/forgot-password">
+                                <p>Ou bliye paswòd ou?</p>
+                            </Link>
+                        </div>
                         <ToastContainer/>
                     </form>
                 </div>   
