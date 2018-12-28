@@ -14,6 +14,8 @@ import { toast } from 'react-toastify';
 
 class AccountCreation extends React.Component{
 
+        _isMounted=false;
+
         constructor(props){
             super(props)
             this.handleChange=this.handleChange.bind(this);
@@ -30,13 +32,14 @@ class AccountCreation extends React.Component{
             }
         }
 
-        componentDidMount(){
-            console.log("console.log is working");
+        componentidMount(){
+        this._isMounted=true;
         }
-    
+
         componentWillUnmount(){
-            toast.dismiss();
+            this._isMounted=false;
         }
+
 
         handleChange(event) {
 
@@ -167,7 +170,7 @@ class AccountCreation extends React.Component{
                             <div className="account-creation-screen__form-group">
                                 <button className="auth-button success-button" type="submit">KREYE KONT LAN</button></div>
                         </form>
-                        <ToastContainer/>
+                        {this._isMounted?<ToastContainer/>:""}
                     </div>)       
                 }
                 </Mutation>

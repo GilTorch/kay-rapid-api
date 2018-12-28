@@ -12,12 +12,22 @@ import Close from './Close';
 
 class SignInWithoutSocialMedia extends React.Component {
 
+    _isMounted=false;
+
     constructor(props){
         super(props);
         this.state={
             email:null,
             password:null
         }
+    }
+
+    componentidMount(){
+        this._isMounted=true;
+    }
+
+    componentWillUnmount(){
+        this._isMounted=false;
     }
 
     handleChange=(event)=>{
@@ -73,7 +83,7 @@ class SignInWithoutSocialMedia extends React.Component {
                                 <p>Ou bliye paswòd ou?</p>
                             </Link>
                         </div>
-                        <ToastContainer/>
+                        {this._isMounted?<ToastContainer/>:""}
                     </form>
                 </div>   
             )}

@@ -5,19 +5,33 @@ import { FB_AUTH, WRITE_AUTH_INFO } from '../queries/queries';
 import { graphql,compose,Mutation, renderToStringWithData } from 'react-apollo';
 import HouseIllustration from '../svg/houses-sunshine-green-pasture.svg';
 import Loading from './Loading';
-import notify from '../utils/notify';
+// import notify from '../utils/notify';
 import { ToastContainer,toast } from 'react-toastify';
 
 
 class SignInWithSocialMedia extends React.Component{
-
-    constructor(props){
-        super(props);
+    
+    _isMounted=null
+    
+    componentDidMount(){
+        this._isMounted=true;
     }
 
     componentWillUnmount(){
-        toast.dismiss();
+        this._isMounted=false;
     }
+
+    notify=(message,type)=>{
+
+        toast[type](message, {
+          position: toast.POSITION.BOTTOM_CENTER
+        });
+
+        console.log("THE TOAST ID BEFORE UNMOUNT:"+this.toastId);
+    
+      }
+
+    dismissAll = () => toast.dismiss()
 
     render(){
        const {writeUserAuthInfoToCache, history}=this.props;
@@ -75,9 +89,9 @@ class SignInWithSocialMedia extends React.Component{
                 </Link>
                 </div>
                 </div>
-                <ToastContainer/>
+                {this._isMounted ?<ToastContainer autoClose={200}/>:""}
                 {(loading)?<Loading/>:""}
-            {(error)?notify("GEN ON TI ERE KI PASE. TESTE KONEKSYON ENTENET OU EPI REESEYE ON LOT MOMAN","error"):""}
+            {(error)?this.notify("GEN ON TI ERE KI PASE. TESTE KONEKSYON ENTENET OU EPI REESEYE ON LOT MOMAN","error"):""}
             </div> 
             )}
             </Mutation>
