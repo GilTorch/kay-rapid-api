@@ -32,7 +32,7 @@ class Profile extends React.Component{
                 notify('OU KONEKTE',"success")
                 componentToRender=<UserInfo {...userAuthInfo} />
             }else{
-                notify('OU DEKONEKTE',"error")
+                notify('OU PA KONEKTE',"error")
                 componentToRender=<Authentication/>
             }
 
@@ -40,7 +40,6 @@ class Profile extends React.Component{
                 <div>
                     <HeaderBar title="Pwofil Ou"/>
                     {componentToRender}
-                    <pre>{JSON.stringify(userAuthInfo)}</pre>
                     <Navigation currentPage="profile"/>
                     <ToastContainer autoClose={1500}/>
                 </div>

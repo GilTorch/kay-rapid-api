@@ -12,23 +12,11 @@ import Close from './Close';
 
 class SignInWithoutSocialMedia extends React.Component {
 
-    _isMounted=false;
-
-    constructor(props){
-        super(props);
-        this.state={
+        state={
             email:null,
             password:null
         }
-    }
 
-    componentidMount(){
-        this._isMounted=true;
-    }
-
-    componentWillUnmount(){
-        this._isMounted=false;
-    }
 
     handleChange=(event)=>{
         const target = event.target;
@@ -40,10 +28,6 @@ class SignInWithoutSocialMedia extends React.Component {
             });
     }
 
-    componentWillUnmount(){
-        toast.dismiss();
-    }
-    
     render(){
 
         const { writeUserAuthInfoToCache,history }=this.props;
@@ -57,7 +41,6 @@ class SignInWithoutSocialMedia extends React.Component {
                     <Close whereToGo="/authentication/sign-in-with-social-media"/>
                     <form onSubmit={(e)=>{
                         e.preventDefault();
-                        // console.log("Email:"+this.rfs.email.value+",password:"+this.refs.password.value);                      
                         login({
                             variables:{email:email,password:password},
                             update:(store,{data:{login}})=>{
@@ -76,14 +59,13 @@ class SignInWithoutSocialMedia extends React.Component {
                         {(loading)?<Loading/>:""}
                         {(error)? notify("GEN ON EREU KI PASE. VERIFYE KONEKSYON ENTENET OU EPI REKOMANSE ON LOT MOMAN","error"):""}
                         <div className="signin-without-socialmedia-screen__form-group"><label className="signin-without-socialmedia-screen__label">Imèl</label><input name="email" onChange={this.handleChange} type="email" placeholder="Tanpri mete imel ou" className="signin-without-socialmedia-screen__input" required/></div>
-                        <div className="signin-without-socialmedia-screen__form-group"><label className="signin-without-socialmedia-screen__label">Paswòd</label><input name="password" onChange={this.handleChange} type="password" placeholder="Tanpri mete passwòd ou" className="signin-without-socialmedia-screen__input" required/></div>
+                        <div className="signin-without-socialmedia-screen__form-group"><label className="signin-without-socialmedia-screen__label">Modpas</label><input name="password" onChange={this.handleChange} type="password" placeholder="Tanpri mete modpas ou" className="signin-without-socialmedia-screen__input" required/></div>
                         <div className="signin-without-socialmedia-screen__form-group"><button className="auth-button success-button" type="submit">KONEKTE</button></div>
                         <div className="forgot-password-container">
                             <Link to="/authentication/sign-in-without-social-media/forgot-password">
-                                <p>Ou bliye paswòd ou?</p>
+                                <p>Ou bliye modpas ou?</p>
                             </Link>
                         </div>
-                        {this._isMounted?<ToastContainer/>:""}
                     </form>
                 </div>   
             )}

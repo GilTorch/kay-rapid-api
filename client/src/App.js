@@ -22,6 +22,8 @@ import RequestPassword from './components/RequestPassword';
 
 import "./css/normalize.css";
 import "./css/base.css";
+import RequestPasswordRedirection from './components/RequestPasswordRedirection';
+import { ToastContainer } from 'react-toastify';
 
 require('dotenv').config()
 
@@ -49,6 +51,7 @@ class App extends Component {
     }else{
       return (
         <ApolloProvider client={client}>
+          <ToastContainer autoClose={2000}/>
           <Router>
             <React.Fragment>
               <Route exact={true} path="/" component={Home}/>
@@ -60,6 +63,7 @@ class App extends Component {
               <Route exact={true} path="/add-house" component={AddHouse}/>
               <Route exact={true} path="/walls-house" component={wallsHouse}/>
               <Route exact={true} path="/authentication/sign-in-without-social-media/forgot-password" component={RequestPassword}/>
+              <Route exact={true} path="/authentication/sign-in-without-social-media/forgot-password-redirection" component={RequestPasswordRedirection}/>
             </React.Fragment>
           </Router>
         </ApolloProvider>

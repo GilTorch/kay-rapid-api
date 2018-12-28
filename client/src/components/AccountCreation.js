@@ -14,8 +14,6 @@ import { toast } from 'react-toastify';
 
 class AccountCreation extends React.Component{
 
-        _isMounted=false;
-
         constructor(props){
             super(props)
             this.handleChange=this.handleChange.bind(this);
@@ -28,18 +26,10 @@ class AccountCreation extends React.Component{
                 phone1:null,
                 profilePicture:"",
                 profilePictureIsLoaded:false,
-                password:null
+                password:null,
+                passwordsAreEqual:false
             }
         }
-
-        componentidMount(){
-        this._isMounted=true;
-        }
-
-        componentWillUnmount(){
-            this._isMounted=false;
-        }
-
 
         handleChange(event) {
 
@@ -49,9 +39,15 @@ class AccountCreation extends React.Component{
             const name = target.name;
             
             this.setState({
-              [name]: value
-            });
-
+                [name]: value
+              },()=>{
+                  const { password,passwordConfirmation }=this.state
+                  const passwordsAreEqual=(password!==null && passwordConfirmation!==null)&&(passwordConfirmation===password);
+       
+                  this.setState({
+                      passwordsAreEqual
+                  })     
+              });
             const { email,password,firstName,lastName,phone1,profilePictureIsLoaded }=this.state;
 
             if(email!==null && password!==null && firstName!==null && lastName !== null && phone1 !== null && profilePictureIsLoaded!==false){
@@ -95,6 +91,7 @@ class AccountCreation extends React.Component{
                         </Link>
                         <form onSubmit={ async (e) =>{
                             e.preventDefault();
+                            if(!this.state.passwordsAreEqual) return;
                             const  file=this.state.profilePicture;
                             if(file){
 
@@ -147,6 +144,10 @@ class AccountCreation extends React.Component{
                             {(loading || this.state.isFetchingFromCloudinary)?<Loading/>:""}
                             {(error)?notify('GEN ON EREU ANPECHE NOU KREYE KONT OU A. REESEYE YON LOT FWA.',"error"):""} 
                             <div className="account-creation-screen__form-group">
+                                <label className="account-creation-screen__label">Foto Pwofil</label>
+                                <Upload numberOfImagesAllowed={1} handleImage={(event)=>{this.handleChange(event)}} />
+                            </div>
+                            <div className="account-creation-screen__form-group">
                                 <label className="account-creation-screen__label">Non</label>
                                 <input name="lastName" placeholder="Tanpri mete non ou " onChange={this.handleChange} type="text" className="account-creation-screen__input"  required/></div>
                             <div className="account-creation-screen__form-group">
@@ -159,18 +160,16 @@ class AccountCreation extends React.Component{
                                 <label className="account-creation-screen__label">Imèl</label>
                                 <input name="email" placeholder="Tanpri mete imèl ou " onChange={this.handleChange} type="email" className="account-creation-screen__input" required/></div>
                             <div className="account-creation-screen__form-group">
-                                <label className="account-creation-screen__label">Paswòd</label>
+                                <label className="account-creation-screen__label">Modpas</label>
                                 <input name="password" placeholder="Chwazi yon paswòd  " onChange={this.handleChange} type="password" className="account-creation-screen__input" required/></div>
                             <div className="account-creation-screen__form-group">
-                                <label className="account-creation-screen__label">Foto Pwofil</label>
-                                <Upload numberOfImagesAllowed={1} handleImage={(event)=>{this.handleChange(event)}} /></div>
+                                <label className="account-creation-screen__label">Konfime Modpas</label>
+                                <input name="passwordConfirmation" placeholder="Konfime modpas ou fenk mete a " onChange={this.handleChange} type="password" className="account-creation-screen__input" required/></div>
+                                {!this.state.passwordsAreEqual?<p style={{color:"red"}}>Ou dwe ekri menm modpas la nan tou 2 chan yo.</p>:""}
                             <div className="account-creation-screen__form-group">
-                                <label className="account-creation-screen__label">Konfime Paswòd</label>
-                                <input name="passwordConfirmation" placeholder="Konfime paswòd ou fenk mete a " onChange={this.handleChange} type="password" className="account-creation-screen__input" required/></div>
-                            <div className="account-creation-screen__form-group">
-                                <button className="auth-button success-button" type="submit">KREYE KONT LAN</button></div>
+                                <button className="auth-button success-button" type="submit">KREYE KONT LAN</button>
+                            </div>
                         </form>
-                        {this._isMounted?<ToastContainer/>:""}
                     </div>)       
                 }
                 </Mutation>
