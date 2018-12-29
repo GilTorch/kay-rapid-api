@@ -39,7 +39,11 @@ class RequestPassword extends React.Component{
                 <form className="request-password-stack-screen__form"
                     onSubmit={(e)=>{
                         e.preventDefault();
-                        requestPasswordToken({variables:{email:this.state.email}})
+                        requestPasswordToken({variables:{email:this.state.email},
+                            update:()=>{
+                                notify('AL SOU EMAIL OU METE A POU OU KA RESET MODPAS OU',"success");
+                            }
+                        })
                     }}
                 >
                     <input onChange={this.handleChange} className="request-password-stack-screen__input" type="email" placeholder="Rantre im&egrave;l ou" required/>

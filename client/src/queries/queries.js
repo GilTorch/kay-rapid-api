@@ -28,6 +28,17 @@ export const REQUEST_PASSWORD_TOKEN=gql`
   }
 `
 
+export const RESET_PASSWORD=gql`
+mutation resetPassword($resetToken:String!,$password:String!,$passwordConfirm:String!){
+  resetPassword(resetToken:$resetToken,password:$password,passwordConfirm:$passwordConfirm){
+    token
+    user{
+      id
+    }
+  }
+}
+`
+
 export const AUTH_WITHOUT_SOCIAL_MEDIA=gql`
 mutation login($email:String!,$password:String!) {
   login(email:$email,password:$password) {

@@ -14,7 +14,6 @@ import { withRouter } from 'react-router-dom';
 import "../css/profile.css";
 
 import notify from '../utils/notify';
-import { ToastContainer } from 'react-toastify';
 
 
 
@@ -41,7 +40,6 @@ class Profile extends React.Component{
                     <HeaderBar title="Pwofil Ou"/>
                     {componentToRender}
                     <Navigation currentPage="profile"/>
-                    <ToastContainer autoClose={1500}/>
                 </div>
             )
     }

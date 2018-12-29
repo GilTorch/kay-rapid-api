@@ -51,7 +51,7 @@ class App extends Component {
     }else{
       return (
         <ApolloProvider client={client}>
-          <ToastContainer autoClose={2000}/>
+          <ToastContainer autoClose={1200}/>
           <Router>
             <React.Fragment>
               <Route exact={true} path="/" component={Home}/>
