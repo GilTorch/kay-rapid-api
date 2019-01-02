@@ -73,13 +73,17 @@ class AddHouse extends Component{
 
     handleChange=(event)=>{
         //console.log(event.target);
-        const target = event.target;
-        const value = target.type === 'checkbox' ? target.checked : target.value;
-        const name = target.name;
-    
-        this.setState({
-          [name]: value
-        });
+        if(!event.target.files){
+            const target = event.target;
+            const value = target.type === 'checkbox' ? target.checked : target.value;
+            const name = target.name;
+        
+            this.setState({
+              [name]: value
+            });
+        }else{
+            console.log("image uploaded: "+event.target.files.length);
+        }
       }
 
     displayNext=(event)=>{
@@ -171,7 +175,7 @@ class AddHouse extends Component{
                     <div className="card add-house-screen">
                         <div className="add-house-card">
                             <form>
-                                <HouseImages numberLimit={10}/>
+                                <HouseImages numberLimit={10} handleChange={this.handleChange}/>
                                 <Price 
                                     negotiable={this.state.negotiable} 
                                     toggleNegotiation={this.toggleNegotiation}
