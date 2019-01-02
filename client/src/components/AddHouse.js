@@ -8,7 +8,7 @@ import {
 } from './AddHouseFormGroups';
 
 const options=[
-    {value:'p-au-p',label:"Pòtoprens"},
+    {value:'cjk5081nkqbic0b02estuemao',label:"Pòtoprens"},
     {value:'',label:"Fò Libète"},
     {value:'',label:"Jakmèl"},
     {value:'',label:"Gonayiv"},
@@ -19,25 +19,41 @@ const options=[
     {value:'',label:"Ench"}
 ]
 
+const areRequired={
+    previewImage:true,
+    bedRoomImages:false,
+    livingRoomImages:false,
+    diningRoomImages:false,
+    bathRoomgImages:false,
+    negotiable:true,
+    basePrice:true,
+    minPrice:false,
+    maxPrice:false,
+    maxGuests:true,
+    whenToPay:true,
+    numberOfBedRooms:true,
+    numberOfBathRooms:true,
+    longitude:false,
+    latitude:false,
+    city:true,
+    address:true,
+    electricity:true,
+    electricityFrequency:true,
+    waterTank:true,
+    parking:true
+}
+
 class AddHouse extends Component{
-    constructor(){
-        super()
-        this.getCurrentPosition=this.getCurrentPosition.bind(this)
 
-        this.state={
-            longitude:null,
-            latitude:null,
-            zoom:1,
-            haveUsersLocation:false,
-            negotiable:false,
-            currentQuestion:0,
-            numberOfQuestions:0
-        }
-
-        this.displayNext=this.displayNext.bind(this);
-        this.displayPrevious=this.displayPrevious.bind(this);
-        this.handleChange=this.handleChange.bind(this);
-        this.onSubmit=this.onSubmit.bind(this);
+    state={
+        longitude:null,
+        latitude:null,
+        zoom:1,
+        haveUsersLocation:false,
+        negotiable:false,
+        city:null,
+        currentQuestion:0,
+        numberOfQuestions:0
     }
 
     componentDidMount(){
@@ -55,7 +71,8 @@ class AddHouse extends Component{
        })
     }
 
-    handleChange(event) {
+    handleChange=(event)=>{
+        //console.log(event.target);
         const target = event.target;
         const value = target.type === 'checkbox' ? target.checked : target.value;
         const name = target.name;
@@ -65,7 +82,7 @@ class AddHouse extends Component{
         });
       }
 
-    displayNext(event){
+    displayNext=(event)=>{
         event.preventDefault();
         const formGroups=document.querySelectorAll('.add-house-card__form-group');
 
@@ -89,7 +106,7 @@ class AddHouse extends Component{
         }
     }
 
-    displayPrevious(event){
+    displayPrevious=(event)=>{
         event.preventDefault();
         const formGroups=document.querySelectorAll('.add-house-card__form-group');
         let { currentQuestion }=this.state;
@@ -110,20 +127,9 @@ class AddHouse extends Component{
         
     }
 
-    getCurrentPosition(event){
+    getCurrentPosition=(event)=>{
         event.preventDefault();
         const that=this
-        // if (navigator.geolocation) {
-        //     navigator.geolocation.getCurrentPosition(function(position){
-        //         console.log("Longitude:"+position.coords.longitude+","+"Latitude:"+position.coords.latitude);
-        //         that.setState({
-        //             longitude:position.coords.longitude,
-        //             latitude:position.coords.latitude
-        //         })
-        //     });
-        // } else {
-        //     alert("Geolocation is not supported by this browser.");
-        // }
 
         navigator.geolocation.getCurrentPosition(function(position) {
             that.setState({
@@ -149,7 +155,7 @@ class AddHouse extends Component{
     }
 
 
-    onSubmit(event){
+    onSubmit=(event)=>{
         event.preventDefault();
         console.log(event);
     }
@@ -185,7 +191,7 @@ class AddHouse extends Component{
                                     handleChange={this.handleChange}
                                     getCurrentPosition={this.getCurrentPosition}
                                 />
-                                <HouseCity options={options} handleChange={this.handleChange}/>
+                                <HouseCity value={this.state.city} options={options} handleChange={this.handleChange}/>
                                 <HouseAddress handleChange={this.handleChange}/>
                                 <Amenities
                                     handleChange={this.handleChange}

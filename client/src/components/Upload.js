@@ -22,9 +22,10 @@ class Upload extends React.Component {
 
   handleChange(event) {
 
+    const { numberOfImagesAllowed }=this.props;
     let { images }=this.state;
 
-    for(var i=0;i<event.target.files.length;i++){
+    for(var i=0;i<numberOfImagesAllowed;i++){
         images.push(URL.createObjectURL(event.target.files[i]))
     }
     this.setState({
