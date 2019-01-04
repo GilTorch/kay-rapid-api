@@ -159,7 +159,7 @@ export const HouseCity=({options,handleChange,value})=>{
     return(
         <div className="add-house-card__form-group">
             <label className="add-house-card__label">Nan ki komin(vil) kay ou a ye:</label>
-            <Select value={value} name="city" onChange={handleChange} options={options}/>
+            <Select value={value} name="communeId" onChange={handleChange} options={options}/>
         </div> 
     )
 }

@@ -7,6 +7,7 @@ import {
     Localisation,HouseCity,HouseAddress,Amenities,NextQuestion,PreviousQuestion 
 } from './AddHouseFormGroups';
 import notify from '../utils/notify';
+import { toast } from 'react-toastify';
 
 const options=[
     {value:'cjk5081nkqbic0b02estuemao',label:"Pòtoprens"},
@@ -21,27 +22,27 @@ const options=[
 ]
 
 const areRequired={
-    previewImage:true,
-    bedRoomImages:true,
+    previewImage:false,
+    bedRoomImages:false,
     livingRoomImages:false,
     diningRoomImages:false,
     bathRoomImages:false,
-    negotiable:true,
-    basePrice:true,
+    negotiable:false,
+    basePrice:false,
     minPrice:false,
     maxPrice:false,
-    maxGuests:true,
-    whenToPay:true,
-    numberOfBedRooms:true,
-    numberOfBathRooms:true,
-    lng:true,
-    lat:true,
-    city:true,
-    address:true,
-    electricity:true,
-    electricityFrequency:true,
-    waterTank:true,
-    parking:true
+    maxGuests:false,
+    whenToPay:false,
+    numberOfBedRooms:false,
+    numberOfBathRooms:false,
+    lng:false,
+    lat:false,
+    city:false,
+    address:false,
+    electricity:false,
+    electricityFrequency:false,
+    waterTank:false,
+    parking:false
 }
 
 class AddHouse extends Component{
@@ -50,9 +51,9 @@ class AddHouse extends Component{
         zoom:1,
         haveUsersLocation:false,
         negotiable:false,
-        city:null,
         currentQuestion:0,
         numberOfQuestions:0,
+        cityLabel:null,
         payload:{
             previewImage:null,
             bedRoomImages:null,
@@ -60,6 +61,7 @@ class AddHouse extends Component{
             diningRoomImages:null,
             bathRoomImages:null,
             age:null,
+            communeId:null,
             basePrice:null,
             highestPrice:null,
             currency:'USD',
@@ -115,6 +117,8 @@ class AddHouse extends Component{
             }
           });
       }
+
+
 
     checkIfInputsAreValid=()=>{
         const formGroups=document.querySelectorAll('.add-house-card__form-group');
@@ -195,14 +199,17 @@ class AddHouse extends Component{
                 haveUsersLocation:true,
                 zoom:13,
                 payload:{
-                    ...this.state.payload,
+                    ...that.state.payload,
                     lng:position.coords.longitude,
                     lat:position.coords.latitude,
                 },
             })
             // do_something(position.coords.latitude, position.coords.longitude);
           },()=>{
-            console.log("Location not given")
+            toast.warn('NOU PAKA WE KI BO OU YE. ACTIVE GPS TELEFON OU EPI VERIFYE ENTENET OU.',{
+                autoClose:3000,
+                position:toast.POSITION.BOTTOM_CENTER
+            })
             fetch("https://ipapi.co/json")
               .then(res => res.json())
               .then((location)=>{
@@ -220,6 +227,18 @@ class AddHouse extends Component{
           },{enableHighAccuracy: true, maximumAge: 10000});
     }
 
+
+    handleSelect=(selectedOption)=>{
+        const communeId=selectedOption.value;
+        const cityLabel=selectedOption.name;
+        this.setState({
+            cityLabel,
+            payload:{
+                ...this.state.payload,
+                communeId
+            }
+          });
+    }
 
     onSubmit=(event)=>{
         event.preventDefault();
@@ -259,8 +278,8 @@ class AddHouse extends Component{
                                     handleChange={this.handleChange}
                                     getCurrentPosition={this.getCurrentPosition}
                                 />
-                                <HouseCity value={this.state.city} options={options} handleChange={this.handleChange}/>
-                                <HouseAddress handleChange={this.handleChange}/>
+                                <HouseCity value={this.state.cityLabel} options={options} handleChange={this.handleSelect}/>
+                                <HouseAddress handleChange={this.handleSelect}/>
                                 <Amenities
                                     handleChange={this.handleChange}
                                 />
