@@ -1,6 +1,7 @@
 import React from 'react';
 
 import HouseImage from './HouseImage';
+import "../css/house-images-container.css"
 
 class Upload extends React.Component {
   constructor(props){
@@ -22,11 +23,14 @@ class Upload extends React.Component {
 
   handleChange(event) {
 
+    let numberOfImagesSelected=event.target.files.length;
     const { numberOfImagesAllowed }=this.props;
+
     let { images }=this.state;
 
-    for(var i=0;i<numberOfImagesAllowed;i++){
-        images.push(URL.createObjectURL(event.target.files[i]))
+
+    for(var i=0;i<numberOfImagesSelected;i++){
+        images.push(URL.createObjectURL(new Blob([event.target.files[i]],{type:"application/zip"})))
     }
     this.setState({
         images
@@ -54,12 +58,15 @@ class Upload extends React.Component {
     })
     return (
       <div>
-            {imagesTags}
+            <div className="house-images-container">
+                {imagesTags}
+            </div>
             {
                 (images.length<numberOfImagesAllowed)?
                 <label style={{display:"inline"}}>
                     <i className="upload-icon fas fa-camera add-house-card__upload-button"></i>
                     <input 
+                        name={this.props.name}
                         style={{display:"none"}}
                         type="file" accept="image/*" 
                         onChange={this.handleChange}

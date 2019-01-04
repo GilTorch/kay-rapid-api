@@ -3,9 +3,10 @@ import HeaderBar from './HeaderBar';
 import '../css/add-house.css';
 import { 
     Submit,
-    HouseImages,Price,MaxGuests,WhenToPayHouse,NumberOfRooms,NumberOfBathrooms,
+    HouseImages,Price,MaxGuests,WhenToPayHouse,NumberOfBedRooms,NumberOfBathrooms,NumberOfDiningRooms,NumberOfLivingRooms,
     Localisation,HouseCity,HouseAddress,Amenities,NextQuestion,PreviousQuestion 
 } from './AddHouseFormGroups';
+import notify from '../utils/notify';
 
 const options=[
     {value:'cjk5081nkqbic0b02estuemao',label:"Pòtoprens"},
@@ -21,10 +22,10 @@ const options=[
 
 const areRequired={
     previewImage:true,
-    bedRoomImages:false,
+    bedRoomImages:true,
     livingRoomImages:false,
     diningRoomImages:false,
-    bathRoomgImages:false,
+    bathRoomImages:false,
     negotiable:true,
     basePrice:true,
     minPrice:false,
@@ -33,8 +34,8 @@ const areRequired={
     whenToPay:true,
     numberOfBedRooms:true,
     numberOfBathRooms:true,
-    longitude:false,
-    latitude:false,
+    lng:true,
+    lat:true,
     city:true,
     address:true,
     electricity:true,
@@ -46,14 +47,40 @@ const areRequired={
 class AddHouse extends Component{
 
     state={
-        longitude:null,
-        latitude:null,
         zoom:1,
         haveUsersLocation:false,
         negotiable:false,
         city:null,
         currentQuestion:0,
-        numberOfQuestions:0
+        numberOfQuestions:0,
+        payload:{
+            previewImage:null,
+            bedRoomImages:null,
+            livingRoomImages:null,
+            diningRoomImages:null,
+            bathRoomImages:null,
+            age:null,
+            basePrice:null,
+            highestPrice:null,
+            currency:'USD',
+            communeId:null,
+            maxGuests:null,
+            lease:null,
+            leaseType:null,
+            numBedrooms:null,
+            numBaths:null,
+            lng:null,
+            lat:null,
+            address:null,
+            numDiningrooms:null,
+            numLivingrooms:null,
+            electricity:null,
+            electricity_frequency:null,
+            water_tank:null,
+            freeParkingOnPremises:null,
+            water_pipe:null,
+            income:null
+        }
     }
 
     componentDidMount(){
@@ -72,42 +99,70 @@ class AddHouse extends Component{
     }
 
     handleChange=(event)=>{
-        //console.log(event.target);
+        let value="";
+        const name=event.target.name;
         if(!event.target.files){
             const target = event.target;
-            const value = target.type === 'checkbox' ? target.checked : target.value;
-            const name = target.name;
-        
-            this.setState({
-              [name]: value
-            });
+            value = target.type === 'checkbox' ? target.checked : target.value;
         }else{
-            console.log("image uploaded: "+event.target.files.length);
+           value=event.target.files 
         }
+
+        this.setState({
+            payload:{
+                ...this.state.payload,
+                [name]: value,
+            }
+          });
       }
+
+    checkIfInputsAreValid=()=>{
+        const formGroups=document.querySelectorAll('.add-house-card__form-group');
+        const { currentQuestion }=this.state;
+        const currentFormGroup=formGroups[currentQuestion];
+        let areValid=true;
+        const inputs=currentFormGroup.getElementsByTagName('input');
+
+        for(var i=0;i<inputs.length;i++){
+            const inputName=inputs[i].name;
+            if(this.state.payload[inputName]==null && areRequired[inputName]==true){
+                areValid=false;
+                break;
+            }
+        }
+
+        return areValid;
+    }
 
     displayNext=(event)=>{
         event.preventDefault();
+        const inputsAreValid=this.checkIfInputsAreValid();
         const formGroups=document.querySelectorAll('.add-house-card__form-group');
 
-        let { currentQuestion }=this.state;
-
-        this.setState({
-            previousButtonVisible:true
-        })
-
-        if(currentQuestion<formGroups.length){
-            formGroups[currentQuestion].style.display="none";
-            currentQuestion++;
-            formGroups[currentQuestion].style.display="block";
-            this.setState({
-                currentQuestion
-            })
+        if(!inputsAreValid){
+            notify('BYEN RANTRE TOUT ENFOMASYON YO ANVAN OU KONTINYE.','error')
         }else{
+            event.preventDefault();
+            let { currentQuestion }=this.state;
+
             this.setState({
-                nextButtonVisible:false,
+                previousButtonVisible:true
             })
+
+            if(currentQuestion<formGroups.length){
+                formGroups[currentQuestion].style.display="none";
+                currentQuestion++;
+                formGroups[currentQuestion].style.display="block";
+                this.setState({
+                    currentQuestion
+                })
+            }else{
+                this.setState({
+                    nextButtonVisible:false,
+                })
+            }
         }
+        
     }
 
     displayPrevious=(event)=>{
@@ -137,10 +192,13 @@ class AddHouse extends Component{
 
         navigator.geolocation.getCurrentPosition(function(position) {
             that.setState({
-              longitude:position.coords.longitude,
-              latitude:position.coords.latitude,
-              haveUsersLocation:true,
-              zoom:13
+                haveUsersLocation:true,
+                zoom:13,
+                payload:{
+                    ...this.state.payload,
+                    lng:position.coords.longitude,
+                    lat:position.coords.latitude,
+                },
             })
             // do_something(position.coords.latitude, position.coords.longitude);
           },()=>{
@@ -148,9 +206,13 @@ class AddHouse extends Component{
             fetch("https://ipapi.co/json")
               .then(res => res.json())
               .then((location)=>{
+                console.log(location);
                 that.setState({
-                  longitude:location.longitude,
-                  latitude:location.latitude,
+                    payload:{
+                        ...this.state.payload,
+                        lng:0,
+                        lat:0
+                    },
                   haveUsersLocation:true,
                   zoom:13
                 })
@@ -177,7 +239,7 @@ class AddHouse extends Component{
                             <form>
                                 <HouseImages numberLimit={10} handleChange={this.handleChange}/>
                                 <Price 
-                                    negotiable={this.state.negotiable} 
+                                    negotiable={this.state.payload.negotiable} 
                                     toggleNegotiation={this.toggleNegotiation}
                                     handleChange={this.handleChange}
                                 />
@@ -185,12 +247,14 @@ class AddHouse extends Component{
                                 <WhenToPayHouse 
                                     handleChange={this.handleChange}
                                 />
-                                <NumberOfRooms handleChange={this.handleChange}/>
+                                <NumberOfBedRooms handleChange={this.handleChange}/>
                                 <NumberOfBathrooms handleChange={this.handleChange}/>  
+                                <NumberOfLivingRooms handleChange={this.handleChange}/>  
+                                <NumberOfDiningRooms handleChange={this.handleChange}/>  
                                 <Localisation 
-                                    longitude={this.state.longitude} 
-                                    latitude={this.state.latitude}
-                                    zoom={this.state.zoom}
+                                    longitude={this.state.payload.lng} 
+                                    latitude={this.state.payload.lat}
+                                    zoom={this.state.payload.zoom}
                                     haveUsersLocation={this.state.haveUsersLocation}
                                     handleChange={this.handleChange}
                                     getCurrentPosition={this.getCurrentPosition}

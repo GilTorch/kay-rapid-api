@@ -4,28 +4,28 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import HouseMap from './HouseMap';
 import Select from 'react-select';
 
-export const HouseImages=({numberLimit})=>{
+export const HouseImages=({numberLimit,handleChange})=>{
     return(
         <div>
             <div className="add-house-card__form-group">
                 <label className="add-house-card__label">Chwazi yon imaj prensipal pou kay la</label>
-                <Upload numberOfImagesAllowed={1}/>
+                <Upload name="previewImage" numberOfImagesAllowed={1} handleImage={(event)=>{handleChange(event)}}/>
             {/* </div>
             <div className="add-house-card__form-groupe"> */}
                 <label className="add-house-card__label">Chwazi imaj pou chanm a kouche yo</label>
-                <Upload numberOfImagesAllowed={numberLimit}/>
+                <Upload name="bedRoomImages" numberOfImagesAllowed={numberLimit} handleImage={(event)=>{handleChange(event)}}/>
             </div>
             <div className="add-house-card__form-group">
                 <label className="add-house-card__label">Chwazi imaj pou salon an (10 pou pi plis)</label>
-                <Upload numberOfImagesAllowed={numberLimit}/>
+                <Upload name="diningRoomImages" numberOfImagesAllowed={numberLimit} handleImage={(event)=>{handleChange(event)}}/>
             {/* </div>
             <div className="add-house-card__form-groupe"> */}
             <label className="add-house-card__label">Chwazi imaj pou sal a manje yo (10 pou pi plis)</label>
-                <Upload numberOfImagesAllowed={numberLimit}/>
+                <Upload name="livingRoomImages" numberOfImagesAllowed={numberLimit} handleImage={(event)=>{handleChange(event)}}/>
             </div>
             <div className="add-house-card__form-group">
             <label className="add-house-card__label">Chwazi imaj pou twalet yo (10 pou plis)</label>
-                <Upload numberOfImagesAllowed={numberLimit}/>
+                <Upload name="bathRoomImages" numberOfImagesAllowed={numberLimit} handleImage={(event)=>{handleChange(event)}}/>
             </div>
         </div>
     )
@@ -36,6 +36,9 @@ export const Price=({negotiable,handleChange})=>{
 
    return(
     <div className="add-house-card__form-group">
+    <p>
+        Mete pri yo an USD
+    </p>
     <div className="add-house-card__negotiation-box">
         <label className="checkbox-container">
             <input name="negotiable" type="checkbox" value={negotiable} onChange={handleChange}/>
@@ -47,12 +50,13 @@ export const Price=({negotiable,handleChange})=>{
         <div>
             <label className="add-house-card__label">Pri</label>
             <input name="basePrice" onChange={handleChange} className="add-house-card__input" type="number"/>
+            
         </div>:
         <div>
             <label className="add-house-card__label">Pri Minimòm</label>
             <input name="basePrice" onChange={handleChange} className="add-house-card__input" type="number"/>
             <label className="add-house-card__label">Pri Maksimòm</label>
-            <input name="maxPrice" onChange={handleChange} className="add-house-card__input" type="number"/>
+            <input name="highestPrice" onChange={handleChange} className="add-house-card__input" type="number"/>
         </div>
     }   
                         
@@ -78,11 +82,11 @@ export const WhenToPayHouse=({handleChange})=>{
             <label className="add-house-card__label">Chak kilè pou yo peye'w ? </label>
             <div className="add-house-card__when-to-pay-checkbox-group">
             <label className="radio-container">Pa Mwa
-                <input  onClick={handleChange} name="lease" type="radio" name="whenToPay" value="MONTHLY"/>
+                <input  onClick={handleChange} name="lease" type="radio" name="leaseType" value="MONTHLY"/>
                 <span className="radio-checkmark"></span>
             </label>
             <label className="radio-container">Pa Ane
-                <input onClick={handleChange} name="lease" type="radio" name="whenToPay" value="YEARLY"/>
+                <input onClick={handleChange} name="lease" type="radio" name="leaseType" value="YEARLY"/>
                 <span className="radio-checkmark"></span>
             </label>
             </div>
@@ -90,11 +94,11 @@ export const WhenToPayHouse=({handleChange})=>{
     )
 }
 
-export const NumberOfRooms=({handleChange})=>{
+export const NumberOfBedRooms=({handleChange})=>{
     return(
         <div className="add-house-card__form-group">
             <label className="add-house-card__label">Konbyen chanm a kouche kay la genyen</label>
-            <input name="numberOfRooms" onChange={handleChange} className="add-house-card__input" type="number"/>
+            <input name="numBedRooms" onChange={handleChange} className="add-house-card__input" type="number"/>
         </div>
     )
 }
@@ -102,8 +106,25 @@ export const NumberOfRooms=({handleChange})=>{
 export const NumberOfBathrooms=({handleChange})=>{
     return(
         <div className="add-house-card__form-group">
-            <label className="add-house-card__label">Konbyen sal de ben kay la genyen</label>
-            <input name="numberOfBathrooms" onChange={handleChange} className="add-house-card__input" type="number"/> 
+            <label className="add-house-card__label">Konbyen sal de ben kay la genyen?</label>
+            <input name="numBaths" onChange={handleChange} className="add-house-card__input" type="number"/> 
+        </div>
+    )
+}
+
+export const NumberOfDiningRooms=({handleChange})=>{
+    return(
+        <div className="add-house-card__form-group">
+            <label className="add-house-card__label">Konbyen sal a manje kay la genyen?</label>
+            <input name="numDiningRooms" onChange={handleChange} className="add-house-card__input" type="number"/> 
+        </div>
+    )
+}
+export const NumberOfLivingRooms=({handleChange})=>{
+    return(
+        <div className="add-house-card__form-group">
+            <label className="add-house-card__label">Konbyen salon kay la genyen?</label>
+            <input name="numLivingRooms" onChange={handleChange} className="add-house-card__input" type="number"/> 
         </div>
     )
 }
@@ -111,15 +132,16 @@ export const NumberOfBathrooms=({handleChange})=>{
 export const Localisation=({longitude,latitude,zoom,haveUsersLocation,handleChange,getCurrentPosition})=>{
     return(            
         <div className="add-house-card__form-group add-house-card__localisation">
-
+            <input name="lng" value={longitude || ""} type="hidden"/>
+            <input name="lat" value={latitude || ""} type="hidden"/>
             {!(longitude==null && latitude==null) ? 
 
                 <React.Fragment>
                     <HouseMap lng={longitude} lat={latitude} zoom={zoom} haveUsersLocation={haveUsersLocation}/>
                     <label className="add-house-card__label">Longitid</label>
-                    <input name="longitude" onChange={handleChange}className="add-house-card__input" type="text" name="longititude" value={longitude} readOnly/> 
+                    <input  className="add-house-card__input" type="text" value={longitude} readOnly/> 
                     <label className="add-house-card__label">Latitid</label>
-                    <input name="latitude" onChange={handleChange}className="add-house-card__input" type="text" name="latitude" value={latitude} readOnly/>
+                    <input  className="add-house-card__input" type="text" value={latitude} readOnly/>
                 </React.Fragment>
                 :<p className="add-house-card__localisation-warning">Nou poko lokalize w. Si w te klike deja eseye refè sa.</p>
             }
