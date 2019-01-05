@@ -186,15 +186,15 @@ export const Amenities=({handleChange})=>{
             <label>Kouran:</label>
             <div className="add-house-card__electricity">
                 <label className="radio-container">Kèk Fwa
-                    <input onChange={handleChange} name="electricity-frequency" type="radio" value="OFTEN"/>
+                    <input onChange={handleChange} name="electricity_frequency" type="radio" value="OFTEN"/>
                     <span className="radio-checkmark"></span>
                 </label>
                 <label className="radio-container">Toutan
-                    <input onChange={handleChange}  name="electricity-frequency" type="radio" value="ALWAYS"/>
+                    <input onChange={handleChange}  name="electricity_frequency" type="radio" value="ALWAYS"/>
                     <span className="radio-checkmark"></span>
                 </label>
                 <label className="radio-container">Raman
-                    <input onChange={handleChange}  name="electricity-frequency" type="radio" value="SOMETIMES"/>
+                    <input onChange={handleChange}  name="electricity_frequency" type="radio" value="SOMETIMES"/>
                     <span className="radio-checkmark"></span>
                 </label>
             </div>
@@ -203,7 +203,7 @@ export const Amenities=({handleChange})=>{
             <label>Eske kay la gen:</label>
             <div className="add-house-card__form-group-column">
                 <label className="checkbox-container">
-                    <input name="waterTank" onChange={handleChange} type="checkbox"/>
+                    <input name="water_tank" onChange={handleChange} type="checkbox"/>
                     <span className="checkmark"></span>
                     Rezèvwa
                 </label>
@@ -220,7 +220,7 @@ export const Amenities=({handleChange})=>{
             </div>
             <div className="add-house-card__form-group-column">
                 <label className="checkbox-container">
-                    <input name="pipe" onChange={handleChange}  type="checkbox"/>
+                    <input name="water_pipe" onChange={handleChange}  type="checkbox"/>
                     <span className="checkmark"></span>
                     Tiyo
                 </label>
@@ -240,10 +240,10 @@ export const Amenities=({handleChange})=>{
     )
 }
 
-export const Submit=({handleSubmit})=>{
+export const Submit=()=>{
     return(
         <div className="add-house-card__form-group">
-            <button onClick={handleSubmit} style={{width:"100%"}} className="authentication__button success-button">SOUMET</button>
+            <button type="submit" style={{width:"100%"}} className="authentication__button success-button">SOUMET</button>
         </div>
     )
 }
