@@ -37,8 +37,9 @@ const areRequired={
     maxPrice:false,
     maxGuests:false,
     whenToPay:false,
-    numberOfBedRooms:false,
-    numberOfBathRooms:false,
+    numLivingrooms:false,
+    numberOfBedrooms:false,
+    numberOfBathrooms:false,
     lng:false,
     lat:false,
     communeId:false,
@@ -72,7 +73,6 @@ class AddHouse extends Component{
             currency:'USD',
             communeId:null,
             maxGuests:null,
-            lease:null,
             leaseType:null,
             numBedrooms:null,
             numBaths:null,
@@ -81,11 +81,11 @@ class AddHouse extends Component{
             address:null,
             numDiningrooms:null,
             numLivingrooms:null,
-            electricity:null,
-            electricity_frequency:null,
-            water_tank:null,
-            freeParkingOnPremises:null,
-            water_pipe:null,
+            electricity:false,
+            electricity_frequency:false,
+            water_tank:false,
+            freeParkingOnPremises:false,
+            water_pipe:false,
             income:100
         }
     }
@@ -279,7 +279,6 @@ class AddHouse extends Component{
                                             communeId,
                                             highestPrice,
                                             maxGuests,
-                                            lease,
                                             leaseType,
                                             numBedrooms,
                                             numBaths,
@@ -294,24 +293,52 @@ class AddHouse extends Component{
                                             freeParkingOnPremises,
                                             water_pipe,
                                             income
-                                          }=this.state
-    
-                                          createHouse({variables:{
-                                            age,
-                                            basePrice,
+                                          }=this.state.payload
+
+                                          const lease=12;
+
+                                          const obj={
+                                            age:20,
+                                            basePrice:parseInt(basePrice),
                                             currency,
                                             communeId,
-                                            highestPrice,
-                                            maxGuests,
+                                            highestPrice:parseInt(highestPrice),
+                                            maxGuests:parseInt(maxGuests),
                                             lease,
                                             leaseType,
-                                            numBedrooms,
-                                            numBaths,
+                                            numBedrooms:parseInt(numBedrooms),
+                                            numBaths:parseInt(numBaths),
                                             lng,
                                             lat,
                                             address,
-                                            numDiningrooms,
-                                            numLivingrooms,
+                                            numDiningrooms:parseInt(numDiningrooms),
+                                            numLivingrooms:parseInt(numLivingrooms),
+                                            electricity,
+                                            electricity_frequency,
+                                            water_tank,
+                                            freeParkingOnPremises,
+                                            water_pipe,
+                                            income
+                                          }
+
+                                          console.log(JSON.stringify(obj));
+                                            
+                                          createHouse({variables:{
+                                            age:parseInt(age),
+                                            basePrice:parseInt(basePrice),
+                                            currency,
+                                            communeId,
+                                            highestPrice:parseInt(highestPrice),
+                                            maxGuests:parseInt(maxGuests),
+                                            lease,
+                                            leaseType,
+                                            numBedrooms:parseInt(numBedrooms),
+                                            numBaths:parseInt(numBaths),
+                                            lng,
+                                            lat,
+                                            address,
+                                            numDiningrooms:parseInt(numDiningrooms),
+                                            numLivingrooms:parseInt(numLivingrooms),
                                             electricity,
                                             electricity_frequency,
                                             water_tank,

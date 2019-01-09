@@ -98,7 +98,7 @@ export const NumberOfBedRooms=({handleChange})=>{
     return(
         <div className="add-house-card__form-group">
             <label className="add-house-card__label">Konbyen chanm a kouche kay la genyen</label>
-            <input name="numBedRooms" onChange={handleChange} className="add-house-card__input" type="number"/>
+            <input name="numBedrooms" onChange={handleChange} className="add-house-card__input" type="number"/>
         </div>
     )
 }
@@ -116,7 +116,7 @@ export const NumberOfDiningRooms=({handleChange})=>{
     return(
         <div className="add-house-card__form-group">
             <label className="add-house-card__label">Konbyen sal a manje kay la genyen?</label>
-            <input name="numDiningRooms" onChange={handleChange} className="add-house-card__input" type="number"/> 
+            <input name="numDiningrooms" onChange={handleChange} className="add-house-card__input" type="number"/> 
         </div>
     )
 }
@@ -124,7 +124,7 @@ export const NumberOfLivingRooms=({handleChange})=>{
     return(
         <div className="add-house-card__form-group">
             <label className="add-house-card__label">Konbyen salon kay la genyen?</label>
-            <input name="numLivingRooms" onChange={handleChange} className="add-house-card__input" type="number"/> 
+            <input name="numLivingrooms" onChange={handleChange} className="add-house-card__input" type="number"/> 
         </div>
     )
 }

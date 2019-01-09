@@ -6,6 +6,7 @@ import { graphql,compose,Mutation, renderToStringWithData } from 'react-apollo';
 import HouseIllustration from '../svg/houses-sunshine-green-pasture.svg';
 import Loading from './Loading';
 import notify from '../utils/notify';
+import { toast } from 'react-toastify';
 
 
 class SignInWithSocialMedia extends React.Component{
@@ -67,7 +68,9 @@ class SignInWithSocialMedia extends React.Component{
                 </div>
                 </div>
                 {(loading)?<Loading/>:""}
-            {(error)?this.notify("GEN ON TI ERE KI PASE. TESTE KONEKSYON ENTENET OU EPI REESEYE ON LOT MOMAN","error"):""}
+            {(error)?toast.error("GEN ON TI ERE KI PASE. TESTE KONEKSYON ENTENET OU EPI REESEYE ON LOT MOMAN",{
+                autoClose:2000
+            }):""}
             </div> 
             )}
             </Mutation>
