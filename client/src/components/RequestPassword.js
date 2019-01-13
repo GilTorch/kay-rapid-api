@@ -41,7 +41,9 @@ class RequestPassword extends React.Component{
                         e.preventDefault();
                         requestPasswordToken({variables:{email:this.state.email},
                             update:()=>{
-                                notify('AL SOU EMAIL OU METE A POU OU KA RESET MODPAS OU',"success");
+                                toast.success("PASSWORD OU RESET!",{
+                                    autoClose:2500
+                                })
                             }
                         })
                     }}

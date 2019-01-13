@@ -149,6 +149,14 @@ mutation login($email:String!,$password:String!) {
 // `
 
 export const HOUSE_CREATION=gql`
+  mutation createHouse($age:Int!,$maxGuests:Int!,$numBedrooms:Int!,$numBaths:Int!,$basePrice:Int!,$numLivingrooms:Int!,$numDiningrooms:Int!,$highestPrice:Int!,$income:Int!,$lease:Int!,$communeId:String, $currency:CURRENCY){
+    createHouse(age:$age,maxGuests:$maxGuests,numBedrooms:$mBedrooms,numBaths:$numBaths,basePrice:$basePrice,numLivingrooms:$numLivingrooms,numDiningrooms:$numDiningrooms,highestPrice:$highestPrice,income:$income,lease:$lease,communeId:$communeId,currency:$currency){
+      id
+    }
+  }
+`
+
+export const HOUSE_CREATION_2=gql`
   mutation createHouse(
     $area:Int,
     $age:Int!,
@@ -161,7 +169,7 @@ export const HOUSE_CREATION=gql`
     $numLivingrooms:Int!,
     $numDiningrooms:Int!,
     $highestPrice:Int!,
-    $currency:String,
+    $currency:CURRENCY,
     $income:Int!,
     $lat:Float,
     $lng:Float,

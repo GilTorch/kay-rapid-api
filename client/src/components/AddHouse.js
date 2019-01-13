@@ -3,6 +3,7 @@ import HeaderBar from './HeaderBar';
 import '../css/add-house.css';
 import { 
     Submit,
+    Age,
     HouseImages,Price,MaxGuests,WhenToPayHouse,NumberOfBedRooms,NumberOfBathrooms,NumberOfDiningRooms,NumberOfLivingRooms,
     Localisation,HouseCity,HouseAddress,Amenities,NextQuestion,PreviousQuestion 
 } from './AddHouseFormGroups';
@@ -26,29 +27,64 @@ const options=[
 ]
 
 const areRequired={
-    previewImage:false,
-    bedRoomImages:false,
-    livingRoomImages:false,
-    diningRoomImages:false,
-    bathRoomImages:false,
-    negotiable:false,
-    basePrice:false,
-    minPrice:false,
-    maxPrice:false,
-    maxGuests:false,
-    whenToPay:false,
-    numLivingrooms:false,
-    numberOfBedrooms:false,
-    numberOfBathrooms:false,
-    lng:false,
+    area:false,
+    age:true,
+    shortDescription:false,
+    description:false,
+    maxGuests:true,
+    numBedrooms:true,
+    numBaths:true,
+    basePrice:true,
+    numLivingrooms:true,
+    numDiningrooms:true,
+    highestPrice:true,
+    currency:false,
+    income:true,
     lat:false,
-    communeId:false,
+    lng:false,
     address:false,
+    communeId:false,
+    leaseType:false,
+    type:false,
+    residency:false,
+    lease:true,
     electricity:false,
     electricity_frequency:false,
-    water_tank:false,
     water_pipe:false,
-    parking:false
+    water_tank:false,
+    water_frequency:false,
+    elevator:false,
+    petsAllowed:false,
+    internet:false,
+    kitchen:false,
+    wirelessInternet:false,
+    familyKidFriendly:false,
+    freeParkingOnPremises:false,
+    hotTub:false,
+    pool:false,
+    smokingAllowed:false,
+    wheelchairAccessible:false,
+    cableTv:false,
+    suitableForEvents:false,
+    dryer:false,
+    washer:false,
+    indoorFireHouse:false,
+    tv:false,
+    hangers:false,
+    iron:false,
+    hairDryer:false,
+    doorman:false,
+    paidParkingOffPremises:false,
+    freeParkingOnStreet:false,
+    gym:false,
+    airConditioning:false,
+    shampoo:false,
+    essentials:false,
+    laptopFriendlyWorkspace:false,
+    privateEntrance:false,
+    buzzerWirelessIntercom:false,
+    bathtub:false,
+    crib:false 
 }
 
 class AddHouse extends Component{
@@ -61,32 +97,64 @@ class AddHouse extends Component{
         numberOfQuestions:0,
         cityLabel:null,
         payload:{
-            previewImage:null,
-            bedRoomImages:null,
-            livingRoomImages:null,
-            diningRoomImages:null,
-            bathRoomImages:null,
+            area:null,
             age:null,
-            communeId:null,
-            basePrice:null,
-            highestPrice:null,
-            currency:'USD',
-            communeId:null,
+            shortDescription:null,
+            description:null,
             maxGuests:null,
-            leaseType:null,
             numBedrooms:null,
             numBaths:null,
-            lng:null,
-            lat:null,
-            address:null,
-            numDiningrooms:null,
+            basePrice:null,
             numLivingrooms:null,
-            electricity:false,
-            electricity_frequency:false,
-            water_tank:false,
-            freeParkingOnPremises:false,
+            numDiningrooms:null,
+            highestPrice:null,
+            currency:"USD",
+            income:10,
+            lat:null,
+            lng:null,
+            address:null,
+            communeId:null,
+            leaseType:null,
+            type:null,
+            residency:null,
+            lease:null,
+            electricity:null,
+            electricity_frequency:null,
             water_pipe:false,
-            income:100
+            water_tank:false,
+            water_frequency:false,
+            elevator:false,
+            petsAllowed:false,
+            internet:false,
+            kitchen:false,
+            wirelessInternet:false,
+            familyKidFriendly:false,
+            freeParkingOnPremises:false,
+            hotTub:false,
+            pool:false,
+            smokingAllowed:false,
+            wheelchairAccessible:false,
+            cableTv:false,
+            suitableForEvents:false,
+            dryer:false,
+            washer:false,
+            indoorFireHouse:false,
+            tv:false,
+            hangers:false,
+            iron:false,
+            hairDryer:false,
+            doorman:false,
+            paidParkingOffPremises:false,
+            freeParkingOnStreet:false,
+            gym:false,
+            airConditioning:false,
+            shampoo:false,
+            essentials:false,
+            laptopFriendlyWorkspace:false,
+            privateEntrance:false,
+            buzzerWirelessIntercom:false,
+            bathtub:false,
+            crib:false
         }
     }
 
@@ -115,12 +183,31 @@ class AddHouse extends Component{
            value=event.target.files 
         }
 
-        this.setState({
-            payload:{
-                ...this.state.payload,
-                [name]: value,
-            }
-          });
+        if(event.name){
+            const value=event.name;
+            const name="communeId"
+            this.setState({
+                payload:{
+                    ...this.state.payload,
+                    [name]: value,
+                }
+              });
+        }
+
+        if(name!=="negotiable"){
+
+            this.setState({
+                payload:{
+                    ...this.state.payload,
+                    [name]: value,
+                }
+              });
+        }else{
+            this.setState({
+                negotiable:value
+            })
+        }
+        
       }
 
 
@@ -236,13 +323,17 @@ class AddHouse extends Component{
     handleSelect=(selectedOption)=>{
         const communeId=selectedOption.value;
         const cityLabel=selectedOption.name;
+
         this.setState({
-            cityLabel,
-            payload:{
-                ...this.state.payload,
-                communeId
-            }
-          });
+            cityLabel
+        });
+
+        const payload=this.state.payload 
+        payload["communeId"]=communeId
+
+        this.setState({
+            payload
+        })
     }
 
     onSubmit=(event)=>{
@@ -260,7 +351,7 @@ class AddHouse extends Component{
                   {(createHouse,{loading,error})=>(
                       <div>
                       {(loading)?<Loading/>:""}
-                      {(error)? toast.error('GEN ON ERE KI PASE. REESEYE YON LOT FWA',{
+                      {(error)?toast.error(error.toString(),{
                             autoClose:3000,
                             position:toast.POSITION.BOTTOM_CENTER
                       }):""}
@@ -272,90 +363,73 @@ class AddHouse extends Component{
                                       var txt;
                                       var r = window.confirm("Peze ok si ou dako anrejistre kay sa a. Osinon peze \"cancel\"");
                                       if (r == true) {
-                                        const {
+                                        let {
                                             age,
-                                            basePrice,
-                                            currency,
-                                            communeId,
-                                            highestPrice,
                                             maxGuests,
-                                            leaseType,
                                             numBedrooms,
                                             numBaths,
-                                            lng,
-                                            lat,
-                                            address,
-                                            numDiningrooms,
+                                            basePrice,
                                             numLivingrooms,
-                                            electricity,
-                                            electricity_frequency,
-                                            water_tank,
-                                            freeParkingOnPremises,
-                                            water_pipe,
-                                            income
+                                            numDiningrooms,
+                                            highestPrice,
+                                            income,
+                                            communeId,
+                                            currency
                                           }=this.state.payload
 
-                                          const lease=12;
+                                         
 
                                           const obj={
-                                            age:20,
-                                            basePrice:parseInt(basePrice),
-                                            currency,
+                                            age,
+                                            maxGuests,
+                                            numBedrooms,
+                                            numBaths,
+                                            basePrice,
+                                            numLivingrooms,
+                                            numDiningrooms,
+                                            highestPrice,
+                                            income,
                                             communeId,
-                                            highestPrice:parseInt(highestPrice),
-                                            maxGuests:parseInt(maxGuests),
                                             lease,
-                                            leaseType,
-                                            numBedrooms:parseInt(numBedrooms),
-                                            numBaths:parseInt(numBaths),
-                                            lng,
-                                            lat,
-                                            address,
-                                            numDiningrooms:parseInt(numDiningrooms),
-                                            numLivingrooms:parseInt(numLivingrooms),
-                                            electricity,
-                                            electricity_frequency,
-                                            water_tank,
-                                            freeParkingOnPremises,
-                                            water_pipe,
-                                            income
+                                            currency
                                           }
 
                                           console.log(JSON.stringify(obj));
-                                            
-                                          createHouse({variables:{
-                                            age:parseInt(age),
-                                            basePrice:parseInt(basePrice),
-                                            currency,
-                                            communeId,
-                                            highestPrice:parseInt(highestPrice),
-                                            maxGuests:parseInt(maxGuests),
-                                            lease,
-                                            leaseType,
-                                            numBedrooms:parseInt(numBedrooms),
-                                            numBaths:parseInt(numBaths),
-                                            lng,
-                                            lat,
-                                            address,
-                                            numDiningrooms:parseInt(numDiningrooms),
-                                            numLivingrooms:parseInt(numLivingrooms),
-                                            electricity,
-                                            electricity_frequency,
-                                            water_tank,
-                                            freeParkingOnPremises,
-                                            water_pipe,
-                                            income
-                                          },
-                                          update:()=>{
-                                              console.log('house has been added')
-                                          }
-                                        })
+
+                                            // age
+                                            // maxGuests
+                                            // numBedrooms
+                                            // numBaths
+                                            // basePrice
+                                            // numLivingrooms
+                                            // numDiningrooms
+                                            // highestPrice
+                                            // income
+
+                                            age=10;
+                                            maxGuests=11;
+                                            numBedrooms=12;
+                                            numBaths=13;
+                                            basePrice=1200;
+                                            numLivingrooms=14;
+                                            numDiningrooms=15;
+                                            highestPrice=2000;
+                                            income=10;
+                                            communeId="cjk5081nkqbic0b0";
+                                            currency="USD";
+                                            const lease=12;
+
+                                        
+                                          createHouse({variables:{age:age,maxGuests:maxGuests,numBedrooms:numBedrooms,numBaths:numBaths,basePrice:basePrice,numLivingrooms:numLivingrooms,numDiningrooms:numDiningrooms,highestPrice:highestPrice,income:income,communeId:communeId,lease:lease,currency:currency},
+                                          update:()=>{console.log('house has been added')}}
+                                            )
                                       } 
                                      
                                   }}>
                                       <HouseImages numberLimit={10} handleChange={this.handleChange}/>
+                                      <Age handleChange={this.handleChange}/>
                                       <Price 
-                                          negotiable={this.state.payload.negotiable} 
+                                          negotiable={this.state.negotiable} 
                                           toggleNegotiation={this.toggleNegotiation}
                                           handleChange={this.handleChange}
                                       />
@@ -366,7 +440,7 @@ class AddHouse extends Component{
                                       <NumberOfBedRooms handleChange={this.handleChange}/>
                                       <NumberOfBathrooms handleChange={this.handleChange}/>  
                                       <NumberOfLivingRooms handleChange={this.handleChange}/>  
-                                      <NumberOfDiningRooms handleChange={this.handleChange}/>  
+                                      <NumberOfDiningRooms handleChange={this.handleChange}/>
                                       <Localisation 
                                           longitude={this.state.payload.lng} 
                                           latitude={this.state.payload.lat}
@@ -376,7 +450,7 @@ class AddHouse extends Component{
                                           getCurrentPosition={this.getCurrentPosition}
                                       />
                                       <HouseCity value={this.state.cityLabel} options={options} handleChange={this.handleSelect}/>
-                                      <HouseAddress handleChange={this.handleSelect}/>
+                                      <HouseAddress handleChange={this.handleChange}/>
                                       <Amenities
                                           handleChange={this.handleChange}
                                       />

@@ -31,6 +31,15 @@ export const HouseImages=({numberLimit,handleChange})=>{
     )
 }
 
+export const Age=({handleChange})=>{
+    return(
+        <div className="add-house-card__form-group">
+           <label htmlFor="age" className="add-house-card__label">Bay laj kay la</label> 
+           <input className="add-house-card__input" type="number" name="age" onChange={handleChange}/>
+        </div>
+    )
+}
+
 
 export const Price=({negotiable,handleChange})=>{
 
@@ -268,3 +277,4 @@ export const PreviousQuestion=({currentQuestion,handlePreviousQuestion})=>{
         :""
     )
 }
+
