@@ -47,7 +47,6 @@ const areRequired={
     leaseType:false,
     type:false,
     residency:false,
-    lease:true,
     electricity:false,
     electricity_frequency:false,
     water_pipe:false,
@@ -117,12 +116,11 @@ class AddHouse extends Component{
             leaseType:null,
             type:null,
             residency:null,
-            lease:null,
             electricity:null,
-            electricity_frequency:null,
+            electricity_frequency:"NEVER",
             water_pipe:false,
             water_tank:false,
-            water_frequency:false,
+            water_frequency:"NEVER",
             elevator:false,
             petsAllowed:false,
             internet:false,
@@ -364,7 +362,10 @@ class AddHouse extends Component{
                                       var r = window.confirm("Peze ok si ou dako anrejistre kay sa a. Osinon peze \"cancel\"");
                                       if (r == true) {
                                         let {
+                                            area,
                                             age,
+                                            shortDescription,
+                                            description,
                                             maxGuests,
                                             numBedrooms,
                                             numBaths,
@@ -372,15 +373,73 @@ class AddHouse extends Component{
                                             numLivingrooms,
                                             numDiningrooms,
                                             highestPrice,
+                                            currency,
                                             income,
+                                            lat,
+                                            lng,
+                                            address,
                                             communeId,
-                                            currency
-                                          }=this.state.payload
+                                            leaseType,
+                                            type,
+                                            residency,
+                                            electricity,
+                                            electricity_frequency,
+                                            water_pipe,
+                                            water_tank,
+                                            water_frequency,
+                                            elevator,
+                                            petsAllowed,
+                                            internet,
+                                            kitchen,
+                                            wirelessInternet,
+                                            familyKidFriendly,
+                                            freeParkingOnPremises,
+                                            hotTub,
+                                            pool,
+                                            smokingAllowed,
+                                            wheelchairAccessible,
+                                            cableTv,
+                                            suitableForEvents,
+                                            dryer,
+                                            washer,
+                                            indoorFireHouse,
+                                            tv,
+                                            hangers,
+                                            iron,
+                                            hairDryer,
+                                            doorman,
+                                            paidParkingOffPremises,
+                                            freeParkingOnStreet,
+                                            gym,
+                                            airConditioning,
+                                            shampoo,
+                                            essentials,
+                                            laptopFriendlyWorkspace,
+                                            privateEntrance,
+                                            buzzerWirelessIntercom,
+                                            bathtub,
+                                            crib
+                                                                        }=this.state.payload
 
+                                          let lease=""
+                                          lng=parseFloat(lng)
+                                          lat=parseFloat(lat)
+
+                                          switch(leaseType){
+                                            case "YEARLY":
+                                                lease=12;
+                                                break;
+                                            case "MONTHLY":
+                                                lease=1;
+                                            break;
+                                          }
                                          
-
+                                        
                                           const obj={
+                                            area,
                                             age,
+                                            shortDescription,
+                                            description,
                                             maxGuests,
                                             numBedrooms,
                                             numBaths,
@@ -388,40 +447,126 @@ class AddHouse extends Component{
                                             numLivingrooms,
                                             numDiningrooms,
                                             highestPrice,
+                                            currency,
                                             income,
+                                            lat,
+                                            lng,
+                                            address,
                                             communeId,
+                                            leaseType,
+                                            type,
+                                            residency,
                                             lease,
-                                            currency
+                                            electricity,
+                                            electricity_frequency,
+                                            water_tank,
+                                            water_frequency,
+                                            elevator,
+                                            petsAllowed,
+                                            internet,
+                                            kitchen,
+                                            wirelessInternet,
+                                            familyKidFriendly,
+                                            freeParkingOnPremises,
+                                            hotTub,
+                                            pool,
+                                            smokingAllowed,
+                                            wheelchairAccessible,
+                                            cableTv,
+                                            suitableForEvents,
+                                            dryer,
+                                            washer,
+                                            indoorFireHouse,
+                                            tv,
+                                            hangers,
+                                            iron,
+                                            hairDryer,
+                                            doorman,
+                                            paidParkingOffPremises,
+                                            freeParkingOnStreet,
+                                            gym,
+                                            airConditioning,
+                                            shampoo,
+                                            essentials,
+                                            laptopFriendlyWorkspace,
+                                            privateEntrance,
+                                            buzzerWirelessIntercom,
+                                            bathtub,
+                                            crib
                                           }
 
                                           console.log(JSON.stringify(obj));
 
-                                            // age
-                                            // maxGuests
-                                            // numBedrooms
-                                            // numBaths
-                                            // basePrice
-                                            // numLivingrooms
-                                            // numDiningrooms
-                                            // highestPrice
-                                            // income
-
-                                            age=10;
-                                            maxGuests=11;
-                                            numBedrooms=12;
-                                            numBaths=13;
-                                            basePrice=1200;
-                                            numLivingrooms=14;
-                                            numDiningrooms=15;
-                                            highestPrice=2000;
-                                            income=10;
-                                            communeId="cjk5081nkqbic0b0";
-                                            currency="USD";
-                                            const lease=12;
-
+                                          
                                         
-                                          createHouse({variables:{age:age,maxGuests:maxGuests,numBedrooms:numBedrooms,numBaths:numBaths,basePrice:basePrice,numLivingrooms:numLivingrooms,numDiningrooms:numDiningrooms,highestPrice:highestPrice,income:income,communeId:communeId,lease:lease,currency:currency},
-                                          update:()=>{console.log('house has been added')}}
+                                          createHouse({variables:{
+                                            area,
+                                            age,
+                                            shortDescription,
+                                            description,
+                                            maxGuests,
+                                            numBedrooms,
+                                            numBaths,
+                                            basePrice,
+                                            numLivingrooms,
+                                            numDiningrooms,
+                                            highestPrice,
+                                            currency,
+                                            income,
+                                            lat,
+                                            lng,
+                                            address,
+                                            communeId,
+                                            leaseType,
+                                            type,
+                                            residency,
+                                            lease,
+                                            electricity,
+                                            electricity_frequency,
+                                            water_pipe,
+                                            water_tank,
+                                            water_frequency,
+                                            elevator,
+                                            petsAllowed,
+                                            internet,
+                                            kitchen,
+                                            wirelessInternet,
+                                            familyKidFriendly,
+                                            freeParkingOnPremises,
+                                            hotTub,
+                                            pool,
+                                            smokingAllowed,
+                                            wheelchairAccessible,
+                                            cableTv,
+                                            suitableForEvents,
+                                            dryer,
+                                            washer,
+                                            indoorFireHouse,
+                                            tv,
+                                            hangers,
+                                            iron,
+                                            hairDryer,
+                                            doorman,
+                                            paidParkingOffPremises,
+                                            freeParkingOnStreet,
+                                            gym,
+                                            airConditioning,
+                                            shampoo,
+                                            essentials,
+                                            laptopFriendlyWorkspace,
+                                            privateEntrance,
+                                            buzzerWirelessIntercom,
+                                            bathtub,
+                                            crib
+                                            },
+                                          update:()=>{
+                                              toast.success("KAY OU A AJOUTE SAN PWOBLEM.",{
+                                              autoClose:1500
+                                          });
+                                          this.props.history.push("/profile")
+                                        }
+                                        }
+
                                             )
                                       } 
                                      

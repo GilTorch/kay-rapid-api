@@ -148,15 +148,15 @@ mutation login($email:String!,$password:String!) {
 //   }
 // `
 
-export const HOUSE_CREATION=gql`
+export const HOUSE_CREATION_2=gql`
   mutation createHouse($age:Int!,$maxGuests:Int!,$numBedrooms:Int!,$numBaths:Int!,$basePrice:Int!,$numLivingrooms:Int!,$numDiningrooms:Int!,$highestPrice:Int!,$income:Int!,$lease:Int!,$communeId:String, $currency:CURRENCY){
-    createHouse(age:$age,maxGuests:$maxGuests,numBedrooms:$mBedrooms,numBaths:$numBaths,basePrice:$basePrice,numLivingrooms:$numLivingrooms,numDiningrooms:$numDiningrooms,highestPrice:$highestPrice,income:$income,lease:$lease,communeId:$communeId,currency:$currency){
+    createHouse(age:$age,maxGuests:$maxGuests,numBedrooms:$numBedrooms,numBaths:$numBaths,basePrice:$basePrice,numLivingrooms:$numLivingrooms,numDiningrooms:$numDiningrooms,highestPrice:$highestPrice,income:$income,lease:$lease,communeId:$communeId,currency:$currency){
       id
     }
   }
 `
 
-export const HOUSE_CREATION_2=gql`
+export const HOUSE_CREATION=gql`
   mutation createHouse(
     $area:Int,
     $age:Int!,
@@ -175,15 +175,15 @@ export const HOUSE_CREATION_2=gql`
     $lng:Float,
     $address:String,
     $communeId:String,
-    $leaseType:String,
-    $type:String,
-    $residency:String,
+    $leaseType:HOUSE_LEASE_TYPE,
+    $type:HOUSE_TYPES,
+    $residency:House_RESIDENCY,
     $lease:Int!,
     $electricity:Boolean,
-    $electricity_frequency:String,
+    $electricity_frequency:FREQUENCY,
     $water_pipe:Boolean,
     $water_tank:Boolean,
-    $water_frequency:String,
+    $water_frequency:FREQUENCY,
     $elevator:Boolean,
     $petsAllowed:Boolean,
     $internet:Boolean,
@@ -243,12 +243,13 @@ export const HOUSE_CREATION_2=gql`
     water_tank:$water_tank,
     water_frequency:$water_frequency,
     elevator:$elevator,
-    petAllowed:$petsAllowed,
+    petsAllowed:$petsAllowed,
     internet:$internet,
     kitchen:$kitchen,
     wirelessInternet:$wirelessInternet,
     familyKidFriendly:$familyKidFriendly,
     freeParkingOnPremises:$freeParkingOnPremises,
+    freeParkingOnStreet:$freeParkingOnStreet,
     hotTub:$hotTub,
     pool:$pool,
     smokingAllowed:$smokingAllowed,
@@ -257,14 +258,13 @@ export const HOUSE_CREATION_2=gql`
     suitableForEvents:$suitableForEvents,
     dryer:$dryer,
     washer:$washer,
-    indoor:$indoorFireHouse,
+    indoorFireHouse:$indoorFireHouse,
     tv:$tv,
     hangers:$hangers,
     iron:$iron,
     hairDryer:$hairDryer,
     doorman:$doorman,
     paidParkingOffPremises:$paidParkingOffPremises,
-    freeParkingOnPremises:$freeParkingOnStreet,
     gym:$gym,
     airConditioning:$airConditioning,
     shampoo:$shampoo,
