@@ -215,7 +215,9 @@ export const HOUSE_CREATION=gql`
     $privateEntrance:Boolean,
     $buzzerWirelessIntercom:Boolean,
     $bathtub:Boolean,
-    $crib:Boolean){
+    $crib:Boolean
+    $rooms:[RoomCreateWithoutHouseInput]
+    ){
     createHouse(
     area:$area,
     age:$age,
@@ -273,8 +275,16 @@ export const HOUSE_CREATION=gql`
     privateEntrance:$privateEntrance,
     buzzerWirelessIntercom:$buzzerWirelessIntercom,
     bathtub:$bathtub,
+    rooms:$rooms
     crib:$crib){
-      id
+      id,
+      rooms {
+      id,
+      label,
+      picture_previews{
+      	url
+      }
+    }
       
     }
   }

@@ -36,7 +36,7 @@ class HouseImage extends React.Component {
             />
             {selected?
             <label className="checkbox-container add-house-card__house-image-checkbox">
-                    <input type="checkbox" checked/>
+                    <input type="checkbox" checked readOnly/>
                     <span className="checkmark"></span>
             </label>:""}
             </div>

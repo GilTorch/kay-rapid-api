@@ -7,7 +7,10 @@ import {
     HouseImages,Price,MaxGuests,WhenToPayHouse,NumberOfBedRooms,NumberOfBathrooms,NumberOfDiningRooms,NumberOfLivingRooms,
     Localisation,HouseCity,HouseAddress,Amenities,NextQuestion,PreviousQuestion 
 } from './AddHouseFormGroups';
+
 import notify from '../utils/notify';
+import uploadImageToFileServer from '../utils/uploadImageToFileServer';
+
 import { toast } from 'react-toastify';
 
 import { Mutation } from 'react-apollo';
@@ -28,18 +31,18 @@ const options=[
 
 const areRequired={
     area:false,
-    age:true,
+    age:false,
     shortDescription:false,
     description:false,
-    maxGuests:true,
-    numBedrooms:true,
-    numBaths:true,
-    basePrice:true,
-    numLivingrooms:true,
-    numDiningrooms:true,
-    highestPrice:true,
+    maxGuests:false,
+    numBedrooms:false,
+    numBaths:false,
+    basePrice:false,
+    numLivingrooms:false,
+    numDiningrooms:false,
+    highestPrice:false,
     currency:false,
-    income:true,
+    income:false,
     lat:false,
     lng:false,
     address:false,
@@ -84,6 +87,18 @@ const areRequired={
     buzzerWirelessIntercom:false,
     bathtub:false,
     crib:false 
+}
+
+let realHouseImagesLinks={
+    "DINIGROOM":[],
+    "LIVINGROOM":[],
+    "BEDROOM":[],
+    "BATHROOM":[]
+}
+
+function getImagesUrl(label,response){
+    realHouseImagesLinks[label].push(response.secure_url)
+    return realHouseImagesLinks
 }
 
 class AddHouse extends Component{
@@ -152,7 +167,8 @@ class AddHouse extends Component{
             privateEntrance:false,
             buzzerWirelessIntercom:false,
             bathtub:false,
-            crib:false
+            crib:false,
+            rooms:null
         }
     }
 
@@ -343,7 +359,7 @@ class AddHouse extends Component{
     render(){
 
         const { currentQuestion,numberOfQuestions }=this.state;      
-    
+       
             return (
                 <Mutation mutation={HOUSE_CREATION}>
                   {(createHouse,{loading,error})=>(
@@ -356,7 +372,7 @@ class AddHouse extends Component{
                       <HeaderBar title="Ajoute Kay Ou" hasBack={true}/>
                           <div className="card add-house-screen">
                               <div className="add-house-card">
-                                  <form onSubmit={(e)=>{
+                                  <form onSubmit={async (e)=>{
                                       e.preventDefault();
                                       var txt;
                                       var r = window.confirm("Peze ok si ou dako anrejistre kay sa a. Osinon peze \"cancel\"");
@@ -418,9 +434,54 @@ class AddHouse extends Component{
                                             privateEntrance,
                                             buzzerWirelessIntercom,
                                             bathtub,
-                                            crib
+                                            crib,bedRoomImages,
+                                            diningRoomImages,
+                                            livingRoomImages,
+                                            bathRoomImages
                                                                         }=this.state.payload
+                                                                            
+                                       
 
+                                        if(bedRoomImages!==null){
+                                            await uploadImageToFileServer(bedRoomImages,"BEDROOM",getImagesUrl);
+                                        }
+
+                                        if(diningRoomImages!==null)
+                                        {
+                                            await uploadImageToFileServer(livingRoomImages,"LIVINGROOM",getImagesUrl);
+                                        }  
+
+                                        if(diningRoomImages!==null)
+                                        {
+                                            await uploadImageToFileServer(diningRoomImages,"DINIGROOM",getImagesUrl);
+                                        }
+
+                                        if(bathRoomImages!==null)
+                                        {
+                                            await uploadImageToFileServer(bathRoomImages,"BATHROOM",getImagesUrl)
+                                        }
+
+                                        // let rooms=[];
+
+                                        // for(var roomLabel in realHouseImagesLinks){
+                                        //     let temp={}
+                                        //     temp[label]=roomLabel
+                                        //     temp[picturePreviews]={}
+                                        //     temp[picturePreviews]["create"]=[]
+                                        //     temp[picturePreviews]["create"].push
+                                        // }
+
+                                        
+                                         console.log(JSON.stringify("REAL HOUSE IMAGES"+JSON.stringify(realHouseImagesLinks)))
+                                         
+                                        //  rooms:[{
+                                        //     label:LIVINGROOM,
+                                        //     picture_previews:{
+                                        //       create:[{url:"asdfsadf.png"},{url:"qwerty.png"}],
+                                        //       connect:null
+                                        //     },
+                                        //     video_previews:null
+                                        //   }]  
                                           let lease=""
                                           lng=parseFloat(lng)
                                           lat=parseFloat(lat)

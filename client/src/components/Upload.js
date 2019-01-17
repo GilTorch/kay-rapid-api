@@ -28,7 +28,7 @@ class Upload extends React.Component {
 
     let { images }=this.state;
 
-
+    
     for(var i=0;i<numberOfImagesSelected;i++){
         images.push(URL.createObjectURL(new Blob([event.target.files[i]],{type:"application/zip"})))
     }
