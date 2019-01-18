@@ -474,15 +474,26 @@ class AddHouse extends Component{
                                             await uploadImageToFileServer(bathRoomImages,"BATHROOM",getImagesUrl)
                                         }
 
-                                        // let rooms=[];
+                                        let rooms=[];
 
-                                        // for(var roomLabel in realHouseImagesLinks){
-                                        //     let temp={}
-                                        //     temp[label]=roomLabel
-                                        //     temp[picturePreviews]={}
-                                        //     temp[picturePreviews]["create"]=[]
-                                        //     temp[picturePreviews]["create"].push
-                                        // }
+                                        for(var roomLabel in realHouseImagesLinks){
+                                            let temp={};
+                                            temp["label"]=roomLabel;
+                                            temp["picture_previews"]={};
+                                            temp["picture_previews"]["create"]=[];
+                                            temp["picture_previews"]["connect"]=null;
+                                            //
+                                            let images=realHouseImagesLinks[roomLabel]
+                                            images.forEach((image)=>{
+                                                let imgObj={}
+                                                imgObj["url"]=image 
+                                                temp["picture_previews"]["create"].push(imgObj)
+                                            })
+
+                                            
+                                            temp["video_previews"]=null;
+                                            rooms.push(temp);
+                                        }
 
                                         
                                          console.log(JSON.stringify("REAL HOUSE IMAGES"+JSON.stringify(realHouseImagesLinks)))
@@ -631,7 +642,8 @@ class AddHouse extends Component{
                                             privateEntrance,
                                             buzzerWirelessIntercom,
                                             bathtub,
-                                            crib
+                                            crib,
+                                            rooms
                                             },
                                           update:()=>{
                                               toast.success("KAY OU A AJOUTE SAN PWOBLEM.",{
