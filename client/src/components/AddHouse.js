@@ -187,39 +187,52 @@ class AddHouse extends Component{
        })
     }
 
-    handleChange=(event)=>{
+    handleChange=(event,roomLabelImageName)=>{
         let value="";
-        const name=event.target.name;
-        if(!event.target.files){
-            const target = event.target;
-            value = target.type === 'checkbox' ? target.checked : target.value;
+        let name="";
+        if(!Array.isArray(event)){
+            name=event.target.name || "communeId";
+
+            if(name=="communeId"){
+                value=event.name;
+            }else{
+                value = event.target.type === 'checkbox' ? event.target.checked : event.target.value;
+            }
+
+            if(name!=="negotiable"){
+
+                this.setState({
+                    payload:{
+                        ...this.state.payload,
+                        [name]: value,
+                    }
+                  });
+            }else{
+                this.setState({
+                    negotiable:value
+                })
+            }
+
+            // if(event.name){
+            //     const value=event.name;
+            //     const name="communeId"
+            //     this.setState({
+            //         payload:{
+            //             ...this.state.payload,
+            //             [name]: value,
+            //         }
+            //       });
+            // }     
+
         }else{
-           value=event.target.files 
-        }
-
-        if(event.name){
-            const value=event.name;
-            const name="communeId"
-            this.setState({
-                payload:{
-                    ...this.state.payload,
-                    [name]: value,
-                }
-              });
-        }
-
-        if(name!=="negotiable"){
-
-            this.setState({
-                payload:{
-                    ...this.state.payload,
-                    [name]: value,
-                }
-              });
-        }else{
-            this.setState({
-                negotiable:value
-            })
+            value=event
+            // name=event.target.name
+           this.setState({
+               payload:{
+                   ...this.state.payload,
+                   [roomLabelImageName]:value
+               }
+           })
         }
         
       }

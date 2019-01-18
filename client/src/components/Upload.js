@@ -9,6 +9,7 @@ class Upload extends React.Component {
     this.state = {
       numberOfImagesAllowed:0,
       images:[],
+      eventsForExport:[]
     }
     this.handleChange = this.handleChange.bind(this)
     this.handleRemove=this.handleRemove.bind(this)
@@ -21,6 +22,13 @@ class Upload extends React.Component {
     })
   }
 
+// componentDidUpdate(prevState,nextState){
+
+//     let { eventsForExport }=nextState;
+//     this.props.handleImage(eventsForExport);
+
+// }
+
   handleChange(event) {
 
     let numberOfImagesSelected=event.target.files.length;
@@ -28,16 +36,21 @@ class Upload extends React.Component {
 
     let { images }=this.state;
 
+    let { eventsForExport }=this.state;
+
+    const that=this;
     
     for(var i=0;i<numberOfImagesSelected;i++){
+        eventsForExport.push(event.target.files[i])
         images.push(URL.createObjectURL(new Blob([event.target.files[i]],{type:"application/zip"})))
     }
     this.setState({
-        images
+        images,
+        eventsForExport
     })
 
     if(this.props.handleImage){
-        this.props.handleImage(event);
+        this.props.handleImage(eventsForExport,that.props.name);
     }
   }
 
@@ -52,10 +65,13 @@ class Upload extends React.Component {
 
 
   render() {
-    const {images,numberOfImagesAllowed}=this.state; 
+    
+    const {images,numberOfImagesAllowed,eventsForExport}=this.state; 
     let  imagesTags=images.map((file,index)=>{
         return <HouseImage url={file} key={index} removePhoto={this.handleRemove}/>
     })
+
+
     return (
       <div>
             <div className="house-images-container">
