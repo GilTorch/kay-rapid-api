@@ -31,9 +31,9 @@ class AccountCreation extends React.Component{
             }
         }
 
-        handleChange(event) {
+        handleChange(event,name) {
 
-            if(!event.target.files){
+            if(!Array.isArray(event)){
             const target = event.target;
             const value = target.type === 'checkbox' ? target.checked : target.value;
             const name = target.name;
@@ -58,10 +58,10 @@ class AccountCreation extends React.Component{
 
            }else{
 
-            const profilePictureIsLoaded=event.target.files.length>0 ? true : false;
+            const profilePictureIsLoaded=event.length>0 ? true : false;
 
             this.setState({
-                profilePicture:event.target.files[0],
+                profilePicture:event[0],
                 profilePictureIsLoaded
             })
             const { email,password,firstName,lastName,phone1 }=this.state;
@@ -102,10 +102,19 @@ class AccountCreation extends React.Component{
                             this.setState({
                                 isFetchingFromCloudinary
                             })
-                            const res=await fetch("https://api.cloudinary.com/v1_1/dejyp5iex/image/upload",{
+                            let res=null;
+                            try {
+                            res=await fetch("https://api.cloudinary.com/v1_1/dejyp5iex/image/upload",{
                             method:'POST',
                             body:data
-                            })
+                            });
+                            }catch(error){
+                                this.setState({
+                                    isFetchingFromCloudinary:'error'
+                                })
+                                    return;
+                            }
+                            
                             isFetchingFromCloudinary=false;
                             this.setState({
                                 isFetchingFromCloudinary
@@ -141,11 +150,11 @@ class AccountCreation extends React.Component{
                             }
                         }}                    
                         className="account-creation-screen__form">
-                            {(loading || this.state.isFetchingFromCloudinary)?<Loading/>:""}
-                            {(error)?notify('GEN ON EREU ANPECHE NOU KREYE KONT OU A. REESEYE YON LOT FWA.',"error"):""} 
+                            {(loading || (this.state.isFetchingFromCloudinary!=='error' && this.state.isFetchingFromCloudinary==true))?<Loading/>:""}
+                            {(error || this.state.isFetchingFromCloudinary==='error')?notify('GEN ON EREU ANPECHE NOU KREYE KONT OU A. REESEYE YON LOT FWA.',"error"):""} 
                             <div className="account-creation-screen__form-group">
                                 <label className="account-creation-screen__label">Foto Pwofil</label>
-                                <Upload numberOfImagesAllowed={1} handleImage={(event)=>{this.handleChange(event)}} />
+                                <Upload name="profilePicture" numberOfImagesAllowed={1} handleImage={(event,name)=>{this.handleChange(event,name)}} />
                             </div>
                             <div className="account-creation-screen__form-group">
                                 <label className="account-creation-screen__label">Non</label>
