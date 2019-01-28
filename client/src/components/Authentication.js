@@ -11,7 +11,7 @@ class Authentication extends React.Component{
         return(
         <div className="card signin-card">
             <div className="signin-card__wrapper">
-                <p>Konekte kounya pou ou ka genyen yon pi bon eksperyans.</p>
+                <p className="signin-card__message">Konekte kounya pou ou ka genyen yon pi bon eksperyans.</p>
                 <Link to="/authentication/sign-in-with-social-media">                                                    
                     <button className="auth-button success-button">KONEKTE</button>
                 </Link>

@@ -1,0 +1,137 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Profile/> renders correctly 1`] = `
+<div>
+  <header
+    className="header-bar"
+  >
+    
+    <h1>
+      Pwofil Ou
+    </h1>
+  </header>
+  <nav
+    className="navigation-bar"
+  >
+    <a
+      href="/"
+      onClick={[Function]}
+    >
+      <button
+        className="navigation-button"
+      >
+        <img
+          src="home-icon.svg"
+        />
+        <span
+          className="navigation-button__title"
+        >
+          Akey
+        </span>
+      </button>
+    </a>
+    <a
+      href="/favorites"
+      onClick={[Function]}
+    >
+      <button
+        className="navigation-button"
+      >
+        <img
+          src="favorites-icon.svg"
+        />
+        <span
+          className="navigation-button__title"
+        >
+          Favori
+        </span>
+      </button>
+    </a>
+    <a
+      href="/profile"
+      onClick={[Function]}
+    >
+      <button
+        className="profile-icon--hightlighted navigation-button--highlighted"
+      >
+        <img
+          src="profile-icon-highlighted.svg"
+        />
+        <span
+          className="navigation-button__title"
+        >
+          Pwofil
+        </span>
+      </button>
+    </a>
+  </nav>
+</div>
+`;
+
+exports[`renders correctly 1`] = `
+<div>
+  <header
+    className="header-bar"
+  >
+    
+    <h1>
+      Pwofil Ou
+    </h1>
+  </header>
+  <nav
+    className="navigation-bar"
+  >
+    <a
+      href="/"
+      onClick={[Function]}
+    >
+      <button
+        className="navigation-button"
+      >
+        <img
+          src="home-icon.svg"
+        />
+        <span
+          className="navigation-button__title"
+        >
+          Akey
+        </span>
+      </button>
+    </a>
+    <a
+      href="/favorites"
+      onClick={[Function]}
+    >
+      <button
+        className="navigation-button"
+      >
+        <img
+          src="favorites-icon.svg"
+        />
+        <span
+          className="navigation-button__title"
+        >
+          Favori
+        </span>
+      </button>
+    </a>
+    <a
+      href="/profile"
+      onClick={[Function]}
+    >
+      <button
+        className="profile-icon--hightlighted navigation-button--highlighted"
+      >
+        <img
+          src="profile-icon-highlighted.svg"
+        />
+        <span
+          className="navigation-button__title"
+        >
+          Pwofil
+        </span>
+      </button>
+    </a>
+  </nav>
+</div>
+`;

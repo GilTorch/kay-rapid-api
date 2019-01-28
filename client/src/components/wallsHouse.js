@@ -1,10 +1,13 @@
 import React from 'react';
 import HouseCard from './HouseCard';
+import Navigation from '../components/Navigation';
+import HeaderBar from './HeaderBar';
 
 class CardHouses extends React.Component {
     render() {
         return (
-            <div>
+            <div className="search-results">
+                <HeaderBar title="Rezilta Rechech Ou Yo" hasBack={true}/>
                 <HouseCard
                     liked={true} 
                     previewImage="https://bit.ly/2zoDdGA" ownerName="Gilbert" 
@@ -40,20 +43,6 @@ class CardHouses extends React.Component {
    
     }
    
-
-
-const houseinfo = {
-    image:"https://images.unsplash.com/photo-1524082983062-21c24967d6c9?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=0a1532b84f66efdf63f7af7b1f0493f5&auto=format&fit=crop&w=1458&q=80/&text=slide1",
-    PrixHouseUs: "3500 US /an",
-    Address: "Fermath",
-    Description: "4 chanm a kouche, 1 salon, 2 twalet",
-    ProfilePropriete : {
-        NomPropriete: "Jean Jacques"
-    }
-   
-}
-  
-
 
 
 export default CardHouses;

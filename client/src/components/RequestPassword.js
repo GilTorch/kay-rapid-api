@@ -41,7 +41,7 @@ class RequestPassword extends React.Component{
                         e.preventDefault();
                         requestPasswordToken({variables:{email:this.state.email},
                             update:()=>{
-                                toast.success("PASSWORD OU RESET!",{
+                                toast.success("VERIFYE IMEL OU.",{
                                     autoClose:2500
                                 })
                             }
