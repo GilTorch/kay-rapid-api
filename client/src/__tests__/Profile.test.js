@@ -6,65 +6,90 @@ import renderer from 'react-test-renderer';
 import { MemoryRouter } from 'react-router-dom'
 import { MockedProvider } from 'react-apollo/test-utils';
 import { READ_AUTH_INFO } from '../queries/queries';
-import { shallow,mount } from 'enzyme';
+import { shallow,mount,render } from 'enzyme';
+import  wait  from 'waait';
 
-describe('<Profile/>',()=>{
+const userAuthInfo={
+    email: "alimao@hotmail.com",
+    firstName: "Ulysse",
+    lastName: "Alimao",
+    profilePicture: "https://res.cloudinary.com/dejyp5iex/image/upload/v1545577847/lakayou/d8cdjno6gagzy78ctww8.jpg",
+    token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJj"
+}
 
-    const wait = (time = 0) => new Promise(res => setTimeout(res, time));
-    const executeMockProviderTestCase = (wrapperInstance) => {
-        return wait(100).then(() => wrapperInstance.update());
-    }
+const userAuthInfo1={
+    email:null,
+    firstName:null,
+    lastName:null,
+    profilePicture:null,
+    token:null
+}
 
-    const mocks = [
-        {
-          request: {
-            query: READ_AUTH_INFO,
-          },
-          result: {
-            data: {
-                userAuthInfo:{email:null,firstName:null,lastName:null,profilePicture:null,token:null},
-            },
-          },
+
+const mocks = [
+    {
+      request: {
+        query: READ_AUTH_INFO,
+      },
+      result: {
+        data: {
+            userAuthInfo:{...userAuthInfo}
         },
-      ];
-    
-    
-    it('renders correctly', () => {
-        const wrapper=mount(
-        <MockedProvider mocks={mocks} addTypeName={false} >
-            <Profile />
-        </MockedProvider>
-        )
-    //   const tree = renderer
-    //     .create(
-    //         <MemoryRouter  initialEntries={['/profile']}>
-    //             <MockedProvider mocks={mocks} addTypeName={false} >
-    //                 <Profile />
-    //             </MockedProvider>
-    //         </MemoryRouter>
-    //     )
-    //     .toJSON();
-      expect(wrapper).toBeDefined;
-    });
-    
-    it('renders a <Authentication/> component when user is not logged in',()=>{
-//         const wrapper = shallow(
-//             <MemoryRouter  initialEntries={['/profile']}>            
-//                 <MockedProvider mocks={mocks} addTypeName={false} >
-//                     <Profile userAuthInfo={{email:null,firstName:null,lastName:null,profilePicture:null,token:null}}
-//  />
-//                 </MockedProvider>
-//             </MemoryRouter>
-//         )
-//         return executeMockProviderTestCase(wrapper).then(() => {
-//             expect(wrapper.find(".signin-card").length).toEqual(1);
-//           });
-        expect(1).toEqual(1)
-    })
-    
-    
-})
-// userAuthInfo={{__typename:"UserAuthInfo",email:null,firstName:null,lastName:null,profilePicture:null,token:null}}
+      },
+    },
+  ];
 
+  const mocks1= [
+    {
+      request: {
+        query: READ_AUTH_INFO,
+      },
+      result: {
+        data: {
+            userAuthInfo:{...userAuthInfo1}
+        },
+      },
+    },
+  ];
+  
+  it('renders without error', () => {
+    const wrapper=shallow(
+      <MockedProvider mocks={mocks} addTypename={false}>
+        <Profile />
+      </MockedProvider>,
+    );
 
-// si user auth info null li render
+    expect(wrapper).toBeDefined()
+  });
+
+  it('renders <Authentication/> when cache has no data about the user',async ()=>{
+    const wrapper=mount(
+        <MockedProvider mocks={mocks1} addTypename={false}>
+            <MemoryRouter>
+                <Profile />
+            </MemoryRouter>
+        </MockedProvider>,
+      );
+
+    //   const userInfoWrapper=shallow(<Authentication/>)
+
+        await wait(0)
+
+      expect(wrapper.update().find(Authentication)).toHaveLength(1)
+  })
+
+  it('renders <UserInfo/> when cache has data about the user',async ()=>{
+    const wrapper=mount(
+        <MockedProvider mocks={mocks} addTypename={false}>
+            <MemoryRouter>
+                <Profile />
+            </MemoryRouter>
+        </MockedProvider>,
+      );
+
+    //   const userInfoWrapper=shallow(<Authentication/>)
+
+        await wait(0)
+
+      expect(wrapper.update().find(UserInfo)).toHaveLength(1)
+  })
