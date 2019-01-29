@@ -3,7 +3,7 @@ import HouseCard from './HouseCard';
 import Navigation from '../components/Navigation';
 import HeaderBar from './HeaderBar';
 
-class CardHouses extends React.Component {
+class WallHouse extends React.Component {
     render() {
         return (
             <div className="search-results">
@@ -45,4 +45,4 @@ class CardHouses extends React.Component {
    
 
 
-export default CardHouses;
+export default WallHouse;

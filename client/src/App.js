@@ -15,9 +15,9 @@ import AccountCreation from './components/AccountCreation';
 import Profile from './page/Profile';
 import Favorites from './page/Favorites';
 import Home  from './page/Home';
-import UserInfo from './components/UserInfo';
+
 import AddHouse from './components/AddHouse';
-import wallsHouse from './components/wallsHouse';
+import WallHouse from './components/WallHouse';
 import RequestPassword from './components/RequestPassword';
 
 import "./css/normalize.css";
@@ -62,7 +62,7 @@ class App extends Component {
               <Route exact={true} path="/authentication/sign-in-without-social-media" component={SignInWithoutSocialMedia}/>
               <Route exact={true} path="/authentication/account-creation" component={AccountCreation}/>
               <Route exact={true} path="/add-house" component={AddHouse}/>
-              <Route exact={true} path="/walls-house" component={wallsHouse}/>
+              <Route exact={true} path="/walls-house" component={WallHouse}/>
               <Route exact={true} path="/authentication/sign-in-without-social-media/forgot-password" component={RequestPassword}/>
               <Route exact={true} path="/authentication/sign-in-without-social-media/forgot-password-redirection" component={RequestPasswordRedirection}/>
             </React.Fragment>

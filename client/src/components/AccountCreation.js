@@ -176,7 +176,7 @@ class AccountCreation extends React.Component{
                                 <input name="passwordConfirmation" placeholder="Konfime modpas ou fenk mete a " onChange={this.handleChange} type="password" className="account-creation-screen__input" required/></div>
                                 {!this.state.passwordsAreEqual?<p style={{color:"red"}}>Ou dwe ekri menm modpas la nan tou 2 chan yo.</p>:""}
                             <div className="account-creation-screen__form-group">
-                                <button className="auth-button success-button" type="submit">KREYE KONT LAN</button>
+                                <button id="create-account-button" className="auth-button success-button" type="submit">KREYE KONT LAN</button>
                             </div>
                         </form>
                     </div>)       
