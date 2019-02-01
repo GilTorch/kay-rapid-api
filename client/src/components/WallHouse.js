@@ -3,6 +3,7 @@ import HouseCard from './HouseCard';
 import Navigation from '../components/Navigation';
 import HeaderBar from './HeaderBar';
 
+
 class WallHouse extends React.Component {
     render() {
         return (
