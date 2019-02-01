@@ -1,5 +1,30 @@
 import gql from "graphql-tag";
 
+export const ALL_HOUSES_QUERY=gql`
+  query {
+    Houses{
+      id 
+      host{
+        id 
+        firstName
+        lastName
+        phone1 
+      }
+      numBedrooms
+      numBaths 
+      numDiningrooms 
+      pricing{
+        highestPrice 
+        currency
+      }
+      leaseType 
+      location{
+        address
+      }
+    }
+  }
+`
+
 export const ACCOUNT_CREATION = gql`
 mutation signup($email:String!,$password:String!,$firstName:String!,$lastName:String!,$phone1:String!,$profilePicture:String!){
   signup(email:$email,password:$password,firstName:$firstName,lastName:$lastName,phone1:$phone1,profilePicture:$profilePicture){
