@@ -16,7 +16,23 @@ const WallHouse=()=>(
         if(loading) return <Loading/>;
         if(error) return `Error: ${error.message}`;
         return(
-            <p>{console.log(JSON.stringify(data))}</p>
+            <React.Fragment>
+            <HeaderBar title="Rezilta Rechech Ou Yo" hasBack={true}/>
+            {data.Houses.map((house,index)=>{
+                return( 
+                <HouseCard key={index} 
+                    ownerName={house.host.firstName+" "+house.host.lastName}
+                    price={house.pricing.highestPrice}
+                    currency={house.pricing.currency}
+                    numberOfBathrooms={house.numBaths}
+                    numberOfLivingRooms={house.numLivingRooms}
+                    numberOfBedrooms={house.numBedrooms}
+                    numberOfDiningrooms={house.numDiningrooms}
+                    leaseType={house.leaseType}
+                />
+                )
+            })}
+            </React.Fragment>
         )
     }}
     </Query>

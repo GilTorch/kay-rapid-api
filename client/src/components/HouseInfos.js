@@ -13,7 +13,7 @@ export function Price({value,currency,leaseType}){
     return(
         <div className="house-card__price-container">
             {/* <h2>Pri</h2> */}
-            <span className="house-card__price">{value} {currency}/{leaseType}</span>
+            <span className="house-card__price">{value} {currency}{leaseType ?`/${leaseType}`:""}</span>
         </div>
     )
 }
