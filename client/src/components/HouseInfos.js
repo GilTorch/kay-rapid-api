@@ -30,40 +30,63 @@ export function Owner({name}){
 export function PreviewImage({url}){
     return(
         <div className="house-card__image-preview-container">
-            <img className="house-card__image-preview" src={url} alt="" />
+            { url ? <img className="house-card__image-preview" src={url} alt="" /> : ""}
         </div>
     )
 }
 
+
 export function Description({ numberOfBedrooms, numberOfBathrooms,numberOfLivingrooms,numberOfDiningrooms }){
-    return(
-        <div className="house-card__description-container">
-            {/* <h2>Deskripsyon</h2> */}
-            <span className="house-card__description">
-                {numberOfBathrooms} sal de ben, {numberOfBedrooms} chanm a kouche
-                , {numberOfDiningrooms} salon, {numberOfLivingrooms} sal a manje
-            </span> 
-        </div>
-    )
+ 
+    if(!numberOfBedrooms && !numberOfBathrooms && !numberOfLivingrooms && !numberOfDiningrooms){
+        return(
+            <div className="house-card__description-container">
+                {/* <h2>Deskripsyon</h2> */}
+                <span className="house-card__description">
+                    Pa gen deskripsyon pou kay sa.
+                </span> 
+            </div>
+        )
+    }else{
+        return(
+            <div className="house-card__description-container">
+                <strong>Deskripsyon: </strong>
+                <span className="house-card__description">
+                    {numberOfBathrooms?`${numberOfBathrooms} douch,`:""}  
+                    {numberOfBedrooms?`${numberOfBedrooms} chanm a kouche,`:""} 
+                    {numberOfDiningrooms?`${numberOfDiningrooms} sal a manje,`:""}
+                    {numberOfLivingrooms?`${numberOfLivingrooms} salon,`:""}
+                </span> 
+            </div>
+        )
+    }
+
 }
 
 export function Address({value}){
     return(
         <div className="house-card__address-container">
-            {/* <h2>Adrès</h2> */}
+            <strong>Adrès: </strong>
             <span className="house-card__address">{value}</span>
         </div>
     )        
 }
 
 export function Rating({value}){
+    if(!value){
+        return(
+            <div className="house-card__rating-container">
+                <i>Kay sa a poko gen klasman</i>
+            </div>
+        )
+    }
     var stars=[];
     for(var i=0;i<value;i++){
         stars.push(<i className="house-card__rating fa fa-star checked" key={i}></i>);                     
     }
     return(
         <div className="house-card__rating-container">
-            <h2 className="house-card__label house-card__rating-title">Klasman kay la</h2> 
+ 
             <div>
                 {stars}
             </div>

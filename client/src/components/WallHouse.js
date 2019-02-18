@@ -18,20 +18,23 @@ const WallHouse=()=>(
         return(
             <React.Fragment>
             <HeaderBar title="Rezilta Rechech Ou Yo" hasBack={true}/>
-            {data.Houses.map((house,index)=>{
-                return( 
-                <HouseCard key={index} 
-                    ownerName={house.host.firstName+" "+house.host.lastName}
-                    price={house.pricing.highestPrice}
-                    currency={house.pricing.currency}
-                    numberOfBathrooms={house.numBaths}
-                    numberOfLivingRooms={house.numLivingRooms}
-                    numberOfBedrooms={house.numBedrooms}
-                    numberOfDiningrooms={house.numDiningrooms}
-                    leaseType={house.leaseType}
-                />
-                )
-            })}
+            <div style={{"marginTop":"60px"}} className="search-results-container">
+                {data.Houses.map((house,index)=>{
+                    return( 
+                    <HouseCard key={index} 
+                        ownerName={house.host.firstName+" "+house.host.lastName}
+                        price={house.pricing.highestPrice}
+                        currency={house.pricing.currency}
+                        numberOfBathrooms={house.numBaths}
+                        numberOfLivingRooms={house.numLivingRooms}
+                        numberOfBedrooms={house.numBedrooms}
+                        numberOfDiningrooms={house.numDiningrooms}
+                        address={house.location.address}
+                        leaseType={house.leaseType==="MONTHLY"?"MWA":"ANE"}
+                    />
+                    )
+                })}
+            </div>
             </React.Fragment>
         )
     }}
