@@ -17,7 +17,7 @@ const WallHouse=()=>(
         if(error) return `Error: ${error.message}`;
         return(
             <React.Fragment>
-            <HeaderBar title="Rezilta Rechech Ou Yo" hasBack={true}/>
+            <HeaderBar title="Rezilta Rech&egrave;ch Ou Yo" hasBack={true}/>
             <div style={{"marginTop":"60px"}} className="search-results-container">
                 {data.Houses.map((house,index)=>{
                     return( 

@@ -9,7 +9,7 @@ export const HouseImages=({numberLimit,handleChange})=>{
         <div>
             <div className="add-house-card__form-group">
                 <label className="add-house-card__label">Chwazi yon imaj prensipal pou kay la</label>
-                <Upload name="previewImage" numberOfImagesAllowed={1} handleImage={(event,name)=>{handleChange(event,name)}}/>
+                <Upload name="previewImageURL" numberOfImagesAllowed={1} handleImage={(event,name)=>{handleChange(event,name)}}/>
             {/* </div>
             <div className="add-house-card__form-groupe"> */}
                 <label className="add-house-card__label">Chwazi imaj pou chanm a kouche yo</label>

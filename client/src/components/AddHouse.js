@@ -86,7 +86,8 @@ const areRequired={
     privateEntrance:false,
     buzzerWirelessIntercom:false,
     bathtub:false,
-    crib:false 
+    crib:false,
+    previewImageURL:true
 }
 
 let realHouseImagesLinks={
@@ -168,7 +169,8 @@ class AddHouse extends Component{
             buzzerWirelessIntercom:false,
             bathtub:false,
             crib:false,
-            rooms:null
+            rooms:null,
+            previewImageURL:null
         }
     }
 
@@ -450,7 +452,7 @@ class AddHouse extends Component{
                                             crib,bedRoomImages,
                                             diningRoomImages,
                                             livingRoomImages,
-                                            bathRoomImages
+                                            bathRoomImages,previewImageURL
                                                                         }=this.state.payload
                                                                             
                                        
@@ -518,7 +520,15 @@ class AddHouse extends Component{
                                                 lease=1;
                                             break;
                                           }
+
+                                          let preview_image;
+                                          let previewImage=""
+                                          await uploadImageToFileServer(previewImageURL,"PREVIEWIMAGEURL",function(label,jsonData){
+                                            preview_image={"create":{"url":jsonData.secure_url}};
+                                            previewImage=jsonData.secure_url;
+                                          })
                                          
+                                         console.log(preview_image)
                                         
                                           const obj={
                                             area,
@@ -577,7 +587,8 @@ class AddHouse extends Component{
                                             privateEntrance,
                                             buzzerWirelessIntercom,
                                             bathtub,
-                                            crib
+                                            crib,
+                                            previewImageURL
                                           }
 
                                           console.log(JSON.stringify(obj));
@@ -643,6 +654,7 @@ class AddHouse extends Component{
                                             buzzerWirelessIntercom,
                                             bathtub,
                                             crib,
+                                            preview_image,
                                             rooms
                                             },
                                           update:()=>{

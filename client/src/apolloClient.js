@@ -66,7 +66,7 @@ const stateLink = withClientState({
 })
 
 const httpLink=createHttpLink({
-    uri: "https://lakayou-server-fxdyoassbi.now.sh/"
+    uri: "https://lakayou-server-rwcvnozznd.now.sh/"
 })
 
 const authLink = setContext((_, { headers }) => {
