@@ -141,7 +141,8 @@ export const HOUSE_CREATION=gql`
     $buzzerWirelessIntercom:Boolean,
     $bathtub:Boolean,
     $crib:Boolean
-    $rooms:[RoomCreateWithoutHouseInput]
+    $rooms:[RoomCreateWithoutHouseInput],
+    $previewImage:String
     ){
     createHouse(
     area:$area,
@@ -201,7 +202,8 @@ export const HOUSE_CREATION=gql`
     buzzerWirelessIntercom:$buzzerWirelessIntercom,
     bathtub:$bathtub,
     rooms:$rooms
-    crib:$crib){
+    crib:$crib,
+    previewImage:$previewImage){
       id,
       rooms {
       id,

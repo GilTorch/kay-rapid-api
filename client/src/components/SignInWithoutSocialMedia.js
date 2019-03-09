@@ -57,7 +57,7 @@ class SignInWithoutSocialMedia extends React.Component {
                         
                     }} className="signin-without-socialmedia-screen__form">
                         {(loading)?<Loading/>:""}
-                        {(error)? notify("GEN ON EREU KI PASE. VERIFYE KONEKSYON ENTENET OU EPI REKOMANSE ON LOT MOMAN","error"):""}
+                        {(error)? console.log(error.message):""}
                         <div className="signin-without-socialmedia-screen__form-group"><label className="signin-without-socialmedia-screen__label">Imèl</label><input name="email" onChange={this.handleChange} type="email" placeholder="Tanpri mete imel ou" className="signin-without-socialmedia-screen__input" required/></div>
                         <div className="signin-without-socialmedia-screen__form-group"><label className="signin-without-socialmedia-screen__label">Modpas</label><input name="password" onChange={this.handleChange} type="password" placeholder="Tanpri mete modpas ou" className="signin-without-socialmedia-screen__input" required/></div>
                         <div className="signin-without-socialmedia-screen__form-group"><button className="auth-button success-button" type="submit">KONEKTE</button></div>

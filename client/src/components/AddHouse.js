@@ -31,18 +31,18 @@ const options=[
 
 const areRequired={
     area:false,
-    age:false,
+    age:true,
     shortDescription:false,
     description:false,
     maxGuests:false,
-    numBedrooms:false,
-    numBaths:false,
-    basePrice:false,
-    numLivingrooms:false,
-    numDiningrooms:false,
-    highestPrice:false,
+    numBedrooms:true,
+    numBaths:true,
+    basePrice:true,
+    numLivingrooms:true,
+    numDiningrooms:true,
+    highestPrice:true,
     currency:false,
-    income:false,
+    income:true,
     lat:false,
     lng:false,
     address:false,
@@ -365,11 +365,9 @@ class AddHouse extends Component{
         })
     }
 
-    onSubmit=(event)=>{
-        event.preventDefault();
-        console.log(event);
+    createHouse=()=>{
+        
     }
-
 
     render(){
 
@@ -456,6 +454,7 @@ class AddHouse extends Component{
                                                                         }=this.state.payload
                                                                             
                                        
+                                       
 
                                         if(bedRoomImages!==null){
                                             await uploadImageToFileServer(bedRoomImages,"BEDROOM",getImagesUrl);
@@ -521,14 +520,13 @@ class AddHouse extends Component{
                                             break;
                                           }
 
-                                          let preview_image;
                                           let previewImage=""
+
                                           await uploadImageToFileServer(previewImageURL,"PREVIEWIMAGEURL",function(label,jsonData){
-                                            preview_image={"create":{"url":jsonData.secure_url}};
                                             previewImage=jsonData.secure_url;
                                           })
                                          
-                                         console.log(preview_image)
+                            
                                         
                                           const obj={
                                             area,
@@ -588,7 +586,7 @@ class AddHouse extends Component{
                                             buzzerWirelessIntercom,
                                             bathtub,
                                             crib,
-                                            previewImageURL
+                                            previewImage
                                           }
 
                                           console.log(JSON.stringify(obj));
@@ -654,7 +652,7 @@ class AddHouse extends Component{
                                             buzzerWirelessIntercom,
                                             bathtub,
                                             crib,
-                                            preview_image,
+                                            previewImage,
                                             rooms
                                             },
                                           update:()=>{
