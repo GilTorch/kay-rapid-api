@@ -19,6 +19,7 @@ export const persistor = new CachePersistor({
 const defaultState={
     userAuthInfo:{
         __typename:'UserAuthInfo',
+        id:null,
         token:null,
         email:null,
         firstName:null,
@@ -39,6 +40,7 @@ const stateLink = withClientState({
                 const query=gql`
                 query{
                   userAuthInfo @client{
+                    id
                     token
                     email
                     firstName

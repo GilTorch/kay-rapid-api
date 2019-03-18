@@ -22,6 +22,7 @@ const WallHouse=()=>(
                 {data.Houses.map((house,index)=>{
                     return( 
                     <HouseCard key={index} 
+                        previewImage={house.preview_image ? house.preview_image.url:""}
                         ownerName={house.host.firstName+" "+house.host.lastName}
                         price={house.pricing.highestPrice}
                         currency={house.pricing.currency}

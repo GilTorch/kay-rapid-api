@@ -9,6 +9,7 @@ const UserInfo=({ firstName,lastName,profilePicture,writeUserAuthInfoToCache })=
 
     function logout(){
         const userObject={
+            id:null,
             token:null,
             email:null,
             firstName:null, 

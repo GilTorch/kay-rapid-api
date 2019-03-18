@@ -301,6 +301,7 @@ crib: Boolean*/
 export const WRITE_AUTH_INFO= gql`
 mutation updateAuthInfo($userAuthInfo:Object!){
   updateAuthInfo(userAuthInfo:$userAuthInfo) @client{
+    id
     token
     email
     firstName
@@ -313,6 +314,7 @@ mutation updateAuthInfo($userAuthInfo:Object!){
 export const READ_AUTH_INFO = gql`
   query{
     userAuthInfo @client{
+      id
       token
       email
       firstName

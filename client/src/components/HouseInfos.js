@@ -30,7 +30,7 @@ export function Owner({name}){
 export function PreviewImage({url}){
     return(
         <div className="house-card__image-preview-container">
-            { url ? <img className="house-card__image-preview" src={url} alt="" /> : ""}
+            <img className="house-card__image-preview" src={url} alt="" /> 
         </div>
     )
 }

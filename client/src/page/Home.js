@@ -70,4 +70,15 @@ const HomeWithQuery=graphql(
 )(Home)
 
 
+HomeWithQuery.defaultProps={
+    userAuthInfo:{
+        id:null,
+        token:null,
+        email:null,
+        firstName:null,
+        lastName:null,
+        profilePicture:null,
+    }
+}
+
 export default HomeWithQuery;
