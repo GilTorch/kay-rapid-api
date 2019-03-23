@@ -37,7 +37,7 @@ class SignInWithSocialMedia extends React.Component{
                         authenticateFBUser({ 
                             variables: { facebookToken: facebookResponse.accessToken },
                             update:(store,{data:{authenticateFBUser}})=>{
-                                let id=authenticateFBUser.id;
+                                let id=authenticateFBUser.user.id;
                                 let token = authenticateFBUser.token;
                                 let firstName = authenticateFBUser.user.firstName;
                                 let lastName=authenticateFBUser.user.lastName;
