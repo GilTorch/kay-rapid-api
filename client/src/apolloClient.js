@@ -74,12 +74,13 @@ const httpLink=createHttpLink({
 const authLink = setContext((_, { headers }) => {
   // get the authentication token from local storage if it exists
   let cache = JSON.parse(window.localStorage.getItem('apollo-cache-persist'));
-  const token=cache["$ROOT_QUERY.userAuthInfo"].token
-
-  // console.log(token)
-//   token="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJjanE4dTR3Zzc2bmMwMGE2MTFkeDNzbGV0IiwiaWF0IjoxNTQ2MDk1MzA3fQ.9MTRzkwKrUmuZywC5o0IPZTisHAfX9HQ1VQT-avK_5w";
-  // console.log("TOKEN FROM cache:"+token)
-  // return the headers to the context so httpLink can read them
+  let token=null
+  if(cache){
+    if(cache.hasOwnProperty("$ROOT_QUERY.userAuthInfo")){
+     token=cache["$ROOT_QUERY.userAuthInfo"].token
+    }
+  }
+  
   return {
     headers: {
       ...headers,

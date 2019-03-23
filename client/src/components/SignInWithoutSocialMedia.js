@@ -45,7 +45,7 @@ class SignInWithoutSocialMedia extends React.Component {
                             variables:{email:email,password:password},
                             update:(store,{data:{login}})=>{
                                 let userObject = {
-                                    id:login.id,
+                                    id:login.user.id,
                                     token:login.token,
                                     firstName:login.user.firstName,
                                     lastName:login.user.lastName,
