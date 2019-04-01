@@ -9,8 +9,7 @@ import * as rules from "./rules";
 // });
 
 const myImiddleware = shield({
-  Query: {
-    Houses: not(rules.isAuthenticated),
+  Query: { 
     communes: rules.isAuthenticated
   },
   Mutation: {

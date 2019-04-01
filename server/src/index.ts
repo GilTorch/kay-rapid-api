@@ -3,15 +3,19 @@ import { importSchema } from "graphql-import";
 import { Prisma } from "./generated/prisma";
 import { resolvers, fragmentReplacements } from "./resolvers";
 import { mymiddlepermission } from "./permissions";
-
-if (process.env.NODE_ENV !== "production") {
-  require("dotenv").load();
-}
+//require("now-env");
+// if (process.env.NODE_ENV !== "production") {
+require("dotenv").config({ path: ".env" });
+//   require('now-env')
+// }
 
 const server = new GraphQLServer({
   typeDefs: "./src/schema.graphql",
   resolvers,
   middlewares: [mymiddlepermission],
+  resolverValidationOptions: {
+    requireResolversForResolveType: false
+  },
   context: req => ({
     ...req,
     db: new Prisma({
@@ -22,4 +26,13 @@ const server = new GraphQLServer({
     })
   })
 });
-server.start(() => console.log("Server is running on http://localhost:4000"));
+server.start(
+  //setting cross origin so that only frontend can access it
+  // {
+  //   cors: {
+  //     credentials: true,
+  //     origin: process.env.FRONTEND_URL
+  //   }
+  // },
+  () => console.log("Server is running on http://localhost:4000")
+);

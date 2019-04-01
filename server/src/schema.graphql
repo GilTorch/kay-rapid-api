@@ -1,4 +1,4 @@
-# import State, Country , House , Commune, City from "./generated/prisma.graphql"
+# import  RoomCreateWithoutHouseInput,Room,PictureCreateInput, State, Country , House , Commune, City from "./generated/prisma.graphql"
 
 type Query {
   countries: [Country!]!
@@ -6,7 +6,7 @@ type Query {
   cities: [City!]!
   communes: [Commune!]!
   getToken(id: String!): String!
-  Houses: House!
+  Houses: [House!]!
   topCommunes(c: Int!): [Commune!]!
   topCity(c: Int!): [Commune!]!
   topStates(c: Int!): [State!]!
@@ -17,6 +17,10 @@ type AuthPayLoad {
   user: User!
 }
 
+type Message {
+  message: String!
+}
+
 type Mutation {
   signup(
     email: String!
@@ -24,10 +28,17 @@ type Mutation {
     firstName: String!
     lastName: String!
     phone1: String!
+    profilePicture: String
   ): AuthPayLoad
   login(email: String!, password: String!): AuthPayLoad!
   authenticateFBUser(facebookToken: String!): AuthPayLoad!
   disableUser(id: String!): Boolean!
+  requestPWResetToken(email: String!): Message!
+  resetPassword(
+    resetToken: String!
+    password: String!
+    passwordConfirm: String!
+  ): AuthPayLoad
   createCountry(name: String!): Country
   createState(name: String!, idCountry: ID!): State
   createCity(name: String!, idState: ID!): City
@@ -92,6 +103,8 @@ type Mutation {
     buzzerWirelessIntercom: Boolean
     bathtub: Boolean
     crib: Boolean
+    rooms: [RoomCreateWithoutHouseInput]
+    previewImage: String
   ): House
   updateHouse(
     area: Int
@@ -153,6 +166,15 @@ type Mutation {
     buzzerWirelessIntercom: Boolean
     bathtub: Boolean
     crib: Boolean
+    rooms: [RoomCreateWithoutHouseInput]
+    previewImage: String
   ): House
   deleteHouse(id: String!): House
+  addroomManyPicture(
+    label: String!
+    houseId: String!
+    picture_previews: [PictureCreateInput!]
+  ): Room
+
+  createFavoriteHouse(idHouse: String!, idUser: String!): User
 }

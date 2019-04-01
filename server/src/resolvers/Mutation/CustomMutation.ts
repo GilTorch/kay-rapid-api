@@ -125,6 +125,14 @@ export const CustomMutation = {
               lat: args.lat,
               lng: args.lng
             }
+          },
+          rooms: {
+            create: args.rooms
+          },
+          preview_image: {
+            create: {
+              url: args.previewImage
+            }
           }
         }
       },
@@ -193,7 +201,12 @@ export const CustomMutation = {
         location: {},
         views: {},
         bookings: {},
-        pictures: {}
+        preview_image: {
+          create: {
+            url: args.previewImage
+          }
+        },
+        rooms: args.rooms
       },
       where: {
         id: args.houseId
@@ -206,5 +219,42 @@ export const CustomMutation = {
         id: args.houseId
       }
     });
+  },
+  addroomManyPicture(parent, args, context: Context, info) {
+    return context.db.mutation.createRoom(
+      {
+        data: {
+          label: args.label,
+          house: {
+            connect: {
+              id: args.houseId
+            }
+          },
+          picture_previews: {
+            create: args.picture_previews
+          }
+        }
+      },
+      info
+    );
+  },
+  createFavoriteHouse(parent, args, context: Context, info) {
+    return context.db.mutation.createHouse_Favorited(
+      {
+        data: {
+          house: {
+            connect: {
+              id: args.idHouse
+            }
+          },
+          user: {
+            connect: {
+              id: args.idUser
+            }
+          }
+        }
+      },
+      info
+    );
   }
 };

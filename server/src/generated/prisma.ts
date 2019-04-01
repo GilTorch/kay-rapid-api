@@ -1329,6 +1329,7 @@ input BookingUpdateManyMutationInput {
 input BookingUpdateManyWithoutBookeeInput {
   create: [BookingCreateWithoutBookeeInput!]
   connect: [BookingWhereUniqueInput!]
+  set: [BookingWhereUniqueInput!]
   disconnect: [BookingWhereUniqueInput!]
   delete: [BookingWhereUniqueInput!]
   update: [BookingUpdateWithWhereUniqueWithoutBookeeInput!]
@@ -1340,6 +1341,7 @@ input BookingUpdateManyWithoutBookeeInput {
 input BookingUpdateManyWithoutHouseInput {
   create: [BookingCreateWithoutHouseInput!]
   connect: [BookingWhereUniqueInput!]
+  set: [BookingWhereUniqueInput!]
   disconnect: [BookingWhereUniqueInput!]
   delete: [BookingWhereUniqueInput!]
   update: [BookingUpdateWithWhereUniqueWithoutHouseInput!]
@@ -2811,9 +2813,9 @@ type House implements Node {
   rooms(where: RoomWhereInput, orderBy: RoomOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Room!]
   views: Views
   bookings(where: BookingWhereInput, orderBy: BookingOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Booking!]
-  pictures(where: PictureWhereInput, orderBy: PictureOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Picture!]
   contactInfoPayments(where: PaymentLanlordInfoWhereInput, orderBy: PaymentLanlordInfoOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [PaymentLanlordInfo!]
   popularity: Int!
+  preview_image: Picture
 }
 
 type House_Favorited implements Node {
@@ -3035,8 +3037,8 @@ input HouseCreateInput {
   rooms: RoomCreateManyWithoutHouseInput
   views: ViewsCreateOneWithoutHouseInput
   bookings: BookingCreateManyWithoutHouseInput
-  pictures: PictureCreateManyInput
   contactInfoPayments: PaymentLanlordInfoCreateManyWithoutHouseInput
+  preview_image: PictureCreateOneInput
 }
 
 input HouseCreateManyWithoutHostInput {
@@ -3107,8 +3109,8 @@ input HouseCreateWithoutAmenitiesInput {
   rooms: RoomCreateManyWithoutHouseInput
   views: ViewsCreateOneWithoutHouseInput
   bookings: BookingCreateManyWithoutHouseInput
-  pictures: PictureCreateManyInput
   contactInfoPayments: PaymentLanlordInfoCreateManyWithoutHouseInput
+  preview_image: PictureCreateOneInput
 }
 
 input HouseCreateWithoutBookingsInput {
@@ -3134,8 +3136,8 @@ input HouseCreateWithoutBookingsInput {
   location: LocationCreateOneInput!
   rooms: RoomCreateManyWithoutHouseInput
   views: ViewsCreateOneWithoutHouseInput
-  pictures: PictureCreateManyInput
   contactInfoPayments: PaymentLanlordInfoCreateManyWithoutHouseInput
+  preview_image: PictureCreateOneInput
 }
 
 input HouseCreateWithoutContactInfoPaymentsInput {
@@ -3162,7 +3164,7 @@ input HouseCreateWithoutContactInfoPaymentsInput {
   rooms: RoomCreateManyWithoutHouseInput
   views: ViewsCreateOneWithoutHouseInput
   bookings: BookingCreateManyWithoutHouseInput
-  pictures: PictureCreateManyInput
+  preview_image: PictureCreateOneInput
 }
 
 input HouseCreateWithoutHostInput {
@@ -3188,8 +3190,8 @@ input HouseCreateWithoutHostInput {
   rooms: RoomCreateManyWithoutHouseInput
   views: ViewsCreateOneWithoutHouseInput
   bookings: BookingCreateManyWithoutHouseInput
-  pictures: PictureCreateManyInput
   contactInfoPayments: PaymentLanlordInfoCreateManyWithoutHouseInput
+  preview_image: PictureCreateOneInput
 }
 
 input HouseCreateWithoutPricingInput {
@@ -3215,8 +3217,8 @@ input HouseCreateWithoutPricingInput {
   rooms: RoomCreateManyWithoutHouseInput
   views: ViewsCreateOneWithoutHouseInput
   bookings: BookingCreateManyWithoutHouseInput
-  pictures: PictureCreateManyInput
   contactInfoPayments: PaymentLanlordInfoCreateManyWithoutHouseInput
+  preview_image: PictureCreateOneInput
 }
 
 input HouseCreateWithoutReviewsInput {
@@ -3242,8 +3244,8 @@ input HouseCreateWithoutReviewsInput {
   rooms: RoomCreateManyWithoutHouseInput
   views: ViewsCreateOneWithoutHouseInput
   bookings: BookingCreateManyWithoutHouseInput
-  pictures: PictureCreateManyInput
   contactInfoPayments: PaymentLanlordInfoCreateManyWithoutHouseInput
+  preview_image: PictureCreateOneInput
 }
 
 input HouseCreateWithoutRoomsInput {
@@ -3269,8 +3271,8 @@ input HouseCreateWithoutRoomsInput {
   location: LocationCreateOneInput!
   views: ViewsCreateOneWithoutHouseInput
   bookings: BookingCreateManyWithoutHouseInput
-  pictures: PictureCreateManyInput
   contactInfoPayments: PaymentLanlordInfoCreateManyWithoutHouseInput
+  preview_image: PictureCreateOneInput
 }
 
 input HouseCreateWithoutViewsInput {
@@ -3296,8 +3298,8 @@ input HouseCreateWithoutViewsInput {
   location: LocationCreateOneInput!
   rooms: RoomCreateManyWithoutHouseInput
   bookings: BookingCreateManyWithoutHouseInput
-  pictures: PictureCreateManyInput
   contactInfoPayments: PaymentLanlordInfoCreateManyWithoutHouseInput
+  preview_image: PictureCreateOneInput
 }
 
 """An edge in a connection."""
@@ -3793,8 +3795,8 @@ input HouseUpdateDataInput {
   rooms: RoomUpdateManyWithoutHouseInput
   views: ViewsUpdateOneWithoutHouseInput
   bookings: BookingUpdateManyWithoutHouseInput
-  pictures: PictureUpdateManyInput
   contactInfoPayments: PaymentLanlordInfoUpdateManyWithoutHouseInput
+  preview_image: PictureUpdateOneInput
 }
 
 input HouseUpdateInput {
@@ -3821,8 +3823,8 @@ input HouseUpdateInput {
   rooms: RoomUpdateManyWithoutHouseInput
   views: ViewsUpdateOneWithoutHouseInput
   bookings: BookingUpdateManyWithoutHouseInput
-  pictures: PictureUpdateManyInput
   contactInfoPayments: PaymentLanlordInfoUpdateManyWithoutHouseInput
+  preview_image: PictureUpdateOneInput
 }
 
 input HouseUpdateManyDataInput {
@@ -3864,6 +3866,7 @@ input HouseUpdateManyMutationInput {
 input HouseUpdateManyWithoutHostInput {
   create: [HouseCreateWithoutHostInput!]
   connect: [HouseWhereUniqueInput!]
+  set: [HouseWhereUniqueInput!]
   disconnect: [HouseWhereUniqueInput!]
   delete: [HouseWhereUniqueInput!]
   update: [HouseUpdateWithWhereUniqueWithoutHostInput!]
@@ -3956,8 +3959,8 @@ input HouseUpdateWithoutAmenitiesDataInput {
   rooms: RoomUpdateManyWithoutHouseInput
   views: ViewsUpdateOneWithoutHouseInput
   bookings: BookingUpdateManyWithoutHouseInput
-  pictures: PictureUpdateManyInput
   contactInfoPayments: PaymentLanlordInfoUpdateManyWithoutHouseInput
+  preview_image: PictureUpdateOneInput
 }
 
 input HouseUpdateWithoutBookingsDataInput {
@@ -3983,8 +3986,8 @@ input HouseUpdateWithoutBookingsDataInput {
   location: LocationUpdateOneRequiredInput
   rooms: RoomUpdateManyWithoutHouseInput
   views: ViewsUpdateOneWithoutHouseInput
-  pictures: PictureUpdateManyInput
   contactInfoPayments: PaymentLanlordInfoUpdateManyWithoutHouseInput
+  preview_image: PictureUpdateOneInput
 }
 
 input HouseUpdateWithoutContactInfoPaymentsDataInput {
@@ -4011,7 +4014,7 @@ input HouseUpdateWithoutContactInfoPaymentsDataInput {
   rooms: RoomUpdateManyWithoutHouseInput
   views: ViewsUpdateOneWithoutHouseInput
   bookings: BookingUpdateManyWithoutHouseInput
-  pictures: PictureUpdateManyInput
+  preview_image: PictureUpdateOneInput
 }
 
 input HouseUpdateWithoutHostDataInput {
@@ -4037,8 +4040,8 @@ input HouseUpdateWithoutHostDataInput {
   rooms: RoomUpdateManyWithoutHouseInput
   views: ViewsUpdateOneWithoutHouseInput
   bookings: BookingUpdateManyWithoutHouseInput
-  pictures: PictureUpdateManyInput
   contactInfoPayments: PaymentLanlordInfoUpdateManyWithoutHouseInput
+  preview_image: PictureUpdateOneInput
 }
 
 input HouseUpdateWithoutPricingDataInput {
@@ -4064,8 +4067,8 @@ input HouseUpdateWithoutPricingDataInput {
   rooms: RoomUpdateManyWithoutHouseInput
   views: ViewsUpdateOneWithoutHouseInput
   bookings: BookingUpdateManyWithoutHouseInput
-  pictures: PictureUpdateManyInput
   contactInfoPayments: PaymentLanlordInfoUpdateManyWithoutHouseInput
+  preview_image: PictureUpdateOneInput
 }
 
 input HouseUpdateWithoutReviewsDataInput {
@@ -4091,8 +4094,8 @@ input HouseUpdateWithoutReviewsDataInput {
   rooms: RoomUpdateManyWithoutHouseInput
   views: ViewsUpdateOneWithoutHouseInput
   bookings: BookingUpdateManyWithoutHouseInput
-  pictures: PictureUpdateManyInput
   contactInfoPayments: PaymentLanlordInfoUpdateManyWithoutHouseInput
+  preview_image: PictureUpdateOneInput
 }
 
 input HouseUpdateWithoutRoomsDataInput {
@@ -4118,8 +4121,8 @@ input HouseUpdateWithoutRoomsDataInput {
   location: LocationUpdateOneRequiredInput
   views: ViewsUpdateOneWithoutHouseInput
   bookings: BookingUpdateManyWithoutHouseInput
-  pictures: PictureUpdateManyInput
   contactInfoPayments: PaymentLanlordInfoUpdateManyWithoutHouseInput
+  preview_image: PictureUpdateOneInput
 }
 
 input HouseUpdateWithoutViewsDataInput {
@@ -4145,8 +4148,8 @@ input HouseUpdateWithoutViewsDataInput {
   location: LocationUpdateOneRequiredInput
   rooms: RoomUpdateManyWithoutHouseInput
   bookings: BookingUpdateManyWithoutHouseInput
-  pictures: PictureUpdateManyInput
   contactInfoPayments: PaymentLanlordInfoUpdateManyWithoutHouseInput
+  preview_image: PictureUpdateOneInput
 }
 
 input HouseUpdateWithWhereUniqueWithoutHostInput {
@@ -4575,12 +4578,10 @@ input HouseWhereInput {
   bookings_every: BookingWhereInput
   bookings_some: BookingWhereInput
   bookings_none: BookingWhereInput
-  pictures_every: PictureWhereInput
-  pictures_some: PictureWhereInput
-  pictures_none: PictureWhereInput
   contactInfoPayments_every: PaymentLanlordInfoWhereInput
   contactInfoPayments_some: PaymentLanlordInfoWhereInput
   contactInfoPayments_none: PaymentLanlordInfoWhereInput
+  preview_image: PictureWhereInput
 }
 
 input HouseWhereUniqueInput {
@@ -5532,6 +5533,7 @@ input NotificationUpdateManyMutationInput {
 input NotificationUpdateManyWithoutUserInput {
   create: [NotificationCreateWithoutUserInput!]
   connect: [NotificationWhereUniqueInput!]
+  set: [NotificationWhereUniqueInput!]
   disconnect: [NotificationWhereUniqueInput!]
   delete: [NotificationWhereUniqueInput!]
   update: [NotificationUpdateWithWhereUniqueWithoutUserInput!]
@@ -6246,6 +6248,7 @@ input PaymentHouseUpdateManyMutationInput {
 input PaymentHouseUpdateManyWithoutPaymentMethodInput {
   create: [PaymentHouseCreateWithoutPaymentMethodInput!]
   connect: [PaymentHouseWhereUniqueInput!]
+  set: [PaymentHouseWhereUniqueInput!]
   disconnect: [PaymentHouseWhereUniqueInput!]
   delete: [PaymentHouseWhereUniqueInput!]
   update: [PaymentHouseUpdateWithWhereUniqueWithoutPaymentMethodInput!]
@@ -6664,6 +6667,7 @@ input PaymentLanlordInfoUpdateManyMutationInput {
 input PaymentLanlordInfoUpdateManyWithoutClientInput {
   create: [PaymentLanlordInfoCreateWithoutClientInput!]
   connect: [PaymentLanlordInfoWhereUniqueInput!]
+  set: [PaymentLanlordInfoWhereUniqueInput!]
   disconnect: [PaymentLanlordInfoWhereUniqueInput!]
   delete: [PaymentLanlordInfoWhereUniqueInput!]
   update: [PaymentLanlordInfoUpdateWithWhereUniqueWithoutClientInput!]
@@ -6675,6 +6679,7 @@ input PaymentLanlordInfoUpdateManyWithoutClientInput {
 input PaymentLanlordInfoUpdateManyWithoutHouseInput {
   create: [PaymentLanlordInfoCreateWithoutHouseInput!]
   connect: [PaymentLanlordInfoWhereUniqueInput!]
+  set: [PaymentLanlordInfoWhereUniqueInput!]
   disconnect: [PaymentLanlordInfoWhereUniqueInput!]
   delete: [PaymentLanlordInfoWhereUniqueInput!]
   update: [PaymentLanlordInfoUpdateWithWhereUniqueWithoutHouseInput!]
@@ -7303,6 +7308,7 @@ input PictureUpdateManyDataInput {
 input PictureUpdateManyInput {
   create: [PictureCreateInput!]
   connect: [PictureWhereUniqueInput!]
+  set: [PictureWhereUniqueInput!]
   disconnect: [PictureWhereUniqueInput!]
   delete: [PictureWhereUniqueInput!]
   update: [PictureUpdateWithWhereUniqueNestedInput!]
@@ -8207,6 +8213,7 @@ input ReviewUpdateManyMutationInput {
 input ReviewUpdateManyWithoutHouseInput {
   create: [ReviewCreateWithoutHouseInput!]
   connect: [ReviewWhereUniqueInput!]
+  set: [ReviewWhereUniqueInput!]
   disconnect: [ReviewWhereUniqueInput!]
   delete: [ReviewWhereUniqueInput!]
   update: [ReviewUpdateWithWhereUniqueWithoutHouseInput!]
@@ -8493,10 +8500,17 @@ input ReviewWhereUniqueInput {
 
 type Room implements Node {
   id: ID!
-  label: String!
+  label: ROOM_LABELS!
   house: House!
   picture_previews(where: PictureWhereInput, orderBy: PictureOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Picture!]
   video_previews(where: VideoWhereInput, orderBy: VideoOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Video!]
+}
+
+enum ROOM_LABELS {
+  LIVINGROOM
+  DINIGROOM
+  BEDROOM
+  BATHROOM
 }
 
 """A connection to a list of items."""
@@ -8510,7 +8524,7 @@ type RoomConnection {
 }
 
 input RoomCreateInput {
-  label: String!
+  label: ROOM_LABELS!
   house: HouseCreateOneWithoutRoomsInput!
   picture_previews: PictureCreateManyInput
   video_previews: VideoCreateManyInput
@@ -8522,7 +8536,7 @@ input RoomCreateManyWithoutHouseInput {
 }
 
 input RoomCreateWithoutHouseInput {
-  label: String!
+  label: ROOM_LABELS!
   picture_previews: PictureCreateManyInput
   video_previews: VideoCreateManyInput
 }
@@ -8549,7 +8563,7 @@ enum RoomOrderByInput {
 
 type RoomPreviousValues {
   id: ID!
-  label: String!
+  label: ROOM_LABELS!
 }
 
 input RoomScalarWhereInput {
@@ -8601,46 +8615,16 @@ input RoomScalarWhereInput {
 
   """All values not ending with the given string."""
   id_not_ends_with: ID
-  label: String
+  label: ROOM_LABELS
 
   """All values that are not equal to given value."""
-  label_not: String
+  label_not: ROOM_LABELS
 
   """All values that are contained in given list."""
-  label_in: [String!]
+  label_in: [ROOM_LABELS!]
 
   """All values that are not contained in given list."""
-  label_not_in: [String!]
-
-  """All values less than the given value."""
-  label_lt: String
-
-  """All values less than or equal the given value."""
-  label_lte: String
-
-  """All values greater than the given value."""
-  label_gt: String
-
-  """All values greater than or equal the given value."""
-  label_gte: String
-
-  """All values containing the given string."""
-  label_contains: String
-
-  """All values not containing the given string."""
-  label_not_contains: String
-
-  """All values starting with the given string."""
-  label_starts_with: String
-
-  """All values not starting with the given string."""
-  label_not_starts_with: String
-
-  """All values ending with the given string."""
-  label_ends_with: String
-
-  """All values not ending with the given string."""
-  label_not_ends_with: String
+  label_not_in: [ROOM_LABELS!]
 }
 
 type RoomSubscriptionPayload {
@@ -8683,23 +8667,24 @@ input RoomSubscriptionWhereInput {
 }
 
 input RoomUpdateInput {
-  label: String
+  label: ROOM_LABELS
   house: HouseUpdateOneRequiredWithoutRoomsInput
   picture_previews: PictureUpdateManyInput
   video_previews: VideoUpdateManyInput
 }
 
 input RoomUpdateManyDataInput {
-  label: String
+  label: ROOM_LABELS
 }
 
 input RoomUpdateManyMutationInput {
-  label: String
+  label: ROOM_LABELS
 }
 
 input RoomUpdateManyWithoutHouseInput {
   create: [RoomCreateWithoutHouseInput!]
   connect: [RoomWhereUniqueInput!]
+  set: [RoomWhereUniqueInput!]
   disconnect: [RoomWhereUniqueInput!]
   delete: [RoomWhereUniqueInput!]
   update: [RoomUpdateWithWhereUniqueWithoutHouseInput!]
@@ -8714,7 +8699,7 @@ input RoomUpdateManyWithWhereNestedInput {
 }
 
 input RoomUpdateWithoutHouseDataInput {
-  label: String
+  label: ROOM_LABELS
   picture_previews: PictureUpdateManyInput
   video_previews: VideoUpdateManyInput
 }
@@ -8779,46 +8764,16 @@ input RoomWhereInput {
 
   """All values not ending with the given string."""
   id_not_ends_with: ID
-  label: String
+  label: ROOM_LABELS
 
   """All values that are not equal to given value."""
-  label_not: String
+  label_not: ROOM_LABELS
 
   """All values that are contained in given list."""
-  label_in: [String!]
+  label_in: [ROOM_LABELS!]
 
   """All values that are not contained in given list."""
-  label_not_in: [String!]
-
-  """All values less than the given value."""
-  label_lt: String
-
-  """All values less than or equal the given value."""
-  label_lte: String
-
-  """All values greater than the given value."""
-  label_gt: String
-
-  """All values greater than or equal the given value."""
-  label_gte: String
-
-  """All values containing the given string."""
-  label_contains: String
-
-  """All values not containing the given string."""
-  label_not_contains: String
-
-  """All values starting with the given string."""
-  label_starts_with: String
-
-  """All values not starting with the given string."""
-  label_not_starts_with: String
-
-  """All values ending with the given string."""
-  label_ends_with: String
-
-  """All values not ending with the given string."""
-  label_not_ends_with: String
+  label_not_in: [ROOM_LABELS!]
   house: HouseWhereInput
   picture_previews_every: PictureWhereInput
   picture_previews_some: PictureWhereInput
@@ -9111,6 +9066,8 @@ type User implements Node {
   lastName: String!
   email: String
   password: String
+  resetToken: String
+  resetTokenExpiry: String
   phone1: String
   phone2: String
   primaryPhone: Int!
@@ -9142,6 +9099,8 @@ input UserCreateInput {
   lastName: String!
   email: String
   password: String
+  resetToken: String
+  resetTokenExpiry: String
   phone1: String
   phone2: String
   primaryPhone: Int
@@ -9153,6 +9112,11 @@ input UserCreateInput {
   paidContacts: PaymentLanlordInfoCreateManyWithoutClientInput
   notifications: NotificationCreateManyWithoutUserInput
   profilePicture: PictureCreateOneInput
+}
+
+input UserCreateManyInput {
+  create: [UserCreateInput!]
+  connect: [UserWhereUniqueInput!]
 }
 
 input UserCreateOneInput {
@@ -9188,6 +9152,8 @@ input UserCreateWithoutBookingsInput {
   lastName: String!
   email: String
   password: String
+  resetToken: String
+  resetTokenExpiry: String
   phone1: String
   phone2: String
   primaryPhone: Int
@@ -9208,6 +9174,8 @@ input UserCreateWithoutNotificationsInput {
   lastName: String!
   email: String
   password: String
+  resetToken: String
+  resetTokenExpiry: String
   phone1: String
   phone2: String
   primaryPhone: Int
@@ -9228,6 +9196,8 @@ input UserCreateWithoutOwnedHousesInput {
   lastName: String!
   email: String
   password: String
+  resetToken: String
+  resetTokenExpiry: String
   phone1: String
   phone2: String
   primaryPhone: Int
@@ -9248,6 +9218,8 @@ input UserCreateWithoutPaidContactsInput {
   lastName: String!
   email: String
   password: String
+  resetToken: String
+  resetTokenExpiry: String
   phone1: String
   phone2: String
   primaryPhone: Int
@@ -9290,6 +9262,10 @@ enum UserOrderByInput {
   email_DESC
   password_ASC
   password_DESC
+  resetToken_ASC
+  resetToken_DESC
+  resetTokenExpiry_ASC
+  resetTokenExpiry_DESC
   phone1_ASC
   phone1_DESC
   phone2_ASC
@@ -9313,11 +9289,560 @@ type UserPreviousValues {
   lastName: String!
   email: String
   password: String
+  resetToken: String
+  resetTokenExpiry: String
   phone1: String
   phone2: String
   primaryPhone: Int!
   responseTime: Int
   isSuperHost: Boolean!
+}
+
+input UserScalarWhereInput {
+  """Logical AND on all given filters."""
+  AND: [UserScalarWhereInput!]
+
+  """Logical OR on all given filters."""
+  OR: [UserScalarWhereInput!]
+
+  """Logical NOT on all given filters combined by AND."""
+  NOT: [UserScalarWhereInput!]
+  id: ID
+
+  """All values that are not equal to given value."""
+  id_not: ID
+
+  """All values that are contained in given list."""
+  id_in: [ID!]
+
+  """All values that are not contained in given list."""
+  id_not_in: [ID!]
+
+  """All values less than the given value."""
+  id_lt: ID
+
+  """All values less than or equal the given value."""
+  id_lte: ID
+
+  """All values greater than the given value."""
+  id_gt: ID
+
+  """All values greater than or equal the given value."""
+  id_gte: ID
+
+  """All values containing the given string."""
+  id_contains: ID
+
+  """All values not containing the given string."""
+  id_not_contains: ID
+
+  """All values starting with the given string."""
+  id_starts_with: ID
+
+  """All values not starting with the given string."""
+  id_not_starts_with: ID
+
+  """All values ending with the given string."""
+  id_ends_with: ID
+
+  """All values not ending with the given string."""
+  id_not_ends_with: ID
+  createdAt: DateTime
+
+  """All values that are not equal to given value."""
+  createdAt_not: DateTime
+
+  """All values that are contained in given list."""
+  createdAt_in: [DateTime!]
+
+  """All values that are not contained in given list."""
+  createdAt_not_in: [DateTime!]
+
+  """All values less than the given value."""
+  createdAt_lt: DateTime
+
+  """All values less than or equal the given value."""
+  createdAt_lte: DateTime
+
+  """All values greater than the given value."""
+  createdAt_gt: DateTime
+
+  """All values greater than or equal the given value."""
+  createdAt_gte: DateTime
+  updatedAt: DateTime
+
+  """All values that are not equal to given value."""
+  updatedAt_not: DateTime
+
+  """All values that are contained in given list."""
+  updatedAt_in: [DateTime!]
+
+  """All values that are not contained in given list."""
+  updatedAt_not_in: [DateTime!]
+
+  """All values less than the given value."""
+  updatedAt_lt: DateTime
+
+  """All values less than or equal the given value."""
+  updatedAt_lte: DateTime
+
+  """All values greater than the given value."""
+  updatedAt_gt: DateTime
+
+  """All values greater than or equal the given value."""
+  updatedAt_gte: DateTime
+  role: String
+
+  """All values that are not equal to given value."""
+  role_not: String
+
+  """All values that are contained in given list."""
+  role_in: [String!]
+
+  """All values that are not contained in given list."""
+  role_not_in: [String!]
+
+  """All values less than the given value."""
+  role_lt: String
+
+  """All values less than or equal the given value."""
+  role_lte: String
+
+  """All values greater than the given value."""
+  role_gt: String
+
+  """All values greater than or equal the given value."""
+  role_gte: String
+
+  """All values containing the given string."""
+  role_contains: String
+
+  """All values not containing the given string."""
+  role_not_contains: String
+
+  """All values starting with the given string."""
+  role_starts_with: String
+
+  """All values not starting with the given string."""
+  role_not_starts_with: String
+
+  """All values ending with the given string."""
+  role_ends_with: String
+
+  """All values not ending with the given string."""
+  role_not_ends_with: String
+  status: Boolean
+
+  """All values that are not equal to given value."""
+  status_not: Boolean
+  facebookUserId: String
+
+  """All values that are not equal to given value."""
+  facebookUserId_not: String
+
+  """All values that are contained in given list."""
+  facebookUserId_in: [String!]
+
+  """All values that are not contained in given list."""
+  facebookUserId_not_in: [String!]
+
+  """All values less than the given value."""
+  facebookUserId_lt: String
+
+  """All values less than or equal the given value."""
+  facebookUserId_lte: String
+
+  """All values greater than the given value."""
+  facebookUserId_gt: String
+
+  """All values greater than or equal the given value."""
+  facebookUserId_gte: String
+
+  """All values containing the given string."""
+  facebookUserId_contains: String
+
+  """All values not containing the given string."""
+  facebookUserId_not_contains: String
+
+  """All values starting with the given string."""
+  facebookUserId_starts_with: String
+
+  """All values not starting with the given string."""
+  facebookUserId_not_starts_with: String
+
+  """All values ending with the given string."""
+  facebookUserId_ends_with: String
+
+  """All values not ending with the given string."""
+  facebookUserId_not_ends_with: String
+  firstName: String
+
+  """All values that are not equal to given value."""
+  firstName_not: String
+
+  """All values that are contained in given list."""
+  firstName_in: [String!]
+
+  """All values that are not contained in given list."""
+  firstName_not_in: [String!]
+
+  """All values less than the given value."""
+  firstName_lt: String
+
+  """All values less than or equal the given value."""
+  firstName_lte: String
+
+  """All values greater than the given value."""
+  firstName_gt: String
+
+  """All values greater than or equal the given value."""
+  firstName_gte: String
+
+  """All values containing the given string."""
+  firstName_contains: String
+
+  """All values not containing the given string."""
+  firstName_not_contains: String
+
+  """All values starting with the given string."""
+  firstName_starts_with: String
+
+  """All values not starting with the given string."""
+  firstName_not_starts_with: String
+
+  """All values ending with the given string."""
+  firstName_ends_with: String
+
+  """All values not ending with the given string."""
+  firstName_not_ends_with: String
+  lastName: String
+
+  """All values that are not equal to given value."""
+  lastName_not: String
+
+  """All values that are contained in given list."""
+  lastName_in: [String!]
+
+  """All values that are not contained in given list."""
+  lastName_not_in: [String!]
+
+  """All values less than the given value."""
+  lastName_lt: String
+
+  """All values less than or equal the given value."""
+  lastName_lte: String
+
+  """All values greater than the given value."""
+  lastName_gt: String
+
+  """All values greater than or equal the given value."""
+  lastName_gte: String
+
+  """All values containing the given string."""
+  lastName_contains: String
+
+  """All values not containing the given string."""
+  lastName_not_contains: String
+
+  """All values starting with the given string."""
+  lastName_starts_with: String
+
+  """All values not starting with the given string."""
+  lastName_not_starts_with: String
+
+  """All values ending with the given string."""
+  lastName_ends_with: String
+
+  """All values not ending with the given string."""
+  lastName_not_ends_with: String
+  email: String
+
+  """All values that are not equal to given value."""
+  email_not: String
+
+  """All values that are contained in given list."""
+  email_in: [String!]
+
+  """All values that are not contained in given list."""
+  email_not_in: [String!]
+
+  """All values less than the given value."""
+  email_lt: String
+
+  """All values less than or equal the given value."""
+  email_lte: String
+
+  """All values greater than the given value."""
+  email_gt: String
+
+  """All values greater than or equal the given value."""
+  email_gte: String
+
+  """All values containing the given string."""
+  email_contains: String
+
+  """All values not containing the given string."""
+  email_not_contains: String
+
+  """All values starting with the given string."""
+  email_starts_with: String
+
+  """All values not starting with the given string."""
+  email_not_starts_with: String
+
+  """All values ending with the given string."""
+  email_ends_with: String
+
+  """All values not ending with the given string."""
+  email_not_ends_with: String
+  password: String
+
+  """All values that are not equal to given value."""
+  password_not: String
+
+  """All values that are contained in given list."""
+  password_in: [String!]
+
+  """All values that are not contained in given list."""
+  password_not_in: [String!]
+
+  """All values less than the given value."""
+  password_lt: String
+
+  """All values less than or equal the given value."""
+  password_lte: String
+
+  """All values greater than the given value."""
+  password_gt: String
+
+  """All values greater than or equal the given value."""
+  password_gte: String
+
+  """All values containing the given string."""
+  password_contains: String
+
+  """All values not containing the given string."""
+  password_not_contains: String
+
+  """All values starting with the given string."""
+  password_starts_with: String
+
+  """All values not starting with the given string."""
+  password_not_starts_with: String
+
+  """All values ending with the given string."""
+  password_ends_with: String
+
+  """All values not ending with the given string."""
+  password_not_ends_with: String
+  resetToken: String
+
+  """All values that are not equal to given value."""
+  resetToken_not: String
+
+  """All values that are contained in given list."""
+  resetToken_in: [String!]
+
+  """All values that are not contained in given list."""
+  resetToken_not_in: [String!]
+
+  """All values less than the given value."""
+  resetToken_lt: String
+
+  """All values less than or equal the given value."""
+  resetToken_lte: String
+
+  """All values greater than the given value."""
+  resetToken_gt: String
+
+  """All values greater than or equal the given value."""
+  resetToken_gte: String
+
+  """All values containing the given string."""
+  resetToken_contains: String
+
+  """All values not containing the given string."""
+  resetToken_not_contains: String
+
+  """All values starting with the given string."""
+  resetToken_starts_with: String
+
+  """All values not starting with the given string."""
+  resetToken_not_starts_with: String
+
+  """All values ending with the given string."""
+  resetToken_ends_with: String
+
+  """All values not ending with the given string."""
+  resetToken_not_ends_with: String
+  resetTokenExpiry: String
+
+  """All values that are not equal to given value."""
+  resetTokenExpiry_not: String
+
+  """All values that are contained in given list."""
+  resetTokenExpiry_in: [String!]
+
+  """All values that are not contained in given list."""
+  resetTokenExpiry_not_in: [String!]
+
+  """All values less than the given value."""
+  resetTokenExpiry_lt: String
+
+  """All values less than or equal the given value."""
+  resetTokenExpiry_lte: String
+
+  """All values greater than the given value."""
+  resetTokenExpiry_gt: String
+
+  """All values greater than or equal the given value."""
+  resetTokenExpiry_gte: String
+
+  """All values containing the given string."""
+  resetTokenExpiry_contains: String
+
+  """All values not containing the given string."""
+  resetTokenExpiry_not_contains: String
+
+  """All values starting with the given string."""
+  resetTokenExpiry_starts_with: String
+
+  """All values not starting with the given string."""
+  resetTokenExpiry_not_starts_with: String
+
+  """All values ending with the given string."""
+  resetTokenExpiry_ends_with: String
+
+  """All values not ending with the given string."""
+  resetTokenExpiry_not_ends_with: String
+  phone1: String
+
+  """All values that are not equal to given value."""
+  phone1_not: String
+
+  """All values that are contained in given list."""
+  phone1_in: [String!]
+
+  """All values that are not contained in given list."""
+  phone1_not_in: [String!]
+
+  """All values less than the given value."""
+  phone1_lt: String
+
+  """All values less than or equal the given value."""
+  phone1_lte: String
+
+  """All values greater than the given value."""
+  phone1_gt: String
+
+  """All values greater than or equal the given value."""
+  phone1_gte: String
+
+  """All values containing the given string."""
+  phone1_contains: String
+
+  """All values not containing the given string."""
+  phone1_not_contains: String
+
+  """All values starting with the given string."""
+  phone1_starts_with: String
+
+  """All values not starting with the given string."""
+  phone1_not_starts_with: String
+
+  """All values ending with the given string."""
+  phone1_ends_with: String
+
+  """All values not ending with the given string."""
+  phone1_not_ends_with: String
+  phone2: String
+
+  """All values that are not equal to given value."""
+  phone2_not: String
+
+  """All values that are contained in given list."""
+  phone2_in: [String!]
+
+  """All values that are not contained in given list."""
+  phone2_not_in: [String!]
+
+  """All values less than the given value."""
+  phone2_lt: String
+
+  """All values less than or equal the given value."""
+  phone2_lte: String
+
+  """All values greater than the given value."""
+  phone2_gt: String
+
+  """All values greater than or equal the given value."""
+  phone2_gte: String
+
+  """All values containing the given string."""
+  phone2_contains: String
+
+  """All values not containing the given string."""
+  phone2_not_contains: String
+
+  """All values starting with the given string."""
+  phone2_starts_with: String
+
+  """All values not starting with the given string."""
+  phone2_not_starts_with: String
+
+  """All values ending with the given string."""
+  phone2_ends_with: String
+
+  """All values not ending with the given string."""
+  phone2_not_ends_with: String
+  primaryPhone: Int
+
+  """All values that are not equal to given value."""
+  primaryPhone_not: Int
+
+  """All values that are contained in given list."""
+  primaryPhone_in: [Int!]
+
+  """All values that are not contained in given list."""
+  primaryPhone_not_in: [Int!]
+
+  """All values less than the given value."""
+  primaryPhone_lt: Int
+
+  """All values less than or equal the given value."""
+  primaryPhone_lte: Int
+
+  """All values greater than the given value."""
+  primaryPhone_gt: Int
+
+  """All values greater than or equal the given value."""
+  primaryPhone_gte: Int
+  responseTime: Int
+
+  """All values that are not equal to given value."""
+  responseTime_not: Int
+
+  """All values that are contained in given list."""
+  responseTime_in: [Int!]
+
+  """All values that are not contained in given list."""
+  responseTime_not_in: [Int!]
+
+  """All values less than the given value."""
+  responseTime_lt: Int
+
+  """All values less than or equal the given value."""
+  responseTime_lte: Int
+
+  """All values greater than the given value."""
+  responseTime_gt: Int
+
+  """All values greater than or equal the given value."""
+  responseTime_gte: Int
+  isSuperHost: Boolean
+
+  """All values that are not equal to given value."""
+  isSuperHost_not: Boolean
 }
 
 type UserSubscriptionPayload {
@@ -9367,6 +9892,8 @@ input UserUpdateDataInput {
   lastName: String
   email: String
   password: String
+  resetToken: String
+  resetTokenExpiry: String
   phone1: String
   phone2: String
   primaryPhone: Int
@@ -9388,6 +9915,8 @@ input UserUpdateInput {
   lastName: String
   email: String
   password: String
+  resetToken: String
+  resetTokenExpiry: String
   phone1: String
   phone2: String
   primaryPhone: Int
@@ -9401,6 +9930,35 @@ input UserUpdateInput {
   profilePicture: PictureUpdateOneInput
 }
 
+input UserUpdateManyDataInput {
+  role: String
+  status: Boolean
+  facebookUserId: String
+  firstName: String
+  lastName: String
+  email: String
+  password: String
+  resetToken: String
+  resetTokenExpiry: String
+  phone1: String
+  phone2: String
+  primaryPhone: Int
+  responseTime: Int
+  isSuperHost: Boolean
+}
+
+input UserUpdateManyInput {
+  create: [UserCreateInput!]
+  connect: [UserWhereUniqueInput!]
+  set: [UserWhereUniqueInput!]
+  disconnect: [UserWhereUniqueInput!]
+  delete: [UserWhereUniqueInput!]
+  update: [UserUpdateWithWhereUniqueNestedInput!]
+  updateMany: [UserUpdateManyWithWhereNestedInput!]
+  deleteMany: [UserScalarWhereInput!]
+  upsert: [UserUpsertWithWhereUniqueNestedInput!]
+}
+
 input UserUpdateManyMutationInput {
   role: String
   status: Boolean
@@ -9409,11 +9967,18 @@ input UserUpdateManyMutationInput {
   lastName: String
   email: String
   password: String
+  resetToken: String
+  resetTokenExpiry: String
   phone1: String
   phone2: String
   primaryPhone: Int
   responseTime: Int
   isSuperHost: Boolean
+}
+
+input UserUpdateManyWithWhereNestedInput {
+  where: UserScalarWhereInput!
+  data: UserUpdateManyDataInput!
 }
 
 input UserUpdateOneRequiredInput {
@@ -9459,6 +10024,8 @@ input UserUpdateWithoutBookingsDataInput {
   lastName: String
   email: String
   password: String
+  resetToken: String
+  resetTokenExpiry: String
   phone1: String
   phone2: String
   primaryPhone: Int
@@ -9479,6 +10046,8 @@ input UserUpdateWithoutNotificationsDataInput {
   lastName: String
   email: String
   password: String
+  resetToken: String
+  resetTokenExpiry: String
   phone1: String
   phone2: String
   primaryPhone: Int
@@ -9499,6 +10068,8 @@ input UserUpdateWithoutOwnedHousesDataInput {
   lastName: String
   email: String
   password: String
+  resetToken: String
+  resetTokenExpiry: String
   phone1: String
   phone2: String
   primaryPhone: Int
@@ -9519,6 +10090,8 @@ input UserUpdateWithoutPaidContactsDataInput {
   lastName: String
   email: String
   password: String
+  resetToken: String
+  resetTokenExpiry: String
   phone1: String
   phone2: String
   primaryPhone: Int
@@ -9529,6 +10102,11 @@ input UserUpdateWithoutPaidContactsDataInput {
   bookings: BookingUpdateManyWithoutBookeeInput
   notifications: NotificationUpdateManyWithoutUserInput
   profilePicture: PictureUpdateOneInput
+}
+
+input UserUpdateWithWhereUniqueNestedInput {
+  where: UserWhereUniqueInput!
+  data: UserUpdateDataInput!
 }
 
 input UserUpsertNestedInput {
@@ -9554,6 +10132,12 @@ input UserUpsertWithoutOwnedHousesInput {
 input UserUpsertWithoutPaidContactsInput {
   update: UserUpdateWithoutPaidContactsDataInput!
   create: UserCreateWithoutPaidContactsInput!
+}
+
+input UserUpsertWithWhereUniqueNestedInput {
+  where: UserWhereUniqueInput!
+  update: UserUpdateDataInput!
+  create: UserCreateInput!
 }
 
 input UserWhereInput {
@@ -9893,6 +10477,86 @@ input UserWhereInput {
 
   """All values not ending with the given string."""
   password_not_ends_with: String
+  resetToken: String
+
+  """All values that are not equal to given value."""
+  resetToken_not: String
+
+  """All values that are contained in given list."""
+  resetToken_in: [String!]
+
+  """All values that are not contained in given list."""
+  resetToken_not_in: [String!]
+
+  """All values less than the given value."""
+  resetToken_lt: String
+
+  """All values less than or equal the given value."""
+  resetToken_lte: String
+
+  """All values greater than the given value."""
+  resetToken_gt: String
+
+  """All values greater than or equal the given value."""
+  resetToken_gte: String
+
+  """All values containing the given string."""
+  resetToken_contains: String
+
+  """All values not containing the given string."""
+  resetToken_not_contains: String
+
+  """All values starting with the given string."""
+  resetToken_starts_with: String
+
+  """All values not starting with the given string."""
+  resetToken_not_starts_with: String
+
+  """All values ending with the given string."""
+  resetToken_ends_with: String
+
+  """All values not ending with the given string."""
+  resetToken_not_ends_with: String
+  resetTokenExpiry: String
+
+  """All values that are not equal to given value."""
+  resetTokenExpiry_not: String
+
+  """All values that are contained in given list."""
+  resetTokenExpiry_in: [String!]
+
+  """All values that are not contained in given list."""
+  resetTokenExpiry_not_in: [String!]
+
+  """All values less than the given value."""
+  resetTokenExpiry_lt: String
+
+  """All values less than or equal the given value."""
+  resetTokenExpiry_lte: String
+
+  """All values greater than the given value."""
+  resetTokenExpiry_gt: String
+
+  """All values greater than or equal the given value."""
+  resetTokenExpiry_gte: String
+
+  """All values containing the given string."""
+  resetTokenExpiry_contains: String
+
+  """All values not containing the given string."""
+  resetTokenExpiry_not_contains: String
+
+  """All values starting with the given string."""
+  resetTokenExpiry_starts_with: String
+
+  """All values not starting with the given string."""
+  resetTokenExpiry_not_starts_with: String
+
+  """All values ending with the given string."""
+  resetTokenExpiry_ends_with: String
+
+  """All values not ending with the given string."""
+  resetTokenExpiry_not_ends_with: String
   phone1: String
 
   """All values that are not equal to given value."""
@@ -10237,6 +10901,7 @@ input VideoUpdateManyDataInput {
 input VideoUpdateManyInput {
   create: [VideoCreateInput!]
   connect: [VideoWhereUniqueInput!]
+  set: [VideoWhereUniqueInput!]
   disconnect: [VideoWhereUniqueInput!]
   delete: [VideoWhereUniqueInput!]
   update: [VideoUpdateWithWhereUniqueNestedInput!]
@@ -10364,6 +11029,7 @@ type Views implements Node {
   id: ID!
   lastWeek: Int!
   House: House!
+  User(where: UserWhereInput, orderBy: UserOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [User!]
 }
 
 """A connection to a list of items."""
@@ -10379,6 +11045,7 @@ type ViewsConnection {
 input ViewsCreateInput {
   lastWeek: Int!
   House: HouseCreateOneWithoutViewsInput!
+  User: UserCreateManyInput
 }
 
 input ViewsCreateOneWithoutHouseInput {
@@ -10388,6 +11055,7 @@ input ViewsCreateOneWithoutHouseInput {
 
 input ViewsCreateWithoutHouseInput {
   lastWeek: Int!
+  User: UserCreateManyInput
 }
 
 """An edge in a connection."""
@@ -10457,6 +11125,7 @@ input ViewsSubscriptionWhereInput {
 input ViewsUpdateInput {
   lastWeek: Int
   House: HouseUpdateOneRequiredWithoutViewsInput
+  User: UserUpdateManyInput
 }
 
 input ViewsUpdateManyMutationInput {
@@ -10474,6 +11143,7 @@ input ViewsUpdateOneWithoutHouseInput {
 
 input ViewsUpdateWithoutHouseDataInput {
   lastWeek: Int
+  User: UserUpdateManyInput
 }
 
 input ViewsUpsertWithoutHouseInput {
@@ -10553,6 +11223,9 @@ input ViewsWhereInput {
   """All values greater than or equal the given value."""
   lastWeek_gte: Int
   House: HouseWhereInput
+  User_every: UserWhereInput
+  User_some: UserWhereInput
+  User_none: UserWhereInput
 }
 
 input ViewsWhereUniqueInput {
@@ -10914,6 +11587,11 @@ export type ReviewOrderByInput =   'id_ASC' |
   'updatedAt_ASC' |
   'updatedAt_DESC'
 
+export type ROOM_LABELS =   'LIVINGROOM' |
+  'DINIGROOM' |
+  'BEDROOM' |
+  'BATHROOM'
+
 export type RoomOrderByInput =   'id_ASC' |
   'id_DESC' |
   'label_ASC' |
@@ -10954,6 +11632,10 @@ export type UserOrderByInput =   'id_ASC' |
   'email_DESC' |
   'password_ASC' |
   'password_DESC' |
+  'resetToken_ASC' |
+  'resetToken_DESC' |
+  'resetTokenExpiry_ASC' |
+  'resetTokenExpiry_DESC' |
   'phone1_ASC' |
   'phone1_DESC' |
   'phone2_ASC' |
@@ -11443,6 +12125,7 @@ export interface BookingUpdateManyMutationInput {
 export interface BookingUpdateManyWithoutBookeeInput {
   create?: BookingCreateWithoutBookeeInput[] | BookingCreateWithoutBookeeInput
   connect?: BookingWhereUniqueInput[] | BookingWhereUniqueInput
+  set?: BookingWhereUniqueInput[] | BookingWhereUniqueInput
   disconnect?: BookingWhereUniqueInput[] | BookingWhereUniqueInput
   delete?: BookingWhereUniqueInput[] | BookingWhereUniqueInput
   update?: BookingUpdateWithWhereUniqueWithoutBookeeInput[] | BookingUpdateWithWhereUniqueWithoutBookeeInput
@@ -11454,6 +12137,7 @@ export interface BookingUpdateManyWithoutBookeeInput {
 export interface BookingUpdateManyWithoutHouseInput {
   create?: BookingCreateWithoutHouseInput[] | BookingCreateWithoutHouseInput
   connect?: BookingWhereUniqueInput[] | BookingWhereUniqueInput
+  set?: BookingWhereUniqueInput[] | BookingWhereUniqueInput
   disconnect?: BookingWhereUniqueInput[] | BookingWhereUniqueInput
   delete?: BookingWhereUniqueInput[] | BookingWhereUniqueInput
   update?: BookingUpdateWithWhereUniqueWithoutHouseInput[] | BookingUpdateWithWhereUniqueWithoutHouseInput
@@ -12152,8 +12836,8 @@ export interface HouseCreateInput {
   rooms?: RoomCreateManyWithoutHouseInput
   views?: ViewsCreateOneWithoutHouseInput
   bookings?: BookingCreateManyWithoutHouseInput
-  pictures?: PictureCreateManyInput
   contactInfoPayments?: PaymentLanlordInfoCreateManyWithoutHouseInput
+  preview_image?: PictureCreateOneInput
 }
 
 export interface HouseCreateManyWithoutHostInput {
@@ -12224,8 +12908,8 @@ export interface HouseCreateWithoutAmenitiesInput {
   rooms?: RoomCreateManyWithoutHouseInput
   views?: ViewsCreateOneWithoutHouseInput
   bookings?: BookingCreateManyWithoutHouseInput
-  pictures?: PictureCreateManyInput
   contactInfoPayments?: PaymentLanlordInfoCreateManyWithoutHouseInput
+  preview_image?: PictureCreateOneInput
 }
 
 export interface HouseCreateWithoutBookingsInput {
@@ -12251,8 +12935,8 @@ export interface HouseCreateWithoutBookingsInput {
   location: LocationCreateOneInput
   rooms?: RoomCreateManyWithoutHouseInput
   views?: ViewsCreateOneWithoutHouseInput
-  pictures?: PictureCreateManyInput
   contactInfoPayments?: PaymentLanlordInfoCreateManyWithoutHouseInput
+  preview_image?: PictureCreateOneInput
 }
 
 export interface HouseCreateWithoutContactInfoPaymentsInput {
@@ -12279,7 +12963,7 @@ export interface HouseCreateWithoutContactInfoPaymentsInput {
   rooms?: RoomCreateManyWithoutHouseInput
   views?: ViewsCreateOneWithoutHouseInput
   bookings?: BookingCreateManyWithoutHouseInput
-  pictures?: PictureCreateManyInput
+  preview_image?: PictureCreateOneInput
 }
 
 export interface HouseCreateWithoutHostInput {
@@ -12305,8 +12989,8 @@ export interface HouseCreateWithoutHostInput {
   rooms?: RoomCreateManyWithoutHouseInput
   views?: ViewsCreateOneWithoutHouseInput
   bookings?: BookingCreateManyWithoutHouseInput
-  pictures?: PictureCreateManyInput
   contactInfoPayments?: PaymentLanlordInfoCreateManyWithoutHouseInput
+  preview_image?: PictureCreateOneInput
 }
 
 export interface HouseCreateWithoutPricingInput {
@@ -12332,8 +13016,8 @@ export interface HouseCreateWithoutPricingInput {
   rooms?: RoomCreateManyWithoutHouseInput
   views?: ViewsCreateOneWithoutHouseInput
   bookings?: BookingCreateManyWithoutHouseInput
-  pictures?: PictureCreateManyInput
   contactInfoPayments?: PaymentLanlordInfoCreateManyWithoutHouseInput
+  preview_image?: PictureCreateOneInput
 }
 
 export interface HouseCreateWithoutReviewsInput {
@@ -12359,8 +13043,8 @@ export interface HouseCreateWithoutReviewsInput {
   rooms?: RoomCreateManyWithoutHouseInput
   views?: ViewsCreateOneWithoutHouseInput
   bookings?: BookingCreateManyWithoutHouseInput
-  pictures?: PictureCreateManyInput
   contactInfoPayments?: PaymentLanlordInfoCreateManyWithoutHouseInput
+  preview_image?: PictureCreateOneInput
 }
 
 export interface HouseCreateWithoutRoomsInput {
@@ -12386,8 +13070,8 @@ export interface HouseCreateWithoutRoomsInput {
   location: LocationCreateOneInput
   views?: ViewsCreateOneWithoutHouseInput
   bookings?: BookingCreateManyWithoutHouseInput
-  pictures?: PictureCreateManyInput
   contactInfoPayments?: PaymentLanlordInfoCreateManyWithoutHouseInput
+  preview_image?: PictureCreateOneInput
 }
 
 export interface HouseCreateWithoutViewsInput {
@@ -12413,8 +13097,8 @@ export interface HouseCreateWithoutViewsInput {
   location: LocationCreateOneInput
   rooms?: RoomCreateManyWithoutHouseInput
   bookings?: BookingCreateManyWithoutHouseInput
-  pictures?: PictureCreateManyInput
   contactInfoPayments?: PaymentLanlordInfoCreateManyWithoutHouseInput
+  preview_image?: PictureCreateOneInput
 }
 
 export interface HouseScalarWhereInput {
@@ -12586,8 +13270,8 @@ export interface HouseUpdateDataInput {
   rooms?: RoomUpdateManyWithoutHouseInput
   views?: ViewsUpdateOneWithoutHouseInput
   bookings?: BookingUpdateManyWithoutHouseInput
-  pictures?: PictureUpdateManyInput
   contactInfoPayments?: PaymentLanlordInfoUpdateManyWithoutHouseInput
+  preview_image?: PictureUpdateOneInput
 }
 
 export interface HouseUpdateInput {
@@ -12614,8 +13298,8 @@ export interface HouseUpdateInput {
   rooms?: RoomUpdateManyWithoutHouseInput
   views?: ViewsUpdateOneWithoutHouseInput
   bookings?: BookingUpdateManyWithoutHouseInput
-  pictures?: PictureUpdateManyInput
   contactInfoPayments?: PaymentLanlordInfoUpdateManyWithoutHouseInput
+  preview_image?: PictureUpdateOneInput
 }
 
 export interface HouseUpdateManyDataInput {
@@ -12657,6 +13341,7 @@ export interface HouseUpdateManyMutationInput {
 export interface HouseUpdateManyWithoutHostInput {
   create?: HouseCreateWithoutHostInput[] | HouseCreateWithoutHostInput
   connect?: HouseWhereUniqueInput[] | HouseWhereUniqueInput
+  set?: HouseWhereUniqueInput[] | HouseWhereUniqueInput
   disconnect?: HouseWhereUniqueInput[] | HouseWhereUniqueInput
   delete?: HouseWhereUniqueInput[] | HouseWhereUniqueInput
   update?: HouseUpdateWithWhereUniqueWithoutHostInput[] | HouseUpdateWithWhereUniqueWithoutHostInput
@@ -12749,8 +13434,8 @@ export interface HouseUpdateWithoutAmenitiesDataInput {
   rooms?: RoomUpdateManyWithoutHouseInput
   views?: ViewsUpdateOneWithoutHouseInput
   bookings?: BookingUpdateManyWithoutHouseInput
-  pictures?: PictureUpdateManyInput
   contactInfoPayments?: PaymentLanlordInfoUpdateManyWithoutHouseInput
+  preview_image?: PictureUpdateOneInput
 }
 
 export interface HouseUpdateWithoutBookingsDataInput {
@@ -12776,8 +13461,8 @@ export interface HouseUpdateWithoutBookingsDataInput {
   location?: LocationUpdateOneRequiredInput
   rooms?: RoomUpdateManyWithoutHouseInput
   views?: ViewsUpdateOneWithoutHouseInput
-  pictures?: PictureUpdateManyInput
   contactInfoPayments?: PaymentLanlordInfoUpdateManyWithoutHouseInput
+  preview_image?: PictureUpdateOneInput
 }
 
 export interface HouseUpdateWithoutContactInfoPaymentsDataInput {
@@ -12804,7 +13489,7 @@ export interface HouseUpdateWithoutContactInfoPaymentsDataInput {
   rooms?: RoomUpdateManyWithoutHouseInput
   views?: ViewsUpdateOneWithoutHouseInput
   bookings?: BookingUpdateManyWithoutHouseInput
-  pictures?: PictureUpdateManyInput
+  preview_image?: PictureUpdateOneInput
 }
 
 export interface HouseUpdateWithoutHostDataInput {
@@ -12830,8 +13515,8 @@ export interface HouseUpdateWithoutHostDataInput {
   rooms?: RoomUpdateManyWithoutHouseInput
   views?: ViewsUpdateOneWithoutHouseInput
   bookings?: BookingUpdateManyWithoutHouseInput
-  pictures?: PictureUpdateManyInput
   contactInfoPayments?: PaymentLanlordInfoUpdateManyWithoutHouseInput
+  preview_image?: PictureUpdateOneInput
 }
 
 export interface HouseUpdateWithoutPricingDataInput {
@@ -12857,8 +13542,8 @@ export interface HouseUpdateWithoutPricingDataInput {
   rooms?: RoomUpdateManyWithoutHouseInput
   views?: ViewsUpdateOneWithoutHouseInput
   bookings?: BookingUpdateManyWithoutHouseInput
-  pictures?: PictureUpdateManyInput
   contactInfoPayments?: PaymentLanlordInfoUpdateManyWithoutHouseInput
+  preview_image?: PictureUpdateOneInput
 }
 
 export interface HouseUpdateWithoutReviewsDataInput {
@@ -12884,8 +13569,8 @@ export interface HouseUpdateWithoutReviewsDataInput {
   rooms?: RoomUpdateManyWithoutHouseInput
   views?: ViewsUpdateOneWithoutHouseInput
   bookings?: BookingUpdateManyWithoutHouseInput
-  pictures?: PictureUpdateManyInput
   contactInfoPayments?: PaymentLanlordInfoUpdateManyWithoutHouseInput
+  preview_image?: PictureUpdateOneInput
 }
 
 export interface HouseUpdateWithoutRoomsDataInput {
@@ -12911,8 +13596,8 @@ export interface HouseUpdateWithoutRoomsDataInput {
   location?: LocationUpdateOneRequiredInput
   views?: ViewsUpdateOneWithoutHouseInput
   bookings?: BookingUpdateManyWithoutHouseInput
-  pictures?: PictureUpdateManyInput
   contactInfoPayments?: PaymentLanlordInfoUpdateManyWithoutHouseInput
+  preview_image?: PictureUpdateOneInput
 }
 
 export interface HouseUpdateWithoutViewsDataInput {
@@ -12938,8 +13623,8 @@ export interface HouseUpdateWithoutViewsDataInput {
   location?: LocationUpdateOneRequiredInput
   rooms?: RoomUpdateManyWithoutHouseInput
   bookings?: BookingUpdateManyWithoutHouseInput
-  pictures?: PictureUpdateManyInput
   contactInfoPayments?: PaymentLanlordInfoUpdateManyWithoutHouseInput
+  preview_image?: PictureUpdateOneInput
 }
 
 export interface HouseUpdateWithWhereUniqueWithoutHostInput {
@@ -13139,12 +13824,10 @@ export interface HouseWhereInput {
   bookings_every?: BookingWhereInput
   bookings_some?: BookingWhereInput
   bookings_none?: BookingWhereInput
-  pictures_every?: PictureWhereInput
-  pictures_some?: PictureWhereInput
-  pictures_none?: PictureWhereInput
   contactInfoPayments_every?: PaymentLanlordInfoWhereInput
   contactInfoPayments_some?: PaymentLanlordInfoWhereInput
   contactInfoPayments_none?: PaymentLanlordInfoWhereInput
+  preview_image?: PictureWhereInput
 }
 
 export interface HouseWhereUniqueInput {
@@ -13451,6 +14134,7 @@ export interface NotificationUpdateManyMutationInput {
 export interface NotificationUpdateManyWithoutUserInput {
   create?: NotificationCreateWithoutUserInput[] | NotificationCreateWithoutUserInput
   connect?: NotificationWhereUniqueInput[] | NotificationWhereUniqueInput
+  set?: NotificationWhereUniqueInput[] | NotificationWhereUniqueInput
   disconnect?: NotificationWhereUniqueInput[] | NotificationWhereUniqueInput
   delete?: NotificationWhereUniqueInput[] | NotificationWhereUniqueInput
   update?: NotificationUpdateWithWhereUniqueWithoutUserInput[] | NotificationUpdateWithWhereUniqueWithoutUserInput
@@ -13798,6 +14482,7 @@ export interface PaymentHouseUpdateManyMutationInput {
 export interface PaymentHouseUpdateManyWithoutPaymentMethodInput {
   create?: PaymentHouseCreateWithoutPaymentMethodInput[] | PaymentHouseCreateWithoutPaymentMethodInput
   connect?: PaymentHouseWhereUniqueInput[] | PaymentHouseWhereUniqueInput
+  set?: PaymentHouseWhereUniqueInput[] | PaymentHouseWhereUniqueInput
   disconnect?: PaymentHouseWhereUniqueInput[] | PaymentHouseWhereUniqueInput
   delete?: PaymentHouseWhereUniqueInput[] | PaymentHouseWhereUniqueInput
   update?: PaymentHouseUpdateWithWhereUniqueWithoutPaymentMethodInput[] | PaymentHouseUpdateWithWhereUniqueWithoutPaymentMethodInput
@@ -13996,6 +14681,7 @@ export interface PaymentLanlordInfoUpdateManyMutationInput {
 export interface PaymentLanlordInfoUpdateManyWithoutClientInput {
   create?: PaymentLanlordInfoCreateWithoutClientInput[] | PaymentLanlordInfoCreateWithoutClientInput
   connect?: PaymentLanlordInfoWhereUniqueInput[] | PaymentLanlordInfoWhereUniqueInput
+  set?: PaymentLanlordInfoWhereUniqueInput[] | PaymentLanlordInfoWhereUniqueInput
   disconnect?: PaymentLanlordInfoWhereUniqueInput[] | PaymentLanlordInfoWhereUniqueInput
   delete?: PaymentLanlordInfoWhereUniqueInput[] | PaymentLanlordInfoWhereUniqueInput
   update?: PaymentLanlordInfoUpdateWithWhereUniqueWithoutClientInput[] | PaymentLanlordInfoUpdateWithWhereUniqueWithoutClientInput
@@ -14007,6 +14693,7 @@ export interface PaymentLanlordInfoUpdateManyWithoutClientInput {
 export interface PaymentLanlordInfoUpdateManyWithoutHouseInput {
   create?: PaymentLanlordInfoCreateWithoutHouseInput[] | PaymentLanlordInfoCreateWithoutHouseInput
   connect?: PaymentLanlordInfoWhereUniqueInput[] | PaymentLanlordInfoWhereUniqueInput
+  set?: PaymentLanlordInfoWhereUniqueInput[] | PaymentLanlordInfoWhereUniqueInput
   disconnect?: PaymentLanlordInfoWhereUniqueInput[] | PaymentLanlordInfoWhereUniqueInput
   delete?: PaymentLanlordInfoWhereUniqueInput[] | PaymentLanlordInfoWhereUniqueInput
   update?: PaymentLanlordInfoUpdateWithWhereUniqueWithoutHouseInput[] | PaymentLanlordInfoUpdateWithWhereUniqueWithoutHouseInput
@@ -14283,6 +14970,7 @@ export interface PictureUpdateManyDataInput {
 export interface PictureUpdateManyInput {
   create?: PictureCreateInput[] | PictureCreateInput
   connect?: PictureWhereUniqueInput[] | PictureWhereUniqueInput
+  set?: PictureWhereUniqueInput[] | PictureWhereUniqueInput
   disconnect?: PictureWhereUniqueInput[] | PictureWhereUniqueInput
   delete?: PictureWhereUniqueInput[] | PictureWhereUniqueInput
   update?: PictureUpdateWithWhereUniqueNestedInput[] | PictureUpdateWithWhereUniqueNestedInput
@@ -14642,6 +15330,7 @@ export interface ReviewUpdateManyMutationInput {
 export interface ReviewUpdateManyWithoutHouseInput {
   create?: ReviewCreateWithoutHouseInput[] | ReviewCreateWithoutHouseInput
   connect?: ReviewWhereUniqueInput[] | ReviewWhereUniqueInput
+  set?: ReviewWhereUniqueInput[] | ReviewWhereUniqueInput
   disconnect?: ReviewWhereUniqueInput[] | ReviewWhereUniqueInput
   delete?: ReviewWhereUniqueInput[] | ReviewWhereUniqueInput
   update?: ReviewUpdateWithWhereUniqueWithoutHouseInput[] | ReviewUpdateWithWhereUniqueWithoutHouseInput
@@ -14772,7 +15461,7 @@ export interface ReviewWhereUniqueInput {
 }
 
 export interface RoomCreateInput {
-  label: String
+  label: ROOM_LABELS
   house: HouseCreateOneWithoutRoomsInput
   picture_previews?: PictureCreateManyInput
   video_previews?: VideoCreateManyInput
@@ -14784,7 +15473,7 @@ export interface RoomCreateManyWithoutHouseInput {
 }
 
 export interface RoomCreateWithoutHouseInput {
-  label: String
+  label: ROOM_LABELS
   picture_previews?: PictureCreateManyInput
   video_previews?: VideoCreateManyInput
 }
@@ -14807,20 +15496,10 @@ export interface RoomScalarWhereInput {
   id_not_starts_with?: ID_Input
   id_ends_with?: ID_Input
   id_not_ends_with?: ID_Input
-  label?: String
-  label_not?: String
-  label_in?: String[] | String
-  label_not_in?: String[] | String
-  label_lt?: String
-  label_lte?: String
-  label_gt?: String
-  label_gte?: String
-  label_contains?: String
-  label_not_contains?: String
-  label_starts_with?: String
-  label_not_starts_with?: String
-  label_ends_with?: String
-  label_not_ends_with?: String
+  label?: ROOM_LABELS
+  label_not?: ROOM_LABELS
+  label_in?: ROOM_LABELS[] | ROOM_LABELS
+  label_not_in?: ROOM_LABELS[] | ROOM_LABELS
 }
 
 export interface RoomSubscriptionWhereInput {
@@ -14835,23 +15514,24 @@ export interface RoomSubscriptionWhereInput {
 }
 
 export interface RoomUpdateInput {
-  label?: String
+  label?: ROOM_LABELS
   house?: HouseUpdateOneRequiredWithoutRoomsInput
   picture_previews?: PictureUpdateManyInput
   video_previews?: VideoUpdateManyInput
 }
 
 export interface RoomUpdateManyDataInput {
-  label?: String
+  label?: ROOM_LABELS
 }
 
 export interface RoomUpdateManyMutationInput {
-  label?: String
+  label?: ROOM_LABELS
 }
 
 export interface RoomUpdateManyWithoutHouseInput {
   create?: RoomCreateWithoutHouseInput[] | RoomCreateWithoutHouseInput
   connect?: RoomWhereUniqueInput[] | RoomWhereUniqueInput
+  set?: RoomWhereUniqueInput[] | RoomWhereUniqueInput
   disconnect?: RoomWhereUniqueInput[] | RoomWhereUniqueInput
   delete?: RoomWhereUniqueInput[] | RoomWhereUniqueInput
   update?: RoomUpdateWithWhereUniqueWithoutHouseInput[] | RoomUpdateWithWhereUniqueWithoutHouseInput
@@ -14866,7 +15546,7 @@ export interface RoomUpdateManyWithWhereNestedInput {
 }
 
 export interface RoomUpdateWithoutHouseDataInput {
-  label?: String
+  label?: ROOM_LABELS
   picture_previews?: PictureUpdateManyInput
   video_previews?: VideoUpdateManyInput
 }
@@ -14900,20 +15580,10 @@ export interface RoomWhereInput {
   id_not_starts_with?: ID_Input
   id_ends_with?: ID_Input
   id_not_ends_with?: ID_Input
-  label?: String
-  label_not?: String
-  label_in?: String[] | String
-  label_not_in?: String[] | String
-  label_lt?: String
-  label_lte?: String
-  label_gt?: String
-  label_gte?: String
-  label_contains?: String
-  label_not_contains?: String
-  label_starts_with?: String
-  label_not_starts_with?: String
-  label_ends_with?: String
-  label_not_ends_with?: String
+  label?: ROOM_LABELS
+  label_not?: ROOM_LABELS
+  label_in?: ROOM_LABELS[] | ROOM_LABELS
+  label_not_in?: ROOM_LABELS[] | ROOM_LABELS
   house?: HouseWhereInput
   picture_previews_every?: PictureWhereInput
   picture_previews_some?: PictureWhereInput
@@ -15033,6 +15703,8 @@ export interface UserCreateInput {
   lastName: String
   email?: String
   password?: String
+  resetToken?: String
+  resetTokenExpiry?: String
   phone1?: String
   phone2?: String
   primaryPhone?: Int
@@ -15044,6 +15716,11 @@ export interface UserCreateInput {
   paidContacts?: PaymentLanlordInfoCreateManyWithoutClientInput
   notifications?: NotificationCreateManyWithoutUserInput
   profilePicture?: PictureCreateOneInput
+}
+
+export interface UserCreateManyInput {
+  create?: UserCreateInput[] | UserCreateInput
+  connect?: UserWhereUniqueInput[] | UserWhereUniqueInput
 }
 
 export interface UserCreateOneInput {
@@ -15079,6 +15756,8 @@ export interface UserCreateWithoutBookingsInput {
   lastName: String
   email?: String
   password?: String
+  resetToken?: String
+  resetTokenExpiry?: String
   phone1?: String
   phone2?: String
   primaryPhone?: Int
@@ -15099,6 +15778,8 @@ export interface UserCreateWithoutNotificationsInput {
   lastName: String
   email?: String
   password?: String
+  resetToken?: String
+  resetTokenExpiry?: String
   phone1?: String
   phone2?: String
   primaryPhone?: Int
@@ -15119,6 +15800,8 @@ export interface UserCreateWithoutOwnedHousesInput {
   lastName: String
   email?: String
   password?: String
+  resetToken?: String
+  resetTokenExpiry?: String
   phone1?: String
   phone2?: String
   primaryPhone?: Int
@@ -15139,6 +15822,8 @@ export interface UserCreateWithoutPaidContactsInput {
   lastName: String
   email?: String
   password?: String
+  resetToken?: String
+  resetTokenExpiry?: String
   phone1?: String
   phone2?: String
   primaryPhone?: Int
@@ -15149,6 +15834,202 @@ export interface UserCreateWithoutPaidContactsInput {
   bookings?: BookingCreateManyWithoutBookeeInput
   notifications?: NotificationCreateManyWithoutUserInput
   profilePicture?: PictureCreateOneInput
+}
+
+export interface UserScalarWhereInput {
+  AND?: UserScalarWhereInput[] | UserScalarWhereInput
+  OR?: UserScalarWhereInput[] | UserScalarWhereInput
+  NOT?: UserScalarWhereInput[] | UserScalarWhereInput
+  id?: ID_Input
+  id_not?: ID_Input
+  id_in?: ID_Input[] | ID_Input
+  id_not_in?: ID_Input[] | ID_Input
+  id_lt?: ID_Input
+  id_lte?: ID_Input
+  id_gt?: ID_Input
+  id_gte?: ID_Input
+  id_contains?: ID_Input
+  id_not_contains?: ID_Input
+  id_starts_with?: ID_Input
+  id_not_starts_with?: ID_Input
+  id_ends_with?: ID_Input
+  id_not_ends_with?: ID_Input
+  createdAt?: DateTime
+  createdAt_not?: DateTime
+  createdAt_in?: DateTime[] | DateTime
+  createdAt_not_in?: DateTime[] | DateTime
+  createdAt_lt?: DateTime
+  createdAt_lte?: DateTime
+  createdAt_gt?: DateTime
+  createdAt_gte?: DateTime
+  updatedAt?: DateTime
+  updatedAt_not?: DateTime
+  updatedAt_in?: DateTime[] | DateTime
+  updatedAt_not_in?: DateTime[] | DateTime
+  updatedAt_lt?: DateTime
+  updatedAt_lte?: DateTime
+  updatedAt_gt?: DateTime
+  updatedAt_gte?: DateTime
+  role?: String
+  role_not?: String
+  role_in?: String[] | String
+  role_not_in?: String[] | String
+  role_lt?: String
+  role_lte?: String
+  role_gt?: String
+  role_gte?: String
+  role_contains?: String
+  role_not_contains?: String
+  role_starts_with?: String
+  role_not_starts_with?: String
+  role_ends_with?: String
+  role_not_ends_with?: String
+  status?: Boolean
+  status_not?: Boolean
+  facebookUserId?: String
+  facebookUserId_not?: String
+  facebookUserId_in?: String[] | String
+  facebookUserId_not_in?: String[] | String
+  facebookUserId_lt?: String
+  facebookUserId_lte?: String
+  facebookUserId_gt?: String
+  facebookUserId_gte?: String
+  facebookUserId_contains?: String
+  facebookUserId_not_contains?: String
+  facebookUserId_starts_with?: String
+  facebookUserId_not_starts_with?: String
+  facebookUserId_ends_with?: String
+  facebookUserId_not_ends_with?: String
+  firstName?: String
+  firstName_not?: String
+  firstName_in?: String[] | String
+  firstName_not_in?: String[] | String
+  firstName_lt?: String
+  firstName_lte?: String
+  firstName_gt?: String
+  firstName_gte?: String
+  firstName_contains?: String
+  firstName_not_contains?: String
+  firstName_starts_with?: String
+  firstName_not_starts_with?: String
+  firstName_ends_with?: String
+  firstName_not_ends_with?: String
+  lastName?: String
+  lastName_not?: String
+  lastName_in?: String[] | String
+  lastName_not_in?: String[] | String
+  lastName_lt?: String
+  lastName_lte?: String
+  lastName_gt?: String
+  lastName_gte?: String
+  lastName_contains?: String
+  lastName_not_contains?: String
+  lastName_starts_with?: String
+  lastName_not_starts_with?: String
+  lastName_ends_with?: String
+  lastName_not_ends_with?: String
+  email?: String
+  email_not?: String
+  email_in?: String[] | String
+  email_not_in?: String[] | String
+  email_lt?: String
+  email_lte?: String
+  email_gt?: String
+  email_gte?: String
+  email_contains?: String
+  email_not_contains?: String
+  email_starts_with?: String
+  email_not_starts_with?: String
+  email_ends_with?: String
+  email_not_ends_with?: String
+  password?: String
+  password_not?: String
+  password_in?: String[] | String
+  password_not_in?: String[] | String
+  password_lt?: String
+  password_lte?: String
+  password_gt?: String
+  password_gte?: String
+  password_contains?: String
+  password_not_contains?: String
+  password_starts_with?: String
+  password_not_starts_with?: String
+  password_ends_with?: String
+  password_not_ends_with?: String
+  resetToken?: String
+  resetToken_not?: String
+  resetToken_in?: String[] | String
+  resetToken_not_in?: String[] | String
+  resetToken_lt?: String
+  resetToken_lte?: String
+  resetToken_gt?: String
+  resetToken_gte?: String
+  resetToken_contains?: String
+  resetToken_not_contains?: String
+  resetToken_starts_with?: String
+  resetToken_not_starts_with?: String
+  resetToken_ends_with?: String
+  resetToken_not_ends_with?: String
+  resetTokenExpiry?: String
+  resetTokenExpiry_not?: String
+  resetTokenExpiry_in?: String[] | String
+  resetTokenExpiry_not_in?: String[] | String
+  resetTokenExpiry_lt?: String
+  resetTokenExpiry_lte?: String
+  resetTokenExpiry_gt?: String
+  resetTokenExpiry_gte?: String
+  resetTokenExpiry_contains?: String
+  resetTokenExpiry_not_contains?: String
+  resetTokenExpiry_starts_with?: String
+  resetTokenExpiry_not_starts_with?: String
+  resetTokenExpiry_ends_with?: String
+  resetTokenExpiry_not_ends_with?: String
+  phone1?: String
+  phone1_not?: String
+  phone1_in?: String[] | String
+  phone1_not_in?: String[] | String
+  phone1_lt?: String
+  phone1_lte?: String
+  phone1_gt?: String
+  phone1_gte?: String
+  phone1_contains?: String
+  phone1_not_contains?: String
+  phone1_starts_with?: String
+  phone1_not_starts_with?: String
+  phone1_ends_with?: String
+  phone1_not_ends_with?: String
+  phone2?: String
+  phone2_not?: String
+  phone2_in?: String[] | String
+  phone2_not_in?: String[] | String
+  phone2_lt?: String
+  phone2_lte?: String
+  phone2_gt?: String
+  phone2_gte?: String
+  phone2_contains?: String
+  phone2_not_contains?: String
+  phone2_starts_with?: String
+  phone2_not_starts_with?: String
+  phone2_ends_with?: String
+  phone2_not_ends_with?: String
+  primaryPhone?: Int
+  primaryPhone_not?: Int
+  primaryPhone_in?: Int[] | Int
+  primaryPhone_not_in?: Int[] | Int
+  primaryPhone_lt?: Int
+  primaryPhone_lte?: Int
+  primaryPhone_gt?: Int
+  primaryPhone_gte?: Int
+  responseTime?: Int
+  responseTime_not?: Int
+  responseTime_in?: Int[] | Int
+  responseTime_not_in?: Int[] | Int
+  responseTime_lt?: Int
+  responseTime_lte?: Int
+  responseTime_gt?: Int
+  responseTime_gte?: Int
+  isSuperHost?: Boolean
+  isSuperHost_not?: Boolean
 }
 
 export interface UserSubscriptionWhereInput {
@@ -15170,6 +16051,8 @@ export interface UserUpdateDataInput {
   lastName?: String
   email?: String
   password?: String
+  resetToken?: String
+  resetTokenExpiry?: String
   phone1?: String
   phone2?: String
   primaryPhone?: Int
@@ -15191,6 +16074,8 @@ export interface UserUpdateInput {
   lastName?: String
   email?: String
   password?: String
+  resetToken?: String
+  resetTokenExpiry?: String
   phone1?: String
   phone2?: String
   primaryPhone?: Int
@@ -15204,6 +16089,35 @@ export interface UserUpdateInput {
   profilePicture?: PictureUpdateOneInput
 }
 
+export interface UserUpdateManyDataInput {
+  role?: String
+  status?: Boolean
+  facebookUserId?: String
+  firstName?: String
+  lastName?: String
+  email?: String
+  password?: String
+  resetToken?: String
+  resetTokenExpiry?: String
+  phone1?: String
+  phone2?: String
+  primaryPhone?: Int
+  responseTime?: Int
+  isSuperHost?: Boolean
+}
+
+export interface UserUpdateManyInput {
+  create?: UserCreateInput[] | UserCreateInput
+  connect?: UserWhereUniqueInput[] | UserWhereUniqueInput
+  set?: UserWhereUniqueInput[] | UserWhereUniqueInput
+  disconnect?: UserWhereUniqueInput[] | UserWhereUniqueInput
+  delete?: UserWhereUniqueInput[] | UserWhereUniqueInput
+  update?: UserUpdateWithWhereUniqueNestedInput[] | UserUpdateWithWhereUniqueNestedInput
+  updateMany?: UserUpdateManyWithWhereNestedInput[] | UserUpdateManyWithWhereNestedInput
+  deleteMany?: UserScalarWhereInput[] | UserScalarWhereInput
+  upsert?: UserUpsertWithWhereUniqueNestedInput[] | UserUpsertWithWhereUniqueNestedInput
+}
+
 export interface UserUpdateManyMutationInput {
   role?: String
   status?: Boolean
@@ -15212,11 +16126,18 @@ export interface UserUpdateManyMutationInput {
   lastName?: String
   email?: String
   password?: String
+  resetToken?: String
+  resetTokenExpiry?: String
   phone1?: String
   phone2?: String
   primaryPhone?: Int
   responseTime?: Int
   isSuperHost?: Boolean
+}
+
+export interface UserUpdateManyWithWhereNestedInput {
+  where: UserScalarWhereInput
+  data: UserUpdateManyDataInput
 }
 
 export interface UserUpdateOneRequiredInput {
@@ -15262,6 +16183,8 @@ export interface UserUpdateWithoutBookingsDataInput {
   lastName?: String
   email?: String
   password?: String
+  resetToken?: String
+  resetTokenExpiry?: String
   phone1?: String
   phone2?: String
   primaryPhone?: Int
@@ -15282,6 +16205,8 @@ export interface UserUpdateWithoutNotificationsDataInput {
   lastName?: String
   email?: String
   password?: String
+  resetToken?: String
+  resetTokenExpiry?: String
   phone1?: String
   phone2?: String
   primaryPhone?: Int
@@ -15302,6 +16227,8 @@ export interface UserUpdateWithoutOwnedHousesDataInput {
   lastName?: String
   email?: String
   password?: String
+  resetToken?: String
+  resetTokenExpiry?: String
   phone1?: String
   phone2?: String
   primaryPhone?: Int
@@ -15322,6 +16249,8 @@ export interface UserUpdateWithoutPaidContactsDataInput {
   lastName?: String
   email?: String
   password?: String
+  resetToken?: String
+  resetTokenExpiry?: String
   phone1?: String
   phone2?: String
   primaryPhone?: Int
@@ -15332,6 +16261,11 @@ export interface UserUpdateWithoutPaidContactsDataInput {
   bookings?: BookingUpdateManyWithoutBookeeInput
   notifications?: NotificationUpdateManyWithoutUserInput
   profilePicture?: PictureUpdateOneInput
+}
+
+export interface UserUpdateWithWhereUniqueNestedInput {
+  where: UserWhereUniqueInput
+  data: UserUpdateDataInput
 }
 
 export interface UserUpsertNestedInput {
@@ -15357,6 +16291,12 @@ export interface UserUpsertWithoutOwnedHousesInput {
 export interface UserUpsertWithoutPaidContactsInput {
   update: UserUpdateWithoutPaidContactsDataInput
   create: UserCreateWithoutPaidContactsInput
+}
+
+export interface UserUpsertWithWhereUniqueNestedInput {
+  where: UserWhereUniqueInput
+  update: UserUpdateDataInput
+  create: UserCreateInput
 }
 
 export interface UserWhereInput {
@@ -15479,6 +16419,34 @@ export interface UserWhereInput {
   password_not_starts_with?: String
   password_ends_with?: String
   password_not_ends_with?: String
+  resetToken?: String
+  resetToken_not?: String
+  resetToken_in?: String[] | String
+  resetToken_not_in?: String[] | String
+  resetToken_lt?: String
+  resetToken_lte?: String
+  resetToken_gt?: String
+  resetToken_gte?: String
+  resetToken_contains?: String
+  resetToken_not_contains?: String
+  resetToken_starts_with?: String
+  resetToken_not_starts_with?: String
+  resetToken_ends_with?: String
+  resetToken_not_ends_with?: String
+  resetTokenExpiry?: String
+  resetTokenExpiry_not?: String
+  resetTokenExpiry_in?: String[] | String
+  resetTokenExpiry_not_in?: String[] | String
+  resetTokenExpiry_lt?: String
+  resetTokenExpiry_lte?: String
+  resetTokenExpiry_gt?: String
+  resetTokenExpiry_gte?: String
+  resetTokenExpiry_contains?: String
+  resetTokenExpiry_not_contains?: String
+  resetTokenExpiry_starts_with?: String
+  resetTokenExpiry_not_starts_with?: String
+  resetTokenExpiry_ends_with?: String
+  resetTokenExpiry_not_ends_with?: String
   phone1?: String
   phone1_not?: String
   phone1_in?: String[] | String
@@ -15616,6 +16584,7 @@ export interface VideoUpdateManyDataInput {
 export interface VideoUpdateManyInput {
   create?: VideoCreateInput[] | VideoCreateInput
   connect?: VideoWhereUniqueInput[] | VideoWhereUniqueInput
+  set?: VideoWhereUniqueInput[] | VideoWhereUniqueInput
   disconnect?: VideoWhereUniqueInput[] | VideoWhereUniqueInput
   delete?: VideoWhereUniqueInput[] | VideoWhereUniqueInput
   update?: VideoUpdateWithWhereUniqueNestedInput[] | VideoUpdateWithWhereUniqueNestedInput
@@ -15685,6 +16654,7 @@ export interface VideoWhereUniqueInput {
 export interface ViewsCreateInput {
   lastWeek: Int
   House: HouseCreateOneWithoutViewsInput
+  User?: UserCreateManyInput
 }
 
 export interface ViewsCreateOneWithoutHouseInput {
@@ -15694,6 +16664,7 @@ export interface ViewsCreateOneWithoutHouseInput {
 
 export interface ViewsCreateWithoutHouseInput {
   lastWeek: Int
+  User?: UserCreateManyInput
 }
 
 export interface ViewsSubscriptionWhereInput {
@@ -15710,6 +16681,7 @@ export interface ViewsSubscriptionWhereInput {
 export interface ViewsUpdateInput {
   lastWeek?: Int
   House?: HouseUpdateOneRequiredWithoutViewsInput
+  User?: UserUpdateManyInput
 }
 
 export interface ViewsUpdateManyMutationInput {
@@ -15727,6 +16699,7 @@ export interface ViewsUpdateOneWithoutHouseInput {
 
 export interface ViewsUpdateWithoutHouseDataInput {
   lastWeek?: Int
+  User?: UserUpdateManyInput
 }
 
 export interface ViewsUpsertWithoutHouseInput {
@@ -15761,6 +16734,9 @@ export interface ViewsWhereInput {
   lastWeek_gt?: Int
   lastWeek_gte?: Int
   House?: HouseWhereInput
+  User_every?: UserWhereInput
+  User_some?: UserWhereInput
+  User_none?: UserWhereInput
 }
 
 export interface ViewsWhereUniqueInput {
@@ -16216,9 +17192,9 @@ export interface House extends Node {
   rooms?: Room[]
   views?: Views
   bookings?: Booking[]
-  pictures?: Picture[]
   contactInfoPayments?: PaymentLanlordInfo[]
   popularity: Int
+  preview_image?: Picture
 }
 
 export interface House_Favorited extends Node {
@@ -16736,7 +17712,7 @@ export interface ReviewSubscriptionPayload {
 
 export interface Room extends Node {
   id: ID_Output
-  label: String
+  label: ROOM_LABELS
   house: House
   picture_previews?: Picture[]
   video_previews?: Video[]
@@ -16763,7 +17739,7 @@ export interface RoomEdge {
 
 export interface RoomPreviousValues {
   id: ID_Output
-  label: String
+  label: ROOM_LABELS
 }
 
 export interface RoomSubscriptionPayload {
@@ -16823,6 +17799,8 @@ export interface User extends Node {
   lastName: String
   email?: String
   password?: String
+  resetToken?: String
+  resetTokenExpiry?: String
   phone1?: String
   phone2?: String
   primaryPhone: Int
@@ -16866,6 +17844,8 @@ export interface UserPreviousValues {
   lastName: String
   email?: String
   password?: String
+  resetToken?: String
+  resetTokenExpiry?: String
   phone1?: String
   phone2?: String
   primaryPhone: Int
@@ -16920,6 +17900,7 @@ export interface Views extends Node {
   id: ID_Output
   lastWeek: Int
   House: House
+  User?: User[]
 }
 
 /*
