@@ -21,6 +21,9 @@ export const ALL_HOUSES_QUERY=gql`
       location{
         address
       }
+      preview_image{
+        url
+      }
     }
   }
 `
@@ -233,70 +236,6 @@ authenticateFBUser(facebookToken:$facebookToken){
 }
 }
 `
-
-/*area: Int
-age: Int!
-shortDescription: String
-description: String
-maxGuests: Int!
-numBedrooms: Int!
-numBaths: Int!
-basePrice: Int!
-numLivingrooms: Int!
-numDiningrooms: Int!
-highestPrice: Int!
-currency: CURRENCY
-income: Int!
-lat: Float
-lng: Float
-address: String
-communeId: String
-leaseType: HOUSE_LEASE_TYPE
-type: HOUSE_TYPES
-residency: House_RESIDENCY
-lease: Int!
-electricity: Boolean
-electricity_frequency: FREQUENCY
-water_pipe: Boolean
-water_tank: Boolean
-water_frequency: FREQUENCY
-elevator: Boolean
-petsAllowed: Boolean
-internet: Boolean
-kitchen: Boolean
-wirelessInternet: Boolean
-familyKidFriendly: Boolean
-freeParkingOnPremises: Boolean
-hotTub: Boolean
-pool: Boolean
-smokingAllowed: Boolean
-wheelchairAccessible: Boolean
-cableTv: Boolean
-suitableForEvents: Boolean
-dryer: Boolean
-washer: Boolean
-indoorFireHouse: Boolean
-tv: Boolean
-heating: Boolean
-hangers: Boolean
-iron: Boolean
-hairDryer: Boolean
-doorman: Boolean
-paidParkingOffPremises: Boolean
-freeParkingOnStreet: Boolean
-gym: Boolean
-airConditioning: Boolean
-shampoo: Boolean
-essentials: Boolean
-laptopFriendlyWorkspace: Boolean
-privateEntrance: Boolean
-buzzerWirelessIntercom: Boolean
-bathtub: Boolean
-crib: Boolean*/
-
-/**
- * =-=-=-=-=-CLIENT SIDE QUERIES AND MUTATIONS=-=-=-
- */
 
 export const WRITE_AUTH_INFO= gql`
 mutation updateAuthInfo($userAuthInfo:Object!){

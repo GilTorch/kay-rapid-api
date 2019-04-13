@@ -12,10 +12,10 @@ import { toast } from 'react-toastify';
 class SignInWithSocialMedia extends React.Component{
 
     render(){
-       const {writeUserAuthInfoToCache, history}=this.props;
+       const { writeUserAuthInfoToCache, history }=this.props;
         return(
-            <Mutation mutation={FB_AUTH} >
-                {(authenticateFBUser,{loading,error})=>(
+            <Mutation mutation={ FB_AUTH } >
+                {(authenticateFBUser,{ loading,error })=>(
                 <div className="stack-screen socialmedia-connect-screen">
                 <div>
     
