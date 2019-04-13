@@ -43,7 +43,7 @@ class SignInWithSocialMedia extends React.Component{
                                 let lastName=authenticateFBUser.user.lastName;
                                 let email=authenticateFBUser.user.email;
                                 let profilePicture=facebookResponse.picture.data.url;
-                                let userObject = {id,token,firstName,lastName,email,profilePicture};
+                                let userObject = {__typename:"UserAuthInfo",id,token,firstName,lastName,email,profilePicture};
                         
                                 writeUserAuthInfoToCache({variables:{ userAuthInfo: userObject }})
                             }
