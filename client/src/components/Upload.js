@@ -1,5 +1,5 @@
 import React from 'react';
-
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import HouseImage from './HouseImage';
 import "../css/house-images-container.css"
 
@@ -66,7 +66,7 @@ class Upload extends React.Component {
 
   render() {
     
-    const {images,numberOfImagesAllowed,eventsForExport}=this.state; 
+    const { images,numberOfImagesAllowed,eventsForExport }=this.state; 
     let  imagesTags=images.map((file,index)=>{
         return <HouseImage url={file} key={index} removePhoto={this.handleRemove}/>
     })
@@ -80,13 +80,16 @@ class Upload extends React.Component {
             {
                 (images.length<numberOfImagesAllowed)?
                 <label style={{display:"inline"}}>
-                    <i className="upload-icon fas fa-camera add-house-card__upload-button"></i>
+                    {/* <i className="upload-icon fas fa-camera add-house-card__upload-button"></i> */}
+                    <div className="upload-icon add-house-card__upload-button">
+                      <FontAwesomeIcon icon="camera"/>
+                    </div>
                     <input 
                         name={this.props.name}
                         style={{display:"none"}}
                         type="file" accept="image/*" 
                         onChange={this.handleChange}
-                        multiple={numberOfImagesAllowed>1?true:false}
+                        multiple={numberOfImagesAllowed>1}
                     />
                 </label>
                 :<p className="add-house-card__photo-upload-warning">Ou pa ka met plis foto ke {numberOfImagesAllowed}</p>

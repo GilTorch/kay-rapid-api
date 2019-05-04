@@ -9,7 +9,7 @@ import notify from '../utils/notify';
 import { toast } from 'react-toastify';
 
 
-class SignInWithSocialMedia extends React.Component{
+class SignInMethods extends React.Component{
 
     render(){
        const { writeUserAuthInfoToCache, history }=this.props;
@@ -18,7 +18,6 @@ class SignInWithSocialMedia extends React.Component{
                 {(authenticateFBUser,{ loading,error })=>(
                 <div className="stack-screen socialmedia-connect-screen">
                 <div>
-    
                 <Link to="/profile">
                     <button className="close-icon">&times;</button>
                 </Link>
@@ -82,7 +81,7 @@ class SignInWithSocialMedia extends React.Component{
 
 export default compose(
      graphql(WRITE_AUTH_INFO,{name:"writeUserAuthInfoToCache"})
-)(SignInWithSocialMedia);
+)(SignInMethods);
 
 
 

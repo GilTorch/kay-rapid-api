@@ -1,4 +1,5 @@
 import React from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 class HouseImage extends React.Component {
     constructor(props){
@@ -42,7 +43,7 @@ class HouseImage extends React.Component {
             </div>
             {selected? 
             <button className="add-house-card__delete-button" type="button" onClick={this.props.removePhoto}>
-                <i className="upload-icon fas fa-trash"></i>
+                <FontAwesomeIcon icon="trash"/>
             </button>:""}
         </div>
         )
