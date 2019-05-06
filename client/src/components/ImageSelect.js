@@ -1,6 +1,6 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import HouseImage from './HouseImage';
+import ImagePreview from './ImagePreview';
 import "../css/house-images-container.css"
 
 class Upload extends React.Component {
@@ -68,9 +68,8 @@ class Upload extends React.Component {
     
     const { images,numberOfImagesAllowed,eventsForExport }=this.state; 
     let  imagesTags=images.map((file,index)=>{
-        return <HouseImage url={file} key={index} removePhoto={this.handleRemove}/>
+        return <ImagePreview url={file} key={index} removePhoto={this.handleRemove}/>
     })
-
 
     return (
       <div>

@@ -1,27 +1,47 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-
 import { graphql,Mutation } from 'react-apollo';
 import { ACCOUNT_CREATION } from '../queries/queries';
-
-import Upload from './Upload';
-
-import Loading from './Loading';
-import Error from './Error';
-import notify from '../utils/notify';
-import { toast } from 'react-toastify';
+import  uploadImage from '../utils/uploadImageToFileServer'
+import ImageSelect from './ImageSelect';
 import { Formik } from 'formik';
 import * as yup from 'yup';
-
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import Loading from './Loading';
 
 const style={
     errors:{
+        width:"100%",
         height:"50px",
         backgroundColor:"rgba(255,0,0,0.1)",
-        color:"#999",
+        color:"rgba(255,0,0,0.8)",
         display:"flex",
         justifyContent:"center",
         alignItems:"center"
+    },
+    input:{
+        correct:{
+            color:"green"
+        }
+    },
+    passwordContainer:{
+        display:"flex",
+        flexDirection:"row",
+        alignItems:"center",
+        passwordInput:{
+            height:"30px"
+        },
+        iconContainer:{
+            width:"20%",
+            height:"28px",
+            borderTop:"1px solid #bbb",
+            borderRight:"1px solid #bbb",
+            borderBottom:"1px solid #bbb",
+            backgroundColor:"#eee",
+            display:"flex",
+            justifyContent:"center",
+            alignItems:"center"
+        }
     }
 }
 
@@ -29,7 +49,7 @@ const style={
 const schema=yup.object().shape({
     firstName: yup.string("Prenon se yon tèks").required("Prenon se yon chan obligatwa"),
     lastName: yup.string("Non se yon tèks").required("Non se yon chan obligatwa"),
-    email:yup.string("Imèl se yon tèks").email().required("Imèl se yon chan obligatwa"),
+    email:yup.string("Imèl se yon tèks").email("Sa w mete a pa yon imèl").required("Imèl se yon chan obligatwa"),
     phone1:yup.number(),
     password:yup.string().min(8,"Paswod ou dwe o mwen 8 karate").required("Modpas se yon chan obligatwa"),
     passwordConfirm:yup.string().required("Konfime Modpas la")
@@ -38,105 +58,18 @@ const schema=yup.object().shape({
 
 class AccountCreation extends React.Component{
 
-        // constructor(props){
-        //    
-                        //     isFetchingFromCloudinary=false;
-                        //     this.setState({
-                        //         isFetchingFromCloudinary
-                        //     })
-
-                        //     const returnedResponse=await res.json();
-                        //     console.log(JSON.stringify(returnedResponse));
-                        //     this.setState({
-                        //         profilePicture:returnedResponse.secure_url
-                        //     })
-                        //     }else{
-                        //         this.setState({
-                        //             profilePicture:null,
-                        //             profilePictureIsLoaded:false
-                        //         })
-                        //     }
-                            
-                        //     // const profilePicture="asdf.com"
-                        //     const { email,password,firstName,lastName,phone1,profilePicture,isFormValid,profilePictureIsLoaded }=this.state;
-                        //     // alert(isFormValid);
-                        //     if(isFormValid){
-                        //     signup({ 
-                        //         variables: { email:email,password:password,firstName:firstName,lastName:lastName,phone1:phone1,profilePicture:profilePicture},
-                        //         update:(store,{data:{signup}})=>{this.props.history.push('/profile')}
-                        //     })
-                        //     }else{
-                        //         // alert("Mwen rantre nan else la")
-                        //         if(profilePictureIsLoaded==false){
-                        //             notify("OU DWE CHWAZI ON FOTO PWOFIL","error");
-                        //         }else{
-                        //             notify("OU DWE RANPLI TOUT CHAN YO","error");
-                        //         }
-                        //     }
-                        // }} super(props)
-        //     this.handleChange=this.handleChange.bind(this);
-        //     this.state={
-        //         isFetchingFromCloudinary:false,
-        //         isFormValid:false,
-        //         email:null,
-        //         firstName:null,
-        //         lastName:null,
-        //         phone1:null,
-        //         profilePicture:"",
-        //         profilePictureIsLoaded:false,
-        //         password:null,
-        //         passwordsAreEqual:false
-        //     }
-        // }
-
-        // handleChange(event,name) {
-
-        //     if(!Array.isArray(event)){
-        //     const target = event.target;
-        //     const value = target.type === 'checkbox' ? target.checked : target.value;
-        //     const name = target.name;
-            
-        //     this.setState({
-        //         [name]: value
-        //       },()=>{
-        //           const { password,passwordConfirmation }=this.state
-        //           const passwoqrdsAreEqual=(password!==null && passwordConfirmation!==null)&&(passwordConfirmation===password);
-       
-        //           this.setState({
-        //               passwordsAreEqual
-        //           })     
-        //       });
-        //     const { email,password,firstName,lastName,phone1,profilePictureIsLoaded }=this.state;
-
-        //     if(email!==null && password!==null && firstName!==null && lastName !== null && phone1 !== null && profilePictureIsLoaded!==false){
-        //         this.setState({
-        //             isFormValid:true
-        //         })
-        //     }
-
-        //    }else{
-
-        //     const profilePictureIsLoaded=event.length>0 ? true : false;
-
-        //     this.setState({
-        //         profilePicture:event[0],
-        //         profilePictureIsLoaded
-        //     })
-        //     const { email,password,firstName,lastName,phone1 }=this.state;
-
-        //     if(email!==null && password!==null && firstName!==null && lastName !== null && phone1 !== null && profilePictureIsLoaded!==false){
-        //         this.setState({
-        //             isFormValid:true
-        //         })
-        //     }
-        //    }
-
-           
-
-        // }
-
         state={
-            profilePicture:""
+            profilePicture:null,
+            password:{
+                type:"password",
+                hidden: true,
+                visibleIcon:"eye"
+              },
+              passwordConfirm:{
+                type:"password",
+                hidden: true,
+                visibleIcon:"eye"
+              }
         }
 
         handleProfileImage=(event,name)=>{
@@ -146,9 +79,25 @@ class AccountCreation extends React.Component{
         }
     
 
+        handlePasswordVisibleState=(passwordField)=>{
+            const hidden = !this.state[passwordField].hidden;
+            this.setState({
+                [passwordField]:{
+                type: hidden ? "password" : "text",
+                hidden,
+                visibleIcon: hidden ? "eye" : "eye-slash"
+                }
+            })
+        }
+
+        isCorrect=(fieldName,touched,errors)=>{
+            return (errors[fieldName] === undefined && touched[fieldName]) ? <FontAwesomeIcon style={style.input.correct} icon="check-circle" />:null
+        }
+
         render(){
 
-            const { profilePicture }=this.state;
+            const { profilePicture,password,passwordConfirm }=this.state;
+            const { handleProfileImage,handlePasswordVisibleState,isCorrect}=this;
 
             return(
                 <Mutation mutation={ ACCOUNT_CREATION }>
@@ -164,10 +113,23 @@ class AccountCreation extends React.Component{
                             passwordConfirm:""
                         }}
 
-                        onSubmit={(values,{isSubmitting})=>{
-                            const finalValues={...values,profilePicture}
-                            console.log(finalValues)
-                        }}
+                        onSubmit={async (values, { setSubmitting }) => {
+
+                            let profilePicture=this.state.profilePicture;
+                            if(profilePicture){
+                                await uploadImage([profilePicture],"profilePicture",(label,response)=>{
+                                profilePicture=response.secure_url;
+                                })
+                            }
+
+                            signup({ 
+                                variables: { email:values.email,password:values.password,firstName:values.firstName,lastName:values.lastName,phone1:values.phone1,profilePicture:profilePicture},
+                                update:(store,{data:{signup}})=>{this.props.history.push('/profile')}
+                            })
+
+                            setSubmitting(false)
+
+                          }}
                     >
                     {({
                         handleSubmit,
@@ -175,83 +137,27 @@ class AccountCreation extends React.Component{
                         handleBlur,
                         touched,
                         errors,
-                        values
+                        values,
+                        isSubmitting
                     })=>(
                         <div className="stack-screen account-creation-screen">
                         <Link to="/authentication/sign-in-methods"> 
                             <button className="close-icon">&times;</button>
                         </Link>
-                        <form 
-                            onSubmit={ handleSubmit }
-                            // onSubmit={ async (e) =>{
-                            // e.preventDefault();
-                            // if(!this.state.passwordsAreEqual) return;
-                            // const  file=this.state.profilePicture;
-                            // if(file){
-
-                            // const data=new FormData();
-                            // data.append('file',file);
-                            // data.append('upload_preset','lakayou');
-                            // let isFetchingFromCloudinary=true;
-                            // this.setState({
-                            //     isFetchingFromCloudinary
-                            // })
-                            // let res=null;
-                            // try {
-                            // res=await fetch("https://api.cloudinary.com/v1_1/dejyp5iex/image/upload",{
-                            // method:'POST',
-                            // body:data
-                            // });
-                            // }catch(error){
-                            //     this.setState({
-                            //         isFetchingFromCloudinary:'error'
-                            //     })
-                            //         return;
-                            // }
-                        
-                        //     isFetchingFromCloudinary=false;
-                        //     this.setState({
-                        //         isFetchingFromCloudinary
-                        //     })
-
-                        //     const returnedResponse=await res.json();
-                        //     console.log(JSON.stringify(returnedResponse));
-                        //     this.setState({
-                        //         profilePicture:returnedResponse.secure_url
-                        //     })
-                        //     }else{
-                        //         this.setState({
-                        //             profilePicture:null,
-                        //             profilePictureIsLoaded:false
-                        //         })
-                        //     }
-                            
-                        //     // const profilePicture="asdf.com"
-                        //     const { email,password,firstName,lastName,phone1,profilePicture,isFormValid,profilePictureIsLoaded }=this.state;
-                        //     // alert(isFormValid);
-                        //     if(isFormValid){
-                        //     signup({ 
-                        //         variables: { email:email,password:password,firstName:firstName,lastName:lastName,phone1:phone1,profilePicture:profilePicture},
-                        //         update:(store,{data:{signup}})=>{this.props.history.push('/profile')}
-                        //     })
-                        //     }else{
-                        //         // alert("Mwen rantre nan else la")
-                        //         if(profilePictureIsLoaded==false){
-                        //             notify("OU DWE CHWAZI ON FOTO PWOFIL","error");
-                        //         }else{
-                        //             notify("OU DWE RANPLI TOUT CHAN YO","error");
-                        //         }
-                        //     }
-                        // }}                    
-                        className="account-creation-screen__form">
-                            {/* {(loading || (this.state.isFetchingFromCloudinary!=='error' && this.state.isFetchingFromCloudinary==true))?<Loading/>:""}
-                            {(error || this.state.isFetchingFromCloudinary==='error')?notify('GEN ON EREU ANPECHE NOU KREYE KONT OU A. REESEYE YON LOT FWA.',"error"):""}  */}
+                        { isSubmitting ? <Loading/> : null }
+                        <form onSubmit={ handleSubmit } className="account-creation-screen__form">
                             <div className="account-creation-screen__form-group">
                                 <label className="account-creation-screen__label">Foto Pwofil</label>
-                                <Upload name="profilePicture" numberOfImagesAllowed={1} handleImage={(event,name)=>{this.handleProfileImage(event,name)}} />
+                                <ImageSelect 
+                                    name="profilePicture" 
+                                    numberOfImagesAllowed={1} 
+                                    handleImage={(event,name)=>{handleProfileImage(event,name)}} 
+                                />
                             </div>
-                            <div className="account-creation-screen__form-group">
-                                <label className="account-creation-screen__label">Non</label>
+                            <div style={style.formGroup} className="account-creation-screen__form-group">
+                                <label className="account-creation-screen__label">
+                                    Non {isCorrect("lastName",touched,errors)}
+                                </label>
                                 <input name="lastName" placeholder="Tanpri mete non ou " 
                                     onChange={ handleChange } 
                                     onBlur={ handleBlur } 
@@ -260,12 +166,14 @@ class AccountCreation extends React.Component{
                                     type="text" 
                                     className="account-creation-screen__input"
                                 />
-                            </div>
-                            <div className="errors" style={errors.lastName?style.errors:null}>
-                                {errors.lastName}
+                                <div className="errors" style={errors.lastName?style.errors:null}>
+                                    {errors.lastName}
+                                </div>
                             </div>
                             <div className="account-creation-screen__form-group">
-                                <label className="account-creation-screen__label">Prenon</label>
+                                <label className="account-creation-screen__label">
+                                    Prenon {isCorrect("firstName",touched,errors)}
+                                </label>
                                 <input name="firstName" placeholder="Tanpri mete prenon ou " 
                                     onChange={ handleChange } 
                                     onBlur={ handleBlur }
@@ -274,9 +182,9 @@ class AccountCreation extends React.Component{
                                     type="text" 
                                     className="account-creation-screen__input"
                                 />
-                            </div>
-                            <div className="errors" style={errors.firstName?style.errors:null}>
-                                {errors.firstName}
+                                <div className="errors" style={errors.firstName?style.errors:null}>
+                                    {errors.firstName}
+                                </div>
                             </div>
                             <div className="account-creation-screen__form-group">
                                 <label className="account-creation-screen__label">Nimewo telefòn</label>
@@ -288,12 +196,14 @@ class AccountCreation extends React.Component{
                                     type="number"
                                     className="account-creation-screen__input"
                                 />
-                            </div>
-                            <div className="errors" style={errors.phone1?style.errors:null}>
-                                {errors.phone1}
+                                <div className="errors" style={errors.phone1?style.errors:null}>
+                                    {errors.phone1}
+                                </div>
                             </div>
                             <div className="account-creation-screen__form-group">
-                                <label className="account-creation-screen__label">Imèl</label>
+                                <label className="account-creation-screen__label">
+                                    Imèl {isCorrect("email",touched,errors)}
+                                </label>
                                 <input name="email" placeholder="Tanpri mete imèl ou " 
                                     onChange={ handleChange } 
                                     onBlur={ handleBlur } 
@@ -301,41 +211,62 @@ class AccountCreation extends React.Component{
                                     value={ values.email }
                                     type="email"
                                      className="account-creation-screen__input" 
-                                required/>
-                            </div>
-                            <div className="errors" style={errors.email?style.errors:null}>
-                                {errors.email}
+                                />
+                                <div className="errors" style={errors.email?style.errors:null}>
+                                    {errors.email}
+                                </div>
                             </div>
                             <div className="account-creation-screen__form-group">
-                                <label className="account-creation-screen__label">Modpas</label>
-                                <input 
-                                    name="password" 
-                                    placeholder="Chwazi yon paswòd" 
-                                    onChange={ handleChange } 
-                                    onBlur={ handleBlur } 
-                                    onSubmit={ handleSubmit }
-                                    value={ values.password }
-                                    type="password" 
-                                    className="account-creation-screen__input"
-                                />
-                            </div>
-                            <div className="errors" style={errors.password ? style.errors : null}>
-                                {errors.password}
+                                <label className="account-creation-screen__label">
+                                    Modpas {isCorrect("password",touched,errors)}
+                                </label>
+                                <div style={style.passwordContainer}>
+                                    <input 
+                                        type={password.type}
+                                        style={style.passwordContainer.passwordInput}
+                                        name="password" 
+                                        placeholder="Chwazi yon paswòd" 
+                                        onChange={ handleChange } 
+                                        onBlur={ handleBlur } 
+                                        onSubmit={ handleSubmit }
+                                        value={ values.password }
+                                        className="account-creation-screen__input"
+                                    />
+                                    <span 
+                                        onClick={()=>handlePasswordVisibleState("password")} 
+                                        style={style.passwordContainer.iconContainer}>
+                                        <FontAwesomeIcon icon={password.visibleIcon}/>
+                                    </span>
+                                </div>
+                                 <div className="errors" style={errors.password ? style.errors : null}>
+                                    {errors.password}
+                                </div>  
                             </div>
                             <div className="account-creation-screen__form-group">
-                                <label className="account-creation-screen__label">Konfime Modpas</label>
-                                <input 
-                                    name="passwordConfirm" 
-                                    placeholder="Konfime modpas ou fenk mete a " 
-                                    onChange={ handleChange } 
-                                    onBlur={ handleBlur } 
-                                    onSubmit={ handleSubmit }
-                                    value={ values.passwordConfirm }
-                                    type="password" className="account-creation-screen__input" 
-                                />
-                            </div>
-                            <div className="errorsz" style={errors.passwordConfirm?style.errors:null}>
-                                {errors.passwordConfirm}
+                                <label className="account-creation-screen__label">
+                                    Konfime Modpas {isCorrect("passwordConfirm",touched,errors)}
+                                </label>
+                                <div style={style.passwordContainer}>
+                                    <input 
+                                        type={passwordConfirm.type}
+                                        style={style.passwordContainer.passwordInput}
+                                        name="passwordConfirm" 
+                                        placeholder="Chwazi yon paswòd" 
+                                        onChange={ handleChange } 
+                                        onBlur={ handleBlur } 
+                                        onSubmit={ handleSubmit }
+                                        value={ values.passwordConfirm }
+                                        className="account-creation-screen__input"
+                                    />
+                                    <span 
+                                        onClick={()=>handlePasswordVisibleState("passwordConfirm")} 
+                                        style={style.passwordContainer.iconContainer}>
+                                        <FontAwesomeIcon icon={passwordConfirm.visibleIcon}/>
+                                    </span>
+                                </div>
+                                 <div className="errors" style={errors.passwordConfirm ? style.errors : null}>
+                                    {errors.passwordConfirm}
+                                </div>  
                             </div>
                             <div className="account-creation-screen__form-group">
                                 <button id="create-account-button" className="auth-button success-button" type="submit">KREYE KONT LAN</button>

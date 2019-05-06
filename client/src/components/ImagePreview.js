@@ -1,7 +1,7 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-class HouseImage extends React.Component {
+class ImagePreview extends React.Component {
     constructor(props){
         super(props);
         this.state={
@@ -50,4 +50,4 @@ class HouseImage extends React.Component {
     }
 }
 
-export default HouseImage;
+export default ImagePreview;

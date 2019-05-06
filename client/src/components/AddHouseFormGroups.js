@@ -1,5 +1,5 @@
 import React from 'react';
-import Upload from './Upload';
+import Upload from './ImageSelect';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import HouseMap from './HouseMap';
 import Select from 'react-select';

@@ -1,6 +1,7 @@
 export default async function uploadImageToFileServer(files,label,callback){
-    console.log(files)
+    //console.log(files)
     if(!files) return;
+    console.log("UPLOAD PASS RETURN")
     for(let i=0;i<files.length;i++){
         const data=new FormData();
         data.append('file',files[i]);
