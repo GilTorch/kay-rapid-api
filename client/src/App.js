@@ -8,9 +8,9 @@ import { BrowserRouter as Router,Route } from 'react-router-dom';
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faSearch, faHome, faHeart, faUser, faMapMarkerAlt, faVideo,faArrowCircleLeft,faCamera,faTrash,faEye,faEyeSlash, faCheckCircle } from '@fortawesome/free-solid-svg-icons';
 
-import SignInWithoutSocialMedia from './components/SignInWithoutSocialMedia';
+import SignIn from './components/SignIn';
 import SignInMethods from './components/SignInMethods';
-import AccountCreation from './components/AccountCreation';
+import SignUp from './components/SignUp';
 
 import Profile from './page/Profile';
 import Favorites from './page/Favorites';
@@ -58,13 +58,13 @@ class App extends Component {
               <Route exact={true} path="/" component={Home}/>
               <Route exact={true} path="/profile" component={Profile}/>
               <Route exact={true} path="/favorites" component={Favorites}/>
-              <Route exact={true} path="/authentication/sign-in-methods" component={SignInMethods} updateCacheWithToken={this.updateCacheWithToken}/>
-              <Route exact={true} path="/authentication/sign-in-without-social-media" component={SignInWithoutSocialMedia}/>
-              <Route exact={true} path="/authentication/account-creation" component={AccountCreation}/>
+              <Route exact={true} path="/authentication/signin-methods" component={SignInMethods} updateCacheWithToken={this.updateCacheWithToken}/>
+              <Route exact={true} path="/authentication/signin" component={SignIn}/>
+              <Route exact={true} path="/authentication/signup" component={SignUp}/>
               <Route exact={true} path="/add-house" component={AddHouse}/>
               <Route exact={true} path="/walls-house" component={WallHouse}/>
-              <Route exact={true} path="/authentication/sign-in-without-social-media/forgot-password" component={RequestPassword}/>
-              <Route exact={true} path="/authentication/sign-in-without-social-media/forgot-password-redirection" component={RequestPasswordRedirection}/>
+              <Route exact={true} path="/authentication/forgot-password" component={RequestPassword}/>
+              <Route exact={true} path="/authentication/forgot-password-redirection" component={RequestPasswordRedirection}/>
             </React.Fragment>
           </Router>
         </ApolloProvider>

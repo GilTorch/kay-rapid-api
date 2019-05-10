@@ -1,10 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-const Close=({whereToGo})=>{
+const Close=({ history })=>{
     return(
-        <Link to={whereToGo}>
-            <button className="close-icon">&times;</button>
-        </Link>
+        <button onClick={()=>history.goBack()} className="close-icon">&times;</button>
     )
 }
 

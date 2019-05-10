@@ -24,7 +24,6 @@ class Loading extends React.Component{
     }
 
     componentWillUnmount(){
-        console.log("animation finished")
         clearInterval(this.interval)
     }
 

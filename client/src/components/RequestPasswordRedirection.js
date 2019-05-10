@@ -2,6 +2,7 @@ import React from 'react';
 import Close from './Close';
 import { Mutation } from 'react-apollo';
 import { RESET_PASSWORD } from '../queries/queries';
+import { Link } from 'react-router-dom';
 import Loading from './Loading';
 import notify from '../utils/notify';
 import queryString from 'query-string';
@@ -44,7 +45,9 @@ class RequestPasswordRedirection extends React.Component{
         <Mutation mutation={RESET_PASSWORD}>
         {(resetPassword,{loading,error})=>(
             <div className="stack-screen request-password-stack-screen">
-            <Close whereToGo="/profile"/>
+            <Link to="/profile">
+                <button className="close-icon">&times;</button>
+            </Link>
             <form className="request-password-stack-screen__form" onSubmit={(e)=>{
                 e.preventDefault();
                 if(this.state.isEqual){

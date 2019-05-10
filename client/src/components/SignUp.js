@@ -1,13 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { graphql,Mutation } from 'react-apollo';
-import { ACCOUNT_CREATION } from '../queries/queries';
+import { graphql,Mutation,compose } from 'react-apollo';
+import { ACCOUNT_CREATION,WRITE_AUTH_INFO } from '../queries/queries';
 import  uploadImage from '../utils/uploadImageToFileServer'
 import ImageSelect from './ImageSelect';
 import { Formik } from 'formik';
 import * as yup from 'yup';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Loading from './Loading';
+import Close from './Close';
 
 const style={
     errors:{
@@ -56,7 +57,7 @@ const schema=yup.object().shape({
     .oneOf([yup.ref('password'), null],"Paswod yo pa menm")
 })
 
-class AccountCreation extends React.Component{
+class SignUp extends React.Component{
 
         state={
             profilePicture:null,
@@ -98,6 +99,7 @@ class AccountCreation extends React.Component{
 
             const { profilePicture,password,passwordConfirm }=this.state;
             const { handleProfileImage,handlePasswordVisibleState,isCorrect}=this;
+            const { history }=this.props;
 
             return(
                 <Mutation mutation={ ACCOUNT_CREATION }>
@@ -124,7 +126,10 @@ class AccountCreation extends React.Component{
 
                             signup({ 
                                 variables: { email:values.email,password:values.password,firstName:values.firstName,lastName:values.lastName,phone1:values.phone1,profilePicture:profilePicture},
-                                update:(store,{data:{signup}})=>{this.props.history.push('/profile')}
+                                update:(store,{data:{signup}})=>{
+                                    console.log(JSON.stringify(signup))
+                                    history.push('/profile')
+                                }
                             })
 
                             setSubmitting(false)
@@ -141,9 +146,7 @@ class AccountCreation extends React.Component{
                         isSubmitting
                     })=>(
                         <div className="stack-screen account-creation-screen">
-                        <Link to="/authentication/sign-in-methods"> 
-                            <button className="close-icon">&times;</button>
-                        </Link>
+                        <Close history={ this.props.history } />
                         { isSubmitting ? <Loading/> : null }
                         <form onSubmit={ handleSubmit } className="account-creation-screen__form">
                             <div className="account-creation-screen__form-group">
@@ -282,5 +285,6 @@ class AccountCreation extends React.Component{
         }
 }
 
-export default AccountCreation;
-
+export default compose(
+    graphql(WRITE_AUTH_INFO,{name:"writeUserAuthInfoToCache"})
+)(SignUp);

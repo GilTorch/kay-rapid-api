@@ -31,11 +31,12 @@ class RequestPassword extends React.Component{
 
 
     render(){
+        const { history }=this.props;
         return(
             <Mutation mutation={ REQUEST_PASSWORD_TOKEN } >
             {(requestPasswordToken,{loading,error})=>(
                 <div className="stack-screen request-password-stack-screen">
-                <Close whereToGo="/authentication/sign-in-without-social-media"/>
+                <Close history={history}/>
                 <form className="request-password-stack-screen__form"
                     onSubmit={(e)=>{
                         e.preventDefault();

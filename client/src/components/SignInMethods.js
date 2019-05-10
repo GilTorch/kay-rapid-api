@@ -55,12 +55,12 @@ class SignInMethods extends React.Component{
                     cssClass="socialmedia-connect-screen__facebook-connect-button"
                 /> 
                 <div className="socialmedia-connect-screen__buttons-container-2">
-                <Link className="socialmedia-connect-screen__link" to="/authentication/sign-in-without-social-media">
+                <Link className="socialmedia-connect-screen__link" to="/authentication/signin">
                     <button className="socialmedia-connect-screen__sign-in-button">
                     KONEKTE
                     </button>
                 </Link>
-                <Link className="socialmedia-connect-screen__link" to="/authentication/account-creation">
+                <Link className="socialmedia-connect-screen__link" to="/authentication/signup">
                     <button className="socialmedia-connect-screen__create-account-button"> 
                         KREYE KONT OU
                     </button>

@@ -12,7 +12,7 @@ class Authentication extends React.Component{
         <div className="card signin-card">
             <div className="signin-card__wrapper">
                 <p className="signin-card__message">Konekte kounya pou ou ka genyen yon pi bon eksperyans.</p>
-                <Link to="/authentication/sign-in-methods">                                                    
+                <Link to="/authentication/signin-methods">                                                    
                     <button className="auth-button success-button">KONEKTE</button>
                 </Link>
             </div>
