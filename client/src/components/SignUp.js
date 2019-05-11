@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { graphql,Mutation,compose } from 'react-apollo';
-import { ACCOUNT_CREATION,WRITE_AUTH_INFO } from '../queries/queries';
+import { ACCOUNT_CREATION,AUTH_WITHOUT_SOCIAL_MEDIA, WRITE_AUTH_INFO } from '../queries/queries';
 import  uploadImage from '../utils/uploadImageToFileServer'
 import ImageSelect from './ImageSelect';
 import { Formik } from 'formik';
@@ -51,8 +51,8 @@ const schema=yup.object().shape({
     firstName: yup.string("Prenon se yon tèks").required("Prenon se yon chan obligatwa"),
     lastName: yup.string("Non se yon tèks").required("Non se yon chan obligatwa"),
     email:yup.string("Imèl se yon tèks").email("Sa w mete a pa yon imèl").required("Imèl se yon chan obligatwa"),
-    phone1:yup.number(),
-    password:yup.string().min(8,"Paswod ou dwe o mwen 8 karate").required("Modpas se yon chan obligatwa"),
+    phone1:yup.number().min(8,"Telefon ou dwe gen 8 karakte"),
+    password:yup.string().min(8,"Modpas ou dwe o mwen 8 karakte").required("Modpas se yon chan obligatwa"),
     passwordConfirm:yup.string().required("Konfime Modpas la")
     .oneOf([yup.ref('password'), null],"Paswod yo pa menm")
 })
@@ -99,7 +99,7 @@ class SignUp extends React.Component{
 
             const { profilePicture,password,passwordConfirm }=this.state;
             const { handleProfileImage,handlePasswordVisibleState,isCorrect}=this;
-            const { history }=this.props;
+            const { history,signIn,writeUserAuthInfoToCache }=this.props;
 
             return(
                 <Mutation mutation={ ACCOUNT_CREATION }>
@@ -122,17 +122,33 @@ class SignUp extends React.Component{
                                 await uploadImage([profilePicture],"profilePicture",(label,response)=>{
                                 profilePicture=response.secure_url;
                                 })
+                            }else{
+                                return;
                             }
 
                             signup({ 
                                 variables: { email:values.email,password:values.password,firstName:values.firstName,lastName:values.lastName,phone1:values.phone1,profilePicture:profilePicture},
                                 update:(store,{data:{signup}})=>{
-                                    console.log(JSON.stringify(signup))
-                                    history.push('/profile')
+                                    signIn({
+                                        variables:{email:values.email,password:values.password},
+                                        update:(store,{data:{login}})=>{
+                                            let userObject = {
+                                                __typename:"UserAuthInfo",
+                                                id:login.user.id,
+                                                token:login.token,
+                                                firstName:login.user.firstName,
+                                                lastName:login.user.lastName,
+                                                email:login.user.email,
+                                                profilePicture:login.user.profilePicture.url
+                                            };
+                                            setSubmitting(false)
+                                            writeUserAuthInfoToCache({variables:{ userAuthInfo: userObject }});                           
+                                        }
+                                    }).then(()=>{history.push('/profile')})
                                 }
                             })
 
-                            setSubmitting(false)
+
 
                           }}
                     >
@@ -286,5 +302,6 @@ class SignUp extends React.Component{
 }
 
 export default compose(
+    graphql(AUTH_WITHOUT_SOCIAL_MEDIA,{name:"signIn"}),
     graphql(WRITE_AUTH_INFO,{name:"writeUserAuthInfoToCache"})
 )(SignUp);
