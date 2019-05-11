@@ -9,6 +9,7 @@ import * as yup from 'yup';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Loading from './Loading';
 import Close from './Close';
+import NoProfile from '../images/no-profile.png';
 
 const style={
     errors:{
@@ -123,7 +124,7 @@ class SignUp extends React.Component{
                                 profilePicture=response.secure_url;
                                 })
                             }else{
-                                return;
+                                profilePicture="../images/no-profile.png"
                             }
 
                             signup({ 
