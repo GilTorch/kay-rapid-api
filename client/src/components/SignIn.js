@@ -2,11 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { graphql,compose,Mutation } from 'react-apollo';
 import { AUTH_WITHOUT_SOCIAL_MEDIA,WRITE_AUTH_INFO } from '../queries/queries';
-
 import Loading from './Loading';
-
-import notify from '../utils/notify';
-import { ToastContainer,toast } from 'react-toastify';
 import { Formik } from 'formik';
 import Close from './Close';
 import * as yup from 'yup';
@@ -19,15 +15,16 @@ const schema=yup.object().shape({
 
 const style={
     errors:{
+        width:"100%",
         height:"50px",
-        marginTop:"0",
         backgroundColor:"rgba(255,0,0,0.1)",
-        color:"#999",
+        color:"rgba(255,0,0,0.8)",
         display:"flex",
         justifyContent:"center",
         alignItems:"center"
     }
 }
+
 
 const SignIn=({ writeUserAuthInfoToCache,history})=>{
     return(
@@ -52,6 +49,7 @@ const SignIn=({ writeUserAuthInfoToCache,history})=>{
                                 email:login.user.email,
                                 profilePicture:login.user.profilePicture.url
                             };
+                            setSubmitting(false)
                             writeUserAuthInfoToCache({variables:{ userAuthInfo: userObject }});                           
                         }
                     }).then(()=>{history.push('/profile')})
@@ -62,10 +60,12 @@ const SignIn=({ writeUserAuthInfoToCache,history})=>{
                 handleChange,
                 handleSubmit,
                 errors,
+                isSubmitting,
                 touched,
                 values
             })=>(
                 <div className="stack-screen signin-without-socialmedia-screen">
+                 { isSubmitting ? <Loading/> : null }
                     <Close history={history} />
                     <form 
                         onSubmit={ handleSubmit } 
@@ -84,9 +84,9 @@ const SignIn=({ writeUserAuthInfoToCache,history})=>{
                                 className="signin-without-socialmedia-screen__input"
                                 value={values.email}
                             />
-                        </div>
-                        <div className="errors" style={errors.email?style.errors:null}>
+                            <div className="errors" style={errors.email?style.errors:null}>
                                 {errors.email}
+                            </div>
                         </div>
                         <div className="signin-without-socialmedia-screen__form-group">
                             <label className="signin-without-socialmedia-screen__label">Modpas</label>
@@ -99,9 +99,9 @@ const SignIn=({ writeUserAuthInfoToCache,history})=>{
                                 className="signin-without-socialmedia-screen__input"
                                 value={ values.password }
                             />
-                        </div>
-                        <div className="errors" style={errors.password?style.errors:null}>
+                            <div className="errors" style={errors.password?style.errors:null}>
                                 {errors.password}
+                            </div>
                         </div>
                         <div className="signin-without-socialmedia-screen__form-group">
                             <button className="auth-button success-button" type="submit">KONEKTE</button></div>

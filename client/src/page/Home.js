@@ -2,7 +2,7 @@ import React from 'react';
 import Navigation from '../components/Navigation';
 import Neighborhood from '../components/Neighborhood';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import AppLogo from '../svg/lakay-ou-logo.svg';
+import AppLogo from '../svg/KAY-RAPID-LOGO-SVG.svg';
 import Link from 'react-router-dom/Link';
 
 import "../css/home.css";

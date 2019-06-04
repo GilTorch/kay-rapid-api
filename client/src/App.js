@@ -6,7 +6,7 @@ import  client,{persistor} from './apolloClient';
 import { BrowserRouter as Router,Route } from 'react-router-dom';
 
 import { library } from '@fortawesome/fontawesome-svg-core'
-import { faSearch, faHome, faHeart, faUser, faMapMarkerAlt, faVideo,faArrowCircleLeft,faCamera,faTrash,faEye,faEyeSlash, faCheckCircle } from '@fortawesome/free-solid-svg-icons';
+import { faSearch, faHome, faHeart, faUser, faMapMarkerAlt, faVideo,faArrowCircleLeft,faCamera,faTrash,faEye,faEyeSlash, faCheckCircle, faPlus } from '@fortawesome/free-solid-svg-icons';
 
 import SignIn from './components/SignIn';
 import SignInMethods from './components/SignInMethods';
@@ -29,7 +29,7 @@ import { ToastContainer } from 'react-toastify';
 require('dotenv').config()
 
 
-library.add(faSearch,faHome, faHeart, faUser,faMapMarkerAlt,faVideo,faArrowCircleLeft,faCamera,faTrash,faEye,faEyeSlash,faCheckCircle)
+library.add(faSearch,faHome, faHeart, faUser,faMapMarkerAlt,faVideo,faArrowCircleLeft,faCamera,faTrash,faEye,faEyeSlash,faCheckCircle,faPlus)
 
 
 class App extends Component {

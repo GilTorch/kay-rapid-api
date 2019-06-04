@@ -81,7 +81,7 @@ class Upload extends React.Component {
                 <label style={{display:"inline"}}>
                     {/* <i className="upload-icon fas fa-camera add-house-card__upload-button"></i> */}
                     <div className="upload-icon add-house-card__upload-button">
-                      <FontAwesomeIcon icon="camera"/>
+                      <FontAwesomeIcon icon="plus"/>
                     </div>
                     <input 
                         name={this.props.name}
