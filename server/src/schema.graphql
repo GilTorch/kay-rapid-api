@@ -176,5 +176,5 @@ type Mutation {
     picture_previews: [PictureCreateInput!]
   ): Room
 
-  createFavoriteHouse(idHouse: String!, idUser: String!): User
+  createFavoriteHouse(idHouse: String!, idUser: String!): House
 }
