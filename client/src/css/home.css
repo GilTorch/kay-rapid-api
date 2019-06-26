@@ -10,8 +10,8 @@
   }
 
   .home__header-logo{
-    min-width:300px;
-    margin-top:100px;
+    width:50%;
+    margin-top: 100px;
   }
   
   .home__header-wrapper{

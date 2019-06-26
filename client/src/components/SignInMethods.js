@@ -5,8 +5,7 @@ import { FB_AUTH, WRITE_AUTH_INFO } from '../queries/queries';
 import { graphql,compose,Mutation, renderToStringWithData } from 'react-apollo';
 import HouseIllustration from '../svg/houses-sunshine-green-pasture.svg';
 import Loading from './Loading';
-import notify from '../utils/notify';
-import { toast } from 'react-toastify';
+import Error from './Error';
 
 
 class SignInMethods extends React.Component{
@@ -67,10 +66,8 @@ class SignInMethods extends React.Component{
                 </Link>
                 </div>
                 </div>
-                {(loading)?<Loading/>:""}
-            {(error)?toast.error("GEN ON TI ERE KI PASE. TESTE KONEKSYON ENTENET OU EPI REESEYE ON LOT MOMAN",{
-                autoClose:2000
-            }):""}
+                {loading && <Loading/>}
+                {error && <Error/>}
             </div> 
             )}
             </Mutation>

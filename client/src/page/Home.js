@@ -2,7 +2,7 @@ import React from 'react';
 import Navigation from '../components/Navigation';
 import Neighborhood from '../components/Neighborhood';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import AppLogo from '../svg/KAY-RAPID-LOGO-SVG.svg';
+import AppLogo from '../svg/kay-rapid-logo.svg';
 import Link from 'react-router-dom/Link';
 
 import "../css/home.css";
@@ -31,7 +31,7 @@ class Home extends React.Component{
             <div className="home">
                 <header className="home__header">
                 <div className="home__header-wrapper">
-                    <img  src={AppLogo} className="home__header-logo" />
+                    <img src={AppLogo} className="home__header-logo" />
                     <h1 className="home__title">{ title }</h1>
                     <form className="home__form">
                         <div className="home__form-wrapper">

@@ -1,15 +1,16 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { graphql,Mutation,compose } from 'react-apollo';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { ACCOUNT_CREATION,AUTH_WITHOUT_SOCIAL_MEDIA, WRITE_AUTH_INFO } from '../queries/queries';
 import  uploadImage from '../utils/uploadImageToFileServer'
 import ImageSelect from './ImageSelect';
 import { Formik } from 'formik';
 import * as yup from 'yup';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Loading from './Loading';
 import Close from './Close';
 import NoProfile from '../images/no-profile.png';
+import Error from './Error';
 
 const style={
     errors:{
@@ -106,22 +107,22 @@ class SignUp extends React.Component{
                 <Mutation mutation={ ACCOUNT_CREATION }>
                 {(signup,{ loading,error })=>(
                     <Formik
-                        validationSchema={schema}
-                        initialValues={{
-                            firstName:"",
-                            lastName:"",
-                            email:"",
-                            phone1:"",
-                            password:"",
-                            passwordConfirm:""
-                        }}
-
+                    validationSchema={schema}
+                    initialValues={{
+                        firstName:"",
+                        lastName:"",
+                        email:"",
+                        phone1:"",
+                        password:"",
+                        passwordConfirm:""
+                    }}
+                    
                         onSubmit={async (values, { setSubmitting }) => {
 
                             let profilePicture=this.state.profilePicture;
                             if(profilePicture){
                                 await uploadImage([profilePicture],"profilePicture",(label,response)=>{
-                                profilePicture=response.secure_url;
+                                    profilePicture=response.secure_url;
                                 })
                             }else{
                                 profilePicture="../images/no-profile.png"
@@ -148,11 +149,11 @@ class SignUp extends React.Component{
                                     }).then(()=>{history.push('/profile')})
                                 }
                             })
+                            
 
 
-
-                          }}
-                    >
+                        }}
+                        >
                     {({
                         handleSubmit,
                         handleChange,
@@ -164,7 +165,9 @@ class SignUp extends React.Component{
                     })=>(
                         <div className="stack-screen account-creation-screen">
                         <Close history={ this.props.history } />
-                        { isSubmitting ? <Loading/> : null }
+                        {console.log(error,loading)}
+                        {error && <Error/>}
+                        {loading && (<Loading/>)}
                         <form onSubmit={ handleSubmit } className="account-creation-screen__form">
                             <div className="account-creation-screen__form-group">
                                 <label className="account-creation-screen__label">Foto Pwofil</label>
@@ -289,7 +292,7 @@ class SignUp extends React.Component{
                                 </div>  
                             </div>
                             <div className="account-creation-screen__form-group">
-                                <button id="create-account-button" className="auth-button success-button" type="submit">KREYE KONT LAN</button>
+                                <button disabled={loading} id="create-account-button" className="auth-button success-button" type="submit">KREYE KONT LAN</button>
                             </div>
                         </form>
                     </div>                        
@@ -306,3 +309,5 @@ export default compose(
     graphql(AUTH_WITHOUT_SOCIAL_MEDIA,{name:"signIn"}),
     graphql(WRITE_AUTH_INFO,{name:"writeUserAuthInfoToCache"})
 )(SignUp);
+
+
