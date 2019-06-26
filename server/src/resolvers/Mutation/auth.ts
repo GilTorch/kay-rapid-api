@@ -1,5 +1,5 @@
 import * as bcrypt from "bcryptjs";
-import { AuthError, Context } from "../../utils";
+import { AuthError, Context, APP_SECRET } from "../../utils";
 import * as jwt from "jsonwebtoken";
 import { randomBytes } from "crypto";
 import { promisify } from "util";
@@ -29,12 +29,15 @@ export const auth = {
         create: {
           url: args.profilePicture
         }
+      },
+      permissions:{
+        set: ['STANDARD']
       }
     }
   );
-    console.log(process.env.APP_SECRET)
+    console.log(APP_SECRET)
     return {
-      token: jwt.sign({ userId: user.id }, process.env.APP_SECRET), //"prismaDbdev123"),
+      token: jwt.sign({ userId: user.id }, APP_SECRET), //"prismaDbdev123"),
       user
     };
   },
@@ -46,13 +49,18 @@ export const auth = {
       args.password,
       user ? user.password : ""
     );
-
-    if (!valid || !user || !user.status) {
+    if (!user) {
+      throw new Error(`no such user found for email ${args.email}`)
+    }
+    if (!valid) {
+      throw new Error(`Incorrect password`)
+    }
+    if (!user.status) {
       throw new AuthError();
     }
 
     return {
-      token: jwt.sign({ userId: user.id }, process.env.APP_SECRET),
+      token: jwt.sign({ userId: user.id }, APP_SECRET),
       user
     };
   },
@@ -98,7 +106,7 @@ export const auth = {
       userforToken = newUser;
     }
     return {
-      token: jwt.sign({ userId: userforToken.id }, process.env.APP_SECRET),
+      token: jwt.sign({ userId: userforToken.id }, APP_SECRET),
       user
     };
   },
@@ -176,7 +184,7 @@ export const auth = {
 
     //generate authentication token
     console.log(`user id updated:${updatedUser.id}`);
-    const token = jwt.sign({ userId: updatedUser.id }, process.env.APP_SECRET);
+    const token = jwt.sign({ userId: updatedUser.id }, APP_SECRET);
     //return updated user
     return {
       token,

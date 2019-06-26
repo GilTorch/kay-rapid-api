@@ -1,4 +1,4 @@
-import { getUserId, Context } from "../../utils";
+import { getUserId, Context, hasPermission } from "../../utils";
 
 export const CustomMutation = {
   async createCountry(parent, { name }, context: Context) {
@@ -36,6 +36,10 @@ export const CustomMutation = {
   },
   async createHouse(parent, args, context: Context) {
     const userId = getUserId(context);
+    if(!userId){
+      throw new Error('You must be logged in')
+    } 
+    hasPermission(context.prisma.$exists.user({ id: userId}),['ADMIN','LANDLORD','PERMISSIONUPDATE','ITEMCREATE'])
     return context.prisma.createHouse(
       {
           area: args.area,

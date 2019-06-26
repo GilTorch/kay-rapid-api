@@ -1,8 +1,13 @@
-import { Context } from "../utils";
+import { Context,getUserId,hasPermission } from "../utils";
 import * as jwt from "jsonwebtoken";
 
 export const Query = {
   countries(parent, {}, context: Context) {
+    const userId = getUserId(context);
+    if(!userId){
+      throw new Error('You must be logged in')
+    } 
+    hasPermission(context.prisma.$exists.user({ id: userId}),['ADMIN','LANDLORD','PERMISSIONUPDATE','ITEMCREATE'])
     return context.prisma.countries({});
   },
   states(parent, {}, context: Context) {
@@ -32,5 +37,10 @@ export const Query = {
         first: c
       }
     );
-  }
+  },
+  // me(parent, args, context:Context){
+  //   if (!getUserId()) {
+      
+  //   }
+  // }
 };

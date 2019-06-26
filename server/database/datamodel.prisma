@@ -1,8 +1,7 @@
 type User {
   id: ID! @id @unique
   createdAt: DateTime! @createdAt
-  updatedAt: DateTime! @updatedAt
-  role: String @default(value: "STANDARD")
+  updatedAt: DateTime! @updatedAt 
   status: Boolean @default(value: true)
   facebookUserId: String @unique
   firstName: String!
@@ -22,6 +21,7 @@ type User {
   paidContacts: [PaymentLanlordInfo!]!
   notifications: [Notification!]!
   profilePicture: Picture
+  permissions:[Permission] @scalarList(strategy: RELATION)
 }
 
 type House {
@@ -58,7 +58,7 @@ type House {
 
 type Room {
   id: ID! @id @unique
-  label: ROOM_LABELS!
+  label:  ROOM_LABELS!
   house: House!
   picture_previews: [Picture!]!
   video_previews: [Video!]!
@@ -349,8 +349,14 @@ enum PAYMENT_PROVIDER {
   PAYPAL
   CREDIT_CARD
 }
-enum ROLE_TYPE {
+
+enum Permission {
   STANDARD
   LANDLORD
   ADMIN
+  ITEMCREATE
+  ITEMUPDATE
+  ITEMDELETE
+  PERMISSIONUPDATE
 }
+  
