@@ -5,7 +5,7 @@ import { resolvers } from "./resolvers";
 
 //require("now-env");
 // if (process.env.NODE_ENV !== "production") {
-// require('dotenv').config({ path: '.env' });
+require('dotenv').config({ path: '.env' });
 //   require('now-env')
 // }
 
