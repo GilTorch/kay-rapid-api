@@ -48,7 +48,6 @@ export const CustomMutation = {
     return context.db.mutation.createHouse(
       {
         data: {
-          name: args.name,
           area: args.area,
           age: args.age,
           shortDescription: args.shortDescription,
@@ -56,10 +55,53 @@ export const CustomMutation = {
           maxGuests: args.maxGuests,
           numBedrooms: args.numBedrooms,
           numBaths: args.numBaths,
+          numLivingrooms: args.numLivingrooms,
+          numDiningrooms: args.numDiningrooms,
           leaseType: args.leaseType,
           type: args.type,
           residency: args.residency,
-          amenities: {},
+          amenities: {
+            create: {
+              electricity: args.electricity,
+              electricity_frequency: args.electricity_frequency,
+              water_pipe: args.water_pipe,
+              water_tank: args.water_tank,
+              water_frequency: args.water_frequency,
+              elevator: args.elevator,
+              petsAllowed: args.petsAllowed,
+              internet: args.internet,
+              kitchen: args.kitchen,
+              wirelessInternet: args.wirelessInternet,
+              familyKidFriendly: args.familyKidFriendly,
+              freeParkingOnPremises: args.freeParkingOnPremises,
+              hotTub: args.hotTub,
+              pool: args.pool,
+              smokingAllowed: args.smokingAllowed,
+              wheelchairAccessible: args.wheelchairAccessible,
+              cableTv: args.cableTv,
+              suitableForEvents: args.suitableForEvents,
+              dryer: args.dryer,
+              washer: args.washer,
+              indoorFireHouse: args.indoorFireHouse,
+              tv: args.tv,
+              heating: args.heating,
+              hangers: args.hangers,
+              iron: args.iron,
+              hairDryer: args.hairDryer,
+              doorman: args.doorman,
+              paidParkingOffPremises: args.paidParkingOffPremises,
+              freeParkingOnStreet: args.freeParkingOnStreet,
+              gym: args.gym,
+              airConditioning: args.airConditioning,
+              shampoo: args.shampoo,
+              essentials: args.essentials,
+              laptopFriendlyWorkspace: args.laptopFriendlyWorkspace,
+              privateEntrance: args.privateEntrance,
+              buzzerWirelessIntercom: args.buzzerWirelessIntercom,
+              bathtub: args.bathtub,
+              crib: args.crib
+            }
+          },
           lease: args.lease,
           host: {
             connect: { id: userId }
@@ -83,6 +125,14 @@ export const CustomMutation = {
               lat: args.lat,
               lng: args.lng
             }
+          },
+          rooms: {
+            create: args.rooms
+          },
+          preview_image: {
+            create: {
+              url: args.previewImage
+            }
           }
         }
       },
@@ -92,7 +142,6 @@ export const CustomMutation = {
   async updateHouse(parent, args, context: Context, info) {
     return context.db.mutation.updateHouse({
       data: {
-        name: args.name,
         area: args.area,
         age: args.age,
         shortDescription: args.shortDescription,
@@ -100,20 +149,112 @@ export const CustomMutation = {
         maxGuests: args.maxGuests,
         numBedrooms: args.numBedrooms,
         numBaths: args.numBaths,
+        numLivingrooms: args.numLivingrooms,
+        numDiningrooms: args.numDiningrooms,
         leaseType: args.leaseType,
         type: args.type,
         residency: args.residency,
-        amenities: {},
+        amenities: {
+          update: {
+            electricity: args.electricity,
+            electricity_frequency: args.electricity_frequency,
+            water_pipe: args.water_pipe,
+            water_tank: args.water_tank,
+            water_frequency: args.water_frequency,
+            elevator: args.elevator,
+            petsAllowed: args.petsAllowed,
+            internet: args.internet,
+            kitchen: args.kitchen,
+            wirelessInternet: args.wirelessInternet,
+            familyKidFriendly: args.familyKidFriendly,
+            freeParkingOnPremises: args.freeParkingOnPremises,
+            hotTub: args.hotTub,
+            pool: args.pool,
+            smokingAllowed: args.smokingAllowed,
+            wheelchairAccessible: args.wheelchairAccessible,
+            cableTv: args.cableTv,
+            suitableForEvents: args.suitableForEvents,
+            dryer: args.dryer,
+            washer: args.washer,
+            indoorFireHouse: args.indoorFireHouse,
+            tv: args.tv,
+            heating: args.heating,
+            hangers: args.hangers,
+            iron: args.iron,
+            hairDryer: args.hairDryer,
+            doorman: args.doorman,
+            paidParkingOffPremises: args.paidParkingOffPremises,
+            freeParkingOnStreet: args.freeParkingOnStreet,
+            gym: args.gym,
+            airConditioning: args.airConditioning,
+            shampoo: args.shampoo,
+            essentials: args.essentials,
+            laptopFriendlyWorkspace: args.laptopFriendlyWorkspace,
+            privateEntrance: args.privateEntrance,
+            buzzerWirelessIntercom: args.buzzerWirelessIntercom,
+            bathtub: args.bathtub,
+            crib: args.crib
+          }
+        },
         lease: args.lease,
         pricing: {},
         location: {},
         views: {},
         bookings: {},
-        pictures: {}
+        preview_image: {
+          create: {
+            url: args.previewImage
+          }
+        },
+        rooms: args.rooms
       },
       where: {
         id: args.houseId
       }
     });
+  },
+  async deleteHouse(parent, args, context: Context, info) {
+    return context.db.mutation.deleteHouse({
+      where: {
+        id: args.houseId
+      }
+    });
+  },
+  addroomManyPicture(parent, args, context: Context, info) {
+    return context.db.mutation.createRoom(
+      {
+        data: {
+          label: args.label,
+          house: {
+            connect: {
+              id: args.houseId
+            }
+          },
+          picture_previews: {
+            create: args.picture_previews
+          }
+        }
+      },
+      info
+    );
+  },
+  createFavoriteHouse(parent, args, context: Context, info) {
+    return context.db.mutation.createHouse_Favorited(
+      {
+        data: {
+          house: {
+            connect: {
+              id: args.idHouse
+            }
+          },
+          user: {
+            connect: {
+              id: args.idUser
+            }
+          }
+        }
+      },
+      info
+    );
   }
 };

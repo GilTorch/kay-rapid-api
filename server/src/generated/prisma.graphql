@@ -1,5 +1,5 @@
 # source: https://us1.prisma.sh/peterson-jean-48f374/api-lakayou/api-lakayou
-# timestamp: Sat Sep 08 2018 00:10:46 GMT-0400 (Eastern Daylight Time)
+# timestamp: Tue Feb 05 2019 18:18:05 GMT-0500 (Eastern Standard Time)
 
 type AggregateAmenities {
   count: Int!
@@ -95,9 +95,12 @@ type AggregateViews {
 
 type Amenities implements Node {
   id: ID!
-  House(where: HouseWhereInput): House!
+  House: House!
   electricity: Boolean!
   electricity_frequency: FREQUENCY
+  water_pipe: Boolean!
+  water_tank: Boolean!
+  water_frequency: FREQUENCY
   elevator: Boolean!
   petsAllowed: Boolean!
   internet: Boolean!
@@ -146,6 +149,9 @@ type AmenitiesConnection {
 input AmenitiesCreateInput {
   electricity: Boolean
   electricity_frequency: FREQUENCY
+  water_pipe: Boolean
+  water_tank: Boolean
+  water_frequency: FREQUENCY
   elevator: Boolean
   petsAllowed: Boolean
   internet: Boolean
@@ -190,6 +196,9 @@ input AmenitiesCreateOneWithoutHouseInput {
 input AmenitiesCreateWithoutHouseInput {
   electricity: Boolean
   electricity_frequency: FREQUENCY
+  water_pipe: Boolean
+  water_tank: Boolean
+  water_frequency: FREQUENCY
   elevator: Boolean
   petsAllowed: Boolean
   internet: Boolean
@@ -241,6 +250,12 @@ enum AmenitiesOrderByInput {
   electricity_DESC
   electricity_frequency_ASC
   electricity_frequency_DESC
+  water_pipe_ASC
+  water_pipe_DESC
+  water_tank_ASC
+  water_tank_DESC
+  water_frequency_ASC
+  water_frequency_DESC
   elevator_ASC
   elevator_DESC
   petsAllowed_ASC
@@ -317,6 +332,9 @@ type AmenitiesPreviousValues {
   id: ID!
   electricity: Boolean!
   electricity_frequency: FREQUENCY
+  water_pipe: Boolean!
+  water_tank: Boolean!
+  water_frequency: FREQUENCY
   elevator: Boolean!
   petsAllowed: Boolean!
   internet: Boolean!
@@ -394,6 +412,9 @@ input AmenitiesSubscriptionWhereInput {
 input AmenitiesUpdateInput {
   electricity: Boolean
   electricity_frequency: FREQUENCY
+  water_pipe: Boolean
+  water_tank: Boolean
+  water_frequency: FREQUENCY
   elevator: Boolean
   petsAllowed: Boolean
   internet: Boolean
@@ -427,13 +448,53 @@ input AmenitiesUpdateInput {
   buzzerWirelessIntercom: Boolean
   bathtub: Boolean
   crib: Boolean
-  House: HouseUpdateOneWithoutAmenitiesInput
+  House: HouseUpdateOneRequiredWithoutAmenitiesInput
 }
 
-input AmenitiesUpdateOneWithoutHouseInput {
+input AmenitiesUpdateManyMutationInput {
+  electricity: Boolean
+  electricity_frequency: FREQUENCY
+  water_pipe: Boolean
+  water_tank: Boolean
+  water_frequency: FREQUENCY
+  elevator: Boolean
+  petsAllowed: Boolean
+  internet: Boolean
+  kitchen: Boolean
+  wirelessInternet: Boolean
+  familyKidFriendly: Boolean
+  freeParkingOnPremises: Boolean
+  hotTub: Boolean
+  pool: Boolean
+  smokingAllowed: Boolean
+  wheelchairAccessible: Boolean
+  cableTv: Boolean
+  suitableForEvents: Boolean
+  dryer: Boolean
+  washer: Boolean
+  indoorFireHouse: Boolean
+  tv: Boolean
+  heating: Boolean
+  hangers: Boolean
+  iron: Boolean
+  hairDryer: Boolean
+  doorman: Boolean
+  paidParkingOffPremises: Boolean
+  freeParkingOnStreet: Boolean
+  gym: Boolean
+  airConditioning: Boolean
+  shampoo: Boolean
+  essentials: Boolean
+  laptopFriendlyWorkspace: Boolean
+  privateEntrance: Boolean
+  buzzerWirelessIntercom: Boolean
+  bathtub: Boolean
+  crib: Boolean
+}
+
+input AmenitiesUpdateOneRequiredWithoutHouseInput {
   create: AmenitiesCreateWithoutHouseInput
   connect: AmenitiesWhereUniqueInput
-  delete: Boolean
   update: AmenitiesUpdateWithoutHouseDataInput
   upsert: AmenitiesUpsertWithoutHouseInput
 }
@@ -441,6 +502,9 @@ input AmenitiesUpdateOneWithoutHouseInput {
 input AmenitiesUpdateWithoutHouseDataInput {
   electricity: Boolean
   electricity_frequency: FREQUENCY
+  water_pipe: Boolean
+  water_tank: Boolean
+  water_frequency: FREQUENCY
   elevator: Boolean
   petsAllowed: Boolean
   internet: Boolean
@@ -544,6 +608,24 @@ input AmenitiesWhereInput {
 
   """All values that are not contained in given list."""
   electricity_frequency_not_in: [FREQUENCY!]
+  water_pipe: Boolean
+
+  """All values that are not equal to given value."""
+  water_pipe_not: Boolean
+  water_tank: Boolean
+
+  """All values that are not equal to given value."""
+  water_tank_not: Boolean
+  water_frequency: FREQUENCY
+
+  """All values that are not equal to given value."""
+  water_frequency_not: FREQUENCY
+
+  """All values that are contained in given list."""
+  water_frequency_in: [FREQUENCY!]
+
+  """All values that are not contained in given list."""
+  water_frequency_not_in: [FREQUENCY!]
   elevator: Boolean
 
   """All values that are not equal to given value."""
@@ -691,11 +773,11 @@ type BatchPayload {
 type Booking implements Node {
   id: ID!
   createdAt: DateTime!
-  bookee(where: UserWhereInput): User!
-  House(where: HouseWhereInput): House!
+  bookee: User!
+  House: House!
   startDate: DateTime!
   endDate: DateTime!
-  payment(where: PaymentHouseWhereInput): PaymentHouse!
+  payment: PaymentHouse!
 }
 
 """A connection to a list of items."""
@@ -781,6 +863,123 @@ type BookingPreviousValues {
   endDate: DateTime!
 }
 
+input BookingScalarWhereInput {
+  """Logical AND on all given filters."""
+  AND: [BookingScalarWhereInput!]
+
+  """Logical OR on all given filters."""
+  OR: [BookingScalarWhereInput!]
+
+  """Logical NOT on all given filters combined by AND."""
+  NOT: [BookingScalarWhereInput!]
+  id: ID
+
+  """All values that are not equal to given value."""
+  id_not: ID
+
+  """All values that are contained in given list."""
+  id_in: [ID!]
+
+  """All values that are not contained in given list."""
+  id_not_in: [ID!]
+
+  """All values less than the given value."""
+  id_lt: ID
+
+  """All values less than or equal the given value."""
+  id_lte: ID
+
+  """All values greater than the given value."""
+  id_gt: ID
+
+  """All values greater than or equal the given value."""
+  id_gte: ID
+
+  """All values containing the given string."""
+  id_contains: ID
+
+  """All values not containing the given string."""
+  id_not_contains: ID
+
+  """All values starting with the given string."""
+  id_starts_with: ID
+
+  """All values not starting with the given string."""
+  id_not_starts_with: ID
+
+  """All values ending with the given string."""
+  id_ends_with: ID
+
+  """All values not ending with the given string."""
+  id_not_ends_with: ID
+  createdAt: DateTime
+
+  """All values that are not equal to given value."""
+  createdAt_not: DateTime
+
+  """All values that are contained in given list."""
+  createdAt_in: [DateTime!]
+
+  """All values that are not contained in given list."""
+  createdAt_not_in: [DateTime!]
+
+  """All values less than the given value."""
+  createdAt_lt: DateTime
+
+  """All values less than or equal the given value."""
+  createdAt_lte: DateTime
+
+  """All values greater than the given value."""
+  createdAt_gt: DateTime
+
+  """All values greater than or equal the given value."""
+  createdAt_gte: DateTime
+  startDate: DateTime
+
+  """All values that are not equal to given value."""
+  startDate_not: DateTime
+
+  """All values that are contained in given list."""
+  startDate_in: [DateTime!]
+
+  """All values that are not contained in given list."""
+  startDate_not_in: [DateTime!]
+
+  """All values less than the given value."""
+  startDate_lt: DateTime
+
+  """All values less than or equal the given value."""
+  startDate_lte: DateTime
+
+  """All values greater than the given value."""
+  startDate_gt: DateTime
+
+  """All values greater than or equal the given value."""
+  startDate_gte: DateTime
+  endDate: DateTime
+
+  """All values that are not equal to given value."""
+  endDate_not: DateTime
+
+  """All values that are contained in given list."""
+  endDate_in: [DateTime!]
+
+  """All values that are not contained in given list."""
+  endDate_not_in: [DateTime!]
+
+  """All values less than the given value."""
+  endDate_lt: DateTime
+
+  """All values less than or equal the given value."""
+  endDate_lte: DateTime
+
+  """All values greater than the given value."""
+  endDate_gt: DateTime
+
+  """All values greater than or equal the given value."""
+  endDate_gte: DateTime
+}
+
 type BookingSubscriptionPayload {
   mutation: MutationType!
   node: Booking
@@ -823,33 +1022,53 @@ input BookingSubscriptionWhereInput {
 input BookingUpdateInput {
   startDate: DateTime
   endDate: DateTime
-  bookee: UserUpdateOneWithoutBookingsInput
-  House: HouseUpdateOneWithoutBookingsInput
-  payment: PaymentHouseUpdateOneWithoutBookingInput
+  bookee: UserUpdateOneRequiredWithoutBookingsInput
+  House: HouseUpdateOneRequiredWithoutBookingsInput
+  payment: PaymentHouseUpdateOneRequiredWithoutBookingInput
+}
+
+input BookingUpdateManyDataInput {
+  startDate: DateTime
+  endDate: DateTime
+}
+
+input BookingUpdateManyMutationInput {
+  startDate: DateTime
+  endDate: DateTime
 }
 
 input BookingUpdateManyWithoutBookeeInput {
   create: [BookingCreateWithoutBookeeInput!]
   connect: [BookingWhereUniqueInput!]
+  set: [BookingWhereUniqueInput!]
   disconnect: [BookingWhereUniqueInput!]
   delete: [BookingWhereUniqueInput!]
   update: [BookingUpdateWithWhereUniqueWithoutBookeeInput!]
+  updateMany: [BookingUpdateManyWithWhereNestedInput!]
+  deleteMany: [BookingScalarWhereInput!]
   upsert: [BookingUpsertWithWhereUniqueWithoutBookeeInput!]
 }
 
 input BookingUpdateManyWithoutHouseInput {
   create: [BookingCreateWithoutHouseInput!]
   connect: [BookingWhereUniqueInput!]
+  set: [BookingWhereUniqueInput!]
   disconnect: [BookingWhereUniqueInput!]
   delete: [BookingWhereUniqueInput!]
   update: [BookingUpdateWithWhereUniqueWithoutHouseInput!]
+  updateMany: [BookingUpdateManyWithWhereNestedInput!]
+  deleteMany: [BookingScalarWhereInput!]
   upsert: [BookingUpsertWithWhereUniqueWithoutHouseInput!]
 }
 
-input BookingUpdateOneWithoutPaymentInput {
+input BookingUpdateManyWithWhereNestedInput {
+  where: BookingScalarWhereInput!
+  data: BookingUpdateManyDataInput!
+}
+
+input BookingUpdateOneRequiredWithoutPaymentInput {
   create: BookingCreateWithoutPaymentInput
   connect: BookingWhereUniqueInput
-  delete: Boolean
   update: BookingUpdateWithoutPaymentDataInput
   upsert: BookingUpsertWithoutPaymentInput
 }
@@ -857,22 +1076,22 @@ input BookingUpdateOneWithoutPaymentInput {
 input BookingUpdateWithoutBookeeDataInput {
   startDate: DateTime
   endDate: DateTime
-  House: HouseUpdateOneWithoutBookingsInput
-  payment: PaymentHouseUpdateOneWithoutBookingInput
+  House: HouseUpdateOneRequiredWithoutBookingsInput
+  payment: PaymentHouseUpdateOneRequiredWithoutBookingInput
 }
 
 input BookingUpdateWithoutHouseDataInput {
   startDate: DateTime
   endDate: DateTime
-  bookee: UserUpdateOneWithoutBookingsInput
-  payment: PaymentHouseUpdateOneWithoutBookingInput
+  bookee: UserUpdateOneRequiredWithoutBookingsInput
+  payment: PaymentHouseUpdateOneRequiredWithoutBookingInput
 }
 
 input BookingUpdateWithoutPaymentDataInput {
   startDate: DateTime
   endDate: DateTime
-  bookee: UserUpdateOneWithoutBookingsInput
-  House: HouseUpdateOneWithoutBookingsInput
+  bookee: UserUpdateOneRequiredWithoutBookingsInput
+  House: HouseUpdateOneRequiredWithoutBookingsInput
 }
 
 input BookingUpdateWithWhereUniqueWithoutBookeeInput {
@@ -1029,7 +1248,8 @@ input BookingWhereUniqueInput {
 type City implements Node {
   id: ID!
   name: String!
-  state(where: StateWhereInput): State!
+  rank: Int
+  state: State!
 }
 
 """A connection to a list of items."""
@@ -1044,6 +1264,7 @@ type CityConnection {
 
 input CityCreateInput {
   name: String!
+  rank: Int
   state: StateCreateOneInput!
 }
 
@@ -1066,6 +1287,8 @@ enum CityOrderByInput {
   id_DESC
   name_ASC
   name_DESC
+  rank_ASC
+  rank_DESC
   updatedAt_ASC
   updatedAt_DESC
   createdAt_ASC
@@ -1075,6 +1298,7 @@ enum CityOrderByInput {
 type CityPreviousValues {
   id: ID!
   name: String!
+  rank: Int
 }
 
 type CitySubscriptionPayload {
@@ -1118,18 +1342,24 @@ input CitySubscriptionWhereInput {
 
 input CityUpdateDataInput {
   name: String
-  state: StateUpdateOneInput
+  rank: Int
+  state: StateUpdateOneRequiredInput
 }
 
 input CityUpdateInput {
   name: String
-  state: StateUpdateOneInput
+  rank: Int
+  state: StateUpdateOneRequiredInput
 }
 
-input CityUpdateOneInput {
+input CityUpdateManyMutationInput {
+  name: String
+  rank: Int
+}
+
+input CityUpdateOneRequiredInput {
   create: CityCreateInput
   connect: CityWhereUniqueInput
-  delete: Boolean
   update: CityUpdateDataInput
   upsert: CityUpsertNestedInput
 }
@@ -1228,6 +1458,28 @@ input CityWhereInput {
 
   """All values not ending with the given string."""
   name_not_ends_with: String
+  rank: Int
+
+  """All values that are not equal to given value."""
+  rank_not: Int
+
+  """All values that are contained in given list."""
+  rank_in: [Int!]
+
+  """All values that are not contained in given list."""
+  rank_not_in: [Int!]
+
+  """All values less than the given value."""
+  rank_lt: Int
+
+  """All values less than or equal the given value."""
+  rank_lte: Int
+
+  """All values greater than the given value."""
+  rank_gt: Int
+
+  """All values greater than or equal the given value."""
+  rank_gte: Int
   state: StateWhereInput
 }
 
@@ -1238,7 +1490,8 @@ input CityWhereUniqueInput {
 type Commune implements Node {
   id: ID!
   name: String!
-  city(where: CityWhereInput): City!
+  rank: Int
+  city: City!
 }
 
 """A connection to a list of items."""
@@ -1253,6 +1506,7 @@ type CommuneConnection {
 
 input CommuneCreateInput {
   name: String!
+  rank: Int
   city: CityCreateOneInput!
 }
 
@@ -1275,6 +1529,8 @@ enum CommuneOrderByInput {
   id_DESC
   name_ASC
   name_DESC
+  rank_ASC
+  rank_DESC
   updatedAt_ASC
   updatedAt_DESC
   createdAt_ASC
@@ -1284,6 +1540,7 @@ enum CommuneOrderByInput {
 type CommunePreviousValues {
   id: ID!
   name: String!
+  rank: Int
 }
 
 type CommuneSubscriptionPayload {
@@ -1327,12 +1584,19 @@ input CommuneSubscriptionWhereInput {
 
 input CommuneUpdateDataInput {
   name: String
-  city: CityUpdateOneInput
+  rank: Int
+  city: CityUpdateOneRequiredInput
 }
 
 input CommuneUpdateInput {
   name: String
-  city: CityUpdateOneInput
+  rank: Int
+  city: CityUpdateOneRequiredInput
+}
+
+input CommuneUpdateManyMutationInput {
+  name: String
+  rank: Int
 }
 
 input CommuneUpdateOneInput {
@@ -1438,6 +1702,28 @@ input CommuneWhereInput {
 
   """All values not ending with the given string."""
   name_not_ends_with: String
+  rank: Int
+
+  """All values that are not equal to given value."""
+  rank_not: Int
+
+  """All values that are contained in given list."""
+  rank_in: [Int!]
+
+  """All values that are not contained in given list."""
+  rank_not_in: [Int!]
+
+  """All values less than the given value."""
+  rank_lt: Int
+
+  """All values less than or equal the given value."""
+  rank_lte: Int
+
+  """All values greater than the given value."""
+  rank_gt: Int
+
+  """All values greater than or equal the given value."""
+  rank_gte: Int
   city: CityWhereInput
 }
 
@@ -1541,10 +1827,13 @@ input CountryUpdateInput {
   name: String
 }
 
-input CountryUpdateOneInput {
+input CountryUpdateManyMutationInput {
+  name: String
+}
+
+input CountryUpdateOneRequiredInput {
   create: CountryCreateInput
   connect: CountryWhereUniqueInput
-  delete: Boolean
   update: CountryUpdateDataInput
   upsert: CountryUpsertNestedInput
 }
@@ -1660,7 +1949,7 @@ type CreditCardInformation implements Node {
   lastName: String!
   postalCode: String!
   country: String!
-  paymentAccount(where: PaymentAccountWhereInput): PaymentAccount
+  paymentAccount: PaymentAccount
 }
 
 """A connection to a list of items."""
@@ -1797,6 +2086,17 @@ input CreditCardInformationUpdateInput {
   postalCode: String
   country: String
   paymentAccount: PaymentAccountUpdateOneWithoutCreditcardInput
+}
+
+input CreditCardInformationUpdateManyMutationInput {
+  cardNumber: String
+  expiresOnMonth: Int
+  expiresOnYear: Int
+  securityCode: String
+  firstName: String
+  lastName: String
+  postalCode: String
+  country: String
 }
 
 input CreditCardInformationUpdateOneWithoutPaymentAccountInput {
@@ -2202,37 +2502,38 @@ enum FREQUENCY {
 
 type House implements Node {
   id: ID!
-  name: String
   area: Int
-  age: Int!
-  shortDescription: String!
-  description: String!
+  age: Int
+  shortDescription: String
+  description: String
   maxGuests: Int!
   numBedrooms: Int!
   numBaths: Int!
+  numLivingrooms: Int
+  numDiningrooms: Int
   reviews(where: ReviewWhereInput, orderBy: ReviewOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Review!]
-  amenities(where: AmenitiesWhereInput): Amenities!
-  host(where: UserWhereInput): User!
-  pricing(where: PricingWhereInput): Pricing!
-  location(where: LocationWhereInput): Location!
+  amenities: Amenities!
+  host: User!
+  pricing: Pricing!
+  location: Location!
   leaseType: HOUSE_LEASE_TYPE
   verified: Boolean!
   type: HOUSE_TYPES
   residency: House_RESIDENCY
   lease: Int!
   rooms(where: RoomWhereInput, orderBy: RoomOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Room!]
-  views(where: ViewsWhereInput): Views
+  views: Views
   bookings(where: BookingWhereInput, orderBy: BookingOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Booking!]
-  pictures(where: PictureWhereInput, orderBy: PictureOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Picture!]
   contactInfoPayments(where: PaymentLanlordInfoWhereInput, orderBy: PaymentLanlordInfoOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [PaymentLanlordInfo!]
   popularity: Int!
+  preview_image: Picture
 }
 
 type House_Favorited implements Node {
   id: ID!
   createdAt: DateTime!
-  user(where: UserWhereInput): User!
-  house(where: HouseWhereInput): House!
+  user: User!
+  house: House!
 }
 
 """A connection to a list of items."""
@@ -2313,8 +2614,8 @@ input House_FavoritedSubscriptionWhereInput {
 }
 
 input House_FavoritedUpdateInput {
-  user: UserUpdateOneInput
-  house: HouseUpdateOneInput
+  user: UserUpdateOneRequiredInput
+  house: HouseUpdateOneRequiredInput
 }
 
 input House_FavoritedWhereInput {
@@ -2424,14 +2725,15 @@ type HouseConnection {
 }
 
 input HouseCreateInput {
-  name: String
   area: Int
   age: Int
-  shortDescription: String!
-  description: String!
+  shortDescription: String
+  description: String
   maxGuests: Int!
   numBedrooms: Int!
   numBaths: Int!
+  numLivingrooms: Int
+  numDiningrooms: Int
   leaseType: HOUSE_LEASE_TYPE
   verified: Boolean
   type: HOUSE_TYPES
@@ -2446,8 +2748,8 @@ input HouseCreateInput {
   rooms: RoomCreateManyWithoutHouseInput
   views: ViewsCreateOneWithoutHouseInput
   bookings: BookingCreateManyWithoutHouseInput
-  pictures: PictureCreateManyInput
   contactInfoPayments: PaymentLanlordInfoCreateManyWithoutHouseInput
+  preview_image: PictureCreateOneInput
 }
 
 input HouseCreateManyWithoutHostInput {
@@ -2496,14 +2798,15 @@ input HouseCreateOneWithoutViewsInput {
 }
 
 input HouseCreateWithoutAmenitiesInput {
-  name: String
   area: Int
   age: Int
-  shortDescription: String!
-  description: String!
+  shortDescription: String
+  description: String
   maxGuests: Int!
   numBedrooms: Int!
   numBaths: Int!
+  numLivingrooms: Int
+  numDiningrooms: Int
   leaseType: HOUSE_LEASE_TYPE
   verified: Boolean
   type: HOUSE_TYPES
@@ -2517,19 +2820,20 @@ input HouseCreateWithoutAmenitiesInput {
   rooms: RoomCreateManyWithoutHouseInput
   views: ViewsCreateOneWithoutHouseInput
   bookings: BookingCreateManyWithoutHouseInput
-  pictures: PictureCreateManyInput
   contactInfoPayments: PaymentLanlordInfoCreateManyWithoutHouseInput
+  preview_image: PictureCreateOneInput
 }
 
 input HouseCreateWithoutBookingsInput {
-  name: String
   area: Int
   age: Int
-  shortDescription: String!
-  description: String!
+  shortDescription: String
+  description: String
   maxGuests: Int!
   numBedrooms: Int!
   numBaths: Int!
+  numLivingrooms: Int
+  numDiningrooms: Int
   leaseType: HOUSE_LEASE_TYPE
   verified: Boolean
   type: HOUSE_TYPES
@@ -2543,19 +2847,20 @@ input HouseCreateWithoutBookingsInput {
   location: LocationCreateOneInput!
   rooms: RoomCreateManyWithoutHouseInput
   views: ViewsCreateOneWithoutHouseInput
-  pictures: PictureCreateManyInput
   contactInfoPayments: PaymentLanlordInfoCreateManyWithoutHouseInput
+  preview_image: PictureCreateOneInput
 }
 
 input HouseCreateWithoutContactInfoPaymentsInput {
-  name: String
   area: Int
   age: Int
-  shortDescription: String!
-  description: String!
+  shortDescription: String
+  description: String
   maxGuests: Int!
   numBedrooms: Int!
   numBaths: Int!
+  numLivingrooms: Int
+  numDiningrooms: Int
   leaseType: HOUSE_LEASE_TYPE
   verified: Boolean
   type: HOUSE_TYPES
@@ -2570,18 +2875,19 @@ input HouseCreateWithoutContactInfoPaymentsInput {
   rooms: RoomCreateManyWithoutHouseInput
   views: ViewsCreateOneWithoutHouseInput
   bookings: BookingCreateManyWithoutHouseInput
-  pictures: PictureCreateManyInput
+  preview_image: PictureCreateOneInput
 }
 
 input HouseCreateWithoutHostInput {
-  name: String
   area: Int
   age: Int
-  shortDescription: String!
-  description: String!
+  shortDescription: String
+  description: String
   maxGuests: Int!
   numBedrooms: Int!
   numBaths: Int!
+  numLivingrooms: Int
+  numDiningrooms: Int
   leaseType: HOUSE_LEASE_TYPE
   verified: Boolean
   type: HOUSE_TYPES
@@ -2595,19 +2901,20 @@ input HouseCreateWithoutHostInput {
   rooms: RoomCreateManyWithoutHouseInput
   views: ViewsCreateOneWithoutHouseInput
   bookings: BookingCreateManyWithoutHouseInput
-  pictures: PictureCreateManyInput
   contactInfoPayments: PaymentLanlordInfoCreateManyWithoutHouseInput
+  preview_image: PictureCreateOneInput
 }
 
 input HouseCreateWithoutPricingInput {
-  name: String
   area: Int
   age: Int
-  shortDescription: String!
-  description: String!
+  shortDescription: String
+  description: String
   maxGuests: Int!
   numBedrooms: Int!
   numBaths: Int!
+  numLivingrooms: Int
+  numDiningrooms: Int
   leaseType: HOUSE_LEASE_TYPE
   verified: Boolean
   type: HOUSE_TYPES
@@ -2621,19 +2928,20 @@ input HouseCreateWithoutPricingInput {
   rooms: RoomCreateManyWithoutHouseInput
   views: ViewsCreateOneWithoutHouseInput
   bookings: BookingCreateManyWithoutHouseInput
-  pictures: PictureCreateManyInput
   contactInfoPayments: PaymentLanlordInfoCreateManyWithoutHouseInput
+  preview_image: PictureCreateOneInput
 }
 
 input HouseCreateWithoutReviewsInput {
-  name: String
   area: Int
   age: Int
-  shortDescription: String!
-  description: String!
+  shortDescription: String
+  description: String
   maxGuests: Int!
   numBedrooms: Int!
   numBaths: Int!
+  numLivingrooms: Int
+  numDiningrooms: Int
   leaseType: HOUSE_LEASE_TYPE
   verified: Boolean
   type: HOUSE_TYPES
@@ -2647,19 +2955,20 @@ input HouseCreateWithoutReviewsInput {
   rooms: RoomCreateManyWithoutHouseInput
   views: ViewsCreateOneWithoutHouseInput
   bookings: BookingCreateManyWithoutHouseInput
-  pictures: PictureCreateManyInput
   contactInfoPayments: PaymentLanlordInfoCreateManyWithoutHouseInput
+  preview_image: PictureCreateOneInput
 }
 
 input HouseCreateWithoutRoomsInput {
-  name: String
   area: Int
   age: Int
-  shortDescription: String!
-  description: String!
+  shortDescription: String
+  description: String
   maxGuests: Int!
   numBedrooms: Int!
   numBaths: Int!
+  numLivingrooms: Int
+  numDiningrooms: Int
   leaseType: HOUSE_LEASE_TYPE
   verified: Boolean
   type: HOUSE_TYPES
@@ -2673,19 +2982,20 @@ input HouseCreateWithoutRoomsInput {
   location: LocationCreateOneInput!
   views: ViewsCreateOneWithoutHouseInput
   bookings: BookingCreateManyWithoutHouseInput
-  pictures: PictureCreateManyInput
   contactInfoPayments: PaymentLanlordInfoCreateManyWithoutHouseInput
+  preview_image: PictureCreateOneInput
 }
 
 input HouseCreateWithoutViewsInput {
-  name: String
   area: Int
   age: Int
-  shortDescription: String!
-  description: String!
+  shortDescription: String
+  description: String
   maxGuests: Int!
   numBedrooms: Int!
   numBaths: Int!
+  numLivingrooms: Int
+  numDiningrooms: Int
   leaseType: HOUSE_LEASE_TYPE
   verified: Boolean
   type: HOUSE_TYPES
@@ -2699,8 +3009,8 @@ input HouseCreateWithoutViewsInput {
   location: LocationCreateOneInput!
   rooms: RoomCreateManyWithoutHouseInput
   bookings: BookingCreateManyWithoutHouseInput
-  pictures: PictureCreateManyInput
   contactInfoPayments: PaymentLanlordInfoCreateManyWithoutHouseInput
+  preview_image: PictureCreateOneInput
 }
 
 """An edge in a connection."""
@@ -2715,8 +3025,6 @@ type HouseEdge {
 enum HouseOrderByInput {
   id_ASC
   id_DESC
-  name_ASC
-  name_DESC
   area_ASC
   area_DESC
   age_ASC
@@ -2731,6 +3039,10 @@ enum HouseOrderByInput {
   numBedrooms_DESC
   numBaths_ASC
   numBaths_DESC
+  numLivingrooms_ASC
+  numLivingrooms_DESC
+  numDiningrooms_ASC
+  numDiningrooms_DESC
   leaseType_ASC
   leaseType_DESC
   verified_ASC
@@ -2751,14 +3063,15 @@ enum HouseOrderByInput {
 
 type HousePreviousValues {
   id: ID!
-  name: String
   area: Int
-  age: Int!
-  shortDescription: String!
-  description: String!
+  age: Int
+  shortDescription: String
+  description: String
   maxGuests: Int!
   numBedrooms: Int!
   numBaths: Int!
+  numLivingrooms: Int
+  numDiningrooms: Int
   leaseType: HOUSE_LEASE_TYPE
   verified: Boolean!
   type: HOUSE_TYPES
@@ -2767,440 +3080,15 @@ type HousePreviousValues {
   popularity: Int!
 }
 
-type HouseSubscriptionPayload {
-  mutation: MutationType!
-  node: House
-  updatedFields: [String!]
-  previousValues: HousePreviousValues
-}
-
-input HouseSubscriptionWhereInput {
+input HouseScalarWhereInput {
   """Logical AND on all given filters."""
-  AND: [HouseSubscriptionWhereInput!]
+  AND: [HouseScalarWhereInput!]
 
   """Logical OR on all given filters."""
-  OR: [HouseSubscriptionWhereInput!]
+  OR: [HouseScalarWhereInput!]
 
   """Logical NOT on all given filters combined by AND."""
-  NOT: [HouseSubscriptionWhereInput!]
-
-  """
-  The subscription event gets dispatched when it's listed in mutation_in
-  """
-  mutation_in: [MutationType!]
-
-  """
-  The subscription event gets only dispatched when one of the updated fields names is included in this list
-  """
-  updatedFields_contains: String
-
-  """
-  The subscription event gets only dispatched when all of the field names included in this list have been updated
-  """
-  updatedFields_contains_every: [String!]
-
-  """
-  The subscription event gets only dispatched when some of the field names included in this list have been updated
-  """
-  updatedFields_contains_some: [String!]
-  node: HouseWhereInput
-}
-
-input HouseUpdateDataInput {
-  name: String
-  area: Int
-  age: Int
-  shortDescription: String
-  description: String
-  maxGuests: Int
-  numBedrooms: Int
-  numBaths: Int
-  leaseType: HOUSE_LEASE_TYPE
-  verified: Boolean
-  type: HOUSE_TYPES
-  residency: House_RESIDENCY
-  lease: Int
-  popularity: Int
-  reviews: ReviewUpdateManyWithoutHouseInput
-  amenities: AmenitiesUpdateOneWithoutHouseInput
-  host: UserUpdateOneWithoutOwnedHousesInput
-  pricing: PricingUpdateOneWithoutHouseInput
-  location: LocationUpdateOneInput
-  rooms: RoomUpdateManyWithoutHouseInput
-  views: ViewsUpdateOneWithoutHouseInput
-  bookings: BookingUpdateManyWithoutHouseInput
-  pictures: PictureUpdateManyInput
-  contactInfoPayments: PaymentLanlordInfoUpdateManyWithoutHouseInput
-}
-
-input HouseUpdateInput {
-  name: String
-  area: Int
-  age: Int
-  shortDescription: String
-  description: String
-  maxGuests: Int
-  numBedrooms: Int
-  numBaths: Int
-  leaseType: HOUSE_LEASE_TYPE
-  verified: Boolean
-  type: HOUSE_TYPES
-  residency: House_RESIDENCY
-  lease: Int
-  popularity: Int
-  reviews: ReviewUpdateManyWithoutHouseInput
-  amenities: AmenitiesUpdateOneWithoutHouseInput
-  host: UserUpdateOneWithoutOwnedHousesInput
-  pricing: PricingUpdateOneWithoutHouseInput
-  location: LocationUpdateOneInput
-  rooms: RoomUpdateManyWithoutHouseInput
-  views: ViewsUpdateOneWithoutHouseInput
-  bookings: BookingUpdateManyWithoutHouseInput
-  pictures: PictureUpdateManyInput
-  contactInfoPayments: PaymentLanlordInfoUpdateManyWithoutHouseInput
-}
-
-input HouseUpdateManyWithoutHostInput {
-  create: [HouseCreateWithoutHostInput!]
-  connect: [HouseWhereUniqueInput!]
-  disconnect: [HouseWhereUniqueInput!]
-  delete: [HouseWhereUniqueInput!]
-  update: [HouseUpdateWithWhereUniqueWithoutHostInput!]
-  upsert: [HouseUpsertWithWhereUniqueWithoutHostInput!]
-}
-
-input HouseUpdateOneInput {
-  create: HouseCreateInput
-  connect: HouseWhereUniqueInput
-  delete: Boolean
-  update: HouseUpdateDataInput
-  upsert: HouseUpsertNestedInput
-}
-
-input HouseUpdateOneWithoutAmenitiesInput {
-  create: HouseCreateWithoutAmenitiesInput
-  connect: HouseWhereUniqueInput
-  delete: Boolean
-  update: HouseUpdateWithoutAmenitiesDataInput
-  upsert: HouseUpsertWithoutAmenitiesInput
-}
-
-input HouseUpdateOneWithoutBookingsInput {
-  create: HouseCreateWithoutBookingsInput
-  connect: HouseWhereUniqueInput
-  delete: Boolean
-  update: HouseUpdateWithoutBookingsDataInput
-  upsert: HouseUpsertWithoutBookingsInput
-}
-
-input HouseUpdateOneWithoutContactInfoPaymentsInput {
-  create: HouseCreateWithoutContactInfoPaymentsInput
-  connect: HouseWhereUniqueInput
-  delete: Boolean
-  update: HouseUpdateWithoutContactInfoPaymentsDataInput
-  upsert: HouseUpsertWithoutContactInfoPaymentsInput
-}
-
-input HouseUpdateOneWithoutPricingInput {
-  create: HouseCreateWithoutPricingInput
-  connect: HouseWhereUniqueInput
-  delete: Boolean
-  update: HouseUpdateWithoutPricingDataInput
-  upsert: HouseUpsertWithoutPricingInput
-}
-
-input HouseUpdateOneWithoutReviewsInput {
-  create: HouseCreateWithoutReviewsInput
-  connect: HouseWhereUniqueInput
-  delete: Boolean
-  update: HouseUpdateWithoutReviewsDataInput
-  upsert: HouseUpsertWithoutReviewsInput
-}
-
-input HouseUpdateOneWithoutRoomsInput {
-  create: HouseCreateWithoutRoomsInput
-  connect: HouseWhereUniqueInput
-  delete: Boolean
-  update: HouseUpdateWithoutRoomsDataInput
-  upsert: HouseUpsertWithoutRoomsInput
-}
-
-input HouseUpdateOneWithoutViewsInput {
-  create: HouseCreateWithoutViewsInput
-  connect: HouseWhereUniqueInput
-  delete: Boolean
-  update: HouseUpdateWithoutViewsDataInput
-  upsert: HouseUpsertWithoutViewsInput
-}
-
-input HouseUpdateWithoutAmenitiesDataInput {
-  name: String
-  area: Int
-  age: Int
-  shortDescription: String
-  description: String
-  maxGuests: Int
-  numBedrooms: Int
-  numBaths: Int
-  leaseType: HOUSE_LEASE_TYPE
-  verified: Boolean
-  type: HOUSE_TYPES
-  residency: House_RESIDENCY
-  lease: Int
-  popularity: Int
-  reviews: ReviewUpdateManyWithoutHouseInput
-  host: UserUpdateOneWithoutOwnedHousesInput
-  pricing: PricingUpdateOneWithoutHouseInput
-  location: LocationUpdateOneInput
-  rooms: RoomUpdateManyWithoutHouseInput
-  views: ViewsUpdateOneWithoutHouseInput
-  bookings: BookingUpdateManyWithoutHouseInput
-  pictures: PictureUpdateManyInput
-  contactInfoPayments: PaymentLanlordInfoUpdateManyWithoutHouseInput
-}
-
-input HouseUpdateWithoutBookingsDataInput {
-  name: String
-  area: Int
-  age: Int
-  shortDescription: String
-  description: String
-  maxGuests: Int
-  numBedrooms: Int
-  numBaths: Int
-  leaseType: HOUSE_LEASE_TYPE
-  verified: Boolean
-  type: HOUSE_TYPES
-  residency: House_RESIDENCY
-  lease: Int
-  popularity: Int
-  reviews: ReviewUpdateManyWithoutHouseInput
-  amenities: AmenitiesUpdateOneWithoutHouseInput
-  host: UserUpdateOneWithoutOwnedHousesInput
-  pricing: PricingUpdateOneWithoutHouseInput
-  location: LocationUpdateOneInput
-  rooms: RoomUpdateManyWithoutHouseInput
-  views: ViewsUpdateOneWithoutHouseInput
-  pictures: PictureUpdateManyInput
-  contactInfoPayments: PaymentLanlordInfoUpdateManyWithoutHouseInput
-}
-
-input HouseUpdateWithoutContactInfoPaymentsDataInput {
-  name: String
-  area: Int
-  age: Int
-  shortDescription: String
-  description: String
-  maxGuests: Int
-  numBedrooms: Int
-  numBaths: Int
-  leaseType: HOUSE_LEASE_TYPE
-  verified: Boolean
-  type: HOUSE_TYPES
-  residency: House_RESIDENCY
-  lease: Int
-  popularity: Int
-  reviews: ReviewUpdateManyWithoutHouseInput
-  amenities: AmenitiesUpdateOneWithoutHouseInput
-  host: UserUpdateOneWithoutOwnedHousesInput
-  pricing: PricingUpdateOneWithoutHouseInput
-  location: LocationUpdateOneInput
-  rooms: RoomUpdateManyWithoutHouseInput
-  views: ViewsUpdateOneWithoutHouseInput
-  bookings: BookingUpdateManyWithoutHouseInput
-  pictures: PictureUpdateManyInput
-}
-
-input HouseUpdateWithoutHostDataInput {
-  name: String
-  area: Int
-  age: Int
-  shortDescription: String
-  description: String
-  maxGuests: Int
-  numBedrooms: Int
-  numBaths: Int
-  leaseType: HOUSE_LEASE_TYPE
-  verified: Boolean
-  type: HOUSE_TYPES
-  residency: House_RESIDENCY
-  lease: Int
-  popularity: Int
-  reviews: ReviewUpdateManyWithoutHouseInput
-  amenities: AmenitiesUpdateOneWithoutHouseInput
-  pricing: PricingUpdateOneWithoutHouseInput
-  location: LocationUpdateOneInput
-  rooms: RoomUpdateManyWithoutHouseInput
-  views: ViewsUpdateOneWithoutHouseInput
-  bookings: BookingUpdateManyWithoutHouseInput
-  pictures: PictureUpdateManyInput
-  contactInfoPayments: PaymentLanlordInfoUpdateManyWithoutHouseInput
-}
-
-input HouseUpdateWithoutPricingDataInput {
-  name: String
-  area: Int
-  age: Int
-  shortDescription: String
-  description: String
-  maxGuests: Int
-  numBedrooms: Int
-  numBaths: Int
-  leaseType: HOUSE_LEASE_TYPE
-  verified: Boolean
-  type: HOUSE_TYPES
-  residency: House_RESIDENCY
-  lease: Int
-  popularity: Int
-  reviews: ReviewUpdateManyWithoutHouseInput
-  amenities: AmenitiesUpdateOneWithoutHouseInput
-  host: UserUpdateOneWithoutOwnedHousesInput
-  location: LocationUpdateOneInput
-  rooms: RoomUpdateManyWithoutHouseInput
-  views: ViewsUpdateOneWithoutHouseInput
-  bookings: BookingUpdateManyWithoutHouseInput
-  pictures: PictureUpdateManyInput
-  contactInfoPayments: PaymentLanlordInfoUpdateManyWithoutHouseInput
-}
-
-input HouseUpdateWithoutReviewsDataInput {
-  name: String
-  area: Int
-  age: Int
-  shortDescription: String
-  description: String
-  maxGuests: Int
-  numBedrooms: Int
-  numBaths: Int
-  leaseType: HOUSE_LEASE_TYPE
-  verified: Boolean
-  type: HOUSE_TYPES
-  residency: House_RESIDENCY
-  lease: Int
-  popularity: Int
-  amenities: AmenitiesUpdateOneWithoutHouseInput
-  host: UserUpdateOneWithoutOwnedHousesInput
-  pricing: PricingUpdateOneWithoutHouseInput
-  location: LocationUpdateOneInput
-  rooms: RoomUpdateManyWithoutHouseInput
-  views: ViewsUpdateOneWithoutHouseInput
-  bookings: BookingUpdateManyWithoutHouseInput
-  pictures: PictureUpdateManyInput
-  contactInfoPayments: PaymentLanlordInfoUpdateManyWithoutHouseInput
-}
-
-input HouseUpdateWithoutRoomsDataInput {
-  name: String
-  area: Int
-  age: Int
-  shortDescription: String
-  description: String
-  maxGuests: Int
-  numBedrooms: Int
-  numBaths: Int
-  leaseType: HOUSE_LEASE_TYPE
-  verified: Boolean
-  type: HOUSE_TYPES
-  residency: House_RESIDENCY
-  lease: Int
-  popularity: Int
-  reviews: ReviewUpdateManyWithoutHouseInput
-  amenities: AmenitiesUpdateOneWithoutHouseInput
-  host: UserUpdateOneWithoutOwnedHousesInput
-  pricing: PricingUpdateOneWithoutHouseInput
-  location: LocationUpdateOneInput
-  views: ViewsUpdateOneWithoutHouseInput
-  bookings: BookingUpdateManyWithoutHouseInput
-  pictures: PictureUpdateManyInput
-  contactInfoPayments: PaymentLanlordInfoUpdateManyWithoutHouseInput
-}
-
-input HouseUpdateWithoutViewsDataInput {
-  name: String
-  area: Int
-  age: Int
-  shortDescription: String
-  description: String
-  maxGuests: Int
-  numBedrooms: Int
-  numBaths: Int
-  leaseType: HOUSE_LEASE_TYPE
-  verified: Boolean
-  type: HOUSE_TYPES
-  residency: House_RESIDENCY
-  lease: Int
-  popularity: Int
-  reviews: ReviewUpdateManyWithoutHouseInput
-  amenities: AmenitiesUpdateOneWithoutHouseInput
-  host: UserUpdateOneWithoutOwnedHousesInput
-  pricing: PricingUpdateOneWithoutHouseInput
-  location: LocationUpdateOneInput
-  rooms: RoomUpdateManyWithoutHouseInput
-  bookings: BookingUpdateManyWithoutHouseInput
-  pictures: PictureUpdateManyInput
-  contactInfoPayments: PaymentLanlordInfoUpdateManyWithoutHouseInput
-}
-
-input HouseUpdateWithWhereUniqueWithoutHostInput {
-  where: HouseWhereUniqueInput!
-  data: HouseUpdateWithoutHostDataInput!
-}
-
-input HouseUpsertNestedInput {
-  update: HouseUpdateDataInput!
-  create: HouseCreateInput!
-}
-
-input HouseUpsertWithoutAmenitiesInput {
-  update: HouseUpdateWithoutAmenitiesDataInput!
-  create: HouseCreateWithoutAmenitiesInput!
-}
-
-input HouseUpsertWithoutBookingsInput {
-  update: HouseUpdateWithoutBookingsDataInput!
-  create: HouseCreateWithoutBookingsInput!
-}
-
-input HouseUpsertWithoutContactInfoPaymentsInput {
-  update: HouseUpdateWithoutContactInfoPaymentsDataInput!
-  create: HouseCreateWithoutContactInfoPaymentsInput!
-}
-
-input HouseUpsertWithoutPricingInput {
-  update: HouseUpdateWithoutPricingDataInput!
-  create: HouseCreateWithoutPricingInput!
-}
-
-input HouseUpsertWithoutReviewsInput {
-  update: HouseUpdateWithoutReviewsDataInput!
-  create: HouseCreateWithoutReviewsInput!
-}
-
-input HouseUpsertWithoutRoomsInput {
-  update: HouseUpdateWithoutRoomsDataInput!
-  create: HouseCreateWithoutRoomsInput!
-}
-
-input HouseUpsertWithoutViewsInput {
-  update: HouseUpdateWithoutViewsDataInput!
-  create: HouseCreateWithoutViewsInput!
-}
-
-input HouseUpsertWithWhereUniqueWithoutHostInput {
-  where: HouseWhereUniqueInput!
-  update: HouseUpdateWithoutHostDataInput!
-  create: HouseCreateWithoutHostInput!
-}
-
-input HouseWhereInput {
-  """Logical AND on all given filters."""
-  AND: [HouseWhereInput!]
-
-  """Logical OR on all given filters."""
-  OR: [HouseWhereInput!]
-
-  """Logical NOT on all given filters combined by AND."""
-  NOT: [HouseWhereInput!]
+  NOT: [HouseScalarWhereInput!]
   id: ID
 
   """All values that are not equal to given value."""
@@ -3241,46 +3129,6 @@ input HouseWhereInput {
 
   """All values not ending with the given string."""
   id_not_ends_with: ID
-  name: String
-
-  """All values that are not equal to given value."""
-  name_not: String
-
-  """All values that are contained in given list."""
-  name_in: [String!]
-
-  """All values that are not contained in given list."""
-  name_not_in: [String!]
-
-  """All values less than the given value."""
-  name_lt: String
-
-  """All values less than or equal the given value."""
-  name_lte: String
-
-  """All values greater than the given value."""
-  name_gt: String
-
-  """All values greater than or equal the given value."""
-  name_gte: String
-
-  """All values containing the given string."""
-  name_contains: String
-
-  """All values not containing the given string."""
-  name_not_contains: String
-
-  """All values starting with the given string."""
-  name_starts_with: String
-
-  """All values not starting with the given string."""
-  name_not_starts_with: String
-
-  """All values ending with the given string."""
-  name_ends_with: String
-
-  """All values not ending with the given string."""
-  name_not_ends_with: String
   area: Int
 
   """All values that are not equal to given value."""
@@ -3471,6 +3319,884 @@ input HouseWhereInput {
 
   """All values greater than or equal the given value."""
   numBaths_gte: Int
+  numLivingrooms: Int
+
+  """All values that are not equal to given value."""
+  numLivingrooms_not: Int
+
+  """All values that are contained in given list."""
+  numLivingrooms_in: [Int!]
+
+  """All values that are not contained in given list."""
+  numLivingrooms_not_in: [Int!]
+
+  """All values less than the given value."""
+  numLivingrooms_lt: Int
+
+  """All values less than or equal the given value."""
+  numLivingrooms_lte: Int
+
+  """All values greater than the given value."""
+  numLivingrooms_gt: Int
+
+  """All values greater than or equal the given value."""
+  numLivingrooms_gte: Int
+  numDiningrooms: Int
+
+  """All values that are not equal to given value."""
+  numDiningrooms_not: Int
+
+  """All values that are contained in given list."""
+  numDiningrooms_in: [Int!]
+
+  """All values that are not contained in given list."""
+  numDiningrooms_not_in: [Int!]
+
+  """All values less than the given value."""
+  numDiningrooms_lt: Int
+
+  """All values less than or equal the given value."""
+  numDiningrooms_lte: Int
+
+  """All values greater than the given value."""
+  numDiningrooms_gt: Int
+
+  """All values greater than or equal the given value."""
+  numDiningrooms_gte: Int
+  leaseType: HOUSE_LEASE_TYPE
+
+  """All values that are not equal to given value."""
+  leaseType_not: HOUSE_LEASE_TYPE
+
+  """All values that are contained in given list."""
+  leaseType_in: [HOUSE_LEASE_TYPE!]
+
+  """All values that are not contained in given list."""
+  leaseType_not_in: [HOUSE_LEASE_TYPE!]
+  verified: Boolean
+
+  """All values that are not equal to given value."""
+  verified_not: Boolean
+  type: HOUSE_TYPES
+
+  """All values that are not equal to given value."""
+  type_not: HOUSE_TYPES
+
+  """All values that are contained in given list."""
+  type_in: [HOUSE_TYPES!]
+
+  """All values that are not contained in given list."""
+  type_not_in: [HOUSE_TYPES!]
+  residency: House_RESIDENCY
+
+  """All values that are not equal to given value."""
+  residency_not: House_RESIDENCY
+
+  """All values that are contained in given list."""
+  residency_in: [House_RESIDENCY!]
+
+  """All values that are not contained in given list."""
+  residency_not_in: [House_RESIDENCY!]
+  lease: Int
+
+  """All values that are not equal to given value."""
+  lease_not: Int
+
+  """All values that are contained in given list."""
+  lease_in: [Int!]
+
+  """All values that are not contained in given list."""
+  lease_not_in: [Int!]
+
+  """All values less than the given value."""
+  lease_lt: Int
+
+  """All values less than or equal the given value."""
+  lease_lte: Int
+
+  """All values greater than the given value."""
+  lease_gt: Int
+
+  """All values greater than or equal the given value."""
+  lease_gte: Int
+  popularity: Int
+
+  """All values that are not equal to given value."""
+  popularity_not: Int
+
+  """All values that are contained in given list."""
+  popularity_in: [Int!]
+
+  """All values that are not contained in given list."""
+  popularity_not_in: [Int!]
+
+  """All values less than the given value."""
+  popularity_lt: Int
+
+  """All values less than or equal the given value."""
+  popularity_lte: Int
+
+  """All values greater than the given value."""
+  popularity_gt: Int
+
+  """All values greater than or equal the given value."""
+  popularity_gte: Int
+}
+
+type HouseSubscriptionPayload {
+  mutation: MutationType!
+  node: House
+  updatedFields: [String!]
+  previousValues: HousePreviousValues
+}
+
+input HouseSubscriptionWhereInput {
+  """Logical AND on all given filters."""
+  AND: [HouseSubscriptionWhereInput!]
+
+  """Logical OR on all given filters."""
+  OR: [HouseSubscriptionWhereInput!]
+
+  """Logical NOT on all given filters combined by AND."""
+  NOT: [HouseSubscriptionWhereInput!]
+
+  """
+  The subscription event gets dispatched when it's listed in mutation_in
+  """
+  mutation_in: [MutationType!]
+
+  """
+  The subscription event gets only dispatched when one of the updated fields names is included in this list
+  """
+  updatedFields_contains: String
+
+  """
+  The subscription event gets only dispatched when all of the field names included in this list have been updated
+  """
+  updatedFields_contains_every: [String!]
+
+  """
+  The subscription event gets only dispatched when some of the field names included in this list have been updated
+  """
+  updatedFields_contains_some: [String!]
+  node: HouseWhereInput
+}
+
+input HouseUpdateDataInput {
+  area: Int
+  age: Int
+  shortDescription: String
+  description: String
+  maxGuests: Int
+  numBedrooms: Int
+  numBaths: Int
+  numLivingrooms: Int
+  numDiningrooms: Int
+  leaseType: HOUSE_LEASE_TYPE
+  verified: Boolean
+  type: HOUSE_TYPES
+  residency: House_RESIDENCY
+  lease: Int
+  popularity: Int
+  reviews: ReviewUpdateManyWithoutHouseInput
+  amenities: AmenitiesUpdateOneRequiredWithoutHouseInput
+  host: UserUpdateOneRequiredWithoutOwnedHousesInput
+  pricing: PricingUpdateOneRequiredWithoutHouseInput
+  location: LocationUpdateOneRequiredInput
+  rooms: RoomUpdateManyWithoutHouseInput
+  views: ViewsUpdateOneWithoutHouseInput
+  bookings: BookingUpdateManyWithoutHouseInput
+  contactInfoPayments: PaymentLanlordInfoUpdateManyWithoutHouseInput
+  preview_image: PictureUpdateOneInput
+}
+
+input HouseUpdateInput {
+  area: Int
+  age: Int
+  shortDescription: String
+  description: String
+  maxGuests: Int
+  numBedrooms: Int
+  numBaths: Int
+  numLivingrooms: Int
+  numDiningrooms: Int
+  leaseType: HOUSE_LEASE_TYPE
+  verified: Boolean
+  type: HOUSE_TYPES
+  residency: House_RESIDENCY
+  lease: Int
+  popularity: Int
+  reviews: ReviewUpdateManyWithoutHouseInput
+  amenities: AmenitiesUpdateOneRequiredWithoutHouseInput
+  host: UserUpdateOneRequiredWithoutOwnedHousesInput
+  pricing: PricingUpdateOneRequiredWithoutHouseInput
+  location: LocationUpdateOneRequiredInput
+  rooms: RoomUpdateManyWithoutHouseInput
+  views: ViewsUpdateOneWithoutHouseInput
+  bookings: BookingUpdateManyWithoutHouseInput
+  contactInfoPayments: PaymentLanlordInfoUpdateManyWithoutHouseInput
+  preview_image: PictureUpdateOneInput
+}
+
+input HouseUpdateManyDataInput {
+  area: Int
+  age: Int
+  shortDescription: String
+  description: String
+  maxGuests: Int
+  numBedrooms: Int
+  numBaths: Int
+  numLivingrooms: Int
+  numDiningrooms: Int
+  leaseType: HOUSE_LEASE_TYPE
+  verified: Boolean
+  type: HOUSE_TYPES
+  residency: House_RESIDENCY
+  lease: Int
+  popularity: Int
+}
+
+input HouseUpdateManyMutationInput {
+  area: Int
+  age: Int
+  shortDescription: String
+  description: String
+  maxGuests: Int
+  numBedrooms: Int
+  numBaths: Int
+  numLivingrooms: Int
+  numDiningrooms: Int
+  leaseType: HOUSE_LEASE_TYPE
+  verified: Boolean
+  type: HOUSE_TYPES
+  residency: House_RESIDENCY
+  lease: Int
+  popularity: Int
+}
+
+input HouseUpdateManyWithoutHostInput {
+  create: [HouseCreateWithoutHostInput!]
+  connect: [HouseWhereUniqueInput!]
+  set: [HouseWhereUniqueInput!]
+  disconnect: [HouseWhereUniqueInput!]
+  delete: [HouseWhereUniqueInput!]
+  update: [HouseUpdateWithWhereUniqueWithoutHostInput!]
+  updateMany: [HouseUpdateManyWithWhereNestedInput!]
+  deleteMany: [HouseScalarWhereInput!]
+  upsert: [HouseUpsertWithWhereUniqueWithoutHostInput!]
+}
+
+input HouseUpdateManyWithWhereNestedInput {
+  where: HouseScalarWhereInput!
+  data: HouseUpdateManyDataInput!
+}
+
+input HouseUpdateOneRequiredInput {
+  create: HouseCreateInput
+  connect: HouseWhereUniqueInput
+  update: HouseUpdateDataInput
+  upsert: HouseUpsertNestedInput
+}
+
+input HouseUpdateOneRequiredWithoutAmenitiesInput {
+  create: HouseCreateWithoutAmenitiesInput
+  connect: HouseWhereUniqueInput
+  update: HouseUpdateWithoutAmenitiesDataInput
+  upsert: HouseUpsertWithoutAmenitiesInput
+}
+
+input HouseUpdateOneRequiredWithoutBookingsInput {
+  create: HouseCreateWithoutBookingsInput
+  connect: HouseWhereUniqueInput
+  update: HouseUpdateWithoutBookingsDataInput
+  upsert: HouseUpsertWithoutBookingsInput
+}
+
+input HouseUpdateOneRequiredWithoutContactInfoPaymentsInput {
+  create: HouseCreateWithoutContactInfoPaymentsInput
+  connect: HouseWhereUniqueInput
+  update: HouseUpdateWithoutContactInfoPaymentsDataInput
+  upsert: HouseUpsertWithoutContactInfoPaymentsInput
+}
+
+input HouseUpdateOneRequiredWithoutPricingInput {
+  create: HouseCreateWithoutPricingInput
+  connect: HouseWhereUniqueInput
+  update: HouseUpdateWithoutPricingDataInput
+  upsert: HouseUpsertWithoutPricingInput
+}
+
+input HouseUpdateOneRequiredWithoutReviewsInput {
+  create: HouseCreateWithoutReviewsInput
+  connect: HouseWhereUniqueInput
+  update: HouseUpdateWithoutReviewsDataInput
+  upsert: HouseUpsertWithoutReviewsInput
+}
+
+input HouseUpdateOneRequiredWithoutRoomsInput {
+  create: HouseCreateWithoutRoomsInput
+  connect: HouseWhereUniqueInput
+  update: HouseUpdateWithoutRoomsDataInput
+  upsert: HouseUpsertWithoutRoomsInput
+}
+
+input HouseUpdateOneRequiredWithoutViewsInput {
+  create: HouseCreateWithoutViewsInput
+  connect: HouseWhereUniqueInput
+  update: HouseUpdateWithoutViewsDataInput
+  upsert: HouseUpsertWithoutViewsInput
+}
+
+input HouseUpdateWithoutAmenitiesDataInput {
+  area: Int
+  age: Int
+  shortDescription: String
+  description: String
+  maxGuests: Int
+  numBedrooms: Int
+  numBaths: Int
+  numLivingrooms: Int
+  numDiningrooms: Int
+  leaseType: HOUSE_LEASE_TYPE
+  verified: Boolean
+  type: HOUSE_TYPES
+  residency: House_RESIDENCY
+  lease: Int
+  popularity: Int
+  reviews: ReviewUpdateManyWithoutHouseInput
+  host: UserUpdateOneRequiredWithoutOwnedHousesInput
+  pricing: PricingUpdateOneRequiredWithoutHouseInput
+  location: LocationUpdateOneRequiredInput
+  rooms: RoomUpdateManyWithoutHouseInput
+  views: ViewsUpdateOneWithoutHouseInput
+  bookings: BookingUpdateManyWithoutHouseInput
+  contactInfoPayments: PaymentLanlordInfoUpdateManyWithoutHouseInput
+  preview_image: PictureUpdateOneInput
+}
+
+input HouseUpdateWithoutBookingsDataInput {
+  area: Int
+  age: Int
+  shortDescription: String
+  description: String
+  maxGuests: Int
+  numBedrooms: Int
+  numBaths: Int
+  numLivingrooms: Int
+  numDiningrooms: Int
+  leaseType: HOUSE_LEASE_TYPE
+  verified: Boolean
+  type: HOUSE_TYPES
+  residency: House_RESIDENCY
+  lease: Int
+  popularity: Int
+  reviews: ReviewUpdateManyWithoutHouseInput
+  amenities: AmenitiesUpdateOneRequiredWithoutHouseInput
+  host: UserUpdateOneRequiredWithoutOwnedHousesInput
+  pricing: PricingUpdateOneRequiredWithoutHouseInput
+  location: LocationUpdateOneRequiredInput
+  rooms: RoomUpdateManyWithoutHouseInput
+  views: ViewsUpdateOneWithoutHouseInput
+  contactInfoPayments: PaymentLanlordInfoUpdateManyWithoutHouseInput
+  preview_image: PictureUpdateOneInput
+}
+
+input HouseUpdateWithoutContactInfoPaymentsDataInput {
+  area: Int
+  age: Int
+  shortDescription: String
+  description: String
+  maxGuests: Int
+  numBedrooms: Int
+  numBaths: Int
+  numLivingrooms: Int
+  numDiningrooms: Int
+  leaseType: HOUSE_LEASE_TYPE
+  verified: Boolean
+  type: HOUSE_TYPES
+  residency: House_RESIDENCY
+  lease: Int
+  popularity: Int
+  reviews: ReviewUpdateManyWithoutHouseInput
+  amenities: AmenitiesUpdateOneRequiredWithoutHouseInput
+  host: UserUpdateOneRequiredWithoutOwnedHousesInput
+  pricing: PricingUpdateOneRequiredWithoutHouseInput
+  location: LocationUpdateOneRequiredInput
+  rooms: RoomUpdateManyWithoutHouseInput
+  views: ViewsUpdateOneWithoutHouseInput
+  bookings: BookingUpdateManyWithoutHouseInput
+  preview_image: PictureUpdateOneInput
+}
+
+input HouseUpdateWithoutHostDataInput {
+  area: Int
+  age: Int
+  shortDescription: String
+  description: String
+  maxGuests: Int
+  numBedrooms: Int
+  numBaths: Int
+  numLivingrooms: Int
+  numDiningrooms: Int
+  leaseType: HOUSE_LEASE_TYPE
+  verified: Boolean
+  type: HOUSE_TYPES
+  residency: House_RESIDENCY
+  lease: Int
+  popularity: Int
+  reviews: ReviewUpdateManyWithoutHouseInput
+  amenities: AmenitiesUpdateOneRequiredWithoutHouseInput
+  pricing: PricingUpdateOneRequiredWithoutHouseInput
+  location: LocationUpdateOneRequiredInput
+  rooms: RoomUpdateManyWithoutHouseInput
+  views: ViewsUpdateOneWithoutHouseInput
+  bookings: BookingUpdateManyWithoutHouseInput
+  contactInfoPayments: PaymentLanlordInfoUpdateManyWithoutHouseInput
+  preview_image: PictureUpdateOneInput
+}
+
+input HouseUpdateWithoutPricingDataInput {
+  area: Int
+  age: Int
+  shortDescription: String
+  description: String
+  maxGuests: Int
+  numBedrooms: Int
+  numBaths: Int
+  numLivingrooms: Int
+  numDiningrooms: Int
+  leaseType: HOUSE_LEASE_TYPE
+  verified: Boolean
+  type: HOUSE_TYPES
+  residency: House_RESIDENCY
+  lease: Int
+  popularity: Int
+  reviews: ReviewUpdateManyWithoutHouseInput
+  amenities: AmenitiesUpdateOneRequiredWithoutHouseInput
+  host: UserUpdateOneRequiredWithoutOwnedHousesInput
+  location: LocationUpdateOneRequiredInput
+  rooms: RoomUpdateManyWithoutHouseInput
+  views: ViewsUpdateOneWithoutHouseInput
+  bookings: BookingUpdateManyWithoutHouseInput
+  contactInfoPayments: PaymentLanlordInfoUpdateManyWithoutHouseInput
+  preview_image: PictureUpdateOneInput
+}
+
+input HouseUpdateWithoutReviewsDataInput {
+  area: Int
+  age: Int
+  shortDescription: String
+  description: String
+  maxGuests: Int
+  numBedrooms: Int
+  numBaths: Int
+  numLivingrooms: Int
+  numDiningrooms: Int
+  leaseType: HOUSE_LEASE_TYPE
+  verified: Boolean
+  type: HOUSE_TYPES
+  residency: House_RESIDENCY
+  lease: Int
+  popularity: Int
+  amenities: AmenitiesUpdateOneRequiredWithoutHouseInput
+  host: UserUpdateOneRequiredWithoutOwnedHousesInput
+  pricing: PricingUpdateOneRequiredWithoutHouseInput
+  location: LocationUpdateOneRequiredInput
+  rooms: RoomUpdateManyWithoutHouseInput
+  views: ViewsUpdateOneWithoutHouseInput
+  bookings: BookingUpdateManyWithoutHouseInput
+  contactInfoPayments: PaymentLanlordInfoUpdateManyWithoutHouseInput
+  preview_image: PictureUpdateOneInput
+}
+
+input HouseUpdateWithoutRoomsDataInput {
+  area: Int
+  age: Int
+  shortDescription: String
+  description: String
+  maxGuests: Int
+  numBedrooms: Int
+  numBaths: Int
+  numLivingrooms: Int
+  numDiningrooms: Int
+  leaseType: HOUSE_LEASE_TYPE
+  verified: Boolean
+  type: HOUSE_TYPES
+  residency: House_RESIDENCY
+  lease: Int
+  popularity: Int
+  reviews: ReviewUpdateManyWithoutHouseInput
+  amenities: AmenitiesUpdateOneRequiredWithoutHouseInput
+  host: UserUpdateOneRequiredWithoutOwnedHousesInput
+  pricing: PricingUpdateOneRequiredWithoutHouseInput
+  location: LocationUpdateOneRequiredInput
+  views: ViewsUpdateOneWithoutHouseInput
+  bookings: BookingUpdateManyWithoutHouseInput
+  contactInfoPayments: PaymentLanlordInfoUpdateManyWithoutHouseInput
+  preview_image: PictureUpdateOneInput
+}
+
+input HouseUpdateWithoutViewsDataInput {
+  area: Int
+  age: Int
+  shortDescription: String
+  description: String
+  maxGuests: Int
+  numBedrooms: Int
+  numBaths: Int
+  numLivingrooms: Int
+  numDiningrooms: Int
+  leaseType: HOUSE_LEASE_TYPE
+  verified: Boolean
+  type: HOUSE_TYPES
+  residency: House_RESIDENCY
+  lease: Int
+  popularity: Int
+  reviews: ReviewUpdateManyWithoutHouseInput
+  amenities: AmenitiesUpdateOneRequiredWithoutHouseInput
+  host: UserUpdateOneRequiredWithoutOwnedHousesInput
+  pricing: PricingUpdateOneRequiredWithoutHouseInput
+  location: LocationUpdateOneRequiredInput
+  rooms: RoomUpdateManyWithoutHouseInput
+  bookings: BookingUpdateManyWithoutHouseInput
+  contactInfoPayments: PaymentLanlordInfoUpdateManyWithoutHouseInput
+  preview_image: PictureUpdateOneInput
+}
+
+input HouseUpdateWithWhereUniqueWithoutHostInput {
+  where: HouseWhereUniqueInput!
+  data: HouseUpdateWithoutHostDataInput!
+}
+
+input HouseUpsertNestedInput {
+  update: HouseUpdateDataInput!
+  create: HouseCreateInput!
+}
+
+input HouseUpsertWithoutAmenitiesInput {
+  update: HouseUpdateWithoutAmenitiesDataInput!
+  create: HouseCreateWithoutAmenitiesInput!
+}
+
+input HouseUpsertWithoutBookingsInput {
+  update: HouseUpdateWithoutBookingsDataInput!
+  create: HouseCreateWithoutBookingsInput!
+}
+
+input HouseUpsertWithoutContactInfoPaymentsInput {
+  update: HouseUpdateWithoutContactInfoPaymentsDataInput!
+  create: HouseCreateWithoutContactInfoPaymentsInput!
+}
+
+input HouseUpsertWithoutPricingInput {
+  update: HouseUpdateWithoutPricingDataInput!
+  create: HouseCreateWithoutPricingInput!
+}
+
+input HouseUpsertWithoutReviewsInput {
+  update: HouseUpdateWithoutReviewsDataInput!
+  create: HouseCreateWithoutReviewsInput!
+}
+
+input HouseUpsertWithoutRoomsInput {
+  update: HouseUpdateWithoutRoomsDataInput!
+  create: HouseCreateWithoutRoomsInput!
+}
+
+input HouseUpsertWithoutViewsInput {
+  update: HouseUpdateWithoutViewsDataInput!
+  create: HouseCreateWithoutViewsInput!
+}
+
+input HouseUpsertWithWhereUniqueWithoutHostInput {
+  where: HouseWhereUniqueInput!
+  update: HouseUpdateWithoutHostDataInput!
+  create: HouseCreateWithoutHostInput!
+}
+
+input HouseWhereInput {
+  """Logical AND on all given filters."""
+  AND: [HouseWhereInput!]
+
+  """Logical OR on all given filters."""
+  OR: [HouseWhereInput!]
+
+  """Logical NOT on all given filters combined by AND."""
+  NOT: [HouseWhereInput!]
+  id: ID
+
+  """All values that are not equal to given value."""
+  id_not: ID
+
+  """All values that are contained in given list."""
+  id_in: [ID!]
+
+  """All values that are not contained in given list."""
+  id_not_in: [ID!]
+
+  """All values less than the given value."""
+  id_lt: ID
+
+  """All values less than or equal the given value."""
+  id_lte: ID
+
+  """All values greater than the given value."""
+  id_gt: ID
+
+  """All values greater than or equal the given value."""
+  id_gte: ID
+
+  """All values containing the given string."""
+  id_contains: ID
+
+  """All values not containing the given string."""
+  id_not_contains: ID
+
+  """All values starting with the given string."""
+  id_starts_with: ID
+
+  """All values not starting with the given string."""
+  id_not_starts_with: ID
+
+  """All values ending with the given string."""
+  id_ends_with: ID
+
+  """All values not ending with the given string."""
+  id_not_ends_with: ID
+  area: Int
+
+  """All values that are not equal to given value."""
+  area_not: Int
+
+  """All values that are contained in given list."""
+  area_in: [Int!]
+
+  """All values that are not contained in given list."""
+  area_not_in: [Int!]
+
+  """All values less than the given value."""
+  area_lt: Int
+
+  """All values less than or equal the given value."""
+  area_lte: Int
+
+  """All values greater than the given value."""
+  area_gt: Int
+
+  """All values greater than or equal the given value."""
+  area_gte: Int
+  age: Int
+
+  """All values that are not equal to given value."""
+  age_not: Int
+
+  """All values that are contained in given list."""
+  age_in: [Int!]
+
+  """All values that are not contained in given list."""
+  age_not_in: [Int!]
+
+  """All values less than the given value."""
+  age_lt: Int
+
+  """All values less than or equal the given value."""
+  age_lte: Int
+
+  """All values greater than the given value."""
+  age_gt: Int
+
+  """All values greater than or equal the given value."""
+  age_gte: Int
+  shortDescription: String
+
+  """All values that are not equal to given value."""
+  shortDescription_not: String
+
+  """All values that are contained in given list."""
+  shortDescription_in: [String!]
+
+  """All values that are not contained in given list."""
+  shortDescription_not_in: [String!]
+
+  """All values less than the given value."""
+  shortDescription_lt: String
+
+  """All values less than or equal the given value."""
+  shortDescription_lte: String
+
+  """All values greater than the given value."""
+  shortDescription_gt: String
+
+  """All values greater than or equal the given value."""
+  shortDescription_gte: String
+
+  """All values containing the given string."""
+  shortDescription_contains: String
+
+  """All values not containing the given string."""
+  shortDescription_not_contains: String
+
+  """All values starting with the given string."""
+  shortDescription_starts_with: String
+
+  """All values not starting with the given string."""
+  shortDescription_not_starts_with: String
+
+  """All values ending with the given string."""
+  shortDescription_ends_with: String
+
+  """All values not ending with the given string."""
+  shortDescription_not_ends_with: String
+  description: String
+
+  """All values that are not equal to given value."""
+  description_not: String
+
+  """All values that are contained in given list."""
+  description_in: [String!]
+
+  """All values that are not contained in given list."""
+  description_not_in: [String!]
+
+  """All values less than the given value."""
+  description_lt: String
+
+  """All values less than or equal the given value."""
+  description_lte: String
+
+  """All values greater than the given value."""
+  description_gt: String
+
+  """All values greater than or equal the given value."""
+  description_gte: String
+
+  """All values containing the given string."""
+  description_contains: String
+
+  """All values not containing the given string."""
+  description_not_contains: String
+
+  """All values starting with the given string."""
+  description_starts_with: String
+
+  """All values not starting with the given string."""
+  description_not_starts_with: String
+
+  """All values ending with the given string."""
+  description_ends_with: String
+
+  """All values not ending with the given string."""
+  description_not_ends_with: String
+  maxGuests: Int
+
+  """All values that are not equal to given value."""
+  maxGuests_not: Int
+
+  """All values that are contained in given list."""
+  maxGuests_in: [Int!]
+
+  """All values that are not contained in given list."""
+  maxGuests_not_in: [Int!]
+
+  """All values less than the given value."""
+  maxGuests_lt: Int
+
+  """All values less than or equal the given value."""
+  maxGuests_lte: Int
+
+  """All values greater than the given value."""
+  maxGuests_gt: Int
+
+  """All values greater than or equal the given value."""
+  maxGuests_gte: Int
+  numBedrooms: Int
+
+  """All values that are not equal to given value."""
+  numBedrooms_not: Int
+
+  """All values that are contained in given list."""
+  numBedrooms_in: [Int!]
+
+  """All values that are not contained in given list."""
+  numBedrooms_not_in: [Int!]
+
+  """All values less than the given value."""
+  numBedrooms_lt: Int
+
+  """All values less than or equal the given value."""
+  numBedrooms_lte: Int
+
+  """All values greater than the given value."""
+  numBedrooms_gt: Int
+
+  """All values greater than or equal the given value."""
+  numBedrooms_gte: Int
+  numBaths: Int
+
+  """All values that are not equal to given value."""
+  numBaths_not: Int
+
+  """All values that are contained in given list."""
+  numBaths_in: [Int!]
+
+  """All values that are not contained in given list."""
+  numBaths_not_in: [Int!]
+
+  """All values less than the given value."""
+  numBaths_lt: Int
+
+  """All values less than or equal the given value."""
+  numBaths_lte: Int
+
+  """All values greater than the given value."""
+  numBaths_gt: Int
+
+  """All values greater than or equal the given value."""
+  numBaths_gte: Int
+  numLivingrooms: Int
+
+  """All values that are not equal to given value."""
+  numLivingrooms_not: Int
+
+  """All values that are contained in given list."""
+  numLivingrooms_in: [Int!]
+
+  """All values that are not contained in given list."""
+  numLivingrooms_not_in: [Int!]
+
+  """All values less than the given value."""
+  numLivingrooms_lt: Int
+
+  """All values less than or equal the given value."""
+  numLivingrooms_lte: Int
+
+  """All values greater than the given value."""
+  numLivingrooms_gt: Int
+
+  """All values greater than or equal the given value."""
+  numLivingrooms_gte: Int
+  numDiningrooms: Int
+
+  """All values that are not equal to given value."""
+  numDiningrooms_not: Int
+
+  """All values that are contained in given list."""
+  numDiningrooms_in: [Int!]
+
+  """All values that are not contained in given list."""
+  numDiningrooms_not_in: [Int!]
+
+  """All values less than the given value."""
+  numDiningrooms_lt: Int
+
+  """All values less than or equal the given value."""
+  numDiningrooms_lte: Int
+
+  """All values greater than the given value."""
+  numDiningrooms_gt: Int
+
+  """All values greater than or equal the given value."""
+  numDiningrooms_gte: Int
   leaseType: HOUSE_LEASE_TYPE
 
   """All values that are not equal to given value."""
@@ -3563,12 +4289,10 @@ input HouseWhereInput {
   bookings_every: BookingWhereInput
   bookings_some: BookingWhereInput
   bookings_none: BookingWhereInput
-  pictures_every: PictureWhereInput
-  pictures_some: PictureWhereInput
-  pictures_none: PictureWhereInput
   contactInfoPayments_every: PaymentLanlordInfoWhereInput
   contactInfoPayments_some: PaymentLanlordInfoWhereInput
   contactInfoPayments_none: PaymentLanlordInfoWhereInput
+  preview_image: PictureWhereInput
 }
 
 input HouseWhereUniqueInput {
@@ -3580,7 +4304,7 @@ type Location implements Node {
   lat: Float
   lng: Float
   address: String
-  commune(where: CommuneWhereInput): Commune
+  commune: Commune
 }
 
 """A connection to a list of items."""
@@ -3689,11 +4413,24 @@ input LocationUpdateInput {
   commune: CommuneUpdateOneInput
 }
 
+input LocationUpdateManyMutationInput {
+  lat: Float
+  lng: Float
+  address: String
+}
+
 input LocationUpdateOneInput {
   create: LocationCreateInput
   connect: LocationWhereUniqueInput
   disconnect: Boolean
   delete: Boolean
+  update: LocationUpdateDataInput
+  upsert: LocationUpsertNestedInput
+}
+
+input LocationUpdateOneRequiredInput {
+  create: LocationCreateInput
+  connect: LocationWhereUniqueInput
   update: LocationUpdateDataInput
   upsert: LocationUpsertNestedInput
 }
@@ -3893,6 +4630,8 @@ type Mutation {
   updateState(data: StateUpdateInput!, where: StateWhereUniqueInput!): State
   updateUser(data: UserUpdateInput!, where: UserWhereUniqueInput!): User
   updateHouse(data: HouseUpdateInput!, where: HouseWhereUniqueInput!): House
+  updateVideo(data: VideoUpdateInput!, where: VideoWhereUniqueInput!): Video
+  updatePicture(data: PictureUpdateInput!, where: PictureWhereUniqueInput!): Picture
   updateCity(data: CityUpdateInput!, where: CityWhereUniqueInput!): City
   deleteRoom(where: RoomWhereUniqueInput!): Room
   deletePricing(where: PricingWhereUniqueInput!): Pricing
@@ -3914,6 +4653,8 @@ type Mutation {
   deleteState(where: StateWhereUniqueInput!): State
   deleteUser(where: UserWhereUniqueInput!): User
   deleteHouse(where: HouseWhereUniqueInput!): House
+  deleteVideo(where: VideoWhereUniqueInput!): Video
+  deletePicture(where: PictureWhereUniqueInput!): Picture
   deleteCity(where: CityWhereUniqueInput!): City
   upsertRoom(where: RoomWhereUniqueInput!, create: RoomCreateInput!, update: RoomUpdateInput!): Room!
   upsertPricing(where: PricingWhereUniqueInput!, create: PricingCreateInput!, update: PricingUpdateInput!): Pricing!
@@ -3935,30 +4676,31 @@ type Mutation {
   upsertState(where: StateWhereUniqueInput!, create: StateCreateInput!, update: StateUpdateInput!): State!
   upsertUser(where: UserWhereUniqueInput!, create: UserCreateInput!, update: UserUpdateInput!): User!
   upsertHouse(where: HouseWhereUniqueInput!, create: HouseCreateInput!, update: HouseUpdateInput!): House!
+  upsertVideo(where: VideoWhereUniqueInput!, create: VideoCreateInput!, update: VideoUpdateInput!): Video!
+  upsertPicture(where: PictureWhereUniqueInput!, create: PictureCreateInput!, update: PictureUpdateInput!): Picture!
   upsertCity(where: CityWhereUniqueInput!, create: CityCreateInput!, update: CityUpdateInput!): City!
-  updateManyRooms(data: RoomUpdateInput!, where: RoomWhereInput): BatchPayload!
-  updateManyPricings(data: PricingUpdateInput!, where: PricingWhereInput): BatchPayload!
-  updateManyViewses(data: ViewsUpdateInput!, where: ViewsWhereInput): BatchPayload!
-  updateManyAmenitieses(data: AmenitiesUpdateInput!, where: AmenitiesWhereInput): BatchPayload!
-  updateManyReviews(data: ReviewUpdateInput!, where: ReviewWhereInput): BatchPayload!
-  updateManyBookings(data: BookingUpdateInput!, where: BookingWhereInput): BatchPayload!
-  updateManyHouse_Favoriteds(data: House_FavoritedUpdateInput!, where: House_FavoritedWhereInput): BatchPayload!
-  updateManyNegotiations(data: NegotiationUpdateInput!, where: NegotiationWhereInput): BatchPayload!
-  updateManyPaymentHouses(data: PaymentHouseUpdateInput!, where: PaymentHouseWhereInput): BatchPayload!
-  updateManyPaymentAccounts(data: PaymentAccountUpdateInput!, where: PaymentAccountWhereInput): BatchPayload!
-  updateManyPaypalInformations(data: PaypalInformationUpdateInput!, where: PaypalInformationWhereInput): BatchPayload!
-  updateManyCreditCardInformations(data: CreditCardInformationUpdateInput!, where: CreditCardInformationWhereInput): BatchPayload!
-  updateManyPaymentLanlordInfoes(data: PaymentLanlordInfoUpdateInput!, where: PaymentLanlordInfoWhereInput): BatchPayload!
-  updateManyNotifications(data: NotificationUpdateInput!, where: NotificationWhereInput): BatchPayload!
-  updateManyLocations(data: LocationUpdateInput!, where: LocationWhereInput): BatchPayload!
-  updateManyCommunes(data: CommuneUpdateInput!, where: CommuneWhereInput): BatchPayload!
-  updateManyCountries(data: CountryUpdateInput!, where: CountryWhereInput): BatchPayload!
-  updateManyStates(data: StateUpdateInput!, where: StateWhereInput): BatchPayload!
-  updateManyUsers(data: UserUpdateInput!, where: UserWhereInput): BatchPayload!
-  updateManyHouses(data: HouseUpdateInput!, where: HouseWhereInput): BatchPayload!
-  updateManyVideos(data: VideoUpdateInput!, where: VideoWhereInput): BatchPayload!
-  updateManyPictures(data: PictureUpdateInput!, where: PictureWhereInput): BatchPayload!
-  updateManyCities(data: CityUpdateInput!, where: CityWhereInput): BatchPayload!
+  updateManyRooms(data: RoomUpdateManyMutationInput!, where: RoomWhereInput): BatchPayload!
+  updateManyPricings(data: PricingUpdateManyMutationInput!, where: PricingWhereInput): BatchPayload!
+  updateManyViewses(data: ViewsUpdateManyMutationInput!, where: ViewsWhereInput): BatchPayload!
+  updateManyAmenitieses(data: AmenitiesUpdateManyMutationInput!, where: AmenitiesWhereInput): BatchPayload!
+  updateManyReviews(data: ReviewUpdateManyMutationInput!, where: ReviewWhereInput): BatchPayload!
+  updateManyBookings(data: BookingUpdateManyMutationInput!, where: BookingWhereInput): BatchPayload!
+  updateManyNegotiations(data: NegotiationUpdateManyMutationInput!, where: NegotiationWhereInput): BatchPayload!
+  updateManyPaymentHouses(data: PaymentHouseUpdateManyMutationInput!, where: PaymentHouseWhereInput): BatchPayload!
+  updateManyPaymentAccounts(data: PaymentAccountUpdateManyMutationInput!, where: PaymentAccountWhereInput): BatchPayload!
+  updateManyPaypalInformations(data: PaypalInformationUpdateManyMutationInput!, where: PaypalInformationWhereInput): BatchPayload!
+  updateManyCreditCardInformations(data: CreditCardInformationUpdateManyMutationInput!, where: CreditCardInformationWhereInput): BatchPayload!
+  updateManyPaymentLanlordInfoes(data: PaymentLanlordInfoUpdateManyMutationInput!, where: PaymentLanlordInfoWhereInput): BatchPayload!
+  updateManyNotifications(data: NotificationUpdateManyMutationInput!, where: NotificationWhereInput): BatchPayload!
+  updateManyLocations(data: LocationUpdateManyMutationInput!, where: LocationWhereInput): BatchPayload!
+  updateManyCommunes(data: CommuneUpdateManyMutationInput!, where: CommuneWhereInput): BatchPayload!
+  updateManyCountries(data: CountryUpdateManyMutationInput!, where: CountryWhereInput): BatchPayload!
+  updateManyStates(data: StateUpdateManyMutationInput!, where: StateWhereInput): BatchPayload!
+  updateManyUsers(data: UserUpdateManyMutationInput!, where: UserWhereInput): BatchPayload!
+  updateManyHouses(data: HouseUpdateManyMutationInput!, where: HouseWhereInput): BatchPayload!
+  updateManyVideos(data: VideoUpdateManyMutationInput!, where: VideoWhereInput): BatchPayload!
+  updateManyPictures(data: PictureUpdateManyMutationInput!, where: PictureWhereInput): BatchPayload!
+  updateManyCities(data: CityUpdateManyMutationInput!, where: CityWhereInput): BatchPayload!
   deleteManyRooms(where: RoomWhereInput): BatchPayload!
   deleteManyPricings(where: PricingWhereInput): BatchPayload!
   deleteManyViewses(where: ViewsWhereInput): BatchPayload!
@@ -3993,8 +4735,8 @@ enum MutationType {
 type Negotiation implements Node {
   id: ID!
   createdAt: DateTime!
-  negotiator(where: UserWhereInput): User!
-  House(where: HouseWhereInput): House!
+  negotiator: User!
+  House: House!
   offer: Float!
   status: NEGOTIATION_TYPE
 }
@@ -4093,8 +4835,13 @@ input NegotiationSubscriptionWhereInput {
 input NegotiationUpdateInput {
   offer: Float
   status: NEGOTIATION_TYPE
-  negotiator: UserUpdateOneInput
-  House: HouseUpdateOneInput
+  negotiator: UserUpdateOneRequiredInput
+  House: HouseUpdateOneRequiredInput
+}
+
+input NegotiationUpdateManyMutationInput {
+  offer: Float
+  status: NEGOTIATION_TYPE
 }
 
 input NegotiationWhereInput {
@@ -4218,7 +4965,7 @@ type Notification implements Node {
   id: ID!
   createdAt: DateTime!
   type: NOTIFICATION_TYPE
-  user(where: UserWhereInput): User!
+  user: User!
   link: String!
   readDate: DateTime!
 }
@@ -4291,6 +5038,151 @@ type NotificationPreviousValues {
   readDate: DateTime!
 }
 
+input NotificationScalarWhereInput {
+  """Logical AND on all given filters."""
+  AND: [NotificationScalarWhereInput!]
+
+  """Logical OR on all given filters."""
+  OR: [NotificationScalarWhereInput!]
+
+  """Logical NOT on all given filters combined by AND."""
+  NOT: [NotificationScalarWhereInput!]
+  id: ID
+
+  """All values that are not equal to given value."""
+  id_not: ID
+
+  """All values that are contained in given list."""
+  id_in: [ID!]
+
+  """All values that are not contained in given list."""
+  id_not_in: [ID!]
+
+  """All values less than the given value."""
+  id_lt: ID
+
+  """All values less than or equal the given value."""
+  id_lte: ID
+
+  """All values greater than the given value."""
+  id_gt: ID
+
+  """All values greater than or equal the given value."""
+  id_gte: ID
+
+  """All values containing the given string."""
+  id_contains: ID
+
+  """All values not containing the given string."""
+  id_not_contains: ID
+
+  """All values starting with the given string."""
+  id_starts_with: ID
+
+  """All values not starting with the given string."""
+  id_not_starts_with: ID
+
+  """All values ending with the given string."""
+  id_ends_with: ID
+
+  """All values not ending with the given string."""
+  id_not_ends_with: ID
+  createdAt: DateTime
+
+  """All values that are not equal to given value."""
+  createdAt_not: DateTime
+
+  """All values that are contained in given list."""
+  createdAt_in: [DateTime!]
+
+  """All values that are not contained in given list."""
+  createdAt_not_in: [DateTime!]
+
+  """All values less than the given value."""
+  createdAt_lt: DateTime
+
+  """All values less than or equal the given value."""
+  createdAt_lte: DateTime
+
+  """All values greater than the given value."""
+  createdAt_gt: DateTime
+
+  """All values greater than or equal the given value."""
+  createdAt_gte: DateTime
+  type: NOTIFICATION_TYPE
+
+  """All values that are not equal to given value."""
+  type_not: NOTIFICATION_TYPE
+
+  """All values that are contained in given list."""
+  type_in: [NOTIFICATION_TYPE!]
+
+  """All values that are not contained in given list."""
+  type_not_in: [NOTIFICATION_TYPE!]
+  link: String
+
+  """All values that are not equal to given value."""
+  link_not: String
+
+  """All values that are contained in given list."""
+  link_in: [String!]
+
+  """All values that are not contained in given list."""
+  link_not_in: [String!]
+
+  """All values less than the given value."""
+  link_lt: String
+
+  """All values less than or equal the given value."""
+  link_lte: String
+
+  """All values greater than the given value."""
+  link_gt: String
+
+  """All values greater than or equal the given value."""
+  link_gte: String
+
+  """All values containing the given string."""
+  link_contains: String
+
+  """All values not containing the given string."""
+  link_not_contains: String
+
+  """All values starting with the given string."""
+  link_starts_with: String
+
+  """All values not starting with the given string."""
+  link_not_starts_with: String
+
+  """All values ending with the given string."""
+  link_ends_with: String
+
+  """All values not ending with the given string."""
+  link_not_ends_with: String
+  readDate: DateTime
+
+  """All values that are not equal to given value."""
+  readDate_not: DateTime
+
+  """All values that are contained in given list."""
+  readDate_in: [DateTime!]
+
+  """All values that are not contained in given list."""
+  readDate_not_in: [DateTime!]
+
+  """All values less than the given value."""
+  readDate_lt: DateTime
+
+  """All values less than or equal the given value."""
+  readDate_lte: DateTime
+
+  """All values greater than the given value."""
+  readDate_gt: DateTime
+
+  """All values greater than or equal the given value."""
+  readDate_gte: DateTime
+}
+
 type NotificationSubscriptionPayload {
   mutation: MutationType!
   node: Notification
@@ -4334,16 +5226,36 @@ input NotificationUpdateInput {
   type: NOTIFICATION_TYPE
   link: String
   readDate: DateTime
-  user: UserUpdateOneWithoutNotificationsInput
+  user: UserUpdateOneRequiredWithoutNotificationsInput
+}
+
+input NotificationUpdateManyDataInput {
+  type: NOTIFICATION_TYPE
+  link: String
+  readDate: DateTime
+}
+
+input NotificationUpdateManyMutationInput {
+  type: NOTIFICATION_TYPE
+  link: String
+  readDate: DateTime
 }
 
 input NotificationUpdateManyWithoutUserInput {
   create: [NotificationCreateWithoutUserInput!]
   connect: [NotificationWhereUniqueInput!]
+  set: [NotificationWhereUniqueInput!]
   disconnect: [NotificationWhereUniqueInput!]
   delete: [NotificationWhereUniqueInput!]
   update: [NotificationUpdateWithWhereUniqueWithoutUserInput!]
+  updateMany: [NotificationUpdateManyWithWhereNestedInput!]
+  deleteMany: [NotificationScalarWhereInput!]
   upsert: [NotificationUpsertWithWhereUniqueWithoutUserInput!]
+}
+
+input NotificationUpdateManyWithWhereNestedInput {
+  where: NotificationScalarWhereInput!
+  data: NotificationUpdateManyDataInput!
 }
 
 input NotificationUpdateWithoutUserDataInput {
@@ -4537,10 +5449,10 @@ type PaymentAccount implements Node {
   id: ID!
   createdAt: DateTime!
   type: PAYMENT_PROVIDER
-  user(where: UserWhereInput): User!
+  user: User!
   payments(where: PaymentHouseWhereInput, orderBy: PaymentHouseOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [PaymentHouse!]
-  paypal(where: PaypalInformationWhereInput): PaypalInformation
-  creditcard(where: CreditCardInformationWhereInput): CreditCardInformation
+  paypal: PaypalInformation
+  creditcard: CreditCardInformation
 }
 
 """A connection to a list of items."""
@@ -4664,10 +5576,28 @@ input PaymentAccountSubscriptionWhereInput {
 
 input PaymentAccountUpdateInput {
   type: PAYMENT_PROVIDER
-  user: UserUpdateOneInput
+  user: UserUpdateOneRequiredInput
   payments: PaymentHouseUpdateManyWithoutPaymentMethodInput
   paypal: PaypalInformationUpdateOneWithoutPaymentAccountInput
   creditcard: CreditCardInformationUpdateOneWithoutPaymentAccountInput
+}
+
+input PaymentAccountUpdateManyMutationInput {
+  type: PAYMENT_PROVIDER
+}
+
+input PaymentAccountUpdateOneRequiredWithoutPaymentsInput {
+  create: PaymentAccountCreateWithoutPaymentsInput
+  connect: PaymentAccountWhereUniqueInput
+  update: PaymentAccountUpdateWithoutPaymentsDataInput
+  upsert: PaymentAccountUpsertWithoutPaymentsInput
+}
+
+input PaymentAccountUpdateOneRequiredWithoutPaypalInput {
+  create: PaymentAccountCreateWithoutPaypalInput
+  connect: PaymentAccountWhereUniqueInput
+  update: PaymentAccountUpdateWithoutPaypalDataInput
+  upsert: PaymentAccountUpsertWithoutPaypalInput
 }
 
 input PaymentAccountUpdateOneWithoutCreditcardInput {
@@ -4679,39 +5609,23 @@ input PaymentAccountUpdateOneWithoutCreditcardInput {
   upsert: PaymentAccountUpsertWithoutCreditcardInput
 }
 
-input PaymentAccountUpdateOneWithoutPaymentsInput {
-  create: PaymentAccountCreateWithoutPaymentsInput
-  connect: PaymentAccountWhereUniqueInput
-  delete: Boolean
-  update: PaymentAccountUpdateWithoutPaymentsDataInput
-  upsert: PaymentAccountUpsertWithoutPaymentsInput
-}
-
-input PaymentAccountUpdateOneWithoutPaypalInput {
-  create: PaymentAccountCreateWithoutPaypalInput
-  connect: PaymentAccountWhereUniqueInput
-  delete: Boolean
-  update: PaymentAccountUpdateWithoutPaypalDataInput
-  upsert: PaymentAccountUpsertWithoutPaypalInput
-}
-
 input PaymentAccountUpdateWithoutCreditcardDataInput {
   type: PAYMENT_PROVIDER
-  user: UserUpdateOneInput
+  user: UserUpdateOneRequiredInput
   payments: PaymentHouseUpdateManyWithoutPaymentMethodInput
   paypal: PaypalInformationUpdateOneWithoutPaymentAccountInput
 }
 
 input PaymentAccountUpdateWithoutPaymentsDataInput {
   type: PAYMENT_PROVIDER
-  user: UserUpdateOneInput
+  user: UserUpdateOneRequiredInput
   paypal: PaypalInformationUpdateOneWithoutPaymentAccountInput
   creditcard: CreditCardInformationUpdateOneWithoutPaymentAccountInput
 }
 
 input PaymentAccountUpdateWithoutPaypalDataInput {
   type: PAYMENT_PROVIDER
-  user: UserUpdateOneInput
+  user: UserUpdateOneRequiredInput
   payments: PaymentHouseUpdateManyWithoutPaymentMethodInput
   creditcard: CreditCardInformationUpdateOneWithoutPaymentAccountInput
 }
@@ -4828,8 +5742,8 @@ type PaymentHouse implements Node {
   id: ID!
   createdAt: DateTime!
   totalPrice: Float!
-  booking(where: BookingWhereInput): Booking!
-  paymentMethod(where: PaymentAccountWhereInput): PaymentAccount!
+  booking: Booking!
+  paymentMethod: PaymentAccount!
 }
 
 """A connection to a list of items."""
@@ -4894,6 +5808,101 @@ type PaymentHousePreviousValues {
   totalPrice: Float!
 }
 
+input PaymentHouseScalarWhereInput {
+  """Logical AND on all given filters."""
+  AND: [PaymentHouseScalarWhereInput!]
+
+  """Logical OR on all given filters."""
+  OR: [PaymentHouseScalarWhereInput!]
+
+  """Logical NOT on all given filters combined by AND."""
+  NOT: [PaymentHouseScalarWhereInput!]
+  id: ID
+
+  """All values that are not equal to given value."""
+  id_not: ID
+
+  """All values that are contained in given list."""
+  id_in: [ID!]
+
+  """All values that are not contained in given list."""
+  id_not_in: [ID!]
+
+  """All values less than the given value."""
+  id_lt: ID
+
+  """All values less than or equal the given value."""
+  id_lte: ID
+
+  """All values greater than the given value."""
+  id_gt: ID
+
+  """All values greater than or equal the given value."""
+  id_gte: ID
+
+  """All values containing the given string."""
+  id_contains: ID
+
+  """All values not containing the given string."""
+  id_not_contains: ID
+
+  """All values starting with the given string."""
+  id_starts_with: ID
+
+  """All values not starting with the given string."""
+  id_not_starts_with: ID
+
+  """All values ending with the given string."""
+  id_ends_with: ID
+
+  """All values not ending with the given string."""
+  id_not_ends_with: ID
+  createdAt: DateTime
+
+  """All values that are not equal to given value."""
+  createdAt_not: DateTime
+
+  """All values that are contained in given list."""
+  createdAt_in: [DateTime!]
+
+  """All values that are not contained in given list."""
+  createdAt_not_in: [DateTime!]
+
+  """All values less than the given value."""
+  createdAt_lt: DateTime
+
+  """All values less than or equal the given value."""
+  createdAt_lte: DateTime
+
+  """All values greater than the given value."""
+  createdAt_gt: DateTime
+
+  """All values greater than or equal the given value."""
+  createdAt_gte: DateTime
+  totalPrice: Float
+
+  """All values that are not equal to given value."""
+  totalPrice_not: Float
+
+  """All values that are contained in given list."""
+  totalPrice_in: [Float!]
+
+  """All values that are not contained in given list."""
+  totalPrice_not_in: [Float!]
+
+  """All values less than the given value."""
+  totalPrice_lt: Float
+
+  """All values less than or equal the given value."""
+  totalPrice_lte: Float
+
+  """All values greater than the given value."""
+  totalPrice_gt: Float
+
+  """All values greater than or equal the given value."""
+  totalPrice_gte: Float
+}
+
 type PaymentHouseSubscriptionPayload {
   mutation: MutationType!
   node: PaymentHouse
@@ -4935,35 +5944,50 @@ input PaymentHouseSubscriptionWhereInput {
 
 input PaymentHouseUpdateInput {
   totalPrice: Float
-  booking: BookingUpdateOneWithoutPaymentInput
-  paymentMethod: PaymentAccountUpdateOneWithoutPaymentsInput
+  booking: BookingUpdateOneRequiredWithoutPaymentInput
+  paymentMethod: PaymentAccountUpdateOneRequiredWithoutPaymentsInput
+}
+
+input PaymentHouseUpdateManyDataInput {
+  totalPrice: Float
+}
+
+input PaymentHouseUpdateManyMutationInput {
+  totalPrice: Float
 }
 
 input PaymentHouseUpdateManyWithoutPaymentMethodInput {
   create: [PaymentHouseCreateWithoutPaymentMethodInput!]
   connect: [PaymentHouseWhereUniqueInput!]
+  set: [PaymentHouseWhereUniqueInput!]
   disconnect: [PaymentHouseWhereUniqueInput!]
   delete: [PaymentHouseWhereUniqueInput!]
   update: [PaymentHouseUpdateWithWhereUniqueWithoutPaymentMethodInput!]
+  updateMany: [PaymentHouseUpdateManyWithWhereNestedInput!]
+  deleteMany: [PaymentHouseScalarWhereInput!]
   upsert: [PaymentHouseUpsertWithWhereUniqueWithoutPaymentMethodInput!]
 }
 
-input PaymentHouseUpdateOneWithoutBookingInput {
+input PaymentHouseUpdateManyWithWhereNestedInput {
+  where: PaymentHouseScalarWhereInput!
+  data: PaymentHouseUpdateManyDataInput!
+}
+
+input PaymentHouseUpdateOneRequiredWithoutBookingInput {
   create: PaymentHouseCreateWithoutBookingInput
   connect: PaymentHouseWhereUniqueInput
-  delete: Boolean
   update: PaymentHouseUpdateWithoutBookingDataInput
   upsert: PaymentHouseUpsertWithoutBookingInput
 }
 
 input PaymentHouseUpdateWithoutBookingDataInput {
   totalPrice: Float
-  paymentMethod: PaymentAccountUpdateOneWithoutPaymentsInput
+  paymentMethod: PaymentAccountUpdateOneRequiredWithoutPaymentsInput
 }
 
 input PaymentHouseUpdateWithoutPaymentMethodDataInput {
   totalPrice: Float
-  booking: BookingUpdateOneWithoutPaymentInput
+  booking: BookingUpdateOneRequiredWithoutPaymentInput
 }
 
 input PaymentHouseUpdateWithWhereUniqueWithoutPaymentMethodInput {
@@ -5087,8 +6111,8 @@ type PaymentLanlordInfo implements Node {
   id: ID!
   createdAt: DateTime!
   totalPrice: Float!
-  client(where: UserWhereInput): User!
-  House(where: HouseWhereInput): House!
+  client: User!
+  House: House!
   moncashTransactId: String!
 }
 
@@ -5160,6 +6184,141 @@ type PaymentLanlordInfoPreviousValues {
   moncashTransactId: String!
 }
 
+input PaymentLanlordInfoScalarWhereInput {
+  """Logical AND on all given filters."""
+  AND: [PaymentLanlordInfoScalarWhereInput!]
+
+  """Logical OR on all given filters."""
+  OR: [PaymentLanlordInfoScalarWhereInput!]
+
+  """Logical NOT on all given filters combined by AND."""
+  NOT: [PaymentLanlordInfoScalarWhereInput!]
+  id: ID
+
+  """All values that are not equal to given value."""
+  id_not: ID
+
+  """All values that are contained in given list."""
+  id_in: [ID!]
+
+  """All values that are not contained in given list."""
+  id_not_in: [ID!]
+
+  """All values less than the given value."""
+  id_lt: ID
+
+  """All values less than or equal the given value."""
+  id_lte: ID
+
+  """All values greater than the given value."""
+  id_gt: ID
+
+  """All values greater than or equal the given value."""
+  id_gte: ID
+
+  """All values containing the given string."""
+  id_contains: ID
+
+  """All values not containing the given string."""
+  id_not_contains: ID
+
+  """All values starting with the given string."""
+  id_starts_with: ID
+
+  """All values not starting with the given string."""
+  id_not_starts_with: ID
+
+  """All values ending with the given string."""
+  id_ends_with: ID
+
+  """All values not ending with the given string."""
+  id_not_ends_with: ID
+  createdAt: DateTime
+
+  """All values that are not equal to given value."""
+  createdAt_not: DateTime
+
+  """All values that are contained in given list."""
+  createdAt_in: [DateTime!]
+
+  """All values that are not contained in given list."""
+  createdAt_not_in: [DateTime!]
+
+  """All values less than the given value."""
+  createdAt_lt: DateTime
+
+  """All values less than or equal the given value."""
+  createdAt_lte: DateTime
+
+  """All values greater than the given value."""
+  createdAt_gt: DateTime
+
+  """All values greater than or equal the given value."""
+  createdAt_gte: DateTime
+  totalPrice: Float
+
+  """All values that are not equal to given value."""
+  totalPrice_not: Float
+
+  """All values that are contained in given list."""
+  totalPrice_in: [Float!]
+
+  """All values that are not contained in given list."""
+  totalPrice_not_in: [Float!]
+
+  """All values less than the given value."""
+  totalPrice_lt: Float
+
+  """All values less than or equal the given value."""
+  totalPrice_lte: Float
+
+  """All values greater than the given value."""
+  totalPrice_gt: Float
+
+  """All values greater than or equal the given value."""
+  totalPrice_gte: Float
+  moncashTransactId: String
+
+  """All values that are not equal to given value."""
+  moncashTransactId_not: String
+
+  """All values that are contained in given list."""
+  moncashTransactId_in: [String!]
+
+  """All values that are not contained in given list."""
+  moncashTransactId_not_in: [String!]
+
+  """All values less than the given value."""
+  moncashTransactId_lt: String
+
+  """All values less than or equal the given value."""
+  moncashTransactId_lte: String
+
+  """All values greater than the given value."""
+  moncashTransactId_gt: String
+
+  """All values greater than or equal the given value."""
+  moncashTransactId_gte: String
+
+  """All values containing the given string."""
+  moncashTransactId_contains: String
+
+  """All values not containing the given string."""
+  moncashTransactId_not_contains: String
+
+  """All values starting with the given string."""
+  moncashTransactId_starts_with: String
+
+  """All values not starting with the given string."""
+  moncashTransactId_not_starts_with: String
+
+  """All values ending with the given string."""
+  moncashTransactId_ends_with: String
+
+  """All values not ending with the given string."""
+  moncashTransactId_not_ends_with: String
+}
+
 type PaymentLanlordInfoSubscriptionPayload {
   mutation: MutationType!
   node: PaymentLanlordInfo
@@ -5202,38 +6361,59 @@ input PaymentLanlordInfoSubscriptionWhereInput {
 input PaymentLanlordInfoUpdateInput {
   totalPrice: Float
   moncashTransactId: String
-  client: UserUpdateOneWithoutPaidContactsInput
-  House: HouseUpdateOneWithoutContactInfoPaymentsInput
+  client: UserUpdateOneRequiredWithoutPaidContactsInput
+  House: HouseUpdateOneRequiredWithoutContactInfoPaymentsInput
+}
+
+input PaymentLanlordInfoUpdateManyDataInput {
+  totalPrice: Float
+  moncashTransactId: String
+}
+
+input PaymentLanlordInfoUpdateManyMutationInput {
+  totalPrice: Float
+  moncashTransactId: String
 }
 
 input PaymentLanlordInfoUpdateManyWithoutClientInput {
   create: [PaymentLanlordInfoCreateWithoutClientInput!]
   connect: [PaymentLanlordInfoWhereUniqueInput!]
+  set: [PaymentLanlordInfoWhereUniqueInput!]
   disconnect: [PaymentLanlordInfoWhereUniqueInput!]
   delete: [PaymentLanlordInfoWhereUniqueInput!]
   update: [PaymentLanlordInfoUpdateWithWhereUniqueWithoutClientInput!]
+  updateMany: [PaymentLanlordInfoUpdateManyWithWhereNestedInput!]
+  deleteMany: [PaymentLanlordInfoScalarWhereInput!]
   upsert: [PaymentLanlordInfoUpsertWithWhereUniqueWithoutClientInput!]
 }
 
 input PaymentLanlordInfoUpdateManyWithoutHouseInput {
   create: [PaymentLanlordInfoCreateWithoutHouseInput!]
   connect: [PaymentLanlordInfoWhereUniqueInput!]
+  set: [PaymentLanlordInfoWhereUniqueInput!]
   disconnect: [PaymentLanlordInfoWhereUniqueInput!]
   delete: [PaymentLanlordInfoWhereUniqueInput!]
   update: [PaymentLanlordInfoUpdateWithWhereUniqueWithoutHouseInput!]
+  updateMany: [PaymentLanlordInfoUpdateManyWithWhereNestedInput!]
+  deleteMany: [PaymentLanlordInfoScalarWhereInput!]
   upsert: [PaymentLanlordInfoUpsertWithWhereUniqueWithoutHouseInput!]
+}
+
+input PaymentLanlordInfoUpdateManyWithWhereNestedInput {
+  where: PaymentLanlordInfoScalarWhereInput!
+  data: PaymentLanlordInfoUpdateManyDataInput!
 }
 
 input PaymentLanlordInfoUpdateWithoutClientDataInput {
   totalPrice: Float
   moncashTransactId: String
-  House: HouseUpdateOneWithoutContactInfoPaymentsInput
+  House: HouseUpdateOneRequiredWithoutContactInfoPaymentsInput
 }
 
 input PaymentLanlordInfoUpdateWithoutHouseDataInput {
   totalPrice: Float
   moncashTransactId: String
-  client: UserUpdateOneWithoutPaidContactsInput
+  client: UserUpdateOneRequiredWithoutPaidContactsInput
 }
 
 input PaymentLanlordInfoUpdateWithWhereUniqueWithoutClientInput {
@@ -5403,7 +6583,7 @@ type PaypalInformation implements Node {
   id: ID!
   createdAt: DateTime!
   email: String!
-  paymentAccount(where: PaymentAccountWhereInput): PaymentAccount!
+  paymentAccount: PaymentAccount!
 }
 
 """A connection to a list of items."""
@@ -5497,7 +6677,11 @@ input PaypalInformationSubscriptionWhereInput {
 
 input PaypalInformationUpdateInput {
   email: String
-  paymentAccount: PaymentAccountUpdateOneWithoutPaypalInput
+  paymentAccount: PaymentAccountUpdateOneRequiredWithoutPaypalInput
+}
+
+input PaypalInformationUpdateManyMutationInput {
+  email: String
 }
 
 input PaypalInformationUpdateOneWithoutPaymentAccountInput {
@@ -5636,7 +6820,8 @@ input PaypalInformationWhereUniqueInput {
   id: ID
 }
 
-type Picture {
+type Picture implements Node {
+  id: ID!
   url: String!
 }
 
@@ -5656,10 +6841,12 @@ input PictureCreateInput {
 
 input PictureCreateManyInput {
   create: [PictureCreateInput!]
+  connect: [PictureWhereUniqueInput!]
 }
 
 input PictureCreateOneInput {
   create: PictureCreateInput
+  connect: PictureWhereUniqueInput
 }
 
 """An edge in a connection."""
@@ -5672,10 +6859,10 @@ type PictureEdge {
 }
 
 enum PictureOrderByInput {
-  url_ASC
-  url_DESC
   id_ASC
   id_DESC
+  url_ASC
+  url_DESC
   updatedAt_ASC
   updatedAt_DESC
   createdAt_ASC
@@ -5683,7 +6870,99 @@ enum PictureOrderByInput {
 }
 
 type PicturePreviousValues {
+  id: ID!
   url: String!
+}
+
+input PictureScalarWhereInput {
+  """Logical AND on all given filters."""
+  AND: [PictureScalarWhereInput!]
+
+  """Logical OR on all given filters."""
+  OR: [PictureScalarWhereInput!]
+
+  """Logical NOT on all given filters combined by AND."""
+  NOT: [PictureScalarWhereInput!]
+  id: ID
+
+  """All values that are not equal to given value."""
+  id_not: ID
+
+  """All values that are contained in given list."""
+  id_in: [ID!]
+
+  """All values that are not contained in given list."""
+  id_not_in: [ID!]
+
+  """All values less than the given value."""
+  id_lt: ID
+
+  """All values less than or equal the given value."""
+  id_lte: ID
+
+  """All values greater than the given value."""
+  id_gt: ID
+
+  """All values greater than or equal the given value."""
+  id_gte: ID
+
+  """All values containing the given string."""
+  id_contains: ID
+
+  """All values not containing the given string."""
+  id_not_contains: ID
+
+  """All values starting with the given string."""
+  id_starts_with: ID
+
+  """All values not starting with the given string."""
+  id_not_starts_with: ID
+
+  """All values ending with the given string."""
+  id_ends_with: ID
+
+  """All values not ending with the given string."""
+  id_not_ends_with: ID
+  url: String
+
+  """All values that are not equal to given value."""
+  url_not: String
+
+  """All values that are contained in given list."""
+  url_in: [String!]
+
+  """All values that are not contained in given list."""
+  url_not_in: [String!]
+
+  """All values less than the given value."""
+  url_lt: String
+
+  """All values less than or equal the given value."""
+  url_lte: String
+
+  """All values greater than the given value."""
+  url_gt: String
+
+  """All values greater than or equal the given value."""
+  url_gte: String
+
+  """All values containing the given string."""
+  url_contains: String
+
+  """All values not containing the given string."""
+  url_not_contains: String
+
+  """All values starting with the given string."""
+  url_starts_with: String
+
+  """All values not starting with the given string."""
+  url_not_starts_with: String
+
+  """All values ending with the given string."""
+  url_ends_with: String
+
+  """All values not ending with the given string."""
+  url_not_ends_with: String
 }
 
 type PictureSubscriptionPayload {
@@ -5733,19 +7012,52 @@ input PictureUpdateInput {
   url: String
 }
 
+input PictureUpdateManyDataInput {
+  url: String
+}
+
 input PictureUpdateManyInput {
   create: [PictureCreateInput!]
+  connect: [PictureWhereUniqueInput!]
+  set: [PictureWhereUniqueInput!]
+  disconnect: [PictureWhereUniqueInput!]
+  delete: [PictureWhereUniqueInput!]
+  update: [PictureUpdateWithWhereUniqueNestedInput!]
+  updateMany: [PictureUpdateManyWithWhereNestedInput!]
+  deleteMany: [PictureScalarWhereInput!]
+  upsert: [PictureUpsertWithWhereUniqueNestedInput!]
+}
+
+input PictureUpdateManyMutationInput {
+  url: String
+}
+
+input PictureUpdateManyWithWhereNestedInput {
+  where: PictureScalarWhereInput!
+  data: PictureUpdateManyDataInput!
 }
 
 input PictureUpdateOneInput {
   create: PictureCreateInput
+  connect: PictureWhereUniqueInput
   disconnect: Boolean
   delete: Boolean
   update: PictureUpdateDataInput
   upsert: PictureUpsertNestedInput
 }
 
+input PictureUpdateWithWhereUniqueNestedInput {
+  where: PictureWhereUniqueInput!
+  data: PictureUpdateDataInput!
+}
+
 input PictureUpsertNestedInput {
+  update: PictureUpdateDataInput!
+  create: PictureCreateInput!
+}
+
+input PictureUpsertWithWhereUniqueNestedInput {
+  where: PictureWhereUniqueInput!
   update: PictureUpdateDataInput!
   create: PictureCreateInput!
 }
@@ -5759,6 +7071,46 @@ input PictureWhereInput {
 
   """Logical NOT on all given filters combined by AND."""
   NOT: [PictureWhereInput!]
+  id: ID
+
+  """All values that are not equal to given value."""
+  id_not: ID
+
+  """All values that are contained in given list."""
+  id_in: [ID!]
+
+  """All values that are not contained in given list."""
+  id_not_in: [ID!]
+
+  """All values less than the given value."""
+  id_lt: ID
+
+  """All values less than or equal the given value."""
+  id_lte: ID
+
+  """All values greater than the given value."""
+  id_gt: ID
+
+  """All values greater than or equal the given value."""
+  id_gte: ID
+
+  """All values containing the given string."""
+  id_contains: ID
+
+  """All values not containing the given string."""
+  id_not_contains: ID
+
+  """All values starting with the given string."""
+  id_starts_with: ID
+
+  """All values not starting with the given string."""
+  id_not_starts_with: ID
+
+  """All values ending with the given string."""
+  id_ends_with: ID
+
+  """All values not ending with the given string."""
+  id_not_ends_with: ID
   url: String
 
   """All values that are not equal to given value."""
@@ -5801,13 +7153,17 @@ input PictureWhereInput {
   url_not_ends_with: String
 }
 
+input PictureWhereUniqueInput {
+  id: ID
+}
+
 type Pricing implements Node {
   id: ID!
-  House(where: HouseWhereInput): House!
-  basePrice: Int!
-  highestPrice: Int!
-  currency: CURRENCY
-  income: Int!
+  House: House!
+  basePrice: Float
+  highestPrice: Float!
+  currency: CURRENCY!
+  income: Float
 }
 
 """A connection to a list of items."""
@@ -5821,10 +7177,10 @@ type PricingConnection {
 }
 
 input PricingCreateInput {
-  basePrice: Int!
-  highestPrice: Int!
-  currency: CURRENCY
-  income: Int!
+  basePrice: Float
+  highestPrice: Float!
+  currency: CURRENCY!
+  income: Float
   House: HouseCreateOneWithoutPricingInput!
 }
 
@@ -5834,10 +7190,10 @@ input PricingCreateOneWithoutHouseInput {
 }
 
 input PricingCreateWithoutHouseInput {
-  basePrice: Int!
-  highestPrice: Int!
-  currency: CURRENCY
-  income: Int!
+  basePrice: Float
+  highestPrice: Float!
+  currency: CURRENCY!
+  income: Float
 }
 
 """An edge in a connection."""
@@ -5868,10 +7224,10 @@ enum PricingOrderByInput {
 
 type PricingPreviousValues {
   id: ID!
-  basePrice: Int!
-  highestPrice: Int!
-  currency: CURRENCY
-  income: Int!
+  basePrice: Float
+  highestPrice: Float!
+  currency: CURRENCY!
+  income: Float
 }
 
 type PricingSubscriptionPayload {
@@ -5914,26 +7270,32 @@ input PricingSubscriptionWhereInput {
 }
 
 input PricingUpdateInput {
-  basePrice: Int
-  highestPrice: Int
+  basePrice: Float
+  highestPrice: Float
   currency: CURRENCY
-  income: Int
-  House: HouseUpdateOneWithoutPricingInput
+  income: Float
+  House: HouseUpdateOneRequiredWithoutPricingInput
 }
 
-input PricingUpdateOneWithoutHouseInput {
+input PricingUpdateManyMutationInput {
+  basePrice: Float
+  highestPrice: Float
+  currency: CURRENCY
+  income: Float
+}
+
+input PricingUpdateOneRequiredWithoutHouseInput {
   create: PricingCreateWithoutHouseInput
   connect: PricingWhereUniqueInput
-  delete: Boolean
   update: PricingUpdateWithoutHouseDataInput
   upsert: PricingUpsertWithoutHouseInput
 }
 
 input PricingUpdateWithoutHouseDataInput {
-  basePrice: Int
-  highestPrice: Int
+  basePrice: Float
+  highestPrice: Float
   currency: CURRENCY
-  income: Int
+  income: Float
 }
 
 input PricingUpsertWithoutHouseInput {
@@ -5990,50 +7352,50 @@ input PricingWhereInput {
 
   """All values not ending with the given string."""
   id_not_ends_with: ID
-  basePrice: Int
+  basePrice: Float
 
   """All values that are not equal to given value."""
-  basePrice_not: Int
+  basePrice_not: Float
 
   """All values that are contained in given list."""
-  basePrice_in: [Int!]
+  basePrice_in: [Float!]
 
   """All values that are not contained in given list."""
-  basePrice_not_in: [Int!]
+  basePrice_not_in: [Float!]
 
   """All values less than the given value."""
-  basePrice_lt: Int
+  basePrice_lt: Float
 
   """All values less than or equal the given value."""
-  basePrice_lte: Int
+  basePrice_lte: Float
 
   """All values greater than the given value."""
-  basePrice_gt: Int
+  basePrice_gt: Float
 
   """All values greater than or equal the given value."""
-  basePrice_gte: Int
-  highestPrice: Int
+  basePrice_gte: Float
+  highestPrice: Float
 
   """All values that are not equal to given value."""
-  highestPrice_not: Int
+  highestPrice_not: Float
 
   """All values that are contained in given list."""
-  highestPrice_in: [Int!]
+  highestPrice_in: [Float!]
 
   """All values that are not contained in given list."""
-  highestPrice_not_in: [Int!]
+  highestPrice_not_in: [Float!]
 
   """All values less than the given value."""
-  highestPrice_lt: Int
+  highestPrice_lt: Float
 
   """All values less than or equal the given value."""
-  highestPrice_lte: Int
+  highestPrice_lte: Float
 
   """All values greater than the given value."""
-  highestPrice_gt: Int
+  highestPrice_gt: Float
 
   """All values greater than or equal the given value."""
-  highestPrice_gte: Int
+  highestPrice_gte: Float
   currency: CURRENCY
 
   """All values that are not equal to given value."""
@@ -6044,28 +7406,28 @@ input PricingWhereInput {
 
   """All values that are not contained in given list."""
   currency_not_in: [CURRENCY!]
-  income: Int
+  income: Float
 
   """All values that are not equal to given value."""
-  income_not: Int
+  income_not: Float
 
   """All values that are contained in given list."""
-  income_in: [Int!]
+  income_in: [Float!]
 
   """All values that are not contained in given list."""
-  income_not_in: [Int!]
+  income_not_in: [Float!]
 
   """All values less than the given value."""
-  income_lt: Int
+  income_lt: Float
 
   """All values less than or equal the given value."""
-  income_lte: Int
+  income_lte: Float
 
   """All values greater than the given value."""
-  income_gt: Int
+  income_gt: Float
 
   """All values greater than or equal the given value."""
-  income_gte: Int
+  income_gte: Float
   House: HouseWhereInput
 }
 
@@ -6117,6 +7479,8 @@ type Query {
   state(where: StateWhereUniqueInput!): State
   user(where: UserWhereUniqueInput!): User
   house(where: HouseWhereUniqueInput!): House
+  video(where: VideoWhereUniqueInput!): Video
+  picture(where: PictureWhereUniqueInput!): Picture
   city(where: CityWhereUniqueInput!): City
   roomsConnection(where: RoomWhereInput, orderBy: RoomOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): RoomConnection!
   pricingsConnection(where: PricingWhereInput, orderBy: PricingOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): PricingConnection!
@@ -6159,7 +7523,7 @@ type Review implements Node {
   checkIn: Int!
   value: Int!
   communication: Int!
-  House(where: HouseWhereInput): House!
+  House: House!
 }
 
 """A connection to a list of items."""
@@ -6242,6 +7606,251 @@ type ReviewPreviousValues {
   communication: Int!
 }
 
+input ReviewScalarWhereInput {
+  """Logical AND on all given filters."""
+  AND: [ReviewScalarWhereInput!]
+
+  """Logical OR on all given filters."""
+  OR: [ReviewScalarWhereInput!]
+
+  """Logical NOT on all given filters combined by AND."""
+  NOT: [ReviewScalarWhereInput!]
+  id: ID
+
+  """All values that are not equal to given value."""
+  id_not: ID
+
+  """All values that are contained in given list."""
+  id_in: [ID!]
+
+  """All values that are not contained in given list."""
+  id_not_in: [ID!]
+
+  """All values less than the given value."""
+  id_lt: ID
+
+  """All values less than or equal the given value."""
+  id_lte: ID
+
+  """All values greater than the given value."""
+  id_gt: ID
+
+  """All values greater than or equal the given value."""
+  id_gte: ID
+
+  """All values containing the given string."""
+  id_contains: ID
+
+  """All values not containing the given string."""
+  id_not_contains: ID
+
+  """All values starting with the given string."""
+  id_starts_with: ID
+
+  """All values not starting with the given string."""
+  id_not_starts_with: ID
+
+  """All values ending with the given string."""
+  id_ends_with: ID
+
+  """All values not ending with the given string."""
+  id_not_ends_with: ID
+  createdAt: DateTime
+
+  """All values that are not equal to given value."""
+  createdAt_not: DateTime
+
+  """All values that are contained in given list."""
+  createdAt_in: [DateTime!]
+
+  """All values that are not contained in given list."""
+  createdAt_not_in: [DateTime!]
+
+  """All values less than the given value."""
+  createdAt_lt: DateTime
+
+  """All values less than or equal the given value."""
+  createdAt_lte: DateTime
+
+  """All values greater than the given value."""
+  createdAt_gt: DateTime
+
+  """All values greater than or equal the given value."""
+  createdAt_gte: DateTime
+  text: String
+
+  """All values that are not equal to given value."""
+  text_not: String
+
+  """All values that are contained in given list."""
+  text_in: [String!]
+
+  """All values that are not contained in given list."""
+  text_not_in: [String!]
+
+  """All values less than the given value."""
+  text_lt: String
+
+  """All values less than or equal the given value."""
+  text_lte: String
+
+  """All values greater than the given value."""
+  text_gt: String
+
+  """All values greater than or equal the given value."""
+  text_gte: String
+
+  """All values containing the given string."""
+  text_contains: String
+
+  """All values not containing the given string."""
+  text_not_contains: String
+
+  """All values starting with the given string."""
+  text_starts_with: String
+
+  """All values not starting with the given string."""
+  text_not_starts_with: String
+
+  """All values ending with the given string."""
+  text_ends_with: String
+
+  """All values not ending with the given string."""
+  text_not_ends_with: String
+  stars: Int
+
+  """All values that are not equal to given value."""
+  stars_not: Int
+
+  """All values that are contained in given list."""
+  stars_in: [Int!]
+
+  """All values that are not contained in given list."""
+  stars_not_in: [Int!]
+
+  """All values less than the given value."""
+  stars_lt: Int
+
+  """All values less than or equal the given value."""
+  stars_lte: Int
+
+  """All values greater than the given value."""
+  stars_gt: Int
+
+  """All values greater than or equal the given value."""
+  stars_gte: Int
+  accuracy: Int
+
+  """All values that are not equal to given value."""
+  accuracy_not: Int
+
+  """All values that are contained in given list."""
+  accuracy_in: [Int!]
+
+  """All values that are not contained in given list."""
+  accuracy_not_in: [Int!]
+
+  """All values less than the given value."""
+  accuracy_lt: Int
+
+  """All values less than or equal the given value."""
+  accuracy_lte: Int
+
+  """All values greater than the given value."""
+  accuracy_gt: Int
+
+  """All values greater than or equal the given value."""
+  accuracy_gte: Int
+  location: Int
+
+  """All values that are not equal to given value."""
+  location_not: Int
+
+  """All values that are contained in given list."""
+  location_in: [Int!]
+
+  """All values that are not contained in given list."""
+  location_not_in: [Int!]
+
+  """All values less than the given value."""
+  location_lt: Int
+
+  """All values less than or equal the given value."""
+  location_lte: Int
+
+  """All values greater than the given value."""
+  location_gt: Int
+
+  """All values greater than or equal the given value."""
+  location_gte: Int
+  checkIn: Int
+
+  """All values that are not equal to given value."""
+  checkIn_not: Int
+
+  """All values that are contained in given list."""
+  checkIn_in: [Int!]
+
+  """All values that are not contained in given list."""
+  checkIn_not_in: [Int!]
+
+  """All values less than the given value."""
+  checkIn_lt: Int
+
+  """All values less than or equal the given value."""
+  checkIn_lte: Int
+
+  """All values greater than the given value."""
+  checkIn_gt: Int
+
+  """All values greater than or equal the given value."""
+  checkIn_gte: Int
+  value: Int
+
+  """All values that are not equal to given value."""
+  value_not: Int
+
+  """All values that are contained in given list."""
+  value_in: [Int!]
+
+  """All values that are not contained in given list."""
+  value_not_in: [Int!]
+
+  """All values less than the given value."""
+  value_lt: Int
+
+  """All values less than or equal the given value."""
+  value_lte: Int
+
+  """All values greater than the given value."""
+  value_gt: Int
+
+  """All values greater than or equal the given value."""
+  value_gte: Int
+  communication: Int
+
+  """All values that are not equal to given value."""
+  communication_not: Int
+
+  """All values that are contained in given list."""
+  communication_in: [Int!]
+
+  """All values that are not contained in given list."""
+  communication_not_in: [Int!]
+
+  """All values less than the given value."""
+  communication_lt: Int
+
+  """All values less than or equal the given value."""
+  communication_lte: Int
+
+  """All values greater than the given value."""
+  communication_gt: Int
+
+  """All values greater than or equal the given value."""
+  communication_gte: Int
+}
+
 type ReviewSubscriptionPayload {
   mutation: MutationType!
   node: Review
@@ -6289,16 +7898,44 @@ input ReviewUpdateInput {
   checkIn: Int
   value: Int
   communication: Int
-  House: HouseUpdateOneWithoutReviewsInput
+  House: HouseUpdateOneRequiredWithoutReviewsInput
+}
+
+input ReviewUpdateManyDataInput {
+  text: String
+  stars: Int
+  accuracy: Int
+  location: Int
+  checkIn: Int
+  value: Int
+  communication: Int
+}
+
+input ReviewUpdateManyMutationInput {
+  text: String
+  stars: Int
+  accuracy: Int
+  location: Int
+  checkIn: Int
+  value: Int
+  communication: Int
 }
 
 input ReviewUpdateManyWithoutHouseInput {
   create: [ReviewCreateWithoutHouseInput!]
   connect: [ReviewWhereUniqueInput!]
+  set: [ReviewWhereUniqueInput!]
   disconnect: [ReviewWhereUniqueInput!]
   delete: [ReviewWhereUniqueInput!]
   update: [ReviewUpdateWithWhereUniqueWithoutHouseInput!]
+  updateMany: [ReviewUpdateManyWithWhereNestedInput!]
+  deleteMany: [ReviewScalarWhereInput!]
   upsert: [ReviewUpsertWithWhereUniqueWithoutHouseInput!]
+}
+
+input ReviewUpdateManyWithWhereNestedInput {
+  where: ReviewScalarWhereInput!
+  data: ReviewUpdateManyDataInput!
 }
 
 input ReviewUpdateWithoutHouseDataInput {
@@ -6574,10 +8211,17 @@ input ReviewWhereUniqueInput {
 
 type Room implements Node {
   id: ID!
-  label: String!
-  house(where: HouseWhereInput): House!
+  label: ROOM_LABELS!
+  house: House!
   picture_previews(where: PictureWhereInput, orderBy: PictureOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Picture!]
   video_previews(where: VideoWhereInput, orderBy: VideoOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Video!]
+}
+
+enum ROOM_LABELS {
+  LIVINGROOM
+  DINIGROOM
+  BEDROOM
+  BATHROOM
 }
 
 """A connection to a list of items."""
@@ -6591,7 +8235,7 @@ type RoomConnection {
 }
 
 input RoomCreateInput {
-  label: String!
+  label: ROOM_LABELS!
   house: HouseCreateOneWithoutRoomsInput!
   picture_previews: PictureCreateManyInput
   video_previews: VideoCreateManyInput
@@ -6603,7 +8247,7 @@ input RoomCreateManyWithoutHouseInput {
 }
 
 input RoomCreateWithoutHouseInput {
-  label: String!
+  label: ROOM_LABELS!
   picture_previews: PictureCreateManyInput
   video_previews: VideoCreateManyInput
 }
@@ -6630,7 +8274,68 @@ enum RoomOrderByInput {
 
 type RoomPreviousValues {
   id: ID!
-  label: String!
+  label: ROOM_LABELS!
+}
+
+input RoomScalarWhereInput {
+  """Logical AND on all given filters."""
+  AND: [RoomScalarWhereInput!]
+
+  """Logical OR on all given filters."""
+  OR: [RoomScalarWhereInput!]
+
+  """Logical NOT on all given filters combined by AND."""
+  NOT: [RoomScalarWhereInput!]
+  id: ID
+
+  """All values that are not equal to given value."""
+  id_not: ID
+
+  """All values that are contained in given list."""
+  id_in: [ID!]
+
+  """All values that are not contained in given list."""
+  id_not_in: [ID!]
+
+  """All values less than the given value."""
+  id_lt: ID
+
+  """All values less than or equal the given value."""
+  id_lte: ID
+
+  """All values greater than the given value."""
+  id_gt: ID
+
+  """All values greater than or equal the given value."""
+  id_gte: ID
+
+  """All values containing the given string."""
+  id_contains: ID
+
+  """All values not containing the given string."""
+  id_not_contains: ID
+
+  """All values starting with the given string."""
+  id_starts_with: ID
+
+  """All values not starting with the given string."""
+  id_not_starts_with: ID
+
+  """All values ending with the given string."""
+  id_ends_with: ID
+
+  """All values not ending with the given string."""
+  id_not_ends_with: ID
+  label: ROOM_LABELS
+
+  """All values that are not equal to given value."""
+  label_not: ROOM_LABELS
+
+  """All values that are contained in given list."""
+  label_in: [ROOM_LABELS!]
+
+  """All values that are not contained in given list."""
+  label_not_in: [ROOM_LABELS!]
 }
 
 type RoomSubscriptionPayload {
@@ -6673,23 +8378,39 @@ input RoomSubscriptionWhereInput {
 }
 
 input RoomUpdateInput {
-  label: String
-  house: HouseUpdateOneWithoutRoomsInput
+  label: ROOM_LABELS
+  house: HouseUpdateOneRequiredWithoutRoomsInput
   picture_previews: PictureUpdateManyInput
   video_previews: VideoUpdateManyInput
+}
+
+input RoomUpdateManyDataInput {
+  label: ROOM_LABELS
+}
+
+input RoomUpdateManyMutationInput {
+  label: ROOM_LABELS
 }
 
 input RoomUpdateManyWithoutHouseInput {
   create: [RoomCreateWithoutHouseInput!]
   connect: [RoomWhereUniqueInput!]
+  set: [RoomWhereUniqueInput!]
   disconnect: [RoomWhereUniqueInput!]
   delete: [RoomWhereUniqueInput!]
   update: [RoomUpdateWithWhereUniqueWithoutHouseInput!]
+  updateMany: [RoomUpdateManyWithWhereNestedInput!]
+  deleteMany: [RoomScalarWhereInput!]
   upsert: [RoomUpsertWithWhereUniqueWithoutHouseInput!]
 }
 
+input RoomUpdateManyWithWhereNestedInput {
+  where: RoomScalarWhereInput!
+  data: RoomUpdateManyDataInput!
+}
+
 input RoomUpdateWithoutHouseDataInput {
-  label: String
+  label: ROOM_LABELS
   picture_previews: PictureUpdateManyInput
   video_previews: VideoUpdateManyInput
 }
@@ -6754,46 +8475,16 @@ input RoomWhereInput {
 
   """All values not ending with the given string."""
   id_not_ends_with: ID
-  label: String
+  label: ROOM_LABELS
 
   """All values that are not equal to given value."""
-  label_not: String
+  label_not: ROOM_LABELS
 
   """All values that are contained in given list."""
-  label_in: [String!]
+  label_in: [ROOM_LABELS!]
 
   """All values that are not contained in given list."""
-  label_not_in: [String!]
-
-  """All values less than the given value."""
-  label_lt: String
-
-  """All values less than or equal the given value."""
-  label_lte: String
-
-  """All values greater than the given value."""
-  label_gt: String
-
-  """All values greater than or equal the given value."""
-  label_gte: String
-
-  """All values containing the given string."""
-  label_contains: String
-
-  """All values not containing the given string."""
-  label_not_contains: String
-
-  """All values starting with the given string."""
-  label_starts_with: String
-
-  """All values not starting with the given string."""
-  label_not_starts_with: String
-
-  """All values ending with the given string."""
-  label_ends_with: String
-
-  """All values not ending with the given string."""
-  label_not_ends_with: String
+  label_not_in: [ROOM_LABELS!]
   house: HouseWhereInput
   picture_previews_every: PictureWhereInput
   picture_previews_some: PictureWhereInput
@@ -6810,7 +8501,8 @@ input RoomWhereUniqueInput {
 type State implements Node {
   id: ID!
   name: String!
-  country(where: CountryWhereInput): Country!
+  rank: Int
+  country: Country!
 }
 
 """A connection to a list of items."""
@@ -6825,6 +8517,7 @@ type StateConnection {
 
 input StateCreateInput {
   name: String!
+  rank: Int
   country: CountryCreateOneInput!
 }
 
@@ -6847,6 +8540,8 @@ enum StateOrderByInput {
   id_DESC
   name_ASC
   name_DESC
+  rank_ASC
+  rank_DESC
   updatedAt_ASC
   updatedAt_DESC
   createdAt_ASC
@@ -6856,6 +8551,7 @@ enum StateOrderByInput {
 type StatePreviousValues {
   id: ID!
   name: String!
+  rank: Int
 }
 
 type StateSubscriptionPayload {
@@ -6899,18 +8595,24 @@ input StateSubscriptionWhereInput {
 
 input StateUpdateDataInput {
   name: String
-  country: CountryUpdateOneInput
+  rank: Int
+  country: CountryUpdateOneRequiredInput
 }
 
 input StateUpdateInput {
   name: String
-  country: CountryUpdateOneInput
+  rank: Int
+  country: CountryUpdateOneRequiredInput
 }
 
-input StateUpdateOneInput {
+input StateUpdateManyMutationInput {
+  name: String
+  rank: Int
+}
+
+input StateUpdateOneRequiredInput {
   create: StateCreateInput
   connect: StateWhereUniqueInput
-  delete: Boolean
   update: StateUpdateDataInput
   upsert: StateUpsertNestedInput
 }
@@ -7009,6 +8711,28 @@ input StateWhereInput {
 
   """All values not ending with the given string."""
   name_not_ends_with: String
+  rank: Int
+
+  """All values that are not equal to given value."""
+  rank_not: Int
+
+  """All values that are contained in given list."""
+  rank_in: [Int!]
+
+  """All values that are not contained in given list."""
+  rank_not_in: [Int!]
+
+  """All values less than the given value."""
+  rank_lt: Int
+
+  """All values less than or equal the given value."""
+  rank_lte: Int
+
+  """All values greater than the given value."""
+  rank_gt: Int
+
+  """All values greater than or equal the given value."""
+  rank_gte: Int
   country: CountryWhereInput
 }
 
@@ -7046,23 +8770,26 @@ type User implements Node {
   id: ID!
   createdAt: DateTime!
   updatedAt: DateTime!
+  role: String
   status: Boolean
   facebookUserId: String
   firstName: String!
   lastName: String!
   email: String
   password: String
+  resetToken: String
+  resetTokenExpiry: String
   phone1: String
   phone2: String
   primaryPhone: Int!
   responseTime: Int
   isSuperHost: Boolean!
   ownedHouses(where: HouseWhereInput, orderBy: HouseOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [House!]
-  location(where: LocationWhereInput): Location
+  location: Location
   bookings(where: BookingWhereInput, orderBy: BookingOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Booking!]
   paidContacts(where: PaymentLanlordInfoWhereInput, orderBy: PaymentLanlordInfoOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [PaymentLanlordInfo!]
   notifications(where: NotificationWhereInput, orderBy: NotificationOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Notification!]
-  profilePicture(where: PictureWhereInput): Picture
+  profilePicture: Picture
 }
 
 """A connection to a list of items."""
@@ -7076,12 +8803,15 @@ type UserConnection {
 }
 
 input UserCreateInput {
+  role: String
   status: Boolean
   facebookUserId: String
   firstName: String!
   lastName: String!
   email: String
   password: String
+  resetToken: String
+  resetTokenExpiry: String
   phone1: String
   phone2: String
   primaryPhone: Int
@@ -7093,6 +8823,11 @@ input UserCreateInput {
   paidContacts: PaymentLanlordInfoCreateManyWithoutClientInput
   notifications: NotificationCreateManyWithoutUserInput
   profilePicture: PictureCreateOneInput
+}
+
+input UserCreateManyInput {
+  create: [UserCreateInput!]
+  connect: [UserWhereUniqueInput!]
 }
 
 input UserCreateOneInput {
@@ -7121,12 +8856,15 @@ input UserCreateOneWithoutPaidContactsInput {
 }
 
 input UserCreateWithoutBookingsInput {
+  role: String
   status: Boolean
   facebookUserId: String
   firstName: String!
   lastName: String!
   email: String
   password: String
+  resetToken: String
+  resetTokenExpiry: String
   phone1: String
   phone2: String
   primaryPhone: Int
@@ -7140,12 +8878,15 @@ input UserCreateWithoutBookingsInput {
 }
 
 input UserCreateWithoutNotificationsInput {
+  role: String
   status: Boolean
   facebookUserId: String
   firstName: String!
   lastName: String!
   email: String
   password: String
+  resetToken: String
+  resetTokenExpiry: String
   phone1: String
   phone2: String
   primaryPhone: Int
@@ -7159,12 +8900,15 @@ input UserCreateWithoutNotificationsInput {
 }
 
 input UserCreateWithoutOwnedHousesInput {
+  role: String
   status: Boolean
   facebookUserId: String
   firstName: String!
   lastName: String!
   email: String
   password: String
+  resetToken: String
+  resetTokenExpiry: String
   phone1: String
   phone2: String
   primaryPhone: Int
@@ -7178,12 +8922,15 @@ input UserCreateWithoutOwnedHousesInput {
 }
 
 input UserCreateWithoutPaidContactsInput {
+  role: String
   status: Boolean
   facebookUserId: String
   firstName: String!
   lastName: String!
   email: String
   password: String
+  resetToken: String
+  resetTokenExpiry: String
   phone1: String
   phone2: String
   primaryPhone: Int
@@ -7212,6 +8959,8 @@ enum UserOrderByInput {
   createdAt_DESC
   updatedAt_ASC
   updatedAt_DESC
+  role_ASC
+  role_DESC
   status_ASC
   status_DESC
   facebookUserId_ASC
@@ -7224,6 +8973,10 @@ enum UserOrderByInput {
   email_DESC
   password_ASC
   password_DESC
+  resetToken_ASC
+  resetToken_DESC
+  resetTokenExpiry_ASC
+  resetTokenExpiry_DESC
   phone1_ASC
   phone1_DESC
   phone2_ASC
@@ -7240,12 +8993,15 @@ type UserPreviousValues {
   id: ID!
   createdAt: DateTime!
   updatedAt: DateTime!
+  role: String
   status: Boolean
   facebookUserId: String
   firstName: String!
   lastName: String!
   email: String
   password: String
+  resetToken: String
+  resetTokenExpiry: String
   phone1: String
   phone2: String
   primaryPhone: Int!
@@ -7253,235 +9009,15 @@ type UserPreviousValues {
   isSuperHost: Boolean!
 }
 
-type UserSubscriptionPayload {
-  mutation: MutationType!
-  node: User
-  updatedFields: [String!]
-  previousValues: UserPreviousValues
-}
-
-input UserSubscriptionWhereInput {
+input UserScalarWhereInput {
   """Logical AND on all given filters."""
-  AND: [UserSubscriptionWhereInput!]
+  AND: [UserScalarWhereInput!]
 
   """Logical OR on all given filters."""
-  OR: [UserSubscriptionWhereInput!]
+  OR: [UserScalarWhereInput!]
 
   """Logical NOT on all given filters combined by AND."""
-  NOT: [UserSubscriptionWhereInput!]
-
-  """
-  The subscription event gets dispatched when it's listed in mutation_in
-  """
-  mutation_in: [MutationType!]
-
-  """
-  The subscription event gets only dispatched when one of the updated fields names is included in this list
-  """
-  updatedFields_contains: String
-
-  """
-  The subscription event gets only dispatched when all of the field names included in this list have been updated
-  """
-  updatedFields_contains_every: [String!]
-
-  """
-  The subscription event gets only dispatched when some of the field names included in this list have been updated
-  """
-  updatedFields_contains_some: [String!]
-  node: UserWhereInput
-}
-
-input UserUpdateDataInput {
-  status: Boolean
-  facebookUserId: String
-  firstName: String
-  lastName: String
-  email: String
-  password: String
-  phone1: String
-  phone2: String
-  primaryPhone: Int
-  responseTime: Int
-  isSuperHost: Boolean
-  ownedHouses: HouseUpdateManyWithoutHostInput
-  location: LocationUpdateOneInput
-  bookings: BookingUpdateManyWithoutBookeeInput
-  paidContacts: PaymentLanlordInfoUpdateManyWithoutClientInput
-  notifications: NotificationUpdateManyWithoutUserInput
-  profilePicture: PictureUpdateOneInput
-}
-
-input UserUpdateInput {
-  status: Boolean
-  facebookUserId: String
-  firstName: String
-  lastName: String
-  email: String
-  password: String
-  phone1: String
-  phone2: String
-  primaryPhone: Int
-  responseTime: Int
-  isSuperHost: Boolean
-  ownedHouses: HouseUpdateManyWithoutHostInput
-  location: LocationUpdateOneInput
-  bookings: BookingUpdateManyWithoutBookeeInput
-  paidContacts: PaymentLanlordInfoUpdateManyWithoutClientInput
-  notifications: NotificationUpdateManyWithoutUserInput
-  profilePicture: PictureUpdateOneInput
-}
-
-input UserUpdateOneInput {
-  create: UserCreateInput
-  connect: UserWhereUniqueInput
-  delete: Boolean
-  update: UserUpdateDataInput
-  upsert: UserUpsertNestedInput
-}
-
-input UserUpdateOneWithoutBookingsInput {
-  create: UserCreateWithoutBookingsInput
-  connect: UserWhereUniqueInput
-  delete: Boolean
-  update: UserUpdateWithoutBookingsDataInput
-  upsert: UserUpsertWithoutBookingsInput
-}
-
-input UserUpdateOneWithoutNotificationsInput {
-  create: UserCreateWithoutNotificationsInput
-  connect: UserWhereUniqueInput
-  delete: Boolean
-  update: UserUpdateWithoutNotificationsDataInput
-  upsert: UserUpsertWithoutNotificationsInput
-}
-
-input UserUpdateOneWithoutOwnedHousesInput {
-  create: UserCreateWithoutOwnedHousesInput
-  connect: UserWhereUniqueInput
-  delete: Boolean
-  update: UserUpdateWithoutOwnedHousesDataInput
-  upsert: UserUpsertWithoutOwnedHousesInput
-}
-
-input UserUpdateOneWithoutPaidContactsInput {
-  create: UserCreateWithoutPaidContactsInput
-  connect: UserWhereUniqueInput
-  delete: Boolean
-  update: UserUpdateWithoutPaidContactsDataInput
-  upsert: UserUpsertWithoutPaidContactsInput
-}
-
-input UserUpdateWithoutBookingsDataInput {
-  status: Boolean
-  facebookUserId: String
-  firstName: String
-  lastName: String
-  email: String
-  password: String
-  phone1: String
-  phone2: String
-  primaryPhone: Int
-  responseTime: Int
-  isSuperHost: Boolean
-  ownedHouses: HouseUpdateManyWithoutHostInput
-  location: LocationUpdateOneInput
-  paidContacts: PaymentLanlordInfoUpdateManyWithoutClientInput
-  notifications: NotificationUpdateManyWithoutUserInput
-  profilePicture: PictureUpdateOneInput
-}
-
-input UserUpdateWithoutNotificationsDataInput {
-  status: Boolean
-  facebookUserId: String
-  firstName: String
-  lastName: String
-  email: String
-  password: String
-  phone1: String
-  phone2: String
-  primaryPhone: Int
-  responseTime: Int
-  isSuperHost: Boolean
-  ownedHouses: HouseUpdateManyWithoutHostInput
-  location: LocationUpdateOneInput
-  bookings: BookingUpdateManyWithoutBookeeInput
-  paidContacts: PaymentLanlordInfoUpdateManyWithoutClientInput
-  profilePicture: PictureUpdateOneInput
-}
-
-input UserUpdateWithoutOwnedHousesDataInput {
-  status: Boolean
-  facebookUserId: String
-  firstName: String
-  lastName: String
-  email: String
-  password: String
-  phone1: String
-  phone2: String
-  primaryPhone: Int
-  responseTime: Int
-  isSuperHost: Boolean
-  location: LocationUpdateOneInput
-  bookings: BookingUpdateManyWithoutBookeeInput
-  paidContacts: PaymentLanlordInfoUpdateManyWithoutClientInput
-  notifications: NotificationUpdateManyWithoutUserInput
-  profilePicture: PictureUpdateOneInput
-}
-
-input UserUpdateWithoutPaidContactsDataInput {
-  status: Boolean
-  facebookUserId: String
-  firstName: String
-  lastName: String
-  email: String
-  password: String
-  phone1: String
-  phone2: String
-  primaryPhone: Int
-  responseTime: Int
-  isSuperHost: Boolean
-  ownedHouses: HouseUpdateManyWithoutHostInput
-  location: LocationUpdateOneInput
-  bookings: BookingUpdateManyWithoutBookeeInput
-  notifications: NotificationUpdateManyWithoutUserInput
-  profilePicture: PictureUpdateOneInput
-}
-
-input UserUpsertNestedInput {
-  update: UserUpdateDataInput!
-  create: UserCreateInput!
-}
-
-input UserUpsertWithoutBookingsInput {
-  update: UserUpdateWithoutBookingsDataInput!
-  create: UserCreateWithoutBookingsInput!
-}
-
-input UserUpsertWithoutNotificationsInput {
-  update: UserUpdateWithoutNotificationsDataInput!
-  create: UserCreateWithoutNotificationsInput!
-}
-
-input UserUpsertWithoutOwnedHousesInput {
-  update: UserUpdateWithoutOwnedHousesDataInput!
-  create: UserCreateWithoutOwnedHousesInput!
-}
-
-input UserUpsertWithoutPaidContactsInput {
-  update: UserUpdateWithoutPaidContactsDataInput!
-  create: UserCreateWithoutPaidContactsInput!
-}
-
-input UserWhereInput {
-  """Logical AND on all given filters."""
-  AND: [UserWhereInput!]
-
-  """Logical OR on all given filters."""
-  OR: [UserWhereInput!]
-
-  """Logical NOT on all given filters combined by AND."""
-  NOT: [UserWhereInput!]
+  NOT: [UserScalarWhereInput!]
   id: ID
 
   """All values that are not equal to given value."""
@@ -7566,6 +9102,46 @@ input UserWhereInput {
 
   """All values greater than or equal the given value."""
   updatedAt_gte: DateTime
+  role: String
+
+  """All values that are not equal to given value."""
+  role_not: String
+
+  """All values that are contained in given list."""
+  role_in: [String!]
+
+  """All values that are not contained in given list."""
+  role_not_in: [String!]
+
+  """All values less than the given value."""
+  role_lt: String
+
+  """All values less than or equal the given value."""
+  role_lte: String
+
+  """All values greater than the given value."""
+  role_gt: String
+
+  """All values greater than or equal the given value."""
+  role_gte: String
+
+  """All values containing the given string."""
+  role_contains: String
+
+  """All values not containing the given string."""
+  role_not_contains: String
+
+  """All values starting with the given string."""
+  role_starts_with: String
+
+  """All values not starting with the given string."""
+  role_not_starts_with: String
+
+  """All values ending with the given string."""
+  role_ends_with: String
+
+  """All values not ending with the given string."""
+  role_not_ends_with: String
   status: Boolean
 
   """All values that are not equal to given value."""
@@ -7770,6 +9346,928 @@ input UserWhereInput {
 
   """All values not ending with the given string."""
   password_not_ends_with: String
+  resetToken: String
+
+  """All values that are not equal to given value."""
+  resetToken_not: String
+
+  """All values that are contained in given list."""
+  resetToken_in: [String!]
+
+  """All values that are not contained in given list."""
+  resetToken_not_in: [String!]
+
+  """All values less than the given value."""
+  resetToken_lt: String
+
+  """All values less than or equal the given value."""
+  resetToken_lte: String
+
+  """All values greater than the given value."""
+  resetToken_gt: String
+
+  """All values greater than or equal the given value."""
+  resetToken_gte: String
+
+  """All values containing the given string."""
+  resetToken_contains: String
+
+  """All values not containing the given string."""
+  resetToken_not_contains: String
+
+  """All values starting with the given string."""
+  resetToken_starts_with: String
+
+  """All values not starting with the given string."""
+  resetToken_not_starts_with: String
+
+  """All values ending with the given string."""
+  resetToken_ends_with: String
+
+  """All values not ending with the given string."""
+  resetToken_not_ends_with: String
+  resetTokenExpiry: String
+
+  """All values that are not equal to given value."""
+  resetTokenExpiry_not: String
+
+  """All values that are contained in given list."""
+  resetTokenExpiry_in: [String!]
+
+  """All values that are not contained in given list."""
+  resetTokenExpiry_not_in: [String!]
+
+  """All values less than the given value."""
+  resetTokenExpiry_lt: String
+
+  """All values less than or equal the given value."""
+  resetTokenExpiry_lte: String
+
+  """All values greater than the given value."""
+  resetTokenExpiry_gt: String
+
+  """All values greater than or equal the given value."""
+  resetTokenExpiry_gte: String
+
+  """All values containing the given string."""
+  resetTokenExpiry_contains: String
+
+  """All values not containing the given string."""
+  resetTokenExpiry_not_contains: String
+
+  """All values starting with the given string."""
+  resetTokenExpiry_starts_with: String
+
+  """All values not starting with the given string."""
+  resetTokenExpiry_not_starts_with: String
+
+  """All values ending with the given string."""
+  resetTokenExpiry_ends_with: String
+
+  """All values not ending with the given string."""
+  resetTokenExpiry_not_ends_with: String
+  phone1: String
+
+  """All values that are not equal to given value."""
+  phone1_not: String
+
+  """All values that are contained in given list."""
+  phone1_in: [String!]
+
+  """All values that are not contained in given list."""
+  phone1_not_in: [String!]
+
+  """All values less than the given value."""
+  phone1_lt: String
+
+  """All values less than or equal the given value."""
+  phone1_lte: String
+
+  """All values greater than the given value."""
+  phone1_gt: String
+
+  """All values greater than or equal the given value."""
+  phone1_gte: String
+
+  """All values containing the given string."""
+  phone1_contains: String
+
+  """All values not containing the given string."""
+  phone1_not_contains: String
+
+  """All values starting with the given string."""
+  phone1_starts_with: String
+
+  """All values not starting with the given string."""
+  phone1_not_starts_with: String
+
+  """All values ending with the given string."""
+  phone1_ends_with: String
+
+  """All values not ending with the given string."""
+  phone1_not_ends_with: String
+  phone2: String
+
+  """All values that are not equal to given value."""
+  phone2_not: String
+
+  """All values that are contained in given list."""
+  phone2_in: [String!]
+
+  """All values that are not contained in given list."""
+  phone2_not_in: [String!]
+
+  """All values less than the given value."""
+  phone2_lt: String
+
+  """All values less than or equal the given value."""
+  phone2_lte: String
+
+  """All values greater than the given value."""
+  phone2_gt: String
+
+  """All values greater than or equal the given value."""
+  phone2_gte: String
+
+  """All values containing the given string."""
+  phone2_contains: String
+
+  """All values not containing the given string."""
+  phone2_not_contains: String
+
+  """All values starting with the given string."""
+  phone2_starts_with: String
+
+  """All values not starting with the given string."""
+  phone2_not_starts_with: String
+
+  """All values ending with the given string."""
+  phone2_ends_with: String
+
+  """All values not ending with the given string."""
+  phone2_not_ends_with: String
+  primaryPhone: Int
+
+  """All values that are not equal to given value."""
+  primaryPhone_not: Int
+
+  """All values that are contained in given list."""
+  primaryPhone_in: [Int!]
+
+  """All values that are not contained in given list."""
+  primaryPhone_not_in: [Int!]
+
+  """All values less than the given value."""
+  primaryPhone_lt: Int
+
+  """All values less than or equal the given value."""
+  primaryPhone_lte: Int
+
+  """All values greater than the given value."""
+  primaryPhone_gt: Int
+
+  """All values greater than or equal the given value."""
+  primaryPhone_gte: Int
+  responseTime: Int
+
+  """All values that are not equal to given value."""
+  responseTime_not: Int
+
+  """All values that are contained in given list."""
+  responseTime_in: [Int!]
+
+  """All values that are not contained in given list."""
+  responseTime_not_in: [Int!]
+
+  """All values less than the given value."""
+  responseTime_lt: Int
+
+  """All values less than or equal the given value."""
+  responseTime_lte: Int
+
+  """All values greater than the given value."""
+  responseTime_gt: Int
+
+  """All values greater than or equal the given value."""
+  responseTime_gte: Int
+  isSuperHost: Boolean
+
+  """All values that are not equal to given value."""
+  isSuperHost_not: Boolean
+}
+
+type UserSubscriptionPayload {
+  mutation: MutationType!
+  node: User
+  updatedFields: [String!]
+  previousValues: UserPreviousValues
+}
+
+input UserSubscriptionWhereInput {
+  """Logical AND on all given filters."""
+  AND: [UserSubscriptionWhereInput!]
+
+  """Logical OR on all given filters."""
+  OR: [UserSubscriptionWhereInput!]
+
+  """Logical NOT on all given filters combined by AND."""
+  NOT: [UserSubscriptionWhereInput!]
+
+  """
+  The subscription event gets dispatched when it's listed in mutation_in
+  """
+  mutation_in: [MutationType!]
+
+  """
+  The subscription event gets only dispatched when one of the updated fields names is included in this list
+  """
+  updatedFields_contains: String
+
+  """
+  The subscription event gets only dispatched when all of the field names included in this list have been updated
+  """
+  updatedFields_contains_every: [String!]
+
+  """
+  The subscription event gets only dispatched when some of the field names included in this list have been updated
+  """
+  updatedFields_contains_some: [String!]
+  node: UserWhereInput
+}
+
+input UserUpdateDataInput {
+  role: String
+  status: Boolean
+  facebookUserId: String
+  firstName: String
+  lastName: String
+  email: String
+  password: String
+  resetToken: String
+  resetTokenExpiry: String
+  phone1: String
+  phone2: String
+  primaryPhone: Int
+  responseTime: Int
+  isSuperHost: Boolean
+  ownedHouses: HouseUpdateManyWithoutHostInput
+  location: LocationUpdateOneInput
+  bookings: BookingUpdateManyWithoutBookeeInput
+  paidContacts: PaymentLanlordInfoUpdateManyWithoutClientInput
+  notifications: NotificationUpdateManyWithoutUserInput
+  profilePicture: PictureUpdateOneInput
+}
+
+input UserUpdateInput {
+  role: String
+  status: Boolean
+  facebookUserId: String
+  firstName: String
+  lastName: String
+  email: String
+  password: String
+  resetToken: String
+  resetTokenExpiry: String
+  phone1: String
+  phone2: String
+  primaryPhone: Int
+  responseTime: Int
+  isSuperHost: Boolean
+  ownedHouses: HouseUpdateManyWithoutHostInput
+  location: LocationUpdateOneInput
+  bookings: BookingUpdateManyWithoutBookeeInput
+  paidContacts: PaymentLanlordInfoUpdateManyWithoutClientInput
+  notifications: NotificationUpdateManyWithoutUserInput
+  profilePicture: PictureUpdateOneInput
+}
+
+input UserUpdateManyDataInput {
+  role: String
+  status: Boolean
+  facebookUserId: String
+  firstName: String
+  lastName: String
+  email: String
+  password: String
+  resetToken: String
+  resetTokenExpiry: String
+  phone1: String
+  phone2: String
+  primaryPhone: Int
+  responseTime: Int
+  isSuperHost: Boolean
+}
+
+input UserUpdateManyInput {
+  create: [UserCreateInput!]
+  connect: [UserWhereUniqueInput!]
+  set: [UserWhereUniqueInput!]
+  disconnect: [UserWhereUniqueInput!]
+  delete: [UserWhereUniqueInput!]
+  update: [UserUpdateWithWhereUniqueNestedInput!]
+  updateMany: [UserUpdateManyWithWhereNestedInput!]
+  deleteMany: [UserScalarWhereInput!]
+  upsert: [UserUpsertWithWhereUniqueNestedInput!]
+}
+
+input UserUpdateManyMutationInput {
+  role: String
+  status: Boolean
+  facebookUserId: String
+  firstName: String
+  lastName: String
+  email: String
+  password: String
+  resetToken: String
+  resetTokenExpiry: String
+  phone1: String
+  phone2: String
+  primaryPhone: Int
+  responseTime: Int
+  isSuperHost: Boolean
+}
+
+input UserUpdateManyWithWhereNestedInput {
+  where: UserScalarWhereInput!
+  data: UserUpdateManyDataInput!
+}
+
+input UserUpdateOneRequiredInput {
+  create: UserCreateInput
+  connect: UserWhereUniqueInput
+  update: UserUpdateDataInput
+  upsert: UserUpsertNestedInput
+}
+
+input UserUpdateOneRequiredWithoutBookingsInput {
+  create: UserCreateWithoutBookingsInput
+  connect: UserWhereUniqueInput
+  update: UserUpdateWithoutBookingsDataInput
+  upsert: UserUpsertWithoutBookingsInput
+}
+
+input UserUpdateOneRequiredWithoutNotificationsInput {
+  create: UserCreateWithoutNotificationsInput
+  connect: UserWhereUniqueInput
+  update: UserUpdateWithoutNotificationsDataInput
+  upsert: UserUpsertWithoutNotificationsInput
+}
+
+input UserUpdateOneRequiredWithoutOwnedHousesInput {
+  create: UserCreateWithoutOwnedHousesInput
+  connect: UserWhereUniqueInput
+  update: UserUpdateWithoutOwnedHousesDataInput
+  upsert: UserUpsertWithoutOwnedHousesInput
+}
+
+input UserUpdateOneRequiredWithoutPaidContactsInput {
+  create: UserCreateWithoutPaidContactsInput
+  connect: UserWhereUniqueInput
+  update: UserUpdateWithoutPaidContactsDataInput
+  upsert: UserUpsertWithoutPaidContactsInput
+}
+
+input UserUpdateWithoutBookingsDataInput {
+  role: String
+  status: Boolean
+  facebookUserId: String
+  firstName: String
+  lastName: String
+  email: String
+  password: String
+  resetToken: String
+  resetTokenExpiry: String
+  phone1: String
+  phone2: String
+  primaryPhone: Int
+  responseTime: Int
+  isSuperHost: Boolean
+  ownedHouses: HouseUpdateManyWithoutHostInput
+  location: LocationUpdateOneInput
+  paidContacts: PaymentLanlordInfoUpdateManyWithoutClientInput
+  notifications: NotificationUpdateManyWithoutUserInput
+  profilePicture: PictureUpdateOneInput
+}
+
+input UserUpdateWithoutNotificationsDataInput {
+  role: String
+  status: Boolean
+  facebookUserId: String
+  firstName: String
+  lastName: String
+  email: String
+  password: String
+  resetToken: String
+  resetTokenExpiry: String
+  phone1: String
+  phone2: String
+  primaryPhone: Int
+  responseTime: Int
+  isSuperHost: Boolean
+  ownedHouses: HouseUpdateManyWithoutHostInput
+  location: LocationUpdateOneInput
+  bookings: BookingUpdateManyWithoutBookeeInput
+  paidContacts: PaymentLanlordInfoUpdateManyWithoutClientInput
+  profilePicture: PictureUpdateOneInput
+}
+
+input UserUpdateWithoutOwnedHousesDataInput {
+  role: String
+  status: Boolean
+  facebookUserId: String
+  firstName: String
+  lastName: String
+  email: String
+  password: String
+  resetToken: String
+  resetTokenExpiry: String
+  phone1: String
+  phone2: String
+  primaryPhone: Int
+  responseTime: Int
+  isSuperHost: Boolean
+  location: LocationUpdateOneInput
+  bookings: BookingUpdateManyWithoutBookeeInput
+  paidContacts: PaymentLanlordInfoUpdateManyWithoutClientInput
+  notifications: NotificationUpdateManyWithoutUserInput
+  profilePicture: PictureUpdateOneInput
+}
+
+input UserUpdateWithoutPaidContactsDataInput {
+  role: String
+  status: Boolean
+  facebookUserId: String
+  firstName: String
+  lastName: String
+  email: String
+  password: String
+  resetToken: String
+  resetTokenExpiry: String
+  phone1: String
+  phone2: String
+  primaryPhone: Int
+  responseTime: Int
+  isSuperHost: Boolean
+  ownedHouses: HouseUpdateManyWithoutHostInput
+  location: LocationUpdateOneInput
+  bookings: BookingUpdateManyWithoutBookeeInput
+  notifications: NotificationUpdateManyWithoutUserInput
+  profilePicture: PictureUpdateOneInput
+}
+
+input UserUpdateWithWhereUniqueNestedInput {
+  where: UserWhereUniqueInput!
+  data: UserUpdateDataInput!
+}
+
+input UserUpsertNestedInput {
+  update: UserUpdateDataInput!
+  create: UserCreateInput!
+}
+
+input UserUpsertWithoutBookingsInput {
+  update: UserUpdateWithoutBookingsDataInput!
+  create: UserCreateWithoutBookingsInput!
+}
+
+input UserUpsertWithoutNotificationsInput {
+  update: UserUpdateWithoutNotificationsDataInput!
+  create: UserCreateWithoutNotificationsInput!
+}
+
+input UserUpsertWithoutOwnedHousesInput {
+  update: UserUpdateWithoutOwnedHousesDataInput!
+  create: UserCreateWithoutOwnedHousesInput!
+}
+
+input UserUpsertWithoutPaidContactsInput {
+  update: UserUpdateWithoutPaidContactsDataInput!
+  create: UserCreateWithoutPaidContactsInput!
+}
+
+input UserUpsertWithWhereUniqueNestedInput {
+  where: UserWhereUniqueInput!
+  update: UserUpdateDataInput!
+  create: UserCreateInput!
+}
+
+input UserWhereInput {
+  """Logical AND on all given filters."""
+  AND: [UserWhereInput!]
+
+  """Logical OR on all given filters."""
+  OR: [UserWhereInput!]
+
+  """Logical NOT on all given filters combined by AND."""
+  NOT: [UserWhereInput!]
+  id: ID
+
+  """All values that are not equal to given value."""
+  id_not: ID
+
+  """All values that are contained in given list."""
+  id_in: [ID!]
+
+  """All values that are not contained in given list."""
+  id_not_in: [ID!]
+
+  """All values less than the given value."""
+  id_lt: ID
+
+  """All values less than or equal the given value."""
+  id_lte: ID
+
+  """All values greater than the given value."""
+  id_gt: ID
+
+  """All values greater than or equal the given value."""
+  id_gte: ID
+
+  """All values containing the given string."""
+  id_contains: ID
+
+  """All values not containing the given string."""
+  id_not_contains: ID
+
+  """All values starting with the given string."""
+  id_starts_with: ID
+
+  """All values not starting with the given string."""
+  id_not_starts_with: ID
+
+  """All values ending with the given string."""
+  id_ends_with: ID
+
+  """All values not ending with the given string."""
+  id_not_ends_with: ID
+  createdAt: DateTime
+
+  """All values that are not equal to given value."""
+  createdAt_not: DateTime
+
+  """All values that are contained in given list."""
+  createdAt_in: [DateTime!]
+
+  """All values that are not contained in given list."""
+  createdAt_not_in: [DateTime!]
+
+  """All values less than the given value."""
+  createdAt_lt: DateTime
+
+  """All values less than or equal the given value."""
+  createdAt_lte: DateTime
+
+  """All values greater than the given value."""
+  createdAt_gt: DateTime
+
+  """All values greater than or equal the given value."""
+  createdAt_gte: DateTime
+  updatedAt: DateTime
+
+  """All values that are not equal to given value."""
+  updatedAt_not: DateTime
+
+  """All values that are contained in given list."""
+  updatedAt_in: [DateTime!]
+
+  """All values that are not contained in given list."""
+  updatedAt_not_in: [DateTime!]
+
+  """All values less than the given value."""
+  updatedAt_lt: DateTime
+
+  """All values less than or equal the given value."""
+  updatedAt_lte: DateTime
+
+  """All values greater than the given value."""
+  updatedAt_gt: DateTime
+
+  """All values greater than or equal the given value."""
+  updatedAt_gte: DateTime
+  role: String
+
+  """All values that are not equal to given value."""
+  role_not: String
+
+  """All values that are contained in given list."""
+  role_in: [String!]
+
+  """All values that are not contained in given list."""
+  role_not_in: [String!]
+
+  """All values less than the given value."""
+  role_lt: String
+
+  """All values less than or equal the given value."""
+  role_lte: String
+
+  """All values greater than the given value."""
+  role_gt: String
+
+  """All values greater than or equal the given value."""
+  role_gte: String
+
+  """All values containing the given string."""
+  role_contains: String
+
+  """All values not containing the given string."""
+  role_not_contains: String
+
+  """All values starting with the given string."""
+  role_starts_with: String
+
+  """All values not starting with the given string."""
+  role_not_starts_with: String
+
+  """All values ending with the given string."""
+  role_ends_with: String
+
+  """All values not ending with the given string."""
+  role_not_ends_with: String
+  status: Boolean
+
+  """All values that are not equal to given value."""
+  status_not: Boolean
+  facebookUserId: String
+
+  """All values that are not equal to given value."""
+  facebookUserId_not: String
+
+  """All values that are contained in given list."""
+  facebookUserId_in: [String!]
+
+  """All values that are not contained in given list."""
+  facebookUserId_not_in: [String!]
+
+  """All values less than the given value."""
+  facebookUserId_lt: String
+
+  """All values less than or equal the given value."""
+  facebookUserId_lte: String
+
+  """All values greater than the given value."""
+  facebookUserId_gt: String
+
+  """All values greater than or equal the given value."""
+  facebookUserId_gte: String
+
+  """All values containing the given string."""
+  facebookUserId_contains: String
+
+  """All values not containing the given string."""
+  facebookUserId_not_contains: String
+
+  """All values starting with the given string."""
+  facebookUserId_starts_with: String
+
+  """All values not starting with the given string."""
+  facebookUserId_not_starts_with: String
+
+  """All values ending with the given string."""
+  facebookUserId_ends_with: String
+
+  """All values not ending with the given string."""
+  facebookUserId_not_ends_with: String
+  firstName: String
+
+  """All values that are not equal to given value."""
+  firstName_not: String
+
+  """All values that are contained in given list."""
+  firstName_in: [String!]
+
+  """All values that are not contained in given list."""
+  firstName_not_in: [String!]
+
+  """All values less than the given value."""
+  firstName_lt: String
+
+  """All values less than or equal the given value."""
+  firstName_lte: String
+
+  """All values greater than the given value."""
+  firstName_gt: String
+
+  """All values greater than or equal the given value."""
+  firstName_gte: String
+
+  """All values containing the given string."""
+  firstName_contains: String
+
+  """All values not containing the given string."""
+  firstName_not_contains: String
+
+  """All values starting with the given string."""
+  firstName_starts_with: String
+
+  """All values not starting with the given string."""
+  firstName_not_starts_with: String
+
+  """All values ending with the given string."""
+  firstName_ends_with: String
+
+  """All values not ending with the given string."""
+  firstName_not_ends_with: String
+  lastName: String
+
+  """All values that are not equal to given value."""
+  lastName_not: String
+
+  """All values that are contained in given list."""
+  lastName_in: [String!]
+
+  """All values that are not contained in given list."""
+  lastName_not_in: [String!]
+
+  """All values less than the given value."""
+  lastName_lt: String
+
+  """All values less than or equal the given value."""
+  lastName_lte: String
+
+  """All values greater than the given value."""
+  lastName_gt: String
+
+  """All values greater than or equal the given value."""
+  lastName_gte: String
+
+  """All values containing the given string."""
+  lastName_contains: String
+
+  """All values not containing the given string."""
+  lastName_not_contains: String
+
+  """All values starting with the given string."""
+  lastName_starts_with: String
+
+  """All values not starting with the given string."""
+  lastName_not_starts_with: String
+
+  """All values ending with the given string."""
+  lastName_ends_with: String
+
+  """All values not ending with the given string."""
+  lastName_not_ends_with: String
+  email: String
+
+  """All values that are not equal to given value."""
+  email_not: String
+
+  """All values that are contained in given list."""
+  email_in: [String!]
+
+  """All values that are not contained in given list."""
+  email_not_in: [String!]
+
+  """All values less than the given value."""
+  email_lt: String
+
+  """All values less than or equal the given value."""
+  email_lte: String
+
+  """All values greater than the given value."""
+  email_gt: String
+
+  """All values greater than or equal the given value."""
+  email_gte: String
+
+  """All values containing the given string."""
+  email_contains: String
+
+  """All values not containing the given string."""
+  email_not_contains: String
+
+  """All values starting with the given string."""
+  email_starts_with: String
+
+  """All values not starting with the given string."""
+  email_not_starts_with: String
+
+  """All values ending with the given string."""
+  email_ends_with: String
+
+  """All values not ending with the given string."""
+  email_not_ends_with: String
+  password: String
+
+  """All values that are not equal to given value."""
+  password_not: String
+
+  """All values that are contained in given list."""
+  password_in: [String!]
+
+  """All values that are not contained in given list."""
+  password_not_in: [String!]
+
+  """All values less than the given value."""
+  password_lt: String
+
+  """All values less than or equal the given value."""
+  password_lte: String
+
+  """All values greater than the given value."""
+  password_gt: String
+
+  """All values greater than or equal the given value."""
+  password_gte: String
+
+  """All values containing the given string."""
+  password_contains: String
+
+  """All values not containing the given string."""
+  password_not_contains: String
+
+  """All values starting with the given string."""
+  password_starts_with: String
+
+  """All values not starting with the given string."""
+  password_not_starts_with: String
+
+  """All values ending with the given string."""
+  password_ends_with: String
+
+  """All values not ending with the given string."""
+  password_not_ends_with: String
+  resetToken: String
+
+  """All values that are not equal to given value."""
+  resetToken_not: String
+
+  """All values that are contained in given list."""
+  resetToken_in: [String!]
+
+  """All values that are not contained in given list."""
+  resetToken_not_in: [String!]
+
+  """All values less than the given value."""
+  resetToken_lt: String
+
+  """All values less than or equal the given value."""
+  resetToken_lte: String
+
+  """All values greater than the given value."""
+  resetToken_gt: String
+
+  """All values greater than or equal the given value."""
+  resetToken_gte: String
+
+  """All values containing the given string."""
+  resetToken_contains: String
+
+  """All values not containing the given string."""
+  resetToken_not_contains: String
+
+  """All values starting with the given string."""
+  resetToken_starts_with: String
+
+  """All values not starting with the given string."""
+  resetToken_not_starts_with: String
+
+  """All values ending with the given string."""
+  resetToken_ends_with: String
+
+  """All values not ending with the given string."""
+  resetToken_not_ends_with: String
+  resetTokenExpiry: String
+
+  """All values that are not equal to given value."""
+  resetTokenExpiry_not: String
+
+  """All values that are contained in given list."""
+  resetTokenExpiry_in: [String!]
+
+  """All values that are not contained in given list."""
+  resetTokenExpiry_not_in: [String!]
+
+  """All values less than the given value."""
+  resetTokenExpiry_lt: String
+
+  """All values less than or equal the given value."""
+  resetTokenExpiry_lte: String
+
+  """All values greater than the given value."""
+  resetTokenExpiry_gt: String
+
+  """All values greater than or equal the given value."""
+  resetTokenExpiry_gte: String
+
+  """All values containing the given string."""
+  resetTokenExpiry_contains: String
+
+  """All values not containing the given string."""
+  resetTokenExpiry_not_contains: String
+
+  """All values starting with the given string."""
+  resetTokenExpiry_starts_with: String
+
+  """All values not starting with the given string."""
+  resetTokenExpiry_not_starts_with: String
+
+  """All values ending with the given string."""
+  resetTokenExpiry_ends_with: String
+
+  """All values not ending with the given string."""
+  resetTokenExpiry_not_ends_with: String
   phone1: String
 
   """All values that are not equal to given value."""
@@ -7920,7 +10418,8 @@ input UserWhereUniqueInput {
   email: String
 }
 
-type Video {
+type Video implements Node {
+  id: ID!
   url: String!
 }
 
@@ -7940,6 +10439,7 @@ input VideoCreateInput {
 
 input VideoCreateManyInput {
   create: [VideoCreateInput!]
+  connect: [VideoWhereUniqueInput!]
 }
 
 """An edge in a connection."""
@@ -7952,10 +10452,10 @@ type VideoEdge {
 }
 
 enum VideoOrderByInput {
-  url_ASC
-  url_DESC
   id_ASC
   id_DESC
+  url_ASC
+  url_DESC
   updatedAt_ASC
   updatedAt_DESC
   createdAt_ASC
@@ -7963,65 +10463,59 @@ enum VideoOrderByInput {
 }
 
 type VideoPreviousValues {
+  id: ID!
   url: String!
 }
 
-type VideoSubscriptionPayload {
-  mutation: MutationType!
-  node: Video
-  updatedFields: [String!]
-  previousValues: VideoPreviousValues
-}
-
-input VideoSubscriptionWhereInput {
+input VideoScalarWhereInput {
   """Logical AND on all given filters."""
-  AND: [VideoSubscriptionWhereInput!]
+  AND: [VideoScalarWhereInput!]
 
   """Logical OR on all given filters."""
-  OR: [VideoSubscriptionWhereInput!]
+  OR: [VideoScalarWhereInput!]
 
   """Logical NOT on all given filters combined by AND."""
-  NOT: [VideoSubscriptionWhereInput!]
+  NOT: [VideoScalarWhereInput!]
+  id: ID
 
-  """
-  The subscription event gets dispatched when it's listed in mutation_in
-  """
-  mutation_in: [MutationType!]
+  """All values that are not equal to given value."""
+  id_not: ID
 
-  """
-  The subscription event gets only dispatched when one of the updated fields names is included in this list
-  """
-  updatedFields_contains: String
+  """All values that are contained in given list."""
+  id_in: [ID!]
 
-  """
-  The subscription event gets only dispatched when all of the field names included in this list have been updated
-  """
-  updatedFields_contains_every: [String!]
+  """All values that are not contained in given list."""
+  id_not_in: [ID!]
 
-  """
-  The subscription event gets only dispatched when some of the field names included in this list have been updated
-  """
-  updatedFields_contains_some: [String!]
-  node: VideoWhereInput
-}
+  """All values less than the given value."""
+  id_lt: ID
 
-input VideoUpdateInput {
-  url: String
-}
+  """All values less than or equal the given value."""
+  id_lte: ID
 
-input VideoUpdateManyInput {
-  create: [VideoCreateInput!]
-}
+  """All values greater than the given value."""
+  id_gt: ID
 
-input VideoWhereInput {
-  """Logical AND on all given filters."""
-  AND: [VideoWhereInput!]
+  """All values greater than or equal the given value."""
+  id_gte: ID
 
-  """Logical OR on all given filters."""
-  OR: [VideoWhereInput!]
+  """All values containing the given string."""
+  id_contains: ID
 
-  """Logical NOT on all given filters combined by AND."""
-  NOT: [VideoWhereInput!]
+  """All values not containing the given string."""
+  id_not_contains: ID
+
+  """All values starting with the given string."""
+  id_starts_with: ID
+
+  """All values not starting with the given string."""
+  id_not_starts_with: ID
+
+  """All values ending with the given string."""
+  id_ends_with: ID
+
+  """All values not ending with the given string."""
+  id_not_ends_with: ID
   url: String
 
   """All values that are not equal to given value."""
@@ -8064,10 +10558,189 @@ input VideoWhereInput {
   url_not_ends_with: String
 }
 
+type VideoSubscriptionPayload {
+  mutation: MutationType!
+  node: Video
+  updatedFields: [String!]
+  previousValues: VideoPreviousValues
+}
+
+input VideoSubscriptionWhereInput {
+  """Logical AND on all given filters."""
+  AND: [VideoSubscriptionWhereInput!]
+
+  """Logical OR on all given filters."""
+  OR: [VideoSubscriptionWhereInput!]
+
+  """Logical NOT on all given filters combined by AND."""
+  NOT: [VideoSubscriptionWhereInput!]
+
+  """
+  The subscription event gets dispatched when it's listed in mutation_in
+  """
+  mutation_in: [MutationType!]
+
+  """
+  The subscription event gets only dispatched when one of the updated fields names is included in this list
+  """
+  updatedFields_contains: String
+
+  """
+  The subscription event gets only dispatched when all of the field names included in this list have been updated
+  """
+  updatedFields_contains_every: [String!]
+
+  """
+  The subscription event gets only dispatched when some of the field names included in this list have been updated
+  """
+  updatedFields_contains_some: [String!]
+  node: VideoWhereInput
+}
+
+input VideoUpdateDataInput {
+  url: String
+}
+
+input VideoUpdateInput {
+  url: String
+}
+
+input VideoUpdateManyDataInput {
+  url: String
+}
+
+input VideoUpdateManyInput {
+  create: [VideoCreateInput!]
+  connect: [VideoWhereUniqueInput!]
+  set: [VideoWhereUniqueInput!]
+  disconnect: [VideoWhereUniqueInput!]
+  delete: [VideoWhereUniqueInput!]
+  update: [VideoUpdateWithWhereUniqueNestedInput!]
+  updateMany: [VideoUpdateManyWithWhereNestedInput!]
+  deleteMany: [VideoScalarWhereInput!]
+  upsert: [VideoUpsertWithWhereUniqueNestedInput!]
+}
+
+input VideoUpdateManyMutationInput {
+  url: String
+}
+
+input VideoUpdateManyWithWhereNestedInput {
+  where: VideoScalarWhereInput!
+  data: VideoUpdateManyDataInput!
+}
+
+input VideoUpdateWithWhereUniqueNestedInput {
+  where: VideoWhereUniqueInput!
+  data: VideoUpdateDataInput!
+}
+
+input VideoUpsertWithWhereUniqueNestedInput {
+  where: VideoWhereUniqueInput!
+  update: VideoUpdateDataInput!
+  create: VideoCreateInput!
+}
+
+input VideoWhereInput {
+  """Logical AND on all given filters."""
+  AND: [VideoWhereInput!]
+
+  """Logical OR on all given filters."""
+  OR: [VideoWhereInput!]
+
+  """Logical NOT on all given filters combined by AND."""
+  NOT: [VideoWhereInput!]
+  id: ID
+
+  """All values that are not equal to given value."""
+  id_not: ID
+
+  """All values that are contained in given list."""
+  id_in: [ID!]
+
+  """All values that are not contained in given list."""
+  id_not_in: [ID!]
+
+  """All values less than the given value."""
+  id_lt: ID
+
+  """All values less than or equal the given value."""
+  id_lte: ID
+
+  """All values greater than the given value."""
+  id_gt: ID
+
+  """All values greater than or equal the given value."""
+  id_gte: ID
+
+  """All values containing the given string."""
+  id_contains: ID
+
+  """All values not containing the given string."""
+  id_not_contains: ID
+
+  """All values starting with the given string."""
+  id_starts_with: ID
+
+  """All values not starting with the given string."""
+  id_not_starts_with: ID
+
+  """All values ending with the given string."""
+  id_ends_with: ID
+
+  """All values not ending with the given string."""
+  id_not_ends_with: ID
+  url: String
+
+  """All values that are not equal to given value."""
+  url_not: String
+
+  """All values that are contained in given list."""
+  url_in: [String!]
+
+  """All values that are not contained in given list."""
+  url_not_in: [String!]
+
+  """All values less than the given value."""
+  url_lt: String
+
+  """All values less than or equal the given value."""
+  url_lte: String
+
+  """All values greater than the given value."""
+  url_gt: String
+
+  """All values greater than or equal the given value."""
+  url_gte: String
+
+  """All values containing the given string."""
+  url_contains: String
+
+  """All values not containing the given string."""
+  url_not_contains: String
+
+  """All values starting with the given string."""
+  url_starts_with: String
+
+  """All values not starting with the given string."""
+  url_not_starts_with: String
+
+  """All values ending with the given string."""
+  url_ends_with: String
+
+  """All values not ending with the given string."""
+  url_not_ends_with: String
+}
+
+input VideoWhereUniqueInput {
+  id: ID
+}
+
 type Views implements Node {
   id: ID!
   lastWeek: Int!
-  House(where: HouseWhereInput): House!
+  House: House!
+  User(where: UserWhereInput, orderBy: UserOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [User!]
 }
 
 """A connection to a list of items."""
@@ -8083,6 +10756,7 @@ type ViewsConnection {
 input ViewsCreateInput {
   lastWeek: Int!
   House: HouseCreateOneWithoutViewsInput!
+  User: UserCreateManyInput
 }
 
 input ViewsCreateOneWithoutHouseInput {
@@ -8092,6 +10766,7 @@ input ViewsCreateOneWithoutHouseInput {
 
 input ViewsCreateWithoutHouseInput {
   lastWeek: Int!
+  User: UserCreateManyInput
 }
 
 """An edge in a connection."""
@@ -8160,7 +10835,12 @@ input ViewsSubscriptionWhereInput {
 
 input ViewsUpdateInput {
   lastWeek: Int
-  House: HouseUpdateOneWithoutViewsInput
+  House: HouseUpdateOneRequiredWithoutViewsInput
+  User: UserUpdateManyInput
+}
+
+input ViewsUpdateManyMutationInput {
+  lastWeek: Int
 }
 
 input ViewsUpdateOneWithoutHouseInput {
@@ -8174,6 +10854,7 @@ input ViewsUpdateOneWithoutHouseInput {
 
 input ViewsUpdateWithoutHouseDataInput {
   lastWeek: Int
+  User: UserUpdateManyInput
 }
 
 input ViewsUpsertWithoutHouseInput {
@@ -8253,6 +10934,9 @@ input ViewsWhereInput {
   """All values greater than or equal the given value."""
   lastWeek_gte: Int
   House: HouseWhereInput
+  User_every: UserWhereInput
+  User_some: UserWhereInput
+  User_none: UserWhereInput
 }
 
 input ViewsWhereUniqueInput {

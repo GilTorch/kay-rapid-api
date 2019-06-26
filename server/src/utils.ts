@@ -23,6 +23,6 @@ export function getUserId(context) {
 
 export class AuthError extends Error {
   constructor() {
-    super("Not authorized");
+    super("Not authorized, authentication error");
   }
 }

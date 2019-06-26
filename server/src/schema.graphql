@@ -1,14 +1,24 @@
-# import State, Country ,House from "./generated/prisma.graphql"
+# import  RoomCreateWithoutHouseInput,Room,PictureCreateInput, State, Country , House , Commune, City from "./generated/prisma.graphql"
 
 type Query {
   countries: [Country!]!
   states: [State!]!
   cities: [City!]!
   communes: [Commune!]!
+  getToken(id: String!): String!
+  Houses: [House!]!
+  topCommunes(c: Int!): [Commune!]!
+  topCity(c: Int!): [Commune!]!
+  topStates(c: Int!): [State!]!
 }
+
 type AuthPayLoad {
   token: String!
   user: User!
+}
+
+type Message {
+  message: String!
 }
 
 type Mutation {
@@ -18,24 +28,32 @@ type Mutation {
     firstName: String!
     lastName: String!
     phone1: String!
+    profilePicture: String
   ): AuthPayLoad
   login(email: String!, password: String!): AuthPayLoad!
   authenticateFBUser(facebookToken: String!): AuthPayLoad!
   disableUser(id: String!): Boolean!
+  requestPWResetToken(email: String!): Message!
+  resetPassword(
+    resetToken: String!
+    password: String!
+    passwordConfirm: String!
+  ): AuthPayLoad
   createCountry(name: String!): Country
   createState(name: String!, idCountry: ID!): State
   createCity(name: String!, idState: ID!): City
   createCommune(name: String!, idCity: ID!): Commune
   createHouse(
-    name: String
     area: Int
     age: Int!
-    shortDescription: String!
-    description: String!
+    shortDescription: String
+    description: String
     maxGuests: Int!
     numBedrooms: Int!
     numBaths: Int!
     basePrice: Int!
+    numLivingrooms: Int!
+    numDiningrooms: Int!
     highestPrice: Int!
     currency: CURRENCY
     income: Int!
@@ -47,9 +65,48 @@ type Mutation {
     type: HOUSE_TYPES
     residency: House_RESIDENCY
     lease: Int!
+    electricity: Boolean
+    electricity_frequency: FREQUENCY
+    water_pipe: Boolean
+    water_tank: Boolean
+    water_frequency: FREQUENCY
+    elevator: Boolean
+    petsAllowed: Boolean
+    internet: Boolean
+    kitchen: Boolean
+    wirelessInternet: Boolean
+    familyKidFriendly: Boolean
+    freeParkingOnPremises: Boolean
+    hotTub: Boolean
+    pool: Boolean
+    smokingAllowed: Boolean
+    wheelchairAccessible: Boolean
+    cableTv: Boolean
+    suitableForEvents: Boolean
+    dryer: Boolean
+    washer: Boolean
+    indoorFireHouse: Boolean
+    tv: Boolean
+    heating: Boolean
+    hangers: Boolean
+    iron: Boolean
+    hairDryer: Boolean
+    doorman: Boolean
+    paidParkingOffPremises: Boolean
+    freeParkingOnStreet: Boolean
+    gym: Boolean
+    airConditioning: Boolean
+    shampoo: Boolean
+    essentials: Boolean
+    laptopFriendlyWorkspace: Boolean
+    privateEntrance: Boolean
+    buzzerWirelessIntercom: Boolean
+    bathtub: Boolean
+    crib: Boolean
+    rooms: [RoomCreateWithoutHouseInput]
+    previewImage: String
   ): House
   updateHouse(
-    name: String
     area: Int
     age: Int
     shortDescription: String
@@ -57,6 +114,8 @@ type Mutation {
     maxGuests: Int
     numBedrooms: Int
     numBaths: Int
+    numLivingrooms: Int
+    numDiningrooms: Int
     basePrice: Int
     highestPrice: Int
     currency: CURRENCY
@@ -69,5 +128,53 @@ type Mutation {
     type: HOUSE_TYPES
     residency: House_RESIDENCY
     lease: Int
+    electricity: Boolean
+    electricity_frequency: FREQUENCY
+    water_pipe: Boolean
+    water_tank: Boolean
+    water_frequency: FREQUENCY
+    elevator: Boolean
+    petsAllowed: Boolean
+    internet: Boolean
+    kitchen: Boolean
+    wirelessInternet: Boolean
+    familyKidFriendly: Boolean
+    freeParkingOnPremises: Boolean
+    hotTub: Boolean
+    pool: Boolean
+    smokingAllowed: Boolean
+    wheelchairAccessible: Boolean
+    cableTv: Boolean
+    suitableForEvents: Boolean
+    dryer: Boolean
+    washer: Boolean
+    indoorFireHouse: Boolean
+    tv: Boolean
+    heating: Boolean
+    hangers: Boolean
+    iron: Boolean
+    hairDryer: Boolean
+    doorman: Boolean
+    paidParkingOffPremises: Boolean
+    freeParkingOnStreet: Boolean
+    gym: Boolean
+    airConditioning: Boolean
+    shampoo: Boolean
+    essentials: Boolean
+    laptopFriendlyWorkspace: Boolean
+    privateEntrance: Boolean
+    buzzerWirelessIntercom: Boolean
+    bathtub: Boolean
+    crib: Boolean
+    rooms: [RoomCreateWithoutHouseInput]
+    previewImage: String
   ): House
+  deleteHouse(id: String!): House
+  addroomManyPicture(
+    label: String!
+    houseId: String!
+    picture_previews: [PictureCreateInput!]
+  ): Room
+
+  createFavoriteHouse(idHouse: String!, idUser: String!): User
 }

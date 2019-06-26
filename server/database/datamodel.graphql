@@ -2,12 +2,15 @@ type User {
   id: ID! @unique
   createdAt: DateTime!
   updatedAt: DateTime!
+  role: String @default(value: "STANDARD")
   status: Boolean @default(value: "true")
   facebookUserId: String @unique
   firstName: String!
   lastName: String!
   email: String @unique
   password: String
+  resetToken: String
+  resetTokenExpiry: String
   phone1: String
   phone2: String
   primaryPhone: Int! @default(value: 1)
@@ -23,14 +26,15 @@ type User {
 
 type House {
   id: ID! @unique
-  name: String
   area: Int @default(value: 0)
-  age: Int! @default(value: 0)
-  shortDescription: String!
-  description: String!
+  age: Int @default(value: 0)
+  shortDescription: String
+  description: String
   maxGuests: Int!
   numBedrooms: Int!
   numBaths: Int!
+  numLivingrooms: Int
+  numDiningrooms: Int
   reviews: [Review!]!
   amenities: Amenities!
   host: User!
@@ -44,14 +48,15 @@ type House {
   rooms: [Room!]!
   views: Views
   bookings: [Booking!]!
-  pictures: [Picture!]!
+  #pictures: [Picture!]!
   contactInfoPayments: [PaymentLanlordInfo!]!
   popularity: Int! @default(value: 0)
+  preview_image: Picture
 }
 
 type Room {
   id: ID! @unique
-  label: String!
+  label: ROOM_LABELS!
   house: House!
   picture_previews: [Picture!]!
   video_previews: [Video!]!
@@ -60,16 +65,17 @@ type Room {
 type Pricing {
   id: ID! @unique
   House: House!
-  basePrice: Int!
-  highestPrice: Int!
-  currency: CURRENCY
-  income: Int!
+  basePrice: Float
+  highestPrice: Float!
+  currency: CURRENCY!
+  income: Float
 }
 
 type Views {
   id: ID! @unique
   lastWeek: Int!
   House: House!
+  User: [User!]!
 }
 
 type Location {
@@ -83,18 +89,21 @@ type Location {
 type Commune {
   id: ID! @unique
   name: String!
+  rank: Int
   city: City!
 }
 
 type City {
   id: ID! @unique
   name: String!
+  rank: Int
   state: State!
 }
 
 type State {
   id: ID! @unique
   name: String!
+  rank: Int
   country: Country!
 }
 
@@ -104,10 +113,12 @@ type Country {
 }
 
 type Picture {
+  id: ID! @unique
   url: String!
 }
 
 type Video {
+  id: ID! @unique
   url: String!
 }
 
@@ -116,6 +127,9 @@ type Amenities {
   House: House!
   electricity: Boolean! @default(value: "false")
   electricity_frequency: FREQUENCY
+  water_pipe: Boolean! @default(value: "false")
+  water_tank: Boolean! @default(value: "false")
+  water_frequency: FREQUENCY
   elevator: Boolean! @default(value: "false")
   petsAllowed: Boolean! @default(value: "false")
   internet: Boolean! @default(value: "false")
@@ -259,9 +273,10 @@ enum HOUSE_TYPES {
 }
 
 enum ROOM_LABELS {
-  LIVING_ROOM
-  DINIG_ROOM
+  LIVINGROOM
+  DINIGROOM
   BEDROOM
+  BATHROOM
 }
 
 enum FREQUENCY {
@@ -299,4 +314,9 @@ enum NEGOTIATION_TYPE {
 enum PAYMENT_PROVIDER {
   PAYPAL
   CREDIT_CARD
+}
+enum ROLE_TYPE {
+  STANDARD
+  LANDLORD
+  ADMIN
 }
