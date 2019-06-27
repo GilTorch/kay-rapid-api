@@ -1,5 +1,5 @@
 import * as bcrypt from "bcryptjs";
-import { AuthError, Context } from "../../utils";
+import { AuthError, Context, APP_SECRET } from "../../utils";
 import * as jwt from "jsonwebtoken";
 import { randomBytes } from "crypto";
 import { promisify } from "util";
@@ -22,45 +22,52 @@ export const auth = {
   //signup mutation which return token and user
   async signup(parent, args, context: Context, info) {
     const password = await bcrypt.hash(args.password, 10);
-    const user = await context.db.mutation.createUser({
-      data: {
-        ...args,
-        password,
-        profilePicture: {
-          create: {
-            url: args.profilePicture
-          }
+    const user = await context.prisma.createUser( {
+      ...args,
+      password,
+      profilePicture: {
+        create: {
+          url: args.profilePicture
         }
+      },
+      permissions:{
+        set: ['STANDARD']
       }
-    });
-
+    }
+  );
+    console.log(APP_SECRET)
     return {
-      token: jwt.sign({ userId: user.id }, process.env.APP_SECRET),
+      token: jwt.sign({ userId: user.id }, APP_SECRET), //"prismaDbdev123"),
       user
     };
   },
 
   //loging mutation which returns token based on userid and user
-  async login(parent, args, context: Context, info) {
-    const user = await context.db.query.user({ where: { email: args.email } });
+  async login(parent, args, context: Context) {
+    const user = await context.prisma.user({ email: args.email } );
     const valid = await bcrypt.compare(
       args.password,
       user ? user.password : ""
     );
-
-    if (!valid || !user || !user.status) {
+    if (!user) {
+      throw new Error(`no such user found for email ${args.email}`)
+    }
+    if (!valid) {
+      throw new Error(`Incorrect password`)
+    }
+    if (!user.status) {
       throw new AuthError();
     }
 
     return {
-      token: jwt.sign({ userId: user.id }, process.env.APP_SECRET),
+      token: jwt.sign({ userId: user.id }, APP_SECRET),
       user
     };
   },
 
   //DisableUser mutation which returns  userid of disabled user,This user can't log back
-  async disableUser(parent, args, context: Context, info) {
-    const user = await context.db.mutation.updateUser({
+  async disableUser(parent, args, context: Context) {
+    const user = await context.prisma.updateUser({
       data: { status: false },
       where: { id: args.id }
     });
@@ -74,20 +81,18 @@ export const auth = {
   },
 
   //authenticate with facebook received access token
-  async authenticateFBUser(parent, args, context: Context, info) {
+  async authenticateFBUser(parent, args, context: Context) {
     //getting the facebook userdata
     const facebookUser = await getFacebookUser(args.facebookToken);
 
     //query for facebookuser
-    const user = await context.db.query.user({
-      where: { facebookUserId: facebookUser.id }
-    });
+    const user = await context.prisma.user( { facebookUserId: facebookUser.id }
+    );
 
     let userforToken = user;
     //check if user exits if not create new user
     if (!user) {
-      const newUser = await context.db.mutation.createUser({
-        data: {
+      const newUser = await context.prisma.createUser({ 
           facebookUserId: facebookUser.id,
           email: facebookUser.email,
           firstName: facebookUser.first_name,
@@ -96,21 +101,20 @@ export const auth = {
             create: {
               url: facebookUser.picture
             }
-          }
-        }
+          } 
       });
       userforToken = newUser;
     }
     return {
-      token: jwt.sign({ userId: userforToken.id }, process.env.APP_SECRET),
+      token: jwt.sign({ userId: userforToken.id }, APP_SECRET),
       user
     };
   },
 
   //request a new password for the user
-  async requestPWResetToken(parent, args, context: Context, info) {
+  async requestPWResetToken(parent, args, context: Context) {
     //check for existing user
-    const user = await context.db.query.user({ where: { email: args.email } });
+    const user = await context.prisma.user({ email: args.email });
     if (!user) {
       throw new Error(`No such user found with email ${args.email}`);
     }
@@ -120,7 +124,7 @@ export const auth = {
     const randomBytesWithPromise = promisify(randomBytes);
     const resetToken = (await randomBytesWithPromise(20)).toString("hex");
     const resetTokenExpiry = "" + Date.now() + 3600000;
-    const res = await context.db.mutation.updateUser({
+    const res = await context.prisma.updateUser({
       where: { email: args.email },
       data: {
         resetToken,
@@ -147,7 +151,7 @@ export const auth = {
     //   `test body with resettoken:  ${args.resetToken}`
     // );
   },
-  async resetPassword(parent, args, context: Context, info) {
+  async resetPassword(parent, args, context: Context) {
     //check if passwords match
     if (args.password !== args.passwordConfirm) {
       throw new Error("Provided passwords doesn't match!");
@@ -155,7 +159,7 @@ export const auth = {
     //check for token validity
 
     //checking user and verify token epriration
-    const [user] = await context.db.query.users({
+    const [user] = await context.prisma.users({
       where: {
         resetToken: args.resetToken,
         resetTokenExpiry_gte: (Date.now() - 3600000).toString()
@@ -169,7 +173,7 @@ export const auth = {
     const password = await bcrypt.hash(args.password, 10);
 
     //save new password
-    const updatedUser = await context.db.mutation.updateUser({
+    const updatedUser = await context.prisma.updateUser({
       where: { email: user.email },
       data: {
         password,
@@ -180,7 +184,7 @@ export const auth = {
 
     //generate authentication token
     console.log(`user id updated:${updatedUser.id}`);
-    const token = jwt.sign({ userId: updatedUser.id }, process.env.APP_SECRET);
+    const token = jwt.sign({ userId: updatedUser.id }, APP_SECRET);
     //return updated user
     return {
       token,

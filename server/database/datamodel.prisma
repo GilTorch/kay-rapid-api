@@ -1,0 +1,362 @@
+type User {
+  id: ID! @id @unique
+  createdAt: DateTime! @createdAt
+  updatedAt: DateTime! @updatedAt 
+  status: Boolean @default(value: true)
+  facebookUserId: String @unique
+  firstName: String!
+  lastName: String!
+  email: String @unique
+  password: String
+  resetToken: String
+  resetTokenExpiry: String
+  phone1: String
+  phone2: String
+  primaryPhone: Int! @default(value: 1)
+  responseTime: Int
+  isSuperHost: Boolean! @default(value: false)
+  ownedHouses: [House!]!
+  location: Location
+  bookings: [Booking!]!
+  paidContacts: [PaymentLanlordInfo!]!
+  notifications: [Notification!]!
+  profilePicture: Picture
+  permissions:[Permission] @scalarList(strategy: RELATION)
+}
+
+type House {
+  id: ID! @id @unique
+  area: Int @default(value: 0)
+  age: Int @default(value: 0)
+  shortDescription: String
+  description: String
+  maxGuests: Int!
+  numBedrooms: Int!
+  numBaths: Int!
+  numLivingrooms: Int
+  numDiningrooms: Int
+  reviews: [Review!]!
+  amenities: Amenities! @relation(link: INLINE)
+  host: User!
+  pricing: Pricing! @relation(link: INLINE)
+  location: Location!
+  leaseType: HOUSE_LEASE_TYPE
+  verified: Boolean! @default(value: false)
+  type: HOUSE_TYPES
+  residency: House_RESIDENCY
+  lease: Int!
+  rooms: [Room!]!
+  views: Views @relation(link: INLINE)
+  bookings: [Booking!]!
+  #pictures: [Picture!]!
+  contactInfoPayments: [PaymentLanlordInfo!]!
+  popularity: Int! @default(value: 0)
+  preview_image: Picture
+  createdAt: DateTime! @createdAt
+  updatedAt: DateTime! @updatedAt
+}
+
+type Room {
+  id: ID! @id @unique
+  label:  ROOM_LABELS!
+  house: House!
+  picture_previews: [Picture!]!
+  video_previews: [Video!]!
+  createdAt: DateTime! @createdAt
+  updatedAt: DateTime! @updatedAt
+}
+
+type Pricing {
+  id: ID! @id @unique
+  House: House! 
+  basePrice: Float
+  highestPrice: Float!
+  currency: CURRENCY!
+  income: Float
+  createdAt: DateTime! @createdAt
+  updatedAt: DateTime! @updatedAt
+}
+
+type Views {
+  id: ID! @id @unique
+  lastWeek: Int!
+  House: House!
+  User: [User!]!
+  createdAt: DateTime! @createdAt
+  updatedAt: DateTime! @updatedAt
+}
+
+type Location {
+  id: ID! @id @unique
+  lat: Float
+  lng: Float
+  address: String
+  commune: Commune
+  createdAt: DateTime! @createdAt
+  updatedAt: DateTime! @updatedAt
+}
+
+type Commune {
+  id: ID! @id @unique
+  name: String!
+  rank: Int
+  city: City!
+  createdAt: DateTime! @createdAt
+  updatedAt: DateTime! @updatedAt
+}
+
+type City {
+  id: ID! @id @unique
+  name: String!
+  rank: Int
+  state: State!
+  createdAt: DateTime! @createdAt
+  updatedAt: DateTime! @updatedAt
+}
+
+type State {
+  id: ID! @id @unique
+  name: String!
+  rank: Int
+  country: Country!
+  createdAt: DateTime! @createdAt
+  updatedAt: DateTime! @updatedAt
+}
+
+type Country {
+  id: ID! @id @unique
+  name: String!
+  createdAt: DateTime! @createdAt
+  updatedAt: DateTime! @updatedAt
+}
+
+type Picture {
+  id: ID! @id @unique
+  url: String!
+  createdAt: DateTime! @createdAt
+  updatedAt: DateTime! @updatedAt
+}
+
+type Video {
+  id: ID! @id @unique
+  url: String!
+  createdAt: DateTime! @createdAt
+  updatedAt: DateTime! @updatedAt
+}
+
+type Amenities {
+  id: ID! @id @unique
+  House: House!
+  electricity: Boolean! @default(value: false)
+  electricity_frequency: FREQUENCY
+  water_pipe: Boolean! @default(value: false)
+  water_tank: Boolean! @default(value: false)
+  water_frequency: FREQUENCY
+  elevator: Boolean! @default(value: false)
+  petsAllowed: Boolean! @default(value: false)
+  internet: Boolean! @default(value: false)
+  kitchen: Boolean! @default(value: false)
+  wirelessInternet: Boolean! @default(value: false)
+  familyKidFriendly: Boolean! @default(value: false)
+  freeParkingOnPremises: Boolean! @default(value: false)
+  hotTub: Boolean! @default(value: false)
+  pool: Boolean! @default(value: false)
+  smokingAllowed: Boolean! @default(value: false)
+  wheelchairAccessible: Boolean! @default(value: false)
+  cableTv: Boolean! @default(value: false)
+  suitableForEvents: Boolean! @default(value: false)
+  dryer: Boolean! @default(value: false)
+  washer: Boolean! @default(value: false)
+  indoorFireHouse: Boolean! @default(value: false)
+  tv: Boolean! @default(value: false)
+  heating: Boolean! @default(value: false)
+  hangers: Boolean! @default(value: false)
+  iron: Boolean! @default(value: false)
+  hairDryer: Boolean! @default(value: false)
+  doorman: Boolean! @default(value: false)
+  paidParkingOffPremises: Boolean! @default(value: false)
+  freeParkingOnStreet: Boolean! @default(value: false)
+  gym: Boolean! @default(value: false)
+  airConditioning: Boolean! @default(value: false)
+  shampoo: Boolean! @default(value: false)
+  essentials: Boolean! @default(value: false)
+  laptopFriendlyWorkspace: Boolean! @default(value: false)
+  privateEntrance: Boolean! @default(value: false)
+  buzzerWirelessIntercom: Boolean! @default(value: false)
+  bathtub: Boolean! @default(value: false)
+  crib: Boolean! @default(value: false)
+  createdAt: DateTime! @createdAt
+  updatedAt: DateTime! @updatedAt
+}
+
+type Review {
+  id: ID! @id @unique
+  createdAt: DateTime! @createdAt
+  updatedAt: DateTime! @updatedAt
+  text: String!
+  stars: Int!
+  accuracy: Int!
+  location: Int!
+  checkIn: Int!
+  value: Int!
+  communication: Int!
+  House: House!
+}
+
+type Booking {
+  id: ID! @id @unique
+  createdAt: DateTime! @createdAt
+  updatedAt: DateTime! @updatedAt
+  bookee: User!
+  House: House!
+  startDate: DateTime!
+  endDate: DateTime!
+  payment: PaymentHouse! @relation(link: INLINE)
+}
+
+type House_Favorited {
+  id: ID! @id @unique
+  createdAt: DateTime! @createdAt
+  updatedAt: DateTime! @updatedAt
+  user: User!
+  house: House!
+}
+
+type Negotiation {
+  id: ID! @id @unique
+  createdAt: DateTime! @createdAt
+  updatedAt: DateTime! @updatedAt
+  negotiator: User!
+  House: House!
+  offer: Float!
+  status: NEGOTIATION_TYPE @default(value: PENDING)
+}
+
+type PaymentHouse {
+  id: ID! @id @unique
+  createdAt: DateTime! @createdAt
+  updatedAt: DateTime! @updatedAt
+  totalPrice: Float!
+  booking: Booking!
+  paymentMethod: PaymentAccount!
+}
+
+type PaymentAccount {
+  id: ID! @id @unique
+  createdAt: DateTime! @createdAt
+  updatedAt: DateTime! @updatedAt
+  type: PAYMENT_PROVIDER
+  user: User!
+  payments: [PaymentHouse!]!
+  paypal: PaypalInformation @relation(link: INLINE)
+  creditcard: CreditCardInformation @relation(link: INLINE)
+}
+
+type PaypalInformation {
+  id: ID! @id @unique
+  createdAt: DateTime! @createdAt
+  updatedAt: DateTime! @updatedAt
+  email: String!
+  paymentAccount: PaymentAccount!
+}
+
+type CreditCardInformation {
+  id: ID! @id @unique
+  createdAt: DateTime! @createdAt
+  updatedAt: DateTime! @updatedAt
+  cardNumber: String!
+  expiresOnMonth: Int!
+  expiresOnYear: Int!
+  securityCode: String!
+  firstName: String!
+  lastName: String!
+  postalCode: String!
+  country: String!
+  paymentAccount: PaymentAccount
+}
+
+type PaymentLanlordInfo {
+  id: ID! @id @unique
+  createdAt: DateTime! @createdAt
+  updatedAt: DateTime! @updatedAt
+  totalPrice: Float!
+  client: User!
+  House: House!
+  moncashTransactId: String!
+}
+
+type Notification {
+  id: ID! @id @unique
+  createdAt: DateTime! @createdAt
+  updatedAt: DateTime! @updatedAt
+  type: NOTIFICATION_TYPE
+  user: User!
+  link: String!
+  readDate: DateTime!
+}
+
+enum CURRENCY {
+  HTG
+  USD
+}
+
+enum HOUSE_TYPES {
+  APARTMENT
+  VILLA
+  STUDIO
+}
+
+enum ROOM_LABELS {
+  LIVINGROOM
+  DINIGROOM
+  BEDROOM
+  BATHROOM
+}
+
+enum FREQUENCY {
+  NEVER
+  SOMETIMES
+  OFTEN
+  ALWAYS
+}
+
+enum HOUSE_LEASE_TYPE {
+  WEEKLY
+  MONTHLY
+  YEARLY
+}
+
+enum House_RESIDENCY {
+  BUSINESS
+  RESIDENCE
+}
+
+enum NOTIFICATION_TYPE {
+  OFFER
+  INSTANT_BOOK
+  RESPONSIVENESS
+  NEW_AMENITIES
+  HOUSE_RULES
+}
+
+enum NEGOTIATION_TYPE {
+  PENDING
+  ACCEPTED
+  REFUSED
+}
+
+enum PAYMENT_PROVIDER {
+  PAYPAL
+  CREDIT_CARD
+}
+
+enum Permission {
+  STANDARD
+  LANDLORD
+  ADMIN
+  ITEMCREATE
+  ITEMUPDATE
+  ITEMDELETE
+  PERMISSIONUPDATE
+}
+  

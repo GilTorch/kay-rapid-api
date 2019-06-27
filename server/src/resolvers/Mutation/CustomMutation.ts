@@ -1,53 +1,47 @@
-import { getUserId, Context } from "../../utils";
+import { getUserId, Context, hasPermission } from "../../utils";
 
 export const CustomMutation = {
-  async createCountry(parent, { name }, context: Context, info) {
-    return context.db.mutation.createCountry({ data: { name } }, info);
+  async createCountry(parent, { name }, context: Context) {
+    return context.prisma.createCountry({  name });
   },
-  async createState(parent, { name, idCountry }, context: Context, info) {
-    return context.db.mutation.createState(
-      {
-        data: {
+  async createState(parent, { name, idCountry }, context: Context) {
+    return context.prisma.createState(
+      { 
           name,
           country: {
             connect: { id: idCountry }
           }
-        }
-      },
-      info
+        } 
     );
   },
-  async createCity(parent, { name, idState }, context: Context, info) {
-    return context.db.mutation.createCity(
+  async createCity(parent, { name, idState }, context: Context) {
+    return context.prisma.createCity(
       {
-        data: {
           name,
           state: {
             connect: { id: idState }
           }
-        }
-      },
-      info
+      }
     );
   },
-  async createCommune(parent, { name, idCity }, context: Context, info) {
-    return context.db.mutation.createCommune(
+  async createCommune(parent, { name, idCity }, context: Context) {
+    return context.prisma.createCommune(
       {
-        data: {
           name,
           city: {
             connect: { id: idCity }
           }
-        }
-      },
-      info
+      }
     );
   },
-  async createHouse(parent, args, context: Context, info) {
+  async createHouse(parent, args, context: Context) {
     const userId = getUserId(context);
-    return context.db.mutation.createHouse(
+    if(!userId){
+      throw new Error('You must be logged in')
+    } 
+    hasPermission(context.prisma.$exists.user({ id: userId}),['ADMIN','LANDLORD','PERMISSIONUPDATE','ITEMCREATE'])
+    return context.prisma.createHouse(
       {
-        data: {
           area: args.area,
           age: args.age,
           shortDescription: args.shortDescription,
@@ -134,13 +128,11 @@ export const CustomMutation = {
               url: args.previewImage
             }
           }
-        }
-      },
-      info
+      }
     );
   },
-  async updateHouse(parent, args, context: Context, info) {
-    return context.db.mutation.updateHouse({
+  async updateHouse(parent, args, context: Context) {
+    return context.prisma.updateHouse({
       data: {
         area: args.area,
         age: args.age,
@@ -213,17 +205,14 @@ export const CustomMutation = {
       }
     });
   },
-  async deleteHouse(parent, args, context: Context, info) {
-    return context.db.mutation.deleteHouse({
-      where: {
+  async deleteHouse(parent, args, context: Context) {
+    return context.prisma.deleteHouse({
         id: args.houseId
-      }
     });
   },
-  addroomManyPicture(parent, args, context: Context, info) {
-    return context.db.mutation.createRoom(
+  addroomManyPicture(parent, args, context: Context) {
+    return context.prisma.createRoom(
       {
-        data: {
           label: args.label,
           house: {
             connect: {
@@ -233,15 +222,12 @@ export const CustomMutation = {
           picture_previews: {
             create: args.picture_previews
           }
-        }
-      },
-      info
+      }
     );
   },
-  createFavoriteHouse(parent, args, context: Context, info) {
-    return context.db.mutation.createHouse_Favorited(
+  createFavoriteHouse(parent, args, context: Context) {
+    return context.prisma.createHouse_Favorited(
       {
-        data: {
           house: {
             connect: {
               id: args.idHouse
@@ -252,9 +238,7 @@ export const CustomMutation = {
               id: args.idUser
             }
           }
-        }
-      },
-      info
+      }
     );
   }
 };

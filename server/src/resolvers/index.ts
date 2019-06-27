@@ -1,4 +1,3 @@
-import { extractFragmentReplacements } from "prisma-binding";
 import { Query } from "./Query";
 import { CustomMutation } from "./Mutation/CustomMutation";
 import { auth } from "./Mutation/auth";
@@ -12,5 +11,3 @@ export const resolvers = {
   },
   AuthPayLoad
 };
-
-export const fragmentReplacements = extractFragmentReplacements(resolvers);
