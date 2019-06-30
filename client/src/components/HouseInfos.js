@@ -10,6 +10,9 @@ export function Heart({value,handleClick}){
 }
 
 export function Price({value,currency,leaseType}){
+
+    
+
     return(
         <div className="house-card__price-container">
             {/* <h2>Pri</h2> */}
@@ -105,7 +108,7 @@ export function Actions(props){
 }
 
 
-export function ZonKomante(props){
+export function Comment(props){
     return (
     <div>           
     <div className = "ajoute_yon_komante" > 
@@ -113,7 +116,7 @@ export function ZonKomante(props){
     </div>
     <h2 className="ajoute_yon_komante_title">Ajoute yon komante</h2>
     <form className="komanteForm">
-        <textarea id="subject" name="subject" placeholder="Bay yon komante sou kay sa"> </textarea>
+        <textarea id="subject" name="subject" defaultValue="Bay yon komantè sou kay sa..."/>
         <div className="input_textarea">
             <input type="submit" value="Soumet" ></input>
             </div>

@@ -1,31 +1,27 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import Favorites from '../svg/navigation/favorites-icon.svg';
-import FavoritesHighlighted from '../svg/navigation/favorites-icon-highlighted.svg';
-import Home from '../svg/navigation/home-icon.svg';
-import HomeHighlighted from '../svg/navigation/home-icon-highlighted.svg';
-import Profile from '../svg/navigation/profile-icon.svg';
-import ProfileHighlighted from '../svg/navigation/profile-icon-highlighted.svg';
+import styled from 'styled-components';
 
-const icons={
-    "normal":{
-        "favorites":Favorites,
-        "home":Home,
-        "profile":Profile
-    },
-    "highlighted":{
-        "favorites":FavoritesHighlighted,
-        "home":HomeHighlighted,
-        "profile":ProfileHighlighted
-    }
-}
+const NavButtonStyles=styled.button`
+  background:transparent;
+  cursor: pointer;
+  color:${props => props.highlighted ? "#ff9900ff" : "#606060ff" };
+  border:none;
+  span{
+      display:block;
+      font-size:1rem;
+  }
+  svg {
+      font-size:1.5rem;
+  }
+`
 
 const NavigationButton=({name,iconName,highlighted})=>{
     return(
-        <button className={highlighted?iconName+"-icon--hightlighted navigation-button--highlighted":"navigation-button"}>
-            <img src={highlighted?icons["highlighted"][iconName]:icons["normal"][iconName]}/>
-            <span className="navigation-button__title">{name}</span>
-        </button>
+        <NavButtonStyles highlighted={highlighted} >
+            <FontAwesomeIcon icon={iconName}/>
+            <span>{name}</span>
+        </NavButtonStyles>
     )
 }
 

@@ -1,11 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { graphql, compose, Mutation } from 'react-apollo';
+import * as yup from 'yup';
 import { AUTH_WITHOUT_SOCIAL_MEDIA, WRITE_AUTH_INFO } from '../queries/queries';
 import Loading from './Loading';
 import { Formik } from 'formik';
 import Close from './Close';
-import * as yup from 'yup';
+import { alertMessages } from '../utils/AlertMessages';
 
 const schema = yup.object().shape({
     email: yup.string().email("Ou dwe rantre yon Imèl ").required("Imèl se yon chan obligatwa"),
@@ -31,8 +32,7 @@ const SignIn = ({ writeUserAuthInfoToCache, history }) => {
         <Mutation mutation={AUTH_WITHOUT_SOCIAL_MEDIA}>
             {(login, { loading, error }) => (
                 <>  
-                    {console.log(loading,error)}
-                    {error && (<p>Gen on erè. Reeseye apre yon ti moman.</p>)}
+                    {error && alert.error(alertMessages.errors.general) && null}
                     {loading && (<Loading/>)}
                     <Formik
                         validationSchema={schema}

@@ -77,7 +77,7 @@ const stateLink = withClientState({
 })
 
 const httpLink=createHttpLink({
-    uri: "https://lakayou-server-rwcvnozznd.now.sh/"
+    uri: "https://kayrapid-backend.herokuapp.com"
 })
 
 // const authLink = setContext((_, { headers }) => {

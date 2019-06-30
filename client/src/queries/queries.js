@@ -245,7 +245,7 @@ mutation updateAuthInfo($userAuthInfo:Object!){
     email
     firstName
     lastName
-    profilePicture
+    # profilePicture
   }
 }
 `

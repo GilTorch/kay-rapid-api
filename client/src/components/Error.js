@@ -5,42 +5,34 @@ import { renderToStringWithData } from 'react-apollo';
 import { toast } from 'react-toastify';
 
 const ErrorStyles = styled.div`
-    background-color:pink;
-    position: fixed;
-    top:0;
-    left:0;
-    display:${props => props.closed ? 'none' : 'flex'};
-    align-items:center;
-    justify-content:space-around;
-    color:red;
-    width:98%;
+    display:flex;
+    width:100%;
     height:50px;
-    border-radius:3px;
-    border: 3px solid red;
+    background-color:rgba(255,0,0,0.1);
+    color:rgba(255,0,0,0.8);
+    justify-content:center;
+    align-items:center;
 `
 
 
-class Error extends React.Component{
-    
-    state={
-        closed:false
+class Error extends React.Component {
+
+    state = {
+        closed: false
     }
 
-    setClosed=(val)=>{
+    setClosed = (val) => {
         this.setState({
-            closed:val
+            closed: val
         })
     }
 
-    render(){
-            const { closed }=this.state;
+    render() {
+        const { closed } = this.state;
 
-            return(
-                <ErrorStyles closed={closed} onClick={()=>this.setClosed(true)}>
-                <span>
-                    &times;
-                </span>
-            {this.props.children || (<p>Gen on ti erè. Reeseye apre yon ti moman.</p>) }
+        return (
+            <ErrorStyles>
+                {this.props.children || (<p>Gen on ti erè. Reeseye apre yon ti moman.</p>)}
             </ErrorStyles>
         )
     }

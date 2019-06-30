@@ -1,0 +1,96 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<NavigationButton/> renders and matches snapshot 1`] = `
+.c0 {
+  background: transparent;
+  cursor: pointer;
+  color: #606060ff;
+  border: none;
+}
+
+.c0 span {
+  display: block;
+  font-size: 1rem;
+}
+
+.c0 svg {
+  font-size: 1.5rem;
+}
+
+<NavigationButton
+  highlighted={false}
+  iconName="heart"
+  name="Favori"
+>
+  <styled.button
+    highlighted={false}
+  >
+    <StyledComponent
+      forwardedComponent={
+        Object {
+          "$$typeof": Symbol(react.forward_ref),
+          "attrs": Array [],
+          "componentStyle": ComponentStyle {
+            "componentId": "sc-bdVaJa",
+            "isStatic": false,
+            "lastClassName": "c0",
+            "rules": Array [
+              "
+  background:transparent;
+  cursor: pointer;
+  color:",
+              [Function],
+              ";
+  border:none;
+  span{
+      display:block;
+      font-size:1rem;
+  }
+  svg {
+      font-size:1.5rem;
+  }
+",
+            ],
+          },
+          "displayName": "styled.button",
+          "foldedComponentIds": Array [],
+          "render": [Function],
+          "styledComponentId": "sc-bdVaJa",
+          "target": "button",
+          "toString": [Function],
+          "warnTooManyClasses": [Function],
+          "withComponent": [Function],
+        }
+      }
+      forwardedRef={null}
+      highlighted={false}
+    >
+      <button
+        className="c0"
+      >
+        <FontAwesomeIcon
+          border={false}
+          className=""
+          fixedWidth={false}
+          flip={null}
+          icon="heart"
+          inverse={false}
+          listItem={false}
+          mask={null}
+          pull={null}
+          pulse={false}
+          rotation={null}
+          size={null}
+          spin={false}
+          symbol={false}
+          title=""
+          transform={null}
+        />
+        <span>
+          Favori
+        </span>
+      </button>
+    </StyledComponent>
+  </styled.button>
+</NavigationButton>
+`;
