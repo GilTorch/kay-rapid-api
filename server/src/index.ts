@@ -4,15 +4,18 @@ import { resolvers } from "./resolvers";
 
 
 //require("now-env");
-// if (process.env.NODE_ENV !== "production") {
+// if (NODE_ENV !== "production") {
 require('dotenv').config({ path: '.env' });
 //   require('now-env')
 // }
 
+const PRISMA_ENDPOINT="https://us1.prisma.sh/peterson-jean-48f374/api-lakayou/api-lakayou"
+const PRISMA_SECRET="prismaDbdev123"
+const APP_SECRET="prismaDbdev123"
 //const { dotenv } = require('dotenv').config()
 
-console.log(process.env.PRISMA_ENDPOINT)
-console.log(process.env.APP_SECRET)
+console.log(PRISMA_ENDPOINT)
+console.log(APP_SECRET)
 const server = new GraphQLServer({
   typeDefs: "./src/schema.graphql",
   resolvers, 
@@ -29,7 +32,7 @@ server.start(
   // {
   //   cors: {
   //     credentials: true,
-  //     origin: process.env.FRONTEND_URL
+  //     origin: FRONTEND_URL
   //   }
   // },
   () => console.log("Server is running on http://localhost:4000")

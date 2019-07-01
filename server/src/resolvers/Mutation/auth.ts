@@ -45,6 +45,7 @@ export const auth = {
   //loging mutation which returns token based on userid and user
   async login(parent, args, context: Context) {
     const user = await context.prisma.user({ email: args.email } );
+    console.log(user);
     const valid = await bcrypt.compare(
       args.password,
       user ? user.password : ""
