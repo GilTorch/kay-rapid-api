@@ -34,6 +34,7 @@ class ImagePreview extends React.Component {
             <img style={imageStyle} onClick={this.handleSelected}
                 className="add-house-card__house-preview clip-circle" 
                 src={this.props.url} 
+                alt="house room"
             />
             {selected?
             <label className="checkbox-container add-house-card__house-image-checkbox">

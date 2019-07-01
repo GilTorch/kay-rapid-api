@@ -3,11 +3,7 @@ import Close from './Close';
 
 import { REQUEST_PASSWORD_TOKEN } from '../queries/queries.js';
 import { Mutation } from 'react-apollo';
-import notify from '../utils/notify';
-
 import Loading from './Loading';
-import { ToastContainer,toast } from 'react-toastify';
-
 import "../css/request-password.css";
 
 class RequestPassword extends React.Component{
@@ -26,7 +22,7 @@ class RequestPassword extends React.Component{
     }
 
     componentWillUnmount(){
-        toast.dismiss();
+        alert.dismiss();
     }
 
 
@@ -42,7 +38,7 @@ class RequestPassword extends React.Component{
                         e.preventDefault();
                         requestPasswordToken({variables:{email:this.state.email},
                             update:()=>{
-                                toast.success("VERIFYE IMEL OU.",{
+                                alert.success("VERIFYE IMEL OU.",{
                                     autoClose:2500
                                 })
                             }
@@ -53,8 +49,7 @@ class RequestPassword extends React.Component{
                     <input type="submit" className="success-button request-password-stack-screen__button" value="VOYEL' ALE"/>
                 </form>
                 {loading?<Loading/>:""}
-                {error?notify("GEN ON EREU KONEKSYON KI PASE. VERIFYE KONEKSYON ENTENET LA","error"):""}
-                <ToastContainer/>
+                {error?alert.error("GEN ON ERÈ  KONEKSYON KI PASE. VERIFYE KONEKSYON ENTENET LA"):""}
                 </div>
             )}
             </Mutation>

@@ -1,37 +1,25 @@
 import React from 'react';
 import Navigation from '../components/Navigation';
 import Neighborhood from '../components/Neighborhood';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import AppLogo from '../svg/kay-rapid-logo.svg';
 import Link from 'react-router-dom/Link';
-
 import "../css/home.css";
 import AddHouse from '../svg/add-house-illustration.svg';
-import { ToastContainer } from 'react-toastify';
-import notify from '../utils/notify';
 import 'react-toastify/dist/ReactToastify.css';
 
 import { graphql } from 'react-apollo';
 import { READ_AUTH_INFO } from '../queries/queries';
 
 
-class Home extends React.Component{
+const Home = props =>{
 
-    constructor(props){
-        super(props);
-        // this.notify=this.notify.bind(this);
-    }
-
-
-    render(){
-
-       const { title,userAuthInfo }=this.props;
+       const { title,userAuthInfo }=props;
 
         return(
             <div className="home">
                 <header className="home__header">
                 <div className="home__header-wrapper">
-                    <img src={AppLogo} className="home__header-logo" />
+                    <img src={AppLogo} alt="Kay Rapid Logo" className="home__header-logo" />
                     <h1 className="home__title">{ title }</h1>
                     <form className="home__form">
                         <div className="home__form-wrapper">
@@ -51,14 +39,13 @@ class Home extends React.Component{
                 </div>
                 <Link to={userAuthInfo.email?"/add-house":"/profile"}>
                     <button className="home__button-post-house">
-                        <img src={AddHouse} className="home__add-house-illustration"/>
+                        <img src={AddHouse} alt="add a house" className="home__add-house-illustration"/>
                     </button>
                 </Link>
                 <Navigation currentPage="home"/>
             </div>
         )
-    }
-}  ;
+    }  ;
 
 
 const HomeWithQuery=graphql(

@@ -4,13 +4,10 @@ import { createHttpLink  } from "apollo-link-http";
 import { setContext } from 'apollo-link-context';
 import { InMemoryCache } from "apollo-cache-inmemory";
 import { withClientState } from 'apollo-link-state';
-import { persistCache,CachePersistor } from 'apollo-cache-persist';
+import { CachePersistor } from 'apollo-cache-persist';
 import gql from 'graphql-tag';
-import { WRITE_AUTH_INFO } from './queries/queries.js';
-
 
 const cache= new InMemoryCache();
-
 
 export const persistor = new CachePersistor({
     cache,
@@ -75,9 +72,8 @@ const stateLink = withClientState({
     },
     defaults:defaultState
 })
-
 const httpLink=createHttpLink({
-    uri: "https://kayrapid-backend.herokuapp.com"
+    uri: process.env.REACT_APP_BACKEND_ENDPOINT
 })
 
 // const authLink = setContext((_, { headers }) => {

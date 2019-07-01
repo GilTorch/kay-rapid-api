@@ -22,17 +22,10 @@ class Upload extends React.Component {
     })
   }
 
-// componentDidUpdate(prevState,nextState){
-
-//     let { eventsForExport }=nextState;
-//     this.props.handleImage(eventsForExport);
-
-// }
 
   handleChange(event) {
 
     let numberOfImagesSelected=event.target.files.length;
-    const { numberOfImagesAllowed }=this.props;
 
     let { images }=this.state;
 
@@ -66,7 +59,7 @@ class Upload extends React.Component {
 
   render() {
     
-    const { images,numberOfImagesAllowed,eventsForExport }=this.state; 
+    const { images,numberOfImagesAllowed }=this.state; 
     let  imagesTags=images.map((file,index)=>{
         return <ImagePreview url={file} key={index} removePhoto={this.handleRemove}/>
     })

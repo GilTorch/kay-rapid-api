@@ -22,15 +22,14 @@ const UserInfo=({ firstName,lastName,profilePicture,writeUserAuthInfoToCache })=
 
    return( 
     <div className="profile-info-card">
-        <img className="profile-img" src={profilePicture}/>
+        <img className="profile-img" src={profilePicture} alt={`${firstName+' '+lastName} `}/>
         <p>{firstName} {lastName}</p>
         <button onClick={logout}className="auth-button danger-button">DEKONEKTE</button>
     </div>
    )
 }
 
-const UserInfoWithQuery = graphql( WRITE_AUTH_INFO,{"name":"writeUserAuthInfoToCache"})
-(UserInfo)
+const UserInfoWithQuery = graphql( WRITE_AUTH_INFO,{"name":"writeUserAuthInfoToCache"})(UserInfo)
 
 
 export default UserInfoWithQuery;

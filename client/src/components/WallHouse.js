@@ -2,7 +2,6 @@ import React from 'react';
 
 import { Query } from 'react-apollo';
 import { ALL_HOUSES_QUERY } from '../queries/queries';
-import { toast } from 'react-toastify';
 
 import HouseCard from './HouseCard';
 import HeaderBar from './HeaderBar';

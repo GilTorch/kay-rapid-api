@@ -1,10 +1,8 @@
 import React from 'react';
-import Close from './Close';
 import { Mutation } from 'react-apollo';
 import { RESET_PASSWORD } from '../queries/queries';
 import { Link } from 'react-router-dom';
 import Loading from './Loading';
-import notify from '../utils/notify';
 import queryString from 'query-string';
 
 class RequestPasswordRedirection extends React.Component{
@@ -52,7 +50,7 @@ class RequestPasswordRedirection extends React.Component{
                 e.preventDefault();
                 if(this.state.isEqual){
                     resetPassword({variables:{ resetToken:this.state.resetToken,password:this.state.password,passwordConfirm:this.state.confirmPassword },
-                        update:()=>{notify('MODPAS OU AN CHANJE. KOUNYA WAP KA KONEKTE SAN PWOBLEM',"success");this.props.history.push('/profile')}
+                        update:()=>{alert.success('MODPAS OU AN CHANJE. KOUNYA WAP KA KONEKTE SAN PWOBLEM');this.props.history.push('/profile')}
                     })
 
                 }
@@ -62,8 +60,8 @@ class RequestPasswordRedirection extends React.Component{
                 <input style={{marginTop:"10px"}} className="request-password-stack-screen__input" onChange={this.handleChange} name="confirmPassword" type="password" placeholder="Konfime nouvo paswod la" required/>
                 <button className="success-button request-password-stack-screen__button" type="submit">VOYE'L ALE</button>
                 {!this.state.isEqual?<p style={{color:"red"}}>Ou dwe ekri menm password la nan tou 2 chan yo.</p>:""}
-                {(loading)?<Loading/>:""}
-                {(error)?notify("GEN ON TI ERE KI PASE.REESEYE ON LOT MOMAN","error"):""}
+                {loading && <Loading/>}
+                {error && alert.error("GEN ON TI ERE KI PASE.REESEYE ON LOT MOMAN")}
             </form>
             </div>
         )}   

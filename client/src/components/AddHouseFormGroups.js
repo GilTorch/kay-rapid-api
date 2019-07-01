@@ -91,11 +91,11 @@ export const WhenToPayHouse=({handleChange})=>{
             <label className="add-house-card__label">Chak kilè pou yo peye'w ? </label>
             <div className="add-house-card__when-to-pay-checkbox-group">
             <label className="radio-container">Pa Mwa
-                <input  onClick={handleChange} name="lease" type="radio" name="leaseType" value="MONTHLY"/>
+                <input  onClick={handleChange} type="radio" name="leaseType" value="MONTHLY"/>
                 <span className="radio-checkmark"></span>
             </label>
             <label className="radio-container">Pa Ane
-                <input onClick={handleChange} name="lease" type="radio" name="leaseType" value="YEARLY"/>
+                <input onClick={handleChange} type="radio" name="leaseType" value="YEARLY"/>
                 <span className="radio-checkmark"></span>
             </label>
             </div>

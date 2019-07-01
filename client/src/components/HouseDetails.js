@@ -1,10 +1,10 @@
 import React from 'react';
 import Sliders from './carousel';
-import { Address, Rating, Price, Description, Comment } from './HouseInfos';
+import { Address, Rating, Price, Description } from './HouseInfos';
 import HeaderBar from './HeaderBar';
 import HouseMap from './HouseMap';
 
-function HouseDetails(props) {
+const HouseDetails = props =>{
     return (
         <div>
             <HeaderBar title="Detay Sou Kay La" hasBack={true} />
@@ -22,7 +22,6 @@ function HouseDetails(props) {
                 <Address value="Fermathe 52,rue Puzot #2" />
                 <HouseMap lng={-155.74919} lat={48.24816} zoom={1} />
                 <Description desciptionInfo={["3 chanm akouche", "1 salon", "1 sal a manje", " 2 douch"].join(", ")} klasmans={["stars", "stars"]} />
-                {/* <Comment /> */}
             </div>
         </div>
 

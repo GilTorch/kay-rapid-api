@@ -6,7 +6,7 @@ const HeaderBar=({ title,hasBack })=>{
     return(
         <header className="header-bar">
             {
-                hasBack==true ?
+                hasBack===true ?
                 <Link to="/">
                     <span className="header-bar-previous-page-button"></span>
                 </Link>:""

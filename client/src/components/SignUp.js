@@ -1,5 +1,4 @@
 import React from 'react';
-import { toast } from 'react-toastify';
 import { graphql, Mutation, compose } from 'react-apollo';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { ACCOUNT_CREATION, AUTH_WITHOUT_SOCIAL_MEDIA, WRITE_AUTH_INFO } from '../queries/queries';
@@ -9,7 +8,6 @@ import ImageSelect from './ImageSelect';
 import * as yup from 'yup';
 import Loading from './Loading';
 import Close from './Close';
-import NoProfile from '../images/no-profile.png';
 import { alertMessages } from '../utils/AlertMessages';
 import Error from './Error';
 
@@ -91,7 +89,7 @@ class SignUp extends React.Component {
 
     render() {
 
-        const { profilePicture, password, passwordConfirm } = this.state;
+        let { profilePicture, password, passwordConfirm } = this.state;
         const { handleProfileImage, handlePasswordVisibleState, isCorrect } = this;
         const { history, signIn, writeUserAuthInfoToCache } = this.props;
 
@@ -110,8 +108,6 @@ class SignUp extends React.Component {
                         }}
 
                         onSubmit={async (values, { setSubmitting }) => {
-
-                            let profilePicture = this.state.profilePicture;
                             if (profilePicture) {
                                 await uploadImage([profilePicture], "profilePicture", (label, response) => {
                                     profilePicture = response.secure_url;
@@ -159,7 +155,6 @@ class SignUp extends React.Component {
                         }) => (
                                 <div className="stack-screen account-creation-screen">
                                     <Close history={this.props.history} />
-                                    {console.log(error, loading)}
                                     {error && alert.error(alertMessages.errors.general, { containerId: 'A' }) && null}
                                     {loading && (<Loading />)}
                                     <form onSubmit={handleSubmit} className="account-creation-screen__form">

@@ -1,19 +1,14 @@
 import React from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-
 import Navigation from '../components/Navigation';
 import HeaderBar from '../components/HeaderBar';
 import Authentication from '../components/Authentication';
-
-import { graphql,Query } from 'react-apollo';
+import { Query } from 'react-apollo';
 import { READ_AUTH_INFO } from '../queries/queries';
 import UserInfo from '../components/UserInfo';
 
 import "../css/profile.css";
 
 import Loading from '../components/Loading';
-
-import notify from '../utils/notify';
 
 const Profile=()=>(            
     <Query query={READ_AUTH_INFO}>

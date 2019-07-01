@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link, BrowserRouter as Router,Route} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import NavigationButton from './NavigationButton';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
@@ -24,13 +24,13 @@ const Navigation=({ currentPage })=>{
     return(
         <NavigationStyles>
             <Link to="/">
-                <NavigationButton highlighted={currentPage=="home"?true:false} name="Akey" iconName="home"/>
+                <NavigationButton highlighted={currentPage==="home"?true:false} name="Akey" iconName="home"/>
             </Link>
             <Link to="/favorites">                                                                                
-                <NavigationButton highlighted={currentPage=="favorites"?true:false} name="Favori" iconName="heart"/>
+                <NavigationButton highlighted={currentPage==="favorites"?true:false} name="Favori" iconName="heart"/>
             </Link>
             <Link to="/profile">                                                                                   
-                <NavigationButton highlighted={currentPage=="profile"?true:false} name="Pwofil" iconName="user"/>
+                <NavigationButton highlighted={currentPage==="profile"?true:false} name="Pwofil" iconName="user"/>
             </Link>
         </NavigationStyles>
     )
