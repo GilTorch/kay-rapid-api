@@ -22,22 +22,41 @@ export const auth = {
   //signup mutation which return token and user
   async signup(parent, args, context: Context, info) {
     const password = await bcrypt.hash(args.password, 10);
-    const user = await context.prisma.createUser( {
-      ...args,
-      password,
-      profilePicture: {
-        create: {
-          url: args.profilePicture
+    console.log(process.env.PROFILE_PICTURE_ID)
+    let user = null;
+    if (args.profilePicture) {
+      user = await context.prisma.createUser( {
+        ...args,
+        password,
+        profilePicture: {
+          create: {
+            url: args.profilePicture
+          }
+        },
+        permissions:{
+          set: ['STANDARD']
         }
-      },
-      permissions:{
-        set: ['STANDARD']
       }
+    )
+    } else {
+      user = await context.prisma.createUser( {
+        ...args,
+        password,
+        profilePicture: {
+          connect: {
+            id: process.env.PROFILE_PICTURE_ID
+          }
+        },
+        permissions:{
+          set: ['STANDARD']
+        }
+      }
+    )
     }
-  );
+  
     console.log(APP_SECRET)
     return {
-      token: jwt.sign({ userId: user.id }, APP_SECRET), //"prismaDbdev123"),
+      token: jwt.sign({ userId: user.id },process.env.APP_SECRET), //"prismaDbdev123"),
       user
     };
   },
@@ -58,9 +77,10 @@ export const auth = {
     if (!user.status) {
       throw new AuthError();
     }
-
+    console.log(process.env.APP_SECRET)
+    console.log(user)
     return {
-      token: jwt.sign({ userId: user.id }, APP_SECRET),
+      token: jwt.sign({ userId: user.id }, process.env.APP_SECRET),
       user
     };
   },

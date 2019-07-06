@@ -1,4 +1,4 @@
-# import  RoomCreateWithoutHouseInput,Room,PictureCreateInput, State, Country , House , Commune, City from "./generated/prisma.graphql"
+# import  RoomCreateWithoutHouseInput,Room,PictureCreateInput, State, Country , House , Commune, City, User from "./generated/prisma.graphql"
 
 
 type Query {
