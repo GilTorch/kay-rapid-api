@@ -115,7 +115,9 @@ export const HOUSE_CREATION=gql`
     $elevator:Boolean,
     $petsAllowed:Boolean,
     $internet:Boolean,
-    $kitchen:Boolean,
+    $kitchen:Boolean,     kitchen,
+                                            wirelessInternet,
+                                        
     $wirelessInternet:Boolean,
     $familyKidFriendly:Boolean,
     $freeParkingOnPremises:Boolean,

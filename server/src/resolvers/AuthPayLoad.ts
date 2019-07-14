@@ -7,7 +7,8 @@ export const AuthPayLoad = {
   token: ({ token }, args, context: Context) => {
     return token;
   },
-  user: ({ user: { id } }, args, context: Context) => {
-    return context.prisma.user({ id });
-  }
-};
+  user: ({ user}, args, context: Context,info) => {
+    return context.prisma.user({id : user.id});
+  },
+}
+ 

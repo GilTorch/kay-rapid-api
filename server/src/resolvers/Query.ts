@@ -37,7 +37,10 @@ export const Query = {
         first: c
       }
     );
-  },
+  }
+
+
+  
   // me(parent, args, context:Context){
   //   if (!getUserId()) {
       
