@@ -73,7 +73,7 @@ const stateLink = withClientState({
     defaults:defaultState
 })
 const httpLink=createHttpLink({
-    uri: process.env.REACT_APP_BACKEND_ENDPOINT
+    uri: "https://kayrapid-backend.herokuapp.com"
 })
 
 // const authLink = setContext((_, { headers }) => {

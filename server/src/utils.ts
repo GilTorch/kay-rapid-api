@@ -2,7 +2,7 @@ import * as jwt from "jsonwebtoken";
 import { Prisma } from "./generated/prisma-client";
 
 //app secret from env file
-const APP_SECRET = process.env.APP_SECRET
+const APP_SECRET = "prismaDbdev123"
 
 export {APP_SECRET};
 //Prisma Datababe Layer db instance

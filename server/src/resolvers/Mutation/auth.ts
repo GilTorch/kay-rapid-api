@@ -21,21 +21,23 @@ interface Status {
 export const auth = {
   //signup mutation which return token and user
   async signup(parent, args, context: Context, info) {
+
     const password = await bcrypt.hash(args.password, 10);
-    const user = await context.prisma.createUser( {
+    let user = await context.prisma.createUser( {
       ...args,
       password,
       profilePicture: {
-        create: {
-          url: args.profilePicture
-        }
-      },
+          create: {
+            url: args.profilePicture
+          }
+        },
       permissions:{
         set: ['STANDARD']
       }
-    }
-  );
-    console.log(APP_SECRET)
+    });
+
+    console.log("THIS IS THE USER: "+JSON.stringify(user));
+
     return {
       token: jwt.sign({ userId: user.id }, APP_SECRET), //"prismaDbdev123"),
       user

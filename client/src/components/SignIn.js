@@ -27,102 +27,96 @@ const style = {
 }
 
 
-const SignIn = ({ writeUserAuthInfoToCache, history }) => {
-    return (
-        <Mutation mutation={AUTH_WITHOUT_SOCIAL_MEDIA}>
-            {(login, { loading, error }) => (
-                <>  
-                    {error && alert.error(alertMessages.errors.general) && null}
-                    {loading && (<Loading/>)}
-                    <Formik
-                        validationSchema={schema}
-                        initialValues={{
-                            email: "",
-                            password: ""
-                        }}
-                        onSubmit={(values, { setSubmitting }) => {
-                            login({
-                                variables: { email: values.email, password: values.password },
-                                update: (store, { data: { login } }) => {
-                                    let userObject = {
-                                        __typename: "UserAuthInfo",
-                                        id: login.user.id,
-                                        token: login.token,
-                                        firstName: login.user.firstName,
-                                        lastName: login.user.lastName,
-                                        email: login.user.email,
-                                        profilePicture: login.user.profilePicture.url
-                                    };
-                                    setSubmitting(false)
-                                    writeUserAuthInfoToCache({ variables: { userAuthInfo: userObject } });
-                                }
-                            }).then(() => { history.push('/profile') })
-                        }}
-                    >
-                        {({
-                            handleBlur,
-                            handleChange,
-                            handleSubmit,
-                            errors,
-                            isSubmitting,
-                            touched,
-                            values
-                        }) => (
-                                <div className="stack-screen signin-without-socialmedia-screen">
-                                    {isSubmitting ? <Loading /> : null}
-                                    <Close history={history} />
-                                    <form
-                                        onSubmit={handleSubmit}
-                                        className="signin-without-socialmedia-screen__form"
-                                    >
-                                        {(loading) ? <Loading /> : ""}
-                                        {(error) ? console.log(error.message) : ""}
-                                        <div className="signin-without-socialmedia-screen__form-group">
-                                            <label className="signin-without-socialmedia-screen__label">Imèl</label>
-                                            <input
-                                                name="email"
-                                                onChange={handleChange}
-                                                onBlur={handleBlur}
-                                                type="email"
-                                                placeholder="Tanpri mete imel ou"
-                                                className="signin-without-socialmedia-screen__input"
-                                                value={values.email}
-                                            />
-                                            <div className="errors" style={errors.email ? style.errors : null}>
-                                                {errors.email}
-                                            </div>
+const SignIn = ({ writeUserAuthInfoToCache, history }) => (
+    <Mutation mutation={AUTH_WITHOUT_SOCIAL_MEDIA}>
+        {(login, { loading, error }) => (
+            <>
+                <Formik
+                    validationSchema={schema}
+                    initialValues={{
+                        email: "",
+                        password: ""
+                    }}
+                    onSubmit={(values, { setSubmitting }) => {
+                        login({
+                            variables: { email: values.email, password: values.password },
+                            update: (store, { data: { login } }) => {
+                                let userObject = {
+                                    __typename: "UserAuthInfo",
+                                    id: login.user.id,
+                                    token: login.token,
+                                    firstName: login.user.firstName,
+                                    lastName: login.user.lastName,
+                                    email: login.user.email,
+                                    profilePicture: login.user.profilePicture.url
+                                };
+                                setSubmitting(false)
+                                writeUserAuthInfoToCache({ variables: { userAuthInfo: userObject } });
+                            }
+                        }).then(() => { history.push('/profile') })
+                    }}
+                >
+                    {({
+                        handleBlur,
+                        handleChange,
+                        handleSubmit,
+                        errors,
+                        isSubmitting,
+                        touched,
+                        values
+                    }) => (
+                            <div className="stack-screen signin-without-socialmedia-screen">
+                                <Close history={history} />
+                                {error && alert.error(alertMessages.errors.general, { containerId: 'A' }) && null}
+                                {loading && (<Loading />)}                                    <form
+                                    onSubmit={handleSubmit}
+                                    className="signin-without-socialmedia-screen__form"
+                                >
+                                    <div className="signin-without-socialmedia-screen__form-group">
+                                        <label className="signin-without-socialmedia-screen__label">Imèl</label>
+                                        <input
+                                            name="email"
+                                            onChange={handleChange}
+                                            onBlur={handleBlur}
+                                            type="email"
+                                            placeholder="Tanpri mete imel ou"
+                                            className="signin-without-socialmedia-screen__input"
+                                            value={values.email}
+                                        />
+                                        <div className="errors" style={errors.email ? style.errors : null}>
+                                            {errors.email}
                                         </div>
-                                        <div className="signin-without-socialmedia-screen__form-group">
-                                            <label className="signin-without-socialmedia-screen__label">Modpas</label>
-                                            <input
-                                                name="password"
-                                                onChange={handleChange}
-                                                onBlur={handleBlur}
-                                                type="password"
-                                                placeholder="Tanpri mete modpas ou"
-                                                className="signin-without-socialmedia-screen__input"
-                                                value={values.password}
-                                            />
-                                            <div className="errors" style={errors.password ? style.errors : null}>
-                                                {errors.password}
-                                            </div>
+                                    </div>
+                                    <div className="signin-without-socialmedia-screen__form-group">
+                                        <label className="signin-without-socialmedia-screen__label">Modpas</label>
+                                        <input
+                                            name="password"
+                                            onChange={handleChange}
+                                            onBlur={handleBlur}
+                                            type="password"
+                                            placeholder="Tanpri mete modpas ou"
+                                            className="signin-without-socialmedia-screen__input"
+                                            value={values.password}
+                                        />
+                                        <div className="errors" style={errors.password ? style.errors : null}>
+                                            {errors.password}
                                         </div>
-                                        <div className="signin-without-socialmedia-screen__form-group">
-                                            <button className="auth-button success-button" type="submit">KONEKTE</button></div>
-                                        <div className="forgot-password-container">
-                                            <Link to="/authentication/forgot-password">
-                                                <p>Ou bliye modpas ou?</p>
-                                            </Link>
-                                        </div>
-                                    </form>
-                                </div>
-                            )}
-                    </Formik>
-                </>
-            )}
-        </Mutation>
-    )
-}
+                                    </div>
+                                    <div className="signin-without-socialmedia-screen__form-group">
+                                        <button className="auth-button success-button" type="submit">KONEKTE</button></div>
+                                    <div className="forgot-password-container">
+                                        <Link to="/authentication/forgot-password">
+                                            <p>Ou bliye modpas ou?</p>
+                                        </Link>
+                                    </div>
+                                </form>
+                            </div>
+                        )}
+                </Formik>
+            </>
+        )}
+    </Mutation>
+)
 
 export default compose(
     graphql(WRITE_AUTH_INFO, { name: "writeUserAuthInfoToCache" })

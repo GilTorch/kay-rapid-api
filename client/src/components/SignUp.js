@@ -108,6 +108,7 @@ class SignUp extends React.Component {
                         }}
 
                         onSubmit={async (values, { setSubmitting }) => {
+                            console.log(profilePicture);
                             if (profilePicture) {
                                 await uploadImage([profilePicture], "profilePicture", (label, response) => {
                                     profilePicture = response.secure_url;

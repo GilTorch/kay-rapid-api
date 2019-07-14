@@ -523,7 +523,7 @@ class AddHouse extends Component {
                                         })
 
 
-
+                                        age = 10;
                                         const obj = {
                                             area,
                                             age,
@@ -595,13 +595,13 @@ class AddHouse extends Component {
                                                 age,
                                                 shortDescription,
                                                 description,
-                                                maxGuests,
-                                                numBedrooms,
-                                                numBaths,
-                                                basePrice,
-                                                numLivingrooms,
-                                                numDiningrooms,
-                                                highestPrice,
+                                                maxGuests:parseInt(maxGuests),
+                                                numBedrooms:parseInt(numBedrooms),
+                                                numBaths:parseInt(numBaths),
+                                                basePrice:parseInt(basePrice),
+                                                numLivingrooms:parseInt(numLivingrooms),
+                                                numDiningrooms:parseInt(numDiningrooms),
+                                                highestPrice:parseInt(highestPrice),
                                                 currency,
                                                 income,
                                                 lat,
