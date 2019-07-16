@@ -34,7 +34,7 @@ export const auth = {
           }
         },
         permissions:{
-          set: ['STANDARD']
+          set: ['STANDARD','ITEMCREATE']
         }
       }
     )
@@ -42,13 +42,8 @@ export const auth = {
       user = await context.prisma.createUser( {
         ...args,
         password,
-        profilePicture: {
-          connect: {
-            id: process.env.PROFILE_PICTURE_ID
-          }
-        },
         permissions:{
-          set: ['STANDARD']
+          set: ['STANDARD','ITEMCREATE']
         }
       }
     )

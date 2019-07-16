@@ -44,6 +44,9 @@ export const resolvers = {
     pictures(parent){
       return prisma.house({id: parent.id}).pictures()
     },
+    preview_image(parent){
+      return prisma.house({id: parent.id}).preview_image()
+    },
 
   }
 };
