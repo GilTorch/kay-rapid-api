@@ -1693,6 +1693,9 @@ export interface HouseWhereInput {
   bookings_every?: Maybe<BookingWhereInput>;
   bookings_some?: Maybe<BookingWhereInput>;
   bookings_none?: Maybe<BookingWhereInput>;
+  pictures_every?: Maybe<PictureWhereInput>;
+  pictures_some?: Maybe<PictureWhereInput>;
+  pictures_none?: Maybe<PictureWhereInput>;
   contactInfoPayments_every?: Maybe<PaymentLanlordInfoWhereInput>;
   contactInfoPayments_some?: Maybe<PaymentLanlordInfoWhereInput>;
   contactInfoPayments_none?: Maybe<PaymentLanlordInfoWhereInput>;
@@ -3306,6 +3309,7 @@ export interface HouseCreateWithoutAmenitiesInput {
   rooms?: Maybe<RoomCreateManyWithoutHouseInput>;
   views?: Maybe<ViewsCreateOneWithoutHouseInput>;
   bookings?: Maybe<BookingCreateManyWithoutHouseInput>;
+  pictures?: Maybe<PictureCreateManyInput>;
   contactInfoPayments?: Maybe<PaymentLanlordInfoCreateManyWithoutHouseInput>;
   popularity?: Maybe<Int>;
   preview_image?: Maybe<PictureCreateOneInput>;
@@ -3459,6 +3463,7 @@ export interface HouseCreateWithoutBookingsInput {
   lease: Int;
   rooms?: Maybe<RoomCreateManyWithoutHouseInput>;
   views?: Maybe<ViewsCreateOneWithoutHouseInput>;
+  pictures?: Maybe<PictureCreateManyInput>;
   contactInfoPayments?: Maybe<PaymentLanlordInfoCreateManyWithoutHouseInput>;
   popularity?: Maybe<Int>;
   preview_image?: Maybe<PictureCreateOneInput>;
@@ -3624,6 +3629,7 @@ export interface HouseCreateWithoutHostInput {
   rooms?: Maybe<RoomCreateManyWithoutHouseInput>;
   views?: Maybe<ViewsCreateOneWithoutHouseInput>;
   bookings?: Maybe<BookingCreateManyWithoutHouseInput>;
+  pictures?: Maybe<PictureCreateManyInput>;
   contactInfoPayments?: Maybe<PaymentLanlordInfoCreateManyWithoutHouseInput>;
   popularity?: Maybe<Int>;
   preview_image?: Maybe<PictureCreateOneInput>;
@@ -3718,6 +3724,7 @@ export interface HouseCreateWithoutContactInfoPaymentsInput {
   rooms?: Maybe<RoomCreateManyWithoutHouseInput>;
   views?: Maybe<ViewsCreateOneWithoutHouseInput>;
   bookings?: Maybe<BookingCreateManyWithoutHouseInput>;
+  pictures?: Maybe<PictureCreateManyInput>;
   popularity?: Maybe<Int>;
   preview_image?: Maybe<PictureCreateOneInput>;
 }
@@ -3919,6 +3926,7 @@ export interface HouseUpdateWithoutAmenitiesDataInput {
   rooms?: Maybe<RoomUpdateManyWithoutHouseInput>;
   views?: Maybe<ViewsUpdateOneWithoutHouseInput>;
   bookings?: Maybe<BookingUpdateManyWithoutHouseInput>;
+  pictures?: Maybe<PictureUpdateManyInput>;
   contactInfoPayments?: Maybe<PaymentLanlordInfoUpdateManyWithoutHouseInput>;
   popularity?: Maybe<Int>;
   preview_image?: Maybe<PictureUpdateOneInput>;
@@ -4267,6 +4275,7 @@ export interface HouseUpdateWithoutBookingsDataInput {
   lease?: Maybe<Int>;
   rooms?: Maybe<RoomUpdateManyWithoutHouseInput>;
   views?: Maybe<ViewsUpdateOneWithoutHouseInput>;
+  pictures?: Maybe<PictureUpdateManyInput>;
   contactInfoPayments?: Maybe<PaymentLanlordInfoUpdateManyWithoutHouseInput>;
   popularity?: Maybe<Int>;
   preview_image?: Maybe<PictureUpdateOneInput>;
@@ -4735,6 +4744,7 @@ export interface HouseUpdateWithoutHostDataInput {
   rooms?: Maybe<RoomUpdateManyWithoutHouseInput>;
   views?: Maybe<ViewsUpdateOneWithoutHouseInput>;
   bookings?: Maybe<BookingUpdateManyWithoutHouseInput>;
+  pictures?: Maybe<PictureUpdateManyInput>;
   contactInfoPayments?: Maybe<PaymentLanlordInfoUpdateManyWithoutHouseInput>;
   popularity?: Maybe<Int>;
   preview_image?: Maybe<PictureUpdateOneInput>;
@@ -4879,6 +4889,7 @@ export interface HouseUpdateWithoutContactInfoPaymentsDataInput {
   rooms?: Maybe<RoomUpdateManyWithoutHouseInput>;
   views?: Maybe<ViewsUpdateOneWithoutHouseInput>;
   bookings?: Maybe<BookingUpdateManyWithoutHouseInput>;
+  pictures?: Maybe<PictureUpdateManyInput>;
   popularity?: Maybe<Int>;
   preview_image?: Maybe<PictureUpdateOneInput>;
 }
@@ -6103,6 +6114,7 @@ export interface HouseCreateInput {
   rooms?: Maybe<RoomCreateManyWithoutHouseInput>;
   views?: Maybe<ViewsCreateOneWithoutHouseInput>;
   bookings?: Maybe<BookingCreateManyWithoutHouseInput>;
+  pictures?: Maybe<PictureCreateManyInput>;
   contactInfoPayments?: Maybe<PaymentLanlordInfoCreateManyWithoutHouseInput>;
   popularity?: Maybe<Int>;
   preview_image?: Maybe<PictureCreateOneInput>;
@@ -6131,6 +6143,7 @@ export interface HouseUpdateInput {
   rooms?: Maybe<RoomUpdateManyWithoutHouseInput>;
   views?: Maybe<ViewsUpdateOneWithoutHouseInput>;
   bookings?: Maybe<BookingUpdateManyWithoutHouseInput>;
+  pictures?: Maybe<PictureUpdateManyInput>;
   contactInfoPayments?: Maybe<PaymentLanlordInfoUpdateManyWithoutHouseInput>;
   popularity?: Maybe<Int>;
   preview_image?: Maybe<PictureUpdateOneInput>;
@@ -6200,6 +6213,7 @@ export interface HouseUpdateDataInput {
   rooms?: Maybe<RoomUpdateManyWithoutHouseInput>;
   views?: Maybe<ViewsUpdateOneWithoutHouseInput>;
   bookings?: Maybe<BookingUpdateManyWithoutHouseInput>;
+  pictures?: Maybe<PictureUpdateManyInput>;
   contactInfoPayments?: Maybe<PaymentLanlordInfoUpdateManyWithoutHouseInput>;
   popularity?: Maybe<Int>;
   preview_image?: Maybe<PictureUpdateOneInput>;
@@ -6476,6 +6490,7 @@ export interface HouseCreateWithoutPricingInput {
   rooms?: Maybe<RoomCreateManyWithoutHouseInput>;
   views?: Maybe<ViewsCreateOneWithoutHouseInput>;
   bookings?: Maybe<BookingCreateManyWithoutHouseInput>;
+  pictures?: Maybe<PictureCreateManyInput>;
   contactInfoPayments?: Maybe<PaymentLanlordInfoCreateManyWithoutHouseInput>;
   popularity?: Maybe<Int>;
   preview_image?: Maybe<PictureCreateOneInput>;
@@ -6518,6 +6533,7 @@ export interface HouseUpdateWithoutPricingDataInput {
   rooms?: Maybe<RoomUpdateManyWithoutHouseInput>;
   views?: Maybe<ViewsUpdateOneWithoutHouseInput>;
   bookings?: Maybe<BookingUpdateManyWithoutHouseInput>;
+  pictures?: Maybe<PictureUpdateManyInput>;
   contactInfoPayments?: Maybe<PaymentLanlordInfoUpdateManyWithoutHouseInput>;
   popularity?: Maybe<Int>;
   preview_image?: Maybe<PictureUpdateOneInput>;
@@ -6575,6 +6591,7 @@ export interface HouseCreateWithoutReviewsInput {
   rooms?: Maybe<RoomCreateManyWithoutHouseInput>;
   views?: Maybe<ViewsCreateOneWithoutHouseInput>;
   bookings?: Maybe<BookingCreateManyWithoutHouseInput>;
+  pictures?: Maybe<PictureCreateManyInput>;
   contactInfoPayments?: Maybe<PaymentLanlordInfoCreateManyWithoutHouseInput>;
   popularity?: Maybe<Int>;
   preview_image?: Maybe<PictureCreateOneInput>;
@@ -6620,6 +6637,7 @@ export interface HouseUpdateWithoutReviewsDataInput {
   rooms?: Maybe<RoomUpdateManyWithoutHouseInput>;
   views?: Maybe<ViewsUpdateOneWithoutHouseInput>;
   bookings?: Maybe<BookingUpdateManyWithoutHouseInput>;
+  pictures?: Maybe<PictureUpdateManyInput>;
   contactInfoPayments?: Maybe<PaymentLanlordInfoUpdateManyWithoutHouseInput>;
   popularity?: Maybe<Int>;
   preview_image?: Maybe<PictureUpdateOneInput>;
@@ -6676,6 +6694,7 @@ export interface HouseCreateWithoutRoomsInput {
   lease: Int;
   views?: Maybe<ViewsCreateOneWithoutHouseInput>;
   bookings?: Maybe<BookingCreateManyWithoutHouseInput>;
+  pictures?: Maybe<PictureCreateManyInput>;
   contactInfoPayments?: Maybe<PaymentLanlordInfoCreateManyWithoutHouseInput>;
   popularity?: Maybe<Int>;
   preview_image?: Maybe<PictureCreateOneInput>;
@@ -6717,6 +6736,7 @@ export interface HouseUpdateWithoutRoomsDataInput {
   lease?: Maybe<Int>;
   views?: Maybe<ViewsUpdateOneWithoutHouseInput>;
   bookings?: Maybe<BookingUpdateManyWithoutHouseInput>;
+  pictures?: Maybe<PictureUpdateManyInput>;
   contactInfoPayments?: Maybe<PaymentLanlordInfoUpdateManyWithoutHouseInput>;
   popularity?: Maybe<Int>;
   preview_image?: Maybe<PictureUpdateOneInput>;
@@ -6825,6 +6845,7 @@ export interface HouseCreateWithoutViewsInput {
   lease: Int;
   rooms?: Maybe<RoomCreateManyWithoutHouseInput>;
   bookings?: Maybe<BookingCreateManyWithoutHouseInput>;
+  pictures?: Maybe<PictureCreateManyInput>;
   contactInfoPayments?: Maybe<PaymentLanlordInfoCreateManyWithoutHouseInput>;
   popularity?: Maybe<Int>;
   preview_image?: Maybe<PictureCreateOneInput>;
@@ -6865,6 +6886,7 @@ export interface HouseUpdateWithoutViewsDataInput {
   lease?: Maybe<Int>;
   rooms?: Maybe<RoomUpdateManyWithoutHouseInput>;
   bookings?: Maybe<BookingUpdateManyWithoutHouseInput>;
+  pictures?: Maybe<PictureUpdateManyInput>;
   contactInfoPayments?: Maybe<PaymentLanlordInfoUpdateManyWithoutHouseInput>;
   popularity?: Maybe<Int>;
   preview_image?: Maybe<PictureUpdateOneInput>;
@@ -7461,6 +7483,15 @@ export interface HousePromise extends Promise<House>, Fragmentable {
     first?: Int;
     last?: Int;
   }) => T;
+  pictures: <T = FragmentableArray<Picture>>(args?: {
+    where?: PictureWhereInput;
+    orderBy?: PictureOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => T;
   contactInfoPayments: <T = FragmentableArray<PaymentLanlordInfo>>(args?: {
     where?: PaymentLanlordInfoWhereInput;
     orderBy?: PaymentLanlordInfoOrderByInput;
@@ -7520,6 +7551,15 @@ export interface HouseSubscription
   bookings: <T = Promise<AsyncIterator<BookingSubscription>>>(args?: {
     where?: BookingWhereInput;
     orderBy?: BookingOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => T;
+  pictures: <T = Promise<AsyncIterator<PictureSubscription>>>(args?: {
+    where?: PictureWhereInput;
+    orderBy?: PictureOrderByInput;
     skip?: Int;
     after?: String;
     before?: String;
@@ -7587,6 +7627,15 @@ export interface HouseNullablePromise
   bookings: <T = FragmentableArray<Booking>>(args?: {
     where?: BookingWhereInput;
     orderBy?: BookingOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => T;
+  pictures: <T = FragmentableArray<Picture>>(args?: {
+    where?: PictureWhereInput;
+    orderBy?: PictureOrderByInput;
     skip?: Int;
     after?: String;
     before?: String;

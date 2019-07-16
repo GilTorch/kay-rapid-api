@@ -16,7 +16,7 @@ export function getUserId(context: Context) {
   const Authorization = context.request.get("Authorization");
   if (Authorization) {
     const token = Authorization.replace("Bearer ", "");
-    const { userId } = jwt.verify(token, APP_SECRET) as {
+    const { userId } = jwt.verify(token, process.env.APP_SECRET) as {
       userId: string;
     };
     return userId;
@@ -26,6 +26,12 @@ export function getUserId(context: Context) {
 }
 
 export function hasPermission(user, permissionsNeeded){
+  // console.log('==========================')
+  // console.log(user)
+  // console.log('==========================')
+  // let t = user.permissions
+  // console.log(t)
+  // console.log('==========================')
   const matchedPermissions = user.permissions.filter(
     userPermission => permissionsNeeded.includes(userPermission)
   )

@@ -21,6 +21,29 @@ export const resolvers = {
       },
     ownedHouses(parent){
       return prisma.user({id:parent.id}).ownedHouses()
+    },
+    permissions(parent){
+      return prisma.user({id:parent.id}).permissions()
     }
-}
+  },
+  Commune:{
+    city(parent){
+      return prisma.commune({id:parent.id}).city()
+    }
+  },
+  House:{
+    host(parent){
+      return prisma.house({id: parent.id}).host()
+    },
+    rooms(parent){
+      return prisma.house({id: parent.id}).rooms()
+    },
+    bookings(parent){
+      return prisma.house({id: parent.id}).bookings()
+    },
+    pictures(parent){
+      return prisma.house({id: parent.id}).pictures()
+    },
+
+  }
 };

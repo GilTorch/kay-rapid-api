@@ -39,7 +39,8 @@ export const CustomMutation = {
     if(!userId){
       throw new Error('You must be logged in')
     } 
-    hasPermission(context.prisma.$exists.user({ id: userId}),['ADMIN','LANDLORD','PERMISSIONUPDATE','ITEMCREATE'])
+     let x = await context.prisma.user({id : userId})
+     hasPermission(x,['ADMIN','LANDLORD','PERMISSIONUPDATE','ITEMCREATE'])
     return context.prisma.createHouse(
       {
           area: args.area,

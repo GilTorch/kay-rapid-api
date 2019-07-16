@@ -39,7 +39,7 @@ type House {
   amenities: Amenities! @relation(link: INLINE)
   host: User!
   pricing: Pricing! @relation(link: INLINE)
-  location: Location!
+  location: Location! 
   leaseType: HOUSE_LEASE_TYPE
   verified: Boolean! @default(value: false)
   type: HOUSE_TYPES
@@ -48,10 +48,10 @@ type House {
   rooms: [Room!]!
   views: Views @relation(link: INLINE)
   bookings: [Booking!]!
-  #pictures: [Picture!]!
+  pictures: [Picture!]! @relation(name: "HousePictures")
   contactInfoPayments: [PaymentLanlordInfo!]!
   popularity: Int! @default(value: 0)
-  preview_image: Picture
+  preview_image: Picture @relation(name: "HousePicturePreview")
   createdAt: DateTime! @createdAt
   updatedAt: DateTime! @updatedAt
 }
@@ -132,7 +132,7 @@ type Country {
 
 type Picture {
   id: ID! @id @unique
-  url: String!
+  url: String! 
   createdAt: DateTime! @createdAt
   updatedAt: DateTime! @updatedAt
 }

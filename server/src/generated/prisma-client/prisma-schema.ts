@@ -1780,6 +1780,7 @@ type House {
   rooms(where: RoomWhereInput, orderBy: RoomOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Room!]
   views: Views
   bookings(where: BookingWhereInput, orderBy: BookingOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Booking!]
+  pictures(where: PictureWhereInput, orderBy: PictureOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Picture!]
   contactInfoPayments(where: PaymentLanlordInfoWhereInput, orderBy: PaymentLanlordInfoOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [PaymentLanlordInfo!]
   popularity: Int!
   preview_image: Picture
@@ -1939,6 +1940,7 @@ input HouseCreateInput {
   rooms: RoomCreateManyWithoutHouseInput
   views: ViewsCreateOneWithoutHouseInput
   bookings: BookingCreateManyWithoutHouseInput
+  pictures: PictureCreateManyInput
   contactInfoPayments: PaymentLanlordInfoCreateManyWithoutHouseInput
   popularity: Int
   preview_image: PictureCreateOneInput
@@ -2012,6 +2014,7 @@ input HouseCreateWithoutAmenitiesInput {
   rooms: RoomCreateManyWithoutHouseInput
   views: ViewsCreateOneWithoutHouseInput
   bookings: BookingCreateManyWithoutHouseInput
+  pictures: PictureCreateManyInput
   contactInfoPayments: PaymentLanlordInfoCreateManyWithoutHouseInput
   popularity: Int
   preview_image: PictureCreateOneInput
@@ -2040,6 +2043,7 @@ input HouseCreateWithoutBookingsInput {
   lease: Int!
   rooms: RoomCreateManyWithoutHouseInput
   views: ViewsCreateOneWithoutHouseInput
+  pictures: PictureCreateManyInput
   contactInfoPayments: PaymentLanlordInfoCreateManyWithoutHouseInput
   popularity: Int
   preview_image: PictureCreateOneInput
@@ -2069,6 +2073,7 @@ input HouseCreateWithoutContactInfoPaymentsInput {
   rooms: RoomCreateManyWithoutHouseInput
   views: ViewsCreateOneWithoutHouseInput
   bookings: BookingCreateManyWithoutHouseInput
+  pictures: PictureCreateManyInput
   popularity: Int
   preview_image: PictureCreateOneInput
 }
@@ -2096,6 +2101,7 @@ input HouseCreateWithoutHostInput {
   rooms: RoomCreateManyWithoutHouseInput
   views: ViewsCreateOneWithoutHouseInput
   bookings: BookingCreateManyWithoutHouseInput
+  pictures: PictureCreateManyInput
   contactInfoPayments: PaymentLanlordInfoCreateManyWithoutHouseInput
   popularity: Int
   preview_image: PictureCreateOneInput
@@ -2124,6 +2130,7 @@ input HouseCreateWithoutPricingInput {
   rooms: RoomCreateManyWithoutHouseInput
   views: ViewsCreateOneWithoutHouseInput
   bookings: BookingCreateManyWithoutHouseInput
+  pictures: PictureCreateManyInput
   contactInfoPayments: PaymentLanlordInfoCreateManyWithoutHouseInput
   popularity: Int
   preview_image: PictureCreateOneInput
@@ -2152,6 +2159,7 @@ input HouseCreateWithoutReviewsInput {
   rooms: RoomCreateManyWithoutHouseInput
   views: ViewsCreateOneWithoutHouseInput
   bookings: BookingCreateManyWithoutHouseInput
+  pictures: PictureCreateManyInput
   contactInfoPayments: PaymentLanlordInfoCreateManyWithoutHouseInput
   popularity: Int
   preview_image: PictureCreateOneInput
@@ -2180,6 +2188,7 @@ input HouseCreateWithoutRoomsInput {
   lease: Int!
   views: ViewsCreateOneWithoutHouseInput
   bookings: BookingCreateManyWithoutHouseInput
+  pictures: PictureCreateManyInput
   contactInfoPayments: PaymentLanlordInfoCreateManyWithoutHouseInput
   popularity: Int
   preview_image: PictureCreateOneInput
@@ -2208,6 +2217,7 @@ input HouseCreateWithoutViewsInput {
   lease: Int!
   rooms: RoomCreateManyWithoutHouseInput
   bookings: BookingCreateManyWithoutHouseInput
+  pictures: PictureCreateManyInput
   contactInfoPayments: PaymentLanlordInfoCreateManyWithoutHouseInput
   popularity: Int
   preview_image: PictureCreateOneInput
@@ -2469,6 +2479,7 @@ input HouseUpdateDataInput {
   rooms: RoomUpdateManyWithoutHouseInput
   views: ViewsUpdateOneWithoutHouseInput
   bookings: BookingUpdateManyWithoutHouseInput
+  pictures: PictureUpdateManyInput
   contactInfoPayments: PaymentLanlordInfoUpdateManyWithoutHouseInput
   popularity: Int
   preview_image: PictureUpdateOneInput
@@ -2497,6 +2508,7 @@ input HouseUpdateInput {
   rooms: RoomUpdateManyWithoutHouseInput
   views: ViewsUpdateOneWithoutHouseInput
   bookings: BookingUpdateManyWithoutHouseInput
+  pictures: PictureUpdateManyInput
   contactInfoPayments: PaymentLanlordInfoUpdateManyWithoutHouseInput
   popularity: Int
   preview_image: PictureUpdateOneInput
@@ -2633,6 +2645,7 @@ input HouseUpdateWithoutAmenitiesDataInput {
   rooms: RoomUpdateManyWithoutHouseInput
   views: ViewsUpdateOneWithoutHouseInput
   bookings: BookingUpdateManyWithoutHouseInput
+  pictures: PictureUpdateManyInput
   contactInfoPayments: PaymentLanlordInfoUpdateManyWithoutHouseInput
   popularity: Int
   preview_image: PictureUpdateOneInput
@@ -2660,6 +2673,7 @@ input HouseUpdateWithoutBookingsDataInput {
   lease: Int
   rooms: RoomUpdateManyWithoutHouseInput
   views: ViewsUpdateOneWithoutHouseInput
+  pictures: PictureUpdateManyInput
   contactInfoPayments: PaymentLanlordInfoUpdateManyWithoutHouseInput
   popularity: Int
   preview_image: PictureUpdateOneInput
@@ -2688,6 +2702,7 @@ input HouseUpdateWithoutContactInfoPaymentsDataInput {
   rooms: RoomUpdateManyWithoutHouseInput
   views: ViewsUpdateOneWithoutHouseInput
   bookings: BookingUpdateManyWithoutHouseInput
+  pictures: PictureUpdateManyInput
   popularity: Int
   preview_image: PictureUpdateOneInput
 }
@@ -2714,6 +2729,7 @@ input HouseUpdateWithoutHostDataInput {
   rooms: RoomUpdateManyWithoutHouseInput
   views: ViewsUpdateOneWithoutHouseInput
   bookings: BookingUpdateManyWithoutHouseInput
+  pictures: PictureUpdateManyInput
   contactInfoPayments: PaymentLanlordInfoUpdateManyWithoutHouseInput
   popularity: Int
   preview_image: PictureUpdateOneInput
@@ -2741,6 +2757,7 @@ input HouseUpdateWithoutPricingDataInput {
   rooms: RoomUpdateManyWithoutHouseInput
   views: ViewsUpdateOneWithoutHouseInput
   bookings: BookingUpdateManyWithoutHouseInput
+  pictures: PictureUpdateManyInput
   contactInfoPayments: PaymentLanlordInfoUpdateManyWithoutHouseInput
   popularity: Int
   preview_image: PictureUpdateOneInput
@@ -2768,6 +2785,7 @@ input HouseUpdateWithoutReviewsDataInput {
   rooms: RoomUpdateManyWithoutHouseInput
   views: ViewsUpdateOneWithoutHouseInput
   bookings: BookingUpdateManyWithoutHouseInput
+  pictures: PictureUpdateManyInput
   contactInfoPayments: PaymentLanlordInfoUpdateManyWithoutHouseInput
   popularity: Int
   preview_image: PictureUpdateOneInput
@@ -2795,6 +2813,7 @@ input HouseUpdateWithoutRoomsDataInput {
   lease: Int
   views: ViewsUpdateOneWithoutHouseInput
   bookings: BookingUpdateManyWithoutHouseInput
+  pictures: PictureUpdateManyInput
   contactInfoPayments: PaymentLanlordInfoUpdateManyWithoutHouseInput
   popularity: Int
   preview_image: PictureUpdateOneInput
@@ -2822,6 +2841,7 @@ input HouseUpdateWithoutViewsDataInput {
   lease: Int
   rooms: RoomUpdateManyWithoutHouseInput
   bookings: BookingUpdateManyWithoutHouseInput
+  pictures: PictureUpdateManyInput
   contactInfoPayments: PaymentLanlordInfoUpdateManyWithoutHouseInput
   popularity: Int
   preview_image: PictureUpdateOneInput
@@ -3013,6 +3033,9 @@ input HouseWhereInput {
   bookings_every: BookingWhereInput
   bookings_some: BookingWhereInput
   bookings_none: BookingWhereInput
+  pictures_every: PictureWhereInput
+  pictures_some: PictureWhereInput
+  pictures_none: PictureWhereInput
   contactInfoPayments_every: PaymentLanlordInfoWhereInput
   contactInfoPayments_some: PaymentLanlordInfoWhereInput
   contactInfoPayments_none: PaymentLanlordInfoWhereInput
