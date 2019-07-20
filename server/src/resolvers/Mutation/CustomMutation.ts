@@ -241,7 +241,6 @@ export const CustomMutation = {
           id: args.idHouse
         }
         
-    //"graphql": "14.0.0",
       }})
       console.log(favoriteExists)
 
