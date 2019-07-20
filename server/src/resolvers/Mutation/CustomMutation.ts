@@ -226,8 +226,30 @@ export const CustomMutation = {
       }
     );
   },
-  createFavoriteHouse(parent, args, context: Context) {
-    return context.prisma.createHouse_Favorited(
+  async createFavoriteHouse(parent, args, context: Context) {
+    const userId = getUserId(context);
+    if(!userId){
+      throw new Error('You must be logged in')
+    } 
+    console.log(userId)
+    const [favoriteExists] = await context.prisma.houseFavoriteds({where:
+      {
+        user: {
+          id: userId
+        },
+        house:{
+          id: args.houseId
+        }
+        
+    //"graphql": "14.0.0",
+      }})
+      console.log(favoriteExists)
+
+      if (favoriteExists) {
+        throw new Error('house already in favorites');
+  } 
+    
+    return context.prisma.createHouseFavorited(
       {
           house: {
             connect: {
@@ -236,7 +258,7 @@ export const CustomMutation = {
           },
           user: {
             connect: {
-              id: args.idUser
+              id: userId
             }
           }
       }

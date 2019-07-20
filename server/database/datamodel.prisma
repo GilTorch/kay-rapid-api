@@ -214,7 +214,7 @@ type Booking {
   payment: PaymentHouse! @relation(link: INLINE)
 }
 
-type House_Favorited {
+type HouseFavorited {
   id: ID! @id @unique
   createdAt: DateTime! @createdAt
   updatedAt: DateTime! @updatedAt

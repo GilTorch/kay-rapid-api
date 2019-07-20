@@ -26,12 +26,6 @@ export function getUserId(context: Context) {
 }
 
 export function hasPermission(user, permissionsNeeded){
-  // console.log('==========================')
-  // console.log(user)
-  // console.log('==========================')
-  // let t = user.permissions
-  // console.log(t)
-  // console.log('==========================')
   const matchedPermissions = user.permissions.filter(
     userPermission => permissionsNeeded.includes(userPermission)
   )

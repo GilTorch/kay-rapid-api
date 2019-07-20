@@ -48,5 +48,13 @@ export const resolvers = {
       return prisma.house({id: parent.id}).preview_image()
     },
 
-  }
+  },
+  HouseFavorited:{
+    user(parent){
+      return prisma.houseFavorited({id:parent.id}).user()
+    },
+    house(parent){
+      return prisma.houseFavorited({id:parent.id}).house()
+    }
+  } 
 };

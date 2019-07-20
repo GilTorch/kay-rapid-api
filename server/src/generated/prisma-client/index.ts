@@ -25,7 +25,7 @@ export interface Exists {
     where?: CreditCardInformationWhereInput
   ) => Promise<boolean>;
   house: (where?: HouseWhereInput) => Promise<boolean>;
-  house_Favorited: (where?: House_FavoritedWhereInput) => Promise<boolean>;
+  houseFavorited: (where?: HouseFavoritedWhereInput) => Promise<boolean>;
   location: (where?: LocationWhereInput) => Promise<boolean>;
   negotiation: (where?: NegotiationWhereInput) => Promise<boolean>;
   notification: (where?: NotificationWhereInput) => Promise<boolean>;
@@ -200,26 +200,26 @@ export interface Prisma {
     last?: Int;
   }) => HouseConnectionPromise;
   houseFavorited: (
-    where: House_FavoritedWhereUniqueInput
-  ) => House_FavoritedNullablePromise;
+    where: HouseFavoritedWhereUniqueInput
+  ) => HouseFavoritedNullablePromise;
   houseFavoriteds: (args?: {
-    where?: House_FavoritedWhereInput;
-    orderBy?: House_FavoritedOrderByInput;
+    where?: HouseFavoritedWhereInput;
+    orderBy?: HouseFavoritedOrderByInput;
     skip?: Int;
     after?: String;
     before?: String;
     first?: Int;
     last?: Int;
-  }) => FragmentableArray<House_Favorited>;
+  }) => FragmentableArray<HouseFavorited>;
   houseFavoritedsConnection: (args?: {
-    where?: House_FavoritedWhereInput;
-    orderBy?: House_FavoritedOrderByInput;
+    where?: HouseFavoritedWhereInput;
+    orderBy?: HouseFavoritedOrderByInput;
     skip?: Int;
     after?: String;
     before?: String;
     first?: Int;
     last?: Int;
-  }) => House_FavoritedConnectionPromise;
+  }) => HouseFavoritedConnectionPromise;
   location: (where: LocationWhereUniqueInput) => LocationNullablePromise;
   locations: (args?: {
     where?: LocationWhereInput;
@@ -641,23 +641,23 @@ export interface Prisma {
   }) => HousePromise;
   deleteHouse: (where: HouseWhereUniqueInput) => HousePromise;
   deleteManyHouses: (where?: HouseWhereInput) => BatchPayloadPromise;
-  createHouse_Favorited: (
-    data: House_FavoritedCreateInput
-  ) => House_FavoritedPromise;
-  updateHouse_Favorited: (args: {
-    data: House_FavoritedUpdateInput;
-    where: House_FavoritedWhereUniqueInput;
-  }) => House_FavoritedPromise;
-  upsertHouse_Favorited: (args: {
-    where: House_FavoritedWhereUniqueInput;
-    create: House_FavoritedCreateInput;
-    update: House_FavoritedUpdateInput;
-  }) => House_FavoritedPromise;
-  deleteHouse_Favorited: (
-    where: House_FavoritedWhereUniqueInput
-  ) => House_FavoritedPromise;
-  deleteManyHouse_Favoriteds: (
-    where?: House_FavoritedWhereInput
+  createHouseFavorited: (
+    data: HouseFavoritedCreateInput
+  ) => HouseFavoritedPromise;
+  updateHouseFavorited: (args: {
+    data: HouseFavoritedUpdateInput;
+    where: HouseFavoritedWhereUniqueInput;
+  }) => HouseFavoritedPromise;
+  upsertHouseFavorited: (args: {
+    where: HouseFavoritedWhereUniqueInput;
+    create: HouseFavoritedCreateInput;
+    update: HouseFavoritedUpdateInput;
+  }) => HouseFavoritedPromise;
+  deleteHouseFavorited: (
+    where: HouseFavoritedWhereUniqueInput
+  ) => HouseFavoritedPromise;
+  deleteManyHouseFavoriteds: (
+    where?: HouseFavoritedWhereInput
   ) => BatchPayloadPromise;
   createLocation: (data: LocationCreateInput) => LocationPromise;
   updateLocation: (args: {
@@ -958,8 +958,8 @@ export interface Subscription {
     where?: HouseSubscriptionWhereInput
   ) => HouseSubscriptionPayloadSubscription;
   houseFavorited: (
-    where?: House_FavoritedSubscriptionWhereInput
-  ) => House_FavoritedSubscriptionPayloadSubscription;
+    where?: HouseFavoritedSubscriptionWhereInput
+  ) => HouseFavoritedSubscriptionPayloadSubscription;
   location: (
     where?: LocationSubscriptionWhereInput
   ) => LocationSubscriptionPayloadSubscription;
@@ -1359,7 +1359,7 @@ export type CreditCardInformationOrderByInput =
   | "country_ASC"
   | "country_DESC";
 
-export type House_FavoritedOrderByInput =
+export type HouseFavoritedOrderByInput =
   | "id_ASC"
   | "id_DESC"
   | "createdAt_ASC"
@@ -3084,11 +3084,11 @@ export type HouseWhereUniqueInput = AtLeastOne<{
   id: Maybe<ID_Input>;
 }>;
 
-export type House_FavoritedWhereUniqueInput = AtLeastOne<{
+export type HouseFavoritedWhereUniqueInput = AtLeastOne<{
   id: Maybe<ID_Input>;
 }>;
 
-export interface House_FavoritedWhereInput {
+export interface HouseFavoritedWhereInput {
   id?: Maybe<ID_Input>;
   id_not?: Maybe<ID_Input>;
   id_in?: Maybe<ID_Input[] | ID_Input>;
@@ -3121,9 +3121,9 @@ export interface House_FavoritedWhereInput {
   updatedAt_gte?: Maybe<DateTimeInput>;
   user?: Maybe<UserWhereInput>;
   house?: Maybe<HouseWhereInput>;
-  AND?: Maybe<House_FavoritedWhereInput[] | House_FavoritedWhereInput>;
-  OR?: Maybe<House_FavoritedWhereInput[] | House_FavoritedWhereInput>;
-  NOT?: Maybe<House_FavoritedWhereInput[] | House_FavoritedWhereInput>;
+  AND?: Maybe<HouseFavoritedWhereInput[] | HouseFavoritedWhereInput>;
+  OR?: Maybe<HouseFavoritedWhereInput[] | HouseFavoritedWhereInput>;
+  NOT?: Maybe<HouseFavoritedWhereInput[] | HouseFavoritedWhereInput>;
 }
 
 export type LocationWhereUniqueInput = AtLeastOne<{
@@ -6167,7 +6167,7 @@ export interface HouseUpdateManyMutationInput {
   popularity?: Maybe<Int>;
 }
 
-export interface House_FavoritedCreateInput {
+export interface HouseFavoritedCreateInput {
   id?: Maybe<ID_Input>;
   user: UserCreateOneInput;
   house: HouseCreateOneInput;
@@ -6178,7 +6178,7 @@ export interface HouseCreateOneInput {
   connect?: Maybe<HouseWhereUniqueInput>;
 }
 
-export interface House_FavoritedUpdateInput {
+export interface HouseFavoritedUpdateInput {
   user?: Maybe<UserUpdateOneRequiredInput>;
   house?: Maybe<HouseUpdateOneRequiredInput>;
 }
@@ -6993,23 +6993,23 @@ export interface HouseSubscriptionWhereInput {
   NOT?: Maybe<HouseSubscriptionWhereInput[] | HouseSubscriptionWhereInput>;
 }
 
-export interface House_FavoritedSubscriptionWhereInput {
+export interface HouseFavoritedSubscriptionWhereInput {
   mutation_in?: Maybe<MutationType[] | MutationType>;
   updatedFields_contains?: Maybe<String>;
   updatedFields_contains_every?: Maybe<String[] | String>;
   updatedFields_contains_some?: Maybe<String[] | String>;
-  node?: Maybe<House_FavoritedWhereInput>;
+  node?: Maybe<HouseFavoritedWhereInput>;
   AND?: Maybe<
-    | House_FavoritedSubscriptionWhereInput[]
-    | House_FavoritedSubscriptionWhereInput
+    | HouseFavoritedSubscriptionWhereInput[]
+    | HouseFavoritedSubscriptionWhereInput
   >;
   OR?: Maybe<
-    | House_FavoritedSubscriptionWhereInput[]
-    | House_FavoritedSubscriptionWhereInput
+    | HouseFavoritedSubscriptionWhereInput[]
+    | HouseFavoritedSubscriptionWhereInput
   >;
   NOT?: Maybe<
-    | House_FavoritedSubscriptionWhereInput[]
-    | House_FavoritedSubscriptionWhereInput
+    | HouseFavoritedSubscriptionWhereInput[]
+    | HouseFavoritedSubscriptionWhereInput
   >;
 }
 
@@ -9123,14 +9123,14 @@ export interface AggregateHouseSubscription
   count: () => Promise<AsyncIterator<Int>>;
 }
 
-export interface House_Favorited {
+export interface HouseFavorited {
   id: ID_Output;
   createdAt: DateTimeOutput;
   updatedAt: DateTimeOutput;
 }
 
-export interface House_FavoritedPromise
-  extends Promise<House_Favorited>,
+export interface HouseFavoritedPromise
+  extends Promise<HouseFavorited>,
     Fragmentable {
   id: () => Promise<ID_Output>;
   createdAt: () => Promise<DateTimeOutput>;
@@ -9139,8 +9139,8 @@ export interface House_FavoritedPromise
   house: <T = HousePromise>() => T;
 }
 
-export interface House_FavoritedSubscription
-  extends Promise<AsyncIterator<House_Favorited>>,
+export interface HouseFavoritedSubscription
+  extends Promise<AsyncIterator<HouseFavorited>>,
     Fragmentable {
   id: () => Promise<AsyncIterator<ID_Output>>;
   createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
@@ -9149,8 +9149,8 @@ export interface House_FavoritedSubscription
   house: <T = HouseSubscription>() => T;
 }
 
-export interface House_FavoritedNullablePromise
-  extends Promise<House_Favorited | null>,
+export interface HouseFavoritedNullablePromise
+  extends Promise<HouseFavorited | null>,
     Fragmentable {
   id: () => Promise<ID_Output>;
   createdAt: () => Promise<DateTimeOutput>;
@@ -9159,58 +9159,58 @@ export interface House_FavoritedNullablePromise
   house: <T = HousePromise>() => T;
 }
 
-export interface House_FavoritedConnection {
+export interface HouseFavoritedConnection {
   pageInfo: PageInfo;
-  edges: House_FavoritedEdge[];
+  edges: HouseFavoritedEdge[];
 }
 
-export interface House_FavoritedConnectionPromise
-  extends Promise<House_FavoritedConnection>,
+export interface HouseFavoritedConnectionPromise
+  extends Promise<HouseFavoritedConnection>,
     Fragmentable {
   pageInfo: <T = PageInfoPromise>() => T;
-  edges: <T = FragmentableArray<House_FavoritedEdge>>() => T;
-  aggregate: <T = AggregateHouse_FavoritedPromise>() => T;
+  edges: <T = FragmentableArray<HouseFavoritedEdge>>() => T;
+  aggregate: <T = AggregateHouseFavoritedPromise>() => T;
 }
 
-export interface House_FavoritedConnectionSubscription
-  extends Promise<AsyncIterator<House_FavoritedConnection>>,
+export interface HouseFavoritedConnectionSubscription
+  extends Promise<AsyncIterator<HouseFavoritedConnection>>,
     Fragmentable {
   pageInfo: <T = PageInfoSubscription>() => T;
-  edges: <T = Promise<AsyncIterator<House_FavoritedEdgeSubscription>>>() => T;
-  aggregate: <T = AggregateHouse_FavoritedSubscription>() => T;
+  edges: <T = Promise<AsyncIterator<HouseFavoritedEdgeSubscription>>>() => T;
+  aggregate: <T = AggregateHouseFavoritedSubscription>() => T;
 }
 
-export interface House_FavoritedEdge {
-  node: House_Favorited;
+export interface HouseFavoritedEdge {
+  node: HouseFavorited;
   cursor: String;
 }
 
-export interface House_FavoritedEdgePromise
-  extends Promise<House_FavoritedEdge>,
+export interface HouseFavoritedEdgePromise
+  extends Promise<HouseFavoritedEdge>,
     Fragmentable {
-  node: <T = House_FavoritedPromise>() => T;
+  node: <T = HouseFavoritedPromise>() => T;
   cursor: () => Promise<String>;
 }
 
-export interface House_FavoritedEdgeSubscription
-  extends Promise<AsyncIterator<House_FavoritedEdge>>,
+export interface HouseFavoritedEdgeSubscription
+  extends Promise<AsyncIterator<HouseFavoritedEdge>>,
     Fragmentable {
-  node: <T = House_FavoritedSubscription>() => T;
+  node: <T = HouseFavoritedSubscription>() => T;
   cursor: () => Promise<AsyncIterator<String>>;
 }
 
-export interface AggregateHouse_Favorited {
+export interface AggregateHouseFavorited {
   count: Int;
 }
 
-export interface AggregateHouse_FavoritedPromise
-  extends Promise<AggregateHouse_Favorited>,
+export interface AggregateHouseFavoritedPromise
+  extends Promise<AggregateHouseFavorited>,
     Fragmentable {
   count: () => Promise<Int>;
 }
 
-export interface AggregateHouse_FavoritedSubscription
-  extends Promise<AsyncIterator<AggregateHouse_Favorited>>,
+export interface AggregateHouseFavoritedSubscription
+  extends Promise<AsyncIterator<AggregateHouseFavorited>>,
     Fragmentable {
   count: () => Promise<AsyncIterator<Int>>;
 }
@@ -10632,47 +10632,47 @@ export interface HousePreviousValuesSubscription
   updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
 }
 
-export interface House_FavoritedSubscriptionPayload {
+export interface HouseFavoritedSubscriptionPayload {
   mutation: MutationType;
-  node: House_Favorited;
+  node: HouseFavorited;
   updatedFields: String[];
-  previousValues: House_FavoritedPreviousValues;
+  previousValues: HouseFavoritedPreviousValues;
 }
 
-export interface House_FavoritedSubscriptionPayloadPromise
-  extends Promise<House_FavoritedSubscriptionPayload>,
+export interface HouseFavoritedSubscriptionPayloadPromise
+  extends Promise<HouseFavoritedSubscriptionPayload>,
     Fragmentable {
   mutation: () => Promise<MutationType>;
-  node: <T = House_FavoritedPromise>() => T;
+  node: <T = HouseFavoritedPromise>() => T;
   updatedFields: () => Promise<String[]>;
-  previousValues: <T = House_FavoritedPreviousValuesPromise>() => T;
+  previousValues: <T = HouseFavoritedPreviousValuesPromise>() => T;
 }
 
-export interface House_FavoritedSubscriptionPayloadSubscription
-  extends Promise<AsyncIterator<House_FavoritedSubscriptionPayload>>,
+export interface HouseFavoritedSubscriptionPayloadSubscription
+  extends Promise<AsyncIterator<HouseFavoritedSubscriptionPayload>>,
     Fragmentable {
   mutation: () => Promise<AsyncIterator<MutationType>>;
-  node: <T = House_FavoritedSubscription>() => T;
+  node: <T = HouseFavoritedSubscription>() => T;
   updatedFields: () => Promise<AsyncIterator<String[]>>;
-  previousValues: <T = House_FavoritedPreviousValuesSubscription>() => T;
+  previousValues: <T = HouseFavoritedPreviousValuesSubscription>() => T;
 }
 
-export interface House_FavoritedPreviousValues {
+export interface HouseFavoritedPreviousValues {
   id: ID_Output;
   createdAt: DateTimeOutput;
   updatedAt: DateTimeOutput;
 }
 
-export interface House_FavoritedPreviousValuesPromise
-  extends Promise<House_FavoritedPreviousValues>,
+export interface HouseFavoritedPreviousValuesPromise
+  extends Promise<HouseFavoritedPreviousValues>,
     Fragmentable {
   id: () => Promise<ID_Output>;
   createdAt: () => Promise<DateTimeOutput>;
   updatedAt: () => Promise<DateTimeOutput>;
 }
 
-export interface House_FavoritedPreviousValuesSubscription
-  extends Promise<AsyncIterator<House_FavoritedPreviousValues>>,
+export interface HouseFavoritedPreviousValuesSubscription
+  extends Promise<AsyncIterator<HouseFavoritedPreviousValues>>,
     Fragmentable {
   id: () => Promise<AsyncIterator<ID_Output>>;
   createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
@@ -11620,7 +11620,7 @@ export const models: Model[] = [
     embedded: false
   },
   {
-    name: "House_Favorited",
+    name: "HouseFavorited",
     embedded: false
   },
   {

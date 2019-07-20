@@ -1,4 +1,4 @@
-# import  RoomCreateWithoutHouseInput,Room,PictureCreateInput, State, Country , House , Commune, City, User from "./generated/prisma.graphql"
+# import  RoomCreateWithoutHouseInput,Room,PictureCreateInput, State, Country , House , Commune, City, User,House_Favorited from "./generated/prisma.graphql"
 
 
 type Query {
@@ -177,5 +177,5 @@ type Mutation {
     picture_previews: [PictureCreateInput!]
   ): Room
 
-  createFavoriteHouse(idHouse: String!, idUser: String!): House
+  createFavoriteHouse(idHouse: String!): HouseFavorited
 }

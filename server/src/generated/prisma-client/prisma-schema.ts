@@ -30,7 +30,7 @@ type AggregateHouse {
   count: Int!
 }
 
-type AggregateHouse_Favorited {
+type AggregateHouseFavorited {
   count: Int!
 }
 
@@ -1788,111 +1788,6 @@ type House {
   updatedAt: DateTime!
 }
 
-type House_Favorited {
-  id: ID!
-  createdAt: DateTime!
-  updatedAt: DateTime!
-  user: User!
-  house: House!
-}
-
-type House_FavoritedConnection {
-  pageInfo: PageInfo!
-  edges: [House_FavoritedEdge]!
-  aggregate: AggregateHouse_Favorited!
-}
-
-input House_FavoritedCreateInput {
-  id: ID
-  user: UserCreateOneInput!
-  house: HouseCreateOneInput!
-}
-
-type House_FavoritedEdge {
-  node: House_Favorited!
-  cursor: String!
-}
-
-enum House_FavoritedOrderByInput {
-  id_ASC
-  id_DESC
-  createdAt_ASC
-  createdAt_DESC
-  updatedAt_ASC
-  updatedAt_DESC
-}
-
-type House_FavoritedPreviousValues {
-  id: ID!
-  createdAt: DateTime!
-  updatedAt: DateTime!
-}
-
-type House_FavoritedSubscriptionPayload {
-  mutation: MutationType!
-  node: House_Favorited
-  updatedFields: [String!]
-  previousValues: House_FavoritedPreviousValues
-}
-
-input House_FavoritedSubscriptionWhereInput {
-  mutation_in: [MutationType!]
-  updatedFields_contains: String
-  updatedFields_contains_every: [String!]
-  updatedFields_contains_some: [String!]
-  node: House_FavoritedWhereInput
-  AND: [House_FavoritedSubscriptionWhereInput!]
-  OR: [House_FavoritedSubscriptionWhereInput!]
-  NOT: [House_FavoritedSubscriptionWhereInput!]
-}
-
-input House_FavoritedUpdateInput {
-  user: UserUpdateOneRequiredInput
-  house: HouseUpdateOneRequiredInput
-}
-
-input House_FavoritedWhereInput {
-  id: ID
-  id_not: ID
-  id_in: [ID!]
-  id_not_in: [ID!]
-  id_lt: ID
-  id_lte: ID
-  id_gt: ID
-  id_gte: ID
-  id_contains: ID
-  id_not_contains: ID
-  id_starts_with: ID
-  id_not_starts_with: ID
-  id_ends_with: ID
-  id_not_ends_with: ID
-  createdAt: DateTime
-  createdAt_not: DateTime
-  createdAt_in: [DateTime!]
-  createdAt_not_in: [DateTime!]
-  createdAt_lt: DateTime
-  createdAt_lte: DateTime
-  createdAt_gt: DateTime
-  createdAt_gte: DateTime
-  updatedAt: DateTime
-  updatedAt_not: DateTime
-  updatedAt_in: [DateTime!]
-  updatedAt_not_in: [DateTime!]
-  updatedAt_lt: DateTime
-  updatedAt_lte: DateTime
-  updatedAt_gt: DateTime
-  updatedAt_gte: DateTime
-  user: UserWhereInput
-  house: HouseWhereInput
-  AND: [House_FavoritedWhereInput!]
-  OR: [House_FavoritedWhereInput!]
-  NOT: [House_FavoritedWhereInput!]
-}
-
-input House_FavoritedWhereUniqueInput {
-  id: ID
-}
-
 enum HOUSE_LEASE_TYPE {
   WEEKLY
   MONTHLY
@@ -2226,6 +2121,111 @@ input HouseCreateWithoutViewsInput {
 type HouseEdge {
   node: House!
   cursor: String!
+}
+
+type HouseFavorited {
+  id: ID!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  user: User!
+  house: House!
+}
+
+type HouseFavoritedConnection {
+  pageInfo: PageInfo!
+  edges: [HouseFavoritedEdge]!
+  aggregate: AggregateHouseFavorited!
+}
+
+input HouseFavoritedCreateInput {
+  id: ID
+  user: UserCreateOneInput!
+  house: HouseCreateOneInput!
+}
+
+type HouseFavoritedEdge {
+  node: HouseFavorited!
+  cursor: String!
+}
+
+enum HouseFavoritedOrderByInput {
+  id_ASC
+  id_DESC
+  createdAt_ASC
+  createdAt_DESC
+  updatedAt_ASC
+  updatedAt_DESC
+}
+
+type HouseFavoritedPreviousValues {
+  id: ID!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+type HouseFavoritedSubscriptionPayload {
+  mutation: MutationType!
+  node: HouseFavorited
+  updatedFields: [String!]
+  previousValues: HouseFavoritedPreviousValues
+}
+
+input HouseFavoritedSubscriptionWhereInput {
+  mutation_in: [MutationType!]
+  updatedFields_contains: String
+  updatedFields_contains_every: [String!]
+  updatedFields_contains_some: [String!]
+  node: HouseFavoritedWhereInput
+  AND: [HouseFavoritedSubscriptionWhereInput!]
+  OR: [HouseFavoritedSubscriptionWhereInput!]
+  NOT: [HouseFavoritedSubscriptionWhereInput!]
+}
+
+input HouseFavoritedUpdateInput {
+  user: UserUpdateOneRequiredInput
+  house: HouseUpdateOneRequiredInput
+}
+
+input HouseFavoritedWhereInput {
+  id: ID
+  id_not: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  id_lt: ID
+  id_lte: ID
+  id_gt: ID
+  id_gte: ID
+  id_contains: ID
+  id_not_contains: ID
+  id_starts_with: ID
+  id_not_starts_with: ID
+  id_ends_with: ID
+  id_not_ends_with: ID
+  createdAt: DateTime
+  createdAt_not: DateTime
+  createdAt_in: [DateTime!]
+  createdAt_not_in: [DateTime!]
+  createdAt_lt: DateTime
+  createdAt_lte: DateTime
+  createdAt_gt: DateTime
+  createdAt_gte: DateTime
+  updatedAt: DateTime
+  updatedAt_not: DateTime
+  updatedAt_in: [DateTime!]
+  updatedAt_not_in: [DateTime!]
+  updatedAt_lt: DateTime
+  updatedAt_lte: DateTime
+  updatedAt_gt: DateTime
+  updatedAt_gte: DateTime
+  user: UserWhereInput
+  house: HouseWhereInput
+  AND: [HouseFavoritedWhereInput!]
+  OR: [HouseFavoritedWhereInput!]
+  NOT: [HouseFavoritedWhereInput!]
+}
+
+input HouseFavoritedWhereUniqueInput {
+  id: ID
 }
 
 enum HouseOrderByInput {
@@ -3306,11 +3306,11 @@ type Mutation {
   upsertHouse(where: HouseWhereUniqueInput!, create: HouseCreateInput!, update: HouseUpdateInput!): House!
   deleteHouse(where: HouseWhereUniqueInput!): House
   deleteManyHouses(where: HouseWhereInput): BatchPayload!
-  createHouse_Favorited(data: House_FavoritedCreateInput!): House_Favorited!
-  updateHouse_Favorited(data: House_FavoritedUpdateInput!, where: House_FavoritedWhereUniqueInput!): House_Favorited
-  upsertHouse_Favorited(where: House_FavoritedWhereUniqueInput!, create: House_FavoritedCreateInput!, update: House_FavoritedUpdateInput!): House_Favorited!
-  deleteHouse_Favorited(where: House_FavoritedWhereUniqueInput!): House_Favorited
-  deleteManyHouse_Favoriteds(where: House_FavoritedWhereInput): BatchPayload!
+  createHouseFavorited(data: HouseFavoritedCreateInput!): HouseFavorited!
+  updateHouseFavorited(data: HouseFavoritedUpdateInput!, where: HouseFavoritedWhereUniqueInput!): HouseFavorited
+  upsertHouseFavorited(where: HouseFavoritedWhereUniqueInput!, create: HouseFavoritedCreateInput!, update: HouseFavoritedUpdateInput!): HouseFavorited!
+  deleteHouseFavorited(where: HouseFavoritedWhereUniqueInput!): HouseFavorited
+  deleteManyHouseFavoriteds(where: HouseFavoritedWhereInput): BatchPayload!
   createLocation(data: LocationCreateInput!): Location!
   updateLocation(data: LocationUpdateInput!, where: LocationWhereUniqueInput!): Location
   updateManyLocations(data: LocationUpdateManyMutationInput!, where: LocationWhereInput): BatchPayload!
@@ -5210,9 +5210,9 @@ type Query {
   house(where: HouseWhereUniqueInput!): House
   houses(where: HouseWhereInput, orderBy: HouseOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [House]!
   housesConnection(where: HouseWhereInput, orderBy: HouseOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): HouseConnection!
-  houseFavorited(where: House_FavoritedWhereUniqueInput!): House_Favorited
-  houseFavoriteds(where: House_FavoritedWhereInput, orderBy: House_FavoritedOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [House_Favorited]!
-  houseFavoritedsConnection(where: House_FavoritedWhereInput, orderBy: House_FavoritedOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): House_FavoritedConnection!
+  houseFavorited(where: HouseFavoritedWhereUniqueInput!): HouseFavorited
+  houseFavoriteds(where: HouseFavoritedWhereInput, orderBy: HouseFavoritedOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [HouseFavorited]!
+  houseFavoritedsConnection(where: HouseFavoritedWhereInput, orderBy: HouseFavoritedOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): HouseFavoritedConnection!
   location(where: LocationWhereUniqueInput!): Location
   locations(where: LocationWhereInput, orderBy: LocationOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Location]!
   locationsConnection(where: LocationWhereInput, orderBy: LocationOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): LocationConnection!
@@ -6033,7 +6033,7 @@ type Subscription {
   country(where: CountrySubscriptionWhereInput): CountrySubscriptionPayload
   creditCardInformation(where: CreditCardInformationSubscriptionWhereInput): CreditCardInformationSubscriptionPayload
   house(where: HouseSubscriptionWhereInput): HouseSubscriptionPayload
-  houseFavorited(where: House_FavoritedSubscriptionWhereInput): House_FavoritedSubscriptionPayload
+  houseFavorited(where: HouseFavoritedSubscriptionWhereInput): HouseFavoritedSubscriptionPayload
   location(where: LocationSubscriptionWhereInput): LocationSubscriptionPayload
   negotiation(where: NegotiationSubscriptionWhereInput): NegotiationSubscriptionPayload
   notification(where: NotificationSubscriptionWhereInput): NotificationSubscriptionPayload
