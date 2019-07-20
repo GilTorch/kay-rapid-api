@@ -11,6 +11,7 @@ type Query {
   topCommunes(c: Int!): [Commune!]!
   topCity(c: Int!): [Commune!]!
   topStates(c: Int!): [State!]!
+  houseFavoritedByUser:[HouseFavorited!]!
 }
 
 type AuthPayLoad {

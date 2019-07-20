@@ -37,7 +37,20 @@ export const Query = {
         first: c
       }
     );
-  }
+  },
+  async houseFavoritedByUser(parent, args,context: Context) {
+    const userId = getUserId(context);
+    if (!userId) {
+      throw new Error('you must be signed in!');
+    }
+    return context.prisma.houseFavoriteds(
+      {
+        where: {
+          user: { id: userId },
+        },
+      }
+    );
+},
 
 
   

@@ -47,6 +47,9 @@ export const resolvers = {
     preview_image(parent){
       return prisma.house({id: parent.id}).preview_image()
     },
+    location(parent){
+      return prisma.house({id:parent.id}).location()
+    }
 
   },
   HouseFavorited:{

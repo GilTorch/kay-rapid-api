@@ -238,7 +238,7 @@ export const CustomMutation = {
           id: userId
         },
         house:{
-          id: args.houseId
+          id: args.idHouse
         }
         
     //"graphql": "14.0.0",
