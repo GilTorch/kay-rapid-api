@@ -59,5 +59,10 @@ export const resolvers = {
     house(parent){
       return prisma.houseFavorited({id:parent.id}).house()
     }
-  } 
+  } ,
+  Review:{
+    user(parent){
+      return prisma.review({id:parent.id}).user()
+    }
+  }
 };

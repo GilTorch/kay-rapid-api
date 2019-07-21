@@ -231,7 +231,6 @@ export const CustomMutation = {
     if(!userId){
       throw new Error('You must be logged in')
     } 
-    console.log(userId)
     const [favoriteExists] = await context.prisma.houseFavoriteds({where:
       {
         user: {
@@ -242,7 +241,6 @@ export const CustomMutation = {
         }
         
       }})
-      console.log(favoriteExists)
 
       if (favoriteExists) {
         throw new Error('house already in favorites');
@@ -253,6 +251,45 @@ export const CustomMutation = {
           house: {
             connect: {
               id: args.idHouse
+            }
+          },
+          user: {
+            connect: {
+              id: userId
+            }
+          }
+      }
+    );
+  },
+  async createReview(parent, args, context: Context) {
+    const userId = getUserId(context);
+    if(!userId){
+      throw new Error('You must be logged in')
+    } 
+    if(args.stars > 5){
+      throw new Error("Ratings can't be superior than 5")
+    } 
+    const [ReviewExists] = await context.prisma.reviews({where:
+      {
+        user: {
+          id: userId
+        },
+        House:{
+          id: args.houseId
+        }
+        
+      }})
+
+      if (ReviewExists) {
+        throw new Error('You already made a review for this house');
+  } 
+    return context.prisma.createReview (
+      {
+          stars: args.stars,
+          text: args.text,
+          House: {
+            connect: {
+              id: args.houseId
             }
           },
           user: {

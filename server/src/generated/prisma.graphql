@@ -5261,14 +5261,10 @@ type Review {
   id: ID!
   createdAt: DateTime!
   updatedAt: DateTime!
-  text: String!
+  text: String
   stars: Int!
-  accuracy: Int!
-  location: Int!
-  checkIn: Int!
-  value: Int!
-  communication: Int!
   House: House!
+  user: User!
 }
 
 type ReviewConnection {
@@ -5279,14 +5275,10 @@ type ReviewConnection {
 
 input ReviewCreateInput {
   id: ID
-  text: String!
+  text: String
   stars: Int!
-  accuracy: Int!
-  location: Int!
-  checkIn: Int!
-  value: Int!
-  communication: Int!
   House: HouseCreateOneWithoutReviewsInput!
+  user: UserCreateOneWithoutReviewsInput!
 }
 
 input ReviewCreateManyWithoutHouseInput {
@@ -5294,15 +5286,23 @@ input ReviewCreateManyWithoutHouseInput {
   connect: [ReviewWhereUniqueInput!]
 }
 
+input ReviewCreateManyWithoutUserInput {
+  create: [ReviewCreateWithoutUserInput!]
+  connect: [ReviewWhereUniqueInput!]
+}
+
 input ReviewCreateWithoutHouseInput {
   id: ID
-  text: String!
+  text: String
   stars: Int!
-  accuracy: Int!
-  location: Int!
-  checkIn: Int!
-  value: Int!
-  communication: Int!
+  user: UserCreateOneWithoutReviewsInput!
+}
+
+input ReviewCreateWithoutUserInput {
+  id: ID
+  text: String
+  stars: Int!
+  House: HouseCreateOneWithoutReviewsInput!
 }
 
 type ReviewEdge {
@@ -5321,29 +5321,14 @@ enum ReviewOrderByInput {
   text_DESC
   stars_ASC
   stars_DESC
-  accuracy_ASC
-  accuracy_DESC
-  location_ASC
-  location_DESC
-  checkIn_ASC
-  checkIn_DESC
-  value_ASC
-  value_DESC
-  communication_ASC
-  communication_DESC
 }
 
 type ReviewPreviousValues {
   id: ID!
   createdAt: DateTime!
   updatedAt: DateTime!
-  text: String!
+  text: String
   stars: Int!
-  accuracy: Int!
-  location: Int!
-  checkIn: Int!
-  value: Int!
-  communication: Int!
 }
 
 input ReviewScalarWhereInput {
@@ -5399,46 +5384,6 @@ input ReviewScalarWhereInput {
   stars_lte: Int
   stars_gt: Int
   stars_gte: Int
-  accuracy: Int
-  accuracy_not: Int
-  accuracy_in: [Int!]
-  accuracy_not_in: [Int!]
-  accuracy_lt: Int
-  accuracy_lte: Int
-  accuracy_gt: Int
-  accuracy_gte: Int
-  location: Int
-  location_not: Int
-  location_in: [Int!]
-  location_not_in: [Int!]
-  location_lt: Int
-  location_lte: Int
-  location_gt: Int
-  location_gte: Int
-  checkIn: Int
-  checkIn_not: Int
-  checkIn_in: [Int!]
-  checkIn_not_in: [Int!]
-  checkIn_lt: Int
-  checkIn_lte: Int
-  checkIn_gt: Int
-  checkIn_gte: Int
-  value: Int
-  value_not: Int
-  value_in: [Int!]
-  value_not_in: [Int!]
-  value_lt: Int
-  value_lte: Int
-  value_gt: Int
-  value_gte: Int
-  communication: Int
-  communication_not: Int
-  communication_in: [Int!]
-  communication_not_in: [Int!]
-  communication_lt: Int
-  communication_lte: Int
-  communication_gt: Int
-  communication_gte: Int
   AND: [ReviewScalarWhereInput!]
   OR: [ReviewScalarWhereInput!]
   NOT: [ReviewScalarWhereInput!]
@@ -5465,32 +5410,18 @@ input ReviewSubscriptionWhereInput {
 input ReviewUpdateInput {
   text: String
   stars: Int
-  accuracy: Int
-  location: Int
-  checkIn: Int
-  value: Int
-  communication: Int
   House: HouseUpdateOneRequiredWithoutReviewsInput
+  user: UserUpdateOneRequiredWithoutReviewsInput
 }
 
 input ReviewUpdateManyDataInput {
   text: String
   stars: Int
-  accuracy: Int
-  location: Int
-  checkIn: Int
-  value: Int
-  communication: Int
 }
 
 input ReviewUpdateManyMutationInput {
   text: String
   stars: Int
-  accuracy: Int
-  location: Int
-  checkIn: Int
-  value: Int
-  communication: Int
 }
 
 input ReviewUpdateManyWithoutHouseInput {
@@ -5505,6 +5436,18 @@ input ReviewUpdateManyWithoutHouseInput {
   updateMany: [ReviewUpdateManyWithWhereNestedInput!]
 }
 
+input ReviewUpdateManyWithoutUserInput {
+  create: [ReviewCreateWithoutUserInput!]
+  delete: [ReviewWhereUniqueInput!]
+  connect: [ReviewWhereUniqueInput!]
+  set: [ReviewWhereUniqueInput!]
+  disconnect: [ReviewWhereUniqueInput!]
+  update: [ReviewUpdateWithWhereUniqueWithoutUserInput!]
+  upsert: [ReviewUpsertWithWhereUniqueWithoutUserInput!]
+  deleteMany: [ReviewScalarWhereInput!]
+  updateMany: [ReviewUpdateManyWithWhereNestedInput!]
+}
+
 input ReviewUpdateManyWithWhereNestedInput {
   where: ReviewScalarWhereInput!
   data: ReviewUpdateManyDataInput!
@@ -5513,11 +5456,13 @@ input ReviewUpdateManyWithWhereNestedInput {
 input ReviewUpdateWithoutHouseDataInput {
   text: String
   stars: Int
-  accuracy: Int
-  location: Int
-  checkIn: Int
-  value: Int
-  communication: Int
+  user: UserUpdateOneRequiredWithoutReviewsInput
+}
+
+input ReviewUpdateWithoutUserDataInput {
+  text: String
+  stars: Int
+  House: HouseUpdateOneRequiredWithoutReviewsInput
 }
 
 input ReviewUpdateWithWhereUniqueWithoutHouseInput {
@@ -5525,10 +5470,21 @@ input ReviewUpdateWithWhereUniqueWithoutHouseInput {
   data: ReviewUpdateWithoutHouseDataInput!
 }
 
+input ReviewUpdateWithWhereUniqueWithoutUserInput {
+  where: ReviewWhereUniqueInput!
+  data: ReviewUpdateWithoutUserDataInput!
+}
+
 input ReviewUpsertWithWhereUniqueWithoutHouseInput {
   where: ReviewWhereUniqueInput!
   update: ReviewUpdateWithoutHouseDataInput!
   create: ReviewCreateWithoutHouseInput!
+}
+
+input ReviewUpsertWithWhereUniqueWithoutUserInput {
+  where: ReviewWhereUniqueInput!
+  update: ReviewUpdateWithoutUserDataInput!
+  create: ReviewCreateWithoutUserInput!
 }
 
 input ReviewWhereInput {
@@ -5584,47 +5540,8 @@ input ReviewWhereInput {
   stars_lte: Int
   stars_gt: Int
   stars_gte: Int
-  accuracy: Int
-  accuracy_not: Int
-  accuracy_in: [Int!]
-  accuracy_not_in: [Int!]
-  accuracy_lt: Int
-  accuracy_lte: Int
-  accuracy_gt: Int
-  accuracy_gte: Int
-  location: Int
-  location_not: Int
-  location_in: [Int!]
-  location_not_in: [Int!]
-  location_lt: Int
-  location_lte: Int
-  location_gt: Int
-  location_gte: Int
-  checkIn: Int
-  checkIn_not: Int
-  checkIn_in: [Int!]
-  checkIn_not_in: [Int!]
-  checkIn_lt: Int
-  checkIn_lte: Int
-  checkIn_gt: Int
-  checkIn_gte: Int
-  value: Int
-  value_not: Int
-  value_in: [Int!]
-  value_not_in: [Int!]
-  value_lt: Int
-  value_lte: Int
-  value_gt: Int
-  value_gte: Int
-  communication: Int
-  communication_not: Int
-  communication_in: [Int!]
-  communication_not_in: [Int!]
-  communication_lt: Int
-  communication_lte: Int
-  communication_gt: Int
-  communication_gte: Int
   House: HouseWhereInput
+  user: UserWhereInput
   AND: [ReviewWhereInput!]
   OR: [ReviewWhereInput!]
   NOT: [ReviewWhereInput!]
@@ -6070,6 +5987,7 @@ type User {
   paidContacts(where: PaymentLanlordInfoWhereInput, orderBy: PaymentLanlordInfoOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [PaymentLanlordInfo!]
   notifications(where: NotificationWhereInput, orderBy: NotificationOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Notification!]
   profilePicture: Picture
+  reviews(where: ReviewWhereInput, orderBy: ReviewOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Review!]
   permissions: [Permission!]!
 }
 
@@ -6100,6 +6018,7 @@ input UserCreateInput {
   paidContacts: PaymentLanlordInfoCreateManyWithoutClientInput
   notifications: NotificationCreateManyWithoutUserInput
   profilePicture: PictureCreateOneInput
+  reviews: ReviewCreateManyWithoutUserInput
   permissions: UserCreatepermissionsInput
 }
 
@@ -6133,6 +6052,11 @@ input UserCreateOneWithoutPaidContactsInput {
   connect: UserWhereUniqueInput
 }
 
+input UserCreateOneWithoutReviewsInput {
+  create: UserCreateWithoutReviewsInput
+  connect: UserWhereUniqueInput
+}
+
 input UserCreatepermissionsInput {
   set: [Permission!]
 }
@@ -6157,6 +6081,7 @@ input UserCreateWithoutBookingsInput {
   paidContacts: PaymentLanlordInfoCreateManyWithoutClientInput
   notifications: NotificationCreateManyWithoutUserInput
   profilePicture: PictureCreateOneInput
+  reviews: ReviewCreateManyWithoutUserInput
   permissions: UserCreatepermissionsInput
 }
 
@@ -6180,6 +6105,7 @@ input UserCreateWithoutNotificationsInput {
   bookings: BookingCreateManyWithoutBookeeInput
   paidContacts: PaymentLanlordInfoCreateManyWithoutClientInput
   profilePicture: PictureCreateOneInput
+  reviews: ReviewCreateManyWithoutUserInput
   permissions: UserCreatepermissionsInput
 }
 
@@ -6203,6 +6129,7 @@ input UserCreateWithoutOwnedHousesInput {
   paidContacts: PaymentLanlordInfoCreateManyWithoutClientInput
   notifications: NotificationCreateManyWithoutUserInput
   profilePicture: PictureCreateOneInput
+  reviews: ReviewCreateManyWithoutUserInput
   permissions: UserCreatepermissionsInput
 }
 
@@ -6224,6 +6151,31 @@ input UserCreateWithoutPaidContactsInput {
   ownedHouses: HouseCreateManyWithoutHostInput
   location: LocationCreateOneInput
   bookings: BookingCreateManyWithoutBookeeInput
+  notifications: NotificationCreateManyWithoutUserInput
+  profilePicture: PictureCreateOneInput
+  reviews: ReviewCreateManyWithoutUserInput
+  permissions: UserCreatepermissionsInput
+}
+
+input UserCreateWithoutReviewsInput {
+  id: ID
+  status: Boolean
+  facebookUserId: String
+  firstName: String!
+  lastName: String!
+  email: String
+  password: String
+  resetToken: String
+  resetTokenExpiry: String
+  phone1: String
+  phone2: String
+  primaryPhone: Int
+  responseTime: Int
+  isSuperHost: Boolean
+  ownedHouses: HouseCreateManyWithoutHostInput
+  location: LocationCreateOneInput
+  bookings: BookingCreateManyWithoutBookeeInput
+  paidContacts: PaymentLanlordInfoCreateManyWithoutClientInput
   notifications: NotificationCreateManyWithoutUserInput
   profilePicture: PictureCreateOneInput
   permissions: UserCreatepermissionsInput
@@ -6509,6 +6461,7 @@ input UserUpdateDataInput {
   paidContacts: PaymentLanlordInfoUpdateManyWithoutClientInput
   notifications: NotificationUpdateManyWithoutUserInput
   profilePicture: PictureUpdateOneInput
+  reviews: ReviewUpdateManyWithoutUserInput
   permissions: UserUpdatepermissionsInput
 }
 
@@ -6532,6 +6485,7 @@ input UserUpdateInput {
   paidContacts: PaymentLanlordInfoUpdateManyWithoutClientInput
   notifications: NotificationUpdateManyWithoutUserInput
   profilePicture: PictureUpdateOneInput
+  reviews: ReviewUpdateManyWithoutUserInput
   permissions: UserUpdatepermissionsInput
 }
 
@@ -6621,6 +6575,13 @@ input UserUpdateOneRequiredWithoutPaidContactsInput {
   connect: UserWhereUniqueInput
 }
 
+input UserUpdateOneRequiredWithoutReviewsInput {
+  create: UserCreateWithoutReviewsInput
+  update: UserUpdateWithoutReviewsDataInput
+  upsert: UserUpsertWithoutReviewsInput
+  connect: UserWhereUniqueInput
+}
+
 input UserUpdatepermissionsInput {
   set: [Permission!]
 }
@@ -6644,6 +6605,7 @@ input UserUpdateWithoutBookingsDataInput {
   paidContacts: PaymentLanlordInfoUpdateManyWithoutClientInput
   notifications: NotificationUpdateManyWithoutUserInput
   profilePicture: PictureUpdateOneInput
+  reviews: ReviewUpdateManyWithoutUserInput
   permissions: UserUpdatepermissionsInput
 }
 
@@ -6666,6 +6628,7 @@ input UserUpdateWithoutNotificationsDataInput {
   bookings: BookingUpdateManyWithoutBookeeInput
   paidContacts: PaymentLanlordInfoUpdateManyWithoutClientInput
   profilePicture: PictureUpdateOneInput
+  reviews: ReviewUpdateManyWithoutUserInput
   permissions: UserUpdatepermissionsInput
 }
 
@@ -6688,6 +6651,7 @@ input UserUpdateWithoutOwnedHousesDataInput {
   paidContacts: PaymentLanlordInfoUpdateManyWithoutClientInput
   notifications: NotificationUpdateManyWithoutUserInput
   profilePicture: PictureUpdateOneInput
+  reviews: ReviewUpdateManyWithoutUserInput
   permissions: UserUpdatepermissionsInput
 }
 
@@ -6708,6 +6672,30 @@ input UserUpdateWithoutPaidContactsDataInput {
   ownedHouses: HouseUpdateManyWithoutHostInput
   location: LocationUpdateOneInput
   bookings: BookingUpdateManyWithoutBookeeInput
+  notifications: NotificationUpdateManyWithoutUserInput
+  profilePicture: PictureUpdateOneInput
+  reviews: ReviewUpdateManyWithoutUserInput
+  permissions: UserUpdatepermissionsInput
+}
+
+input UserUpdateWithoutReviewsDataInput {
+  status: Boolean
+  facebookUserId: String
+  firstName: String
+  lastName: String
+  email: String
+  password: String
+  resetToken: String
+  resetTokenExpiry: String
+  phone1: String
+  phone2: String
+  primaryPhone: Int
+  responseTime: Int
+  isSuperHost: Boolean
+  ownedHouses: HouseUpdateManyWithoutHostInput
+  location: LocationUpdateOneInput
+  bookings: BookingUpdateManyWithoutBookeeInput
+  paidContacts: PaymentLanlordInfoUpdateManyWithoutClientInput
   notifications: NotificationUpdateManyWithoutUserInput
   profilePicture: PictureUpdateOneInput
   permissions: UserUpdatepermissionsInput
@@ -6741,6 +6729,11 @@ input UserUpsertWithoutOwnedHousesInput {
 input UserUpsertWithoutPaidContactsInput {
   update: UserUpdateWithoutPaidContactsDataInput!
   create: UserCreateWithoutPaidContactsInput!
+}
+
+input UserUpsertWithoutReviewsInput {
+  update: UserUpdateWithoutReviewsDataInput!
+  create: UserCreateWithoutReviewsInput!
 }
 
 input UserUpsertWithWhereUniqueNestedInput {
@@ -6940,6 +6933,9 @@ input UserWhereInput {
   notifications_some: NotificationWhereInput
   notifications_none: NotificationWhereInput
   profilePicture: PictureWhereInput
+  reviews_every: ReviewWhereInput
+  reviews_some: ReviewWhereInput
+  reviews_none: ReviewWhereInput
   AND: [UserWhereInput!]
   OR: [UserWhereInput!]
   NOT: [UserWhereInput!]

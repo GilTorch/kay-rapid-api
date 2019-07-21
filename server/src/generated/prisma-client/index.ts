@@ -1046,17 +1046,7 @@ export type ReviewOrderByInput =
   | "text_ASC"
   | "text_DESC"
   | "stars_ASC"
-  | "stars_DESC"
-  | "accuracy_ASC"
-  | "accuracy_DESC"
-  | "location_ASC"
-  | "location_DESC"
-  | "checkIn_ASC"
-  | "checkIn_DESC"
-  | "value_ASC"
-  | "value_DESC"
-  | "communication_ASC"
-  | "communication_DESC";
+  | "stars_DESC";
 
 export type HouseOrderByInput =
   | "id_ASC"
@@ -1512,47 +1502,8 @@ export interface ReviewWhereInput {
   stars_lte?: Maybe<Int>;
   stars_gt?: Maybe<Int>;
   stars_gte?: Maybe<Int>;
-  accuracy?: Maybe<Int>;
-  accuracy_not?: Maybe<Int>;
-  accuracy_in?: Maybe<Int[] | Int>;
-  accuracy_not_in?: Maybe<Int[] | Int>;
-  accuracy_lt?: Maybe<Int>;
-  accuracy_lte?: Maybe<Int>;
-  accuracy_gt?: Maybe<Int>;
-  accuracy_gte?: Maybe<Int>;
-  location?: Maybe<Int>;
-  location_not?: Maybe<Int>;
-  location_in?: Maybe<Int[] | Int>;
-  location_not_in?: Maybe<Int[] | Int>;
-  location_lt?: Maybe<Int>;
-  location_lte?: Maybe<Int>;
-  location_gt?: Maybe<Int>;
-  location_gte?: Maybe<Int>;
-  checkIn?: Maybe<Int>;
-  checkIn_not?: Maybe<Int>;
-  checkIn_in?: Maybe<Int[] | Int>;
-  checkIn_not_in?: Maybe<Int[] | Int>;
-  checkIn_lt?: Maybe<Int>;
-  checkIn_lte?: Maybe<Int>;
-  checkIn_gt?: Maybe<Int>;
-  checkIn_gte?: Maybe<Int>;
-  value?: Maybe<Int>;
-  value_not?: Maybe<Int>;
-  value_in?: Maybe<Int[] | Int>;
-  value_not_in?: Maybe<Int[] | Int>;
-  value_lt?: Maybe<Int>;
-  value_lte?: Maybe<Int>;
-  value_gt?: Maybe<Int>;
-  value_gte?: Maybe<Int>;
-  communication?: Maybe<Int>;
-  communication_not?: Maybe<Int>;
-  communication_in?: Maybe<Int[] | Int>;
-  communication_not_in?: Maybe<Int[] | Int>;
-  communication_lt?: Maybe<Int>;
-  communication_lte?: Maybe<Int>;
-  communication_gt?: Maybe<Int>;
-  communication_gte?: Maybe<Int>;
   House?: Maybe<HouseWhereInput>;
+  user?: Maybe<UserWhereInput>;
   AND?: Maybe<ReviewWhereInput[] | ReviewWhereInput>;
   OR?: Maybe<ReviewWhereInput[] | ReviewWhereInput>;
   NOT?: Maybe<ReviewWhereInput[] | ReviewWhereInput>;
@@ -2037,6 +1988,9 @@ export interface UserWhereInput {
   notifications_some?: Maybe<NotificationWhereInput>;
   notifications_none?: Maybe<NotificationWhereInput>;
   profilePicture?: Maybe<PictureWhereInput>;
+  reviews_every?: Maybe<ReviewWhereInput>;
+  reviews_some?: Maybe<ReviewWhereInput>;
+  reviews_none?: Maybe<ReviewWhereInput>;
   AND?: Maybe<UserWhereInput[] | UserWhereInput>;
   OR?: Maybe<UserWhereInput[] | UserWhereInput>;
   NOT?: Maybe<UserWhereInput[] | UserWhereInput>;
@@ -3324,21 +3278,17 @@ export interface ReviewCreateManyWithoutHouseInput {
 
 export interface ReviewCreateWithoutHouseInput {
   id?: Maybe<ID_Input>;
-  text: String;
+  text?: Maybe<String>;
   stars: Int;
-  accuracy: Int;
-  location: Int;
-  checkIn: Int;
-  value: Int;
-  communication: Int;
+  user: UserCreateOneWithoutReviewsInput;
 }
 
-export interface UserCreateOneWithoutOwnedHousesInput {
-  create?: Maybe<UserCreateWithoutOwnedHousesInput>;
+export interface UserCreateOneWithoutReviewsInput {
+  create?: Maybe<UserCreateWithoutReviewsInput>;
   connect?: Maybe<UserWhereUniqueInput>;
 }
 
-export interface UserCreateWithoutOwnedHousesInput {
+export interface UserCreateWithoutReviewsInput {
   id?: Maybe<ID_Input>;
   status?: Maybe<Boolean>;
   facebookUserId?: Maybe<String>;
@@ -3353,6 +3303,7 @@ export interface UserCreateWithoutOwnedHousesInput {
   primaryPhone?: Maybe<Int>;
   responseTime?: Maybe<Int>;
   isSuperHost?: Maybe<Boolean>;
+  ownedHouses?: Maybe<HouseCreateManyWithoutHostInput>;
   location?: Maybe<LocationCreateOneInput>;
   bookings?: Maybe<BookingCreateManyWithoutBookeeInput>;
   paidContacts?: Maybe<PaymentLanlordInfoCreateManyWithoutClientInput>;
@@ -3361,86 +3312,12 @@ export interface UserCreateWithoutOwnedHousesInput {
   permissions?: Maybe<UserCreatepermissionsInput>;
 }
 
-export interface LocationCreateOneInput {
-  create?: Maybe<LocationCreateInput>;
-  connect?: Maybe<LocationWhereUniqueInput>;
+export interface HouseCreateManyWithoutHostInput {
+  create?: Maybe<HouseCreateWithoutHostInput[] | HouseCreateWithoutHostInput>;
+  connect?: Maybe<HouseWhereUniqueInput[] | HouseWhereUniqueInput>;
 }
 
-export interface LocationCreateInput {
-  id?: Maybe<ID_Input>;
-  lat?: Maybe<Float>;
-  lng?: Maybe<Float>;
-  address?: Maybe<String>;
-  commune?: Maybe<CommuneCreateOneInput>;
-}
-
-export interface CommuneCreateOneInput {
-  create?: Maybe<CommuneCreateInput>;
-  connect?: Maybe<CommuneWhereUniqueInput>;
-}
-
-export interface CommuneCreateInput {
-  id?: Maybe<ID_Input>;
-  name: String;
-  rank?: Maybe<Int>;
-  city: CityCreateOneInput;
-}
-
-export interface CityCreateOneInput {
-  create?: Maybe<CityCreateInput>;
-  connect?: Maybe<CityWhereUniqueInput>;
-}
-
-export interface CityCreateInput {
-  id?: Maybe<ID_Input>;
-  name: String;
-  rank?: Maybe<Int>;
-  state: StateCreateOneInput;
-}
-
-export interface StateCreateOneInput {
-  create?: Maybe<StateCreateInput>;
-  connect?: Maybe<StateWhereUniqueInput>;
-}
-
-export interface StateCreateInput {
-  id?: Maybe<ID_Input>;
-  name: String;
-  rank?: Maybe<Int>;
-  country: CountryCreateOneInput;
-}
-
-export interface CountryCreateOneInput {
-  create?: Maybe<CountryCreateInput>;
-  connect?: Maybe<CountryWhereUniqueInput>;
-}
-
-export interface CountryCreateInput {
-  id?: Maybe<ID_Input>;
-  name: String;
-}
-
-export interface BookingCreateManyWithoutBookeeInput {
-  create?: Maybe<
-    BookingCreateWithoutBookeeInput[] | BookingCreateWithoutBookeeInput
-  >;
-  connect?: Maybe<BookingWhereUniqueInput[] | BookingWhereUniqueInput>;
-}
-
-export interface BookingCreateWithoutBookeeInput {
-  id?: Maybe<ID_Input>;
-  House: HouseCreateOneWithoutBookingsInput;
-  startDate: DateTimeInput;
-  endDate: DateTimeInput;
-  payment: PaymentHouseCreateOneWithoutBookingInput;
-}
-
-export interface HouseCreateOneWithoutBookingsInput {
-  create?: Maybe<HouseCreateWithoutBookingsInput>;
-  connect?: Maybe<HouseWhereUniqueInput>;
-}
-
-export interface HouseCreateWithoutBookingsInput {
+export interface HouseCreateWithoutHostInput {
   id?: Maybe<ID_Input>;
   area?: Maybe<Int>;
   age?: Maybe<Int>;
@@ -3453,7 +3330,6 @@ export interface HouseCreateWithoutBookingsInput {
   numDiningrooms?: Maybe<Int>;
   reviews?: Maybe<ReviewCreateManyWithoutHouseInput>;
   amenities: AmenitiesCreateOneWithoutHouseInput;
-  host: UserCreateOneWithoutOwnedHousesInput;
   pricing: PricingCreateOneWithoutHouseInput;
   location: LocationCreateOneInput;
   leaseType?: Maybe<HOUSE_LEASE_TYPE>;
@@ -3463,6 +3339,7 @@ export interface HouseCreateWithoutBookingsInput {
   lease: Int;
   rooms?: Maybe<RoomCreateManyWithoutHouseInput>;
   views?: Maybe<ViewsCreateOneWithoutHouseInput>;
+  bookings?: Maybe<BookingCreateManyWithoutHouseInput>;
   pictures?: Maybe<PictureCreateManyInput>;
   contactInfoPayments?: Maybe<PaymentLanlordInfoCreateManyWithoutHouseInput>;
   popularity?: Maybe<Int>;
@@ -3527,6 +3404,65 @@ export interface PricingCreateWithoutHouseInput {
   highestPrice: Float;
   currency: CURRENCY;
   income?: Maybe<Float>;
+}
+
+export interface LocationCreateOneInput {
+  create?: Maybe<LocationCreateInput>;
+  connect?: Maybe<LocationWhereUniqueInput>;
+}
+
+export interface LocationCreateInput {
+  id?: Maybe<ID_Input>;
+  lat?: Maybe<Float>;
+  lng?: Maybe<Float>;
+  address?: Maybe<String>;
+  commune?: Maybe<CommuneCreateOneInput>;
+}
+
+export interface CommuneCreateOneInput {
+  create?: Maybe<CommuneCreateInput>;
+  connect?: Maybe<CommuneWhereUniqueInput>;
+}
+
+export interface CommuneCreateInput {
+  id?: Maybe<ID_Input>;
+  name: String;
+  rank?: Maybe<Int>;
+  city: CityCreateOneInput;
+}
+
+export interface CityCreateOneInput {
+  create?: Maybe<CityCreateInput>;
+  connect?: Maybe<CityWhereUniqueInput>;
+}
+
+export interface CityCreateInput {
+  id?: Maybe<ID_Input>;
+  name: String;
+  rank?: Maybe<Int>;
+  state: StateCreateOneInput;
+}
+
+export interface StateCreateOneInput {
+  create?: Maybe<StateCreateInput>;
+  connect?: Maybe<StateWhereUniqueInput>;
+}
+
+export interface StateCreateInput {
+  id?: Maybe<ID_Input>;
+  name: String;
+  rank?: Maybe<Int>;
+  country: CountryCreateOneInput;
+}
+
+export interface CountryCreateOneInput {
+  create?: Maybe<CountryCreateInput>;
+  connect?: Maybe<CountryWhereUniqueInput>;
+}
+
+export interface CountryCreateInput {
+  id?: Maybe<ID_Input>;
+  name: String;
 }
 
 export interface RoomCreateManyWithoutHouseInput {
@@ -3598,15 +3534,31 @@ export interface UserCreateInput {
   paidContacts?: Maybe<PaymentLanlordInfoCreateManyWithoutClientInput>;
   notifications?: Maybe<NotificationCreateManyWithoutUserInput>;
   profilePicture?: Maybe<PictureCreateOneInput>;
+  reviews?: Maybe<ReviewCreateManyWithoutUserInput>;
   permissions?: Maybe<UserCreatepermissionsInput>;
 }
 
-export interface HouseCreateManyWithoutHostInput {
-  create?: Maybe<HouseCreateWithoutHostInput[] | HouseCreateWithoutHostInput>;
-  connect?: Maybe<HouseWhereUniqueInput[] | HouseWhereUniqueInput>;
+export interface BookingCreateManyWithoutBookeeInput {
+  create?: Maybe<
+    BookingCreateWithoutBookeeInput[] | BookingCreateWithoutBookeeInput
+  >;
+  connect?: Maybe<BookingWhereUniqueInput[] | BookingWhereUniqueInput>;
 }
 
-export interface HouseCreateWithoutHostInput {
+export interface BookingCreateWithoutBookeeInput {
+  id?: Maybe<ID_Input>;
+  House: HouseCreateOneWithoutBookingsInput;
+  startDate: DateTimeInput;
+  endDate: DateTimeInput;
+  payment: PaymentHouseCreateOneWithoutBookingInput;
+}
+
+export interface HouseCreateOneWithoutBookingsInput {
+  create?: Maybe<HouseCreateWithoutBookingsInput>;
+  connect?: Maybe<HouseWhereUniqueInput>;
+}
+
+export interface HouseCreateWithoutBookingsInput {
   id?: Maybe<ID_Input>;
   area?: Maybe<Int>;
   age?: Maybe<Int>;
@@ -3619,6 +3571,7 @@ export interface HouseCreateWithoutHostInput {
   numDiningrooms?: Maybe<Int>;
   reviews?: Maybe<ReviewCreateManyWithoutHouseInput>;
   amenities: AmenitiesCreateOneWithoutHouseInput;
+  host: UserCreateOneWithoutOwnedHousesInput;
   pricing: PricingCreateOneWithoutHouseInput;
   location: LocationCreateOneInput;
   leaseType?: Maybe<HOUSE_LEASE_TYPE>;
@@ -3628,34 +3581,18 @@ export interface HouseCreateWithoutHostInput {
   lease: Int;
   rooms?: Maybe<RoomCreateManyWithoutHouseInput>;
   views?: Maybe<ViewsCreateOneWithoutHouseInput>;
-  bookings?: Maybe<BookingCreateManyWithoutHouseInput>;
   pictures?: Maybe<PictureCreateManyInput>;
   contactInfoPayments?: Maybe<PaymentLanlordInfoCreateManyWithoutHouseInput>;
   popularity?: Maybe<Int>;
   preview_image?: Maybe<PictureCreateOneInput>;
 }
 
-export interface BookingCreateManyWithoutHouseInput {
-  create?: Maybe<
-    BookingCreateWithoutHouseInput[] | BookingCreateWithoutHouseInput
-  >;
-  connect?: Maybe<BookingWhereUniqueInput[] | BookingWhereUniqueInput>;
-}
-
-export interface BookingCreateWithoutHouseInput {
-  id?: Maybe<ID_Input>;
-  bookee: UserCreateOneWithoutBookingsInput;
-  startDate: DateTimeInput;
-  endDate: DateTimeInput;
-  payment: PaymentHouseCreateOneWithoutBookingInput;
-}
-
-export interface UserCreateOneWithoutBookingsInput {
-  create?: Maybe<UserCreateWithoutBookingsInput>;
+export interface UserCreateOneWithoutOwnedHousesInput {
+  create?: Maybe<UserCreateWithoutOwnedHousesInput>;
   connect?: Maybe<UserWhereUniqueInput>;
 }
 
-export interface UserCreateWithoutBookingsInput {
+export interface UserCreateWithoutOwnedHousesInput {
   id?: Maybe<ID_Input>;
   status?: Maybe<Boolean>;
   facebookUserId?: Maybe<String>;
@@ -3670,11 +3607,12 @@ export interface UserCreateWithoutBookingsInput {
   primaryPhone?: Maybe<Int>;
   responseTime?: Maybe<Int>;
   isSuperHost?: Maybe<Boolean>;
-  ownedHouses?: Maybe<HouseCreateManyWithoutHostInput>;
   location?: Maybe<LocationCreateOneInput>;
+  bookings?: Maybe<BookingCreateManyWithoutBookeeInput>;
   paidContacts?: Maybe<PaymentLanlordInfoCreateManyWithoutClientInput>;
   notifications?: Maybe<NotificationCreateManyWithoutUserInput>;
   profilePicture?: Maybe<PictureCreateOneInput>;
+  reviews?: Maybe<ReviewCreateManyWithoutUserInput>;
   permissions?: Maybe<UserCreatepermissionsInput>;
 }
 
@@ -3729,9 +3667,48 @@ export interface HouseCreateWithoutContactInfoPaymentsInput {
   preview_image?: Maybe<PictureCreateOneInput>;
 }
 
-export interface PictureCreateOneInput {
-  create?: Maybe<PictureCreateInput>;
-  connect?: Maybe<PictureWhereUniqueInput>;
+export interface BookingCreateManyWithoutHouseInput {
+  create?: Maybe<
+    BookingCreateWithoutHouseInput[] | BookingCreateWithoutHouseInput
+  >;
+  connect?: Maybe<BookingWhereUniqueInput[] | BookingWhereUniqueInput>;
+}
+
+export interface BookingCreateWithoutHouseInput {
+  id?: Maybe<ID_Input>;
+  bookee: UserCreateOneWithoutBookingsInput;
+  startDate: DateTimeInput;
+  endDate: DateTimeInput;
+  payment: PaymentHouseCreateOneWithoutBookingInput;
+}
+
+export interface UserCreateOneWithoutBookingsInput {
+  create?: Maybe<UserCreateWithoutBookingsInput>;
+  connect?: Maybe<UserWhereUniqueInput>;
+}
+
+export interface UserCreateWithoutBookingsInput {
+  id?: Maybe<ID_Input>;
+  status?: Maybe<Boolean>;
+  facebookUserId?: Maybe<String>;
+  firstName: String;
+  lastName: String;
+  email?: Maybe<String>;
+  password?: Maybe<String>;
+  resetToken?: Maybe<String>;
+  resetTokenExpiry?: Maybe<String>;
+  phone1?: Maybe<String>;
+  phone2?: Maybe<String>;
+  primaryPhone?: Maybe<Int>;
+  responseTime?: Maybe<Int>;
+  isSuperHost?: Maybe<Boolean>;
+  ownedHouses?: Maybe<HouseCreateManyWithoutHostInput>;
+  location?: Maybe<LocationCreateOneInput>;
+  paidContacts?: Maybe<PaymentLanlordInfoCreateManyWithoutClientInput>;
+  notifications?: Maybe<NotificationCreateManyWithoutUserInput>;
+  profilePicture?: Maybe<PictureCreateOneInput>;
+  reviews?: Maybe<ReviewCreateManyWithoutUserInput>;
+  permissions?: Maybe<UserCreatepermissionsInput>;
 }
 
 export interface NotificationCreateManyWithoutUserInput {
@@ -3748,6 +3725,103 @@ export interface NotificationCreateWithoutUserInput {
   type?: Maybe<NOTIFICATION_TYPE>;
   link: String;
   readDate: DateTimeInput;
+}
+
+export interface PictureCreateOneInput {
+  create?: Maybe<PictureCreateInput>;
+  connect?: Maybe<PictureWhereUniqueInput>;
+}
+
+export interface ReviewCreateManyWithoutUserInput {
+  create?: Maybe<ReviewCreateWithoutUserInput[] | ReviewCreateWithoutUserInput>;
+  connect?: Maybe<ReviewWhereUniqueInput[] | ReviewWhereUniqueInput>;
+}
+
+export interface ReviewCreateWithoutUserInput {
+  id?: Maybe<ID_Input>;
+  text?: Maybe<String>;
+  stars: Int;
+  House: HouseCreateOneWithoutReviewsInput;
+}
+
+export interface HouseCreateOneWithoutReviewsInput {
+  create?: Maybe<HouseCreateWithoutReviewsInput>;
+  connect?: Maybe<HouseWhereUniqueInput>;
+}
+
+export interface HouseCreateWithoutReviewsInput {
+  id?: Maybe<ID_Input>;
+  area?: Maybe<Int>;
+  age?: Maybe<Int>;
+  shortDescription?: Maybe<String>;
+  description?: Maybe<String>;
+  maxGuests: Int;
+  numBedrooms: Int;
+  numBaths: Int;
+  numLivingrooms?: Maybe<Int>;
+  numDiningrooms?: Maybe<Int>;
+  amenities: AmenitiesCreateOneWithoutHouseInput;
+  host: UserCreateOneWithoutOwnedHousesInput;
+  pricing: PricingCreateOneWithoutHouseInput;
+  location: LocationCreateOneInput;
+  leaseType?: Maybe<HOUSE_LEASE_TYPE>;
+  verified?: Maybe<Boolean>;
+  type?: Maybe<HOUSE_TYPES>;
+  residency?: Maybe<House_RESIDENCY>;
+  lease: Int;
+  rooms?: Maybe<RoomCreateManyWithoutHouseInput>;
+  views?: Maybe<ViewsCreateOneWithoutHouseInput>;
+  bookings?: Maybe<BookingCreateManyWithoutHouseInput>;
+  pictures?: Maybe<PictureCreateManyInput>;
+  contactInfoPayments?: Maybe<PaymentLanlordInfoCreateManyWithoutHouseInput>;
+  popularity?: Maybe<Int>;
+  preview_image?: Maybe<PictureCreateOneInput>;
+}
+
+export interface PaymentLanlordInfoCreateManyWithoutHouseInput {
+  create?: Maybe<
+    | PaymentLanlordInfoCreateWithoutHouseInput[]
+    | PaymentLanlordInfoCreateWithoutHouseInput
+  >;
+  connect?: Maybe<
+    PaymentLanlordInfoWhereUniqueInput[] | PaymentLanlordInfoWhereUniqueInput
+  >;
+}
+
+export interface PaymentLanlordInfoCreateWithoutHouseInput {
+  id?: Maybe<ID_Input>;
+  totalPrice: Float;
+  client: UserCreateOneWithoutPaidContactsInput;
+  moncashTransactId: String;
+}
+
+export interface UserCreateOneWithoutPaidContactsInput {
+  create?: Maybe<UserCreateWithoutPaidContactsInput>;
+  connect?: Maybe<UserWhereUniqueInput>;
+}
+
+export interface UserCreateWithoutPaidContactsInput {
+  id?: Maybe<ID_Input>;
+  status?: Maybe<Boolean>;
+  facebookUserId?: Maybe<String>;
+  firstName: String;
+  lastName: String;
+  email?: Maybe<String>;
+  password?: Maybe<String>;
+  resetToken?: Maybe<String>;
+  resetTokenExpiry?: Maybe<String>;
+  phone1?: Maybe<String>;
+  phone2?: Maybe<String>;
+  primaryPhone?: Maybe<Int>;
+  responseTime?: Maybe<Int>;
+  isSuperHost?: Maybe<Boolean>;
+  ownedHouses?: Maybe<HouseCreateManyWithoutHostInput>;
+  location?: Maybe<LocationCreateOneInput>;
+  bookings?: Maybe<BookingCreateManyWithoutBookeeInput>;
+  notifications?: Maybe<NotificationCreateManyWithoutUserInput>;
+  profilePicture?: Maybe<PictureCreateOneInput>;
+  reviews?: Maybe<ReviewCreateManyWithoutUserInput>;
+  permissions?: Maybe<UserCreatepermissionsInput>;
 }
 
 export interface UserCreatepermissionsInput {
@@ -3808,51 +3882,6 @@ export interface CreditCardInformationCreateWithoutPaymentAccountInput {
   lastName: String;
   postalCode: String;
   country: String;
-}
-
-export interface PaymentLanlordInfoCreateManyWithoutHouseInput {
-  create?: Maybe<
-    | PaymentLanlordInfoCreateWithoutHouseInput[]
-    | PaymentLanlordInfoCreateWithoutHouseInput
-  >;
-  connect?: Maybe<
-    PaymentLanlordInfoWhereUniqueInput[] | PaymentLanlordInfoWhereUniqueInput
-  >;
-}
-
-export interface PaymentLanlordInfoCreateWithoutHouseInput {
-  id?: Maybe<ID_Input>;
-  totalPrice: Float;
-  client: UserCreateOneWithoutPaidContactsInput;
-  moncashTransactId: String;
-}
-
-export interface UserCreateOneWithoutPaidContactsInput {
-  create?: Maybe<UserCreateWithoutPaidContactsInput>;
-  connect?: Maybe<UserWhereUniqueInput>;
-}
-
-export interface UserCreateWithoutPaidContactsInput {
-  id?: Maybe<ID_Input>;
-  status?: Maybe<Boolean>;
-  facebookUserId?: Maybe<String>;
-  firstName: String;
-  lastName: String;
-  email?: Maybe<String>;
-  password?: Maybe<String>;
-  resetToken?: Maybe<String>;
-  resetTokenExpiry?: Maybe<String>;
-  phone1?: Maybe<String>;
-  phone2?: Maybe<String>;
-  primaryPhone?: Maybe<Int>;
-  responseTime?: Maybe<Int>;
-  isSuperHost?: Maybe<Boolean>;
-  ownedHouses?: Maybe<HouseCreateManyWithoutHostInput>;
-  location?: Maybe<LocationCreateOneInput>;
-  bookings?: Maybe<BookingCreateManyWithoutBookeeInput>;
-  notifications?: Maybe<NotificationCreateManyWithoutUserInput>;
-  profilePicture?: Maybe<PictureCreateOneInput>;
-  permissions?: Maybe<UserCreatepermissionsInput>;
 }
 
 export interface AmenitiesUpdateInput {
@@ -3963,140 +3992,17 @@ export interface ReviewUpdateWithWhereUniqueWithoutHouseInput {
 export interface ReviewUpdateWithoutHouseDataInput {
   text?: Maybe<String>;
   stars?: Maybe<Int>;
-  accuracy?: Maybe<Int>;
-  location?: Maybe<Int>;
-  checkIn?: Maybe<Int>;
-  value?: Maybe<Int>;
-  communication?: Maybe<Int>;
+  user?: Maybe<UserUpdateOneRequiredWithoutReviewsInput>;
 }
 
-export interface ReviewUpsertWithWhereUniqueWithoutHouseInput {
-  where: ReviewWhereUniqueInput;
-  update: ReviewUpdateWithoutHouseDataInput;
-  create: ReviewCreateWithoutHouseInput;
-}
-
-export interface ReviewScalarWhereInput {
-  id?: Maybe<ID_Input>;
-  id_not?: Maybe<ID_Input>;
-  id_in?: Maybe<ID_Input[] | ID_Input>;
-  id_not_in?: Maybe<ID_Input[] | ID_Input>;
-  id_lt?: Maybe<ID_Input>;
-  id_lte?: Maybe<ID_Input>;
-  id_gt?: Maybe<ID_Input>;
-  id_gte?: Maybe<ID_Input>;
-  id_contains?: Maybe<ID_Input>;
-  id_not_contains?: Maybe<ID_Input>;
-  id_starts_with?: Maybe<ID_Input>;
-  id_not_starts_with?: Maybe<ID_Input>;
-  id_ends_with?: Maybe<ID_Input>;
-  id_not_ends_with?: Maybe<ID_Input>;
-  createdAt?: Maybe<DateTimeInput>;
-  createdAt_not?: Maybe<DateTimeInput>;
-  createdAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
-  createdAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
-  createdAt_lt?: Maybe<DateTimeInput>;
-  createdAt_lte?: Maybe<DateTimeInput>;
-  createdAt_gt?: Maybe<DateTimeInput>;
-  createdAt_gte?: Maybe<DateTimeInput>;
-  updatedAt?: Maybe<DateTimeInput>;
-  updatedAt_not?: Maybe<DateTimeInput>;
-  updatedAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
-  updatedAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
-  updatedAt_lt?: Maybe<DateTimeInput>;
-  updatedAt_lte?: Maybe<DateTimeInput>;
-  updatedAt_gt?: Maybe<DateTimeInput>;
-  updatedAt_gte?: Maybe<DateTimeInput>;
-  text?: Maybe<String>;
-  text_not?: Maybe<String>;
-  text_in?: Maybe<String[] | String>;
-  text_not_in?: Maybe<String[] | String>;
-  text_lt?: Maybe<String>;
-  text_lte?: Maybe<String>;
-  text_gt?: Maybe<String>;
-  text_gte?: Maybe<String>;
-  text_contains?: Maybe<String>;
-  text_not_contains?: Maybe<String>;
-  text_starts_with?: Maybe<String>;
-  text_not_starts_with?: Maybe<String>;
-  text_ends_with?: Maybe<String>;
-  text_not_ends_with?: Maybe<String>;
-  stars?: Maybe<Int>;
-  stars_not?: Maybe<Int>;
-  stars_in?: Maybe<Int[] | Int>;
-  stars_not_in?: Maybe<Int[] | Int>;
-  stars_lt?: Maybe<Int>;
-  stars_lte?: Maybe<Int>;
-  stars_gt?: Maybe<Int>;
-  stars_gte?: Maybe<Int>;
-  accuracy?: Maybe<Int>;
-  accuracy_not?: Maybe<Int>;
-  accuracy_in?: Maybe<Int[] | Int>;
-  accuracy_not_in?: Maybe<Int[] | Int>;
-  accuracy_lt?: Maybe<Int>;
-  accuracy_lte?: Maybe<Int>;
-  accuracy_gt?: Maybe<Int>;
-  accuracy_gte?: Maybe<Int>;
-  location?: Maybe<Int>;
-  location_not?: Maybe<Int>;
-  location_in?: Maybe<Int[] | Int>;
-  location_not_in?: Maybe<Int[] | Int>;
-  location_lt?: Maybe<Int>;
-  location_lte?: Maybe<Int>;
-  location_gt?: Maybe<Int>;
-  location_gte?: Maybe<Int>;
-  checkIn?: Maybe<Int>;
-  checkIn_not?: Maybe<Int>;
-  checkIn_in?: Maybe<Int[] | Int>;
-  checkIn_not_in?: Maybe<Int[] | Int>;
-  checkIn_lt?: Maybe<Int>;
-  checkIn_lte?: Maybe<Int>;
-  checkIn_gt?: Maybe<Int>;
-  checkIn_gte?: Maybe<Int>;
-  value?: Maybe<Int>;
-  value_not?: Maybe<Int>;
-  value_in?: Maybe<Int[] | Int>;
-  value_not_in?: Maybe<Int[] | Int>;
-  value_lt?: Maybe<Int>;
-  value_lte?: Maybe<Int>;
-  value_gt?: Maybe<Int>;
-  value_gte?: Maybe<Int>;
-  communication?: Maybe<Int>;
-  communication_not?: Maybe<Int>;
-  communication_in?: Maybe<Int[] | Int>;
-  communication_not_in?: Maybe<Int[] | Int>;
-  communication_lt?: Maybe<Int>;
-  communication_lte?: Maybe<Int>;
-  communication_gt?: Maybe<Int>;
-  communication_gte?: Maybe<Int>;
-  AND?: Maybe<ReviewScalarWhereInput[] | ReviewScalarWhereInput>;
-  OR?: Maybe<ReviewScalarWhereInput[] | ReviewScalarWhereInput>;
-  NOT?: Maybe<ReviewScalarWhereInput[] | ReviewScalarWhereInput>;
-}
-
-export interface ReviewUpdateManyWithWhereNestedInput {
-  where: ReviewScalarWhereInput;
-  data: ReviewUpdateManyDataInput;
-}
-
-export interface ReviewUpdateManyDataInput {
-  text?: Maybe<String>;
-  stars?: Maybe<Int>;
-  accuracy?: Maybe<Int>;
-  location?: Maybe<Int>;
-  checkIn?: Maybe<Int>;
-  value?: Maybe<Int>;
-  communication?: Maybe<Int>;
-}
-
-export interface UserUpdateOneRequiredWithoutOwnedHousesInput {
-  create?: Maybe<UserCreateWithoutOwnedHousesInput>;
-  update?: Maybe<UserUpdateWithoutOwnedHousesDataInput>;
-  upsert?: Maybe<UserUpsertWithoutOwnedHousesInput>;
+export interface UserUpdateOneRequiredWithoutReviewsInput {
+  create?: Maybe<UserCreateWithoutReviewsInput>;
+  update?: Maybe<UserUpdateWithoutReviewsDataInput>;
+  upsert?: Maybe<UserUpsertWithoutReviewsInput>;
   connect?: Maybe<UserWhereUniqueInput>;
 }
 
-export interface UserUpdateWithoutOwnedHousesDataInput {
+export interface UserUpdateWithoutReviewsDataInput {
   status?: Maybe<Boolean>;
   facebookUserId?: Maybe<String>;
   firstName?: Maybe<String>;
@@ -4110,6 +4016,7 @@ export interface UserUpdateWithoutOwnedHousesDataInput {
   primaryPhone?: Maybe<Int>;
   responseTime?: Maybe<Int>;
   isSuperHost?: Maybe<Boolean>;
+  ownedHouses?: Maybe<HouseUpdateManyWithoutHostInput>;
   location?: Maybe<LocationUpdateOneInput>;
   bookings?: Maybe<BookingUpdateManyWithoutBookeeInput>;
   paidContacts?: Maybe<PaymentLanlordInfoUpdateManyWithoutClientInput>;
@@ -4118,12 +4025,135 @@ export interface UserUpdateWithoutOwnedHousesDataInput {
   permissions?: Maybe<UserUpdatepermissionsInput>;
 }
 
-export interface LocationUpdateOneInput {
+export interface HouseUpdateManyWithoutHostInput {
+  create?: Maybe<HouseCreateWithoutHostInput[] | HouseCreateWithoutHostInput>;
+  delete?: Maybe<HouseWhereUniqueInput[] | HouseWhereUniqueInput>;
+  connect?: Maybe<HouseWhereUniqueInput[] | HouseWhereUniqueInput>;
+  set?: Maybe<HouseWhereUniqueInput[] | HouseWhereUniqueInput>;
+  disconnect?: Maybe<HouseWhereUniqueInput[] | HouseWhereUniqueInput>;
+  update?: Maybe<
+    | HouseUpdateWithWhereUniqueWithoutHostInput[]
+    | HouseUpdateWithWhereUniqueWithoutHostInput
+  >;
+  upsert?: Maybe<
+    | HouseUpsertWithWhereUniqueWithoutHostInput[]
+    | HouseUpsertWithWhereUniqueWithoutHostInput
+  >;
+  deleteMany?: Maybe<HouseScalarWhereInput[] | HouseScalarWhereInput>;
+  updateMany?: Maybe<
+    HouseUpdateManyWithWhereNestedInput[] | HouseUpdateManyWithWhereNestedInput
+  >;
+}
+
+export interface HouseUpdateWithWhereUniqueWithoutHostInput {
+  where: HouseWhereUniqueInput;
+  data: HouseUpdateWithoutHostDataInput;
+}
+
+export interface HouseUpdateWithoutHostDataInput {
+  area?: Maybe<Int>;
+  age?: Maybe<Int>;
+  shortDescription?: Maybe<String>;
+  description?: Maybe<String>;
+  maxGuests?: Maybe<Int>;
+  numBedrooms?: Maybe<Int>;
+  numBaths?: Maybe<Int>;
+  numLivingrooms?: Maybe<Int>;
+  numDiningrooms?: Maybe<Int>;
+  reviews?: Maybe<ReviewUpdateManyWithoutHouseInput>;
+  amenities?: Maybe<AmenitiesUpdateOneRequiredWithoutHouseInput>;
+  pricing?: Maybe<PricingUpdateOneRequiredWithoutHouseInput>;
+  location?: Maybe<LocationUpdateOneRequiredInput>;
+  leaseType?: Maybe<HOUSE_LEASE_TYPE>;
+  verified?: Maybe<Boolean>;
+  type?: Maybe<HOUSE_TYPES>;
+  residency?: Maybe<House_RESIDENCY>;
+  lease?: Maybe<Int>;
+  rooms?: Maybe<RoomUpdateManyWithoutHouseInput>;
+  views?: Maybe<ViewsUpdateOneWithoutHouseInput>;
+  bookings?: Maybe<BookingUpdateManyWithoutHouseInput>;
+  pictures?: Maybe<PictureUpdateManyInput>;
+  contactInfoPayments?: Maybe<PaymentLanlordInfoUpdateManyWithoutHouseInput>;
+  popularity?: Maybe<Int>;
+  preview_image?: Maybe<PictureUpdateOneInput>;
+}
+
+export interface AmenitiesUpdateOneRequiredWithoutHouseInput {
+  create?: Maybe<AmenitiesCreateWithoutHouseInput>;
+  update?: Maybe<AmenitiesUpdateWithoutHouseDataInput>;
+  upsert?: Maybe<AmenitiesUpsertWithoutHouseInput>;
+  connect?: Maybe<AmenitiesWhereUniqueInput>;
+}
+
+export interface AmenitiesUpdateWithoutHouseDataInput {
+  electricity?: Maybe<Boolean>;
+  electricity_frequency?: Maybe<FREQUENCY>;
+  water_pipe?: Maybe<Boolean>;
+  water_tank?: Maybe<Boolean>;
+  water_frequency?: Maybe<FREQUENCY>;
+  elevator?: Maybe<Boolean>;
+  petsAllowed?: Maybe<Boolean>;
+  internet?: Maybe<Boolean>;
+  kitchen?: Maybe<Boolean>;
+  wirelessInternet?: Maybe<Boolean>;
+  familyKidFriendly?: Maybe<Boolean>;
+  freeParkingOnPremises?: Maybe<Boolean>;
+  hotTub?: Maybe<Boolean>;
+  pool?: Maybe<Boolean>;
+  smokingAllowed?: Maybe<Boolean>;
+  wheelchairAccessible?: Maybe<Boolean>;
+  cableTv?: Maybe<Boolean>;
+  suitableForEvents?: Maybe<Boolean>;
+  dryer?: Maybe<Boolean>;
+  washer?: Maybe<Boolean>;
+  indoorFireHouse?: Maybe<Boolean>;
+  tv?: Maybe<Boolean>;
+  heating?: Maybe<Boolean>;
+  hangers?: Maybe<Boolean>;
+  iron?: Maybe<Boolean>;
+  hairDryer?: Maybe<Boolean>;
+  doorman?: Maybe<Boolean>;
+  paidParkingOffPremises?: Maybe<Boolean>;
+  freeParkingOnStreet?: Maybe<Boolean>;
+  gym?: Maybe<Boolean>;
+  airConditioning?: Maybe<Boolean>;
+  shampoo?: Maybe<Boolean>;
+  essentials?: Maybe<Boolean>;
+  laptopFriendlyWorkspace?: Maybe<Boolean>;
+  privateEntrance?: Maybe<Boolean>;
+  buzzerWirelessIntercom?: Maybe<Boolean>;
+  bathtub?: Maybe<Boolean>;
+  crib?: Maybe<Boolean>;
+}
+
+export interface AmenitiesUpsertWithoutHouseInput {
+  update: AmenitiesUpdateWithoutHouseDataInput;
+  create: AmenitiesCreateWithoutHouseInput;
+}
+
+export interface PricingUpdateOneRequiredWithoutHouseInput {
+  create?: Maybe<PricingCreateWithoutHouseInput>;
+  update?: Maybe<PricingUpdateWithoutHouseDataInput>;
+  upsert?: Maybe<PricingUpsertWithoutHouseInput>;
+  connect?: Maybe<PricingWhereUniqueInput>;
+}
+
+export interface PricingUpdateWithoutHouseDataInput {
+  basePrice?: Maybe<Float>;
+  highestPrice?: Maybe<Float>;
+  currency?: Maybe<CURRENCY>;
+  income?: Maybe<Float>;
+}
+
+export interface PricingUpsertWithoutHouseInput {
+  update: PricingUpdateWithoutHouseDataInput;
+  create: PricingCreateWithoutHouseInput;
+}
+
+export interface LocationUpdateOneRequiredInput {
   create?: Maybe<LocationCreateInput>;
   update?: Maybe<LocationUpdateDataInput>;
   upsert?: Maybe<LocationUpsertNestedInput>;
-  delete?: Maybe<Boolean>;
-  disconnect?: Maybe<Boolean>;
   connect?: Maybe<LocationWhereUniqueInput>;
 }
 
@@ -4209,155 +4239,6 @@ export interface CommuneUpsertNestedInput {
 export interface LocationUpsertNestedInput {
   update: LocationUpdateDataInput;
   create: LocationCreateInput;
-}
-
-export interface BookingUpdateManyWithoutBookeeInput {
-  create?: Maybe<
-    BookingCreateWithoutBookeeInput[] | BookingCreateWithoutBookeeInput
-  >;
-  delete?: Maybe<BookingWhereUniqueInput[] | BookingWhereUniqueInput>;
-  connect?: Maybe<BookingWhereUniqueInput[] | BookingWhereUniqueInput>;
-  set?: Maybe<BookingWhereUniqueInput[] | BookingWhereUniqueInput>;
-  disconnect?: Maybe<BookingWhereUniqueInput[] | BookingWhereUniqueInput>;
-  update?: Maybe<
-    | BookingUpdateWithWhereUniqueWithoutBookeeInput[]
-    | BookingUpdateWithWhereUniqueWithoutBookeeInput
-  >;
-  upsert?: Maybe<
-    | BookingUpsertWithWhereUniqueWithoutBookeeInput[]
-    | BookingUpsertWithWhereUniqueWithoutBookeeInput
-  >;
-  deleteMany?: Maybe<BookingScalarWhereInput[] | BookingScalarWhereInput>;
-  updateMany?: Maybe<
-    | BookingUpdateManyWithWhereNestedInput[]
-    | BookingUpdateManyWithWhereNestedInput
-  >;
-}
-
-export interface BookingUpdateWithWhereUniqueWithoutBookeeInput {
-  where: BookingWhereUniqueInput;
-  data: BookingUpdateWithoutBookeeDataInput;
-}
-
-export interface BookingUpdateWithoutBookeeDataInput {
-  House?: Maybe<HouseUpdateOneRequiredWithoutBookingsInput>;
-  startDate?: Maybe<DateTimeInput>;
-  endDate?: Maybe<DateTimeInput>;
-  payment?: Maybe<PaymentHouseUpdateOneRequiredWithoutBookingInput>;
-}
-
-export interface HouseUpdateOneRequiredWithoutBookingsInput {
-  create?: Maybe<HouseCreateWithoutBookingsInput>;
-  update?: Maybe<HouseUpdateWithoutBookingsDataInput>;
-  upsert?: Maybe<HouseUpsertWithoutBookingsInput>;
-  connect?: Maybe<HouseWhereUniqueInput>;
-}
-
-export interface HouseUpdateWithoutBookingsDataInput {
-  area?: Maybe<Int>;
-  age?: Maybe<Int>;
-  shortDescription?: Maybe<String>;
-  description?: Maybe<String>;
-  maxGuests?: Maybe<Int>;
-  numBedrooms?: Maybe<Int>;
-  numBaths?: Maybe<Int>;
-  numLivingrooms?: Maybe<Int>;
-  numDiningrooms?: Maybe<Int>;
-  reviews?: Maybe<ReviewUpdateManyWithoutHouseInput>;
-  amenities?: Maybe<AmenitiesUpdateOneRequiredWithoutHouseInput>;
-  host?: Maybe<UserUpdateOneRequiredWithoutOwnedHousesInput>;
-  pricing?: Maybe<PricingUpdateOneRequiredWithoutHouseInput>;
-  location?: Maybe<LocationUpdateOneRequiredInput>;
-  leaseType?: Maybe<HOUSE_LEASE_TYPE>;
-  verified?: Maybe<Boolean>;
-  type?: Maybe<HOUSE_TYPES>;
-  residency?: Maybe<House_RESIDENCY>;
-  lease?: Maybe<Int>;
-  rooms?: Maybe<RoomUpdateManyWithoutHouseInput>;
-  views?: Maybe<ViewsUpdateOneWithoutHouseInput>;
-  pictures?: Maybe<PictureUpdateManyInput>;
-  contactInfoPayments?: Maybe<PaymentLanlordInfoUpdateManyWithoutHouseInput>;
-  popularity?: Maybe<Int>;
-  preview_image?: Maybe<PictureUpdateOneInput>;
-}
-
-export interface AmenitiesUpdateOneRequiredWithoutHouseInput {
-  create?: Maybe<AmenitiesCreateWithoutHouseInput>;
-  update?: Maybe<AmenitiesUpdateWithoutHouseDataInput>;
-  upsert?: Maybe<AmenitiesUpsertWithoutHouseInput>;
-  connect?: Maybe<AmenitiesWhereUniqueInput>;
-}
-
-export interface AmenitiesUpdateWithoutHouseDataInput {
-  electricity?: Maybe<Boolean>;
-  electricity_frequency?: Maybe<FREQUENCY>;
-  water_pipe?: Maybe<Boolean>;
-  water_tank?: Maybe<Boolean>;
-  water_frequency?: Maybe<FREQUENCY>;
-  elevator?: Maybe<Boolean>;
-  petsAllowed?: Maybe<Boolean>;
-  internet?: Maybe<Boolean>;
-  kitchen?: Maybe<Boolean>;
-  wirelessInternet?: Maybe<Boolean>;
-  familyKidFriendly?: Maybe<Boolean>;
-  freeParkingOnPremises?: Maybe<Boolean>;
-  hotTub?: Maybe<Boolean>;
-  pool?: Maybe<Boolean>;
-  smokingAllowed?: Maybe<Boolean>;
-  wheelchairAccessible?: Maybe<Boolean>;
-  cableTv?: Maybe<Boolean>;
-  suitableForEvents?: Maybe<Boolean>;
-  dryer?: Maybe<Boolean>;
-  washer?: Maybe<Boolean>;
-  indoorFireHouse?: Maybe<Boolean>;
-  tv?: Maybe<Boolean>;
-  heating?: Maybe<Boolean>;
-  hangers?: Maybe<Boolean>;
-  iron?: Maybe<Boolean>;
-  hairDryer?: Maybe<Boolean>;
-  doorman?: Maybe<Boolean>;
-  paidParkingOffPremises?: Maybe<Boolean>;
-  freeParkingOnStreet?: Maybe<Boolean>;
-  gym?: Maybe<Boolean>;
-  airConditioning?: Maybe<Boolean>;
-  shampoo?: Maybe<Boolean>;
-  essentials?: Maybe<Boolean>;
-  laptopFriendlyWorkspace?: Maybe<Boolean>;
-  privateEntrance?: Maybe<Boolean>;
-  buzzerWirelessIntercom?: Maybe<Boolean>;
-  bathtub?: Maybe<Boolean>;
-  crib?: Maybe<Boolean>;
-}
-
-export interface AmenitiesUpsertWithoutHouseInput {
-  update: AmenitiesUpdateWithoutHouseDataInput;
-  create: AmenitiesCreateWithoutHouseInput;
-}
-
-export interface PricingUpdateOneRequiredWithoutHouseInput {
-  create?: Maybe<PricingCreateWithoutHouseInput>;
-  update?: Maybe<PricingUpdateWithoutHouseDataInput>;
-  upsert?: Maybe<PricingUpsertWithoutHouseInput>;
-  connect?: Maybe<PricingWhereUniqueInput>;
-}
-
-export interface PricingUpdateWithoutHouseDataInput {
-  basePrice?: Maybe<Float>;
-  highestPrice?: Maybe<Float>;
-  currency?: Maybe<CURRENCY>;
-  income?: Maybe<Float>;
-}
-
-export interface PricingUpsertWithoutHouseInput {
-  update: PricingUpdateWithoutHouseDataInput;
-  create: PricingCreateWithoutHouseInput;
-}
-
-export interface LocationUpdateOneRequiredInput {
-  create?: Maybe<LocationCreateInput>;
-  update?: Maybe<LocationUpdateDataInput>;
-  upsert?: Maybe<LocationUpsertNestedInput>;
-  connect?: Maybe<LocationWhereUniqueInput>;
 }
 
 export interface RoomUpdateManyWithoutHouseInput {
@@ -4694,35 +4575,62 @@ export interface UserUpdateDataInput {
   paidContacts?: Maybe<PaymentLanlordInfoUpdateManyWithoutClientInput>;
   notifications?: Maybe<NotificationUpdateManyWithoutUserInput>;
   profilePicture?: Maybe<PictureUpdateOneInput>;
+  reviews?: Maybe<ReviewUpdateManyWithoutUserInput>;
   permissions?: Maybe<UserUpdatepermissionsInput>;
 }
 
-export interface HouseUpdateManyWithoutHostInput {
-  create?: Maybe<HouseCreateWithoutHostInput[] | HouseCreateWithoutHostInput>;
-  delete?: Maybe<HouseWhereUniqueInput[] | HouseWhereUniqueInput>;
-  connect?: Maybe<HouseWhereUniqueInput[] | HouseWhereUniqueInput>;
-  set?: Maybe<HouseWhereUniqueInput[] | HouseWhereUniqueInput>;
-  disconnect?: Maybe<HouseWhereUniqueInput[] | HouseWhereUniqueInput>;
+export interface LocationUpdateOneInput {
+  create?: Maybe<LocationCreateInput>;
+  update?: Maybe<LocationUpdateDataInput>;
+  upsert?: Maybe<LocationUpsertNestedInput>;
+  delete?: Maybe<Boolean>;
+  disconnect?: Maybe<Boolean>;
+  connect?: Maybe<LocationWhereUniqueInput>;
+}
+
+export interface BookingUpdateManyWithoutBookeeInput {
+  create?: Maybe<
+    BookingCreateWithoutBookeeInput[] | BookingCreateWithoutBookeeInput
+  >;
+  delete?: Maybe<BookingWhereUniqueInput[] | BookingWhereUniqueInput>;
+  connect?: Maybe<BookingWhereUniqueInput[] | BookingWhereUniqueInput>;
+  set?: Maybe<BookingWhereUniqueInput[] | BookingWhereUniqueInput>;
+  disconnect?: Maybe<BookingWhereUniqueInput[] | BookingWhereUniqueInput>;
   update?: Maybe<
-    | HouseUpdateWithWhereUniqueWithoutHostInput[]
-    | HouseUpdateWithWhereUniqueWithoutHostInput
+    | BookingUpdateWithWhereUniqueWithoutBookeeInput[]
+    | BookingUpdateWithWhereUniqueWithoutBookeeInput
   >;
   upsert?: Maybe<
-    | HouseUpsertWithWhereUniqueWithoutHostInput[]
-    | HouseUpsertWithWhereUniqueWithoutHostInput
+    | BookingUpsertWithWhereUniqueWithoutBookeeInput[]
+    | BookingUpsertWithWhereUniqueWithoutBookeeInput
   >;
-  deleteMany?: Maybe<HouseScalarWhereInput[] | HouseScalarWhereInput>;
+  deleteMany?: Maybe<BookingScalarWhereInput[] | BookingScalarWhereInput>;
   updateMany?: Maybe<
-    HouseUpdateManyWithWhereNestedInput[] | HouseUpdateManyWithWhereNestedInput
+    | BookingUpdateManyWithWhereNestedInput[]
+    | BookingUpdateManyWithWhereNestedInput
   >;
 }
 
-export interface HouseUpdateWithWhereUniqueWithoutHostInput {
-  where: HouseWhereUniqueInput;
-  data: HouseUpdateWithoutHostDataInput;
+export interface BookingUpdateWithWhereUniqueWithoutBookeeInput {
+  where: BookingWhereUniqueInput;
+  data: BookingUpdateWithoutBookeeDataInput;
 }
 
-export interface HouseUpdateWithoutHostDataInput {
+export interface BookingUpdateWithoutBookeeDataInput {
+  House?: Maybe<HouseUpdateOneRequiredWithoutBookingsInput>;
+  startDate?: Maybe<DateTimeInput>;
+  endDate?: Maybe<DateTimeInput>;
+  payment?: Maybe<PaymentHouseUpdateOneRequiredWithoutBookingInput>;
+}
+
+export interface HouseUpdateOneRequiredWithoutBookingsInput {
+  create?: Maybe<HouseCreateWithoutBookingsInput>;
+  update?: Maybe<HouseUpdateWithoutBookingsDataInput>;
+  upsert?: Maybe<HouseUpsertWithoutBookingsInput>;
+  connect?: Maybe<HouseWhereUniqueInput>;
+}
+
+export interface HouseUpdateWithoutBookingsDataInput {
   area?: Maybe<Int>;
   age?: Maybe<Int>;
   shortDescription?: Maybe<String>;
@@ -4734,6 +4642,7 @@ export interface HouseUpdateWithoutHostDataInput {
   numDiningrooms?: Maybe<Int>;
   reviews?: Maybe<ReviewUpdateManyWithoutHouseInput>;
   amenities?: Maybe<AmenitiesUpdateOneRequiredWithoutHouseInput>;
+  host?: Maybe<UserUpdateOneRequiredWithoutOwnedHousesInput>;
   pricing?: Maybe<PricingUpdateOneRequiredWithoutHouseInput>;
   location?: Maybe<LocationUpdateOneRequiredInput>;
   leaseType?: Maybe<HOUSE_LEASE_TYPE>;
@@ -4743,56 +4652,20 @@ export interface HouseUpdateWithoutHostDataInput {
   lease?: Maybe<Int>;
   rooms?: Maybe<RoomUpdateManyWithoutHouseInput>;
   views?: Maybe<ViewsUpdateOneWithoutHouseInput>;
-  bookings?: Maybe<BookingUpdateManyWithoutHouseInput>;
   pictures?: Maybe<PictureUpdateManyInput>;
   contactInfoPayments?: Maybe<PaymentLanlordInfoUpdateManyWithoutHouseInput>;
   popularity?: Maybe<Int>;
   preview_image?: Maybe<PictureUpdateOneInput>;
 }
 
-export interface BookingUpdateManyWithoutHouseInput {
-  create?: Maybe<
-    BookingCreateWithoutHouseInput[] | BookingCreateWithoutHouseInput
-  >;
-  delete?: Maybe<BookingWhereUniqueInput[] | BookingWhereUniqueInput>;
-  connect?: Maybe<BookingWhereUniqueInput[] | BookingWhereUniqueInput>;
-  set?: Maybe<BookingWhereUniqueInput[] | BookingWhereUniqueInput>;
-  disconnect?: Maybe<BookingWhereUniqueInput[] | BookingWhereUniqueInput>;
-  update?: Maybe<
-    | BookingUpdateWithWhereUniqueWithoutHouseInput[]
-    | BookingUpdateWithWhereUniqueWithoutHouseInput
-  >;
-  upsert?: Maybe<
-    | BookingUpsertWithWhereUniqueWithoutHouseInput[]
-    | BookingUpsertWithWhereUniqueWithoutHouseInput
-  >;
-  deleteMany?: Maybe<BookingScalarWhereInput[] | BookingScalarWhereInput>;
-  updateMany?: Maybe<
-    | BookingUpdateManyWithWhereNestedInput[]
-    | BookingUpdateManyWithWhereNestedInput
-  >;
-}
-
-export interface BookingUpdateWithWhereUniqueWithoutHouseInput {
-  where: BookingWhereUniqueInput;
-  data: BookingUpdateWithoutHouseDataInput;
-}
-
-export interface BookingUpdateWithoutHouseDataInput {
-  bookee?: Maybe<UserUpdateOneRequiredWithoutBookingsInput>;
-  startDate?: Maybe<DateTimeInput>;
-  endDate?: Maybe<DateTimeInput>;
-  payment?: Maybe<PaymentHouseUpdateOneRequiredWithoutBookingInput>;
-}
-
-export interface UserUpdateOneRequiredWithoutBookingsInput {
-  create?: Maybe<UserCreateWithoutBookingsInput>;
-  update?: Maybe<UserUpdateWithoutBookingsDataInput>;
-  upsert?: Maybe<UserUpsertWithoutBookingsInput>;
+export interface UserUpdateOneRequiredWithoutOwnedHousesInput {
+  create?: Maybe<UserCreateWithoutOwnedHousesInput>;
+  update?: Maybe<UserUpdateWithoutOwnedHousesDataInput>;
+  upsert?: Maybe<UserUpsertWithoutOwnedHousesInput>;
   connect?: Maybe<UserWhereUniqueInput>;
 }
 
-export interface UserUpdateWithoutBookingsDataInput {
+export interface UserUpdateWithoutOwnedHousesDataInput {
   status?: Maybe<Boolean>;
   facebookUserId?: Maybe<String>;
   firstName?: Maybe<String>;
@@ -4806,11 +4679,12 @@ export interface UserUpdateWithoutBookingsDataInput {
   primaryPhone?: Maybe<Int>;
   responseTime?: Maybe<Int>;
   isSuperHost?: Maybe<Boolean>;
-  ownedHouses?: Maybe<HouseUpdateManyWithoutHostInput>;
   location?: Maybe<LocationUpdateOneInput>;
+  bookings?: Maybe<BookingUpdateManyWithoutBookeeInput>;
   paidContacts?: Maybe<PaymentLanlordInfoUpdateManyWithoutClientInput>;
   notifications?: Maybe<NotificationUpdateManyWithoutUserInput>;
   profilePicture?: Maybe<PictureUpdateOneInput>;
+  reviews?: Maybe<ReviewUpdateManyWithoutUserInput>;
   permissions?: Maybe<UserUpdatepermissionsInput>;
 }
 
@@ -4894,103 +4768,69 @@ export interface HouseUpdateWithoutContactInfoPaymentsDataInput {
   preview_image?: Maybe<PictureUpdateOneInput>;
 }
 
-export interface PictureUpdateOneInput {
-  create?: Maybe<PictureCreateInput>;
-  update?: Maybe<PictureUpdateDataInput>;
-  upsert?: Maybe<PictureUpsertNestedInput>;
-  delete?: Maybe<Boolean>;
-  disconnect?: Maybe<Boolean>;
-  connect?: Maybe<PictureWhereUniqueInput>;
-}
-
-export interface PictureUpsertNestedInput {
-  update: PictureUpdateDataInput;
-  create: PictureCreateInput;
-}
-
-export interface HouseUpsertWithoutContactInfoPaymentsInput {
-  update: HouseUpdateWithoutContactInfoPaymentsDataInput;
-  create: HouseCreateWithoutContactInfoPaymentsInput;
-}
-
-export interface PaymentLanlordInfoUpsertWithWhereUniqueWithoutClientInput {
-  where: PaymentLanlordInfoWhereUniqueInput;
-  update: PaymentLanlordInfoUpdateWithoutClientDataInput;
-  create: PaymentLanlordInfoCreateWithoutClientInput;
-}
-
-export interface PaymentLanlordInfoScalarWhereInput {
-  id?: Maybe<ID_Input>;
-  id_not?: Maybe<ID_Input>;
-  id_in?: Maybe<ID_Input[] | ID_Input>;
-  id_not_in?: Maybe<ID_Input[] | ID_Input>;
-  id_lt?: Maybe<ID_Input>;
-  id_lte?: Maybe<ID_Input>;
-  id_gt?: Maybe<ID_Input>;
-  id_gte?: Maybe<ID_Input>;
-  id_contains?: Maybe<ID_Input>;
-  id_not_contains?: Maybe<ID_Input>;
-  id_starts_with?: Maybe<ID_Input>;
-  id_not_starts_with?: Maybe<ID_Input>;
-  id_ends_with?: Maybe<ID_Input>;
-  id_not_ends_with?: Maybe<ID_Input>;
-  createdAt?: Maybe<DateTimeInput>;
-  createdAt_not?: Maybe<DateTimeInput>;
-  createdAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
-  createdAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
-  createdAt_lt?: Maybe<DateTimeInput>;
-  createdAt_lte?: Maybe<DateTimeInput>;
-  createdAt_gt?: Maybe<DateTimeInput>;
-  createdAt_gte?: Maybe<DateTimeInput>;
-  updatedAt?: Maybe<DateTimeInput>;
-  updatedAt_not?: Maybe<DateTimeInput>;
-  updatedAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
-  updatedAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
-  updatedAt_lt?: Maybe<DateTimeInput>;
-  updatedAt_lte?: Maybe<DateTimeInput>;
-  updatedAt_gt?: Maybe<DateTimeInput>;
-  updatedAt_gte?: Maybe<DateTimeInput>;
-  totalPrice?: Maybe<Float>;
-  totalPrice_not?: Maybe<Float>;
-  totalPrice_in?: Maybe<Float[] | Float>;
-  totalPrice_not_in?: Maybe<Float[] | Float>;
-  totalPrice_lt?: Maybe<Float>;
-  totalPrice_lte?: Maybe<Float>;
-  totalPrice_gt?: Maybe<Float>;
-  totalPrice_gte?: Maybe<Float>;
-  moncashTransactId?: Maybe<String>;
-  moncashTransactId_not?: Maybe<String>;
-  moncashTransactId_in?: Maybe<String[] | String>;
-  moncashTransactId_not_in?: Maybe<String[] | String>;
-  moncashTransactId_lt?: Maybe<String>;
-  moncashTransactId_lte?: Maybe<String>;
-  moncashTransactId_gt?: Maybe<String>;
-  moncashTransactId_gte?: Maybe<String>;
-  moncashTransactId_contains?: Maybe<String>;
-  moncashTransactId_not_contains?: Maybe<String>;
-  moncashTransactId_starts_with?: Maybe<String>;
-  moncashTransactId_not_starts_with?: Maybe<String>;
-  moncashTransactId_ends_with?: Maybe<String>;
-  moncashTransactId_not_ends_with?: Maybe<String>;
-  AND?: Maybe<
-    PaymentLanlordInfoScalarWhereInput[] | PaymentLanlordInfoScalarWhereInput
+export interface BookingUpdateManyWithoutHouseInput {
+  create?: Maybe<
+    BookingCreateWithoutHouseInput[] | BookingCreateWithoutHouseInput
   >;
-  OR?: Maybe<
-    PaymentLanlordInfoScalarWhereInput[] | PaymentLanlordInfoScalarWhereInput
+  delete?: Maybe<BookingWhereUniqueInput[] | BookingWhereUniqueInput>;
+  connect?: Maybe<BookingWhereUniqueInput[] | BookingWhereUniqueInput>;
+  set?: Maybe<BookingWhereUniqueInput[] | BookingWhereUniqueInput>;
+  disconnect?: Maybe<BookingWhereUniqueInput[] | BookingWhereUniqueInput>;
+  update?: Maybe<
+    | BookingUpdateWithWhereUniqueWithoutHouseInput[]
+    | BookingUpdateWithWhereUniqueWithoutHouseInput
   >;
-  NOT?: Maybe<
-    PaymentLanlordInfoScalarWhereInput[] | PaymentLanlordInfoScalarWhereInput
+  upsert?: Maybe<
+    | BookingUpsertWithWhereUniqueWithoutHouseInput[]
+    | BookingUpsertWithWhereUniqueWithoutHouseInput
+  >;
+  deleteMany?: Maybe<BookingScalarWhereInput[] | BookingScalarWhereInput>;
+  updateMany?: Maybe<
+    | BookingUpdateManyWithWhereNestedInput[]
+    | BookingUpdateManyWithWhereNestedInput
   >;
 }
 
-export interface PaymentLanlordInfoUpdateManyWithWhereNestedInput {
-  where: PaymentLanlordInfoScalarWhereInput;
-  data: PaymentLanlordInfoUpdateManyDataInput;
+export interface BookingUpdateWithWhereUniqueWithoutHouseInput {
+  where: BookingWhereUniqueInput;
+  data: BookingUpdateWithoutHouseDataInput;
 }
 
-export interface PaymentLanlordInfoUpdateManyDataInput {
-  totalPrice?: Maybe<Float>;
-  moncashTransactId?: Maybe<String>;
+export interface BookingUpdateWithoutHouseDataInput {
+  bookee?: Maybe<UserUpdateOneRequiredWithoutBookingsInput>;
+  startDate?: Maybe<DateTimeInput>;
+  endDate?: Maybe<DateTimeInput>;
+  payment?: Maybe<PaymentHouseUpdateOneRequiredWithoutBookingInput>;
+}
+
+export interface UserUpdateOneRequiredWithoutBookingsInput {
+  create?: Maybe<UserCreateWithoutBookingsInput>;
+  update?: Maybe<UserUpdateWithoutBookingsDataInput>;
+  upsert?: Maybe<UserUpsertWithoutBookingsInput>;
+  connect?: Maybe<UserWhereUniqueInput>;
+}
+
+export interface UserUpdateWithoutBookingsDataInput {
+  status?: Maybe<Boolean>;
+  facebookUserId?: Maybe<String>;
+  firstName?: Maybe<String>;
+  lastName?: Maybe<String>;
+  email?: Maybe<String>;
+  password?: Maybe<String>;
+  resetToken?: Maybe<String>;
+  resetTokenExpiry?: Maybe<String>;
+  phone1?: Maybe<String>;
+  phone2?: Maybe<String>;
+  primaryPhone?: Maybe<Int>;
+  responseTime?: Maybe<Int>;
+  isSuperHost?: Maybe<Boolean>;
+  ownedHouses?: Maybe<HouseUpdateManyWithoutHostInput>;
+  location?: Maybe<LocationUpdateOneInput>;
+  paidContacts?: Maybe<PaymentLanlordInfoUpdateManyWithoutClientInput>;
+  notifications?: Maybe<NotificationUpdateManyWithoutUserInput>;
+  profilePicture?: Maybe<PictureUpdateOneInput>;
+  reviews?: Maybe<ReviewUpdateManyWithoutUserInput>;
+  permissions?: Maybe<UserUpdatepermissionsInput>;
 }
 
 export interface NotificationUpdateManyWithoutUserInput {
@@ -5112,8 +4952,328 @@ export interface NotificationUpdateManyDataInput {
   readDate?: Maybe<DateTimeInput>;
 }
 
+export interface PictureUpdateOneInput {
+  create?: Maybe<PictureCreateInput>;
+  update?: Maybe<PictureUpdateDataInput>;
+  upsert?: Maybe<PictureUpsertNestedInput>;
+  delete?: Maybe<Boolean>;
+  disconnect?: Maybe<Boolean>;
+  connect?: Maybe<PictureWhereUniqueInput>;
+}
+
+export interface PictureUpsertNestedInput {
+  update: PictureUpdateDataInput;
+  create: PictureCreateInput;
+}
+
+export interface ReviewUpdateManyWithoutUserInput {
+  create?: Maybe<ReviewCreateWithoutUserInput[] | ReviewCreateWithoutUserInput>;
+  delete?: Maybe<ReviewWhereUniqueInput[] | ReviewWhereUniqueInput>;
+  connect?: Maybe<ReviewWhereUniqueInput[] | ReviewWhereUniqueInput>;
+  set?: Maybe<ReviewWhereUniqueInput[] | ReviewWhereUniqueInput>;
+  disconnect?: Maybe<ReviewWhereUniqueInput[] | ReviewWhereUniqueInput>;
+  update?: Maybe<
+    | ReviewUpdateWithWhereUniqueWithoutUserInput[]
+    | ReviewUpdateWithWhereUniqueWithoutUserInput
+  >;
+  upsert?: Maybe<
+    | ReviewUpsertWithWhereUniqueWithoutUserInput[]
+    | ReviewUpsertWithWhereUniqueWithoutUserInput
+  >;
+  deleteMany?: Maybe<ReviewScalarWhereInput[] | ReviewScalarWhereInput>;
+  updateMany?: Maybe<
+    | ReviewUpdateManyWithWhereNestedInput[]
+    | ReviewUpdateManyWithWhereNestedInput
+  >;
+}
+
+export interface ReviewUpdateWithWhereUniqueWithoutUserInput {
+  where: ReviewWhereUniqueInput;
+  data: ReviewUpdateWithoutUserDataInput;
+}
+
+export interface ReviewUpdateWithoutUserDataInput {
+  text?: Maybe<String>;
+  stars?: Maybe<Int>;
+  House?: Maybe<HouseUpdateOneRequiredWithoutReviewsInput>;
+}
+
+export interface HouseUpdateOneRequiredWithoutReviewsInput {
+  create?: Maybe<HouseCreateWithoutReviewsInput>;
+  update?: Maybe<HouseUpdateWithoutReviewsDataInput>;
+  upsert?: Maybe<HouseUpsertWithoutReviewsInput>;
+  connect?: Maybe<HouseWhereUniqueInput>;
+}
+
+export interface HouseUpdateWithoutReviewsDataInput {
+  area?: Maybe<Int>;
+  age?: Maybe<Int>;
+  shortDescription?: Maybe<String>;
+  description?: Maybe<String>;
+  maxGuests?: Maybe<Int>;
+  numBedrooms?: Maybe<Int>;
+  numBaths?: Maybe<Int>;
+  numLivingrooms?: Maybe<Int>;
+  numDiningrooms?: Maybe<Int>;
+  amenities?: Maybe<AmenitiesUpdateOneRequiredWithoutHouseInput>;
+  host?: Maybe<UserUpdateOneRequiredWithoutOwnedHousesInput>;
+  pricing?: Maybe<PricingUpdateOneRequiredWithoutHouseInput>;
+  location?: Maybe<LocationUpdateOneRequiredInput>;
+  leaseType?: Maybe<HOUSE_LEASE_TYPE>;
+  verified?: Maybe<Boolean>;
+  type?: Maybe<HOUSE_TYPES>;
+  residency?: Maybe<House_RESIDENCY>;
+  lease?: Maybe<Int>;
+  rooms?: Maybe<RoomUpdateManyWithoutHouseInput>;
+  views?: Maybe<ViewsUpdateOneWithoutHouseInput>;
+  bookings?: Maybe<BookingUpdateManyWithoutHouseInput>;
+  pictures?: Maybe<PictureUpdateManyInput>;
+  contactInfoPayments?: Maybe<PaymentLanlordInfoUpdateManyWithoutHouseInput>;
+  popularity?: Maybe<Int>;
+  preview_image?: Maybe<PictureUpdateOneInput>;
+}
+
+export interface PaymentLanlordInfoUpdateManyWithoutHouseInput {
+  create?: Maybe<
+    | PaymentLanlordInfoCreateWithoutHouseInput[]
+    | PaymentLanlordInfoCreateWithoutHouseInput
+  >;
+  delete?: Maybe<
+    PaymentLanlordInfoWhereUniqueInput[] | PaymentLanlordInfoWhereUniqueInput
+  >;
+  connect?: Maybe<
+    PaymentLanlordInfoWhereUniqueInput[] | PaymentLanlordInfoWhereUniqueInput
+  >;
+  set?: Maybe<
+    PaymentLanlordInfoWhereUniqueInput[] | PaymentLanlordInfoWhereUniqueInput
+  >;
+  disconnect?: Maybe<
+    PaymentLanlordInfoWhereUniqueInput[] | PaymentLanlordInfoWhereUniqueInput
+  >;
+  update?: Maybe<
+    | PaymentLanlordInfoUpdateWithWhereUniqueWithoutHouseInput[]
+    | PaymentLanlordInfoUpdateWithWhereUniqueWithoutHouseInput
+  >;
+  upsert?: Maybe<
+    | PaymentLanlordInfoUpsertWithWhereUniqueWithoutHouseInput[]
+    | PaymentLanlordInfoUpsertWithWhereUniqueWithoutHouseInput
+  >;
+  deleteMany?: Maybe<
+    PaymentLanlordInfoScalarWhereInput[] | PaymentLanlordInfoScalarWhereInput
+  >;
+  updateMany?: Maybe<
+    | PaymentLanlordInfoUpdateManyWithWhereNestedInput[]
+    | PaymentLanlordInfoUpdateManyWithWhereNestedInput
+  >;
+}
+
+export interface PaymentLanlordInfoUpdateWithWhereUniqueWithoutHouseInput {
+  where: PaymentLanlordInfoWhereUniqueInput;
+  data: PaymentLanlordInfoUpdateWithoutHouseDataInput;
+}
+
+export interface PaymentLanlordInfoUpdateWithoutHouseDataInput {
+  totalPrice?: Maybe<Float>;
+  client?: Maybe<UserUpdateOneRequiredWithoutPaidContactsInput>;
+  moncashTransactId?: Maybe<String>;
+}
+
+export interface UserUpdateOneRequiredWithoutPaidContactsInput {
+  create?: Maybe<UserCreateWithoutPaidContactsInput>;
+  update?: Maybe<UserUpdateWithoutPaidContactsDataInput>;
+  upsert?: Maybe<UserUpsertWithoutPaidContactsInput>;
+  connect?: Maybe<UserWhereUniqueInput>;
+}
+
+export interface UserUpdateWithoutPaidContactsDataInput {
+  status?: Maybe<Boolean>;
+  facebookUserId?: Maybe<String>;
+  firstName?: Maybe<String>;
+  lastName?: Maybe<String>;
+  email?: Maybe<String>;
+  password?: Maybe<String>;
+  resetToken?: Maybe<String>;
+  resetTokenExpiry?: Maybe<String>;
+  phone1?: Maybe<String>;
+  phone2?: Maybe<String>;
+  primaryPhone?: Maybe<Int>;
+  responseTime?: Maybe<Int>;
+  isSuperHost?: Maybe<Boolean>;
+  ownedHouses?: Maybe<HouseUpdateManyWithoutHostInput>;
+  location?: Maybe<LocationUpdateOneInput>;
+  bookings?: Maybe<BookingUpdateManyWithoutBookeeInput>;
+  notifications?: Maybe<NotificationUpdateManyWithoutUserInput>;
+  profilePicture?: Maybe<PictureUpdateOneInput>;
+  reviews?: Maybe<ReviewUpdateManyWithoutUserInput>;
+  permissions?: Maybe<UserUpdatepermissionsInput>;
+}
+
 export interface UserUpdatepermissionsInput {
   set?: Maybe<Permission[] | Permission>;
+}
+
+export interface UserUpsertWithoutPaidContactsInput {
+  update: UserUpdateWithoutPaidContactsDataInput;
+  create: UserCreateWithoutPaidContactsInput;
+}
+
+export interface PaymentLanlordInfoUpsertWithWhereUniqueWithoutHouseInput {
+  where: PaymentLanlordInfoWhereUniqueInput;
+  update: PaymentLanlordInfoUpdateWithoutHouseDataInput;
+  create: PaymentLanlordInfoCreateWithoutHouseInput;
+}
+
+export interface PaymentLanlordInfoScalarWhereInput {
+  id?: Maybe<ID_Input>;
+  id_not?: Maybe<ID_Input>;
+  id_in?: Maybe<ID_Input[] | ID_Input>;
+  id_not_in?: Maybe<ID_Input[] | ID_Input>;
+  id_lt?: Maybe<ID_Input>;
+  id_lte?: Maybe<ID_Input>;
+  id_gt?: Maybe<ID_Input>;
+  id_gte?: Maybe<ID_Input>;
+  id_contains?: Maybe<ID_Input>;
+  id_not_contains?: Maybe<ID_Input>;
+  id_starts_with?: Maybe<ID_Input>;
+  id_not_starts_with?: Maybe<ID_Input>;
+  id_ends_with?: Maybe<ID_Input>;
+  id_not_ends_with?: Maybe<ID_Input>;
+  createdAt?: Maybe<DateTimeInput>;
+  createdAt_not?: Maybe<DateTimeInput>;
+  createdAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  createdAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  createdAt_lt?: Maybe<DateTimeInput>;
+  createdAt_lte?: Maybe<DateTimeInput>;
+  createdAt_gt?: Maybe<DateTimeInput>;
+  createdAt_gte?: Maybe<DateTimeInput>;
+  updatedAt?: Maybe<DateTimeInput>;
+  updatedAt_not?: Maybe<DateTimeInput>;
+  updatedAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  updatedAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  updatedAt_lt?: Maybe<DateTimeInput>;
+  updatedAt_lte?: Maybe<DateTimeInput>;
+  updatedAt_gt?: Maybe<DateTimeInput>;
+  updatedAt_gte?: Maybe<DateTimeInput>;
+  totalPrice?: Maybe<Float>;
+  totalPrice_not?: Maybe<Float>;
+  totalPrice_in?: Maybe<Float[] | Float>;
+  totalPrice_not_in?: Maybe<Float[] | Float>;
+  totalPrice_lt?: Maybe<Float>;
+  totalPrice_lte?: Maybe<Float>;
+  totalPrice_gt?: Maybe<Float>;
+  totalPrice_gte?: Maybe<Float>;
+  moncashTransactId?: Maybe<String>;
+  moncashTransactId_not?: Maybe<String>;
+  moncashTransactId_in?: Maybe<String[] | String>;
+  moncashTransactId_not_in?: Maybe<String[] | String>;
+  moncashTransactId_lt?: Maybe<String>;
+  moncashTransactId_lte?: Maybe<String>;
+  moncashTransactId_gt?: Maybe<String>;
+  moncashTransactId_gte?: Maybe<String>;
+  moncashTransactId_contains?: Maybe<String>;
+  moncashTransactId_not_contains?: Maybe<String>;
+  moncashTransactId_starts_with?: Maybe<String>;
+  moncashTransactId_not_starts_with?: Maybe<String>;
+  moncashTransactId_ends_with?: Maybe<String>;
+  moncashTransactId_not_ends_with?: Maybe<String>;
+  AND?: Maybe<
+    PaymentLanlordInfoScalarWhereInput[] | PaymentLanlordInfoScalarWhereInput
+  >;
+  OR?: Maybe<
+    PaymentLanlordInfoScalarWhereInput[] | PaymentLanlordInfoScalarWhereInput
+  >;
+  NOT?: Maybe<
+    PaymentLanlordInfoScalarWhereInput[] | PaymentLanlordInfoScalarWhereInput
+  >;
+}
+
+export interface PaymentLanlordInfoUpdateManyWithWhereNestedInput {
+  where: PaymentLanlordInfoScalarWhereInput;
+  data: PaymentLanlordInfoUpdateManyDataInput;
+}
+
+export interface PaymentLanlordInfoUpdateManyDataInput {
+  totalPrice?: Maybe<Float>;
+  moncashTransactId?: Maybe<String>;
+}
+
+export interface HouseUpsertWithoutReviewsInput {
+  update: HouseUpdateWithoutReviewsDataInput;
+  create: HouseCreateWithoutReviewsInput;
+}
+
+export interface ReviewUpsertWithWhereUniqueWithoutUserInput {
+  where: ReviewWhereUniqueInput;
+  update: ReviewUpdateWithoutUserDataInput;
+  create: ReviewCreateWithoutUserInput;
+}
+
+export interface ReviewScalarWhereInput {
+  id?: Maybe<ID_Input>;
+  id_not?: Maybe<ID_Input>;
+  id_in?: Maybe<ID_Input[] | ID_Input>;
+  id_not_in?: Maybe<ID_Input[] | ID_Input>;
+  id_lt?: Maybe<ID_Input>;
+  id_lte?: Maybe<ID_Input>;
+  id_gt?: Maybe<ID_Input>;
+  id_gte?: Maybe<ID_Input>;
+  id_contains?: Maybe<ID_Input>;
+  id_not_contains?: Maybe<ID_Input>;
+  id_starts_with?: Maybe<ID_Input>;
+  id_not_starts_with?: Maybe<ID_Input>;
+  id_ends_with?: Maybe<ID_Input>;
+  id_not_ends_with?: Maybe<ID_Input>;
+  createdAt?: Maybe<DateTimeInput>;
+  createdAt_not?: Maybe<DateTimeInput>;
+  createdAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  createdAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  createdAt_lt?: Maybe<DateTimeInput>;
+  createdAt_lte?: Maybe<DateTimeInput>;
+  createdAt_gt?: Maybe<DateTimeInput>;
+  createdAt_gte?: Maybe<DateTimeInput>;
+  updatedAt?: Maybe<DateTimeInput>;
+  updatedAt_not?: Maybe<DateTimeInput>;
+  updatedAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  updatedAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  updatedAt_lt?: Maybe<DateTimeInput>;
+  updatedAt_lte?: Maybe<DateTimeInput>;
+  updatedAt_gt?: Maybe<DateTimeInput>;
+  updatedAt_gte?: Maybe<DateTimeInput>;
+  text?: Maybe<String>;
+  text_not?: Maybe<String>;
+  text_in?: Maybe<String[] | String>;
+  text_not_in?: Maybe<String[] | String>;
+  text_lt?: Maybe<String>;
+  text_lte?: Maybe<String>;
+  text_gt?: Maybe<String>;
+  text_gte?: Maybe<String>;
+  text_contains?: Maybe<String>;
+  text_not_contains?: Maybe<String>;
+  text_starts_with?: Maybe<String>;
+  text_not_starts_with?: Maybe<String>;
+  text_ends_with?: Maybe<String>;
+  text_not_ends_with?: Maybe<String>;
+  stars?: Maybe<Int>;
+  stars_not?: Maybe<Int>;
+  stars_in?: Maybe<Int[] | Int>;
+  stars_not_in?: Maybe<Int[] | Int>;
+  stars_lt?: Maybe<Int>;
+  stars_lte?: Maybe<Int>;
+  stars_gt?: Maybe<Int>;
+  stars_gte?: Maybe<Int>;
+  AND?: Maybe<ReviewScalarWhereInput[] | ReviewScalarWhereInput>;
+  OR?: Maybe<ReviewScalarWhereInput[] | ReviewScalarWhereInput>;
+  NOT?: Maybe<ReviewScalarWhereInput[] | ReviewScalarWhereInput>;
+}
+
+export interface ReviewUpdateManyWithWhereNestedInput {
+  where: ReviewScalarWhereInput;
+  data: ReviewUpdateManyDataInput;
+}
+
+export interface ReviewUpdateManyDataInput {
+  text?: Maybe<String>;
+  stars?: Maybe<Int>;
 }
 
 export interface UserUpsertWithoutBookingsInput {
@@ -5280,268 +5440,31 @@ export interface BookingUpdateManyDataInput {
   endDate?: Maybe<DateTimeInput>;
 }
 
-export interface PaymentLanlordInfoUpdateManyWithoutHouseInput {
-  create?: Maybe<
-    | PaymentLanlordInfoCreateWithoutHouseInput[]
-    | PaymentLanlordInfoCreateWithoutHouseInput
-  >;
-  delete?: Maybe<
-    PaymentLanlordInfoWhereUniqueInput[] | PaymentLanlordInfoWhereUniqueInput
-  >;
-  connect?: Maybe<
-    PaymentLanlordInfoWhereUniqueInput[] | PaymentLanlordInfoWhereUniqueInput
-  >;
-  set?: Maybe<
-    PaymentLanlordInfoWhereUniqueInput[] | PaymentLanlordInfoWhereUniqueInput
-  >;
-  disconnect?: Maybe<
-    PaymentLanlordInfoWhereUniqueInput[] | PaymentLanlordInfoWhereUniqueInput
-  >;
-  update?: Maybe<
-    | PaymentLanlordInfoUpdateWithWhereUniqueWithoutHouseInput[]
-    | PaymentLanlordInfoUpdateWithWhereUniqueWithoutHouseInput
-  >;
-  upsert?: Maybe<
-    | PaymentLanlordInfoUpsertWithWhereUniqueWithoutHouseInput[]
-    | PaymentLanlordInfoUpsertWithWhereUniqueWithoutHouseInput
-  >;
-  deleteMany?: Maybe<
-    PaymentLanlordInfoScalarWhereInput[] | PaymentLanlordInfoScalarWhereInput
-  >;
-  updateMany?: Maybe<
-    | PaymentLanlordInfoUpdateManyWithWhereNestedInput[]
-    | PaymentLanlordInfoUpdateManyWithWhereNestedInput
-  >;
+export interface HouseUpsertWithoutContactInfoPaymentsInput {
+  update: HouseUpdateWithoutContactInfoPaymentsDataInput;
+  create: HouseCreateWithoutContactInfoPaymentsInput;
 }
 
-export interface PaymentLanlordInfoUpdateWithWhereUniqueWithoutHouseInput {
+export interface PaymentLanlordInfoUpsertWithWhereUniqueWithoutClientInput {
   where: PaymentLanlordInfoWhereUniqueInput;
-  data: PaymentLanlordInfoUpdateWithoutHouseDataInput;
+  update: PaymentLanlordInfoUpdateWithoutClientDataInput;
+  create: PaymentLanlordInfoCreateWithoutClientInput;
 }
 
-export interface PaymentLanlordInfoUpdateWithoutHouseDataInput {
-  totalPrice?: Maybe<Float>;
-  client?: Maybe<UserUpdateOneRequiredWithoutPaidContactsInput>;
-  moncashTransactId?: Maybe<String>;
+export interface UserUpsertWithoutOwnedHousesInput {
+  update: UserUpdateWithoutOwnedHousesDataInput;
+  create: UserCreateWithoutOwnedHousesInput;
 }
 
-export interface UserUpdateOneRequiredWithoutPaidContactsInput {
-  create?: Maybe<UserCreateWithoutPaidContactsInput>;
-  update?: Maybe<UserUpdateWithoutPaidContactsDataInput>;
-  upsert?: Maybe<UserUpsertWithoutPaidContactsInput>;
-  connect?: Maybe<UserWhereUniqueInput>;
+export interface HouseUpsertWithoutBookingsInput {
+  update: HouseUpdateWithoutBookingsDataInput;
+  create: HouseCreateWithoutBookingsInput;
 }
 
-export interface UserUpdateWithoutPaidContactsDataInput {
-  status?: Maybe<Boolean>;
-  facebookUserId?: Maybe<String>;
-  firstName?: Maybe<String>;
-  lastName?: Maybe<String>;
-  email?: Maybe<String>;
-  password?: Maybe<String>;
-  resetToken?: Maybe<String>;
-  resetTokenExpiry?: Maybe<String>;
-  phone1?: Maybe<String>;
-  phone2?: Maybe<String>;
-  primaryPhone?: Maybe<Int>;
-  responseTime?: Maybe<Int>;
-  isSuperHost?: Maybe<Boolean>;
-  ownedHouses?: Maybe<HouseUpdateManyWithoutHostInput>;
-  location?: Maybe<LocationUpdateOneInput>;
-  bookings?: Maybe<BookingUpdateManyWithoutBookeeInput>;
-  notifications?: Maybe<NotificationUpdateManyWithoutUserInput>;
-  profilePicture?: Maybe<PictureUpdateOneInput>;
-  permissions?: Maybe<UserUpdatepermissionsInput>;
-}
-
-export interface UserUpsertWithoutPaidContactsInput {
-  update: UserUpdateWithoutPaidContactsDataInput;
-  create: UserCreateWithoutPaidContactsInput;
-}
-
-export interface PaymentLanlordInfoUpsertWithWhereUniqueWithoutHouseInput {
-  where: PaymentLanlordInfoWhereUniqueInput;
-  update: PaymentLanlordInfoUpdateWithoutHouseDataInput;
-  create: PaymentLanlordInfoCreateWithoutHouseInput;
-}
-
-export interface HouseUpsertWithWhereUniqueWithoutHostInput {
-  where: HouseWhereUniqueInput;
-  update: HouseUpdateWithoutHostDataInput;
-  create: HouseCreateWithoutHostInput;
-}
-
-export interface HouseScalarWhereInput {
-  id?: Maybe<ID_Input>;
-  id_not?: Maybe<ID_Input>;
-  id_in?: Maybe<ID_Input[] | ID_Input>;
-  id_not_in?: Maybe<ID_Input[] | ID_Input>;
-  id_lt?: Maybe<ID_Input>;
-  id_lte?: Maybe<ID_Input>;
-  id_gt?: Maybe<ID_Input>;
-  id_gte?: Maybe<ID_Input>;
-  id_contains?: Maybe<ID_Input>;
-  id_not_contains?: Maybe<ID_Input>;
-  id_starts_with?: Maybe<ID_Input>;
-  id_not_starts_with?: Maybe<ID_Input>;
-  id_ends_with?: Maybe<ID_Input>;
-  id_not_ends_with?: Maybe<ID_Input>;
-  area?: Maybe<Int>;
-  area_not?: Maybe<Int>;
-  area_in?: Maybe<Int[] | Int>;
-  area_not_in?: Maybe<Int[] | Int>;
-  area_lt?: Maybe<Int>;
-  area_lte?: Maybe<Int>;
-  area_gt?: Maybe<Int>;
-  area_gte?: Maybe<Int>;
-  age?: Maybe<Int>;
-  age_not?: Maybe<Int>;
-  age_in?: Maybe<Int[] | Int>;
-  age_not_in?: Maybe<Int[] | Int>;
-  age_lt?: Maybe<Int>;
-  age_lte?: Maybe<Int>;
-  age_gt?: Maybe<Int>;
-  age_gte?: Maybe<Int>;
-  shortDescription?: Maybe<String>;
-  shortDescription_not?: Maybe<String>;
-  shortDescription_in?: Maybe<String[] | String>;
-  shortDescription_not_in?: Maybe<String[] | String>;
-  shortDescription_lt?: Maybe<String>;
-  shortDescription_lte?: Maybe<String>;
-  shortDescription_gt?: Maybe<String>;
-  shortDescription_gte?: Maybe<String>;
-  shortDescription_contains?: Maybe<String>;
-  shortDescription_not_contains?: Maybe<String>;
-  shortDescription_starts_with?: Maybe<String>;
-  shortDescription_not_starts_with?: Maybe<String>;
-  shortDescription_ends_with?: Maybe<String>;
-  shortDescription_not_ends_with?: Maybe<String>;
-  description?: Maybe<String>;
-  description_not?: Maybe<String>;
-  description_in?: Maybe<String[] | String>;
-  description_not_in?: Maybe<String[] | String>;
-  description_lt?: Maybe<String>;
-  description_lte?: Maybe<String>;
-  description_gt?: Maybe<String>;
-  description_gte?: Maybe<String>;
-  description_contains?: Maybe<String>;
-  description_not_contains?: Maybe<String>;
-  description_starts_with?: Maybe<String>;
-  description_not_starts_with?: Maybe<String>;
-  description_ends_with?: Maybe<String>;
-  description_not_ends_with?: Maybe<String>;
-  maxGuests?: Maybe<Int>;
-  maxGuests_not?: Maybe<Int>;
-  maxGuests_in?: Maybe<Int[] | Int>;
-  maxGuests_not_in?: Maybe<Int[] | Int>;
-  maxGuests_lt?: Maybe<Int>;
-  maxGuests_lte?: Maybe<Int>;
-  maxGuests_gt?: Maybe<Int>;
-  maxGuests_gte?: Maybe<Int>;
-  numBedrooms?: Maybe<Int>;
-  numBedrooms_not?: Maybe<Int>;
-  numBedrooms_in?: Maybe<Int[] | Int>;
-  numBedrooms_not_in?: Maybe<Int[] | Int>;
-  numBedrooms_lt?: Maybe<Int>;
-  numBedrooms_lte?: Maybe<Int>;
-  numBedrooms_gt?: Maybe<Int>;
-  numBedrooms_gte?: Maybe<Int>;
-  numBaths?: Maybe<Int>;
-  numBaths_not?: Maybe<Int>;
-  numBaths_in?: Maybe<Int[] | Int>;
-  numBaths_not_in?: Maybe<Int[] | Int>;
-  numBaths_lt?: Maybe<Int>;
-  numBaths_lte?: Maybe<Int>;
-  numBaths_gt?: Maybe<Int>;
-  numBaths_gte?: Maybe<Int>;
-  numLivingrooms?: Maybe<Int>;
-  numLivingrooms_not?: Maybe<Int>;
-  numLivingrooms_in?: Maybe<Int[] | Int>;
-  numLivingrooms_not_in?: Maybe<Int[] | Int>;
-  numLivingrooms_lt?: Maybe<Int>;
-  numLivingrooms_lte?: Maybe<Int>;
-  numLivingrooms_gt?: Maybe<Int>;
-  numLivingrooms_gte?: Maybe<Int>;
-  numDiningrooms?: Maybe<Int>;
-  numDiningrooms_not?: Maybe<Int>;
-  numDiningrooms_in?: Maybe<Int[] | Int>;
-  numDiningrooms_not_in?: Maybe<Int[] | Int>;
-  numDiningrooms_lt?: Maybe<Int>;
-  numDiningrooms_lte?: Maybe<Int>;
-  numDiningrooms_gt?: Maybe<Int>;
-  numDiningrooms_gte?: Maybe<Int>;
-  leaseType?: Maybe<HOUSE_LEASE_TYPE>;
-  leaseType_not?: Maybe<HOUSE_LEASE_TYPE>;
-  leaseType_in?: Maybe<HOUSE_LEASE_TYPE[] | HOUSE_LEASE_TYPE>;
-  leaseType_not_in?: Maybe<HOUSE_LEASE_TYPE[] | HOUSE_LEASE_TYPE>;
-  verified?: Maybe<Boolean>;
-  verified_not?: Maybe<Boolean>;
-  type?: Maybe<HOUSE_TYPES>;
-  type_not?: Maybe<HOUSE_TYPES>;
-  type_in?: Maybe<HOUSE_TYPES[] | HOUSE_TYPES>;
-  type_not_in?: Maybe<HOUSE_TYPES[] | HOUSE_TYPES>;
-  residency?: Maybe<House_RESIDENCY>;
-  residency_not?: Maybe<House_RESIDENCY>;
-  residency_in?: Maybe<House_RESIDENCY[] | House_RESIDENCY>;
-  residency_not_in?: Maybe<House_RESIDENCY[] | House_RESIDENCY>;
-  lease?: Maybe<Int>;
-  lease_not?: Maybe<Int>;
-  lease_in?: Maybe<Int[] | Int>;
-  lease_not_in?: Maybe<Int[] | Int>;
-  lease_lt?: Maybe<Int>;
-  lease_lte?: Maybe<Int>;
-  lease_gt?: Maybe<Int>;
-  lease_gte?: Maybe<Int>;
-  popularity?: Maybe<Int>;
-  popularity_not?: Maybe<Int>;
-  popularity_in?: Maybe<Int[] | Int>;
-  popularity_not_in?: Maybe<Int[] | Int>;
-  popularity_lt?: Maybe<Int>;
-  popularity_lte?: Maybe<Int>;
-  popularity_gt?: Maybe<Int>;
-  popularity_gte?: Maybe<Int>;
-  createdAt?: Maybe<DateTimeInput>;
-  createdAt_not?: Maybe<DateTimeInput>;
-  createdAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
-  createdAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
-  createdAt_lt?: Maybe<DateTimeInput>;
-  createdAt_lte?: Maybe<DateTimeInput>;
-  createdAt_gt?: Maybe<DateTimeInput>;
-  createdAt_gte?: Maybe<DateTimeInput>;
-  updatedAt?: Maybe<DateTimeInput>;
-  updatedAt_not?: Maybe<DateTimeInput>;
-  updatedAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
-  updatedAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
-  updatedAt_lt?: Maybe<DateTimeInput>;
-  updatedAt_lte?: Maybe<DateTimeInput>;
-  updatedAt_gt?: Maybe<DateTimeInput>;
-  updatedAt_gte?: Maybe<DateTimeInput>;
-  AND?: Maybe<HouseScalarWhereInput[] | HouseScalarWhereInput>;
-  OR?: Maybe<HouseScalarWhereInput[] | HouseScalarWhereInput>;
-  NOT?: Maybe<HouseScalarWhereInput[] | HouseScalarWhereInput>;
-}
-
-export interface HouseUpdateManyWithWhereNestedInput {
-  where: HouseScalarWhereInput;
-  data: HouseUpdateManyDataInput;
-}
-
-export interface HouseUpdateManyDataInput {
-  area?: Maybe<Int>;
-  age?: Maybe<Int>;
-  shortDescription?: Maybe<String>;
-  description?: Maybe<String>;
-  maxGuests?: Maybe<Int>;
-  numBedrooms?: Maybe<Int>;
-  numBaths?: Maybe<Int>;
-  numLivingrooms?: Maybe<Int>;
-  numDiningrooms?: Maybe<Int>;
-  leaseType?: Maybe<HOUSE_LEASE_TYPE>;
-  verified?: Maybe<Boolean>;
-  type?: Maybe<HOUSE_TYPES>;
-  residency?: Maybe<House_RESIDENCY>;
-  lease?: Maybe<Int>;
-  popularity?: Maybe<Int>;
+export interface BookingUpsertWithWhereUniqueWithoutBookeeInput {
+  where: BookingWhereUniqueInput;
+  update: BookingUpdateWithoutBookeeDataInput;
+  create: BookingCreateWithoutBookeeInput;
 }
 
 export interface UserUpsertWithWhereUniqueNestedInput {
@@ -5759,20 +5682,194 @@ export interface ViewsUpsertWithoutHouseInput {
   create: ViewsCreateWithoutHouseInput;
 }
 
-export interface HouseUpsertWithoutBookingsInput {
-  update: HouseUpdateWithoutBookingsDataInput;
-  create: HouseCreateWithoutBookingsInput;
+export interface HouseUpsertWithWhereUniqueWithoutHostInput {
+  where: HouseWhereUniqueInput;
+  update: HouseUpdateWithoutHostDataInput;
+  create: HouseCreateWithoutHostInput;
 }
 
-export interface BookingUpsertWithWhereUniqueWithoutBookeeInput {
-  where: BookingWhereUniqueInput;
-  update: BookingUpdateWithoutBookeeDataInput;
-  create: BookingCreateWithoutBookeeInput;
+export interface HouseScalarWhereInput {
+  id?: Maybe<ID_Input>;
+  id_not?: Maybe<ID_Input>;
+  id_in?: Maybe<ID_Input[] | ID_Input>;
+  id_not_in?: Maybe<ID_Input[] | ID_Input>;
+  id_lt?: Maybe<ID_Input>;
+  id_lte?: Maybe<ID_Input>;
+  id_gt?: Maybe<ID_Input>;
+  id_gte?: Maybe<ID_Input>;
+  id_contains?: Maybe<ID_Input>;
+  id_not_contains?: Maybe<ID_Input>;
+  id_starts_with?: Maybe<ID_Input>;
+  id_not_starts_with?: Maybe<ID_Input>;
+  id_ends_with?: Maybe<ID_Input>;
+  id_not_ends_with?: Maybe<ID_Input>;
+  area?: Maybe<Int>;
+  area_not?: Maybe<Int>;
+  area_in?: Maybe<Int[] | Int>;
+  area_not_in?: Maybe<Int[] | Int>;
+  area_lt?: Maybe<Int>;
+  area_lte?: Maybe<Int>;
+  area_gt?: Maybe<Int>;
+  area_gte?: Maybe<Int>;
+  age?: Maybe<Int>;
+  age_not?: Maybe<Int>;
+  age_in?: Maybe<Int[] | Int>;
+  age_not_in?: Maybe<Int[] | Int>;
+  age_lt?: Maybe<Int>;
+  age_lte?: Maybe<Int>;
+  age_gt?: Maybe<Int>;
+  age_gte?: Maybe<Int>;
+  shortDescription?: Maybe<String>;
+  shortDescription_not?: Maybe<String>;
+  shortDescription_in?: Maybe<String[] | String>;
+  shortDescription_not_in?: Maybe<String[] | String>;
+  shortDescription_lt?: Maybe<String>;
+  shortDescription_lte?: Maybe<String>;
+  shortDescription_gt?: Maybe<String>;
+  shortDescription_gte?: Maybe<String>;
+  shortDescription_contains?: Maybe<String>;
+  shortDescription_not_contains?: Maybe<String>;
+  shortDescription_starts_with?: Maybe<String>;
+  shortDescription_not_starts_with?: Maybe<String>;
+  shortDescription_ends_with?: Maybe<String>;
+  shortDescription_not_ends_with?: Maybe<String>;
+  description?: Maybe<String>;
+  description_not?: Maybe<String>;
+  description_in?: Maybe<String[] | String>;
+  description_not_in?: Maybe<String[] | String>;
+  description_lt?: Maybe<String>;
+  description_lte?: Maybe<String>;
+  description_gt?: Maybe<String>;
+  description_gte?: Maybe<String>;
+  description_contains?: Maybe<String>;
+  description_not_contains?: Maybe<String>;
+  description_starts_with?: Maybe<String>;
+  description_not_starts_with?: Maybe<String>;
+  description_ends_with?: Maybe<String>;
+  description_not_ends_with?: Maybe<String>;
+  maxGuests?: Maybe<Int>;
+  maxGuests_not?: Maybe<Int>;
+  maxGuests_in?: Maybe<Int[] | Int>;
+  maxGuests_not_in?: Maybe<Int[] | Int>;
+  maxGuests_lt?: Maybe<Int>;
+  maxGuests_lte?: Maybe<Int>;
+  maxGuests_gt?: Maybe<Int>;
+  maxGuests_gte?: Maybe<Int>;
+  numBedrooms?: Maybe<Int>;
+  numBedrooms_not?: Maybe<Int>;
+  numBedrooms_in?: Maybe<Int[] | Int>;
+  numBedrooms_not_in?: Maybe<Int[] | Int>;
+  numBedrooms_lt?: Maybe<Int>;
+  numBedrooms_lte?: Maybe<Int>;
+  numBedrooms_gt?: Maybe<Int>;
+  numBedrooms_gte?: Maybe<Int>;
+  numBaths?: Maybe<Int>;
+  numBaths_not?: Maybe<Int>;
+  numBaths_in?: Maybe<Int[] | Int>;
+  numBaths_not_in?: Maybe<Int[] | Int>;
+  numBaths_lt?: Maybe<Int>;
+  numBaths_lte?: Maybe<Int>;
+  numBaths_gt?: Maybe<Int>;
+  numBaths_gte?: Maybe<Int>;
+  numLivingrooms?: Maybe<Int>;
+  numLivingrooms_not?: Maybe<Int>;
+  numLivingrooms_in?: Maybe<Int[] | Int>;
+  numLivingrooms_not_in?: Maybe<Int[] | Int>;
+  numLivingrooms_lt?: Maybe<Int>;
+  numLivingrooms_lte?: Maybe<Int>;
+  numLivingrooms_gt?: Maybe<Int>;
+  numLivingrooms_gte?: Maybe<Int>;
+  numDiningrooms?: Maybe<Int>;
+  numDiningrooms_not?: Maybe<Int>;
+  numDiningrooms_in?: Maybe<Int[] | Int>;
+  numDiningrooms_not_in?: Maybe<Int[] | Int>;
+  numDiningrooms_lt?: Maybe<Int>;
+  numDiningrooms_lte?: Maybe<Int>;
+  numDiningrooms_gt?: Maybe<Int>;
+  numDiningrooms_gte?: Maybe<Int>;
+  leaseType?: Maybe<HOUSE_LEASE_TYPE>;
+  leaseType_not?: Maybe<HOUSE_LEASE_TYPE>;
+  leaseType_in?: Maybe<HOUSE_LEASE_TYPE[] | HOUSE_LEASE_TYPE>;
+  leaseType_not_in?: Maybe<HOUSE_LEASE_TYPE[] | HOUSE_LEASE_TYPE>;
+  verified?: Maybe<Boolean>;
+  verified_not?: Maybe<Boolean>;
+  type?: Maybe<HOUSE_TYPES>;
+  type_not?: Maybe<HOUSE_TYPES>;
+  type_in?: Maybe<HOUSE_TYPES[] | HOUSE_TYPES>;
+  type_not_in?: Maybe<HOUSE_TYPES[] | HOUSE_TYPES>;
+  residency?: Maybe<House_RESIDENCY>;
+  residency_not?: Maybe<House_RESIDENCY>;
+  residency_in?: Maybe<House_RESIDENCY[] | House_RESIDENCY>;
+  residency_not_in?: Maybe<House_RESIDENCY[] | House_RESIDENCY>;
+  lease?: Maybe<Int>;
+  lease_not?: Maybe<Int>;
+  lease_in?: Maybe<Int[] | Int>;
+  lease_not_in?: Maybe<Int[] | Int>;
+  lease_lt?: Maybe<Int>;
+  lease_lte?: Maybe<Int>;
+  lease_gt?: Maybe<Int>;
+  lease_gte?: Maybe<Int>;
+  popularity?: Maybe<Int>;
+  popularity_not?: Maybe<Int>;
+  popularity_in?: Maybe<Int[] | Int>;
+  popularity_not_in?: Maybe<Int[] | Int>;
+  popularity_lt?: Maybe<Int>;
+  popularity_lte?: Maybe<Int>;
+  popularity_gt?: Maybe<Int>;
+  popularity_gte?: Maybe<Int>;
+  createdAt?: Maybe<DateTimeInput>;
+  createdAt_not?: Maybe<DateTimeInput>;
+  createdAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  createdAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  createdAt_lt?: Maybe<DateTimeInput>;
+  createdAt_lte?: Maybe<DateTimeInput>;
+  createdAt_gt?: Maybe<DateTimeInput>;
+  createdAt_gte?: Maybe<DateTimeInput>;
+  updatedAt?: Maybe<DateTimeInput>;
+  updatedAt_not?: Maybe<DateTimeInput>;
+  updatedAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  updatedAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  updatedAt_lt?: Maybe<DateTimeInput>;
+  updatedAt_lte?: Maybe<DateTimeInput>;
+  updatedAt_gt?: Maybe<DateTimeInput>;
+  updatedAt_gte?: Maybe<DateTimeInput>;
+  AND?: Maybe<HouseScalarWhereInput[] | HouseScalarWhereInput>;
+  OR?: Maybe<HouseScalarWhereInput[] | HouseScalarWhereInput>;
+  NOT?: Maybe<HouseScalarWhereInput[] | HouseScalarWhereInput>;
 }
 
-export interface UserUpsertWithoutOwnedHousesInput {
-  update: UserUpdateWithoutOwnedHousesDataInput;
-  create: UserCreateWithoutOwnedHousesInput;
+export interface HouseUpdateManyWithWhereNestedInput {
+  where: HouseScalarWhereInput;
+  data: HouseUpdateManyDataInput;
+}
+
+export interface HouseUpdateManyDataInput {
+  area?: Maybe<Int>;
+  age?: Maybe<Int>;
+  shortDescription?: Maybe<String>;
+  description?: Maybe<String>;
+  maxGuests?: Maybe<Int>;
+  numBedrooms?: Maybe<Int>;
+  numBaths?: Maybe<Int>;
+  numLivingrooms?: Maybe<Int>;
+  numDiningrooms?: Maybe<Int>;
+  leaseType?: Maybe<HOUSE_LEASE_TYPE>;
+  verified?: Maybe<Boolean>;
+  type?: Maybe<HOUSE_TYPES>;
+  residency?: Maybe<House_RESIDENCY>;
+  lease?: Maybe<Int>;
+  popularity?: Maybe<Int>;
+}
+
+export interface UserUpsertWithoutReviewsInput {
+  update: UserUpdateWithoutReviewsDataInput;
+  create: UserCreateWithoutReviewsInput;
+}
+
+export interface ReviewUpsertWithWhereUniqueWithoutHouseInput {
+  where: ReviewWhereUniqueInput;
+  update: ReviewUpdateWithoutHouseDataInput;
+  create: ReviewCreateWithoutHouseInput;
 }
 
 export interface HouseUpsertWithoutAmenitiesInput {
@@ -6290,6 +6387,7 @@ export interface UserCreateWithoutNotificationsInput {
   bookings?: Maybe<BookingCreateManyWithoutBookeeInput>;
   paidContacts?: Maybe<PaymentLanlordInfoCreateManyWithoutClientInput>;
   profilePicture?: Maybe<PictureCreateOneInput>;
+  reviews?: Maybe<ReviewCreateManyWithoutUserInput>;
   permissions?: Maybe<UserCreatepermissionsInput>;
 }
 
@@ -6326,6 +6424,7 @@ export interface UserUpdateWithoutNotificationsDataInput {
   bookings?: Maybe<BookingUpdateManyWithoutBookeeInput>;
   paidContacts?: Maybe<PaymentLanlordInfoUpdateManyWithoutClientInput>;
   profilePicture?: Maybe<PictureUpdateOneInput>;
+  reviews?: Maybe<ReviewUpdateManyWithoutUserInput>;
   permissions?: Maybe<UserUpdatepermissionsInput>;
 }
 
@@ -6553,109 +6652,22 @@ export interface PricingUpdateManyMutationInput {
 
 export interface ReviewCreateInput {
   id?: Maybe<ID_Input>;
-  text: String;
+  text?: Maybe<String>;
   stars: Int;
-  accuracy: Int;
-  location: Int;
-  checkIn: Int;
-  value: Int;
-  communication: Int;
   House: HouseCreateOneWithoutReviewsInput;
-}
-
-export interface HouseCreateOneWithoutReviewsInput {
-  create?: Maybe<HouseCreateWithoutReviewsInput>;
-  connect?: Maybe<HouseWhereUniqueInput>;
-}
-
-export interface HouseCreateWithoutReviewsInput {
-  id?: Maybe<ID_Input>;
-  area?: Maybe<Int>;
-  age?: Maybe<Int>;
-  shortDescription?: Maybe<String>;
-  description?: Maybe<String>;
-  maxGuests: Int;
-  numBedrooms: Int;
-  numBaths: Int;
-  numLivingrooms?: Maybe<Int>;
-  numDiningrooms?: Maybe<Int>;
-  amenities: AmenitiesCreateOneWithoutHouseInput;
-  host: UserCreateOneWithoutOwnedHousesInput;
-  pricing: PricingCreateOneWithoutHouseInput;
-  location: LocationCreateOneInput;
-  leaseType?: Maybe<HOUSE_LEASE_TYPE>;
-  verified?: Maybe<Boolean>;
-  type?: Maybe<HOUSE_TYPES>;
-  residency?: Maybe<House_RESIDENCY>;
-  lease: Int;
-  rooms?: Maybe<RoomCreateManyWithoutHouseInput>;
-  views?: Maybe<ViewsCreateOneWithoutHouseInput>;
-  bookings?: Maybe<BookingCreateManyWithoutHouseInput>;
-  pictures?: Maybe<PictureCreateManyInput>;
-  contactInfoPayments?: Maybe<PaymentLanlordInfoCreateManyWithoutHouseInput>;
-  popularity?: Maybe<Int>;
-  preview_image?: Maybe<PictureCreateOneInput>;
+  user: UserCreateOneWithoutReviewsInput;
 }
 
 export interface ReviewUpdateInput {
   text?: Maybe<String>;
   stars?: Maybe<Int>;
-  accuracy?: Maybe<Int>;
-  location?: Maybe<Int>;
-  checkIn?: Maybe<Int>;
-  value?: Maybe<Int>;
-  communication?: Maybe<Int>;
   House?: Maybe<HouseUpdateOneRequiredWithoutReviewsInput>;
-}
-
-export interface HouseUpdateOneRequiredWithoutReviewsInput {
-  create?: Maybe<HouseCreateWithoutReviewsInput>;
-  update?: Maybe<HouseUpdateWithoutReviewsDataInput>;
-  upsert?: Maybe<HouseUpsertWithoutReviewsInput>;
-  connect?: Maybe<HouseWhereUniqueInput>;
-}
-
-export interface HouseUpdateWithoutReviewsDataInput {
-  area?: Maybe<Int>;
-  age?: Maybe<Int>;
-  shortDescription?: Maybe<String>;
-  description?: Maybe<String>;
-  maxGuests?: Maybe<Int>;
-  numBedrooms?: Maybe<Int>;
-  numBaths?: Maybe<Int>;
-  numLivingrooms?: Maybe<Int>;
-  numDiningrooms?: Maybe<Int>;
-  amenities?: Maybe<AmenitiesUpdateOneRequiredWithoutHouseInput>;
-  host?: Maybe<UserUpdateOneRequiredWithoutOwnedHousesInput>;
-  pricing?: Maybe<PricingUpdateOneRequiredWithoutHouseInput>;
-  location?: Maybe<LocationUpdateOneRequiredInput>;
-  leaseType?: Maybe<HOUSE_LEASE_TYPE>;
-  verified?: Maybe<Boolean>;
-  type?: Maybe<HOUSE_TYPES>;
-  residency?: Maybe<House_RESIDENCY>;
-  lease?: Maybe<Int>;
-  rooms?: Maybe<RoomUpdateManyWithoutHouseInput>;
-  views?: Maybe<ViewsUpdateOneWithoutHouseInput>;
-  bookings?: Maybe<BookingUpdateManyWithoutHouseInput>;
-  pictures?: Maybe<PictureUpdateManyInput>;
-  contactInfoPayments?: Maybe<PaymentLanlordInfoUpdateManyWithoutHouseInput>;
-  popularity?: Maybe<Int>;
-  preview_image?: Maybe<PictureUpdateOneInput>;
-}
-
-export interface HouseUpsertWithoutReviewsInput {
-  update: HouseUpdateWithoutReviewsDataInput;
-  create: HouseCreateWithoutReviewsInput;
+  user?: Maybe<UserUpdateOneRequiredWithoutReviewsInput>;
 }
 
 export interface ReviewUpdateManyMutationInput {
   text?: Maybe<String>;
   stars?: Maybe<Int>;
-  accuracy?: Maybe<Int>;
-  location?: Maybe<Int>;
-  checkIn?: Maybe<Int>;
-  value?: Maybe<Int>;
-  communication?: Maybe<Int>;
 }
 
 export interface RoomCreateInput {
@@ -6782,6 +6794,7 @@ export interface UserUpdateInput {
   paidContacts?: Maybe<PaymentLanlordInfoUpdateManyWithoutClientInput>;
   notifications?: Maybe<NotificationUpdateManyWithoutUserInput>;
   profilePicture?: Maybe<PictureUpdateOneInput>;
+  reviews?: Maybe<ReviewUpdateManyWithoutUserInput>;
   permissions?: Maybe<UserUpdatepermissionsInput>;
 }
 
@@ -7661,13 +7674,8 @@ export interface Review {
   id: ID_Output;
   createdAt: DateTimeOutput;
   updatedAt: DateTimeOutput;
-  text: String;
+  text?: String;
   stars: Int;
-  accuracy: Int;
-  location: Int;
-  checkIn: Int;
-  value: Int;
-  communication: Int;
 }
 
 export interface ReviewPromise extends Promise<Review>, Fragmentable {
@@ -7676,12 +7684,8 @@ export interface ReviewPromise extends Promise<Review>, Fragmentable {
   updatedAt: () => Promise<DateTimeOutput>;
   text: () => Promise<String>;
   stars: () => Promise<Int>;
-  accuracy: () => Promise<Int>;
-  location: () => Promise<Int>;
-  checkIn: () => Promise<Int>;
-  value: () => Promise<Int>;
-  communication: () => Promise<Int>;
   House: <T = HousePromise>() => T;
+  user: <T = UserPromise>() => T;
 }
 
 export interface ReviewSubscription
@@ -7692,12 +7696,8 @@ export interface ReviewSubscription
   updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
   text: () => Promise<AsyncIterator<String>>;
   stars: () => Promise<AsyncIterator<Int>>;
-  accuracy: () => Promise<AsyncIterator<Int>>;
-  location: () => Promise<AsyncIterator<Int>>;
-  checkIn: () => Promise<AsyncIterator<Int>>;
-  value: () => Promise<AsyncIterator<Int>>;
-  communication: () => Promise<AsyncIterator<Int>>;
   House: <T = HouseSubscription>() => T;
+  user: <T = UserSubscription>() => T;
 }
 
 export interface ReviewNullablePromise
@@ -7708,12 +7708,8 @@ export interface ReviewNullablePromise
   updatedAt: () => Promise<DateTimeOutput>;
   text: () => Promise<String>;
   stars: () => Promise<Int>;
-  accuracy: () => Promise<Int>;
-  location: () => Promise<Int>;
-  checkIn: () => Promise<Int>;
-  value: () => Promise<Int>;
-  communication: () => Promise<Int>;
   House: <T = HousePromise>() => T;
+  user: <T = UserPromise>() => T;
 }
 
 export interface User {
@@ -7791,6 +7787,15 @@ export interface UserPromise extends Promise<User>, Fragmentable {
     last?: Int;
   }) => T;
   profilePicture: <T = PicturePromise>() => T;
+  reviews: <T = FragmentableArray<Review>>(args?: {
+    where?: ReviewWhereInput;
+    orderBy?: ReviewOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => T;
   permissions: () => Promise<Permission[]>;
 }
 
@@ -7853,6 +7858,15 @@ export interface UserSubscription
     last?: Int;
   }) => T;
   profilePicture: <T = PictureSubscription>() => T;
+  reviews: <T = Promise<AsyncIterator<ReviewSubscription>>>(args?: {
+    where?: ReviewWhereInput;
+    orderBy?: ReviewOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => T;
   permissions: () => Promise<AsyncIterator<Permission[]>>;
 }
 
@@ -7913,6 +7927,15 @@ export interface UserNullablePromise
     last?: Int;
   }) => T;
   profilePicture: <T = PicturePromise>() => T;
+  reviews: <T = FragmentableArray<Review>>(args?: {
+    where?: ReviewWhereInput;
+    orderBy?: ReviewOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => T;
   permissions: () => Promise<Permission[]>;
 }
 
@@ -11185,13 +11208,8 @@ export interface ReviewPreviousValues {
   id: ID_Output;
   createdAt: DateTimeOutput;
   updatedAt: DateTimeOutput;
-  text: String;
+  text?: String;
   stars: Int;
-  accuracy: Int;
-  location: Int;
-  checkIn: Int;
-  value: Int;
-  communication: Int;
 }
 
 export interface ReviewPreviousValuesPromise
@@ -11202,11 +11220,6 @@ export interface ReviewPreviousValuesPromise
   updatedAt: () => Promise<DateTimeOutput>;
   text: () => Promise<String>;
   stars: () => Promise<Int>;
-  accuracy: () => Promise<Int>;
-  location: () => Promise<Int>;
-  checkIn: () => Promise<Int>;
-  value: () => Promise<Int>;
-  communication: () => Promise<Int>;
 }
 
 export interface ReviewPreviousValuesSubscription
@@ -11217,11 +11230,6 @@ export interface ReviewPreviousValuesSubscription
   updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
   text: () => Promise<AsyncIterator<String>>;
   stars: () => Promise<AsyncIterator<Int>>;
-  accuracy: () => Promise<AsyncIterator<Int>>;
-  location: () => Promise<AsyncIterator<Int>>;
-  checkIn: () => Promise<AsyncIterator<Int>>;
-  value: () => Promise<AsyncIterator<Int>>;
-  communication: () => Promise<AsyncIterator<Int>>;
 }
 
 export interface RoomSubscriptionPayload {

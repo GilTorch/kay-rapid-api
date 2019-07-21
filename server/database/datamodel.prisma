@@ -21,6 +21,7 @@ type User {
   paidContacts: [PaymentLanlordInfo!]!
   notifications: [Notification!]!
   profilePicture: Picture
+  reviews: [Review!]!
   permissions:[Permission] @scalarList(strategy: RELATION)
 }
 
@@ -193,14 +194,10 @@ type Review {
   id: ID! @id @unique
   createdAt: DateTime! @createdAt
   updatedAt: DateTime! @updatedAt
-  text: String!
+  text: String
   stars: Int!
-  accuracy: Int!
-  location: Int!
-  checkIn: Int!
-  value: Int!
-  communication: Int!
   House: House!
+  user: User!
 }
 
 type Booking {
