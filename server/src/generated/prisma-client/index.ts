@@ -1081,6 +1081,8 @@ export type HouseOrderByInput =
   | "lease_DESC"
   | "popularity_ASC"
   | "popularity_DESC"
+  | "lastRating_ASC"
+  | "lastRating_DESC"
   | "createdAt_ASC"
   | "createdAt_DESC"
   | "updatedAt_ASC"
@@ -1659,6 +1661,14 @@ export interface HouseWhereInput {
   popularity_gt?: Maybe<Int>;
   popularity_gte?: Maybe<Int>;
   preview_image?: Maybe<PictureWhereInput>;
+  lastRating?: Maybe<Int>;
+  lastRating_not?: Maybe<Int>;
+  lastRating_in?: Maybe<Int[] | Int>;
+  lastRating_not_in?: Maybe<Int[] | Int>;
+  lastRating_lt?: Maybe<Int>;
+  lastRating_lte?: Maybe<Int>;
+  lastRating_gt?: Maybe<Int>;
+  lastRating_gte?: Maybe<Int>;
   createdAt?: Maybe<DateTimeInput>;
   createdAt_not?: Maybe<DateTimeInput>;
   createdAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
@@ -3267,6 +3277,7 @@ export interface HouseCreateWithoutAmenitiesInput {
   contactInfoPayments?: Maybe<PaymentLanlordInfoCreateManyWithoutHouseInput>;
   popularity?: Maybe<Int>;
   preview_image?: Maybe<PictureCreateOneInput>;
+  lastRating?: Maybe<Int>;
 }
 
 export interface ReviewCreateManyWithoutHouseInput {
@@ -3344,6 +3355,7 @@ export interface HouseCreateWithoutHostInput {
   contactInfoPayments?: Maybe<PaymentLanlordInfoCreateManyWithoutHouseInput>;
   popularity?: Maybe<Int>;
   preview_image?: Maybe<PictureCreateOneInput>;
+  lastRating?: Maybe<Int>;
 }
 
 export interface AmenitiesCreateOneWithoutHouseInput {
@@ -3585,6 +3597,7 @@ export interface HouseCreateWithoutBookingsInput {
   contactInfoPayments?: Maybe<PaymentLanlordInfoCreateManyWithoutHouseInput>;
   popularity?: Maybe<Int>;
   preview_image?: Maybe<PictureCreateOneInput>;
+  lastRating?: Maybe<Int>;
 }
 
 export interface UserCreateOneWithoutOwnedHousesInput {
@@ -3665,6 +3678,7 @@ export interface HouseCreateWithoutContactInfoPaymentsInput {
   pictures?: Maybe<PictureCreateManyInput>;
   popularity?: Maybe<Int>;
   preview_image?: Maybe<PictureCreateOneInput>;
+  lastRating?: Maybe<Int>;
 }
 
 export interface BookingCreateManyWithoutHouseInput {
@@ -3776,6 +3790,7 @@ export interface HouseCreateWithoutReviewsInput {
   contactInfoPayments?: Maybe<PaymentLanlordInfoCreateManyWithoutHouseInput>;
   popularity?: Maybe<Int>;
   preview_image?: Maybe<PictureCreateOneInput>;
+  lastRating?: Maybe<Int>;
 }
 
 export interface PaymentLanlordInfoCreateManyWithoutHouseInput {
@@ -3959,6 +3974,7 @@ export interface HouseUpdateWithoutAmenitiesDataInput {
   contactInfoPayments?: Maybe<PaymentLanlordInfoUpdateManyWithoutHouseInput>;
   popularity?: Maybe<Int>;
   preview_image?: Maybe<PictureUpdateOneInput>;
+  lastRating?: Maybe<Int>;
 }
 
 export interface ReviewUpdateManyWithoutHouseInput {
@@ -4076,6 +4092,7 @@ export interface HouseUpdateWithoutHostDataInput {
   contactInfoPayments?: Maybe<PaymentLanlordInfoUpdateManyWithoutHouseInput>;
   popularity?: Maybe<Int>;
   preview_image?: Maybe<PictureUpdateOneInput>;
+  lastRating?: Maybe<Int>;
 }
 
 export interface AmenitiesUpdateOneRequiredWithoutHouseInput {
@@ -4656,6 +4673,7 @@ export interface HouseUpdateWithoutBookingsDataInput {
   contactInfoPayments?: Maybe<PaymentLanlordInfoUpdateManyWithoutHouseInput>;
   popularity?: Maybe<Int>;
   preview_image?: Maybe<PictureUpdateOneInput>;
+  lastRating?: Maybe<Int>;
 }
 
 export interface UserUpdateOneRequiredWithoutOwnedHousesInput {
@@ -4766,6 +4784,7 @@ export interface HouseUpdateWithoutContactInfoPaymentsDataInput {
   pictures?: Maybe<PictureUpdateManyInput>;
   popularity?: Maybe<Int>;
   preview_image?: Maybe<PictureUpdateOneInput>;
+  lastRating?: Maybe<Int>;
 }
 
 export interface BookingUpdateManyWithoutHouseInput {
@@ -5031,6 +5050,7 @@ export interface HouseUpdateWithoutReviewsDataInput {
   contactInfoPayments?: Maybe<PaymentLanlordInfoUpdateManyWithoutHouseInput>;
   popularity?: Maybe<Int>;
   preview_image?: Maybe<PictureUpdateOneInput>;
+  lastRating?: Maybe<Int>;
 }
 
 export interface PaymentLanlordInfoUpdateManyWithoutHouseInput {
@@ -5817,6 +5837,14 @@ export interface HouseScalarWhereInput {
   popularity_lte?: Maybe<Int>;
   popularity_gt?: Maybe<Int>;
   popularity_gte?: Maybe<Int>;
+  lastRating?: Maybe<Int>;
+  lastRating_not?: Maybe<Int>;
+  lastRating_in?: Maybe<Int[] | Int>;
+  lastRating_not_in?: Maybe<Int[] | Int>;
+  lastRating_lt?: Maybe<Int>;
+  lastRating_lte?: Maybe<Int>;
+  lastRating_gt?: Maybe<Int>;
+  lastRating_gte?: Maybe<Int>;
   createdAt?: Maybe<DateTimeInput>;
   createdAt_not?: Maybe<DateTimeInput>;
   createdAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
@@ -5859,6 +5887,7 @@ export interface HouseUpdateManyDataInput {
   residency?: Maybe<House_RESIDENCY>;
   lease?: Maybe<Int>;
   popularity?: Maybe<Int>;
+  lastRating?: Maybe<Int>;
 }
 
 export interface UserUpsertWithoutReviewsInput {
@@ -6215,6 +6244,7 @@ export interface HouseCreateInput {
   contactInfoPayments?: Maybe<PaymentLanlordInfoCreateManyWithoutHouseInput>;
   popularity?: Maybe<Int>;
   preview_image?: Maybe<PictureCreateOneInput>;
+  lastRating?: Maybe<Int>;
 }
 
 export interface HouseUpdateInput {
@@ -6244,6 +6274,7 @@ export interface HouseUpdateInput {
   contactInfoPayments?: Maybe<PaymentLanlordInfoUpdateManyWithoutHouseInput>;
   popularity?: Maybe<Int>;
   preview_image?: Maybe<PictureUpdateOneInput>;
+  lastRating?: Maybe<Int>;
 }
 
 export interface HouseUpdateManyMutationInput {
@@ -6262,6 +6293,7 @@ export interface HouseUpdateManyMutationInput {
   residency?: Maybe<House_RESIDENCY>;
   lease?: Maybe<Int>;
   popularity?: Maybe<Int>;
+  lastRating?: Maybe<Int>;
 }
 
 export interface HouseFavoritedCreateInput {
@@ -6314,6 +6346,7 @@ export interface HouseUpdateDataInput {
   contactInfoPayments?: Maybe<PaymentLanlordInfoUpdateManyWithoutHouseInput>;
   popularity?: Maybe<Int>;
   preview_image?: Maybe<PictureUpdateOneInput>;
+  lastRating?: Maybe<Int>;
 }
 
 export interface HouseUpsertNestedInput {
@@ -6593,6 +6626,7 @@ export interface HouseCreateWithoutPricingInput {
   contactInfoPayments?: Maybe<PaymentLanlordInfoCreateManyWithoutHouseInput>;
   popularity?: Maybe<Int>;
   preview_image?: Maybe<PictureCreateOneInput>;
+  lastRating?: Maybe<Int>;
 }
 
 export interface PricingUpdateInput {
@@ -6636,6 +6670,7 @@ export interface HouseUpdateWithoutPricingDataInput {
   contactInfoPayments?: Maybe<PaymentLanlordInfoUpdateManyWithoutHouseInput>;
   popularity?: Maybe<Int>;
   preview_image?: Maybe<PictureUpdateOneInput>;
+  lastRating?: Maybe<Int>;
 }
 
 export interface HouseUpsertWithoutPricingInput {
@@ -6710,6 +6745,7 @@ export interface HouseCreateWithoutRoomsInput {
   contactInfoPayments?: Maybe<PaymentLanlordInfoCreateManyWithoutHouseInput>;
   popularity?: Maybe<Int>;
   preview_image?: Maybe<PictureCreateOneInput>;
+  lastRating?: Maybe<Int>;
 }
 
 export interface RoomUpdateInput {
@@ -6752,6 +6788,7 @@ export interface HouseUpdateWithoutRoomsDataInput {
   contactInfoPayments?: Maybe<PaymentLanlordInfoUpdateManyWithoutHouseInput>;
   popularity?: Maybe<Int>;
   preview_image?: Maybe<PictureUpdateOneInput>;
+  lastRating?: Maybe<Int>;
 }
 
 export interface HouseUpsertWithoutRoomsInput {
@@ -6862,6 +6899,7 @@ export interface HouseCreateWithoutViewsInput {
   contactInfoPayments?: Maybe<PaymentLanlordInfoCreateManyWithoutHouseInput>;
   popularity?: Maybe<Int>;
   preview_image?: Maybe<PictureCreateOneInput>;
+  lastRating?: Maybe<Int>;
 }
 
 export interface ViewsUpdateInput {
@@ -6903,6 +6941,7 @@ export interface HouseUpdateWithoutViewsDataInput {
   contactInfoPayments?: Maybe<PaymentLanlordInfoUpdateManyWithoutHouseInput>;
   popularity?: Maybe<Int>;
   preview_image?: Maybe<PictureUpdateOneInput>;
+  lastRating?: Maybe<Int>;
 }
 
 export interface HouseUpsertWithoutViewsInput {
@@ -7444,6 +7483,7 @@ export interface House {
   residency?: House_RESIDENCY;
   lease: Int;
   popularity: Int;
+  lastRating: Int;
   createdAt: DateTimeOutput;
   updatedAt: DateTimeOutput;
 }
@@ -7516,6 +7556,7 @@ export interface HousePromise extends Promise<House>, Fragmentable {
   }) => T;
   popularity: () => Promise<Int>;
   preview_image: <T = PicturePromise>() => T;
+  lastRating: () => Promise<Int>;
   createdAt: () => Promise<DateTimeOutput>;
   updatedAt: () => Promise<DateTimeOutput>;
 }
@@ -7592,6 +7633,7 @@ export interface HouseSubscription
   }) => T;
   popularity: () => Promise<AsyncIterator<Int>>;
   preview_image: <T = PictureSubscription>() => T;
+  lastRating: () => Promise<AsyncIterator<Int>>;
   createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
   updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
 }
@@ -7666,6 +7708,7 @@ export interface HouseNullablePromise
   }) => T;
   popularity: () => Promise<Int>;
   preview_image: <T = PicturePromise>() => T;
+  lastRating: () => Promise<Int>;
   createdAt: () => Promise<DateTimeOutput>;
   updatedAt: () => Promise<DateTimeOutput>;
 }
@@ -10605,6 +10648,7 @@ export interface HousePreviousValues {
   residency?: House_RESIDENCY;
   lease: Int;
   popularity: Int;
+  lastRating: Int;
   createdAt: DateTimeOutput;
   updatedAt: DateTimeOutput;
 }
@@ -10628,6 +10672,7 @@ export interface HousePreviousValuesPromise
   residency: () => Promise<House_RESIDENCY>;
   lease: () => Promise<Int>;
   popularity: () => Promise<Int>;
+  lastRating: () => Promise<Int>;
   createdAt: () => Promise<DateTimeOutput>;
   updatedAt: () => Promise<DateTimeOutput>;
 }
@@ -10651,6 +10696,7 @@ export interface HousePreviousValuesSubscription
   residency: () => Promise<AsyncIterator<House_RESIDENCY>>;
   lease: () => Promise<AsyncIterator<Int>>;
   popularity: () => Promise<AsyncIterator<Int>>;
+  lastRating: () => Promise<AsyncIterator<Int>>;
   createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
   updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
 }

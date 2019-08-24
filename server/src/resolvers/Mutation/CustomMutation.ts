@@ -283,21 +283,50 @@ export const CustomMutation = {
       if (ReviewExists) {
         throw new Error('You already made a review for this house');
   } 
-    return context.prisma.createReview (
-      {
-          stars: args.stars,
-          text: args.text,
-          House: {
-            connect: {
-              id: args.houseId
-            }
-          },
-          user: {
-            connect: {
-              id: userId
-            }
+  let review = await context.prisma.createReview (
+    {
+        stars: args.stars,
+        text: args.text,
+        House: {
+          connect: {
+            id: args.houseId
           }
+        },
+        user: {
+          connect: {
+            id: userId
+          }
+        }
+    }
+    ); 
+    ///updating the house averagerating processs
+    const count =  await context.prisma.reviewsConnection({where:
+      {
+       House:{
+          id: args.houseId
+        }
+        
+      }}).aggregate().count()
+  
+    let reviews = await context.prisma.reviews({where:
+      {
+       House:{
+          id: args.houseId
+        }
+        
+      }})
+
+    const sumRating = await reviews.map(item => item.stars).reduce((prev, next) => prev + next)
+    const rating = sumRating /count 
+    const lastRatingHouse = await context.prisma.updateHouse({ 
+      data:{
+        lastRating: rating
+      },
+      where: {
+        id: args.houseId
       }
-    );
+    }) 
+    return review
+    
   }
 };

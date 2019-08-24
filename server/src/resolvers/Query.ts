@@ -51,6 +51,38 @@ export const Query = {
       }
     );
 },
+  async houseRating(parent, args,context: Context){
+    const count =  await context.prisma.reviewsConnection({where:
+      {
+       House:{
+          id: args.houseId
+        }
+        
+      }}).aggregate().count()
+  
+    let reviews = await context.prisma.reviews({where:
+      {
+       House:{
+          id: args.houseId
+        }
+        
+      }})
+
+    const sumRating = reviews.map(item => item.stars).reduce((prev, next) => prev + next)
+    const rating = sumRating /count
+
+
+      //  reviews.reduce((a,b)=> {a + b['stars']},0)
+
+      console.log(sumRating);
+      
+    return {
+      count,
+      rating,
+      reviews
+    }
+  }
+
 
 
   

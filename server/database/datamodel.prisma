@@ -53,6 +53,7 @@ type House {
   contactInfoPayments: [PaymentLanlordInfo!]!
   popularity: Int! @default(value: 0)
   preview_image: Picture @relation(name: "HousePicturePreview")
+  lastRating: Int! @default(value: 0)
   createdAt: DateTime! @createdAt
   updatedAt: DateTime! @updatedAt
 }

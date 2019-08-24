@@ -1784,6 +1784,7 @@ type House {
   contactInfoPayments(where: PaymentLanlordInfoWhereInput, orderBy: PaymentLanlordInfoOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [PaymentLanlordInfo!]
   popularity: Int!
   preview_image: Picture
+  lastRating: Int!
   createdAt: DateTime!
   updatedAt: DateTime!
 }
@@ -1839,6 +1840,7 @@ input HouseCreateInput {
   contactInfoPayments: PaymentLanlordInfoCreateManyWithoutHouseInput
   popularity: Int
   preview_image: PictureCreateOneInput
+  lastRating: Int
 }
 
 input HouseCreateManyWithoutHostInput {
@@ -1913,6 +1915,7 @@ input HouseCreateWithoutAmenitiesInput {
   contactInfoPayments: PaymentLanlordInfoCreateManyWithoutHouseInput
   popularity: Int
   preview_image: PictureCreateOneInput
+  lastRating: Int
 }
 
 input HouseCreateWithoutBookingsInput {
@@ -1942,6 +1945,7 @@ input HouseCreateWithoutBookingsInput {
   contactInfoPayments: PaymentLanlordInfoCreateManyWithoutHouseInput
   popularity: Int
   preview_image: PictureCreateOneInput
+  lastRating: Int
 }
 
 input HouseCreateWithoutContactInfoPaymentsInput {
@@ -1971,6 +1975,7 @@ input HouseCreateWithoutContactInfoPaymentsInput {
   pictures: PictureCreateManyInput
   popularity: Int
   preview_image: PictureCreateOneInput
+  lastRating: Int
 }
 
 input HouseCreateWithoutHostInput {
@@ -2000,6 +2005,7 @@ input HouseCreateWithoutHostInput {
   contactInfoPayments: PaymentLanlordInfoCreateManyWithoutHouseInput
   popularity: Int
   preview_image: PictureCreateOneInput
+  lastRating: Int
 }
 
 input HouseCreateWithoutPricingInput {
@@ -2029,6 +2035,7 @@ input HouseCreateWithoutPricingInput {
   contactInfoPayments: PaymentLanlordInfoCreateManyWithoutHouseInput
   popularity: Int
   preview_image: PictureCreateOneInput
+  lastRating: Int
 }
 
 input HouseCreateWithoutReviewsInput {
@@ -2058,6 +2065,7 @@ input HouseCreateWithoutReviewsInput {
   contactInfoPayments: PaymentLanlordInfoCreateManyWithoutHouseInput
   popularity: Int
   preview_image: PictureCreateOneInput
+  lastRating: Int
 }
 
 input HouseCreateWithoutRoomsInput {
@@ -2087,6 +2095,7 @@ input HouseCreateWithoutRoomsInput {
   contactInfoPayments: PaymentLanlordInfoCreateManyWithoutHouseInput
   popularity: Int
   preview_image: PictureCreateOneInput
+  lastRating: Int
 }
 
 input HouseCreateWithoutViewsInput {
@@ -2116,6 +2125,7 @@ input HouseCreateWithoutViewsInput {
   contactInfoPayments: PaymentLanlordInfoCreateManyWithoutHouseInput
   popularity: Int
   preview_image: PictureCreateOneInput
+  lastRating: Int
 }
 
 type HouseEdge {
@@ -2261,6 +2271,8 @@ enum HouseOrderByInput {
   lease_DESC
   popularity_ASC
   popularity_DESC
+  lastRating_ASC
+  lastRating_DESC
   createdAt_ASC
   createdAt_DESC
   updatedAt_ASC
@@ -2284,6 +2296,7 @@ type HousePreviousValues {
   residency: House_RESIDENCY
   lease: Int!
   popularity: Int!
+  lastRating: Int!
   createdAt: DateTime!
   updatedAt: DateTime!
 }
@@ -2417,6 +2430,14 @@ input HouseScalarWhereInput {
   popularity_lte: Int
   popularity_gt: Int
   popularity_gte: Int
+  lastRating: Int
+  lastRating_not: Int
+  lastRating_in: [Int!]
+  lastRating_not_in: [Int!]
+  lastRating_lt: Int
+  lastRating_lte: Int
+  lastRating_gt: Int
+  lastRating_gte: Int
   createdAt: DateTime
   createdAt_not: DateTime
   createdAt_in: [DateTime!]
@@ -2483,6 +2504,7 @@ input HouseUpdateDataInput {
   contactInfoPayments: PaymentLanlordInfoUpdateManyWithoutHouseInput
   popularity: Int
   preview_image: PictureUpdateOneInput
+  lastRating: Int
 }
 
 input HouseUpdateInput {
@@ -2512,6 +2534,7 @@ input HouseUpdateInput {
   contactInfoPayments: PaymentLanlordInfoUpdateManyWithoutHouseInput
   popularity: Int
   preview_image: PictureUpdateOneInput
+  lastRating: Int
 }
 
 input HouseUpdateManyDataInput {
@@ -2530,6 +2553,7 @@ input HouseUpdateManyDataInput {
   residency: House_RESIDENCY
   lease: Int
   popularity: Int
+  lastRating: Int
 }
 
 input HouseUpdateManyMutationInput {
@@ -2548,6 +2572,7 @@ input HouseUpdateManyMutationInput {
   residency: House_RESIDENCY
   lease: Int
   popularity: Int
+  lastRating: Int
 }
 
 input HouseUpdateManyWithoutHostInput {
@@ -2649,6 +2674,7 @@ input HouseUpdateWithoutAmenitiesDataInput {
   contactInfoPayments: PaymentLanlordInfoUpdateManyWithoutHouseInput
   popularity: Int
   preview_image: PictureUpdateOneInput
+  lastRating: Int
 }
 
 input HouseUpdateWithoutBookingsDataInput {
@@ -2677,6 +2703,7 @@ input HouseUpdateWithoutBookingsDataInput {
   contactInfoPayments: PaymentLanlordInfoUpdateManyWithoutHouseInput
   popularity: Int
   preview_image: PictureUpdateOneInput
+  lastRating: Int
 }
 
 input HouseUpdateWithoutContactInfoPaymentsDataInput {
@@ -2705,6 +2732,7 @@ input HouseUpdateWithoutContactInfoPaymentsDataInput {
   pictures: PictureUpdateManyInput
   popularity: Int
   preview_image: PictureUpdateOneInput
+  lastRating: Int
 }
 
 input HouseUpdateWithoutHostDataInput {
@@ -2733,6 +2761,7 @@ input HouseUpdateWithoutHostDataInput {
   contactInfoPayments: PaymentLanlordInfoUpdateManyWithoutHouseInput
   popularity: Int
   preview_image: PictureUpdateOneInput
+  lastRating: Int
 }
 
 input HouseUpdateWithoutPricingDataInput {
@@ -2761,6 +2790,7 @@ input HouseUpdateWithoutPricingDataInput {
   contactInfoPayments: PaymentLanlordInfoUpdateManyWithoutHouseInput
   popularity: Int
   preview_image: PictureUpdateOneInput
+  lastRating: Int
 }
 
 input HouseUpdateWithoutReviewsDataInput {
@@ -2789,6 +2819,7 @@ input HouseUpdateWithoutReviewsDataInput {
   contactInfoPayments: PaymentLanlordInfoUpdateManyWithoutHouseInput
   popularity: Int
   preview_image: PictureUpdateOneInput
+  lastRating: Int
 }
 
 input HouseUpdateWithoutRoomsDataInput {
@@ -2817,6 +2848,7 @@ input HouseUpdateWithoutRoomsDataInput {
   contactInfoPayments: PaymentLanlordInfoUpdateManyWithoutHouseInput
   popularity: Int
   preview_image: PictureUpdateOneInput
+  lastRating: Int
 }
 
 input HouseUpdateWithoutViewsDataInput {
@@ -2845,6 +2877,7 @@ input HouseUpdateWithoutViewsDataInput {
   contactInfoPayments: PaymentLanlordInfoUpdateManyWithoutHouseInput
   popularity: Int
   preview_image: PictureUpdateOneInput
+  lastRating: Int
 }
 
 input HouseUpdateWithWhereUniqueWithoutHostInput {
@@ -3048,6 +3081,14 @@ input HouseWhereInput {
   popularity_gt: Int
   popularity_gte: Int
   preview_image: PictureWhereInput
+  lastRating: Int
+  lastRating_not: Int
+  lastRating_in: [Int!]
+  lastRating_not_in: [Int!]
+  lastRating_lt: Int
+  lastRating_lte: Int
+  lastRating_gt: Int
+  lastRating_gte: Int
   createdAt: DateTime
   createdAt_not: DateTime
   createdAt_in: [DateTime!]

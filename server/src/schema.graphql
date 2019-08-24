@@ -12,6 +12,7 @@ type Query {
   topCity(c: Int!): [Commune!]!
   topStates(c: Int!): [State!]!
   houseFavoritedByUser:[HouseFavorited!]!
+  houseRating(houseId: String!):HouseRating!
 }
 
 type AuthPayLoad {
@@ -22,6 +23,12 @@ type AuthPayLoad {
 type Message {
   message: String!
 }
+type HouseRating {
+  count: Int!
+  rating: Float!
+  reviews:[Review!]!
+}
+
 
 type Mutation {
   signup(
