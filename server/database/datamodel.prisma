@@ -31,29 +31,30 @@ type House {
   age: Int @default(value: 0)
   shortDescription: String
   description: String
-  maxGuests: Int!
+  maxGuests: Int
   numBedrooms: Int!
   numBaths: Int!
   numLivingrooms: Int
   numDiningrooms: Int
   reviews: [Review!]!
-  amenities: Amenities! @relation(link: INLINE)
+  amenities: Amenities @relation(link: INLINE)
   host: User!
-  pricing: Pricing! @relation(link: INLINE)
+  pricing: Pricing @relation(link: INLINE)
   location: Location! 
   leaseType: HOUSE_LEASE_TYPE
   verified: Boolean! @default(value: false)
   type: HOUSE_TYPES
   residency: House_RESIDENCY
-  lease: Int!
+  lease: Int
   rooms: [Room!]!
   views: Views @relation(link: INLINE)
   bookings: [Booking!]!
   pictures: [Picture!]! @relation(name: "HousePictures")
   contactInfoPayments: [PaymentLanlordInfo!]!
-  popularity: Int! @default(value: 0)
+  popularity: Int @default(value: 0)
   preview_image: Picture @relation(name: "HousePicturePreview")
   lastRating: Int! @default(value: 0)
+  rentOrSell: RENT_OR_SELL!
   createdAt: DateTime! @createdAt
   updatedAt: DateTime! @updatedAt
 }
@@ -356,5 +357,9 @@ enum Permission {
   ITEMUPDATE
   ITEMDELETE
   PERMISSIONUPDATE
+}
+enum RENT_OR_SELL {
+  RENT
+  SELL
 }
   

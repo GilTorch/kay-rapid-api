@@ -470,10 +470,12 @@ input AmenitiesUpdateManyMutationInput {
   crib: Boolean
 }
 
-input AmenitiesUpdateOneRequiredWithoutHouseInput {
+input AmenitiesUpdateOneWithoutHouseInput {
   create: AmenitiesCreateWithoutHouseInput
   update: AmenitiesUpdateWithoutHouseDataInput
   upsert: AmenitiesUpsertWithoutHouseInput
+  delete: Boolean
+  disconnect: Boolean
   connect: AmenitiesWhereUniqueInput
 }
 
@@ -1762,29 +1764,30 @@ type House {
   age: Int
   shortDescription: String
   description: String
-  maxGuests: Int!
+  maxGuests: Int
   numBedrooms: Int!
   numBaths: Int!
   numLivingrooms: Int
   numDiningrooms: Int
   reviews(where: ReviewWhereInput, orderBy: ReviewOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Review!]
-  amenities: Amenities!
+  amenities: Amenities
   host: User!
-  pricing: Pricing!
+  pricing: Pricing
   location: Location!
   leaseType: HOUSE_LEASE_TYPE
   verified: Boolean!
   type: HOUSE_TYPES
   residency: House_RESIDENCY
-  lease: Int!
+  lease: Int
   rooms(where: RoomWhereInput, orderBy: RoomOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Room!]
   views: Views
   bookings(where: BookingWhereInput, orderBy: BookingOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Booking!]
   pictures(where: PictureWhereInput, orderBy: PictureOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Picture!]
   contactInfoPayments(where: PaymentLanlordInfoWhereInput, orderBy: PaymentLanlordInfoOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [PaymentLanlordInfo!]
-  popularity: Int!
+  popularity: Int
   preview_image: Picture
   lastRating: Int!
+  rentOrSell: RENT_OR_SELL!
   createdAt: DateTime!
   updatedAt: DateTime!
 }
@@ -1818,21 +1821,21 @@ input HouseCreateInput {
   age: Int
   shortDescription: String
   description: String
-  maxGuests: Int!
+  maxGuests: Int
   numBedrooms: Int!
   numBaths: Int!
   numLivingrooms: Int
   numDiningrooms: Int
   reviews: ReviewCreateManyWithoutHouseInput
-  amenities: AmenitiesCreateOneWithoutHouseInput!
+  amenities: AmenitiesCreateOneWithoutHouseInput
   host: UserCreateOneWithoutOwnedHousesInput!
-  pricing: PricingCreateOneWithoutHouseInput!
+  pricing: PricingCreateOneWithoutHouseInput
   location: LocationCreateOneInput!
   leaseType: HOUSE_LEASE_TYPE
   verified: Boolean
   type: HOUSE_TYPES
   residency: House_RESIDENCY
-  lease: Int!
+  lease: Int
   rooms: RoomCreateManyWithoutHouseInput
   views: ViewsCreateOneWithoutHouseInput
   bookings: BookingCreateManyWithoutHouseInput
@@ -1841,6 +1844,7 @@ input HouseCreateInput {
   popularity: Int
   preview_image: PictureCreateOneInput
   lastRating: Int
+  rentOrSell: RENT_OR_SELL!
 }
 
 input HouseCreateManyWithoutHostInput {
@@ -1894,20 +1898,20 @@ input HouseCreateWithoutAmenitiesInput {
   age: Int
   shortDescription: String
   description: String
-  maxGuests: Int!
+  maxGuests: Int
   numBedrooms: Int!
   numBaths: Int!
   numLivingrooms: Int
   numDiningrooms: Int
   reviews: ReviewCreateManyWithoutHouseInput
   host: UserCreateOneWithoutOwnedHousesInput!
-  pricing: PricingCreateOneWithoutHouseInput!
+  pricing: PricingCreateOneWithoutHouseInput
   location: LocationCreateOneInput!
   leaseType: HOUSE_LEASE_TYPE
   verified: Boolean
   type: HOUSE_TYPES
   residency: House_RESIDENCY
-  lease: Int!
+  lease: Int
   rooms: RoomCreateManyWithoutHouseInput
   views: ViewsCreateOneWithoutHouseInput
   bookings: BookingCreateManyWithoutHouseInput
@@ -1916,6 +1920,7 @@ input HouseCreateWithoutAmenitiesInput {
   popularity: Int
   preview_image: PictureCreateOneInput
   lastRating: Int
+  rentOrSell: RENT_OR_SELL!
 }
 
 input HouseCreateWithoutBookingsInput {
@@ -1924,21 +1929,21 @@ input HouseCreateWithoutBookingsInput {
   age: Int
   shortDescription: String
   description: String
-  maxGuests: Int!
+  maxGuests: Int
   numBedrooms: Int!
   numBaths: Int!
   numLivingrooms: Int
   numDiningrooms: Int
   reviews: ReviewCreateManyWithoutHouseInput
-  amenities: AmenitiesCreateOneWithoutHouseInput!
+  amenities: AmenitiesCreateOneWithoutHouseInput
   host: UserCreateOneWithoutOwnedHousesInput!
-  pricing: PricingCreateOneWithoutHouseInput!
+  pricing: PricingCreateOneWithoutHouseInput
   location: LocationCreateOneInput!
   leaseType: HOUSE_LEASE_TYPE
   verified: Boolean
   type: HOUSE_TYPES
   residency: House_RESIDENCY
-  lease: Int!
+  lease: Int
   rooms: RoomCreateManyWithoutHouseInput
   views: ViewsCreateOneWithoutHouseInput
   pictures: PictureCreateManyInput
@@ -1946,6 +1951,7 @@ input HouseCreateWithoutBookingsInput {
   popularity: Int
   preview_image: PictureCreateOneInput
   lastRating: Int
+  rentOrSell: RENT_OR_SELL!
 }
 
 input HouseCreateWithoutContactInfoPaymentsInput {
@@ -1954,21 +1960,21 @@ input HouseCreateWithoutContactInfoPaymentsInput {
   age: Int
   shortDescription: String
   description: String
-  maxGuests: Int!
+  maxGuests: Int
   numBedrooms: Int!
   numBaths: Int!
   numLivingrooms: Int
   numDiningrooms: Int
   reviews: ReviewCreateManyWithoutHouseInput
-  amenities: AmenitiesCreateOneWithoutHouseInput!
+  amenities: AmenitiesCreateOneWithoutHouseInput
   host: UserCreateOneWithoutOwnedHousesInput!
-  pricing: PricingCreateOneWithoutHouseInput!
+  pricing: PricingCreateOneWithoutHouseInput
   location: LocationCreateOneInput!
   leaseType: HOUSE_LEASE_TYPE
   verified: Boolean
   type: HOUSE_TYPES
   residency: House_RESIDENCY
-  lease: Int!
+  lease: Int
   rooms: RoomCreateManyWithoutHouseInput
   views: ViewsCreateOneWithoutHouseInput
   bookings: BookingCreateManyWithoutHouseInput
@@ -1976,6 +1982,7 @@ input HouseCreateWithoutContactInfoPaymentsInput {
   popularity: Int
   preview_image: PictureCreateOneInput
   lastRating: Int
+  rentOrSell: RENT_OR_SELL!
 }
 
 input HouseCreateWithoutHostInput {
@@ -1984,20 +1991,20 @@ input HouseCreateWithoutHostInput {
   age: Int
   shortDescription: String
   description: String
-  maxGuests: Int!
+  maxGuests: Int
   numBedrooms: Int!
   numBaths: Int!
   numLivingrooms: Int
   numDiningrooms: Int
   reviews: ReviewCreateManyWithoutHouseInput
-  amenities: AmenitiesCreateOneWithoutHouseInput!
-  pricing: PricingCreateOneWithoutHouseInput!
+  amenities: AmenitiesCreateOneWithoutHouseInput
+  pricing: PricingCreateOneWithoutHouseInput
   location: LocationCreateOneInput!
   leaseType: HOUSE_LEASE_TYPE
   verified: Boolean
   type: HOUSE_TYPES
   residency: House_RESIDENCY
-  lease: Int!
+  lease: Int
   rooms: RoomCreateManyWithoutHouseInput
   views: ViewsCreateOneWithoutHouseInput
   bookings: BookingCreateManyWithoutHouseInput
@@ -2006,6 +2013,7 @@ input HouseCreateWithoutHostInput {
   popularity: Int
   preview_image: PictureCreateOneInput
   lastRating: Int
+  rentOrSell: RENT_OR_SELL!
 }
 
 input HouseCreateWithoutPricingInput {
@@ -2014,20 +2022,20 @@ input HouseCreateWithoutPricingInput {
   age: Int
   shortDescription: String
   description: String
-  maxGuests: Int!
+  maxGuests: Int
   numBedrooms: Int!
   numBaths: Int!
   numLivingrooms: Int
   numDiningrooms: Int
   reviews: ReviewCreateManyWithoutHouseInput
-  amenities: AmenitiesCreateOneWithoutHouseInput!
+  amenities: AmenitiesCreateOneWithoutHouseInput
   host: UserCreateOneWithoutOwnedHousesInput!
   location: LocationCreateOneInput!
   leaseType: HOUSE_LEASE_TYPE
   verified: Boolean
   type: HOUSE_TYPES
   residency: House_RESIDENCY
-  lease: Int!
+  lease: Int
   rooms: RoomCreateManyWithoutHouseInput
   views: ViewsCreateOneWithoutHouseInput
   bookings: BookingCreateManyWithoutHouseInput
@@ -2036,6 +2044,7 @@ input HouseCreateWithoutPricingInput {
   popularity: Int
   preview_image: PictureCreateOneInput
   lastRating: Int
+  rentOrSell: RENT_OR_SELL!
 }
 
 input HouseCreateWithoutReviewsInput {
@@ -2044,20 +2053,20 @@ input HouseCreateWithoutReviewsInput {
   age: Int
   shortDescription: String
   description: String
-  maxGuests: Int!
+  maxGuests: Int
   numBedrooms: Int!
   numBaths: Int!
   numLivingrooms: Int
   numDiningrooms: Int
-  amenities: AmenitiesCreateOneWithoutHouseInput!
+  amenities: AmenitiesCreateOneWithoutHouseInput
   host: UserCreateOneWithoutOwnedHousesInput!
-  pricing: PricingCreateOneWithoutHouseInput!
+  pricing: PricingCreateOneWithoutHouseInput
   location: LocationCreateOneInput!
   leaseType: HOUSE_LEASE_TYPE
   verified: Boolean
   type: HOUSE_TYPES
   residency: House_RESIDENCY
-  lease: Int!
+  lease: Int
   rooms: RoomCreateManyWithoutHouseInput
   views: ViewsCreateOneWithoutHouseInput
   bookings: BookingCreateManyWithoutHouseInput
@@ -2066,6 +2075,7 @@ input HouseCreateWithoutReviewsInput {
   popularity: Int
   preview_image: PictureCreateOneInput
   lastRating: Int
+  rentOrSell: RENT_OR_SELL!
 }
 
 input HouseCreateWithoutRoomsInput {
@@ -2074,21 +2084,21 @@ input HouseCreateWithoutRoomsInput {
   age: Int
   shortDescription: String
   description: String
-  maxGuests: Int!
+  maxGuests: Int
   numBedrooms: Int!
   numBaths: Int!
   numLivingrooms: Int
   numDiningrooms: Int
   reviews: ReviewCreateManyWithoutHouseInput
-  amenities: AmenitiesCreateOneWithoutHouseInput!
+  amenities: AmenitiesCreateOneWithoutHouseInput
   host: UserCreateOneWithoutOwnedHousesInput!
-  pricing: PricingCreateOneWithoutHouseInput!
+  pricing: PricingCreateOneWithoutHouseInput
   location: LocationCreateOneInput!
   leaseType: HOUSE_LEASE_TYPE
   verified: Boolean
   type: HOUSE_TYPES
   residency: House_RESIDENCY
-  lease: Int!
+  lease: Int
   views: ViewsCreateOneWithoutHouseInput
   bookings: BookingCreateManyWithoutHouseInput
   pictures: PictureCreateManyInput
@@ -2096,6 +2106,7 @@ input HouseCreateWithoutRoomsInput {
   popularity: Int
   preview_image: PictureCreateOneInput
   lastRating: Int
+  rentOrSell: RENT_OR_SELL!
 }
 
 input HouseCreateWithoutViewsInput {
@@ -2104,21 +2115,21 @@ input HouseCreateWithoutViewsInput {
   age: Int
   shortDescription: String
   description: String
-  maxGuests: Int!
+  maxGuests: Int
   numBedrooms: Int!
   numBaths: Int!
   numLivingrooms: Int
   numDiningrooms: Int
   reviews: ReviewCreateManyWithoutHouseInput
-  amenities: AmenitiesCreateOneWithoutHouseInput!
+  amenities: AmenitiesCreateOneWithoutHouseInput
   host: UserCreateOneWithoutOwnedHousesInput!
-  pricing: PricingCreateOneWithoutHouseInput!
+  pricing: PricingCreateOneWithoutHouseInput
   location: LocationCreateOneInput!
   leaseType: HOUSE_LEASE_TYPE
   verified: Boolean
   type: HOUSE_TYPES
   residency: House_RESIDENCY
-  lease: Int!
+  lease: Int
   rooms: RoomCreateManyWithoutHouseInput
   bookings: BookingCreateManyWithoutHouseInput
   pictures: PictureCreateManyInput
@@ -2126,6 +2137,7 @@ input HouseCreateWithoutViewsInput {
   popularity: Int
   preview_image: PictureCreateOneInput
   lastRating: Int
+  rentOrSell: RENT_OR_SELL!
 }
 
 type HouseEdge {
@@ -2273,6 +2285,8 @@ enum HouseOrderByInput {
   popularity_DESC
   lastRating_ASC
   lastRating_DESC
+  rentOrSell_ASC
+  rentOrSell_DESC
   createdAt_ASC
   createdAt_DESC
   updatedAt_ASC
@@ -2285,7 +2299,7 @@ type HousePreviousValues {
   age: Int
   shortDescription: String
   description: String
-  maxGuests: Int!
+  maxGuests: Int
   numBedrooms: Int!
   numBaths: Int!
   numLivingrooms: Int
@@ -2294,9 +2308,10 @@ type HousePreviousValues {
   verified: Boolean!
   type: HOUSE_TYPES
   residency: House_RESIDENCY
-  lease: Int!
-  popularity: Int!
+  lease: Int
+  popularity: Int
   lastRating: Int!
+  rentOrSell: RENT_OR_SELL!
   createdAt: DateTime!
   updatedAt: DateTime!
 }
@@ -2438,6 +2453,10 @@ input HouseScalarWhereInput {
   lastRating_lte: Int
   lastRating_gt: Int
   lastRating_gte: Int
+  rentOrSell: RENT_OR_SELL
+  rentOrSell_not: RENT_OR_SELL
+  rentOrSell_in: [RENT_OR_SELL!]
+  rentOrSell_not_in: [RENT_OR_SELL!]
   createdAt: DateTime
   createdAt_not: DateTime
   createdAt_in: [DateTime!]
@@ -2488,9 +2507,9 @@ input HouseUpdateDataInput {
   numLivingrooms: Int
   numDiningrooms: Int
   reviews: ReviewUpdateManyWithoutHouseInput
-  amenities: AmenitiesUpdateOneRequiredWithoutHouseInput
+  amenities: AmenitiesUpdateOneWithoutHouseInput
   host: UserUpdateOneRequiredWithoutOwnedHousesInput
-  pricing: PricingUpdateOneRequiredWithoutHouseInput
+  pricing: PricingUpdateOneWithoutHouseInput
   location: LocationUpdateOneRequiredInput
   leaseType: HOUSE_LEASE_TYPE
   verified: Boolean
@@ -2505,6 +2524,7 @@ input HouseUpdateDataInput {
   popularity: Int
   preview_image: PictureUpdateOneInput
   lastRating: Int
+  rentOrSell: RENT_OR_SELL
 }
 
 input HouseUpdateInput {
@@ -2518,9 +2538,9 @@ input HouseUpdateInput {
   numLivingrooms: Int
   numDiningrooms: Int
   reviews: ReviewUpdateManyWithoutHouseInput
-  amenities: AmenitiesUpdateOneRequiredWithoutHouseInput
+  amenities: AmenitiesUpdateOneWithoutHouseInput
   host: UserUpdateOneRequiredWithoutOwnedHousesInput
-  pricing: PricingUpdateOneRequiredWithoutHouseInput
+  pricing: PricingUpdateOneWithoutHouseInput
   location: LocationUpdateOneRequiredInput
   leaseType: HOUSE_LEASE_TYPE
   verified: Boolean
@@ -2535,6 +2555,7 @@ input HouseUpdateInput {
   popularity: Int
   preview_image: PictureUpdateOneInput
   lastRating: Int
+  rentOrSell: RENT_OR_SELL
 }
 
 input HouseUpdateManyDataInput {
@@ -2554,6 +2575,7 @@ input HouseUpdateManyDataInput {
   lease: Int
   popularity: Int
   lastRating: Int
+  rentOrSell: RENT_OR_SELL
 }
 
 input HouseUpdateManyMutationInput {
@@ -2573,6 +2595,7 @@ input HouseUpdateManyMutationInput {
   lease: Int
   popularity: Int
   lastRating: Int
+  rentOrSell: RENT_OR_SELL
 }
 
 input HouseUpdateManyWithoutHostInput {
@@ -2660,7 +2683,7 @@ input HouseUpdateWithoutAmenitiesDataInput {
   numDiningrooms: Int
   reviews: ReviewUpdateManyWithoutHouseInput
   host: UserUpdateOneRequiredWithoutOwnedHousesInput
-  pricing: PricingUpdateOneRequiredWithoutHouseInput
+  pricing: PricingUpdateOneWithoutHouseInput
   location: LocationUpdateOneRequiredInput
   leaseType: HOUSE_LEASE_TYPE
   verified: Boolean
@@ -2675,6 +2698,7 @@ input HouseUpdateWithoutAmenitiesDataInput {
   popularity: Int
   preview_image: PictureUpdateOneInput
   lastRating: Int
+  rentOrSell: RENT_OR_SELL
 }
 
 input HouseUpdateWithoutBookingsDataInput {
@@ -2688,9 +2712,9 @@ input HouseUpdateWithoutBookingsDataInput {
   numLivingrooms: Int
   numDiningrooms: Int
   reviews: ReviewUpdateManyWithoutHouseInput
-  amenities: AmenitiesUpdateOneRequiredWithoutHouseInput
+  amenities: AmenitiesUpdateOneWithoutHouseInput
   host: UserUpdateOneRequiredWithoutOwnedHousesInput
-  pricing: PricingUpdateOneRequiredWithoutHouseInput
+  pricing: PricingUpdateOneWithoutHouseInput
   location: LocationUpdateOneRequiredInput
   leaseType: HOUSE_LEASE_TYPE
   verified: Boolean
@@ -2704,6 +2728,7 @@ input HouseUpdateWithoutBookingsDataInput {
   popularity: Int
   preview_image: PictureUpdateOneInput
   lastRating: Int
+  rentOrSell: RENT_OR_SELL
 }
 
 input HouseUpdateWithoutContactInfoPaymentsDataInput {
@@ -2717,9 +2742,9 @@ input HouseUpdateWithoutContactInfoPaymentsDataInput {
   numLivingrooms: Int
   numDiningrooms: Int
   reviews: ReviewUpdateManyWithoutHouseInput
-  amenities: AmenitiesUpdateOneRequiredWithoutHouseInput
+  amenities: AmenitiesUpdateOneWithoutHouseInput
   host: UserUpdateOneRequiredWithoutOwnedHousesInput
-  pricing: PricingUpdateOneRequiredWithoutHouseInput
+  pricing: PricingUpdateOneWithoutHouseInput
   location: LocationUpdateOneRequiredInput
   leaseType: HOUSE_LEASE_TYPE
   verified: Boolean
@@ -2733,6 +2758,7 @@ input HouseUpdateWithoutContactInfoPaymentsDataInput {
   popularity: Int
   preview_image: PictureUpdateOneInput
   lastRating: Int
+  rentOrSell: RENT_OR_SELL
 }
 
 input HouseUpdateWithoutHostDataInput {
@@ -2746,8 +2772,8 @@ input HouseUpdateWithoutHostDataInput {
   numLivingrooms: Int
   numDiningrooms: Int
   reviews: ReviewUpdateManyWithoutHouseInput
-  amenities: AmenitiesUpdateOneRequiredWithoutHouseInput
-  pricing: PricingUpdateOneRequiredWithoutHouseInput
+  amenities: AmenitiesUpdateOneWithoutHouseInput
+  pricing: PricingUpdateOneWithoutHouseInput
   location: LocationUpdateOneRequiredInput
   leaseType: HOUSE_LEASE_TYPE
   verified: Boolean
@@ -2762,6 +2788,7 @@ input HouseUpdateWithoutHostDataInput {
   popularity: Int
   preview_image: PictureUpdateOneInput
   lastRating: Int
+  rentOrSell: RENT_OR_SELL
 }
 
 input HouseUpdateWithoutPricingDataInput {
@@ -2775,7 +2802,7 @@ input HouseUpdateWithoutPricingDataInput {
   numLivingrooms: Int
   numDiningrooms: Int
   reviews: ReviewUpdateManyWithoutHouseInput
-  amenities: AmenitiesUpdateOneRequiredWithoutHouseInput
+  amenities: AmenitiesUpdateOneWithoutHouseInput
   host: UserUpdateOneRequiredWithoutOwnedHousesInput
   location: LocationUpdateOneRequiredInput
   leaseType: HOUSE_LEASE_TYPE
@@ -2791,6 +2818,7 @@ input HouseUpdateWithoutPricingDataInput {
   popularity: Int
   preview_image: PictureUpdateOneInput
   lastRating: Int
+  rentOrSell: RENT_OR_SELL
 }
 
 input HouseUpdateWithoutReviewsDataInput {
@@ -2803,9 +2831,9 @@ input HouseUpdateWithoutReviewsDataInput {
   numBaths: Int
   numLivingrooms: Int
   numDiningrooms: Int
-  amenities: AmenitiesUpdateOneRequiredWithoutHouseInput
+  amenities: AmenitiesUpdateOneWithoutHouseInput
   host: UserUpdateOneRequiredWithoutOwnedHousesInput
-  pricing: PricingUpdateOneRequiredWithoutHouseInput
+  pricing: PricingUpdateOneWithoutHouseInput
   location: LocationUpdateOneRequiredInput
   leaseType: HOUSE_LEASE_TYPE
   verified: Boolean
@@ -2820,6 +2848,7 @@ input HouseUpdateWithoutReviewsDataInput {
   popularity: Int
   preview_image: PictureUpdateOneInput
   lastRating: Int
+  rentOrSell: RENT_OR_SELL
 }
 
 input HouseUpdateWithoutRoomsDataInput {
@@ -2833,9 +2862,9 @@ input HouseUpdateWithoutRoomsDataInput {
   numLivingrooms: Int
   numDiningrooms: Int
   reviews: ReviewUpdateManyWithoutHouseInput
-  amenities: AmenitiesUpdateOneRequiredWithoutHouseInput
+  amenities: AmenitiesUpdateOneWithoutHouseInput
   host: UserUpdateOneRequiredWithoutOwnedHousesInput
-  pricing: PricingUpdateOneRequiredWithoutHouseInput
+  pricing: PricingUpdateOneWithoutHouseInput
   location: LocationUpdateOneRequiredInput
   leaseType: HOUSE_LEASE_TYPE
   verified: Boolean
@@ -2849,6 +2878,7 @@ input HouseUpdateWithoutRoomsDataInput {
   popularity: Int
   preview_image: PictureUpdateOneInput
   lastRating: Int
+  rentOrSell: RENT_OR_SELL
 }
 
 input HouseUpdateWithoutViewsDataInput {
@@ -2862,9 +2892,9 @@ input HouseUpdateWithoutViewsDataInput {
   numLivingrooms: Int
   numDiningrooms: Int
   reviews: ReviewUpdateManyWithoutHouseInput
-  amenities: AmenitiesUpdateOneRequiredWithoutHouseInput
+  amenities: AmenitiesUpdateOneWithoutHouseInput
   host: UserUpdateOneRequiredWithoutOwnedHousesInput
-  pricing: PricingUpdateOneRequiredWithoutHouseInput
+  pricing: PricingUpdateOneWithoutHouseInput
   location: LocationUpdateOneRequiredInput
   leaseType: HOUSE_LEASE_TYPE
   verified: Boolean
@@ -2878,6 +2908,7 @@ input HouseUpdateWithoutViewsDataInput {
   popularity: Int
   preview_image: PictureUpdateOneInput
   lastRating: Int
+  rentOrSell: RENT_OR_SELL
 }
 
 input HouseUpdateWithWhereUniqueWithoutHostInput {
@@ -3089,6 +3120,10 @@ input HouseWhereInput {
   lastRating_lte: Int
   lastRating_gt: Int
   lastRating_gte: Int
+  rentOrSell: RENT_OR_SELL
+  rentOrSell_not: RENT_OR_SELL
+  rentOrSell_in: [RENT_OR_SELL!]
+  rentOrSell_not_in: [RENT_OR_SELL!]
   createdAt: DateTime
   createdAt_not: DateTime
   createdAt_in: [DateTime!]
@@ -5141,10 +5176,12 @@ input PricingUpdateManyMutationInput {
   income: Float
 }
 
-input PricingUpdateOneRequiredWithoutHouseInput {
+input PricingUpdateOneWithoutHouseInput {
   create: PricingCreateWithoutHouseInput
   update: PricingUpdateWithoutHouseDataInput
   upsert: PricingUpsertWithoutHouseInput
+  delete: Boolean
+  disconnect: Boolean
   connect: PricingWhereUniqueInput
 }
 
@@ -5300,6 +5337,11 @@ type Query {
   viewses(where: ViewsWhereInput, orderBy: ViewsOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Views]!
   viewsesConnection(where: ViewsWhereInput, orderBy: ViewsOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): ViewsConnection!
   node(id: ID!): Node
+}
+
+enum RENT_OR_SELL {
+  RENT
+  SELL
 }
 
 type Review {

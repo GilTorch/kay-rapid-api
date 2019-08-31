@@ -128,7 +128,9 @@ export const CustomMutation = {
             create: {
               url: args.previewImage
             }
-          }
+          },
+          rentOrSell: args.rentOrSell
+
       }
     );
   },
@@ -199,7 +201,8 @@ export const CustomMutation = {
             url: args.previewImage
           }
         },
-        rooms: args.rooms
+        rooms: args.rooms,
+        rentOrSell: args.rentOrSell
       },
       where: {
         id: args.houseId

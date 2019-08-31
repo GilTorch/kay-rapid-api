@@ -54,10 +54,10 @@ type Mutation {
   createCommune(name: String!, idCity: ID!): Commune
   createHouse(
     area: Int
-    age: Int!
+    age: Int
     shortDescription: String
     description: String
-    maxGuests: Int!
+    maxGuests: Int
     numBedrooms: Int!
     numBaths: Int!
     basePrice: Int!
@@ -65,7 +65,7 @@ type Mutation {
     numDiningrooms: Int!
     highestPrice: Int!
     currency: CURRENCY
-    income: Int!
+    income: Int
     lat: Float
     lng: Float
     address: String
@@ -114,6 +114,7 @@ type Mutation {
     crib: Boolean
     rooms: [RoomCreateWithoutHouseInput]
     previewImage: String
+    rentOrSell: RENT_OR_SELL
   ): House
   updateHouse(
     area: Int
@@ -177,6 +178,7 @@ type Mutation {
     crib: Boolean
     rooms: [RoomCreateWithoutHouseInput]
     previewImage: String
+    rentOrSell: RENT_OR_SELL
   ): House
   deleteHouse(id: String!): House
   addroomManyPicture(
