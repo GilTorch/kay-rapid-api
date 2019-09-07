@@ -61,8 +61,8 @@ type Mutation {
     numBedrooms: Int!
     numBaths: Int!
     basePrice: Float
-    numLivingrooms: Int!
-    numDiningrooms: Int!
+    numLivingrooms: Int
+    numDiningrooms: Int
     highestPrice: Float!
     currency: CURRENCY
     income: Int
@@ -73,7 +73,7 @@ type Mutation {
     leaseType: HOUSE_LEASE_TYPE
     type: HOUSE_TYPES
     residency: House_RESIDENCY
-    lease: Int!
+    lease: Int
     electricity: Boolean
     electricity_frequency: FREQUENCY
     water_pipe: Boolean
