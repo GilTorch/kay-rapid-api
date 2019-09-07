@@ -60,10 +60,10 @@ type Mutation {
     maxGuests: Int
     numBedrooms: Int!
     numBaths: Int!
-    basePrice: Int!
+    basePrice: Float
     numLivingrooms: Int!
     numDiningrooms: Int!
-    highestPrice: Int!
+    highestPrice: Float!
     currency: CURRENCY
     income: Int
     lat: Float
