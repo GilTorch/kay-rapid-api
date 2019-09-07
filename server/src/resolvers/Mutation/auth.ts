@@ -116,7 +116,10 @@ export const auth = {
             create: {
               url: facebookUser.picture
             }
-          } 
+          } ,
+          permissions:{
+            set: ['STANDARD','ITEMCREATE']
+          }
       });
       userforToken = newUser;
     }
