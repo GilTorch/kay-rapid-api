@@ -331,5 +331,11 @@ export const CustomMutation = {
     }) 
     return review
     
-  }
+  },
+  async deleteFavoriteHouse(parent, args, context: Context) {
+    return context.prisma.deleteManyHouseFavoriteds({
+      id_in:args.idHouseFavorite
+    }      
+      );
+  },
 };

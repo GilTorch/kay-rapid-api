@@ -29,6 +29,9 @@ type HouseRating {
   reviews:[Review!]!
 }
 
+type count  {
+  count: Int!
+}
 
 type Mutation {
   signup(
@@ -193,4 +196,5 @@ type Mutation {
     stars: Int!
     text: String
   ): Review
+  deleteFavoriteHouse(idHouseFavorite: [ID!]): count
 }
