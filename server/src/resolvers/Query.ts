@@ -27,8 +27,11 @@ export const Query = {
       process.env.APP_SECRET
     );
   },
-  Houses(parent, {}, context: Context) {
-    return context.prisma.houses({});
+  Houses(parent, args, context: Context) {
+    return context.prisma.houses({
+      orderBy: "createdAt_ASC",
+      last:args.last
+    });
   },
   topCommunes(parent, { c }, context: Context) {
     return context.prisma.communes(
