@@ -21,6 +21,48 @@ export const resolvers = {
       },
     ownedHouses(parent){
       return prisma.user({id:parent.id}).ownedHouses()
+    },
+    permissions(parent){
+      return prisma.user({id:parent.id}).permissions()
     }
-}
+  },
+  Commune:{
+    city(parent){
+      return prisma.commune({id:parent.id}).city()
+    }
+  },
+  House:{
+    host(parent){
+      return prisma.house({id: parent.id}).host()
+    },
+    rooms(parent){
+      return prisma.house({id: parent.id}).rooms()
+    },
+    bookings(parent){
+      return prisma.house({id: parent.id}).bookings()
+    },
+    pictures(parent){
+      return prisma.house({id: parent.id}).pictures()
+    },
+    preview_image(parent){
+      return prisma.house({id: parent.id}).preview_image()
+    },
+    location(parent){
+      return prisma.house({id:parent.id}).location()
+    }
+
+  },
+  HouseFavorited:{
+    user(parent){
+      return prisma.houseFavorited({id:parent.id}).user()
+    },
+    house(parent){
+      return prisma.houseFavorited({id:parent.id}).house()
+    }
+  } ,
+  Review:{
+    user(parent){
+      return prisma.review({id:parent.id}).user()
+    }
+  }
 };

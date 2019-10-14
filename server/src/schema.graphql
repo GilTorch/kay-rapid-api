@@ -1,4 +1,4 @@
-# import  RoomCreateWithoutHouseInput,Room,PictureCreateInput, State, Country , House , Commune, City, User from "./generated/prisma.graphql"
+# import  RoomCreateWithoutHouseInput,Room,PictureCreateInput, State, Country , House , Commune, City, User,House_Favorited, Review from "./generated/prisma.graphql"
 
 
 type Query {
@@ -7,10 +7,12 @@ type Query {
   cities: [City!]!
   communes: [Commune!]!
   getToken(id: String!): String!
-  Houses: [House!]!
+  Houses(last: Int): [House!]!
   topCommunes(c: Int!): [Commune!]!
   topCity(c: Int!): [Commune!]!
   topStates(c: Int!): [State!]!
+  houseFavoritedByUser:[HouseFavorited!]!
+  houseRating(houseId: String!):HouseRating!
 }
 
 type AuthPayLoad {
@@ -20,6 +22,15 @@ type AuthPayLoad {
 
 type Message {
   message: String!
+}
+type HouseRating {
+  count: Int!
+  rating: Float!
+  reviews:[Review!]!
+}
+
+type count  {
+  count: Int!
 }
 
 type Mutation {
@@ -46,18 +57,18 @@ type Mutation {
   createCommune(name: String!, idCity: ID!): Commune
   createHouse(
     area: Int
-    age: Int!
+    age: Int
     shortDescription: String
     description: String
-    maxGuests: Int!
+    maxGuests: Int
     numBedrooms: Int!
     numBaths: Int!
-    basePrice: Int!
-    numLivingrooms: Int!
-    numDiningrooms: Int!
-    highestPrice: Int!
+    basePrice: Float
+    numLivingrooms: Int
+    numDiningrooms: Int
+    highestPrice: Float!
     currency: CURRENCY
-    income: Int!
+    income: Int
     lat: Float
     lng: Float
     address: String
@@ -65,7 +76,7 @@ type Mutation {
     leaseType: HOUSE_LEASE_TYPE
     type: HOUSE_TYPES
     residency: House_RESIDENCY
-    lease: Int!
+    lease: Int
     electricity: Boolean
     electricity_frequency: FREQUENCY
     water_pipe: Boolean
@@ -106,6 +117,7 @@ type Mutation {
     crib: Boolean
     rooms: [RoomCreateWithoutHouseInput]
     previewImage: String
+    rentOrSell: RENT_OR_SELL
   ): House
   updateHouse(
     area: Int
@@ -169,6 +181,7 @@ type Mutation {
     crib: Boolean
     rooms: [RoomCreateWithoutHouseInput]
     previewImage: String
+    rentOrSell: RENT_OR_SELL
   ): House
   deleteHouse(id: String!): House
   addroomManyPicture(
@@ -177,5 +190,11 @@ type Mutation {
     picture_previews: [PictureCreateInput!]
   ): Room
 
-  createFavoriteHouse(idHouse: String!, idUser: String!): House
+  createFavoriteHouse(idHouse: String!): HouseFavorited
+  createReview(
+    houseId: String!
+    stars: Int!
+    text: String
+  ): Review
+  deleteFavoriteHouse(idHouseFavorite: [ID!]): count
 }

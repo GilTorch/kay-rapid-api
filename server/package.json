@@ -28,6 +28,8 @@
     
   },
   "resolutions": {
-    "graphql": "14.0.0"
+    "@types/graphql": "14.0.1", 
+    "graphql": "14.0.2"
+
   }
 }

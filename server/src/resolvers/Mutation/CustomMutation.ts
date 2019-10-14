@@ -39,7 +39,8 @@ export const CustomMutation = {
     if(!userId){
       throw new Error('You must be logged in')
     } 
-    hasPermission(context.prisma.$exists.user({ id: userId}),['ADMIN','LANDLORD','PERMISSIONUPDATE','ITEMCREATE'])
+     let x = await context.prisma.user({id : userId})
+     hasPermission(x,['STANDARD'])
     return context.prisma.createHouse(
       {
           area: args.area,
@@ -127,7 +128,9 @@ export const CustomMutation = {
             create: {
               url: args.previewImage
             }
-          }
+          },
+          rentOrSell: args.rentOrSell
+
       }
     );
   },
@@ -198,7 +201,8 @@ export const CustomMutation = {
             url: args.previewImage
           }
         },
-        rooms: args.rooms
+        rooms: args.rooms,
+        rentOrSell: args.rentOrSell
       },
       where: {
         id: args.houseId
@@ -225,8 +229,27 @@ export const CustomMutation = {
       }
     );
   },
-  createFavoriteHouse(parent, args, context: Context) {
-    return context.prisma.createHouse_Favorited(
+  async createFavoriteHouse(parent, args, context: Context) {
+    const userId = getUserId(context);
+    if(!userId){
+      throw new Error('You must be logged in')
+    } 
+    const [favoriteExists] = await context.prisma.houseFavoriteds({where:
+      {
+        user: {
+          id: userId
+        },
+        house:{
+          id: args.idHouse
+        }
+        
+      }})
+
+      if (favoriteExists) {
+        throw new Error('house already in favorites');
+  } 
+    
+    return context.prisma.createHouseFavorited(
       {
           house: {
             connect: {
@@ -235,10 +258,84 @@ export const CustomMutation = {
           },
           user: {
             connect: {
-              id: args.idUser
+              id: userId
             }
           }
       }
     );
-  }
+  },
+  async createReview(parent, args, context: Context) {
+    const userId = getUserId(context);
+    if(!userId){
+      throw new Error('You must be logged in')
+    } 
+    if(args.stars > 5){
+      throw new Error("Ratings can't be superior than 5")
+    } 
+    const [ReviewExists] = await context.prisma.reviews({where:
+      {
+        user: {
+          id: userId
+        },
+        House:{
+          id: args.houseId
+        }
+        
+      }})
+
+      if (ReviewExists) {
+        throw new Error('You already made a review for this house');
+  } 
+  let review = await context.prisma.createReview (
+    {
+        stars: args.stars,
+        text: args.text,
+        House: {
+          connect: {
+            id: args.houseId
+          }
+        },
+        user: {
+          connect: {
+            id: userId
+          }
+        }
+    }
+    ); 
+    ///updating the house averagerating processs
+    const count =  await context.prisma.reviewsConnection({where:
+      {
+       House:{
+          id: args.houseId
+        }
+        
+      }}).aggregate().count()
+  
+    let reviews = await context.prisma.reviews({where:
+      {
+       House:{
+          id: args.houseId
+        }
+        
+      }})
+
+    const sumRating = await reviews.map(item => item.stars).reduce((prev, next) => prev + next)
+    const rating = sumRating /count 
+    const lastRatingHouse = await context.prisma.updateHouse({ 
+      data:{
+        lastRating: rating
+      },
+      where: {
+        id: args.houseId
+      }
+    }) 
+    return review
+    
+  },
+  async deleteFavoriteHouse(parent, args, context: Context) {
+    return context.prisma.deleteManyHouseFavoriteds({
+      id_in:args.idHouseFavorite
+    }      
+      );
+  },
 };

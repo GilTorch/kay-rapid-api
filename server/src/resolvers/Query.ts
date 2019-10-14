@@ -27,8 +27,11 @@ export const Query = {
       process.env.APP_SECRET
     );
   },
-  Houses(parent, {}, context: Context) {
-    return context.prisma.houses({});
+  Houses(parent, args, context: Context) {
+    return context.prisma.houses({
+      orderBy: "createdAt_ASC",
+      last:args.last
+    });
   },
   topCommunes(parent, { c }, context: Context) {
     return context.prisma.communes(
@@ -37,7 +40,52 @@ export const Query = {
         first: c
       }
     );
+  },
+  async houseFavoritedByUser(parent, args,context: Context) {
+    const userId = getUserId(context);
+    if (!userId) {
+      throw new Error('you must be signed in!');
+    }
+    return context.prisma.houseFavoriteds(
+      {
+        where: {
+          user: { id: userId },
+        },
+      }
+    );
+},
+  async houseRating(parent, args,context: Context){
+    const count =  await context.prisma.reviewsConnection({where:
+      {
+       House:{
+          id: args.houseId
+        }
+        
+      }}).aggregate().count()
+  
+    let reviews = await context.prisma.reviews({where:
+      {
+       House:{
+          id: args.houseId
+        }
+        
+      }})
+
+    const sumRating = reviews.map(item => item.stars).reduce((prev, next) => prev + next)
+    const rating = sumRating /count
+
+
+      //  reviews.reduce((a,b)=> {a + b['stars']},0)
+
+      console.log(sumRating);
+      
+    return {
+      count,
+      rating,
+      reviews
+    }
   }
+
 
 
   
