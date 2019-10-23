@@ -34,6 +34,7 @@ export const CustomMutation = {
       }
     );
   },
+  // search the houses that the user owns
   async createHouse(parent, args, context: Context) {
     const userId = getUserId(context);
     if(!userId){

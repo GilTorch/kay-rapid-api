@@ -54,6 +54,40 @@ export const Query = {
       }
     );
 },
+async housesOwnByUser(parent, args,context: Context) {
+  const userId = getUserId(context);
+  if (!userId) {
+    throw new Error('you must be signed in!');
+  }
+  const houses =  await context.prisma.houses(
+    {
+      where: {
+        host: { id: userId },
+      },
+    }
+  );
+
+ return houses;
+
+},
+async housesOwnByUserCount(parent, args,context: Context) {
+  const userId = getUserId(context);
+  if (!userId) {
+    throw new Error('you must be signed in!');
+  }
+  const count =  await context.prisma.housesConnection(
+    {
+      where:{
+        host:{
+          id: userId
+        }
+      }
+    }
+  ).aggregate().count();
+
+ return count;
+
+},
   async houseRating(parent, args,context: Context){
     const count =  await context.prisma.reviewsConnection({where:
       {
