@@ -66,15 +66,18 @@ export const auth = {
       user ? user.password : ""
     );
     if (!user) {
+      console.log("auth error 1")
       throw new Error(`no such user found for email ${args.email}`)
     }
     if (!valid) {
+      console.log("auth error2");
       throw new Error(`Incorrect password`)
     }
     if (!user.status) {
+      console.log("auth error3");
       throw new AuthError();
     }
-    console.log(process.env.APP_SECRET)
+    console.log("APP SECRET"+process.env.APP_SECRET);
     console.log(user)
     return {
       token: jwt.sign({ userId: user.id }, process.env.APP_SECRET),
@@ -126,7 +129,7 @@ export const auth = {
       userforToken = newUser;
     }
     return {
-      token: jwt.sign({ userId: userforToken.id }, APP_SECRET),
+      token: jwt.sign({ userId: userforToken.id }, process.env.APP_SECRET),
       user
     };
   },

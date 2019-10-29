@@ -49,6 +49,9 @@ export const resolvers = {
     },
     location(parent){
       return prisma.house({id:parent.id}).location()
+    },
+    pricing(parent){
+      return prisma.house({id:parent.id}).pricing()
     }
 
   },
