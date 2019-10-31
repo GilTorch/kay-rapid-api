@@ -27,6 +27,11 @@ export const Query = {
       process.env.APP_SECRET
     );
   },
+  House(parent, args, context: Context){
+    return context.prisma.house({
+      id:args.id
+    })
+  },
   Houses(parent, args, context: Context) {
     return context.prisma.houses({
       orderBy: "createdAt_ASC",

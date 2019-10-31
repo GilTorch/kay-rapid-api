@@ -15,6 +15,7 @@ type Query {
   houseRating(houseId: String!):HouseRating!
   housesOwnByUser: [House]!
   housesOwnByUserCount : Int!
+  House(id: String):House!
 }
 
 type AuthPayLoad {
