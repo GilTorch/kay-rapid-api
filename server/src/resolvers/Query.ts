@@ -10,6 +10,11 @@ export const Query = {
     hasPermission(context.prisma.$exists.user({ id: userId}),['ADMIN','LANDLORD','PERMISSIONUPDATE','ITEMCREATE'])
     return context.prisma.countries({});
   },
+  user(parent, args, context:Context){
+    return context.prisma.user({
+      id: args.id
+    })
+  },
   states(parent, {}, context: Context) {
     return context.prisma.states({});
   },
