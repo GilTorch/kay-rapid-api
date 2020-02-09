@@ -1,8 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { graphql, compose, Mutation } from 'react-apollo';
+import { graphql, Mutation } from 'react-apollo';
 import * as yup from 'yup';
 import { AUTH_WITHOUT_SOCIAL_MEDIA, WRITE_AUTH_INFO } from '../queries/queries';
+import {flowRight as compose} from 'lodash';
 import Loading from './Loading';
 import { Formik } from 'formik';
 import Close from './Close';

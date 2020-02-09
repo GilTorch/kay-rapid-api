@@ -1,5 +1,6 @@
 import React from 'react';
-import { graphql, Mutation, compose } from 'react-apollo';
+import { graphql, Mutation } from 'react-apollo';
+import {flowRight as compose} from 'lodash';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { ACCOUNT_CREATION, AUTH_WITHOUT_SOCIAL_MEDIA, WRITE_AUTH_INFO } from '../queries/queries';
 import { Formik } from 'formik';
