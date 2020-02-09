@@ -1015,116 +1015,86 @@ export interface ClientConstructor<T> {
  * Types
  */
 
-export type FREQUENCY = "NEVER" | "SOMETIMES" | "OFTEN" | "ALWAYS";
-
-export type PAYMENT_PROVIDER = "PAYPAL" | "CREDIT_CARD";
-
-export type NOTIFICATION_TYPE =
-  | "OFFER"
-  | "INSTANT_BOOK"
-  | "RESPONSIVENESS"
-  | "NEW_AMENITIES"
-  | "HOUSE_RULES";
-
-export type CURRENCY = "HTG" | "USD";
-
-export type HOUSE_LEASE_TYPE = "WEEKLY" | "MONTHLY" | "YEARLY";
-
-export type HOUSE_TYPES = "APARTMENT" | "VILLA" | "STUDIO";
-
-export type House_RESIDENCY = "BUSINESS" | "RESIDENCE";
-
-export type ROOM_LABELS = "LIVINGROOM" | "DINIGROOM" | "BEDROOM" | "BATHROOM";
-
-export type RENT_OR_SELL = "RENT" | "SELL";
-
-export type ReviewOrderByInput =
+export type VideoOrderByInput =
   | "id_ASC"
   | "id_DESC"
-  | "createdAt_ASC"
-  | "createdAt_DESC"
-  | "updatedAt_ASC"
-  | "updatedAt_DESC"
-  | "text_ASC"
-  | "text_DESC"
-  | "stars_ASC"
-  | "stars_DESC";
-
-export type HouseOrderByInput =
-  | "id_ASC"
-  | "id_DESC"
-  | "area_ASC"
-  | "area_DESC"
-  | "age_ASC"
-  | "age_DESC"
-  | "shortDescription_ASC"
-  | "shortDescription_DESC"
-  | "description_ASC"
-  | "description_DESC"
-  | "maxGuests_ASC"
-  | "maxGuests_DESC"
-  | "numBedrooms_ASC"
-  | "numBedrooms_DESC"
-  | "numBaths_ASC"
-  | "numBaths_DESC"
-  | "numLivingrooms_ASC"
-  | "numLivingrooms_DESC"
-  | "numDiningrooms_ASC"
-  | "numDiningrooms_DESC"
-  | "leaseType_ASC"
-  | "leaseType_DESC"
-  | "verified_ASC"
-  | "verified_DESC"
-  | "type_ASC"
-  | "type_DESC"
-  | "residency_ASC"
-  | "residency_DESC"
-  | "lease_ASC"
-  | "lease_DESC"
-  | "popularity_ASC"
-  | "popularity_DESC"
-  | "lastRating_ASC"
-  | "lastRating_DESC"
-  | "rentOrSell_ASC"
-  | "rentOrSell_DESC"
+  | "url_ASC"
+  | "url_DESC"
   | "createdAt_ASC"
   | "createdAt_DESC"
   | "updatedAt_ASC"
   | "updatedAt_DESC";
 
-export type BookingOrderByInput =
-  | "id_ASC"
-  | "id_DESC"
-  | "createdAt_ASC"
-  | "createdAt_DESC"
-  | "updatedAt_ASC"
-  | "updatedAt_DESC"
-  | "startDate_ASC"
-  | "startDate_DESC"
-  | "endDate_ASC"
-  | "endDate_DESC";
+export type RENT_OR_SELL = "RENT" | "SELL";
 
-export type PaymentHouseOrderByInput =
+export type PictureOrderByInput =
   | "id_ASC"
   | "id_DESC"
+  | "url_ASC"
+  | "url_DESC"
   | "createdAt_ASC"
   | "createdAt_DESC"
   | "updatedAt_ASC"
-  | "updatedAt_DESC"
-  | "totalPrice_ASC"
-  | "totalPrice_DESC";
+  | "updatedAt_DESC";
 
-export type PaymentLanlordInfoOrderByInput =
+export type ViewsOrderByInput =
+  | "id_ASC"
+  | "id_DESC"
+  | "lastWeek_ASC"
+  | "lastWeek_DESC"
+  | "createdAt_ASC"
+  | "createdAt_DESC"
+  | "updatedAt_ASC"
+  | "updatedAt_DESC";
+
+export type RoomOrderByInput =
+  | "id_ASC"
+  | "id_DESC"
+  | "label_ASC"
+  | "label_DESC"
+  | "createdAt_ASC"
+  | "createdAt_DESC"
+  | "updatedAt_ASC"
+  | "updatedAt_DESC";
+
+export type PricingOrderByInput =
+  | "id_ASC"
+  | "id_DESC"
+  | "basePrice_ASC"
+  | "basePrice_DESC"
+  | "highestPrice_ASC"
+  | "highestPrice_DESC"
+  | "currency_ASC"
+  | "currency_DESC"
+  | "income_ASC"
+  | "income_DESC"
+  | "createdAt_ASC"
+  | "createdAt_DESC"
+  | "updatedAt_ASC"
+  | "updatedAt_DESC";
+
+export type PAYMENT_PROVIDER = "PAYPAL" | "CREDIT_CARD";
+
+export type PaymentAccountOrderByInput =
   | "id_ASC"
   | "id_DESC"
   | "createdAt_ASC"
   | "createdAt_DESC"
   | "updatedAt_ASC"
   | "updatedAt_DESC"
-  | "totalPrice_ASC"
-  | "totalPrice_DESC"
-  | "moncashTransactId_ASC"
-  | "moncashTransactId_DESC";
+  | "type_ASC"
+  | "type_DESC";
+
+export type Permission =
+  | "STANDARD"
+  | "LANDLORD"
+  | "ADMIN"
+  | "ITEMCREATE"
+  | "ITEMUPDATE"
+  | "ITEMDELETE"
+  | "PERMISSIONUPDATE";
+
+export type NEGOTIATION_TYPE = "PENDING" | "ACCEPTED" | "REFUSED";
 
 export type NotificationOrderByInput =
   | "id_ASC"
@@ -1140,78 +1110,72 @@ export type NotificationOrderByInput =
   | "readDate_ASC"
   | "readDate_DESC";
 
-export type Permission =
-  | "STANDARD"
-  | "LANDLORD"
-  | "ADMIN"
-  | "ITEMCREATE"
-  | "ITEMUPDATE"
-  | "ITEMDELETE"
-  | "PERMISSIONUPDATE";
+export type FREQUENCY = "NEVER" | "SOMETIMES" | "OFTEN" | "ALWAYS";
 
-export type RoomOrderByInput =
-  | "id_ASC"
-  | "id_DESC"
-  | "label_ASC"
-  | "label_DESC"
-  | "createdAt_ASC"
-  | "createdAt_DESC"
-  | "updatedAt_ASC"
-  | "updatedAt_DESC";
-
-export type PictureOrderByInput =
-  | "id_ASC"
-  | "id_DESC"
-  | "url_ASC"
-  | "url_DESC"
-  | "createdAt_ASC"
-  | "createdAt_DESC"
-  | "updatedAt_ASC"
-  | "updatedAt_DESC";
-
-export type VideoOrderByInput =
-  | "id_ASC"
-  | "id_DESC"
-  | "url_ASC"
-  | "url_DESC"
-  | "createdAt_ASC"
-  | "createdAt_DESC"
-  | "updatedAt_ASC"
-  | "updatedAt_DESC";
-
-export type UserOrderByInput =
+export type PaymentLanlordInfoOrderByInput =
   | "id_ASC"
   | "id_DESC"
   | "createdAt_ASC"
   | "createdAt_DESC"
   | "updatedAt_ASC"
   | "updatedAt_DESC"
-  | "status_ASC"
-  | "status_DESC"
-  | "facebookUserId_ASC"
-  | "facebookUserId_DESC"
+  | "totalPrice_ASC"
+  | "totalPrice_DESC"
+  | "moncashTransactId_ASC"
+  | "moncashTransactId_DESC";
+
+export type CreditCardInformationOrderByInput =
+  | "id_ASC"
+  | "id_DESC"
+  | "createdAt_ASC"
+  | "createdAt_DESC"
+  | "updatedAt_ASC"
+  | "updatedAt_DESC"
+  | "cardNumber_ASC"
+  | "cardNumber_DESC"
+  | "expiresOnMonth_ASC"
+  | "expiresOnMonth_DESC"
+  | "expiresOnYear_ASC"
+  | "expiresOnYear_DESC"
+  | "securityCode_ASC"
+  | "securityCode_DESC"
   | "firstName_ASC"
   | "firstName_DESC"
   | "lastName_ASC"
   | "lastName_DESC"
-  | "email_ASC"
-  | "email_DESC"
-  | "password_ASC"
-  | "password_DESC"
-  | "resetToken_ASC"
-  | "resetToken_DESC"
-  | "resetTokenExpiry_ASC"
-  | "resetTokenExpiry_DESC"
-  | "phone1_ASC"
-  | "phone1_DESC"
-  | "phone2_ASC"
-  | "phone2_DESC"
-  | "primaryPhone_ASC"
-  | "primaryPhone_DESC"
-  | "responseTime_ASC"
-  | "responseTime_DESC"
-  | "isSuperHost_ASC"
-  | "isSuperHost_DESC";
+  | "postalCode_ASC"
+  | "postalCode_DESC"
+  | "country_ASC"
+  | "country_DESC";
+
+export type PaymentHouseOrderByInput =
+  | "id_ASC"
+  | "id_DESC"
+  | "createdAt_ASC"
+  | "createdAt_DESC"
+  | "updatedAt_ASC"
+  | "updatedAt_DESC"
+  | "totalPrice_ASC"
+  | "totalPrice_DESC";
+
+export type CommuneOrderByInput =
+  | "id_ASC"
+  | "id_DESC"
+  | "name_ASC"
+  | "name_DESC"
+  | "rank_ASC"
+  | "rank_DESC"
+  | "createdAt_ASC"
+  | "createdAt_DESC"
+  | "updatedAt_ASC"
+  | "updatedAt_DESC";
+
+export type NOTIFICATION_TYPE =
+  | "OFFER"
+  | "INSTANT_BOOK"
+  | "RESPONSIVENESS"
+  | "NEW_AMENITIES"
+  | "HOUSE_RULES";
 
 export type AmenitiesOrderByInput =
   | "id_ASC"
@@ -1297,71 +1261,73 @@ export type AmenitiesOrderByInput =
   | "updatedAt_ASC"
   | "updatedAt_DESC";
 
-export type CityOrderByInput =
-  | "id_ASC"
-  | "id_DESC"
-  | "name_ASC"
-  | "name_DESC"
-  | "rank_ASC"
-  | "rank_DESC"
-  | "createdAt_ASC"
-  | "createdAt_DESC"
-  | "updatedAt_ASC"
-  | "updatedAt_DESC";
-
-export type CommuneOrderByInput =
-  | "id_ASC"
-  | "id_DESC"
-  | "name_ASC"
-  | "name_DESC"
-  | "rank_ASC"
-  | "rank_DESC"
-  | "createdAt_ASC"
-  | "createdAt_DESC"
-  | "updatedAt_ASC"
-  | "updatedAt_DESC";
-
-export type CountryOrderByInput =
-  | "id_ASC"
-  | "id_DESC"
-  | "name_ASC"
-  | "name_DESC"
-  | "createdAt_ASC"
-  | "createdAt_DESC"
-  | "updatedAt_ASC"
-  | "updatedAt_DESC";
-
-export type CreditCardInformationOrderByInput =
+export type BookingOrderByInput =
   | "id_ASC"
   | "id_DESC"
   | "createdAt_ASC"
   | "createdAt_DESC"
   | "updatedAt_ASC"
   | "updatedAt_DESC"
-  | "cardNumber_ASC"
-  | "cardNumber_DESC"
-  | "expiresOnMonth_ASC"
-  | "expiresOnMonth_DESC"
-  | "expiresOnYear_ASC"
-  | "expiresOnYear_DESC"
-  | "securityCode_ASC"
-  | "securityCode_DESC"
-  | "firstName_ASC"
-  | "firstName_DESC"
-  | "lastName_ASC"
-  | "lastName_DESC"
-  | "postalCode_ASC"
-  | "postalCode_DESC"
-  | "country_ASC"
-  | "country_DESC";
+  | "startDate_ASC"
+  | "startDate_DESC"
+  | "endDate_ASC"
+  | "endDate_DESC";
 
-export type HouseFavoritedOrderByInput =
+export type MutationType = "CREATED" | "UPDATED" | "DELETED";
+
+export type HouseOrderByInput =
+  | "id_ASC"
+  | "id_DESC"
+  | "area_ASC"
+  | "area_DESC"
+  | "age_ASC"
+  | "age_DESC"
+  | "shortDescription_ASC"
+  | "shortDescription_DESC"
+  | "description_ASC"
+  | "description_DESC"
+  | "maxGuests_ASC"
+  | "maxGuests_DESC"
+  | "numBedrooms_ASC"
+  | "numBedrooms_DESC"
+  | "numBaths_ASC"
+  | "numBaths_DESC"
+  | "numLivingrooms_ASC"
+  | "numLivingrooms_DESC"
+  | "numDiningrooms_ASC"
+  | "numDiningrooms_DESC"
+  | "leaseType_ASC"
+  | "leaseType_DESC"
+  | "verified_ASC"
+  | "verified_DESC"
+  | "type_ASC"
+  | "type_DESC"
+  | "residency_ASC"
+  | "residency_DESC"
+  | "lease_ASC"
+  | "lease_DESC"
+  | "popularity_ASC"
+  | "popularity_DESC"
+  | "lastRating_ASC"
+  | "lastRating_DESC"
+  | "rentOrSell_ASC"
+  | "rentOrSell_DESC"
+  | "createdAt_ASC"
+  | "createdAt_DESC"
+  | "updatedAt_ASC"
+  | "updatedAt_DESC";
+
+export type PaypalInformationOrderByInput =
   | "id_ASC"
   | "id_DESC"
   | "createdAt_ASC"
   | "createdAt_DESC"
   | "updatedAt_ASC"
-  | "updatedAt_DESC";
+  | "updatedAt_DESC"
+  | "email_ASC"
+  | "email_DESC";
+
+export type CURRENCY = "HTG" | "USD";
 
 export type LocationOrderByInput =
   | "id_ASC"
@@ -1377,7 +1343,55 @@ export type LocationOrderByInput =
   | "updatedAt_ASC"
   | "updatedAt_DESC";
 
-export type NEGOTIATION_TYPE = "PENDING" | "ACCEPTED" | "REFUSED";
+export type HOUSE_LEASE_TYPE = "WEEKLY" | "MONTHLY" | "YEARLY";
+
+export type CountryOrderByInput =
+  | "id_ASC"
+  | "id_DESC"
+  | "name_ASC"
+  | "name_DESC"
+  | "createdAt_ASC"
+  | "createdAt_DESC"
+  | "updatedAt_ASC"
+  | "updatedAt_DESC";
+
+export type ROOM_LABELS = "LIVINGROOM" | "DINIGROOM" | "BEDROOM" | "BATHROOM";
+
+export type ReviewOrderByInput =
+  | "id_ASC"
+  | "id_DESC"
+  | "createdAt_ASC"
+  | "createdAt_DESC"
+  | "updatedAt_ASC"
+  | "updatedAt_DESC"
+  | "text_ASC"
+  | "text_DESC"
+  | "stars_ASC"
+  | "stars_DESC";
+
+export type House_RESIDENCY = "BUSINESS" | "RESIDENCE";
+
+export type HOUSE_TYPES = "APARTMENT" | "VILLA" | "STUDIO";
+
+export type CityOrderByInput =
+  | "id_ASC"
+  | "id_DESC"
+  | "name_ASC"
+  | "name_DESC"
+  | "rank_ASC"
+  | "rank_DESC"
+  | "createdAt_ASC"
+  | "createdAt_DESC"
+  | "updatedAt_ASC"
+  | "updatedAt_DESC";
+
+export type HouseFavoritedOrderByInput =
+  | "id_ASC"
+  | "id_DESC"
+  | "createdAt_ASC"
+  | "createdAt_DESC"
+  | "updatedAt_ASC"
+  | "updatedAt_DESC";
 
 export type NegotiationOrderByInput =
   | "id_ASC"
@@ -1391,42 +1405,6 @@ export type NegotiationOrderByInput =
   | "status_ASC"
   | "status_DESC";
 
-export type PaymentAccountOrderByInput =
-  | "id_ASC"
-  | "id_DESC"
-  | "createdAt_ASC"
-  | "createdAt_DESC"
-  | "updatedAt_ASC"
-  | "updatedAt_DESC"
-  | "type_ASC"
-  | "type_DESC";
-
-export type PaypalInformationOrderByInput =
-  | "id_ASC"
-  | "id_DESC"
-  | "createdAt_ASC"
-  | "createdAt_DESC"
-  | "updatedAt_ASC"
-  | "updatedAt_DESC"
-  | "email_ASC"
-  | "email_DESC";
-
-export type PricingOrderByInput =
-  | "id_ASC"
-  | "id_DESC"
-  | "basePrice_ASC"
-  | "basePrice_DESC"
-  | "highestPrice_ASC"
-  | "highestPrice_DESC"
-  | "currency_ASC"
-  | "currency_DESC"
-  | "income_ASC"
-  | "income_DESC"
-  | "createdAt_ASC"
-  | "createdAt_DESC"
-  | "updatedAt_ASC"
-  | "updatedAt_DESC";
-
 export type StateOrderByInput =
   | "id_ASC"
   | "id_DESC"
@@ -1439,23 +1417,348 @@ export type StateOrderByInput =
   | "updatedAt_ASC"
   | "updatedAt_DESC";
 
-export type ViewsOrderByInput =
+export type UserOrderByInput =
   | "id_ASC"
   | "id_DESC"
-  | "lastWeek_ASC"
-  | "lastWeek_DESC"
   | "createdAt_ASC"
   | "createdAt_DESC"
   | "updatedAt_ASC"
-  | "updatedAt_DESC";
+  | "updatedAt_DESC"
+  | "status_ASC"
+  | "status_DESC"
+  | "facebookUserId_ASC"
+  | "facebookUserId_DESC"
+  | "firstName_ASC"
+  | "firstName_DESC"
+  | "lastName_ASC"
+  | "lastName_DESC"
+  | "email_ASC"
+  | "email_DESC"
+  | "password_ASC"
+  | "password_DESC"
+  | "resetToken_ASC"
+  | "resetToken_DESC"
+  | "resetTokenExpiry_ASC"
+  | "resetTokenExpiry_DESC"
+  | "phone1_ASC"
+  | "phone1_DESC"
+  | "phone2_ASC"
+  | "phone2_DESC"
+  | "primaryPhone_ASC"
+  | "primaryPhone_DESC"
+  | "responseTime_ASC"
+  | "responseTime_DESC"
+  | "isSuperHost_ASC"
+  | "isSuperHost_DESC";
 
-export type MutationType = "CREATED" | "UPDATED" | "DELETED";
+export interface PictureUpdateWithWhereUniqueNestedInput {
+  where: PictureWhereUniqueInput;
+  data: PictureUpdateDataInput;
+}
 
 export type AmenitiesWhereUniqueInput = AtLeastOne<{
   id: Maybe<ID_Input>;
 }>;
 
-export interface ReviewWhereInput {
+export interface ViewsUpdateWithoutHouseDataInput {
+  lastWeek?: Maybe<Int>;
+  User?: Maybe<UserUpdateManyInput>;
+}
+
+export interface ViewsWhereInput {
+  id?: Maybe<ID_Input>;
+  id_not?: Maybe<ID_Input>;
+  id_in?: Maybe<ID_Input[] | ID_Input>;
+  id_not_in?: Maybe<ID_Input[] | ID_Input>;
+  id_lt?: Maybe<ID_Input>;
+  id_lte?: Maybe<ID_Input>;
+  id_gt?: Maybe<ID_Input>;
+  id_gte?: Maybe<ID_Input>;
+  id_contains?: Maybe<ID_Input>;
+  id_not_contains?: Maybe<ID_Input>;
+  id_starts_with?: Maybe<ID_Input>;
+  id_not_starts_with?: Maybe<ID_Input>;
+  id_ends_with?: Maybe<ID_Input>;
+  id_not_ends_with?: Maybe<ID_Input>;
+  lastWeek?: Maybe<Int>;
+  lastWeek_not?: Maybe<Int>;
+  lastWeek_in?: Maybe<Int[] | Int>;
+  lastWeek_not_in?: Maybe<Int[] | Int>;
+  lastWeek_lt?: Maybe<Int>;
+  lastWeek_lte?: Maybe<Int>;
+  lastWeek_gt?: Maybe<Int>;
+  lastWeek_gte?: Maybe<Int>;
+  House?: Maybe<HouseWhereInput>;
+  User_every?: Maybe<UserWhereInput>;
+  User_some?: Maybe<UserWhereInput>;
+  User_none?: Maybe<UserWhereInput>;
+  createdAt?: Maybe<DateTimeInput>;
+  createdAt_not?: Maybe<DateTimeInput>;
+  createdAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  createdAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  createdAt_lt?: Maybe<DateTimeInput>;
+  createdAt_lte?: Maybe<DateTimeInput>;
+  createdAt_gt?: Maybe<DateTimeInput>;
+  createdAt_gte?: Maybe<DateTimeInput>;
+  updatedAt?: Maybe<DateTimeInput>;
+  updatedAt_not?: Maybe<DateTimeInput>;
+  updatedAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  updatedAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  updatedAt_lt?: Maybe<DateTimeInput>;
+  updatedAt_lte?: Maybe<DateTimeInput>;
+  updatedAt_gt?: Maybe<DateTimeInput>;
+  updatedAt_gte?: Maybe<DateTimeInput>;
+  AND?: Maybe<ViewsWhereInput[] | ViewsWhereInput>;
+  OR?: Maybe<ViewsWhereInput[] | ViewsWhereInput>;
+  NOT?: Maybe<ViewsWhereInput[] | ViewsWhereInput>;
+}
+
+export interface UserUpdateManyInput {
+  create?: Maybe<UserCreateInput[] | UserCreateInput>;
+  update?: Maybe<
+    | UserUpdateWithWhereUniqueNestedInput[]
+    | UserUpdateWithWhereUniqueNestedInput
+  >;
+  upsert?: Maybe<
+    | UserUpsertWithWhereUniqueNestedInput[]
+    | UserUpsertWithWhereUniqueNestedInput
+  >;
+  delete?: Maybe<UserWhereUniqueInput[] | UserWhereUniqueInput>;
+  connect?: Maybe<UserWhereUniqueInput[] | UserWhereUniqueInput>;
+  set?: Maybe<UserWhereUniqueInput[] | UserWhereUniqueInput>;
+  disconnect?: Maybe<UserWhereUniqueInput[] | UserWhereUniqueInput>;
+  deleteMany?: Maybe<UserScalarWhereInput[] | UserScalarWhereInput>;
+  updateMany?: Maybe<
+    UserUpdateManyWithWhereNestedInput[] | UserUpdateManyWithWhereNestedInput
+  >;
+}
+
+export interface RoomWhereInput {
+  id?: Maybe<ID_Input>;
+  id_not?: Maybe<ID_Input>;
+  id_in?: Maybe<ID_Input[] | ID_Input>;
+  id_not_in?: Maybe<ID_Input[] | ID_Input>;
+  id_lt?: Maybe<ID_Input>;
+  id_lte?: Maybe<ID_Input>;
+  id_gt?: Maybe<ID_Input>;
+  id_gte?: Maybe<ID_Input>;
+  id_contains?: Maybe<ID_Input>;
+  id_not_contains?: Maybe<ID_Input>;
+  id_starts_with?: Maybe<ID_Input>;
+  id_not_starts_with?: Maybe<ID_Input>;
+  id_ends_with?: Maybe<ID_Input>;
+  id_not_ends_with?: Maybe<ID_Input>;
+  label?: Maybe<ROOM_LABELS>;
+  label_not?: Maybe<ROOM_LABELS>;
+  label_in?: Maybe<ROOM_LABELS[] | ROOM_LABELS>;
+  label_not_in?: Maybe<ROOM_LABELS[] | ROOM_LABELS>;
+  house?: Maybe<HouseWhereInput>;
+  picture_previews_every?: Maybe<PictureWhereInput>;
+  picture_previews_some?: Maybe<PictureWhereInput>;
+  picture_previews_none?: Maybe<PictureWhereInput>;
+  video_previews_every?: Maybe<VideoWhereInput>;
+  video_previews_some?: Maybe<VideoWhereInput>;
+  video_previews_none?: Maybe<VideoWhereInput>;
+  createdAt?: Maybe<DateTimeInput>;
+  createdAt_not?: Maybe<DateTimeInput>;
+  createdAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  createdAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  createdAt_lt?: Maybe<DateTimeInput>;
+  createdAt_lte?: Maybe<DateTimeInput>;
+  createdAt_gt?: Maybe<DateTimeInput>;
+  createdAt_gte?: Maybe<DateTimeInput>;
+  updatedAt?: Maybe<DateTimeInput>;
+  updatedAt_not?: Maybe<DateTimeInput>;
+  updatedAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  updatedAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  updatedAt_lt?: Maybe<DateTimeInput>;
+  updatedAt_lte?: Maybe<DateTimeInput>;
+  updatedAt_gt?: Maybe<DateTimeInput>;
+  updatedAt_gte?: Maybe<DateTimeInput>;
+  AND?: Maybe<RoomWhereInput[] | RoomWhereInput>;
+  OR?: Maybe<RoomWhereInput[] | RoomWhereInput>;
+  NOT?: Maybe<RoomWhereInput[] | RoomWhereInput>;
+}
+
+export interface HouseCreateOneWithoutReviewsInput {
+  create?: Maybe<HouseCreateWithoutReviewsInput>;
+  connect?: Maybe<HouseWhereUniqueInput>;
+}
+
+export interface PaymentHouseUpdateManyDataInput {
+  totalPrice?: Maybe<Float>;
+}
+
+export interface HouseCreateWithoutReviewsInput {
+  id?: Maybe<ID_Input>;
+  area?: Maybe<Int>;
+  age?: Maybe<Int>;
+  shortDescription?: Maybe<String>;
+  description?: Maybe<String>;
+  maxGuests?: Maybe<Int>;
+  numBedrooms: Int;
+  numBaths: Int;
+  numLivingrooms?: Maybe<Int>;
+  numDiningrooms?: Maybe<Int>;
+  amenities?: Maybe<AmenitiesCreateOneWithoutHouseInput>;
+  host: UserCreateOneWithoutOwnedHousesInput;
+  pricing?: Maybe<PricingCreateOneWithoutHouseInput>;
+  location: LocationCreateOneInput;
+  leaseType?: Maybe<HOUSE_LEASE_TYPE>;
+  verified?: Maybe<Boolean>;
+  type?: Maybe<HOUSE_TYPES>;
+  residency?: Maybe<House_RESIDENCY>;
+  lease?: Maybe<Int>;
+  rooms?: Maybe<RoomCreateManyWithoutHouseInput>;
+  views?: Maybe<ViewsCreateOneWithoutHouseInput>;
+  bookings?: Maybe<BookingCreateManyWithoutHouseInput>;
+  pictures?: Maybe<PictureCreateManyInput>;
+  contactInfoPayments?: Maybe<PaymentLanlordInfoCreateManyWithoutHouseInput>;
+  popularity?: Maybe<Int>;
+  preview_image?: Maybe<PictureCreateOneInput>;
+  lastRating?: Maybe<Int>;
+  rentOrSell: RENT_OR_SELL;
+}
+
+export interface UserUpdateWithWhereUniqueNestedInput {
+  where: UserWhereUniqueInput;
+  data: UserUpdateDataInput;
+}
+
+export interface PaymentLanlordInfoCreateManyWithoutHouseInput {
+  create?: Maybe<
+    | PaymentLanlordInfoCreateWithoutHouseInput[]
+    | PaymentLanlordInfoCreateWithoutHouseInput
+  >;
+  connect?: Maybe<
+    PaymentLanlordInfoWhereUniqueInput[] | PaymentLanlordInfoWhereUniqueInput
+  >;
+}
+
+export interface VideoSubscriptionWhereInput {
+  mutation_in?: Maybe<MutationType[] | MutationType>;
+  updatedFields_contains?: Maybe<String>;
+  updatedFields_contains_every?: Maybe<String[] | String>;
+  updatedFields_contains_some?: Maybe<String[] | String>;
+  node?: Maybe<VideoWhereInput>;
+  AND?: Maybe<VideoSubscriptionWhereInput[] | VideoSubscriptionWhereInput>;
+  OR?: Maybe<VideoSubscriptionWhereInput[] | VideoSubscriptionWhereInput>;
+  NOT?: Maybe<VideoSubscriptionWhereInput[] | VideoSubscriptionWhereInput>;
+}
+
+export interface PaymentLanlordInfoCreateWithoutHouseInput {
+  id?: Maybe<ID_Input>;
+  totalPrice: Float;
+  client: UserCreateOneWithoutPaidContactsInput;
+  moncashTransactId: String;
+}
+
+export interface StateSubscriptionWhereInput {
+  mutation_in?: Maybe<MutationType[] | MutationType>;
+  updatedFields_contains?: Maybe<String>;
+  updatedFields_contains_every?: Maybe<String[] | String>;
+  updatedFields_contains_some?: Maybe<String[] | String>;
+  node?: Maybe<StateWhereInput>;
+  AND?: Maybe<StateSubscriptionWhereInput[] | StateSubscriptionWhereInput>;
+  OR?: Maybe<StateSubscriptionWhereInput[] | StateSubscriptionWhereInput>;
+  NOT?: Maybe<StateSubscriptionWhereInput[] | StateSubscriptionWhereInput>;
+}
+
+export interface UserCreateOneWithoutPaidContactsInput {
+  create?: Maybe<UserCreateWithoutPaidContactsInput>;
+  connect?: Maybe<UserWhereUniqueInput>;
+}
+
+export interface PictureWhereInput {
+  id?: Maybe<ID_Input>;
+  id_not?: Maybe<ID_Input>;
+  id_in?: Maybe<ID_Input[] | ID_Input>;
+  id_not_in?: Maybe<ID_Input[] | ID_Input>;
+  id_lt?: Maybe<ID_Input>;
+  id_lte?: Maybe<ID_Input>;
+  id_gt?: Maybe<ID_Input>;
+  id_gte?: Maybe<ID_Input>;
+  id_contains?: Maybe<ID_Input>;
+  id_not_contains?: Maybe<ID_Input>;
+  id_starts_with?: Maybe<ID_Input>;
+  id_not_starts_with?: Maybe<ID_Input>;
+  id_ends_with?: Maybe<ID_Input>;
+  id_not_ends_with?: Maybe<ID_Input>;
+  url?: Maybe<String>;
+  url_not?: Maybe<String>;
+  url_in?: Maybe<String[] | String>;
+  url_not_in?: Maybe<String[] | String>;
+  url_lt?: Maybe<String>;
+  url_lte?: Maybe<String>;
+  url_gt?: Maybe<String>;
+  url_gte?: Maybe<String>;
+  url_contains?: Maybe<String>;
+  url_not_contains?: Maybe<String>;
+  url_starts_with?: Maybe<String>;
+  url_not_starts_with?: Maybe<String>;
+  url_ends_with?: Maybe<String>;
+  url_not_ends_with?: Maybe<String>;
+  createdAt?: Maybe<DateTimeInput>;
+  createdAt_not?: Maybe<DateTimeInput>;
+  createdAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  createdAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  createdAt_lt?: Maybe<DateTimeInput>;
+  createdAt_lte?: Maybe<DateTimeInput>;
+  createdAt_gt?: Maybe<DateTimeInput>;
+  createdAt_gte?: Maybe<DateTimeInput>;
+  updatedAt?: Maybe<DateTimeInput>;
+  updatedAt_not?: Maybe<DateTimeInput>;
+  updatedAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  updatedAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  updatedAt_lt?: Maybe<DateTimeInput>;
+  updatedAt_lte?: Maybe<DateTimeInput>;
+  updatedAt_gt?: Maybe<DateTimeInput>;
+  updatedAt_gte?: Maybe<DateTimeInput>;
+  AND?: Maybe<PictureWhereInput[] | PictureWhereInput>;
+  OR?: Maybe<PictureWhereInput[] | PictureWhereInput>;
+  NOT?: Maybe<PictureWhereInput[] | PictureWhereInput>;
+}
+
+export interface UserCreateWithoutPaidContactsInput {
+  id?: Maybe<ID_Input>;
+  status?: Maybe<Boolean>;
+  facebookUserId?: Maybe<String>;
+  firstName: String;
+  lastName: String;
+  email?: Maybe<String>;
+  password?: Maybe<String>;
+  resetToken?: Maybe<String>;
+  resetTokenExpiry?: Maybe<String>;
+  phone1?: Maybe<String>;
+  phone2?: Maybe<String>;
+  primaryPhone?: Maybe<Int>;
+  responseTime?: Maybe<Int>;
+  isSuperHost?: Maybe<Boolean>;
+  ownedHouses?: Maybe<HouseCreateManyWithoutHostInput>;
+  location?: Maybe<LocationCreateOneInput>;
+  bookings?: Maybe<BookingCreateManyWithoutBookeeInput>;
+  notifications?: Maybe<NotificationCreateManyWithoutUserInput>;
+  profilePicture?: Maybe<PictureCreateOneInput>;
+  reviews?: Maybe<ReviewCreateManyWithoutUserInput>;
+  permissions?: Maybe<UserCreatepermissionsInput>;
+}
+
+export interface PricingSubscriptionWhereInput {
+  mutation_in?: Maybe<MutationType[] | MutationType>;
+  updatedFields_contains?: Maybe<String>;
+  updatedFields_contains_every?: Maybe<String[] | String>;
+  updatedFields_contains_some?: Maybe<String[] | String>;
+  node?: Maybe<PricingWhereInput>;
+  AND?: Maybe<PricingSubscriptionWhereInput[] | PricingSubscriptionWhereInput>;
+  OR?: Maybe<PricingSubscriptionWhereInput[] | PricingSubscriptionWhereInput>;
+  NOT?: Maybe<PricingSubscriptionWhereInput[] | PricingSubscriptionWhereInput>;
+}
+
+export interface UserCreatepermissionsInput {
+  set?: Maybe<Permission[] | Permission>;
+}
+
+export interface NotificationWhereInput {
   id?: Maybe<ID_Input>;
   id_not?: Maybe<ID_Input>;
   id_in?: Maybe<ID_Input[] | ID_Input>;
@@ -1486,33 +1789,1139 @@ export interface ReviewWhereInput {
   updatedAt_lte?: Maybe<DateTimeInput>;
   updatedAt_gt?: Maybe<DateTimeInput>;
   updatedAt_gte?: Maybe<DateTimeInput>;
-  text?: Maybe<String>;
-  text_not?: Maybe<String>;
-  text_in?: Maybe<String[] | String>;
-  text_not_in?: Maybe<String[] | String>;
-  text_lt?: Maybe<String>;
-  text_lte?: Maybe<String>;
-  text_gt?: Maybe<String>;
-  text_gte?: Maybe<String>;
-  text_contains?: Maybe<String>;
-  text_not_contains?: Maybe<String>;
-  text_starts_with?: Maybe<String>;
-  text_not_starts_with?: Maybe<String>;
-  text_ends_with?: Maybe<String>;
-  text_not_ends_with?: Maybe<String>;
-  stars?: Maybe<Int>;
-  stars_not?: Maybe<Int>;
-  stars_in?: Maybe<Int[] | Int>;
-  stars_not_in?: Maybe<Int[] | Int>;
-  stars_lt?: Maybe<Int>;
-  stars_lte?: Maybe<Int>;
-  stars_gt?: Maybe<Int>;
-  stars_gte?: Maybe<Int>;
-  House?: Maybe<HouseWhereInput>;
+  type?: Maybe<NOTIFICATION_TYPE>;
+  type_not?: Maybe<NOTIFICATION_TYPE>;
+  type_in?: Maybe<NOTIFICATION_TYPE[] | NOTIFICATION_TYPE>;
+  type_not_in?: Maybe<NOTIFICATION_TYPE[] | NOTIFICATION_TYPE>;
   user?: Maybe<UserWhereInput>;
-  AND?: Maybe<ReviewWhereInput[] | ReviewWhereInput>;
-  OR?: Maybe<ReviewWhereInput[] | ReviewWhereInput>;
-  NOT?: Maybe<ReviewWhereInput[] | ReviewWhereInput>;
+  link?: Maybe<String>;
+  link_not?: Maybe<String>;
+  link_in?: Maybe<String[] | String>;
+  link_not_in?: Maybe<String[] | String>;
+  link_lt?: Maybe<String>;
+  link_lte?: Maybe<String>;
+  link_gt?: Maybe<String>;
+  link_gte?: Maybe<String>;
+  link_contains?: Maybe<String>;
+  link_not_contains?: Maybe<String>;
+  link_starts_with?: Maybe<String>;
+  link_not_starts_with?: Maybe<String>;
+  link_ends_with?: Maybe<String>;
+  link_not_ends_with?: Maybe<String>;
+  readDate?: Maybe<DateTimeInput>;
+  readDate_not?: Maybe<DateTimeInput>;
+  readDate_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  readDate_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  readDate_lt?: Maybe<DateTimeInput>;
+  readDate_lte?: Maybe<DateTimeInput>;
+  readDate_gt?: Maybe<DateTimeInput>;
+  readDate_gte?: Maybe<DateTimeInput>;
+  AND?: Maybe<NotificationWhereInput[] | NotificationWhereInput>;
+  OR?: Maybe<NotificationWhereInput[] | NotificationWhereInput>;
+  NOT?: Maybe<NotificationWhereInput[] | NotificationWhereInput>;
+}
+
+export interface PaymentHouseCreateOneWithoutBookingInput {
+  create?: Maybe<PaymentHouseCreateWithoutBookingInput>;
+  connect?: Maybe<PaymentHouseWhereUniqueInput>;
+}
+
+export interface PaymentLanlordInfoSubscriptionWhereInput {
+  mutation_in?: Maybe<MutationType[] | MutationType>;
+  updatedFields_contains?: Maybe<String>;
+  updatedFields_contains_every?: Maybe<String[] | String>;
+  updatedFields_contains_some?: Maybe<String[] | String>;
+  node?: Maybe<PaymentLanlordInfoWhereInput>;
+  AND?: Maybe<
+    | PaymentLanlordInfoSubscriptionWhereInput[]
+    | PaymentLanlordInfoSubscriptionWhereInput
+  >;
+  OR?: Maybe<
+    | PaymentLanlordInfoSubscriptionWhereInput[]
+    | PaymentLanlordInfoSubscriptionWhereInput
+  >;
+  NOT?: Maybe<
+    | PaymentLanlordInfoSubscriptionWhereInput[]
+    | PaymentLanlordInfoSubscriptionWhereInput
+  >;
+}
+
+export interface PaymentHouseCreateWithoutBookingInput {
+  id?: Maybe<ID_Input>;
+  totalPrice: Float;
+  paymentMethod: PaymentAccountCreateOneWithoutPaymentsInput;
+}
+
+export interface PaymentHouseSubscriptionWhereInput {
+  mutation_in?: Maybe<MutationType[] | MutationType>;
+  updatedFields_contains?: Maybe<String>;
+  updatedFields_contains_every?: Maybe<String[] | String>;
+  updatedFields_contains_some?: Maybe<String[] | String>;
+  node?: Maybe<PaymentHouseWhereInput>;
+  AND?: Maybe<
+    PaymentHouseSubscriptionWhereInput[] | PaymentHouseSubscriptionWhereInput
+  >;
+  OR?: Maybe<
+    PaymentHouseSubscriptionWhereInput[] | PaymentHouseSubscriptionWhereInput
+  >;
+  NOT?: Maybe<
+    PaymentHouseSubscriptionWhereInput[] | PaymentHouseSubscriptionWhereInput
+  >;
+}
+
+export interface PaymentAccountCreateOneWithoutPaymentsInput {
+  create?: Maybe<PaymentAccountCreateWithoutPaymentsInput>;
+  connect?: Maybe<PaymentAccountWhereUniqueInput>;
+}
+
+export interface PaymentAccountSubscriptionWhereInput {
+  mutation_in?: Maybe<MutationType[] | MutationType>;
+  updatedFields_contains?: Maybe<String>;
+  updatedFields_contains_every?: Maybe<String[] | String>;
+  updatedFields_contains_some?: Maybe<String[] | String>;
+  node?: Maybe<PaymentAccountWhereInput>;
+  AND?: Maybe<
+    | PaymentAccountSubscriptionWhereInput[]
+    | PaymentAccountSubscriptionWhereInput
+  >;
+  OR?: Maybe<
+    | PaymentAccountSubscriptionWhereInput[]
+    | PaymentAccountSubscriptionWhereInput
+  >;
+  NOT?: Maybe<
+    | PaymentAccountSubscriptionWhereInput[]
+    | PaymentAccountSubscriptionWhereInput
+  >;
+}
+
+export interface PaymentAccountCreateWithoutPaymentsInput {
+  id?: Maybe<ID_Input>;
+  type?: Maybe<PAYMENT_PROVIDER>;
+  user: UserCreateOneInput;
+  paypal?: Maybe<PaypalInformationCreateOneWithoutPaymentAccountInput>;
+  creditcard?: Maybe<CreditCardInformationCreateOneWithoutPaymentAccountInput>;
+}
+
+export interface PaypalInformationWhereInput {
+  id?: Maybe<ID_Input>;
+  id_not?: Maybe<ID_Input>;
+  id_in?: Maybe<ID_Input[] | ID_Input>;
+  id_not_in?: Maybe<ID_Input[] | ID_Input>;
+  id_lt?: Maybe<ID_Input>;
+  id_lte?: Maybe<ID_Input>;
+  id_gt?: Maybe<ID_Input>;
+  id_gte?: Maybe<ID_Input>;
+  id_contains?: Maybe<ID_Input>;
+  id_not_contains?: Maybe<ID_Input>;
+  id_starts_with?: Maybe<ID_Input>;
+  id_not_starts_with?: Maybe<ID_Input>;
+  id_ends_with?: Maybe<ID_Input>;
+  id_not_ends_with?: Maybe<ID_Input>;
+  createdAt?: Maybe<DateTimeInput>;
+  createdAt_not?: Maybe<DateTimeInput>;
+  createdAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  createdAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  createdAt_lt?: Maybe<DateTimeInput>;
+  createdAt_lte?: Maybe<DateTimeInput>;
+  createdAt_gt?: Maybe<DateTimeInput>;
+  createdAt_gte?: Maybe<DateTimeInput>;
+  updatedAt?: Maybe<DateTimeInput>;
+  updatedAt_not?: Maybe<DateTimeInput>;
+  updatedAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  updatedAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  updatedAt_lt?: Maybe<DateTimeInput>;
+  updatedAt_lte?: Maybe<DateTimeInput>;
+  updatedAt_gt?: Maybe<DateTimeInput>;
+  updatedAt_gte?: Maybe<DateTimeInput>;
+  email?: Maybe<String>;
+  email_not?: Maybe<String>;
+  email_in?: Maybe<String[] | String>;
+  email_not_in?: Maybe<String[] | String>;
+  email_lt?: Maybe<String>;
+  email_lte?: Maybe<String>;
+  email_gt?: Maybe<String>;
+  email_gte?: Maybe<String>;
+  email_contains?: Maybe<String>;
+  email_not_contains?: Maybe<String>;
+  email_starts_with?: Maybe<String>;
+  email_not_starts_with?: Maybe<String>;
+  email_ends_with?: Maybe<String>;
+  email_not_ends_with?: Maybe<String>;
+  paymentAccount?: Maybe<PaymentAccountWhereInput>;
+  AND?: Maybe<PaypalInformationWhereInput[] | PaypalInformationWhereInput>;
+  OR?: Maybe<PaypalInformationWhereInput[] | PaypalInformationWhereInput>;
+  NOT?: Maybe<PaypalInformationWhereInput[] | PaypalInformationWhereInput>;
+}
+
+export interface UserCreateOneInput {
+  create?: Maybe<UserCreateInput>;
+  connect?: Maybe<UserWhereUniqueInput>;
+}
+
+export interface PaymentAccountWhereInput {
+  id?: Maybe<ID_Input>;
+  id_not?: Maybe<ID_Input>;
+  id_in?: Maybe<ID_Input[] | ID_Input>;
+  id_not_in?: Maybe<ID_Input[] | ID_Input>;
+  id_lt?: Maybe<ID_Input>;
+  id_lte?: Maybe<ID_Input>;
+  id_gt?: Maybe<ID_Input>;
+  id_gte?: Maybe<ID_Input>;
+  id_contains?: Maybe<ID_Input>;
+  id_not_contains?: Maybe<ID_Input>;
+  id_starts_with?: Maybe<ID_Input>;
+  id_not_starts_with?: Maybe<ID_Input>;
+  id_ends_with?: Maybe<ID_Input>;
+  id_not_ends_with?: Maybe<ID_Input>;
+  createdAt?: Maybe<DateTimeInput>;
+  createdAt_not?: Maybe<DateTimeInput>;
+  createdAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  createdAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  createdAt_lt?: Maybe<DateTimeInput>;
+  createdAt_lte?: Maybe<DateTimeInput>;
+  createdAt_gt?: Maybe<DateTimeInput>;
+  createdAt_gte?: Maybe<DateTimeInput>;
+  updatedAt?: Maybe<DateTimeInput>;
+  updatedAt_not?: Maybe<DateTimeInput>;
+  updatedAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  updatedAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  updatedAt_lt?: Maybe<DateTimeInput>;
+  updatedAt_lte?: Maybe<DateTimeInput>;
+  updatedAt_gt?: Maybe<DateTimeInput>;
+  updatedAt_gte?: Maybe<DateTimeInput>;
+  type?: Maybe<PAYMENT_PROVIDER>;
+  type_not?: Maybe<PAYMENT_PROVIDER>;
+  type_in?: Maybe<PAYMENT_PROVIDER[] | PAYMENT_PROVIDER>;
+  type_not_in?: Maybe<PAYMENT_PROVIDER[] | PAYMENT_PROVIDER>;
+  user?: Maybe<UserWhereInput>;
+  payments_every?: Maybe<PaymentHouseWhereInput>;
+  payments_some?: Maybe<PaymentHouseWhereInput>;
+  payments_none?: Maybe<PaymentHouseWhereInput>;
+  paypal?: Maybe<PaypalInformationWhereInput>;
+  creditcard?: Maybe<CreditCardInformationWhereInput>;
+  AND?: Maybe<PaymentAccountWhereInput[] | PaymentAccountWhereInput>;
+  OR?: Maybe<PaymentAccountWhereInput[] | PaymentAccountWhereInput>;
+  NOT?: Maybe<PaymentAccountWhereInput[] | PaymentAccountWhereInput>;
+}
+
+export interface PaypalInformationCreateOneWithoutPaymentAccountInput {
+  create?: Maybe<PaypalInformationCreateWithoutPaymentAccountInput>;
+  connect?: Maybe<PaypalInformationWhereUniqueInput>;
+}
+
+export interface PaymentHouseWhereInput {
+  id?: Maybe<ID_Input>;
+  id_not?: Maybe<ID_Input>;
+  id_in?: Maybe<ID_Input[] | ID_Input>;
+  id_not_in?: Maybe<ID_Input[] | ID_Input>;
+  id_lt?: Maybe<ID_Input>;
+  id_lte?: Maybe<ID_Input>;
+  id_gt?: Maybe<ID_Input>;
+  id_gte?: Maybe<ID_Input>;
+  id_contains?: Maybe<ID_Input>;
+  id_not_contains?: Maybe<ID_Input>;
+  id_starts_with?: Maybe<ID_Input>;
+  id_not_starts_with?: Maybe<ID_Input>;
+  id_ends_with?: Maybe<ID_Input>;
+  id_not_ends_with?: Maybe<ID_Input>;
+  createdAt?: Maybe<DateTimeInput>;
+  createdAt_not?: Maybe<DateTimeInput>;
+  createdAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  createdAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  createdAt_lt?: Maybe<DateTimeInput>;
+  createdAt_lte?: Maybe<DateTimeInput>;
+  createdAt_gt?: Maybe<DateTimeInput>;
+  createdAt_gte?: Maybe<DateTimeInput>;
+  updatedAt?: Maybe<DateTimeInput>;
+  updatedAt_not?: Maybe<DateTimeInput>;
+  updatedAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  updatedAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  updatedAt_lt?: Maybe<DateTimeInput>;
+  updatedAt_lte?: Maybe<DateTimeInput>;
+  updatedAt_gt?: Maybe<DateTimeInput>;
+  updatedAt_gte?: Maybe<DateTimeInput>;
+  totalPrice?: Maybe<Float>;
+  totalPrice_not?: Maybe<Float>;
+  totalPrice_in?: Maybe<Float[] | Float>;
+  totalPrice_not_in?: Maybe<Float[] | Float>;
+  totalPrice_lt?: Maybe<Float>;
+  totalPrice_lte?: Maybe<Float>;
+  totalPrice_gt?: Maybe<Float>;
+  totalPrice_gte?: Maybe<Float>;
+  booking?: Maybe<BookingWhereInput>;
+  paymentMethod?: Maybe<PaymentAccountWhereInput>;
+  AND?: Maybe<PaymentHouseWhereInput[] | PaymentHouseWhereInput>;
+  OR?: Maybe<PaymentHouseWhereInput[] | PaymentHouseWhereInput>;
+  NOT?: Maybe<PaymentHouseWhereInput[] | PaymentHouseWhereInput>;
+}
+
+export interface PaypalInformationCreateWithoutPaymentAccountInput {
+  id?: Maybe<ID_Input>;
+  email: String;
+}
+
+export interface HouseFavoritedSubscriptionWhereInput {
+  mutation_in?: Maybe<MutationType[] | MutationType>;
+  updatedFields_contains?: Maybe<String>;
+  updatedFields_contains_every?: Maybe<String[] | String>;
+  updatedFields_contains_some?: Maybe<String[] | String>;
+  node?: Maybe<HouseFavoritedWhereInput>;
+  AND?: Maybe<
+    | HouseFavoritedSubscriptionWhereInput[]
+    | HouseFavoritedSubscriptionWhereInput
+  >;
+  OR?: Maybe<
+    | HouseFavoritedSubscriptionWhereInput[]
+    | HouseFavoritedSubscriptionWhereInput
+  >;
+  NOT?: Maybe<
+    | HouseFavoritedSubscriptionWhereInput[]
+    | HouseFavoritedSubscriptionWhereInput
+  >;
+}
+
+export interface CreditCardInformationCreateOneWithoutPaymentAccountInput {
+  create?: Maybe<CreditCardInformationCreateWithoutPaymentAccountInput>;
+  connect?: Maybe<CreditCardInformationWhereUniqueInput>;
+}
+
+export interface CountryWhereInput {
+  id?: Maybe<ID_Input>;
+  id_not?: Maybe<ID_Input>;
+  id_in?: Maybe<ID_Input[] | ID_Input>;
+  id_not_in?: Maybe<ID_Input[] | ID_Input>;
+  id_lt?: Maybe<ID_Input>;
+  id_lte?: Maybe<ID_Input>;
+  id_gt?: Maybe<ID_Input>;
+  id_gte?: Maybe<ID_Input>;
+  id_contains?: Maybe<ID_Input>;
+  id_not_contains?: Maybe<ID_Input>;
+  id_starts_with?: Maybe<ID_Input>;
+  id_not_starts_with?: Maybe<ID_Input>;
+  id_ends_with?: Maybe<ID_Input>;
+  id_not_ends_with?: Maybe<ID_Input>;
+  name?: Maybe<String>;
+  name_not?: Maybe<String>;
+  name_in?: Maybe<String[] | String>;
+  name_not_in?: Maybe<String[] | String>;
+  name_lt?: Maybe<String>;
+  name_lte?: Maybe<String>;
+  name_gt?: Maybe<String>;
+  name_gte?: Maybe<String>;
+  name_contains?: Maybe<String>;
+  name_not_contains?: Maybe<String>;
+  name_starts_with?: Maybe<String>;
+  name_not_starts_with?: Maybe<String>;
+  name_ends_with?: Maybe<String>;
+  name_not_ends_with?: Maybe<String>;
+  createdAt?: Maybe<DateTimeInput>;
+  createdAt_not?: Maybe<DateTimeInput>;
+  createdAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  createdAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  createdAt_lt?: Maybe<DateTimeInput>;
+  createdAt_lte?: Maybe<DateTimeInput>;
+  createdAt_gt?: Maybe<DateTimeInput>;
+  createdAt_gte?: Maybe<DateTimeInput>;
+  updatedAt?: Maybe<DateTimeInput>;
+  updatedAt_not?: Maybe<DateTimeInput>;
+  updatedAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  updatedAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  updatedAt_lt?: Maybe<DateTimeInput>;
+  updatedAt_lte?: Maybe<DateTimeInput>;
+  updatedAt_gt?: Maybe<DateTimeInput>;
+  updatedAt_gte?: Maybe<DateTimeInput>;
+  AND?: Maybe<CountryWhereInput[] | CountryWhereInput>;
+  OR?: Maybe<CountryWhereInput[] | CountryWhereInput>;
+  NOT?: Maybe<CountryWhereInput[] | CountryWhereInput>;
+}
+
+export interface CreditCardInformationCreateWithoutPaymentAccountInput {
+  id?: Maybe<ID_Input>;
+  cardNumber: String;
+  expiresOnMonth: Int;
+  expiresOnYear: Int;
+  securityCode: String;
+  firstName: String;
+  lastName: String;
+  postalCode: String;
+  country: String;
+}
+
+export interface CreditCardInformationSubscriptionWhereInput {
+  mutation_in?: Maybe<MutationType[] | MutationType>;
+  updatedFields_contains?: Maybe<String>;
+  updatedFields_contains_every?: Maybe<String[] | String>;
+  updatedFields_contains_some?: Maybe<String[] | String>;
+  node?: Maybe<CreditCardInformationWhereInput>;
+  AND?: Maybe<
+    | CreditCardInformationSubscriptionWhereInput[]
+    | CreditCardInformationSubscriptionWhereInput
+  >;
+  OR?: Maybe<
+    | CreditCardInformationSubscriptionWhereInput[]
+    | CreditCardInformationSubscriptionWhereInput
+  >;
+  NOT?: Maybe<
+    | CreditCardInformationSubscriptionWhereInput[]
+    | CreditCardInformationSubscriptionWhereInput
+  >;
+}
+
+export interface AmenitiesUpdateInput {
+  House?: Maybe<HouseUpdateOneRequiredWithoutAmenitiesInput>;
+  electricity?: Maybe<Boolean>;
+  electricity_frequency?: Maybe<FREQUENCY>;
+  water_pipe?: Maybe<Boolean>;
+  water_tank?: Maybe<Boolean>;
+  water_frequency?: Maybe<FREQUENCY>;
+  elevator?: Maybe<Boolean>;
+  petsAllowed?: Maybe<Boolean>;
+  internet?: Maybe<Boolean>;
+  kitchen?: Maybe<Boolean>;
+  wirelessInternet?: Maybe<Boolean>;
+  familyKidFriendly?: Maybe<Boolean>;
+  freeParkingOnPremises?: Maybe<Boolean>;
+  hotTub?: Maybe<Boolean>;
+  pool?: Maybe<Boolean>;
+  smokingAllowed?: Maybe<Boolean>;
+  wheelchairAccessible?: Maybe<Boolean>;
+  cableTv?: Maybe<Boolean>;
+  suitableForEvents?: Maybe<Boolean>;
+  dryer?: Maybe<Boolean>;
+  washer?: Maybe<Boolean>;
+  indoorFireHouse?: Maybe<Boolean>;
+  tv?: Maybe<Boolean>;
+  heating?: Maybe<Boolean>;
+  hangers?: Maybe<Boolean>;
+  iron?: Maybe<Boolean>;
+  hairDryer?: Maybe<Boolean>;
+  doorman?: Maybe<Boolean>;
+  paidParkingOffPremises?: Maybe<Boolean>;
+  freeParkingOnStreet?: Maybe<Boolean>;
+  gym?: Maybe<Boolean>;
+  airConditioning?: Maybe<Boolean>;
+  shampoo?: Maybe<Boolean>;
+  essentials?: Maybe<Boolean>;
+  laptopFriendlyWorkspace?: Maybe<Boolean>;
+  privateEntrance?: Maybe<Boolean>;
+  buzzerWirelessIntercom?: Maybe<Boolean>;
+  bathtub?: Maybe<Boolean>;
+  crib?: Maybe<Boolean>;
+}
+
+export interface CommuneSubscriptionWhereInput {
+  mutation_in?: Maybe<MutationType[] | MutationType>;
+  updatedFields_contains?: Maybe<String>;
+  updatedFields_contains_every?: Maybe<String[] | String>;
+  updatedFields_contains_some?: Maybe<String[] | String>;
+  node?: Maybe<CommuneWhereInput>;
+  AND?: Maybe<CommuneSubscriptionWhereInput[] | CommuneSubscriptionWhereInput>;
+  OR?: Maybe<CommuneSubscriptionWhereInput[] | CommuneSubscriptionWhereInput>;
+  NOT?: Maybe<CommuneSubscriptionWhereInput[] | CommuneSubscriptionWhereInput>;
+}
+
+export interface HouseUpdateOneRequiredWithoutAmenitiesInput {
+  create?: Maybe<HouseCreateWithoutAmenitiesInput>;
+  update?: Maybe<HouseUpdateWithoutAmenitiesDataInput>;
+  upsert?: Maybe<HouseUpsertWithoutAmenitiesInput>;
+  connect?: Maybe<HouseWhereUniqueInput>;
+}
+
+export type BookingWhereUniqueInput = AtLeastOne<{
+  id: Maybe<ID_Input>;
+}>;
+
+export interface HouseUpdateWithoutAmenitiesDataInput {
+  area?: Maybe<Int>;
+  age?: Maybe<Int>;
+  shortDescription?: Maybe<String>;
+  description?: Maybe<String>;
+  maxGuests?: Maybe<Int>;
+  numBedrooms?: Maybe<Int>;
+  numBaths?: Maybe<Int>;
+  numLivingrooms?: Maybe<Int>;
+  numDiningrooms?: Maybe<Int>;
+  reviews?: Maybe<ReviewUpdateManyWithoutHouseInput>;
+  host?: Maybe<UserUpdateOneRequiredWithoutOwnedHousesInput>;
+  pricing?: Maybe<PricingUpdateOneWithoutHouseInput>;
+  location?: Maybe<LocationUpdateOneRequiredInput>;
+  leaseType?: Maybe<HOUSE_LEASE_TYPE>;
+  verified?: Maybe<Boolean>;
+  type?: Maybe<HOUSE_TYPES>;
+  residency?: Maybe<House_RESIDENCY>;
+  lease?: Maybe<Int>;
+  rooms?: Maybe<RoomUpdateManyWithoutHouseInput>;
+  views?: Maybe<ViewsUpdateOneWithoutHouseInput>;
+  bookings?: Maybe<BookingUpdateManyWithoutHouseInput>;
+  pictures?: Maybe<PictureUpdateManyInput>;
+  contactInfoPayments?: Maybe<PaymentLanlordInfoUpdateManyWithoutHouseInput>;
+  popularity?: Maybe<Int>;
+  preview_image?: Maybe<PictureUpdateOneInput>;
+  lastRating?: Maybe<Int>;
+  rentOrSell?: Maybe<RENT_OR_SELL>;
+}
+
+export interface AmenitiesSubscriptionWhereInput {
+  mutation_in?: Maybe<MutationType[] | MutationType>;
+  updatedFields_contains?: Maybe<String>;
+  updatedFields_contains_every?: Maybe<String[] | String>;
+  updatedFields_contains_some?: Maybe<String[] | String>;
+  node?: Maybe<AmenitiesWhereInput>;
+  AND?: Maybe<
+    AmenitiesSubscriptionWhereInput[] | AmenitiesSubscriptionWhereInput
+  >;
+  OR?: Maybe<
+    AmenitiesSubscriptionWhereInput[] | AmenitiesSubscriptionWhereInput
+  >;
+  NOT?: Maybe<
+    AmenitiesSubscriptionWhereInput[] | AmenitiesSubscriptionWhereInput
+  >;
+}
+
+export interface ReviewUpdateManyWithoutHouseInput {
+  create?: Maybe<
+    ReviewCreateWithoutHouseInput[] | ReviewCreateWithoutHouseInput
+  >;
+  delete?: Maybe<ReviewWhereUniqueInput[] | ReviewWhereUniqueInput>;
+  connect?: Maybe<ReviewWhereUniqueInput[] | ReviewWhereUniqueInput>;
+  set?: Maybe<ReviewWhereUniqueInput[] | ReviewWhereUniqueInput>;
+  disconnect?: Maybe<ReviewWhereUniqueInput[] | ReviewWhereUniqueInput>;
+  update?: Maybe<
+    | ReviewUpdateWithWhereUniqueWithoutHouseInput[]
+    | ReviewUpdateWithWhereUniqueWithoutHouseInput
+  >;
+  upsert?: Maybe<
+    | ReviewUpsertWithWhereUniqueWithoutHouseInput[]
+    | ReviewUpsertWithWhereUniqueWithoutHouseInput
+  >;
+  deleteMany?: Maybe<ReviewScalarWhereInput[] | ReviewScalarWhereInput>;
+  updateMany?: Maybe<
+    | ReviewUpdateManyWithWhereNestedInput[]
+    | ReviewUpdateManyWithWhereNestedInput
+  >;
+}
+
+export type CityWhereUniqueInput = AtLeastOne<{
+  id: Maybe<ID_Input>;
+}>;
+
+export interface ReviewUpdateWithWhereUniqueWithoutHouseInput {
+  where: ReviewWhereUniqueInput;
+  data: ReviewUpdateWithoutHouseDataInput;
+}
+
+export interface HouseUpsertWithoutViewsInput {
+  update: HouseUpdateWithoutViewsDataInput;
+  create: HouseCreateWithoutViewsInput;
+}
+
+export interface ReviewUpdateWithoutHouseDataInput {
+  text?: Maybe<String>;
+  stars?: Maybe<Int>;
+  user?: Maybe<UserUpdateOneRequiredWithoutReviewsInput>;
+}
+
+export interface HouseUpdateOneRequiredWithoutViewsInput {
+  create?: Maybe<HouseCreateWithoutViewsInput>;
+  update?: Maybe<HouseUpdateWithoutViewsDataInput>;
+  upsert?: Maybe<HouseUpsertWithoutViewsInput>;
+  connect?: Maybe<HouseWhereUniqueInput>;
+}
+
+export interface UserUpdateOneRequiredWithoutReviewsInput {
+  create?: Maybe<UserCreateWithoutReviewsInput>;
+  update?: Maybe<UserUpdateWithoutReviewsDataInput>;
+  upsert?: Maybe<UserUpsertWithoutReviewsInput>;
+  connect?: Maybe<UserWhereUniqueInput>;
+}
+
+export interface CommuneWhereInput {
+  id?: Maybe<ID_Input>;
+  id_not?: Maybe<ID_Input>;
+  id_in?: Maybe<ID_Input[] | ID_Input>;
+  id_not_in?: Maybe<ID_Input[] | ID_Input>;
+  id_lt?: Maybe<ID_Input>;
+  id_lte?: Maybe<ID_Input>;
+  id_gt?: Maybe<ID_Input>;
+  id_gte?: Maybe<ID_Input>;
+  id_contains?: Maybe<ID_Input>;
+  id_not_contains?: Maybe<ID_Input>;
+  id_starts_with?: Maybe<ID_Input>;
+  id_not_starts_with?: Maybe<ID_Input>;
+  id_ends_with?: Maybe<ID_Input>;
+  id_not_ends_with?: Maybe<ID_Input>;
+  name?: Maybe<String>;
+  name_not?: Maybe<String>;
+  name_in?: Maybe<String[] | String>;
+  name_not_in?: Maybe<String[] | String>;
+  name_lt?: Maybe<String>;
+  name_lte?: Maybe<String>;
+  name_gt?: Maybe<String>;
+  name_gte?: Maybe<String>;
+  name_contains?: Maybe<String>;
+  name_not_contains?: Maybe<String>;
+  name_starts_with?: Maybe<String>;
+  name_not_starts_with?: Maybe<String>;
+  name_ends_with?: Maybe<String>;
+  name_not_ends_with?: Maybe<String>;
+  rank?: Maybe<Int>;
+  rank_not?: Maybe<Int>;
+  rank_in?: Maybe<Int[] | Int>;
+  rank_not_in?: Maybe<Int[] | Int>;
+  rank_lt?: Maybe<Int>;
+  rank_lte?: Maybe<Int>;
+  rank_gt?: Maybe<Int>;
+  rank_gte?: Maybe<Int>;
+  city?: Maybe<CityWhereInput>;
+  createdAt?: Maybe<DateTimeInput>;
+  createdAt_not?: Maybe<DateTimeInput>;
+  createdAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  createdAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  createdAt_lt?: Maybe<DateTimeInput>;
+  createdAt_lte?: Maybe<DateTimeInput>;
+  createdAt_gt?: Maybe<DateTimeInput>;
+  createdAt_gte?: Maybe<DateTimeInput>;
+  updatedAt?: Maybe<DateTimeInput>;
+  updatedAt_not?: Maybe<DateTimeInput>;
+  updatedAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  updatedAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  updatedAt_lt?: Maybe<DateTimeInput>;
+  updatedAt_lte?: Maybe<DateTimeInput>;
+  updatedAt_gt?: Maybe<DateTimeInput>;
+  updatedAt_gte?: Maybe<DateTimeInput>;
+  AND?: Maybe<CommuneWhereInput[] | CommuneWhereInput>;
+  OR?: Maybe<CommuneWhereInput[] | CommuneWhereInput>;
+  NOT?: Maybe<CommuneWhereInput[] | CommuneWhereInput>;
+}
+
+export interface UserUpdateWithoutReviewsDataInput {
+  status?: Maybe<Boolean>;
+  facebookUserId?: Maybe<String>;
+  firstName?: Maybe<String>;
+  lastName?: Maybe<String>;
+  email?: Maybe<String>;
+  password?: Maybe<String>;
+  resetToken?: Maybe<String>;
+  resetTokenExpiry?: Maybe<String>;
+  phone1?: Maybe<String>;
+  phone2?: Maybe<String>;
+  primaryPhone?: Maybe<Int>;
+  responseTime?: Maybe<Int>;
+  isSuperHost?: Maybe<Boolean>;
+  ownedHouses?: Maybe<HouseUpdateManyWithoutHostInput>;
+  location?: Maybe<LocationUpdateOneInput>;
+  bookings?: Maybe<BookingUpdateManyWithoutBookeeInput>;
+  paidContacts?: Maybe<PaymentLanlordInfoUpdateManyWithoutClientInput>;
+  notifications?: Maybe<NotificationUpdateManyWithoutUserInput>;
+  profilePicture?: Maybe<PictureUpdateOneInput>;
+  permissions?: Maybe<UserUpdatepermissionsInput>;
+}
+
+export interface HouseCreateWithoutViewsInput {
+  id?: Maybe<ID_Input>;
+  area?: Maybe<Int>;
+  age?: Maybe<Int>;
+  shortDescription?: Maybe<String>;
+  description?: Maybe<String>;
+  maxGuests?: Maybe<Int>;
+  numBedrooms: Int;
+  numBaths: Int;
+  numLivingrooms?: Maybe<Int>;
+  numDiningrooms?: Maybe<Int>;
+  reviews?: Maybe<ReviewCreateManyWithoutHouseInput>;
+  amenities?: Maybe<AmenitiesCreateOneWithoutHouseInput>;
+  host: UserCreateOneWithoutOwnedHousesInput;
+  pricing?: Maybe<PricingCreateOneWithoutHouseInput>;
+  location: LocationCreateOneInput;
+  leaseType?: Maybe<HOUSE_LEASE_TYPE>;
+  verified?: Maybe<Boolean>;
+  type?: Maybe<HOUSE_TYPES>;
+  residency?: Maybe<House_RESIDENCY>;
+  lease?: Maybe<Int>;
+  rooms?: Maybe<RoomCreateManyWithoutHouseInput>;
+  bookings?: Maybe<BookingCreateManyWithoutHouseInput>;
+  pictures?: Maybe<PictureCreateManyInput>;
+  contactInfoPayments?: Maybe<PaymentLanlordInfoCreateManyWithoutHouseInput>;
+  popularity?: Maybe<Int>;
+  preview_image?: Maybe<PictureCreateOneInput>;
+  lastRating?: Maybe<Int>;
+  rentOrSell: RENT_OR_SELL;
+}
+
+export interface HouseUpdateManyWithoutHostInput {
+  create?: Maybe<HouseCreateWithoutHostInput[] | HouseCreateWithoutHostInput>;
+  delete?: Maybe<HouseWhereUniqueInput[] | HouseWhereUniqueInput>;
+  connect?: Maybe<HouseWhereUniqueInput[] | HouseWhereUniqueInput>;
+  set?: Maybe<HouseWhereUniqueInput[] | HouseWhereUniqueInput>;
+  disconnect?: Maybe<HouseWhereUniqueInput[] | HouseWhereUniqueInput>;
+  update?: Maybe<
+    | HouseUpdateWithWhereUniqueWithoutHostInput[]
+    | HouseUpdateWithWhereUniqueWithoutHostInput
+  >;
+  upsert?: Maybe<
+    | HouseUpsertWithWhereUniqueWithoutHostInput[]
+    | HouseUpsertWithWhereUniqueWithoutHostInput
+  >;
+  deleteMany?: Maybe<HouseScalarWhereInput[] | HouseScalarWhereInput>;
+  updateMany?: Maybe<
+    HouseUpdateManyWithWhereNestedInput[] | HouseUpdateManyWithWhereNestedInput
+  >;
+}
+
+export type CountryWhereUniqueInput = AtLeastOne<{
+  id: Maybe<ID_Input>;
+}>;
+
+export interface HouseUpdateWithWhereUniqueWithoutHostInput {
+  where: HouseWhereUniqueInput;
+  data: HouseUpdateWithoutHostDataInput;
+}
+
+export interface VideoUpdateManyMutationInput {
+  url?: Maybe<String>;
+}
+
+export interface HouseUpdateWithoutHostDataInput {
+  area?: Maybe<Int>;
+  age?: Maybe<Int>;
+  shortDescription?: Maybe<String>;
+  description?: Maybe<String>;
+  maxGuests?: Maybe<Int>;
+  numBedrooms?: Maybe<Int>;
+  numBaths?: Maybe<Int>;
+  numLivingrooms?: Maybe<Int>;
+  numDiningrooms?: Maybe<Int>;
+  reviews?: Maybe<ReviewUpdateManyWithoutHouseInput>;
+  amenities?: Maybe<AmenitiesUpdateOneWithoutHouseInput>;
+  pricing?: Maybe<PricingUpdateOneWithoutHouseInput>;
+  location?: Maybe<LocationUpdateOneRequiredInput>;
+  leaseType?: Maybe<HOUSE_LEASE_TYPE>;
+  verified?: Maybe<Boolean>;
+  type?: Maybe<HOUSE_TYPES>;
+  residency?: Maybe<House_RESIDENCY>;
+  lease?: Maybe<Int>;
+  rooms?: Maybe<RoomUpdateManyWithoutHouseInput>;
+  views?: Maybe<ViewsUpdateOneWithoutHouseInput>;
+  bookings?: Maybe<BookingUpdateManyWithoutHouseInput>;
+  pictures?: Maybe<PictureUpdateManyInput>;
+  contactInfoPayments?: Maybe<PaymentLanlordInfoUpdateManyWithoutHouseInput>;
+  popularity?: Maybe<Int>;
+  preview_image?: Maybe<PictureUpdateOneInput>;
+  lastRating?: Maybe<Int>;
+  rentOrSell?: Maybe<RENT_OR_SELL>;
+}
+
+export interface UserUpdateManyMutationInput {
+  status?: Maybe<Boolean>;
+  facebookUserId?: Maybe<String>;
+  firstName?: Maybe<String>;
+  lastName?: Maybe<String>;
+  email?: Maybe<String>;
+  password?: Maybe<String>;
+  resetToken?: Maybe<String>;
+  resetTokenExpiry?: Maybe<String>;
+  phone1?: Maybe<String>;
+  phone2?: Maybe<String>;
+  primaryPhone?: Maybe<Int>;
+  responseTime?: Maybe<Int>;
+  isSuperHost?: Maybe<Boolean>;
+  permissions?: Maybe<UserUpdatepermissionsInput>;
+}
+
+export interface AmenitiesUpdateOneWithoutHouseInput {
+  create?: Maybe<AmenitiesCreateWithoutHouseInput>;
+  update?: Maybe<AmenitiesUpdateWithoutHouseDataInput>;
+  upsert?: Maybe<AmenitiesUpsertWithoutHouseInput>;
+  delete?: Maybe<Boolean>;
+  disconnect?: Maybe<Boolean>;
+  connect?: Maybe<AmenitiesWhereUniqueInput>;
+}
+
+export interface LocationWhereInput {
+  id?: Maybe<ID_Input>;
+  id_not?: Maybe<ID_Input>;
+  id_in?: Maybe<ID_Input[] | ID_Input>;
+  id_not_in?: Maybe<ID_Input[] | ID_Input>;
+  id_lt?: Maybe<ID_Input>;
+  id_lte?: Maybe<ID_Input>;
+  id_gt?: Maybe<ID_Input>;
+  id_gte?: Maybe<ID_Input>;
+  id_contains?: Maybe<ID_Input>;
+  id_not_contains?: Maybe<ID_Input>;
+  id_starts_with?: Maybe<ID_Input>;
+  id_not_starts_with?: Maybe<ID_Input>;
+  id_ends_with?: Maybe<ID_Input>;
+  id_not_ends_with?: Maybe<ID_Input>;
+  lat?: Maybe<Float>;
+  lat_not?: Maybe<Float>;
+  lat_in?: Maybe<Float[] | Float>;
+  lat_not_in?: Maybe<Float[] | Float>;
+  lat_lt?: Maybe<Float>;
+  lat_lte?: Maybe<Float>;
+  lat_gt?: Maybe<Float>;
+  lat_gte?: Maybe<Float>;
+  lng?: Maybe<Float>;
+  lng_not?: Maybe<Float>;
+  lng_in?: Maybe<Float[] | Float>;
+  lng_not_in?: Maybe<Float[] | Float>;
+  lng_lt?: Maybe<Float>;
+  lng_lte?: Maybe<Float>;
+  lng_gt?: Maybe<Float>;
+  lng_gte?: Maybe<Float>;
+  address?: Maybe<String>;
+  address_not?: Maybe<String>;
+  address_in?: Maybe<String[] | String>;
+  address_not_in?: Maybe<String[] | String>;
+  address_lt?: Maybe<String>;
+  address_lte?: Maybe<String>;
+  address_gt?: Maybe<String>;
+  address_gte?: Maybe<String>;
+  address_contains?: Maybe<String>;
+  address_not_contains?: Maybe<String>;
+  address_starts_with?: Maybe<String>;
+  address_not_starts_with?: Maybe<String>;
+  address_ends_with?: Maybe<String>;
+  address_not_ends_with?: Maybe<String>;
+  commune?: Maybe<CommuneWhereInput>;
+  createdAt?: Maybe<DateTimeInput>;
+  createdAt_not?: Maybe<DateTimeInput>;
+  createdAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  createdAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  createdAt_lt?: Maybe<DateTimeInput>;
+  createdAt_lte?: Maybe<DateTimeInput>;
+  createdAt_gt?: Maybe<DateTimeInput>;
+  createdAt_gte?: Maybe<DateTimeInput>;
+  updatedAt?: Maybe<DateTimeInput>;
+  updatedAt_not?: Maybe<DateTimeInput>;
+  updatedAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  updatedAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  updatedAt_lt?: Maybe<DateTimeInput>;
+  updatedAt_lte?: Maybe<DateTimeInput>;
+  updatedAt_gt?: Maybe<DateTimeInput>;
+  updatedAt_gte?: Maybe<DateTimeInput>;
+  AND?: Maybe<LocationWhereInput[] | LocationWhereInput>;
+  OR?: Maybe<LocationWhereInput[] | LocationWhereInput>;
+  NOT?: Maybe<LocationWhereInput[] | LocationWhereInput>;
+}
+
+export interface AmenitiesUpdateWithoutHouseDataInput {
+  electricity?: Maybe<Boolean>;
+  electricity_frequency?: Maybe<FREQUENCY>;
+  water_pipe?: Maybe<Boolean>;
+  water_tank?: Maybe<Boolean>;
+  water_frequency?: Maybe<FREQUENCY>;
+  elevator?: Maybe<Boolean>;
+  petsAllowed?: Maybe<Boolean>;
+  internet?: Maybe<Boolean>;
+  kitchen?: Maybe<Boolean>;
+  wirelessInternet?: Maybe<Boolean>;
+  familyKidFriendly?: Maybe<Boolean>;
+  freeParkingOnPremises?: Maybe<Boolean>;
+  hotTub?: Maybe<Boolean>;
+  pool?: Maybe<Boolean>;
+  smokingAllowed?: Maybe<Boolean>;
+  wheelchairAccessible?: Maybe<Boolean>;
+  cableTv?: Maybe<Boolean>;
+  suitableForEvents?: Maybe<Boolean>;
+  dryer?: Maybe<Boolean>;
+  washer?: Maybe<Boolean>;
+  indoorFireHouse?: Maybe<Boolean>;
+  tv?: Maybe<Boolean>;
+  heating?: Maybe<Boolean>;
+  hangers?: Maybe<Boolean>;
+  iron?: Maybe<Boolean>;
+  hairDryer?: Maybe<Boolean>;
+  doorman?: Maybe<Boolean>;
+  paidParkingOffPremises?: Maybe<Boolean>;
+  freeParkingOnStreet?: Maybe<Boolean>;
+  gym?: Maybe<Boolean>;
+  airConditioning?: Maybe<Boolean>;
+  shampoo?: Maybe<Boolean>;
+  essentials?: Maybe<Boolean>;
+  laptopFriendlyWorkspace?: Maybe<Boolean>;
+  privateEntrance?: Maybe<Boolean>;
+  buzzerWirelessIntercom?: Maybe<Boolean>;
+  bathtub?: Maybe<Boolean>;
+  crib?: Maybe<Boolean>;
+}
+
+export interface StateUpdateManyMutationInput {
+  name?: Maybe<String>;
+  rank?: Maybe<Int>;
+}
+
+export interface AmenitiesUpsertWithoutHouseInput {
+  update: AmenitiesUpdateWithoutHouseDataInput;
+  create: AmenitiesCreateWithoutHouseInput;
+}
+
+export type HouseWhereUniqueInput = AtLeastOne<{
+  id: Maybe<ID_Input>;
+}>;
+
+export interface PricingUpdateOneWithoutHouseInput {
+  create?: Maybe<PricingCreateWithoutHouseInput>;
+  update?: Maybe<PricingUpdateWithoutHouseDataInput>;
+  upsert?: Maybe<PricingUpsertWithoutHouseInput>;
+  delete?: Maybe<Boolean>;
+  disconnect?: Maybe<Boolean>;
+  connect?: Maybe<PricingWhereUniqueInput>;
+}
+
+export interface HouseUpsertWithoutRoomsInput {
+  update: HouseUpdateWithoutRoomsDataInput;
+  create: HouseCreateWithoutRoomsInput;
+}
+
+export interface PricingUpdateWithoutHouseDataInput {
+  basePrice?: Maybe<Float>;
+  highestPrice?: Maybe<Float>;
+  currency?: Maybe<CURRENCY>;
+  income?: Maybe<Float>;
+}
+
+export type HouseFavoritedWhereUniqueInput = AtLeastOne<{
+  id: Maybe<ID_Input>;
+}>;
+
+export interface PricingUpsertWithoutHouseInput {
+  update: PricingUpdateWithoutHouseDataInput;
+  create: PricingCreateWithoutHouseInput;
+}
+
+export interface HouseFavoritedWhereInput {
+  id?: Maybe<ID_Input>;
+  id_not?: Maybe<ID_Input>;
+  id_in?: Maybe<ID_Input[] | ID_Input>;
+  id_not_in?: Maybe<ID_Input[] | ID_Input>;
+  id_lt?: Maybe<ID_Input>;
+  id_lte?: Maybe<ID_Input>;
+  id_gt?: Maybe<ID_Input>;
+  id_gte?: Maybe<ID_Input>;
+  id_contains?: Maybe<ID_Input>;
+  id_not_contains?: Maybe<ID_Input>;
+  id_starts_with?: Maybe<ID_Input>;
+  id_not_starts_with?: Maybe<ID_Input>;
+  id_ends_with?: Maybe<ID_Input>;
+  id_not_ends_with?: Maybe<ID_Input>;
+  createdAt?: Maybe<DateTimeInput>;
+  createdAt_not?: Maybe<DateTimeInput>;
+  createdAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  createdAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  createdAt_lt?: Maybe<DateTimeInput>;
+  createdAt_lte?: Maybe<DateTimeInput>;
+  createdAt_gt?: Maybe<DateTimeInput>;
+  createdAt_gte?: Maybe<DateTimeInput>;
+  updatedAt?: Maybe<DateTimeInput>;
+  updatedAt_not?: Maybe<DateTimeInput>;
+  updatedAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  updatedAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  updatedAt_lt?: Maybe<DateTimeInput>;
+  updatedAt_lte?: Maybe<DateTimeInput>;
+  updatedAt_gt?: Maybe<DateTimeInput>;
+  updatedAt_gte?: Maybe<DateTimeInput>;
+  user?: Maybe<UserWhereInput>;
+  house?: Maybe<HouseWhereInput>;
+  AND?: Maybe<HouseFavoritedWhereInput[] | HouseFavoritedWhereInput>;
+  OR?: Maybe<HouseFavoritedWhereInput[] | HouseFavoritedWhereInput>;
+  NOT?: Maybe<HouseFavoritedWhereInput[] | HouseFavoritedWhereInput>;
+}
+
+export interface LocationUpdateOneRequiredInput {
+  create?: Maybe<LocationCreateInput>;
+  update?: Maybe<LocationUpdateDataInput>;
+  upsert?: Maybe<LocationUpsertNestedInput>;
+  connect?: Maybe<LocationWhereUniqueInput>;
+}
+
+export interface RoomUpdateInput {
+  label?: Maybe<ROOM_LABELS>;
+  house?: Maybe<HouseUpdateOneRequiredWithoutRoomsInput>;
+  picture_previews?: Maybe<PictureUpdateManyInput>;
+  video_previews?: Maybe<VideoUpdateManyInput>;
+}
+
+export interface LocationUpdateDataInput {
+  lat?: Maybe<Float>;
+  lng?: Maybe<Float>;
+  address?: Maybe<String>;
+  commune?: Maybe<CommuneUpdateOneInput>;
+}
+
+export interface HouseCreateOneWithoutRoomsInput {
+  create?: Maybe<HouseCreateWithoutRoomsInput>;
+  connect?: Maybe<HouseWhereUniqueInput>;
+}
+
+export interface CommuneUpdateOneInput {
+  create?: Maybe<CommuneCreateInput>;
+  update?: Maybe<CommuneUpdateDataInput>;
+  upsert?: Maybe<CommuneUpsertNestedInput>;
+  delete?: Maybe<Boolean>;
+  disconnect?: Maybe<Boolean>;
+  connect?: Maybe<CommuneWhereUniqueInput>;
+}
+
+export interface RoomCreateInput {
+  id?: Maybe<ID_Input>;
+  label: ROOM_LABELS;
+  house: HouseCreateOneWithoutRoomsInput;
+  picture_previews?: Maybe<PictureCreateManyInput>;
+  video_previews?: Maybe<VideoCreateManyInput>;
+}
+
+export interface CommuneUpdateDataInput {
+  name?: Maybe<String>;
+  rank?: Maybe<Int>;
+  city?: Maybe<CityUpdateOneRequiredInput>;
+}
+
+export interface ReviewUpdateInput {
+  text?: Maybe<String>;
+  stars?: Maybe<Int>;
+  House?: Maybe<HouseUpdateOneRequiredWithoutReviewsInput>;
+  user?: Maybe<UserUpdateOneRequiredWithoutReviewsInput>;
+}
+
+export interface CityUpdateOneRequiredInput {
+  create?: Maybe<CityCreateInput>;
+  update?: Maybe<CityUpdateDataInput>;
+  upsert?: Maybe<CityUpsertNestedInput>;
+  connect?: Maybe<CityWhereUniqueInput>;
+}
+
+export type NegotiationWhereUniqueInput = AtLeastOne<{
+  id: Maybe<ID_Input>;
+}>;
+
+export interface CityUpdateDataInput {
+  name?: Maybe<String>;
+  rank?: Maybe<Int>;
+  state?: Maybe<StateUpdateOneRequiredInput>;
+}
+
+export interface AmenitiesWhereInput {
+  id?: Maybe<ID_Input>;
+  id_not?: Maybe<ID_Input>;
+  id_in?: Maybe<ID_Input[] | ID_Input>;
+  id_not_in?: Maybe<ID_Input[] | ID_Input>;
+  id_lt?: Maybe<ID_Input>;
+  id_lte?: Maybe<ID_Input>;
+  id_gt?: Maybe<ID_Input>;
+  id_gte?: Maybe<ID_Input>;
+  id_contains?: Maybe<ID_Input>;
+  id_not_contains?: Maybe<ID_Input>;
+  id_starts_with?: Maybe<ID_Input>;
+  id_not_starts_with?: Maybe<ID_Input>;
+  id_ends_with?: Maybe<ID_Input>;
+  id_not_ends_with?: Maybe<ID_Input>;
+  House?: Maybe<HouseWhereInput>;
+  electricity?: Maybe<Boolean>;
+  electricity_not?: Maybe<Boolean>;
+  electricity_frequency?: Maybe<FREQUENCY>;
+  electricity_frequency_not?: Maybe<FREQUENCY>;
+  electricity_frequency_in?: Maybe<FREQUENCY[] | FREQUENCY>;
+  electricity_frequency_not_in?: Maybe<FREQUENCY[] | FREQUENCY>;
+  water_pipe?: Maybe<Boolean>;
+  water_pipe_not?: Maybe<Boolean>;
+  water_tank?: Maybe<Boolean>;
+  water_tank_not?: Maybe<Boolean>;
+  water_frequency?: Maybe<FREQUENCY>;
+  water_frequency_not?: Maybe<FREQUENCY>;
+  water_frequency_in?: Maybe<FREQUENCY[] | FREQUENCY>;
+  water_frequency_not_in?: Maybe<FREQUENCY[] | FREQUENCY>;
+  elevator?: Maybe<Boolean>;
+  elevator_not?: Maybe<Boolean>;
+  petsAllowed?: Maybe<Boolean>;
+  petsAllowed_not?: Maybe<Boolean>;
+  internet?: Maybe<Boolean>;
+  internet_not?: Maybe<Boolean>;
+  kitchen?: Maybe<Boolean>;
+  kitchen_not?: Maybe<Boolean>;
+  wirelessInternet?: Maybe<Boolean>;
+  wirelessInternet_not?: Maybe<Boolean>;
+  familyKidFriendly?: Maybe<Boolean>;
+  familyKidFriendly_not?: Maybe<Boolean>;
+  freeParkingOnPremises?: Maybe<Boolean>;
+  freeParkingOnPremises_not?: Maybe<Boolean>;
+  hotTub?: Maybe<Boolean>;
+  hotTub_not?: Maybe<Boolean>;
+  pool?: Maybe<Boolean>;
+  pool_not?: Maybe<Boolean>;
+  smokingAllowed?: Maybe<Boolean>;
+  smokingAllowed_not?: Maybe<Boolean>;
+  wheelchairAccessible?: Maybe<Boolean>;
+  wheelchairAccessible_not?: Maybe<Boolean>;
+  cableTv?: Maybe<Boolean>;
+  cableTv_not?: Maybe<Boolean>;
+  suitableForEvents?: Maybe<Boolean>;
+  suitableForEvents_not?: Maybe<Boolean>;
+  dryer?: Maybe<Boolean>;
+  dryer_not?: Maybe<Boolean>;
+  washer?: Maybe<Boolean>;
+  washer_not?: Maybe<Boolean>;
+  indoorFireHouse?: Maybe<Boolean>;
+  indoorFireHouse_not?: Maybe<Boolean>;
+  tv?: Maybe<Boolean>;
+  tv_not?: Maybe<Boolean>;
+  heating?: Maybe<Boolean>;
+  heating_not?: Maybe<Boolean>;
+  hangers?: Maybe<Boolean>;
+  hangers_not?: Maybe<Boolean>;
+  iron?: Maybe<Boolean>;
+  iron_not?: Maybe<Boolean>;
+  hairDryer?: Maybe<Boolean>;
+  hairDryer_not?: Maybe<Boolean>;
+  doorman?: Maybe<Boolean>;
+  doorman_not?: Maybe<Boolean>;
+  paidParkingOffPremises?: Maybe<Boolean>;
+  paidParkingOffPremises_not?: Maybe<Boolean>;
+  freeParkingOnStreet?: Maybe<Boolean>;
+  freeParkingOnStreet_not?: Maybe<Boolean>;
+  gym?: Maybe<Boolean>;
+  gym_not?: Maybe<Boolean>;
+  airConditioning?: Maybe<Boolean>;
+  airConditioning_not?: Maybe<Boolean>;
+  shampoo?: Maybe<Boolean>;
+  shampoo_not?: Maybe<Boolean>;
+  essentials?: Maybe<Boolean>;
+  essentials_not?: Maybe<Boolean>;
+  laptopFriendlyWorkspace?: Maybe<Boolean>;
+  laptopFriendlyWorkspace_not?: Maybe<Boolean>;
+  privateEntrance?: Maybe<Boolean>;
+  privateEntrance_not?: Maybe<Boolean>;
+  buzzerWirelessIntercom?: Maybe<Boolean>;
+  buzzerWirelessIntercom_not?: Maybe<Boolean>;
+  bathtub?: Maybe<Boolean>;
+  bathtub_not?: Maybe<Boolean>;
+  crib?: Maybe<Boolean>;
+  crib_not?: Maybe<Boolean>;
+  createdAt?: Maybe<DateTimeInput>;
+  createdAt_not?: Maybe<DateTimeInput>;
+  createdAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  createdAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  createdAt_lt?: Maybe<DateTimeInput>;
+  createdAt_lte?: Maybe<DateTimeInput>;
+  createdAt_gt?: Maybe<DateTimeInput>;
+  createdAt_gte?: Maybe<DateTimeInput>;
+  updatedAt?: Maybe<DateTimeInput>;
+  updatedAt_not?: Maybe<DateTimeInput>;
+  updatedAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  updatedAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  updatedAt_lt?: Maybe<DateTimeInput>;
+  updatedAt_lte?: Maybe<DateTimeInput>;
+  updatedAt_gt?: Maybe<DateTimeInput>;
+  updatedAt_gte?: Maybe<DateTimeInput>;
+  AND?: Maybe<AmenitiesWhereInput[] | AmenitiesWhereInput>;
+  OR?: Maybe<AmenitiesWhereInput[] | AmenitiesWhereInput>;
+  NOT?: Maybe<AmenitiesWhereInput[] | AmenitiesWhereInput>;
+}
+
+export interface StateUpdateOneRequiredInput {
+  create?: Maybe<StateCreateInput>;
+  update?: Maybe<StateUpdateDataInput>;
+  upsert?: Maybe<StateUpsertNestedInput>;
+  connect?: Maybe<StateWhereUniqueInput>;
 }
 
 export interface HouseWhereInput {
@@ -1698,7 +3107,179 @@ export interface HouseWhereInput {
   NOT?: Maybe<HouseWhereInput[] | HouseWhereInput>;
 }
 
-export interface AmenitiesWhereInput {
+export interface StateUpdateDataInput {
+  name?: Maybe<String>;
+  rank?: Maybe<Int>;
+  country?: Maybe<CountryUpdateOneRequiredInput>;
+}
+
+export interface HouseUpdateWithoutPricingDataInput {
+  area?: Maybe<Int>;
+  age?: Maybe<Int>;
+  shortDescription?: Maybe<String>;
+  description?: Maybe<String>;
+  maxGuests?: Maybe<Int>;
+  numBedrooms?: Maybe<Int>;
+  numBaths?: Maybe<Int>;
+  numLivingrooms?: Maybe<Int>;
+  numDiningrooms?: Maybe<Int>;
+  reviews?: Maybe<ReviewUpdateManyWithoutHouseInput>;
+  amenities?: Maybe<AmenitiesUpdateOneWithoutHouseInput>;
+  host?: Maybe<UserUpdateOneRequiredWithoutOwnedHousesInput>;
+  location?: Maybe<LocationUpdateOneRequiredInput>;
+  leaseType?: Maybe<HOUSE_LEASE_TYPE>;
+  verified?: Maybe<Boolean>;
+  type?: Maybe<HOUSE_TYPES>;
+  residency?: Maybe<House_RESIDENCY>;
+  lease?: Maybe<Int>;
+  rooms?: Maybe<RoomUpdateManyWithoutHouseInput>;
+  views?: Maybe<ViewsUpdateOneWithoutHouseInput>;
+  bookings?: Maybe<BookingUpdateManyWithoutHouseInput>;
+  pictures?: Maybe<PictureUpdateManyInput>;
+  contactInfoPayments?: Maybe<PaymentLanlordInfoUpdateManyWithoutHouseInput>;
+  popularity?: Maybe<Int>;
+  preview_image?: Maybe<PictureUpdateOneInput>;
+  lastRating?: Maybe<Int>;
+  rentOrSell?: Maybe<RENT_OR_SELL>;
+}
+
+export interface CountryUpdateOneRequiredInput {
+  create?: Maybe<CountryCreateInput>;
+  update?: Maybe<CountryUpdateDataInput>;
+  upsert?: Maybe<CountryUpsertNestedInput>;
+  connect?: Maybe<CountryWhereUniqueInput>;
+}
+
+export type NotificationWhereUniqueInput = AtLeastOne<{
+  id: Maybe<ID_Input>;
+}>;
+
+export interface CountryUpdateDataInput {
+  name?: Maybe<String>;
+}
+
+export interface HouseCreateWithoutPricingInput {
+  id?: Maybe<ID_Input>;
+  area?: Maybe<Int>;
+  age?: Maybe<Int>;
+  shortDescription?: Maybe<String>;
+  description?: Maybe<String>;
+  maxGuests?: Maybe<Int>;
+  numBedrooms: Int;
+  numBaths: Int;
+  numLivingrooms?: Maybe<Int>;
+  numDiningrooms?: Maybe<Int>;
+  reviews?: Maybe<ReviewCreateManyWithoutHouseInput>;
+  amenities?: Maybe<AmenitiesCreateOneWithoutHouseInput>;
+  host: UserCreateOneWithoutOwnedHousesInput;
+  location: LocationCreateOneInput;
+  leaseType?: Maybe<HOUSE_LEASE_TYPE>;
+  verified?: Maybe<Boolean>;
+  type?: Maybe<HOUSE_TYPES>;
+  residency?: Maybe<House_RESIDENCY>;
+  lease?: Maybe<Int>;
+  rooms?: Maybe<RoomCreateManyWithoutHouseInput>;
+  views?: Maybe<ViewsCreateOneWithoutHouseInput>;
+  bookings?: Maybe<BookingCreateManyWithoutHouseInput>;
+  pictures?: Maybe<PictureCreateManyInput>;
+  contactInfoPayments?: Maybe<PaymentLanlordInfoCreateManyWithoutHouseInput>;
+  popularity?: Maybe<Int>;
+  preview_image?: Maybe<PictureCreateOneInput>;
+  lastRating?: Maybe<Int>;
+  rentOrSell: RENT_OR_SELL;
+}
+
+export interface CountryUpsertNestedInput {
+  update: CountryUpdateDataInput;
+  create: CountryCreateInput;
+}
+
+export type PaymentAccountWhereUniqueInput = AtLeastOne<{
+  id: Maybe<ID_Input>;
+}>;
+
+export interface StateUpsertNestedInput {
+  update: StateUpdateDataInput;
+  create: StateCreateInput;
+}
+
+export interface PictureUpdateManyMutationInput {
+  url?: Maybe<String>;
+}
+
+export interface CityUpsertNestedInput {
+  update: CityUpdateDataInput;
+  create: CityCreateInput;
+}
+
+export interface PaypalInformationUpdateManyMutationInput {
+  email?: Maybe<String>;
+}
+
+export interface CommuneUpsertNestedInput {
+  update: CommuneUpdateDataInput;
+  create: CommuneCreateInput;
+}
+
+export interface PaymentAccountUpsertWithoutPaypalInput {
+  update: PaymentAccountUpdateWithoutPaypalDataInput;
+  create: PaymentAccountCreateWithoutPaypalInput;
+}
+
+export interface LocationUpsertNestedInput {
+  update: LocationUpdateDataInput;
+  create: LocationCreateInput;
+}
+
+export interface PaymentAccountUpdateOneRequiredWithoutPaypalInput {
+  create?: Maybe<PaymentAccountCreateWithoutPaypalInput>;
+  update?: Maybe<PaymentAccountUpdateWithoutPaypalDataInput>;
+  upsert?: Maybe<PaymentAccountUpsertWithoutPaypalInput>;
+  connect?: Maybe<PaymentAccountWhereUniqueInput>;
+}
+
+export interface RoomUpdateManyWithoutHouseInput {
+  create?: Maybe<RoomCreateWithoutHouseInput[] | RoomCreateWithoutHouseInput>;
+  delete?: Maybe<RoomWhereUniqueInput[] | RoomWhereUniqueInput>;
+  connect?: Maybe<RoomWhereUniqueInput[] | RoomWhereUniqueInput>;
+  set?: Maybe<RoomWhereUniqueInput[] | RoomWhereUniqueInput>;
+  disconnect?: Maybe<RoomWhereUniqueInput[] | RoomWhereUniqueInput>;
+  update?: Maybe<
+    | RoomUpdateWithWhereUniqueWithoutHouseInput[]
+    | RoomUpdateWithWhereUniqueWithoutHouseInput
+  >;
+  upsert?: Maybe<
+    | RoomUpsertWithWhereUniqueWithoutHouseInput[]
+    | RoomUpsertWithWhereUniqueWithoutHouseInput
+  >;
+  deleteMany?: Maybe<RoomScalarWhereInput[] | RoomScalarWhereInput>;
+  updateMany?: Maybe<
+    RoomUpdateManyWithWhereNestedInput[] | RoomUpdateManyWithWhereNestedInput
+  >;
+}
+
+export interface PaypalInformationUpdateInput {
+  email?: Maybe<String>;
+  paymentAccount?: Maybe<PaymentAccountUpdateOneRequiredWithoutPaypalInput>;
+}
+
+export interface RoomUpdateWithWhereUniqueWithoutHouseInput {
+  where: RoomWhereUniqueInput;
+  data: RoomUpdateWithoutHouseDataInput;
+}
+
+export interface PaymentAccountCreateOneWithoutPaypalInput {
+  create?: Maybe<PaymentAccountCreateWithoutPaypalInput>;
+  connect?: Maybe<PaymentAccountWhereUniqueInput>;
+}
+
+export interface RoomUpdateWithoutHouseDataInput {
+  label?: Maybe<ROOM_LABELS>;
+  picture_previews?: Maybe<PictureUpdateManyInput>;
+  video_previews?: Maybe<VideoUpdateManyInput>;
+}
+
+export interface ReviewWhereInput {
   id?: Maybe<ID_Input>;
   id_not?: Maybe<ID_Input>;
   id_in?: Maybe<ID_Input[] | ID_Input>;
@@ -1713,87 +3294,6 @@ export interface AmenitiesWhereInput {
   id_not_starts_with?: Maybe<ID_Input>;
   id_ends_with?: Maybe<ID_Input>;
   id_not_ends_with?: Maybe<ID_Input>;
-  House?: Maybe<HouseWhereInput>;
-  electricity?: Maybe<Boolean>;
-  electricity_not?: Maybe<Boolean>;
-  electricity_frequency?: Maybe<FREQUENCY>;
-  electricity_frequency_not?: Maybe<FREQUENCY>;
-  electricity_frequency_in?: Maybe<FREQUENCY[] | FREQUENCY>;
-  electricity_frequency_not_in?: Maybe<FREQUENCY[] | FREQUENCY>;
-  water_pipe?: Maybe<Boolean>;
-  water_pipe_not?: Maybe<Boolean>;
-  water_tank?: Maybe<Boolean>;
-  water_tank_not?: Maybe<Boolean>;
-  water_frequency?: Maybe<FREQUENCY>;
-  water_frequency_not?: Maybe<FREQUENCY>;
-  water_frequency_in?: Maybe<FREQUENCY[] | FREQUENCY>;
-  water_frequency_not_in?: Maybe<FREQUENCY[] | FREQUENCY>;
-  elevator?: Maybe<Boolean>;
-  elevator_not?: Maybe<Boolean>;
-  petsAllowed?: Maybe<Boolean>;
-  petsAllowed_not?: Maybe<Boolean>;
-  internet?: Maybe<Boolean>;
-  internet_not?: Maybe<Boolean>;
-  kitchen?: Maybe<Boolean>;
-  kitchen_not?: Maybe<Boolean>;
-  wirelessInternet?: Maybe<Boolean>;
-  wirelessInternet_not?: Maybe<Boolean>;
-  familyKidFriendly?: Maybe<Boolean>;
-  familyKidFriendly_not?: Maybe<Boolean>;
-  freeParkingOnPremises?: Maybe<Boolean>;
-  freeParkingOnPremises_not?: Maybe<Boolean>;
-  hotTub?: Maybe<Boolean>;
-  hotTub_not?: Maybe<Boolean>;
-  pool?: Maybe<Boolean>;
-  pool_not?: Maybe<Boolean>;
-  smokingAllowed?: Maybe<Boolean>;
-  smokingAllowed_not?: Maybe<Boolean>;
-  wheelchairAccessible?: Maybe<Boolean>;
-  wheelchairAccessible_not?: Maybe<Boolean>;
-  cableTv?: Maybe<Boolean>;
-  cableTv_not?: Maybe<Boolean>;
-  suitableForEvents?: Maybe<Boolean>;
-  suitableForEvents_not?: Maybe<Boolean>;
-  dryer?: Maybe<Boolean>;
-  dryer_not?: Maybe<Boolean>;
-  washer?: Maybe<Boolean>;
-  washer_not?: Maybe<Boolean>;
-  indoorFireHouse?: Maybe<Boolean>;
-  indoorFireHouse_not?: Maybe<Boolean>;
-  tv?: Maybe<Boolean>;
-  tv_not?: Maybe<Boolean>;
-  heating?: Maybe<Boolean>;
-  heating_not?: Maybe<Boolean>;
-  hangers?: Maybe<Boolean>;
-  hangers_not?: Maybe<Boolean>;
-  iron?: Maybe<Boolean>;
-  iron_not?: Maybe<Boolean>;
-  hairDryer?: Maybe<Boolean>;
-  hairDryer_not?: Maybe<Boolean>;
-  doorman?: Maybe<Boolean>;
-  doorman_not?: Maybe<Boolean>;
-  paidParkingOffPremises?: Maybe<Boolean>;
-  paidParkingOffPremises_not?: Maybe<Boolean>;
-  freeParkingOnStreet?: Maybe<Boolean>;
-  freeParkingOnStreet_not?: Maybe<Boolean>;
-  gym?: Maybe<Boolean>;
-  gym_not?: Maybe<Boolean>;
-  airConditioning?: Maybe<Boolean>;
-  airConditioning_not?: Maybe<Boolean>;
-  shampoo?: Maybe<Boolean>;
-  shampoo_not?: Maybe<Boolean>;
-  essentials?: Maybe<Boolean>;
-  essentials_not?: Maybe<Boolean>;
-  laptopFriendlyWorkspace?: Maybe<Boolean>;
-  laptopFriendlyWorkspace_not?: Maybe<Boolean>;
-  privateEntrance?: Maybe<Boolean>;
-  privateEntrance_not?: Maybe<Boolean>;
-  buzzerWirelessIntercom?: Maybe<Boolean>;
-  buzzerWirelessIntercom_not?: Maybe<Boolean>;
-  bathtub?: Maybe<Boolean>;
-  bathtub_not?: Maybe<Boolean>;
-  crib?: Maybe<Boolean>;
-  crib_not?: Maybe<Boolean>;
   createdAt?: Maybe<DateTimeInput>;
   createdAt_not?: Maybe<DateTimeInput>;
   createdAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
@@ -1810,9 +3310,2925 @@ export interface AmenitiesWhereInput {
   updatedAt_lte?: Maybe<DateTimeInput>;
   updatedAt_gt?: Maybe<DateTimeInput>;
   updatedAt_gte?: Maybe<DateTimeInput>;
-  AND?: Maybe<AmenitiesWhereInput[] | AmenitiesWhereInput>;
-  OR?: Maybe<AmenitiesWhereInput[] | AmenitiesWhereInput>;
-  NOT?: Maybe<AmenitiesWhereInput[] | AmenitiesWhereInput>;
+  text?: Maybe<String>;
+  text_not?: Maybe<String>;
+  text_in?: Maybe<String[] | String>;
+  text_not_in?: Maybe<String[] | String>;
+  text_lt?: Maybe<String>;
+  text_lte?: Maybe<String>;
+  text_gt?: Maybe<String>;
+  text_gte?: Maybe<String>;
+  text_contains?: Maybe<String>;
+  text_not_contains?: Maybe<String>;
+  text_starts_with?: Maybe<String>;
+  text_not_starts_with?: Maybe<String>;
+  text_ends_with?: Maybe<String>;
+  text_not_ends_with?: Maybe<String>;
+  stars?: Maybe<Int>;
+  stars_not?: Maybe<Int>;
+  stars_in?: Maybe<Int[] | Int>;
+  stars_not_in?: Maybe<Int[] | Int>;
+  stars_lt?: Maybe<Int>;
+  stars_lte?: Maybe<Int>;
+  stars_gt?: Maybe<Int>;
+  stars_gte?: Maybe<Int>;
+  House?: Maybe<HouseWhereInput>;
+  user?: Maybe<UserWhereInput>;
+  AND?: Maybe<ReviewWhereInput[] | ReviewWhereInput>;
+  OR?: Maybe<ReviewWhereInput[] | ReviewWhereInput>;
+  NOT?: Maybe<ReviewWhereInput[] | ReviewWhereInput>;
+}
+
+export interface PictureUpdateManyInput {
+  create?: Maybe<PictureCreateInput[] | PictureCreateInput>;
+  update?: Maybe<
+    | PictureUpdateWithWhereUniqueNestedInput[]
+    | PictureUpdateWithWhereUniqueNestedInput
+  >;
+  upsert?: Maybe<
+    | PictureUpsertWithWhereUniqueNestedInput[]
+    | PictureUpsertWithWhereUniqueNestedInput
+  >;
+  delete?: Maybe<PictureWhereUniqueInput[] | PictureWhereUniqueInput>;
+  connect?: Maybe<PictureWhereUniqueInput[] | PictureWhereUniqueInput>;
+  set?: Maybe<PictureWhereUniqueInput[] | PictureWhereUniqueInput>;
+  disconnect?: Maybe<PictureWhereUniqueInput[] | PictureWhereUniqueInput>;
+  deleteMany?: Maybe<PictureScalarWhereInput[] | PictureScalarWhereInput>;
+  updateMany?: Maybe<
+    | PictureUpdateManyWithWhereNestedInput[]
+    | PictureUpdateManyWithWhereNestedInput
+  >;
+}
+
+export interface PaymentLanlordInfoUpdateManyMutationInput {
+  totalPrice?: Maybe<Float>;
+  moncashTransactId?: Maybe<String>;
+}
+
+export interface HouseUpdateInput {
+  area?: Maybe<Int>;
+  age?: Maybe<Int>;
+  shortDescription?: Maybe<String>;
+  description?: Maybe<String>;
+  maxGuests?: Maybe<Int>;
+  numBedrooms?: Maybe<Int>;
+  numBaths?: Maybe<Int>;
+  numLivingrooms?: Maybe<Int>;
+  numDiningrooms?: Maybe<Int>;
+  reviews?: Maybe<ReviewUpdateManyWithoutHouseInput>;
+  amenities?: Maybe<AmenitiesUpdateOneWithoutHouseInput>;
+  host?: Maybe<UserUpdateOneRequiredWithoutOwnedHousesInput>;
+  pricing?: Maybe<PricingUpdateOneWithoutHouseInput>;
+  location?: Maybe<LocationUpdateOneRequiredInput>;
+  leaseType?: Maybe<HOUSE_LEASE_TYPE>;
+  verified?: Maybe<Boolean>;
+  type?: Maybe<HOUSE_TYPES>;
+  residency?: Maybe<House_RESIDENCY>;
+  lease?: Maybe<Int>;
+  rooms?: Maybe<RoomUpdateManyWithoutHouseInput>;
+  views?: Maybe<ViewsUpdateOneWithoutHouseInput>;
+  bookings?: Maybe<BookingUpdateManyWithoutHouseInput>;
+  pictures?: Maybe<PictureUpdateManyInput>;
+  contactInfoPayments?: Maybe<PaymentLanlordInfoUpdateManyWithoutHouseInput>;
+  popularity?: Maybe<Int>;
+  preview_image?: Maybe<PictureUpdateOneInput>;
+  lastRating?: Maybe<Int>;
+  rentOrSell?: Maybe<RENT_OR_SELL>;
+}
+
+export type PictureWhereUniqueInput = AtLeastOne<{
+  id: Maybe<ID_Input>;
+}>;
+
+export interface PictureUpdateDataInput {
+  url?: Maybe<String>;
+}
+
+export interface PaymentHouseUpdateManyMutationInput {
+  totalPrice?: Maybe<Float>;
+}
+
+export interface PictureUpsertWithWhereUniqueNestedInput {
+  where: PictureWhereUniqueInput;
+  update: PictureUpdateDataInput;
+  create: PictureCreateInput;
+}
+
+export type PricingWhereUniqueInput = AtLeastOne<{
+  id: Maybe<ID_Input>;
+}>;
+
+export interface PictureScalarWhereInput {
+  id?: Maybe<ID_Input>;
+  id_not?: Maybe<ID_Input>;
+  id_in?: Maybe<ID_Input[] | ID_Input>;
+  id_not_in?: Maybe<ID_Input[] | ID_Input>;
+  id_lt?: Maybe<ID_Input>;
+  id_lte?: Maybe<ID_Input>;
+  id_gt?: Maybe<ID_Input>;
+  id_gte?: Maybe<ID_Input>;
+  id_contains?: Maybe<ID_Input>;
+  id_not_contains?: Maybe<ID_Input>;
+  id_starts_with?: Maybe<ID_Input>;
+  id_not_starts_with?: Maybe<ID_Input>;
+  id_ends_with?: Maybe<ID_Input>;
+  id_not_ends_with?: Maybe<ID_Input>;
+  url?: Maybe<String>;
+  url_not?: Maybe<String>;
+  url_in?: Maybe<String[] | String>;
+  url_not_in?: Maybe<String[] | String>;
+  url_lt?: Maybe<String>;
+  url_lte?: Maybe<String>;
+  url_gt?: Maybe<String>;
+  url_gte?: Maybe<String>;
+  url_contains?: Maybe<String>;
+  url_not_contains?: Maybe<String>;
+  url_starts_with?: Maybe<String>;
+  url_not_starts_with?: Maybe<String>;
+  url_ends_with?: Maybe<String>;
+  url_not_ends_with?: Maybe<String>;
+  createdAt?: Maybe<DateTimeInput>;
+  createdAt_not?: Maybe<DateTimeInput>;
+  createdAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  createdAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  createdAt_lt?: Maybe<DateTimeInput>;
+  createdAt_lte?: Maybe<DateTimeInput>;
+  createdAt_gt?: Maybe<DateTimeInput>;
+  createdAt_gte?: Maybe<DateTimeInput>;
+  updatedAt?: Maybe<DateTimeInput>;
+  updatedAt_not?: Maybe<DateTimeInput>;
+  updatedAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  updatedAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  updatedAt_lt?: Maybe<DateTimeInput>;
+  updatedAt_lte?: Maybe<DateTimeInput>;
+  updatedAt_gt?: Maybe<DateTimeInput>;
+  updatedAt_gte?: Maybe<DateTimeInput>;
+  AND?: Maybe<PictureScalarWhereInput[] | PictureScalarWhereInput>;
+  OR?: Maybe<PictureScalarWhereInput[] | PictureScalarWhereInput>;
+  NOT?: Maybe<PictureScalarWhereInput[] | PictureScalarWhereInput>;
+}
+
+export interface PaymentAccountUpdateManyMutationInput {
+  type?: Maybe<PAYMENT_PROVIDER>;
+}
+
+export interface PictureUpdateManyWithWhereNestedInput {
+  where: PictureScalarWhereInput;
+  data: PictureUpdateManyDataInput;
+}
+
+export interface PaymentAccountCreateInput {
+  id?: Maybe<ID_Input>;
+  type?: Maybe<PAYMENT_PROVIDER>;
+  user: UserCreateOneInput;
+  payments?: Maybe<PaymentHouseCreateManyWithoutPaymentMethodInput>;
+  paypal?: Maybe<PaypalInformationCreateOneWithoutPaymentAccountInput>;
+  creditcard?: Maybe<CreditCardInformationCreateOneWithoutPaymentAccountInput>;
+}
+
+export interface PictureUpdateManyDataInput {
+  url?: Maybe<String>;
+}
+
+export interface NotificationUpdateManyMutationInput {
+  type?: Maybe<NOTIFICATION_TYPE>;
+  link?: Maybe<String>;
+  readDate?: Maybe<DateTimeInput>;
+}
+
+export interface VideoUpdateManyInput {
+  create?: Maybe<VideoCreateInput[] | VideoCreateInput>;
+  update?: Maybe<
+    | VideoUpdateWithWhereUniqueNestedInput[]
+    | VideoUpdateWithWhereUniqueNestedInput
+  >;
+  upsert?: Maybe<
+    | VideoUpsertWithWhereUniqueNestedInput[]
+    | VideoUpsertWithWhereUniqueNestedInput
+  >;
+  delete?: Maybe<VideoWhereUniqueInput[] | VideoWhereUniqueInput>;
+  connect?: Maybe<VideoWhereUniqueInput[] | VideoWhereUniqueInput>;
+  set?: Maybe<VideoWhereUniqueInput[] | VideoWhereUniqueInput>;
+  disconnect?: Maybe<VideoWhereUniqueInput[] | VideoWhereUniqueInput>;
+  deleteMany?: Maybe<VideoScalarWhereInput[] | VideoScalarWhereInput>;
+  updateMany?: Maybe<
+    VideoUpdateManyWithWhereNestedInput[] | VideoUpdateManyWithWhereNestedInput
+  >;
+}
+
+export interface UserUpdateWithoutNotificationsDataInput {
+  status?: Maybe<Boolean>;
+  facebookUserId?: Maybe<String>;
+  firstName?: Maybe<String>;
+  lastName?: Maybe<String>;
+  email?: Maybe<String>;
+  password?: Maybe<String>;
+  resetToken?: Maybe<String>;
+  resetTokenExpiry?: Maybe<String>;
+  phone1?: Maybe<String>;
+  phone2?: Maybe<String>;
+  primaryPhone?: Maybe<Int>;
+  responseTime?: Maybe<Int>;
+  isSuperHost?: Maybe<Boolean>;
+  ownedHouses?: Maybe<HouseUpdateManyWithoutHostInput>;
+  location?: Maybe<LocationUpdateOneInput>;
+  bookings?: Maybe<BookingUpdateManyWithoutBookeeInput>;
+  paidContacts?: Maybe<PaymentLanlordInfoUpdateManyWithoutClientInput>;
+  profilePicture?: Maybe<PictureUpdateOneInput>;
+  reviews?: Maybe<ReviewUpdateManyWithoutUserInput>;
+  permissions?: Maybe<UserUpdatepermissionsInput>;
+}
+
+export interface VideoUpdateWithWhereUniqueNestedInput {
+  where: VideoWhereUniqueInput;
+  data: VideoUpdateDataInput;
+}
+
+export interface UserUpdateOneRequiredWithoutNotificationsInput {
+  create?: Maybe<UserCreateWithoutNotificationsInput>;
+  update?: Maybe<UserUpdateWithoutNotificationsDataInput>;
+  upsert?: Maybe<UserUpsertWithoutNotificationsInput>;
+  connect?: Maybe<UserWhereUniqueInput>;
+}
+
+export interface VideoUpdateDataInput {
+  url?: Maybe<String>;
+}
+
+export interface UserCreateWithoutNotificationsInput {
+  id?: Maybe<ID_Input>;
+  status?: Maybe<Boolean>;
+  facebookUserId?: Maybe<String>;
+  firstName: String;
+  lastName: String;
+  email?: Maybe<String>;
+  password?: Maybe<String>;
+  resetToken?: Maybe<String>;
+  resetTokenExpiry?: Maybe<String>;
+  phone1?: Maybe<String>;
+  phone2?: Maybe<String>;
+  primaryPhone?: Maybe<Int>;
+  responseTime?: Maybe<Int>;
+  isSuperHost?: Maybe<Boolean>;
+  ownedHouses?: Maybe<HouseCreateManyWithoutHostInput>;
+  location?: Maybe<LocationCreateOneInput>;
+  bookings?: Maybe<BookingCreateManyWithoutBookeeInput>;
+  paidContacts?: Maybe<PaymentLanlordInfoCreateManyWithoutClientInput>;
+  profilePicture?: Maybe<PictureCreateOneInput>;
+  reviews?: Maybe<ReviewCreateManyWithoutUserInput>;
+  permissions?: Maybe<UserCreatepermissionsInput>;
+}
+
+export interface VideoUpsertWithWhereUniqueNestedInput {
+  where: VideoWhereUniqueInput;
+  update: VideoUpdateDataInput;
+  create: VideoCreateInput;
+}
+
+export interface UserCreateOneWithoutNotificationsInput {
+  create?: Maybe<UserCreateWithoutNotificationsInput>;
+  connect?: Maybe<UserWhereUniqueInput>;
+}
+
+export interface VideoScalarWhereInput {
+  id?: Maybe<ID_Input>;
+  id_not?: Maybe<ID_Input>;
+  id_in?: Maybe<ID_Input[] | ID_Input>;
+  id_not_in?: Maybe<ID_Input[] | ID_Input>;
+  id_lt?: Maybe<ID_Input>;
+  id_lte?: Maybe<ID_Input>;
+  id_gt?: Maybe<ID_Input>;
+  id_gte?: Maybe<ID_Input>;
+  id_contains?: Maybe<ID_Input>;
+  id_not_contains?: Maybe<ID_Input>;
+  id_starts_with?: Maybe<ID_Input>;
+  id_not_starts_with?: Maybe<ID_Input>;
+  id_ends_with?: Maybe<ID_Input>;
+  id_not_ends_with?: Maybe<ID_Input>;
+  url?: Maybe<String>;
+  url_not?: Maybe<String>;
+  url_in?: Maybe<String[] | String>;
+  url_not_in?: Maybe<String[] | String>;
+  url_lt?: Maybe<String>;
+  url_lte?: Maybe<String>;
+  url_gt?: Maybe<String>;
+  url_gte?: Maybe<String>;
+  url_contains?: Maybe<String>;
+  url_not_contains?: Maybe<String>;
+  url_starts_with?: Maybe<String>;
+  url_not_starts_with?: Maybe<String>;
+  url_ends_with?: Maybe<String>;
+  url_not_ends_with?: Maybe<String>;
+  createdAt?: Maybe<DateTimeInput>;
+  createdAt_not?: Maybe<DateTimeInput>;
+  createdAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  createdAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  createdAt_lt?: Maybe<DateTimeInput>;
+  createdAt_lte?: Maybe<DateTimeInput>;
+  createdAt_gt?: Maybe<DateTimeInput>;
+  createdAt_gte?: Maybe<DateTimeInput>;
+  updatedAt?: Maybe<DateTimeInput>;
+  updatedAt_not?: Maybe<DateTimeInput>;
+  updatedAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  updatedAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  updatedAt_lt?: Maybe<DateTimeInput>;
+  updatedAt_lte?: Maybe<DateTimeInput>;
+  updatedAt_gt?: Maybe<DateTimeInput>;
+  updatedAt_gte?: Maybe<DateTimeInput>;
+  AND?: Maybe<VideoScalarWhereInput[] | VideoScalarWhereInput>;
+  OR?: Maybe<VideoScalarWhereInput[] | VideoScalarWhereInput>;
+  NOT?: Maybe<VideoScalarWhereInput[] | VideoScalarWhereInput>;
+}
+
+export interface NegotiationUpdateManyMutationInput {
+  offer?: Maybe<Float>;
+  status?: Maybe<NEGOTIATION_TYPE>;
+}
+
+export interface VideoUpdateManyWithWhereNestedInput {
+  where: VideoScalarWhereInput;
+  data: VideoUpdateManyDataInput;
+}
+
+export type UserWhereUniqueInput = AtLeastOne<{
+  id: Maybe<ID_Input>;
+  facebookUserId?: Maybe<String>;
+  email?: Maybe<String>;
+}>;
+
+export interface VideoUpdateManyDataInput {
+  url?: Maybe<String>;
+}
+
+export interface LocationUpdateManyMutationInput {
+  lat?: Maybe<Float>;
+  lng?: Maybe<Float>;
+  address?: Maybe<String>;
+}
+
+export interface RoomUpsertWithWhereUniqueWithoutHouseInput {
+  where: RoomWhereUniqueInput;
+  update: RoomUpdateWithoutHouseDataInput;
+  create: RoomCreateWithoutHouseInput;
+}
+
+export type VideoWhereUniqueInput = AtLeastOne<{
+  id: Maybe<ID_Input>;
+}>;
+
+export interface RoomScalarWhereInput {
+  id?: Maybe<ID_Input>;
+  id_not?: Maybe<ID_Input>;
+  id_in?: Maybe<ID_Input[] | ID_Input>;
+  id_not_in?: Maybe<ID_Input[] | ID_Input>;
+  id_lt?: Maybe<ID_Input>;
+  id_lte?: Maybe<ID_Input>;
+  id_gt?: Maybe<ID_Input>;
+  id_gte?: Maybe<ID_Input>;
+  id_contains?: Maybe<ID_Input>;
+  id_not_contains?: Maybe<ID_Input>;
+  id_starts_with?: Maybe<ID_Input>;
+  id_not_starts_with?: Maybe<ID_Input>;
+  id_ends_with?: Maybe<ID_Input>;
+  id_not_ends_with?: Maybe<ID_Input>;
+  label?: Maybe<ROOM_LABELS>;
+  label_not?: Maybe<ROOM_LABELS>;
+  label_in?: Maybe<ROOM_LABELS[] | ROOM_LABELS>;
+  label_not_in?: Maybe<ROOM_LABELS[] | ROOM_LABELS>;
+  createdAt?: Maybe<DateTimeInput>;
+  createdAt_not?: Maybe<DateTimeInput>;
+  createdAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  createdAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  createdAt_lt?: Maybe<DateTimeInput>;
+  createdAt_lte?: Maybe<DateTimeInput>;
+  createdAt_gt?: Maybe<DateTimeInput>;
+  createdAt_gte?: Maybe<DateTimeInput>;
+  updatedAt?: Maybe<DateTimeInput>;
+  updatedAt_not?: Maybe<DateTimeInput>;
+  updatedAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  updatedAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  updatedAt_lt?: Maybe<DateTimeInput>;
+  updatedAt_lte?: Maybe<DateTimeInput>;
+  updatedAt_gt?: Maybe<DateTimeInput>;
+  updatedAt_gte?: Maybe<DateTimeInput>;
+  AND?: Maybe<RoomScalarWhereInput[] | RoomScalarWhereInput>;
+  OR?: Maybe<RoomScalarWhereInput[] | RoomScalarWhereInput>;
+  NOT?: Maybe<RoomScalarWhereInput[] | RoomScalarWhereInput>;
+}
+
+export interface HouseUpdateDataInput {
+  area?: Maybe<Int>;
+  age?: Maybe<Int>;
+  shortDescription?: Maybe<String>;
+  description?: Maybe<String>;
+  maxGuests?: Maybe<Int>;
+  numBedrooms?: Maybe<Int>;
+  numBaths?: Maybe<Int>;
+  numLivingrooms?: Maybe<Int>;
+  numDiningrooms?: Maybe<Int>;
+  reviews?: Maybe<ReviewUpdateManyWithoutHouseInput>;
+  amenities?: Maybe<AmenitiesUpdateOneWithoutHouseInput>;
+  host?: Maybe<UserUpdateOneRequiredWithoutOwnedHousesInput>;
+  pricing?: Maybe<PricingUpdateOneWithoutHouseInput>;
+  location?: Maybe<LocationUpdateOneRequiredInput>;
+  leaseType?: Maybe<HOUSE_LEASE_TYPE>;
+  verified?: Maybe<Boolean>;
+  type?: Maybe<HOUSE_TYPES>;
+  residency?: Maybe<House_RESIDENCY>;
+  lease?: Maybe<Int>;
+  rooms?: Maybe<RoomUpdateManyWithoutHouseInput>;
+  views?: Maybe<ViewsUpdateOneWithoutHouseInput>;
+  bookings?: Maybe<BookingUpdateManyWithoutHouseInput>;
+  pictures?: Maybe<PictureUpdateManyInput>;
+  contactInfoPayments?: Maybe<PaymentLanlordInfoUpdateManyWithoutHouseInput>;
+  popularity?: Maybe<Int>;
+  preview_image?: Maybe<PictureUpdateOneInput>;
+  lastRating?: Maybe<Int>;
+  rentOrSell?: Maybe<RENT_OR_SELL>;
+}
+
+export interface RoomUpdateManyWithWhereNestedInput {
+  where: RoomScalarWhereInput;
+  data: RoomUpdateManyDataInput;
+}
+
+export type ViewsWhereUniqueInput = AtLeastOne<{
+  id: Maybe<ID_Input>;
+}>;
+
+export interface RoomUpdateManyDataInput {
+  label?: Maybe<ROOM_LABELS>;
+}
+
+export interface HouseCreateOneInput {
+  create?: Maybe<HouseCreateInput>;
+  connect?: Maybe<HouseWhereUniqueInput>;
+}
+
+export interface ViewsUpdateOneWithoutHouseInput {
+  create?: Maybe<ViewsCreateWithoutHouseInput>;
+  update?: Maybe<ViewsUpdateWithoutHouseDataInput>;
+  upsert?: Maybe<ViewsUpsertWithoutHouseInput>;
+  delete?: Maybe<Boolean>;
+  disconnect?: Maybe<Boolean>;
+  connect?: Maybe<ViewsWhereUniqueInput>;
+}
+
+export interface HouseUpdateManyMutationInput {
+  area?: Maybe<Int>;
+  age?: Maybe<Int>;
+  shortDescription?: Maybe<String>;
+  description?: Maybe<String>;
+  maxGuests?: Maybe<Int>;
+  numBedrooms?: Maybe<Int>;
+  numBaths?: Maybe<Int>;
+  numLivingrooms?: Maybe<Int>;
+  numDiningrooms?: Maybe<Int>;
+  leaseType?: Maybe<HOUSE_LEASE_TYPE>;
+  verified?: Maybe<Boolean>;
+  type?: Maybe<HOUSE_TYPES>;
+  residency?: Maybe<House_RESIDENCY>;
+  lease?: Maybe<Int>;
+  popularity?: Maybe<Int>;
+  lastRating?: Maybe<Int>;
+  rentOrSell?: Maybe<RENT_OR_SELL>;
+}
+
+export interface VideoWhereInput {
+  id?: Maybe<ID_Input>;
+  id_not?: Maybe<ID_Input>;
+  id_in?: Maybe<ID_Input[] | ID_Input>;
+  id_not_in?: Maybe<ID_Input[] | ID_Input>;
+  id_lt?: Maybe<ID_Input>;
+  id_lte?: Maybe<ID_Input>;
+  id_gt?: Maybe<ID_Input>;
+  id_gte?: Maybe<ID_Input>;
+  id_contains?: Maybe<ID_Input>;
+  id_not_contains?: Maybe<ID_Input>;
+  id_starts_with?: Maybe<ID_Input>;
+  id_not_starts_with?: Maybe<ID_Input>;
+  id_ends_with?: Maybe<ID_Input>;
+  id_not_ends_with?: Maybe<ID_Input>;
+  url?: Maybe<String>;
+  url_not?: Maybe<String>;
+  url_in?: Maybe<String[] | String>;
+  url_not_in?: Maybe<String[] | String>;
+  url_lt?: Maybe<String>;
+  url_lte?: Maybe<String>;
+  url_gt?: Maybe<String>;
+  url_gte?: Maybe<String>;
+  url_contains?: Maybe<String>;
+  url_not_contains?: Maybe<String>;
+  url_starts_with?: Maybe<String>;
+  url_not_starts_with?: Maybe<String>;
+  url_ends_with?: Maybe<String>;
+  url_not_ends_with?: Maybe<String>;
+  createdAt?: Maybe<DateTimeInput>;
+  createdAt_not?: Maybe<DateTimeInput>;
+  createdAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  createdAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  createdAt_lt?: Maybe<DateTimeInput>;
+  createdAt_lte?: Maybe<DateTimeInput>;
+  createdAt_gt?: Maybe<DateTimeInput>;
+  createdAt_gte?: Maybe<DateTimeInput>;
+  updatedAt?: Maybe<DateTimeInput>;
+  updatedAt_not?: Maybe<DateTimeInput>;
+  updatedAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  updatedAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  updatedAt_lt?: Maybe<DateTimeInput>;
+  updatedAt_lte?: Maybe<DateTimeInput>;
+  updatedAt_gt?: Maybe<DateTimeInput>;
+  updatedAt_gte?: Maybe<DateTimeInput>;
+  AND?: Maybe<VideoWhereInput[] | VideoWhereInput>;
+  OR?: Maybe<VideoWhereInput[] | VideoWhereInput>;
+  NOT?: Maybe<VideoWhereInput[] | VideoWhereInput>;
+}
+
+export interface AmenitiesCreateInput {
+  id?: Maybe<ID_Input>;
+  House: HouseCreateOneWithoutAmenitiesInput;
+  electricity?: Maybe<Boolean>;
+  electricity_frequency?: Maybe<FREQUENCY>;
+  water_pipe?: Maybe<Boolean>;
+  water_tank?: Maybe<Boolean>;
+  water_frequency?: Maybe<FREQUENCY>;
+  elevator?: Maybe<Boolean>;
+  petsAllowed?: Maybe<Boolean>;
+  internet?: Maybe<Boolean>;
+  kitchen?: Maybe<Boolean>;
+  wirelessInternet?: Maybe<Boolean>;
+  familyKidFriendly?: Maybe<Boolean>;
+  freeParkingOnPremises?: Maybe<Boolean>;
+  hotTub?: Maybe<Boolean>;
+  pool?: Maybe<Boolean>;
+  smokingAllowed?: Maybe<Boolean>;
+  wheelchairAccessible?: Maybe<Boolean>;
+  cableTv?: Maybe<Boolean>;
+  suitableForEvents?: Maybe<Boolean>;
+  dryer?: Maybe<Boolean>;
+  washer?: Maybe<Boolean>;
+  indoorFireHouse?: Maybe<Boolean>;
+  tv?: Maybe<Boolean>;
+  heating?: Maybe<Boolean>;
+  hangers?: Maybe<Boolean>;
+  iron?: Maybe<Boolean>;
+  hairDryer?: Maybe<Boolean>;
+  doorman?: Maybe<Boolean>;
+  paidParkingOffPremises?: Maybe<Boolean>;
+  freeParkingOnStreet?: Maybe<Boolean>;
+  gym?: Maybe<Boolean>;
+  airConditioning?: Maybe<Boolean>;
+  shampoo?: Maybe<Boolean>;
+  essentials?: Maybe<Boolean>;
+  laptopFriendlyWorkspace?: Maybe<Boolean>;
+  privateEntrance?: Maybe<Boolean>;
+  buzzerWirelessIntercom?: Maybe<Boolean>;
+  bathtub?: Maybe<Boolean>;
+  crib?: Maybe<Boolean>;
+}
+
+export interface HouseCreateInput {
+  id?: Maybe<ID_Input>;
+  area?: Maybe<Int>;
+  age?: Maybe<Int>;
+  shortDescription?: Maybe<String>;
+  description?: Maybe<String>;
+  maxGuests?: Maybe<Int>;
+  numBedrooms: Int;
+  numBaths: Int;
+  numLivingrooms?: Maybe<Int>;
+  numDiningrooms?: Maybe<Int>;
+  reviews?: Maybe<ReviewCreateManyWithoutHouseInput>;
+  amenities?: Maybe<AmenitiesCreateOneWithoutHouseInput>;
+  host: UserCreateOneWithoutOwnedHousesInput;
+  pricing?: Maybe<PricingCreateOneWithoutHouseInput>;
+  location: LocationCreateOneInput;
+  leaseType?: Maybe<HOUSE_LEASE_TYPE>;
+  verified?: Maybe<Boolean>;
+  type?: Maybe<HOUSE_TYPES>;
+  residency?: Maybe<House_RESIDENCY>;
+  lease?: Maybe<Int>;
+  rooms?: Maybe<RoomCreateManyWithoutHouseInput>;
+  views?: Maybe<ViewsCreateOneWithoutHouseInput>;
+  bookings?: Maybe<BookingCreateManyWithoutHouseInput>;
+  pictures?: Maybe<PictureCreateManyInput>;
+  contactInfoPayments?: Maybe<PaymentLanlordInfoCreateManyWithoutHouseInput>;
+  popularity?: Maybe<Int>;
+  preview_image?: Maybe<PictureCreateOneInput>;
+  lastRating?: Maybe<Int>;
+  rentOrSell: RENT_OR_SELL;
+}
+
+export interface HouseCreateWithoutAmenitiesInput {
+  id?: Maybe<ID_Input>;
+  area?: Maybe<Int>;
+  age?: Maybe<Int>;
+  shortDescription?: Maybe<String>;
+  description?: Maybe<String>;
+  maxGuests?: Maybe<Int>;
+  numBedrooms: Int;
+  numBaths: Int;
+  numLivingrooms?: Maybe<Int>;
+  numDiningrooms?: Maybe<Int>;
+  reviews?: Maybe<ReviewCreateManyWithoutHouseInput>;
+  host: UserCreateOneWithoutOwnedHousesInput;
+  pricing?: Maybe<PricingCreateOneWithoutHouseInput>;
+  location: LocationCreateOneInput;
+  leaseType?: Maybe<HOUSE_LEASE_TYPE>;
+  verified?: Maybe<Boolean>;
+  type?: Maybe<HOUSE_TYPES>;
+  residency?: Maybe<House_RESIDENCY>;
+  lease?: Maybe<Int>;
+  rooms?: Maybe<RoomCreateManyWithoutHouseInput>;
+  views?: Maybe<ViewsCreateOneWithoutHouseInput>;
+  bookings?: Maybe<BookingCreateManyWithoutHouseInput>;
+  pictures?: Maybe<PictureCreateManyInput>;
+  contactInfoPayments?: Maybe<PaymentLanlordInfoCreateManyWithoutHouseInput>;
+  popularity?: Maybe<Int>;
+  preview_image?: Maybe<PictureCreateOneInput>;
+  lastRating?: Maybe<Int>;
+  rentOrSell: RENT_OR_SELL;
+}
+
+export interface PricingWhereInput {
+  id?: Maybe<ID_Input>;
+  id_not?: Maybe<ID_Input>;
+  id_in?: Maybe<ID_Input[] | ID_Input>;
+  id_not_in?: Maybe<ID_Input[] | ID_Input>;
+  id_lt?: Maybe<ID_Input>;
+  id_lte?: Maybe<ID_Input>;
+  id_gt?: Maybe<ID_Input>;
+  id_gte?: Maybe<ID_Input>;
+  id_contains?: Maybe<ID_Input>;
+  id_not_contains?: Maybe<ID_Input>;
+  id_starts_with?: Maybe<ID_Input>;
+  id_not_starts_with?: Maybe<ID_Input>;
+  id_ends_with?: Maybe<ID_Input>;
+  id_not_ends_with?: Maybe<ID_Input>;
+  House?: Maybe<HouseWhereInput>;
+  basePrice?: Maybe<Float>;
+  basePrice_not?: Maybe<Float>;
+  basePrice_in?: Maybe<Float[] | Float>;
+  basePrice_not_in?: Maybe<Float[] | Float>;
+  basePrice_lt?: Maybe<Float>;
+  basePrice_lte?: Maybe<Float>;
+  basePrice_gt?: Maybe<Float>;
+  basePrice_gte?: Maybe<Float>;
+  highestPrice?: Maybe<Float>;
+  highestPrice_not?: Maybe<Float>;
+  highestPrice_in?: Maybe<Float[] | Float>;
+  highestPrice_not_in?: Maybe<Float[] | Float>;
+  highestPrice_lt?: Maybe<Float>;
+  highestPrice_lte?: Maybe<Float>;
+  highestPrice_gt?: Maybe<Float>;
+  highestPrice_gte?: Maybe<Float>;
+  currency?: Maybe<CURRENCY>;
+  currency_not?: Maybe<CURRENCY>;
+  currency_in?: Maybe<CURRENCY[] | CURRENCY>;
+  currency_not_in?: Maybe<CURRENCY[] | CURRENCY>;
+  income?: Maybe<Float>;
+  income_not?: Maybe<Float>;
+  income_in?: Maybe<Float[] | Float>;
+  income_not_in?: Maybe<Float[] | Float>;
+  income_lt?: Maybe<Float>;
+  income_lte?: Maybe<Float>;
+  income_gt?: Maybe<Float>;
+  income_gte?: Maybe<Float>;
+  createdAt?: Maybe<DateTimeInput>;
+  createdAt_not?: Maybe<DateTimeInput>;
+  createdAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  createdAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  createdAt_lt?: Maybe<DateTimeInput>;
+  createdAt_lte?: Maybe<DateTimeInput>;
+  createdAt_gt?: Maybe<DateTimeInput>;
+  createdAt_gte?: Maybe<DateTimeInput>;
+  updatedAt?: Maybe<DateTimeInput>;
+  updatedAt_not?: Maybe<DateTimeInput>;
+  updatedAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  updatedAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  updatedAt_lt?: Maybe<DateTimeInput>;
+  updatedAt_lte?: Maybe<DateTimeInput>;
+  updatedAt_gt?: Maybe<DateTimeInput>;
+  updatedAt_gte?: Maybe<DateTimeInput>;
+  AND?: Maybe<PricingWhereInput[] | PricingWhereInput>;
+  OR?: Maybe<PricingWhereInput[] | PricingWhereInput>;
+  NOT?: Maybe<PricingWhereInput[] | PricingWhereInput>;
+}
+
+export interface ReviewCreateWithoutHouseInput {
+  id?: Maybe<ID_Input>;
+  text?: Maybe<String>;
+  stars: Int;
+  user: UserCreateOneWithoutReviewsInput;
+}
+
+export interface UserUpdateDataInput {
+  status?: Maybe<Boolean>;
+  facebookUserId?: Maybe<String>;
+  firstName?: Maybe<String>;
+  lastName?: Maybe<String>;
+  email?: Maybe<String>;
+  password?: Maybe<String>;
+  resetToken?: Maybe<String>;
+  resetTokenExpiry?: Maybe<String>;
+  phone1?: Maybe<String>;
+  phone2?: Maybe<String>;
+  primaryPhone?: Maybe<Int>;
+  responseTime?: Maybe<Int>;
+  isSuperHost?: Maybe<Boolean>;
+  ownedHouses?: Maybe<HouseUpdateManyWithoutHostInput>;
+  location?: Maybe<LocationUpdateOneInput>;
+  bookings?: Maybe<BookingUpdateManyWithoutBookeeInput>;
+  paidContacts?: Maybe<PaymentLanlordInfoUpdateManyWithoutClientInput>;
+  notifications?: Maybe<NotificationUpdateManyWithoutUserInput>;
+  profilePicture?: Maybe<PictureUpdateOneInput>;
+  reviews?: Maybe<ReviewUpdateManyWithoutUserInput>;
+  permissions?: Maybe<UserUpdatepermissionsInput>;
+}
+
+export interface UserCreateWithoutReviewsInput {
+  id?: Maybe<ID_Input>;
+  status?: Maybe<Boolean>;
+  facebookUserId?: Maybe<String>;
+  firstName: String;
+  lastName: String;
+  email?: Maybe<String>;
+  password?: Maybe<String>;
+  resetToken?: Maybe<String>;
+  resetTokenExpiry?: Maybe<String>;
+  phone1?: Maybe<String>;
+  phone2?: Maybe<String>;
+  primaryPhone?: Maybe<Int>;
+  responseTime?: Maybe<Int>;
+  isSuperHost?: Maybe<Boolean>;
+  ownedHouses?: Maybe<HouseCreateManyWithoutHostInput>;
+  location?: Maybe<LocationCreateOneInput>;
+  bookings?: Maybe<BookingCreateManyWithoutBookeeInput>;
+  paidContacts?: Maybe<PaymentLanlordInfoCreateManyWithoutClientInput>;
+  notifications?: Maybe<NotificationCreateManyWithoutUserInput>;
+  profilePicture?: Maybe<PictureCreateOneInput>;
+  permissions?: Maybe<UserCreatepermissionsInput>;
+}
+
+export interface LocationUpdateOneInput {
+  create?: Maybe<LocationCreateInput>;
+  update?: Maybe<LocationUpdateDataInput>;
+  upsert?: Maybe<LocationUpsertNestedInput>;
+  delete?: Maybe<Boolean>;
+  disconnect?: Maybe<Boolean>;
+  connect?: Maybe<LocationWhereUniqueInput>;
+}
+
+export interface HouseCreateWithoutHostInput {
+  id?: Maybe<ID_Input>;
+  area?: Maybe<Int>;
+  age?: Maybe<Int>;
+  shortDescription?: Maybe<String>;
+  description?: Maybe<String>;
+  maxGuests?: Maybe<Int>;
+  numBedrooms: Int;
+  numBaths: Int;
+  numLivingrooms?: Maybe<Int>;
+  numDiningrooms?: Maybe<Int>;
+  reviews?: Maybe<ReviewCreateManyWithoutHouseInput>;
+  amenities?: Maybe<AmenitiesCreateOneWithoutHouseInput>;
+  pricing?: Maybe<PricingCreateOneWithoutHouseInput>;
+  location: LocationCreateOneInput;
+  leaseType?: Maybe<HOUSE_LEASE_TYPE>;
+  verified?: Maybe<Boolean>;
+  type?: Maybe<HOUSE_TYPES>;
+  residency?: Maybe<House_RESIDENCY>;
+  lease?: Maybe<Int>;
+  rooms?: Maybe<RoomCreateManyWithoutHouseInput>;
+  views?: Maybe<ViewsCreateOneWithoutHouseInput>;
+  bookings?: Maybe<BookingCreateManyWithoutHouseInput>;
+  pictures?: Maybe<PictureCreateManyInput>;
+  contactInfoPayments?: Maybe<PaymentLanlordInfoCreateManyWithoutHouseInput>;
+  popularity?: Maybe<Int>;
+  preview_image?: Maybe<PictureCreateOneInput>;
+  lastRating?: Maybe<Int>;
+  rentOrSell: RENT_OR_SELL;
+}
+
+export interface BookingUpdateManyWithoutBookeeInput {
+  create?: Maybe<
+    BookingCreateWithoutBookeeInput[] | BookingCreateWithoutBookeeInput
+  >;
+  delete?: Maybe<BookingWhereUniqueInput[] | BookingWhereUniqueInput>;
+  connect?: Maybe<BookingWhereUniqueInput[] | BookingWhereUniqueInput>;
+  set?: Maybe<BookingWhereUniqueInput[] | BookingWhereUniqueInput>;
+  disconnect?: Maybe<BookingWhereUniqueInput[] | BookingWhereUniqueInput>;
+  update?: Maybe<
+    | BookingUpdateWithWhereUniqueWithoutBookeeInput[]
+    | BookingUpdateWithWhereUniqueWithoutBookeeInput
+  >;
+  upsert?: Maybe<
+    | BookingUpsertWithWhereUniqueWithoutBookeeInput[]
+    | BookingUpsertWithWhereUniqueWithoutBookeeInput
+  >;
+  deleteMany?: Maybe<BookingScalarWhereInput[] | BookingScalarWhereInput>;
+  updateMany?: Maybe<
+    | BookingUpdateManyWithWhereNestedInput[]
+    | BookingUpdateManyWithWhereNestedInput
+  >;
+}
+
+export interface AmenitiesCreateWithoutHouseInput {
+  id?: Maybe<ID_Input>;
+  electricity?: Maybe<Boolean>;
+  electricity_frequency?: Maybe<FREQUENCY>;
+  water_pipe?: Maybe<Boolean>;
+  water_tank?: Maybe<Boolean>;
+  water_frequency?: Maybe<FREQUENCY>;
+  elevator?: Maybe<Boolean>;
+  petsAllowed?: Maybe<Boolean>;
+  internet?: Maybe<Boolean>;
+  kitchen?: Maybe<Boolean>;
+  wirelessInternet?: Maybe<Boolean>;
+  familyKidFriendly?: Maybe<Boolean>;
+  freeParkingOnPremises?: Maybe<Boolean>;
+  hotTub?: Maybe<Boolean>;
+  pool?: Maybe<Boolean>;
+  smokingAllowed?: Maybe<Boolean>;
+  wheelchairAccessible?: Maybe<Boolean>;
+  cableTv?: Maybe<Boolean>;
+  suitableForEvents?: Maybe<Boolean>;
+  dryer?: Maybe<Boolean>;
+  washer?: Maybe<Boolean>;
+  indoorFireHouse?: Maybe<Boolean>;
+  tv?: Maybe<Boolean>;
+  heating?: Maybe<Boolean>;
+  hangers?: Maybe<Boolean>;
+  iron?: Maybe<Boolean>;
+  hairDryer?: Maybe<Boolean>;
+  doorman?: Maybe<Boolean>;
+  paidParkingOffPremises?: Maybe<Boolean>;
+  freeParkingOnStreet?: Maybe<Boolean>;
+  gym?: Maybe<Boolean>;
+  airConditioning?: Maybe<Boolean>;
+  shampoo?: Maybe<Boolean>;
+  essentials?: Maybe<Boolean>;
+  laptopFriendlyWorkspace?: Maybe<Boolean>;
+  privateEntrance?: Maybe<Boolean>;
+  buzzerWirelessIntercom?: Maybe<Boolean>;
+  bathtub?: Maybe<Boolean>;
+  crib?: Maybe<Boolean>;
+}
+
+export interface BookingUpdateWithWhereUniqueWithoutBookeeInput {
+  where: BookingWhereUniqueInput;
+  data: BookingUpdateWithoutBookeeDataInput;
+}
+
+export interface PricingCreateWithoutHouseInput {
+  id?: Maybe<ID_Input>;
+  basePrice?: Maybe<Float>;
+  highestPrice: Float;
+  currency: CURRENCY;
+  income?: Maybe<Float>;
+}
+
+export interface BookingUpdateWithoutBookeeDataInput {
+  House?: Maybe<HouseUpdateOneRequiredWithoutBookingsInput>;
+  startDate?: Maybe<DateTimeInput>;
+  endDate?: Maybe<DateTimeInput>;
+  payment?: Maybe<PaymentHouseUpdateOneRequiredWithoutBookingInput>;
+}
+
+export interface LocationCreateInput {
+  id?: Maybe<ID_Input>;
+  lat?: Maybe<Float>;
+  lng?: Maybe<Float>;
+  address?: Maybe<String>;
+  commune?: Maybe<CommuneCreateOneInput>;
+}
+
+export interface HouseUpdateOneRequiredWithoutBookingsInput {
+  create?: Maybe<HouseCreateWithoutBookingsInput>;
+  update?: Maybe<HouseUpdateWithoutBookingsDataInput>;
+  upsert?: Maybe<HouseUpsertWithoutBookingsInput>;
+  connect?: Maybe<HouseWhereUniqueInput>;
+}
+
+export interface CommuneCreateInput {
+  id?: Maybe<ID_Input>;
+  name: String;
+  rank?: Maybe<Int>;
+  city: CityCreateOneInput;
+}
+
+export interface HouseUpdateWithoutBookingsDataInput {
+  area?: Maybe<Int>;
+  age?: Maybe<Int>;
+  shortDescription?: Maybe<String>;
+  description?: Maybe<String>;
+  maxGuests?: Maybe<Int>;
+  numBedrooms?: Maybe<Int>;
+  numBaths?: Maybe<Int>;
+  numLivingrooms?: Maybe<Int>;
+  numDiningrooms?: Maybe<Int>;
+  reviews?: Maybe<ReviewUpdateManyWithoutHouseInput>;
+  amenities?: Maybe<AmenitiesUpdateOneWithoutHouseInput>;
+  host?: Maybe<UserUpdateOneRequiredWithoutOwnedHousesInput>;
+  pricing?: Maybe<PricingUpdateOneWithoutHouseInput>;
+  location?: Maybe<LocationUpdateOneRequiredInput>;
+  leaseType?: Maybe<HOUSE_LEASE_TYPE>;
+  verified?: Maybe<Boolean>;
+  type?: Maybe<HOUSE_TYPES>;
+  residency?: Maybe<House_RESIDENCY>;
+  lease?: Maybe<Int>;
+  rooms?: Maybe<RoomUpdateManyWithoutHouseInput>;
+  views?: Maybe<ViewsUpdateOneWithoutHouseInput>;
+  pictures?: Maybe<PictureUpdateManyInput>;
+  contactInfoPayments?: Maybe<PaymentLanlordInfoUpdateManyWithoutHouseInput>;
+  popularity?: Maybe<Int>;
+  preview_image?: Maybe<PictureUpdateOneInput>;
+  lastRating?: Maybe<Int>;
+  rentOrSell?: Maybe<RENT_OR_SELL>;
+}
+
+export interface CityCreateInput {
+  id?: Maybe<ID_Input>;
+  name: String;
+  rank?: Maybe<Int>;
+  state: StateCreateOneInput;
+}
+
+export interface UserUpdateOneRequiredWithoutOwnedHousesInput {
+  create?: Maybe<UserCreateWithoutOwnedHousesInput>;
+  update?: Maybe<UserUpdateWithoutOwnedHousesDataInput>;
+  upsert?: Maybe<UserUpsertWithoutOwnedHousesInput>;
+  connect?: Maybe<UserWhereUniqueInput>;
+}
+
+export interface StateCreateInput {
+  id?: Maybe<ID_Input>;
+  name: String;
+  rank?: Maybe<Int>;
+  country: CountryCreateOneInput;
+}
+
+export interface UserUpdateWithoutOwnedHousesDataInput {
+  status?: Maybe<Boolean>;
+  facebookUserId?: Maybe<String>;
+  firstName?: Maybe<String>;
+  lastName?: Maybe<String>;
+  email?: Maybe<String>;
+  password?: Maybe<String>;
+  resetToken?: Maybe<String>;
+  resetTokenExpiry?: Maybe<String>;
+  phone1?: Maybe<String>;
+  phone2?: Maybe<String>;
+  primaryPhone?: Maybe<Int>;
+  responseTime?: Maybe<Int>;
+  isSuperHost?: Maybe<Boolean>;
+  location?: Maybe<LocationUpdateOneInput>;
+  bookings?: Maybe<BookingUpdateManyWithoutBookeeInput>;
+  paidContacts?: Maybe<PaymentLanlordInfoUpdateManyWithoutClientInput>;
+  notifications?: Maybe<NotificationUpdateManyWithoutUserInput>;
+  profilePicture?: Maybe<PictureUpdateOneInput>;
+  reviews?: Maybe<ReviewUpdateManyWithoutUserInput>;
+  permissions?: Maybe<UserUpdatepermissionsInput>;
+}
+
+export interface CountryCreateInput {
+  id?: Maybe<ID_Input>;
+  name: String;
+}
+
+export interface PaymentLanlordInfoUpdateManyWithoutClientInput {
+  create?: Maybe<
+    | PaymentLanlordInfoCreateWithoutClientInput[]
+    | PaymentLanlordInfoCreateWithoutClientInput
+  >;
+  delete?: Maybe<
+    PaymentLanlordInfoWhereUniqueInput[] | PaymentLanlordInfoWhereUniqueInput
+  >;
+  connect?: Maybe<
+    PaymentLanlordInfoWhereUniqueInput[] | PaymentLanlordInfoWhereUniqueInput
+  >;
+  set?: Maybe<
+    PaymentLanlordInfoWhereUniqueInput[] | PaymentLanlordInfoWhereUniqueInput
+  >;
+  disconnect?: Maybe<
+    PaymentLanlordInfoWhereUniqueInput[] | PaymentLanlordInfoWhereUniqueInput
+  >;
+  update?: Maybe<
+    | PaymentLanlordInfoUpdateWithWhereUniqueWithoutClientInput[]
+    | PaymentLanlordInfoUpdateWithWhereUniqueWithoutClientInput
+  >;
+  upsert?: Maybe<
+    | PaymentLanlordInfoUpsertWithWhereUniqueWithoutClientInput[]
+    | PaymentLanlordInfoUpsertWithWhereUniqueWithoutClientInput
+  >;
+  deleteMany?: Maybe<
+    PaymentLanlordInfoScalarWhereInput[] | PaymentLanlordInfoScalarWhereInput
+  >;
+  updateMany?: Maybe<
+    | PaymentLanlordInfoUpdateManyWithWhereNestedInput[]
+    | PaymentLanlordInfoUpdateManyWithWhereNestedInput
+  >;
+}
+
+export interface RoomCreateWithoutHouseInput {
+  id?: Maybe<ID_Input>;
+  label: ROOM_LABELS;
+  picture_previews?: Maybe<PictureCreateManyInput>;
+  video_previews?: Maybe<VideoCreateManyInput>;
+}
+
+export interface PaymentLanlordInfoUpdateWithWhereUniqueWithoutClientInput {
+  where: PaymentLanlordInfoWhereUniqueInput;
+  data: PaymentLanlordInfoUpdateWithoutClientDataInput;
+}
+
+export interface PictureCreateInput {
+  id?: Maybe<ID_Input>;
+  url: String;
+}
+
+export interface PaymentLanlordInfoUpdateWithoutClientDataInput {
+  totalPrice?: Maybe<Float>;
+  House?: Maybe<HouseUpdateOneRequiredWithoutContactInfoPaymentsInput>;
+  moncashTransactId?: Maybe<String>;
+}
+
+export interface VideoCreateInput {
+  id?: Maybe<ID_Input>;
+  url: String;
+}
+
+export interface HouseUpdateOneRequiredWithoutContactInfoPaymentsInput {
+  create?: Maybe<HouseCreateWithoutContactInfoPaymentsInput>;
+  update?: Maybe<HouseUpdateWithoutContactInfoPaymentsDataInput>;
+  upsert?: Maybe<HouseUpsertWithoutContactInfoPaymentsInput>;
+  connect?: Maybe<HouseWhereUniqueInput>;
+}
+
+export interface ViewsCreateWithoutHouseInput {
+  id?: Maybe<ID_Input>;
+  lastWeek: Int;
+  User?: Maybe<UserCreateManyInput>;
+}
+
+export interface HouseUpdateWithoutContactInfoPaymentsDataInput {
+  area?: Maybe<Int>;
+  age?: Maybe<Int>;
+  shortDescription?: Maybe<String>;
+  description?: Maybe<String>;
+  maxGuests?: Maybe<Int>;
+  numBedrooms?: Maybe<Int>;
+  numBaths?: Maybe<Int>;
+  numLivingrooms?: Maybe<Int>;
+  numDiningrooms?: Maybe<Int>;
+  reviews?: Maybe<ReviewUpdateManyWithoutHouseInput>;
+  amenities?: Maybe<AmenitiesUpdateOneWithoutHouseInput>;
+  host?: Maybe<UserUpdateOneRequiredWithoutOwnedHousesInput>;
+  pricing?: Maybe<PricingUpdateOneWithoutHouseInput>;
+  location?: Maybe<LocationUpdateOneRequiredInput>;
+  leaseType?: Maybe<HOUSE_LEASE_TYPE>;
+  verified?: Maybe<Boolean>;
+  type?: Maybe<HOUSE_TYPES>;
+  residency?: Maybe<House_RESIDENCY>;
+  lease?: Maybe<Int>;
+  rooms?: Maybe<RoomUpdateManyWithoutHouseInput>;
+  views?: Maybe<ViewsUpdateOneWithoutHouseInput>;
+  bookings?: Maybe<BookingUpdateManyWithoutHouseInput>;
+  pictures?: Maybe<PictureUpdateManyInput>;
+  popularity?: Maybe<Int>;
+  preview_image?: Maybe<PictureUpdateOneInput>;
+  lastRating?: Maybe<Int>;
+  rentOrSell?: Maybe<RENT_OR_SELL>;
+}
+
+export interface UserCreateInput {
+  id?: Maybe<ID_Input>;
+  status?: Maybe<Boolean>;
+  facebookUserId?: Maybe<String>;
+  firstName: String;
+  lastName: String;
+  email?: Maybe<String>;
+  password?: Maybe<String>;
+  resetToken?: Maybe<String>;
+  resetTokenExpiry?: Maybe<String>;
+  phone1?: Maybe<String>;
+  phone2?: Maybe<String>;
+  primaryPhone?: Maybe<Int>;
+  responseTime?: Maybe<Int>;
+  isSuperHost?: Maybe<Boolean>;
+  ownedHouses?: Maybe<HouseCreateManyWithoutHostInput>;
+  location?: Maybe<LocationCreateOneInput>;
+  bookings?: Maybe<BookingCreateManyWithoutBookeeInput>;
+  paidContacts?: Maybe<PaymentLanlordInfoCreateManyWithoutClientInput>;
+  notifications?: Maybe<NotificationCreateManyWithoutUserInput>;
+  profilePicture?: Maybe<PictureCreateOneInput>;
+  reviews?: Maybe<ReviewCreateManyWithoutUserInput>;
+  permissions?: Maybe<UserCreatepermissionsInput>;
+}
+
+export interface BookingUpdateManyWithoutHouseInput {
+  create?: Maybe<
+    BookingCreateWithoutHouseInput[] | BookingCreateWithoutHouseInput
+  >;
+  delete?: Maybe<BookingWhereUniqueInput[] | BookingWhereUniqueInput>;
+  connect?: Maybe<BookingWhereUniqueInput[] | BookingWhereUniqueInput>;
+  set?: Maybe<BookingWhereUniqueInput[] | BookingWhereUniqueInput>;
+  disconnect?: Maybe<BookingWhereUniqueInput[] | BookingWhereUniqueInput>;
+  update?: Maybe<
+    | BookingUpdateWithWhereUniqueWithoutHouseInput[]
+    | BookingUpdateWithWhereUniqueWithoutHouseInput
+  >;
+  upsert?: Maybe<
+    | BookingUpsertWithWhereUniqueWithoutHouseInput[]
+    | BookingUpsertWithWhereUniqueWithoutHouseInput
+  >;
+  deleteMany?: Maybe<BookingScalarWhereInput[] | BookingScalarWhereInput>;
+  updateMany?: Maybe<
+    | BookingUpdateManyWithWhereNestedInput[]
+    | BookingUpdateManyWithWhereNestedInput
+  >;
+}
+
+export interface BookingCreateWithoutBookeeInput {
+  id?: Maybe<ID_Input>;
+  House: HouseCreateOneWithoutBookingsInput;
+  startDate: DateTimeInput;
+  endDate: DateTimeInput;
+  payment: PaymentHouseCreateOneWithoutBookingInput;
+}
+
+export interface BookingUpdateWithWhereUniqueWithoutHouseInput {
+  where: BookingWhereUniqueInput;
+  data: BookingUpdateWithoutHouseDataInput;
+}
+
+export interface HouseCreateWithoutBookingsInput {
+  id?: Maybe<ID_Input>;
+  area?: Maybe<Int>;
+  age?: Maybe<Int>;
+  shortDescription?: Maybe<String>;
+  description?: Maybe<String>;
+  maxGuests?: Maybe<Int>;
+  numBedrooms: Int;
+  numBaths: Int;
+  numLivingrooms?: Maybe<Int>;
+  numDiningrooms?: Maybe<Int>;
+  reviews?: Maybe<ReviewCreateManyWithoutHouseInput>;
+  amenities?: Maybe<AmenitiesCreateOneWithoutHouseInput>;
+  host: UserCreateOneWithoutOwnedHousesInput;
+  pricing?: Maybe<PricingCreateOneWithoutHouseInput>;
+  location: LocationCreateOneInput;
+  leaseType?: Maybe<HOUSE_LEASE_TYPE>;
+  verified?: Maybe<Boolean>;
+  type?: Maybe<HOUSE_TYPES>;
+  residency?: Maybe<House_RESIDENCY>;
+  lease?: Maybe<Int>;
+  rooms?: Maybe<RoomCreateManyWithoutHouseInput>;
+  views?: Maybe<ViewsCreateOneWithoutHouseInput>;
+  pictures?: Maybe<PictureCreateManyInput>;
+  contactInfoPayments?: Maybe<PaymentLanlordInfoCreateManyWithoutHouseInput>;
+  popularity?: Maybe<Int>;
+  preview_image?: Maybe<PictureCreateOneInput>;
+  lastRating?: Maybe<Int>;
+  rentOrSell: RENT_OR_SELL;
+}
+
+export interface BookingUpdateWithoutHouseDataInput {
+  bookee?: Maybe<UserUpdateOneRequiredWithoutBookingsInput>;
+  startDate?: Maybe<DateTimeInput>;
+  endDate?: Maybe<DateTimeInput>;
+  payment?: Maybe<PaymentHouseUpdateOneRequiredWithoutBookingInput>;
+}
+
+export interface UserCreateWithoutOwnedHousesInput {
+  id?: Maybe<ID_Input>;
+  status?: Maybe<Boolean>;
+  facebookUserId?: Maybe<String>;
+  firstName: String;
+  lastName: String;
+  email?: Maybe<String>;
+  password?: Maybe<String>;
+  resetToken?: Maybe<String>;
+  resetTokenExpiry?: Maybe<String>;
+  phone1?: Maybe<String>;
+  phone2?: Maybe<String>;
+  primaryPhone?: Maybe<Int>;
+  responseTime?: Maybe<Int>;
+  isSuperHost?: Maybe<Boolean>;
+  location?: Maybe<LocationCreateOneInput>;
+  bookings?: Maybe<BookingCreateManyWithoutBookeeInput>;
+  paidContacts?: Maybe<PaymentLanlordInfoCreateManyWithoutClientInput>;
+  notifications?: Maybe<NotificationCreateManyWithoutUserInput>;
+  profilePicture?: Maybe<PictureCreateOneInput>;
+  reviews?: Maybe<ReviewCreateManyWithoutUserInput>;
+  permissions?: Maybe<UserCreatepermissionsInput>;
+}
+
+export interface UserUpdateOneRequiredWithoutBookingsInput {
+  create?: Maybe<UserCreateWithoutBookingsInput>;
+  update?: Maybe<UserUpdateWithoutBookingsDataInput>;
+  upsert?: Maybe<UserUpsertWithoutBookingsInput>;
+  connect?: Maybe<UserWhereUniqueInput>;
+}
+
+export interface PaymentLanlordInfoCreateWithoutClientInput {
+  id?: Maybe<ID_Input>;
+  totalPrice: Float;
+  House: HouseCreateOneWithoutContactInfoPaymentsInput;
+  moncashTransactId: String;
+}
+
+export interface UserUpdateWithoutBookingsDataInput {
+  status?: Maybe<Boolean>;
+  facebookUserId?: Maybe<String>;
+  firstName?: Maybe<String>;
+  lastName?: Maybe<String>;
+  email?: Maybe<String>;
+  password?: Maybe<String>;
+  resetToken?: Maybe<String>;
+  resetTokenExpiry?: Maybe<String>;
+  phone1?: Maybe<String>;
+  phone2?: Maybe<String>;
+  primaryPhone?: Maybe<Int>;
+  responseTime?: Maybe<Int>;
+  isSuperHost?: Maybe<Boolean>;
+  ownedHouses?: Maybe<HouseUpdateManyWithoutHostInput>;
+  location?: Maybe<LocationUpdateOneInput>;
+  paidContacts?: Maybe<PaymentLanlordInfoUpdateManyWithoutClientInput>;
+  notifications?: Maybe<NotificationUpdateManyWithoutUserInput>;
+  profilePicture?: Maybe<PictureUpdateOneInput>;
+  reviews?: Maybe<ReviewUpdateManyWithoutUserInput>;
+  permissions?: Maybe<UserUpdatepermissionsInput>;
+}
+
+export interface HouseCreateWithoutContactInfoPaymentsInput {
+  id?: Maybe<ID_Input>;
+  area?: Maybe<Int>;
+  age?: Maybe<Int>;
+  shortDescription?: Maybe<String>;
+  description?: Maybe<String>;
+  maxGuests?: Maybe<Int>;
+  numBedrooms: Int;
+  numBaths: Int;
+  numLivingrooms?: Maybe<Int>;
+  numDiningrooms?: Maybe<Int>;
+  reviews?: Maybe<ReviewCreateManyWithoutHouseInput>;
+  amenities?: Maybe<AmenitiesCreateOneWithoutHouseInput>;
+  host: UserCreateOneWithoutOwnedHousesInput;
+  pricing?: Maybe<PricingCreateOneWithoutHouseInput>;
+  location: LocationCreateOneInput;
+  leaseType?: Maybe<HOUSE_LEASE_TYPE>;
+  verified?: Maybe<Boolean>;
+  type?: Maybe<HOUSE_TYPES>;
+  residency?: Maybe<House_RESIDENCY>;
+  lease?: Maybe<Int>;
+  rooms?: Maybe<RoomCreateManyWithoutHouseInput>;
+  views?: Maybe<ViewsCreateOneWithoutHouseInput>;
+  bookings?: Maybe<BookingCreateManyWithoutHouseInput>;
+  pictures?: Maybe<PictureCreateManyInput>;
+  popularity?: Maybe<Int>;
+  preview_image?: Maybe<PictureCreateOneInput>;
+  lastRating?: Maybe<Int>;
+  rentOrSell: RENT_OR_SELL;
+}
+
+export interface NotificationUpdateManyWithoutUserInput {
+  create?: Maybe<
+    NotificationCreateWithoutUserInput[] | NotificationCreateWithoutUserInput
+  >;
+  delete?: Maybe<NotificationWhereUniqueInput[] | NotificationWhereUniqueInput>;
+  connect?: Maybe<
+    NotificationWhereUniqueInput[] | NotificationWhereUniqueInput
+  >;
+  set?: Maybe<NotificationWhereUniqueInput[] | NotificationWhereUniqueInput>;
+  disconnect?: Maybe<
+    NotificationWhereUniqueInput[] | NotificationWhereUniqueInput
+  >;
+  update?: Maybe<
+    | NotificationUpdateWithWhereUniqueWithoutUserInput[]
+    | NotificationUpdateWithWhereUniqueWithoutUserInput
+  >;
+  upsert?: Maybe<
+    | NotificationUpsertWithWhereUniqueWithoutUserInput[]
+    | NotificationUpsertWithWhereUniqueWithoutUserInput
+  >;
+  deleteMany?: Maybe<
+    NotificationScalarWhereInput[] | NotificationScalarWhereInput
+  >;
+  updateMany?: Maybe<
+    | NotificationUpdateManyWithWhereNestedInput[]
+    | NotificationUpdateManyWithWhereNestedInput
+  >;
+}
+
+export interface BookingCreateWithoutHouseInput {
+  id?: Maybe<ID_Input>;
+  bookee: UserCreateOneWithoutBookingsInput;
+  startDate: DateTimeInput;
+  endDate: DateTimeInput;
+  payment: PaymentHouseCreateOneWithoutBookingInput;
+}
+
+export interface NotificationUpdateWithWhereUniqueWithoutUserInput {
+  where: NotificationWhereUniqueInput;
+  data: NotificationUpdateWithoutUserDataInput;
+}
+
+export interface UserCreateWithoutBookingsInput {
+  id?: Maybe<ID_Input>;
+  status?: Maybe<Boolean>;
+  facebookUserId?: Maybe<String>;
+  firstName: String;
+  lastName: String;
+  email?: Maybe<String>;
+  password?: Maybe<String>;
+  resetToken?: Maybe<String>;
+  resetTokenExpiry?: Maybe<String>;
+  phone1?: Maybe<String>;
+  phone2?: Maybe<String>;
+  primaryPhone?: Maybe<Int>;
+  responseTime?: Maybe<Int>;
+  isSuperHost?: Maybe<Boolean>;
+  ownedHouses?: Maybe<HouseCreateManyWithoutHostInput>;
+  location?: Maybe<LocationCreateOneInput>;
+  paidContacts?: Maybe<PaymentLanlordInfoCreateManyWithoutClientInput>;
+  notifications?: Maybe<NotificationCreateManyWithoutUserInput>;
+  profilePicture?: Maybe<PictureCreateOneInput>;
+  reviews?: Maybe<ReviewCreateManyWithoutUserInput>;
+  permissions?: Maybe<UserCreatepermissionsInput>;
+}
+
+export interface NotificationUpdateWithoutUserDataInput {
+  type?: Maybe<NOTIFICATION_TYPE>;
+  link?: Maybe<String>;
+  readDate?: Maybe<DateTimeInput>;
+}
+
+export interface NotificationCreateWithoutUserInput {
+  id?: Maybe<ID_Input>;
+  type?: Maybe<NOTIFICATION_TYPE>;
+  link: String;
+  readDate: DateTimeInput;
+}
+
+export interface NotificationUpsertWithWhereUniqueWithoutUserInput {
+  where: NotificationWhereUniqueInput;
+  update: NotificationUpdateWithoutUserDataInput;
+  create: NotificationCreateWithoutUserInput;
+}
+
+export interface ReviewCreateManyWithoutUserInput {
+  create?: Maybe<ReviewCreateWithoutUserInput[] | ReviewCreateWithoutUserInput>;
+  connect?: Maybe<ReviewWhereUniqueInput[] | ReviewWhereUniqueInput>;
+}
+
+export interface NotificationScalarWhereInput {
+  id?: Maybe<ID_Input>;
+  id_not?: Maybe<ID_Input>;
+  id_in?: Maybe<ID_Input[] | ID_Input>;
+  id_not_in?: Maybe<ID_Input[] | ID_Input>;
+  id_lt?: Maybe<ID_Input>;
+  id_lte?: Maybe<ID_Input>;
+  id_gt?: Maybe<ID_Input>;
+  id_gte?: Maybe<ID_Input>;
+  id_contains?: Maybe<ID_Input>;
+  id_not_contains?: Maybe<ID_Input>;
+  id_starts_with?: Maybe<ID_Input>;
+  id_not_starts_with?: Maybe<ID_Input>;
+  id_ends_with?: Maybe<ID_Input>;
+  id_not_ends_with?: Maybe<ID_Input>;
+  createdAt?: Maybe<DateTimeInput>;
+  createdAt_not?: Maybe<DateTimeInput>;
+  createdAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  createdAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  createdAt_lt?: Maybe<DateTimeInput>;
+  createdAt_lte?: Maybe<DateTimeInput>;
+  createdAt_gt?: Maybe<DateTimeInput>;
+  createdAt_gte?: Maybe<DateTimeInput>;
+  updatedAt?: Maybe<DateTimeInput>;
+  updatedAt_not?: Maybe<DateTimeInput>;
+  updatedAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  updatedAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  updatedAt_lt?: Maybe<DateTimeInput>;
+  updatedAt_lte?: Maybe<DateTimeInput>;
+  updatedAt_gt?: Maybe<DateTimeInput>;
+  updatedAt_gte?: Maybe<DateTimeInput>;
+  type?: Maybe<NOTIFICATION_TYPE>;
+  type_not?: Maybe<NOTIFICATION_TYPE>;
+  type_in?: Maybe<NOTIFICATION_TYPE[] | NOTIFICATION_TYPE>;
+  type_not_in?: Maybe<NOTIFICATION_TYPE[] | NOTIFICATION_TYPE>;
+  link?: Maybe<String>;
+  link_not?: Maybe<String>;
+  link_in?: Maybe<String[] | String>;
+  link_not_in?: Maybe<String[] | String>;
+  link_lt?: Maybe<String>;
+  link_lte?: Maybe<String>;
+  link_gt?: Maybe<String>;
+  link_gte?: Maybe<String>;
+  link_contains?: Maybe<String>;
+  link_not_contains?: Maybe<String>;
+  link_starts_with?: Maybe<String>;
+  link_not_starts_with?: Maybe<String>;
+  link_ends_with?: Maybe<String>;
+  link_not_ends_with?: Maybe<String>;
+  readDate?: Maybe<DateTimeInput>;
+  readDate_not?: Maybe<DateTimeInput>;
+  readDate_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  readDate_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  readDate_lt?: Maybe<DateTimeInput>;
+  readDate_lte?: Maybe<DateTimeInput>;
+  readDate_gt?: Maybe<DateTimeInput>;
+  readDate_gte?: Maybe<DateTimeInput>;
+  AND?: Maybe<NotificationScalarWhereInput[] | NotificationScalarWhereInput>;
+  OR?: Maybe<NotificationScalarWhereInput[] | NotificationScalarWhereInput>;
+  NOT?: Maybe<NotificationScalarWhereInput[] | NotificationScalarWhereInput>;
+}
+
+export interface ViewsSubscriptionWhereInput {
+  mutation_in?: Maybe<MutationType[] | MutationType>;
+  updatedFields_contains?: Maybe<String>;
+  updatedFields_contains_every?: Maybe<String[] | String>;
+  updatedFields_contains_some?: Maybe<String[] | String>;
+  node?: Maybe<ViewsWhereInput>;
+  AND?: Maybe<ViewsSubscriptionWhereInput[] | ViewsSubscriptionWhereInput>;
+  OR?: Maybe<ViewsSubscriptionWhereInput[] | ViewsSubscriptionWhereInput>;
+  NOT?: Maybe<ViewsSubscriptionWhereInput[] | ViewsSubscriptionWhereInput>;
+}
+
+export interface NotificationUpdateManyWithWhereNestedInput {
+  where: NotificationScalarWhereInput;
+  data: NotificationUpdateManyDataInput;
+}
+
+export interface RoomSubscriptionWhereInput {
+  mutation_in?: Maybe<MutationType[] | MutationType>;
+  updatedFields_contains?: Maybe<String>;
+  updatedFields_contains_every?: Maybe<String[] | String>;
+  updatedFields_contains_some?: Maybe<String[] | String>;
+  node?: Maybe<RoomWhereInput>;
+  AND?: Maybe<RoomSubscriptionWhereInput[] | RoomSubscriptionWhereInput>;
+  OR?: Maybe<RoomSubscriptionWhereInput[] | RoomSubscriptionWhereInput>;
+  NOT?: Maybe<RoomSubscriptionWhereInput[] | RoomSubscriptionWhereInput>;
+}
+
+export interface NotificationUpdateManyDataInput {
+  type?: Maybe<NOTIFICATION_TYPE>;
+  link?: Maybe<String>;
+  readDate?: Maybe<DateTimeInput>;
+}
+
+export interface PictureSubscriptionWhereInput {
+  mutation_in?: Maybe<MutationType[] | MutationType>;
+  updatedFields_contains?: Maybe<String>;
+  updatedFields_contains_every?: Maybe<String[] | String>;
+  updatedFields_contains_some?: Maybe<String[] | String>;
+  node?: Maybe<PictureWhereInput>;
+  AND?: Maybe<PictureSubscriptionWhereInput[] | PictureSubscriptionWhereInput>;
+  OR?: Maybe<PictureSubscriptionWhereInput[] | PictureSubscriptionWhereInput>;
+  NOT?: Maybe<PictureSubscriptionWhereInput[] | PictureSubscriptionWhereInput>;
+}
+
+export interface PictureUpdateOneInput {
+  create?: Maybe<PictureCreateInput>;
+  update?: Maybe<PictureUpdateDataInput>;
+  upsert?: Maybe<PictureUpsertNestedInput>;
+  delete?: Maybe<Boolean>;
+  disconnect?: Maybe<Boolean>;
+  connect?: Maybe<PictureWhereUniqueInput>;
+}
+
+export interface PaymentLanlordInfoWhereInput {
+  id?: Maybe<ID_Input>;
+  id_not?: Maybe<ID_Input>;
+  id_in?: Maybe<ID_Input[] | ID_Input>;
+  id_not_in?: Maybe<ID_Input[] | ID_Input>;
+  id_lt?: Maybe<ID_Input>;
+  id_lte?: Maybe<ID_Input>;
+  id_gt?: Maybe<ID_Input>;
+  id_gte?: Maybe<ID_Input>;
+  id_contains?: Maybe<ID_Input>;
+  id_not_contains?: Maybe<ID_Input>;
+  id_starts_with?: Maybe<ID_Input>;
+  id_not_starts_with?: Maybe<ID_Input>;
+  id_ends_with?: Maybe<ID_Input>;
+  id_not_ends_with?: Maybe<ID_Input>;
+  createdAt?: Maybe<DateTimeInput>;
+  createdAt_not?: Maybe<DateTimeInput>;
+  createdAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  createdAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  createdAt_lt?: Maybe<DateTimeInput>;
+  createdAt_lte?: Maybe<DateTimeInput>;
+  createdAt_gt?: Maybe<DateTimeInput>;
+  createdAt_gte?: Maybe<DateTimeInput>;
+  updatedAt?: Maybe<DateTimeInput>;
+  updatedAt_not?: Maybe<DateTimeInput>;
+  updatedAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  updatedAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  updatedAt_lt?: Maybe<DateTimeInput>;
+  updatedAt_lte?: Maybe<DateTimeInput>;
+  updatedAt_gt?: Maybe<DateTimeInput>;
+  updatedAt_gte?: Maybe<DateTimeInput>;
+  totalPrice?: Maybe<Float>;
+  totalPrice_not?: Maybe<Float>;
+  totalPrice_in?: Maybe<Float[] | Float>;
+  totalPrice_not_in?: Maybe<Float[] | Float>;
+  totalPrice_lt?: Maybe<Float>;
+  totalPrice_lte?: Maybe<Float>;
+  totalPrice_gt?: Maybe<Float>;
+  totalPrice_gte?: Maybe<Float>;
+  client?: Maybe<UserWhereInput>;
+  House?: Maybe<HouseWhereInput>;
+  moncashTransactId?: Maybe<String>;
+  moncashTransactId_not?: Maybe<String>;
+  moncashTransactId_in?: Maybe<String[] | String>;
+  moncashTransactId_not_in?: Maybe<String[] | String>;
+  moncashTransactId_lt?: Maybe<String>;
+  moncashTransactId_lte?: Maybe<String>;
+  moncashTransactId_gt?: Maybe<String>;
+  moncashTransactId_gte?: Maybe<String>;
+  moncashTransactId_contains?: Maybe<String>;
+  moncashTransactId_not_contains?: Maybe<String>;
+  moncashTransactId_starts_with?: Maybe<String>;
+  moncashTransactId_not_starts_with?: Maybe<String>;
+  moncashTransactId_ends_with?: Maybe<String>;
+  moncashTransactId_not_ends_with?: Maybe<String>;
+  AND?: Maybe<PaymentLanlordInfoWhereInput[] | PaymentLanlordInfoWhereInput>;
+  OR?: Maybe<PaymentLanlordInfoWhereInput[] | PaymentLanlordInfoWhereInput>;
+  NOT?: Maybe<PaymentLanlordInfoWhereInput[] | PaymentLanlordInfoWhereInput>;
+}
+
+export interface PictureUpsertNestedInput {
+  update: PictureUpdateDataInput;
+  create: PictureCreateInput;
+}
+
+export interface NotificationSubscriptionWhereInput {
+  mutation_in?: Maybe<MutationType[] | MutationType>;
+  updatedFields_contains?: Maybe<String>;
+  updatedFields_contains_every?: Maybe<String[] | String>;
+  updatedFields_contains_some?: Maybe<String[] | String>;
+  node?: Maybe<NotificationWhereInput>;
+  AND?: Maybe<
+    NotificationSubscriptionWhereInput[] | NotificationSubscriptionWhereInput
+  >;
+  OR?: Maybe<
+    NotificationSubscriptionWhereInput[] | NotificationSubscriptionWhereInput
+  >;
+  NOT?: Maybe<
+    NotificationSubscriptionWhereInput[] | NotificationSubscriptionWhereInput
+  >;
+}
+
+export interface ReviewUpdateManyWithoutUserInput {
+  create?: Maybe<ReviewCreateWithoutUserInput[] | ReviewCreateWithoutUserInput>;
+  delete?: Maybe<ReviewWhereUniqueInput[] | ReviewWhereUniqueInput>;
+  connect?: Maybe<ReviewWhereUniqueInput[] | ReviewWhereUniqueInput>;
+  set?: Maybe<ReviewWhereUniqueInput[] | ReviewWhereUniqueInput>;
+  disconnect?: Maybe<ReviewWhereUniqueInput[] | ReviewWhereUniqueInput>;
+  update?: Maybe<
+    | ReviewUpdateWithWhereUniqueWithoutUserInput[]
+    | ReviewUpdateWithWhereUniqueWithoutUserInput
+  >;
+  upsert?: Maybe<
+    | ReviewUpsertWithWhereUniqueWithoutUserInput[]
+    | ReviewUpsertWithWhereUniqueWithoutUserInput
+  >;
+  deleteMany?: Maybe<ReviewScalarWhereInput[] | ReviewScalarWhereInput>;
+  updateMany?: Maybe<
+    | ReviewUpdateManyWithWhereNestedInput[]
+    | ReviewUpdateManyWithWhereNestedInput
+  >;
+}
+
+export interface LocationSubscriptionWhereInput {
+  mutation_in?: Maybe<MutationType[] | MutationType>;
+  updatedFields_contains?: Maybe<String>;
+  updatedFields_contains_every?: Maybe<String[] | String>;
+  updatedFields_contains_some?: Maybe<String[] | String>;
+  node?: Maybe<LocationWhereInput>;
+  AND?: Maybe<
+    LocationSubscriptionWhereInput[] | LocationSubscriptionWhereInput
+  >;
+  OR?: Maybe<LocationSubscriptionWhereInput[] | LocationSubscriptionWhereInput>;
+  NOT?: Maybe<
+    LocationSubscriptionWhereInput[] | LocationSubscriptionWhereInput
+  >;
+}
+
+export interface ReviewUpdateWithWhereUniqueWithoutUserInput {
+  where: ReviewWhereUniqueInput;
+  data: ReviewUpdateWithoutUserDataInput;
+}
+
+export interface HouseSubscriptionWhereInput {
+  mutation_in?: Maybe<MutationType[] | MutationType>;
+  updatedFields_contains?: Maybe<String>;
+  updatedFields_contains_every?: Maybe<String[] | String>;
+  updatedFields_contains_some?: Maybe<String[] | String>;
+  node?: Maybe<HouseWhereInput>;
+  AND?: Maybe<HouseSubscriptionWhereInput[] | HouseSubscriptionWhereInput>;
+  OR?: Maybe<HouseSubscriptionWhereInput[] | HouseSubscriptionWhereInput>;
+  NOT?: Maybe<HouseSubscriptionWhereInput[] | HouseSubscriptionWhereInput>;
+}
+
+export interface ReviewUpdateWithoutUserDataInput {
+  text?: Maybe<String>;
+  stars?: Maybe<Int>;
+  House?: Maybe<HouseUpdateOneRequiredWithoutReviewsInput>;
+}
+
+export interface CountrySubscriptionWhereInput {
+  mutation_in?: Maybe<MutationType[] | MutationType>;
+  updatedFields_contains?: Maybe<String>;
+  updatedFields_contains_every?: Maybe<String[] | String>;
+  updatedFields_contains_some?: Maybe<String[] | String>;
+  node?: Maybe<CountryWhereInput>;
+  AND?: Maybe<CountrySubscriptionWhereInput[] | CountrySubscriptionWhereInput>;
+  OR?: Maybe<CountrySubscriptionWhereInput[] | CountrySubscriptionWhereInput>;
+  NOT?: Maybe<CountrySubscriptionWhereInput[] | CountrySubscriptionWhereInput>;
+}
+
+export interface HouseUpdateOneRequiredWithoutReviewsInput {
+  create?: Maybe<HouseCreateWithoutReviewsInput>;
+  update?: Maybe<HouseUpdateWithoutReviewsDataInput>;
+  upsert?: Maybe<HouseUpsertWithoutReviewsInput>;
+  connect?: Maybe<HouseWhereUniqueInput>;
+}
+
+export interface BookingSubscriptionWhereInput {
+  mutation_in?: Maybe<MutationType[] | MutationType>;
+  updatedFields_contains?: Maybe<String>;
+  updatedFields_contains_every?: Maybe<String[] | String>;
+  updatedFields_contains_some?: Maybe<String[] | String>;
+  node?: Maybe<BookingWhereInput>;
+  AND?: Maybe<BookingSubscriptionWhereInput[] | BookingSubscriptionWhereInput>;
+  OR?: Maybe<BookingSubscriptionWhereInput[] | BookingSubscriptionWhereInput>;
+  NOT?: Maybe<BookingSubscriptionWhereInput[] | BookingSubscriptionWhereInput>;
+}
+
+export interface HouseUpdateWithoutReviewsDataInput {
+  area?: Maybe<Int>;
+  age?: Maybe<Int>;
+  shortDescription?: Maybe<String>;
+  description?: Maybe<String>;
+  maxGuests?: Maybe<Int>;
+  numBedrooms?: Maybe<Int>;
+  numBaths?: Maybe<Int>;
+  numLivingrooms?: Maybe<Int>;
+  numDiningrooms?: Maybe<Int>;
+  amenities?: Maybe<AmenitiesUpdateOneWithoutHouseInput>;
+  host?: Maybe<UserUpdateOneRequiredWithoutOwnedHousesInput>;
+  pricing?: Maybe<PricingUpdateOneWithoutHouseInput>;
+  location?: Maybe<LocationUpdateOneRequiredInput>;
+  leaseType?: Maybe<HOUSE_LEASE_TYPE>;
+  verified?: Maybe<Boolean>;
+  type?: Maybe<HOUSE_TYPES>;
+  residency?: Maybe<House_RESIDENCY>;
+  lease?: Maybe<Int>;
+  rooms?: Maybe<RoomUpdateManyWithoutHouseInput>;
+  views?: Maybe<ViewsUpdateOneWithoutHouseInput>;
+  bookings?: Maybe<BookingUpdateManyWithoutHouseInput>;
+  pictures?: Maybe<PictureUpdateManyInput>;
+  contactInfoPayments?: Maybe<PaymentLanlordInfoUpdateManyWithoutHouseInput>;
+  popularity?: Maybe<Int>;
+  preview_image?: Maybe<PictureUpdateOneInput>;
+  lastRating?: Maybe<Int>;
+  rentOrSell?: Maybe<RENT_OR_SELL>;
+}
+
+export interface CityWhereInput {
+  id?: Maybe<ID_Input>;
+  id_not?: Maybe<ID_Input>;
+  id_in?: Maybe<ID_Input[] | ID_Input>;
+  id_not_in?: Maybe<ID_Input[] | ID_Input>;
+  id_lt?: Maybe<ID_Input>;
+  id_lte?: Maybe<ID_Input>;
+  id_gt?: Maybe<ID_Input>;
+  id_gte?: Maybe<ID_Input>;
+  id_contains?: Maybe<ID_Input>;
+  id_not_contains?: Maybe<ID_Input>;
+  id_starts_with?: Maybe<ID_Input>;
+  id_not_starts_with?: Maybe<ID_Input>;
+  id_ends_with?: Maybe<ID_Input>;
+  id_not_ends_with?: Maybe<ID_Input>;
+  name?: Maybe<String>;
+  name_not?: Maybe<String>;
+  name_in?: Maybe<String[] | String>;
+  name_not_in?: Maybe<String[] | String>;
+  name_lt?: Maybe<String>;
+  name_lte?: Maybe<String>;
+  name_gt?: Maybe<String>;
+  name_gte?: Maybe<String>;
+  name_contains?: Maybe<String>;
+  name_not_contains?: Maybe<String>;
+  name_starts_with?: Maybe<String>;
+  name_not_starts_with?: Maybe<String>;
+  name_ends_with?: Maybe<String>;
+  name_not_ends_with?: Maybe<String>;
+  rank?: Maybe<Int>;
+  rank_not?: Maybe<Int>;
+  rank_in?: Maybe<Int[] | Int>;
+  rank_not_in?: Maybe<Int[] | Int>;
+  rank_lt?: Maybe<Int>;
+  rank_lte?: Maybe<Int>;
+  rank_gt?: Maybe<Int>;
+  rank_gte?: Maybe<Int>;
+  state?: Maybe<StateWhereInput>;
+  createdAt?: Maybe<DateTimeInput>;
+  createdAt_not?: Maybe<DateTimeInput>;
+  createdAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  createdAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  createdAt_lt?: Maybe<DateTimeInput>;
+  createdAt_lte?: Maybe<DateTimeInput>;
+  createdAt_gt?: Maybe<DateTimeInput>;
+  createdAt_gte?: Maybe<DateTimeInput>;
+  updatedAt?: Maybe<DateTimeInput>;
+  updatedAt_not?: Maybe<DateTimeInput>;
+  updatedAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  updatedAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  updatedAt_lt?: Maybe<DateTimeInput>;
+  updatedAt_lte?: Maybe<DateTimeInput>;
+  updatedAt_gt?: Maybe<DateTimeInput>;
+  updatedAt_gte?: Maybe<DateTimeInput>;
+  AND?: Maybe<CityWhereInput[] | CityWhereInput>;
+  OR?: Maybe<CityWhereInput[] | CityWhereInput>;
+  NOT?: Maybe<CityWhereInput[] | CityWhereInput>;
+}
+
+export interface PaymentLanlordInfoUpdateManyWithoutHouseInput {
+  create?: Maybe<
+    | PaymentLanlordInfoCreateWithoutHouseInput[]
+    | PaymentLanlordInfoCreateWithoutHouseInput
+  >;
+  delete?: Maybe<
+    PaymentLanlordInfoWhereUniqueInput[] | PaymentLanlordInfoWhereUniqueInput
+  >;
+  connect?: Maybe<
+    PaymentLanlordInfoWhereUniqueInput[] | PaymentLanlordInfoWhereUniqueInput
+  >;
+  set?: Maybe<
+    PaymentLanlordInfoWhereUniqueInput[] | PaymentLanlordInfoWhereUniqueInput
+  >;
+  disconnect?: Maybe<
+    PaymentLanlordInfoWhereUniqueInput[] | PaymentLanlordInfoWhereUniqueInput
+  >;
+  update?: Maybe<
+    | PaymentLanlordInfoUpdateWithWhereUniqueWithoutHouseInput[]
+    | PaymentLanlordInfoUpdateWithWhereUniqueWithoutHouseInput
+  >;
+  upsert?: Maybe<
+    | PaymentLanlordInfoUpsertWithWhereUniqueWithoutHouseInput[]
+    | PaymentLanlordInfoUpsertWithWhereUniqueWithoutHouseInput
+  >;
+  deleteMany?: Maybe<
+    PaymentLanlordInfoScalarWhereInput[] | PaymentLanlordInfoScalarWhereInput
+  >;
+  updateMany?: Maybe<
+    | PaymentLanlordInfoUpdateManyWithWhereNestedInput[]
+    | PaymentLanlordInfoUpdateManyWithWhereNestedInput
+  >;
+}
+
+export type CommuneWhereUniqueInput = AtLeastOne<{
+  id: Maybe<ID_Input>;
+}>;
+
+export interface PaymentLanlordInfoUpdateWithWhereUniqueWithoutHouseInput {
+  where: PaymentLanlordInfoWhereUniqueInput;
+  data: PaymentLanlordInfoUpdateWithoutHouseDataInput;
+}
+
+export interface HouseCreateOneWithoutViewsInput {
+  create?: Maybe<HouseCreateWithoutViewsInput>;
+  connect?: Maybe<HouseWhereUniqueInput>;
+}
+
+export interface PaymentLanlordInfoUpdateWithoutHouseDataInput {
+  totalPrice?: Maybe<Float>;
+  client?: Maybe<UserUpdateOneRequiredWithoutPaidContactsInput>;
+  moncashTransactId?: Maybe<String>;
+}
+
+export interface VideoUpdateInput {
+  url?: Maybe<String>;
+}
+
+export interface UserUpdateOneRequiredWithoutPaidContactsInput {
+  create?: Maybe<UserCreateWithoutPaidContactsInput>;
+  update?: Maybe<UserUpdateWithoutPaidContactsDataInput>;
+  upsert?: Maybe<UserUpsertWithoutPaidContactsInput>;
+  connect?: Maybe<UserWhereUniqueInput>;
+}
+
+export interface UserUpdateInput {
+  status?: Maybe<Boolean>;
+  facebookUserId?: Maybe<String>;
+  firstName?: Maybe<String>;
+  lastName?: Maybe<String>;
+  email?: Maybe<String>;
+  password?: Maybe<String>;
+  resetToken?: Maybe<String>;
+  resetTokenExpiry?: Maybe<String>;
+  phone1?: Maybe<String>;
+  phone2?: Maybe<String>;
+  primaryPhone?: Maybe<Int>;
+  responseTime?: Maybe<Int>;
+  isSuperHost?: Maybe<Boolean>;
+  ownedHouses?: Maybe<HouseUpdateManyWithoutHostInput>;
+  location?: Maybe<LocationUpdateOneInput>;
+  bookings?: Maybe<BookingUpdateManyWithoutBookeeInput>;
+  paidContacts?: Maybe<PaymentLanlordInfoUpdateManyWithoutClientInput>;
+  notifications?: Maybe<NotificationUpdateManyWithoutUserInput>;
+  profilePicture?: Maybe<PictureUpdateOneInput>;
+  reviews?: Maybe<ReviewUpdateManyWithoutUserInput>;
+  permissions?: Maybe<UserUpdatepermissionsInput>;
+}
+
+export interface UserUpdateWithoutPaidContactsDataInput {
+  status?: Maybe<Boolean>;
+  facebookUserId?: Maybe<String>;
+  firstName?: Maybe<String>;
+  lastName?: Maybe<String>;
+  email?: Maybe<String>;
+  password?: Maybe<String>;
+  resetToken?: Maybe<String>;
+  resetTokenExpiry?: Maybe<String>;
+  phone1?: Maybe<String>;
+  phone2?: Maybe<String>;
+  primaryPhone?: Maybe<Int>;
+  responseTime?: Maybe<Int>;
+  isSuperHost?: Maybe<Boolean>;
+  ownedHouses?: Maybe<HouseUpdateManyWithoutHostInput>;
+  location?: Maybe<LocationUpdateOneInput>;
+  bookings?: Maybe<BookingUpdateManyWithoutBookeeInput>;
+  notifications?: Maybe<NotificationUpdateManyWithoutUserInput>;
+  profilePicture?: Maybe<PictureUpdateOneInput>;
+  reviews?: Maybe<ReviewUpdateManyWithoutUserInput>;
+  permissions?: Maybe<UserUpdatepermissionsInput>;
+}
+
+export interface RoomUpdateManyMutationInput {
+  label?: Maybe<ROOM_LABELS>;
+}
+
+export interface UserUpdatepermissionsInput {
+  set?: Maybe<Permission[] | Permission>;
+}
+
+export interface HouseUpdateOneRequiredWithoutRoomsInput {
+  create?: Maybe<HouseCreateWithoutRoomsInput>;
+  update?: Maybe<HouseUpdateWithoutRoomsDataInput>;
+  upsert?: Maybe<HouseUpsertWithoutRoomsInput>;
+  connect?: Maybe<HouseWhereUniqueInput>;
+}
+
+export interface UserUpsertWithoutPaidContactsInput {
+  update: UserUpdateWithoutPaidContactsDataInput;
+  create: UserCreateWithoutPaidContactsInput;
+}
+
+export interface HouseCreateWithoutRoomsInput {
+  id?: Maybe<ID_Input>;
+  area?: Maybe<Int>;
+  age?: Maybe<Int>;
+  shortDescription?: Maybe<String>;
+  description?: Maybe<String>;
+  maxGuests?: Maybe<Int>;
+  numBedrooms: Int;
+  numBaths: Int;
+  numLivingrooms?: Maybe<Int>;
+  numDiningrooms?: Maybe<Int>;
+  reviews?: Maybe<ReviewCreateManyWithoutHouseInput>;
+  amenities?: Maybe<AmenitiesCreateOneWithoutHouseInput>;
+  host: UserCreateOneWithoutOwnedHousesInput;
+  pricing?: Maybe<PricingCreateOneWithoutHouseInput>;
+  location: LocationCreateOneInput;
+  leaseType?: Maybe<HOUSE_LEASE_TYPE>;
+  verified?: Maybe<Boolean>;
+  type?: Maybe<HOUSE_TYPES>;
+  residency?: Maybe<House_RESIDENCY>;
+  lease?: Maybe<Int>;
+  views?: Maybe<ViewsCreateOneWithoutHouseInput>;
+  bookings?: Maybe<BookingCreateManyWithoutHouseInput>;
+  pictures?: Maybe<PictureCreateManyInput>;
+  contactInfoPayments?: Maybe<PaymentLanlordInfoCreateManyWithoutHouseInput>;
+  popularity?: Maybe<Int>;
+  preview_image?: Maybe<PictureCreateOneInput>;
+  lastRating?: Maybe<Int>;
+  rentOrSell: RENT_OR_SELL;
+}
+
+export interface PaymentLanlordInfoUpsertWithWhereUniqueWithoutHouseInput {
+  where: PaymentLanlordInfoWhereUniqueInput;
+  update: PaymentLanlordInfoUpdateWithoutHouseDataInput;
+  create: PaymentLanlordInfoCreateWithoutHouseInput;
+}
+
+export interface ReviewUpdateManyMutationInput {
+  text?: Maybe<String>;
+  stars?: Maybe<Int>;
+}
+
+export interface PaymentLanlordInfoScalarWhereInput {
+  id?: Maybe<ID_Input>;
+  id_not?: Maybe<ID_Input>;
+  id_in?: Maybe<ID_Input[] | ID_Input>;
+  id_not_in?: Maybe<ID_Input[] | ID_Input>;
+  id_lt?: Maybe<ID_Input>;
+  id_lte?: Maybe<ID_Input>;
+  id_gt?: Maybe<ID_Input>;
+  id_gte?: Maybe<ID_Input>;
+  id_contains?: Maybe<ID_Input>;
+  id_not_contains?: Maybe<ID_Input>;
+  id_starts_with?: Maybe<ID_Input>;
+  id_not_starts_with?: Maybe<ID_Input>;
+  id_ends_with?: Maybe<ID_Input>;
+  id_not_ends_with?: Maybe<ID_Input>;
+  createdAt?: Maybe<DateTimeInput>;
+  createdAt_not?: Maybe<DateTimeInput>;
+  createdAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  createdAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  createdAt_lt?: Maybe<DateTimeInput>;
+  createdAt_lte?: Maybe<DateTimeInput>;
+  createdAt_gt?: Maybe<DateTimeInput>;
+  createdAt_gte?: Maybe<DateTimeInput>;
+  updatedAt?: Maybe<DateTimeInput>;
+  updatedAt_not?: Maybe<DateTimeInput>;
+  updatedAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  updatedAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  updatedAt_lt?: Maybe<DateTimeInput>;
+  updatedAt_lte?: Maybe<DateTimeInput>;
+  updatedAt_gt?: Maybe<DateTimeInput>;
+  updatedAt_gte?: Maybe<DateTimeInput>;
+  totalPrice?: Maybe<Float>;
+  totalPrice_not?: Maybe<Float>;
+  totalPrice_in?: Maybe<Float[] | Float>;
+  totalPrice_not_in?: Maybe<Float[] | Float>;
+  totalPrice_lt?: Maybe<Float>;
+  totalPrice_lte?: Maybe<Float>;
+  totalPrice_gt?: Maybe<Float>;
+  totalPrice_gte?: Maybe<Float>;
+  moncashTransactId?: Maybe<String>;
+  moncashTransactId_not?: Maybe<String>;
+  moncashTransactId_in?: Maybe<String[] | String>;
+  moncashTransactId_not_in?: Maybe<String[] | String>;
+  moncashTransactId_lt?: Maybe<String>;
+  moncashTransactId_lte?: Maybe<String>;
+  moncashTransactId_gt?: Maybe<String>;
+  moncashTransactId_gte?: Maybe<String>;
+  moncashTransactId_contains?: Maybe<String>;
+  moncashTransactId_not_contains?: Maybe<String>;
+  moncashTransactId_starts_with?: Maybe<String>;
+  moncashTransactId_not_starts_with?: Maybe<String>;
+  moncashTransactId_ends_with?: Maybe<String>;
+  moncashTransactId_not_ends_with?: Maybe<String>;
+  AND?: Maybe<
+    PaymentLanlordInfoScalarWhereInput[] | PaymentLanlordInfoScalarWhereInput
+  >;
+  OR?: Maybe<
+    PaymentLanlordInfoScalarWhereInput[] | PaymentLanlordInfoScalarWhereInput
+  >;
+  NOT?: Maybe<
+    PaymentLanlordInfoScalarWhereInput[] | PaymentLanlordInfoScalarWhereInput
+  >;
+}
+
+export interface PricingUpdateManyMutationInput {
+  basePrice?: Maybe<Float>;
+  highestPrice?: Maybe<Float>;
+  currency?: Maybe<CURRENCY>;
+  income?: Maybe<Float>;
+}
+
+export interface PaymentLanlordInfoUpdateManyWithWhereNestedInput {
+  where: PaymentLanlordInfoScalarWhereInput;
+  data: PaymentLanlordInfoUpdateManyDataInput;
+}
+
+export interface HouseUpsertWithoutPricingInput {
+  update: HouseUpdateWithoutPricingDataInput;
+  create: HouseCreateWithoutPricingInput;
+}
+
+export interface PaymentLanlordInfoUpdateManyDataInput {
+  totalPrice?: Maybe<Float>;
+  moncashTransactId?: Maybe<String>;
+}
+
+export interface PricingUpdateInput {
+  House?: Maybe<HouseUpdateOneRequiredWithoutPricingInput>;
+  basePrice?: Maybe<Float>;
+  highestPrice?: Maybe<Float>;
+  currency?: Maybe<CURRENCY>;
+  income?: Maybe<Float>;
+}
+
+export interface HouseUpsertWithoutReviewsInput {
+  update: HouseUpdateWithoutReviewsDataInput;
+  create: HouseCreateWithoutReviewsInput;
+}
+
+export interface PricingCreateInput {
+  id?: Maybe<ID_Input>;
+  House: HouseCreateOneWithoutPricingInput;
+  basePrice?: Maybe<Float>;
+  highestPrice: Float;
+  currency: CURRENCY;
+  income?: Maybe<Float>;
+}
+
+export interface ReviewUpsertWithWhereUniqueWithoutUserInput {
+  where: ReviewWhereUniqueInput;
+  update: ReviewUpdateWithoutUserDataInput;
+  create: ReviewCreateWithoutUserInput;
+}
+
+export type PaymentHouseWhereUniqueInput = AtLeastOne<{
+  id: Maybe<ID_Input>;
+}>;
+
+export interface ReviewScalarWhereInput {
+  id?: Maybe<ID_Input>;
+  id_not?: Maybe<ID_Input>;
+  id_in?: Maybe<ID_Input[] | ID_Input>;
+  id_not_in?: Maybe<ID_Input[] | ID_Input>;
+  id_lt?: Maybe<ID_Input>;
+  id_lte?: Maybe<ID_Input>;
+  id_gt?: Maybe<ID_Input>;
+  id_gte?: Maybe<ID_Input>;
+  id_contains?: Maybe<ID_Input>;
+  id_not_contains?: Maybe<ID_Input>;
+  id_starts_with?: Maybe<ID_Input>;
+  id_not_starts_with?: Maybe<ID_Input>;
+  id_ends_with?: Maybe<ID_Input>;
+  id_not_ends_with?: Maybe<ID_Input>;
+  createdAt?: Maybe<DateTimeInput>;
+  createdAt_not?: Maybe<DateTimeInput>;
+  createdAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  createdAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  createdAt_lt?: Maybe<DateTimeInput>;
+  createdAt_lte?: Maybe<DateTimeInput>;
+  createdAt_gt?: Maybe<DateTimeInput>;
+  createdAt_gte?: Maybe<DateTimeInput>;
+  updatedAt?: Maybe<DateTimeInput>;
+  updatedAt_not?: Maybe<DateTimeInput>;
+  updatedAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  updatedAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  updatedAt_lt?: Maybe<DateTimeInput>;
+  updatedAt_lte?: Maybe<DateTimeInput>;
+  updatedAt_gt?: Maybe<DateTimeInput>;
+  updatedAt_gte?: Maybe<DateTimeInput>;
+  text?: Maybe<String>;
+  text_not?: Maybe<String>;
+  text_in?: Maybe<String[] | String>;
+  text_not_in?: Maybe<String[] | String>;
+  text_lt?: Maybe<String>;
+  text_lte?: Maybe<String>;
+  text_gt?: Maybe<String>;
+  text_gte?: Maybe<String>;
+  text_contains?: Maybe<String>;
+  text_not_contains?: Maybe<String>;
+  text_starts_with?: Maybe<String>;
+  text_not_starts_with?: Maybe<String>;
+  text_ends_with?: Maybe<String>;
+  text_not_ends_with?: Maybe<String>;
+  stars?: Maybe<Int>;
+  stars_not?: Maybe<Int>;
+  stars_in?: Maybe<Int[] | Int>;
+  stars_not_in?: Maybe<Int[] | Int>;
+  stars_lt?: Maybe<Int>;
+  stars_lte?: Maybe<Int>;
+  stars_gt?: Maybe<Int>;
+  stars_gte?: Maybe<Int>;
+  AND?: Maybe<ReviewScalarWhereInput[] | ReviewScalarWhereInput>;
+  OR?: Maybe<ReviewScalarWhereInput[] | ReviewScalarWhereInput>;
+  NOT?: Maybe<ReviewScalarWhereInput[] | ReviewScalarWhereInput>;
+}
+
+export type PaymentLanlordInfoWhereUniqueInput = AtLeastOne<{
+  id: Maybe<ID_Input>;
+}>;
+
+export interface ReviewUpdateManyWithWhereNestedInput {
+  where: ReviewScalarWhereInput;
+  data: ReviewUpdateManyDataInput;
+}
+
+export type PaypalInformationWhereUniqueInput = AtLeastOne<{
+  id: Maybe<ID_Input>;
+}>;
+
+export interface ReviewUpdateManyDataInput {
+  text?: Maybe<String>;
+  stars?: Maybe<Int>;
+}
+
+export interface PaymentLanlordInfoUpdateInput {
+  totalPrice?: Maybe<Float>;
+  client?: Maybe<UserUpdateOneRequiredWithoutPaidContactsInput>;
+  House?: Maybe<HouseUpdateOneRequiredWithoutContactInfoPaymentsInput>;
+  moncashTransactId?: Maybe<String>;
+}
+
+export interface UserUpsertWithoutBookingsInput {
+  update: UserUpdateWithoutBookingsDataInput;
+  create: UserCreateWithoutBookingsInput;
+}
+
+export interface PaymentHouseUpdateInput {
+  totalPrice?: Maybe<Float>;
+  booking?: Maybe<BookingUpdateOneRequiredWithoutPaymentInput>;
+  paymentMethod?: Maybe<PaymentAccountUpdateOneRequiredWithoutPaymentsInput>;
+}
+
+export interface PaymentHouseUpdateOneRequiredWithoutBookingInput {
+  create?: Maybe<PaymentHouseCreateWithoutBookingInput>;
+  update?: Maybe<PaymentHouseUpdateWithoutBookingDataInput>;
+  upsert?: Maybe<PaymentHouseUpsertWithoutBookingInput>;
+  connect?: Maybe<PaymentHouseWhereUniqueInput>;
+}
+
+export interface PaymentAccountUpdateInput {
+  type?: Maybe<PAYMENT_PROVIDER>;
+  user?: Maybe<UserUpdateOneRequiredInput>;
+  payments?: Maybe<PaymentHouseUpdateManyWithoutPaymentMethodInput>;
+  paypal?: Maybe<PaypalInformationUpdateOneWithoutPaymentAccountInput>;
+  creditcard?: Maybe<CreditCardInformationUpdateOneWithoutPaymentAccountInput>;
+}
+
+export interface PaymentHouseUpdateWithoutBookingDataInput {
+  totalPrice?: Maybe<Float>;
+  paymentMethod?: Maybe<PaymentAccountUpdateOneRequiredWithoutPaymentsInput>;
+}
+
+export interface UserUpsertWithoutNotificationsInput {
+  update: UserUpdateWithoutNotificationsDataInput;
+  create: UserCreateWithoutNotificationsInput;
+}
+
+export interface PaymentAccountUpdateOneRequiredWithoutPaymentsInput {
+  create?: Maybe<PaymentAccountCreateWithoutPaymentsInput>;
+  update?: Maybe<PaymentAccountUpdateWithoutPaymentsDataInput>;
+  upsert?: Maybe<PaymentAccountUpsertWithoutPaymentsInput>;
+  connect?: Maybe<PaymentAccountWhereUniqueInput>;
+}
+
+export interface NotificationUpdateInput {
+  type?: Maybe<NOTIFICATION_TYPE>;
+  user?: Maybe<UserUpdateOneRequiredWithoutNotificationsInput>;
+  link?: Maybe<String>;
+  readDate?: Maybe<DateTimeInput>;
+}
+
+export interface PaymentAccountUpdateWithoutPaymentsDataInput {
+  type?: Maybe<PAYMENT_PROVIDER>;
+  user?: Maybe<UserUpdateOneRequiredInput>;
+  paypal?: Maybe<PaypalInformationUpdateOneWithoutPaymentAccountInput>;
+  creditcard?: Maybe<CreditCardInformationUpdateOneWithoutPaymentAccountInput>;
+}
+
+export interface NotificationCreateInput {
+  id?: Maybe<ID_Input>;
+  type?: Maybe<NOTIFICATION_TYPE>;
+  user: UserCreateOneWithoutNotificationsInput;
+  link: String;
+  readDate: DateTimeInput;
+}
+
+export interface UserUpdateOneRequiredInput {
+  create?: Maybe<UserCreateInput>;
+  update?: Maybe<UserUpdateDataInput>;
+  upsert?: Maybe<UserUpsertNestedInput>;
+  connect?: Maybe<UserWhereUniqueInput>;
+}
+
+export interface NegotiationCreateInput {
+  id?: Maybe<ID_Input>;
+  negotiator: UserCreateOneInput;
+  House: HouseCreateOneInput;
+  offer: Float;
+  status?: Maybe<NEGOTIATION_TYPE>;
+}
+
+export interface UserUpsertNestedInput {
+  update: UserUpdateDataInput;
+  create: UserCreateInput;
+}
+
+export interface HouseUpsertNestedInput {
+  update: HouseUpdateDataInput;
+  create: HouseCreateInput;
+}
+
+export interface PaypalInformationUpdateOneWithoutPaymentAccountInput {
+  create?: Maybe<PaypalInformationCreateWithoutPaymentAccountInput>;
+  update?: Maybe<PaypalInformationUpdateWithoutPaymentAccountDataInput>;
+  upsert?: Maybe<PaypalInformationUpsertWithoutPaymentAccountInput>;
+  delete?: Maybe<Boolean>;
+  disconnect?: Maybe<Boolean>;
+  connect?: Maybe<PaypalInformationWhereUniqueInput>;
+}
+
+export interface HouseFavoritedUpdateInput {
+  user?: Maybe<UserUpdateOneRequiredInput>;
+  house?: Maybe<HouseUpdateOneRequiredInput>;
+}
+
+export interface PaypalInformationUpdateWithoutPaymentAccountDataInput {
+  email?: Maybe<String>;
+}
+
+export interface ReviewCreateManyWithoutHouseInput {
+  create?: Maybe<
+    ReviewCreateWithoutHouseInput[] | ReviewCreateWithoutHouseInput
+  >;
+  connect?: Maybe<ReviewWhereUniqueInput[] | ReviewWhereUniqueInput>;
+}
+
+export interface PaypalInformationUpsertWithoutPaymentAccountInput {
+  update: PaypalInformationUpdateWithoutPaymentAccountDataInput;
+  create: PaypalInformationCreateWithoutPaymentAccountInput;
+}
+
+export interface HouseCreateManyWithoutHostInput {
+  create?: Maybe<HouseCreateWithoutHostInput[] | HouseCreateWithoutHostInput>;
+  connect?: Maybe<HouseWhereUniqueInput[] | HouseWhereUniqueInput>;
+}
+
+export interface CreditCardInformationUpdateOneWithoutPaymentAccountInput {
+  create?: Maybe<CreditCardInformationCreateWithoutPaymentAccountInput>;
+  update?: Maybe<CreditCardInformationUpdateWithoutPaymentAccountDataInput>;
+  upsert?: Maybe<CreditCardInformationUpsertWithoutPaymentAccountInput>;
+  delete?: Maybe<Boolean>;
+  disconnect?: Maybe<Boolean>;
+  connect?: Maybe<CreditCardInformationWhereUniqueInput>;
+}
+
+export interface PricingCreateOneWithoutHouseInput {
+  create?: Maybe<PricingCreateWithoutHouseInput>;
+  connect?: Maybe<PricingWhereUniqueInput>;
+}
+
+export interface CreditCardInformationUpdateWithoutPaymentAccountDataInput {
+  cardNumber?: Maybe<String>;
+  expiresOnMonth?: Maybe<Int>;
+  expiresOnYear?: Maybe<Int>;
+  securityCode?: Maybe<String>;
+  firstName?: Maybe<String>;
+  lastName?: Maybe<String>;
+  postalCode?: Maybe<String>;
+  country?: Maybe<String>;
+}
+
+export interface CommuneCreateOneInput {
+  create?: Maybe<CommuneCreateInput>;
+  connect?: Maybe<CommuneWhereUniqueInput>;
+}
+
+export interface CreditCardInformationUpsertWithoutPaymentAccountInput {
+  update: CreditCardInformationUpdateWithoutPaymentAccountDataInput;
+  create: CreditCardInformationCreateWithoutPaymentAccountInput;
+}
+
+export interface StateCreateOneInput {
+  create?: Maybe<StateCreateInput>;
+  connect?: Maybe<StateWhereUniqueInput>;
+}
+
+export interface PaymentAccountUpsertWithoutPaymentsInput {
+  update: PaymentAccountUpdateWithoutPaymentsDataInput;
+  create: PaymentAccountCreateWithoutPaymentsInput;
+}
+
+export interface RoomCreateManyWithoutHouseInput {
+  create?: Maybe<RoomCreateWithoutHouseInput[] | RoomCreateWithoutHouseInput>;
+  connect?: Maybe<RoomWhereUniqueInput[] | RoomWhereUniqueInput>;
+}
+
+export interface PaymentHouseUpsertWithoutBookingInput {
+  update: PaymentHouseUpdateWithoutBookingDataInput;
+  create: PaymentHouseCreateWithoutBookingInput;
+}
+
+export interface VideoCreateManyInput {
+  create?: Maybe<VideoCreateInput[] | VideoCreateInput>;
+  connect?: Maybe<VideoWhereUniqueInput[] | VideoWhereUniqueInput>;
+}
+
+export interface BookingUpsertWithWhereUniqueWithoutHouseInput {
+  where: BookingWhereUniqueInput;
+  update: BookingUpdateWithoutHouseDataInput;
+  create: BookingCreateWithoutHouseInput;
+}
+
+export interface UserCreateManyInput {
+  create?: Maybe<UserCreateInput[] | UserCreateInput>;
+  connect?: Maybe<UserWhereUniqueInput[] | UserWhereUniqueInput>;
+}
+
+export interface BookingScalarWhereInput {
+  id?: Maybe<ID_Input>;
+  id_not?: Maybe<ID_Input>;
+  id_in?: Maybe<ID_Input[] | ID_Input>;
+  id_not_in?: Maybe<ID_Input[] | ID_Input>;
+  id_lt?: Maybe<ID_Input>;
+  id_lte?: Maybe<ID_Input>;
+  id_gt?: Maybe<ID_Input>;
+  id_gte?: Maybe<ID_Input>;
+  id_contains?: Maybe<ID_Input>;
+  id_not_contains?: Maybe<ID_Input>;
+  id_starts_with?: Maybe<ID_Input>;
+  id_not_starts_with?: Maybe<ID_Input>;
+  id_ends_with?: Maybe<ID_Input>;
+  id_not_ends_with?: Maybe<ID_Input>;
+  createdAt?: Maybe<DateTimeInput>;
+  createdAt_not?: Maybe<DateTimeInput>;
+  createdAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  createdAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  createdAt_lt?: Maybe<DateTimeInput>;
+  createdAt_lte?: Maybe<DateTimeInput>;
+  createdAt_gt?: Maybe<DateTimeInput>;
+  createdAt_gte?: Maybe<DateTimeInput>;
+  updatedAt?: Maybe<DateTimeInput>;
+  updatedAt_not?: Maybe<DateTimeInput>;
+  updatedAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  updatedAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  updatedAt_lt?: Maybe<DateTimeInput>;
+  updatedAt_lte?: Maybe<DateTimeInput>;
+  updatedAt_gt?: Maybe<DateTimeInput>;
+  updatedAt_gte?: Maybe<DateTimeInput>;
+  startDate?: Maybe<DateTimeInput>;
+  startDate_not?: Maybe<DateTimeInput>;
+  startDate_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  startDate_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  startDate_lt?: Maybe<DateTimeInput>;
+  startDate_lte?: Maybe<DateTimeInput>;
+  startDate_gt?: Maybe<DateTimeInput>;
+  startDate_gte?: Maybe<DateTimeInput>;
+  endDate?: Maybe<DateTimeInput>;
+  endDate_not?: Maybe<DateTimeInput>;
+  endDate_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  endDate_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  endDate_lt?: Maybe<DateTimeInput>;
+  endDate_lte?: Maybe<DateTimeInput>;
+  endDate_gt?: Maybe<DateTimeInput>;
+  endDate_gte?: Maybe<DateTimeInput>;
+  AND?: Maybe<BookingScalarWhereInput[] | BookingScalarWhereInput>;
+  OR?: Maybe<BookingScalarWhereInput[] | BookingScalarWhereInput>;
+  NOT?: Maybe<BookingScalarWhereInput[] | BookingScalarWhereInput>;
+}
+
+export interface HouseCreateOneWithoutBookingsInput {
+  create?: Maybe<HouseCreateWithoutBookingsInput>;
+  connect?: Maybe<HouseWhereUniqueInput>;
+}
+
+export interface BookingUpdateManyWithWhereNestedInput {
+  where: BookingScalarWhereInput;
+  data: BookingUpdateManyDataInput;
+}
+
+export interface PaymentLanlordInfoCreateManyWithoutClientInput {
+  create?: Maybe<
+    | PaymentLanlordInfoCreateWithoutClientInput[]
+    | PaymentLanlordInfoCreateWithoutClientInput
+  >;
+  connect?: Maybe<
+    PaymentLanlordInfoWhereUniqueInput[] | PaymentLanlordInfoWhereUniqueInput
+  >;
+}
+
+export interface BookingUpdateManyDataInput {
+  startDate?: Maybe<DateTimeInput>;
+  endDate?: Maybe<DateTimeInput>;
+}
+
+export interface BookingCreateManyWithoutHouseInput {
+  create?: Maybe<
+    BookingCreateWithoutHouseInput[] | BookingCreateWithoutHouseInput
+  >;
+  connect?: Maybe<BookingWhereUniqueInput[] | BookingWhereUniqueInput>;
+}
+
+export interface HouseUpsertWithoutContactInfoPaymentsInput {
+  update: HouseUpdateWithoutContactInfoPaymentsDataInput;
+  create: HouseCreateWithoutContactInfoPaymentsInput;
+}
+
+export interface NotificationCreateManyWithoutUserInput {
+  create?: Maybe<
+    NotificationCreateWithoutUserInput[] | NotificationCreateWithoutUserInput
+  >;
+  connect?: Maybe<
+    NotificationWhereUniqueInput[] | NotificationWhereUniqueInput
+  >;
+}
+
+export interface PaymentLanlordInfoUpsertWithWhereUniqueWithoutClientInput {
+  where: PaymentLanlordInfoWhereUniqueInput;
+  update: PaymentLanlordInfoUpdateWithoutClientDataInput;
+  create: PaymentLanlordInfoCreateWithoutClientInput;
+}
+
+export interface ReviewCreateWithoutUserInput {
+  id?: Maybe<ID_Input>;
+  text?: Maybe<String>;
+  stars: Int;
+  House: HouseCreateOneWithoutReviewsInput;
+}
+
+export interface UserUpsertWithoutOwnedHousesInput {
+  update: UserUpdateWithoutOwnedHousesDataInput;
+  create: UserCreateWithoutOwnedHousesInput;
+}
+
+export interface ReviewSubscriptionWhereInput {
+  mutation_in?: Maybe<MutationType[] | MutationType>;
+  updatedFields_contains?: Maybe<String>;
+  updatedFields_contains_every?: Maybe<String[] | String>;
+  updatedFields_contains_some?: Maybe<String[] | String>;
+  node?: Maybe<ReviewWhereInput>;
+  AND?: Maybe<ReviewSubscriptionWhereInput[] | ReviewSubscriptionWhereInput>;
+  OR?: Maybe<ReviewSubscriptionWhereInput[] | ReviewSubscriptionWhereInput>;
+  NOT?: Maybe<ReviewSubscriptionWhereInput[] | ReviewSubscriptionWhereInput>;
+}
+
+export interface HouseUpsertWithoutBookingsInput {
+  update: HouseUpdateWithoutBookingsDataInput;
+  create: HouseCreateWithoutBookingsInput;
+}
+
+export interface CreditCardInformationWhereInput {
+  id?: Maybe<ID_Input>;
+  id_not?: Maybe<ID_Input>;
+  id_in?: Maybe<ID_Input[] | ID_Input>;
+  id_not_in?: Maybe<ID_Input[] | ID_Input>;
+  id_lt?: Maybe<ID_Input>;
+  id_lte?: Maybe<ID_Input>;
+  id_gt?: Maybe<ID_Input>;
+  id_gte?: Maybe<ID_Input>;
+  id_contains?: Maybe<ID_Input>;
+  id_not_contains?: Maybe<ID_Input>;
+  id_starts_with?: Maybe<ID_Input>;
+  id_not_starts_with?: Maybe<ID_Input>;
+  id_ends_with?: Maybe<ID_Input>;
+  id_not_ends_with?: Maybe<ID_Input>;
+  createdAt?: Maybe<DateTimeInput>;
+  createdAt_not?: Maybe<DateTimeInput>;
+  createdAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  createdAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  createdAt_lt?: Maybe<DateTimeInput>;
+  createdAt_lte?: Maybe<DateTimeInput>;
+  createdAt_gt?: Maybe<DateTimeInput>;
+  createdAt_gte?: Maybe<DateTimeInput>;
+  updatedAt?: Maybe<DateTimeInput>;
+  updatedAt_not?: Maybe<DateTimeInput>;
+  updatedAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  updatedAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  updatedAt_lt?: Maybe<DateTimeInput>;
+  updatedAt_lte?: Maybe<DateTimeInput>;
+  updatedAt_gt?: Maybe<DateTimeInput>;
+  updatedAt_gte?: Maybe<DateTimeInput>;
+  cardNumber?: Maybe<String>;
+  cardNumber_not?: Maybe<String>;
+  cardNumber_in?: Maybe<String[] | String>;
+  cardNumber_not_in?: Maybe<String[] | String>;
+  cardNumber_lt?: Maybe<String>;
+  cardNumber_lte?: Maybe<String>;
+  cardNumber_gt?: Maybe<String>;
+  cardNumber_gte?: Maybe<String>;
+  cardNumber_contains?: Maybe<String>;
+  cardNumber_not_contains?: Maybe<String>;
+  cardNumber_starts_with?: Maybe<String>;
+  cardNumber_not_starts_with?: Maybe<String>;
+  cardNumber_ends_with?: Maybe<String>;
+  cardNumber_not_ends_with?: Maybe<String>;
+  expiresOnMonth?: Maybe<Int>;
+  expiresOnMonth_not?: Maybe<Int>;
+  expiresOnMonth_in?: Maybe<Int[] | Int>;
+  expiresOnMonth_not_in?: Maybe<Int[] | Int>;
+  expiresOnMonth_lt?: Maybe<Int>;
+  expiresOnMonth_lte?: Maybe<Int>;
+  expiresOnMonth_gt?: Maybe<Int>;
+  expiresOnMonth_gte?: Maybe<Int>;
+  expiresOnYear?: Maybe<Int>;
+  expiresOnYear_not?: Maybe<Int>;
+  expiresOnYear_in?: Maybe<Int[] | Int>;
+  expiresOnYear_not_in?: Maybe<Int[] | Int>;
+  expiresOnYear_lt?: Maybe<Int>;
+  expiresOnYear_lte?: Maybe<Int>;
+  expiresOnYear_gt?: Maybe<Int>;
+  expiresOnYear_gte?: Maybe<Int>;
+  securityCode?: Maybe<String>;
+  securityCode_not?: Maybe<String>;
+  securityCode_in?: Maybe<String[] | String>;
+  securityCode_not_in?: Maybe<String[] | String>;
+  securityCode_lt?: Maybe<String>;
+  securityCode_lte?: Maybe<String>;
+  securityCode_gt?: Maybe<String>;
+  securityCode_gte?: Maybe<String>;
+  securityCode_contains?: Maybe<String>;
+  securityCode_not_contains?: Maybe<String>;
+  securityCode_starts_with?: Maybe<String>;
+  securityCode_not_starts_with?: Maybe<String>;
+  securityCode_ends_with?: Maybe<String>;
+  securityCode_not_ends_with?: Maybe<String>;
+  firstName?: Maybe<String>;
+  firstName_not?: Maybe<String>;
+  firstName_in?: Maybe<String[] | String>;
+  firstName_not_in?: Maybe<String[] | String>;
+  firstName_lt?: Maybe<String>;
+  firstName_lte?: Maybe<String>;
+  firstName_gt?: Maybe<String>;
+  firstName_gte?: Maybe<String>;
+  firstName_contains?: Maybe<String>;
+  firstName_not_contains?: Maybe<String>;
+  firstName_starts_with?: Maybe<String>;
+  firstName_not_starts_with?: Maybe<String>;
+  firstName_ends_with?: Maybe<String>;
+  firstName_not_ends_with?: Maybe<String>;
+  lastName?: Maybe<String>;
+  lastName_not?: Maybe<String>;
+  lastName_in?: Maybe<String[] | String>;
+  lastName_not_in?: Maybe<String[] | String>;
+  lastName_lt?: Maybe<String>;
+  lastName_lte?: Maybe<String>;
+  lastName_gt?: Maybe<String>;
+  lastName_gte?: Maybe<String>;
+  lastName_contains?: Maybe<String>;
+  lastName_not_contains?: Maybe<String>;
+  lastName_starts_with?: Maybe<String>;
+  lastName_not_starts_with?: Maybe<String>;
+  lastName_ends_with?: Maybe<String>;
+  lastName_not_ends_with?: Maybe<String>;
+  postalCode?: Maybe<String>;
+  postalCode_not?: Maybe<String>;
+  postalCode_in?: Maybe<String[] | String>;
+  postalCode_not_in?: Maybe<String[] | String>;
+  postalCode_lt?: Maybe<String>;
+  postalCode_lte?: Maybe<String>;
+  postalCode_gt?: Maybe<String>;
+  postalCode_gte?: Maybe<String>;
+  postalCode_contains?: Maybe<String>;
+  postalCode_not_contains?: Maybe<String>;
+  postalCode_starts_with?: Maybe<String>;
+  postalCode_not_starts_with?: Maybe<String>;
+  postalCode_ends_with?: Maybe<String>;
+  postalCode_not_ends_with?: Maybe<String>;
+  country?: Maybe<String>;
+  country_not?: Maybe<String>;
+  country_in?: Maybe<String[] | String>;
+  country_not_in?: Maybe<String[] | String>;
+  country_lt?: Maybe<String>;
+  country_lte?: Maybe<String>;
+  country_gt?: Maybe<String>;
+  country_gte?: Maybe<String>;
+  country_contains?: Maybe<String>;
+  country_not_contains?: Maybe<String>;
+  country_starts_with?: Maybe<String>;
+  country_not_starts_with?: Maybe<String>;
+  country_ends_with?: Maybe<String>;
+  country_not_ends_with?: Maybe<String>;
+  paymentAccount?: Maybe<PaymentAccountWhereInput>;
+  AND?: Maybe<
+    CreditCardInformationWhereInput[] | CreditCardInformationWhereInput
+  >;
+  OR?: Maybe<
+    CreditCardInformationWhereInput[] | CreditCardInformationWhereInput
+  >;
+  NOT?: Maybe<
+    CreditCardInformationWhereInput[] | CreditCardInformationWhereInput
+  >;
+}
+
+export interface BookingUpsertWithWhereUniqueWithoutBookeeInput {
+  where: BookingWhereUniqueInput;
+  update: BookingUpdateWithoutBookeeDataInput;
+  create: BookingCreateWithoutBookeeInput;
+}
+
+export interface BookingWhereInput {
+  id?: Maybe<ID_Input>;
+  id_not?: Maybe<ID_Input>;
+  id_in?: Maybe<ID_Input[] | ID_Input>;
+  id_not_in?: Maybe<ID_Input[] | ID_Input>;
+  id_lt?: Maybe<ID_Input>;
+  id_lte?: Maybe<ID_Input>;
+  id_gt?: Maybe<ID_Input>;
+  id_gte?: Maybe<ID_Input>;
+  id_contains?: Maybe<ID_Input>;
+  id_not_contains?: Maybe<ID_Input>;
+  id_starts_with?: Maybe<ID_Input>;
+  id_not_starts_with?: Maybe<ID_Input>;
+  id_ends_with?: Maybe<ID_Input>;
+  id_not_ends_with?: Maybe<ID_Input>;
+  createdAt?: Maybe<DateTimeInput>;
+  createdAt_not?: Maybe<DateTimeInput>;
+  createdAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  createdAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  createdAt_lt?: Maybe<DateTimeInput>;
+  createdAt_lte?: Maybe<DateTimeInput>;
+  createdAt_gt?: Maybe<DateTimeInput>;
+  createdAt_gte?: Maybe<DateTimeInput>;
+  updatedAt?: Maybe<DateTimeInput>;
+  updatedAt_not?: Maybe<DateTimeInput>;
+  updatedAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  updatedAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  updatedAt_lt?: Maybe<DateTimeInput>;
+  updatedAt_lte?: Maybe<DateTimeInput>;
+  updatedAt_gt?: Maybe<DateTimeInput>;
+  updatedAt_gte?: Maybe<DateTimeInput>;
+  bookee?: Maybe<UserWhereInput>;
+  House?: Maybe<HouseWhereInput>;
+  startDate?: Maybe<DateTimeInput>;
+  startDate_not?: Maybe<DateTimeInput>;
+  startDate_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  startDate_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  startDate_lt?: Maybe<DateTimeInput>;
+  startDate_lte?: Maybe<DateTimeInput>;
+  startDate_gt?: Maybe<DateTimeInput>;
+  startDate_gte?: Maybe<DateTimeInput>;
+  endDate?: Maybe<DateTimeInput>;
+  endDate_not?: Maybe<DateTimeInput>;
+  endDate_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  endDate_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  endDate_lt?: Maybe<DateTimeInput>;
+  endDate_lte?: Maybe<DateTimeInput>;
+  endDate_gt?: Maybe<DateTimeInput>;
+  endDate_gte?: Maybe<DateTimeInput>;
+  payment?: Maybe<PaymentHouseWhereInput>;
+  AND?: Maybe<BookingWhereInput[] | BookingWhereInput>;
+  OR?: Maybe<BookingWhereInput[] | BookingWhereInput>;
+  NOT?: Maybe<BookingWhereInput[] | BookingWhereInput>;
+}
+
+export interface UserUpsertWithWhereUniqueNestedInput {
+  where: UserWhereUniqueInput;
+  update: UserUpdateDataInput;
+  create: UserCreateInput;
+}
+
+export interface CitySubscriptionWhereInput {
+  mutation_in?: Maybe<MutationType[] | MutationType>;
+  updatedFields_contains?: Maybe<String>;
+  updatedFields_contains_every?: Maybe<String[] | String>;
+  updatedFields_contains_some?: Maybe<String[] | String>;
+  node?: Maybe<CityWhereInput>;
+  AND?: Maybe<CitySubscriptionWhereInput[] | CitySubscriptionWhereInput>;
+  OR?: Maybe<CitySubscriptionWhereInput[] | CitySubscriptionWhereInput>;
+  NOT?: Maybe<CitySubscriptionWhereInput[] | CitySubscriptionWhereInput>;
+}
+
+export interface UserScalarWhereInput {
+  id?: Maybe<ID_Input>;
+  id_not?: Maybe<ID_Input>;
+  id_in?: Maybe<ID_Input[] | ID_Input>;
+  id_not_in?: Maybe<ID_Input[] | ID_Input>;
+  id_lt?: Maybe<ID_Input>;
+  id_lte?: Maybe<ID_Input>;
+  id_gt?: Maybe<ID_Input>;
+  id_gte?: Maybe<ID_Input>;
+  id_contains?: Maybe<ID_Input>;
+  id_not_contains?: Maybe<ID_Input>;
+  id_starts_with?: Maybe<ID_Input>;
+  id_not_starts_with?: Maybe<ID_Input>;
+  id_ends_with?: Maybe<ID_Input>;
+  id_not_ends_with?: Maybe<ID_Input>;
+  createdAt?: Maybe<DateTimeInput>;
+  createdAt_not?: Maybe<DateTimeInput>;
+  createdAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  createdAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  createdAt_lt?: Maybe<DateTimeInput>;
+  createdAt_lte?: Maybe<DateTimeInput>;
+  createdAt_gt?: Maybe<DateTimeInput>;
+  createdAt_gte?: Maybe<DateTimeInput>;
+  updatedAt?: Maybe<DateTimeInput>;
+  updatedAt_not?: Maybe<DateTimeInput>;
+  updatedAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  updatedAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  updatedAt_lt?: Maybe<DateTimeInput>;
+  updatedAt_lte?: Maybe<DateTimeInput>;
+  updatedAt_gt?: Maybe<DateTimeInput>;
+  updatedAt_gte?: Maybe<DateTimeInput>;
+  status?: Maybe<Boolean>;
+  status_not?: Maybe<Boolean>;
+  facebookUserId?: Maybe<String>;
+  facebookUserId_not?: Maybe<String>;
+  facebookUserId_in?: Maybe<String[] | String>;
+  facebookUserId_not_in?: Maybe<String[] | String>;
+  facebookUserId_lt?: Maybe<String>;
+  facebookUserId_lte?: Maybe<String>;
+  facebookUserId_gt?: Maybe<String>;
+  facebookUserId_gte?: Maybe<String>;
+  facebookUserId_contains?: Maybe<String>;
+  facebookUserId_not_contains?: Maybe<String>;
+  facebookUserId_starts_with?: Maybe<String>;
+  facebookUserId_not_starts_with?: Maybe<String>;
+  facebookUserId_ends_with?: Maybe<String>;
+  facebookUserId_not_ends_with?: Maybe<String>;
+  firstName?: Maybe<String>;
+  firstName_not?: Maybe<String>;
+  firstName_in?: Maybe<String[] | String>;
+  firstName_not_in?: Maybe<String[] | String>;
+  firstName_lt?: Maybe<String>;
+  firstName_lte?: Maybe<String>;
+  firstName_gt?: Maybe<String>;
+  firstName_gte?: Maybe<String>;
+  firstName_contains?: Maybe<String>;
+  firstName_not_contains?: Maybe<String>;
+  firstName_starts_with?: Maybe<String>;
+  firstName_not_starts_with?: Maybe<String>;
+  firstName_ends_with?: Maybe<String>;
+  firstName_not_ends_with?: Maybe<String>;
+  lastName?: Maybe<String>;
+  lastName_not?: Maybe<String>;
+  lastName_in?: Maybe<String[] | String>;
+  lastName_not_in?: Maybe<String[] | String>;
+  lastName_lt?: Maybe<String>;
+  lastName_lte?: Maybe<String>;
+  lastName_gt?: Maybe<String>;
+  lastName_gte?: Maybe<String>;
+  lastName_contains?: Maybe<String>;
+  lastName_not_contains?: Maybe<String>;
+  lastName_starts_with?: Maybe<String>;
+  lastName_not_starts_with?: Maybe<String>;
+  lastName_ends_with?: Maybe<String>;
+  lastName_not_ends_with?: Maybe<String>;
+  email?: Maybe<String>;
+  email_not?: Maybe<String>;
+  email_in?: Maybe<String[] | String>;
+  email_not_in?: Maybe<String[] | String>;
+  email_lt?: Maybe<String>;
+  email_lte?: Maybe<String>;
+  email_gt?: Maybe<String>;
+  email_gte?: Maybe<String>;
+  email_contains?: Maybe<String>;
+  email_not_contains?: Maybe<String>;
+  email_starts_with?: Maybe<String>;
+  email_not_starts_with?: Maybe<String>;
+  email_ends_with?: Maybe<String>;
+  email_not_ends_with?: Maybe<String>;
+  password?: Maybe<String>;
+  password_not?: Maybe<String>;
+  password_in?: Maybe<String[] | String>;
+  password_not_in?: Maybe<String[] | String>;
+  password_lt?: Maybe<String>;
+  password_lte?: Maybe<String>;
+  password_gt?: Maybe<String>;
+  password_gte?: Maybe<String>;
+  password_contains?: Maybe<String>;
+  password_not_contains?: Maybe<String>;
+  password_starts_with?: Maybe<String>;
+  password_not_starts_with?: Maybe<String>;
+  password_ends_with?: Maybe<String>;
+  password_not_ends_with?: Maybe<String>;
+  resetToken?: Maybe<String>;
+  resetToken_not?: Maybe<String>;
+  resetToken_in?: Maybe<String[] | String>;
+  resetToken_not_in?: Maybe<String[] | String>;
+  resetToken_lt?: Maybe<String>;
+  resetToken_lte?: Maybe<String>;
+  resetToken_gt?: Maybe<String>;
+  resetToken_gte?: Maybe<String>;
+  resetToken_contains?: Maybe<String>;
+  resetToken_not_contains?: Maybe<String>;
+  resetToken_starts_with?: Maybe<String>;
+  resetToken_not_starts_with?: Maybe<String>;
+  resetToken_ends_with?: Maybe<String>;
+  resetToken_not_ends_with?: Maybe<String>;
+  resetTokenExpiry?: Maybe<String>;
+  resetTokenExpiry_not?: Maybe<String>;
+  resetTokenExpiry_in?: Maybe<String[] | String>;
+  resetTokenExpiry_not_in?: Maybe<String[] | String>;
+  resetTokenExpiry_lt?: Maybe<String>;
+  resetTokenExpiry_lte?: Maybe<String>;
+  resetTokenExpiry_gt?: Maybe<String>;
+  resetTokenExpiry_gte?: Maybe<String>;
+  resetTokenExpiry_contains?: Maybe<String>;
+  resetTokenExpiry_not_contains?: Maybe<String>;
+  resetTokenExpiry_starts_with?: Maybe<String>;
+  resetTokenExpiry_not_starts_with?: Maybe<String>;
+  resetTokenExpiry_ends_with?: Maybe<String>;
+  resetTokenExpiry_not_ends_with?: Maybe<String>;
+  phone1?: Maybe<String>;
+  phone1_not?: Maybe<String>;
+  phone1_in?: Maybe<String[] | String>;
+  phone1_not_in?: Maybe<String[] | String>;
+  phone1_lt?: Maybe<String>;
+  phone1_lte?: Maybe<String>;
+  phone1_gt?: Maybe<String>;
+  phone1_gte?: Maybe<String>;
+  phone1_contains?: Maybe<String>;
+  phone1_not_contains?: Maybe<String>;
+  phone1_starts_with?: Maybe<String>;
+  phone1_not_starts_with?: Maybe<String>;
+  phone1_ends_with?: Maybe<String>;
+  phone1_not_ends_with?: Maybe<String>;
+  phone2?: Maybe<String>;
+  phone2_not?: Maybe<String>;
+  phone2_in?: Maybe<String[] | String>;
+  phone2_not_in?: Maybe<String[] | String>;
+  phone2_lt?: Maybe<String>;
+  phone2_lte?: Maybe<String>;
+  phone2_gt?: Maybe<String>;
+  phone2_gte?: Maybe<String>;
+  phone2_contains?: Maybe<String>;
+  phone2_not_contains?: Maybe<String>;
+  phone2_starts_with?: Maybe<String>;
+  phone2_not_starts_with?: Maybe<String>;
+  phone2_ends_with?: Maybe<String>;
+  phone2_not_ends_with?: Maybe<String>;
+  primaryPhone?: Maybe<Int>;
+  primaryPhone_not?: Maybe<Int>;
+  primaryPhone_in?: Maybe<Int[] | Int>;
+  primaryPhone_not_in?: Maybe<Int[] | Int>;
+  primaryPhone_lt?: Maybe<Int>;
+  primaryPhone_lte?: Maybe<Int>;
+  primaryPhone_gt?: Maybe<Int>;
+  primaryPhone_gte?: Maybe<Int>;
+  responseTime?: Maybe<Int>;
+  responseTime_not?: Maybe<Int>;
+  responseTime_in?: Maybe<Int[] | Int>;
+  responseTime_not_in?: Maybe<Int[] | Int>;
+  responseTime_lt?: Maybe<Int>;
+  responseTime_lte?: Maybe<Int>;
+  responseTime_gt?: Maybe<Int>;
+  responseTime_gte?: Maybe<Int>;
+  isSuperHost?: Maybe<Boolean>;
+  isSuperHost_not?: Maybe<Boolean>;
+  AND?: Maybe<UserScalarWhereInput[] | UserScalarWhereInput>;
+  OR?: Maybe<UserScalarWhereInput[] | UserScalarWhereInput>;
+  NOT?: Maybe<UserScalarWhereInput[] | UserScalarWhereInput>;
+}
+
+export interface HouseUpdateWithoutViewsDataInput {
+  area?: Maybe<Int>;
+  age?: Maybe<Int>;
+  shortDescription?: Maybe<String>;
+  description?: Maybe<String>;
+  maxGuests?: Maybe<Int>;
+  numBedrooms?: Maybe<Int>;
+  numBaths?: Maybe<Int>;
+  numLivingrooms?: Maybe<Int>;
+  numDiningrooms?: Maybe<Int>;
+  reviews?: Maybe<ReviewUpdateManyWithoutHouseInput>;
+  amenities?: Maybe<AmenitiesUpdateOneWithoutHouseInput>;
+  host?: Maybe<UserUpdateOneRequiredWithoutOwnedHousesInput>;
+  pricing?: Maybe<PricingUpdateOneWithoutHouseInput>;
+  location?: Maybe<LocationUpdateOneRequiredInput>;
+  leaseType?: Maybe<HOUSE_LEASE_TYPE>;
+  verified?: Maybe<Boolean>;
+  type?: Maybe<HOUSE_TYPES>;
+  residency?: Maybe<House_RESIDENCY>;
+  lease?: Maybe<Int>;
+  rooms?: Maybe<RoomUpdateManyWithoutHouseInput>;
+  bookings?: Maybe<BookingUpdateManyWithoutHouseInput>;
+  pictures?: Maybe<PictureUpdateManyInput>;
+  contactInfoPayments?: Maybe<PaymentLanlordInfoUpdateManyWithoutHouseInput>;
+  popularity?: Maybe<Int>;
+  preview_image?: Maybe<PictureUpdateOneInput>;
+  lastRating?: Maybe<Int>;
+  rentOrSell?: Maybe<RENT_OR_SELL>;
+}
+
+export interface UserUpdateManyWithWhereNestedInput {
+  where: UserScalarWhereInput;
+  data: UserUpdateManyDataInput;
+}
+
+export interface ViewsCreateInput {
+  id?: Maybe<ID_Input>;
+  lastWeek: Int;
+  House: HouseCreateOneWithoutViewsInput;
+  User?: Maybe<UserCreateManyInput>;
+}
+
+export interface UserUpdateManyDataInput {
+  status?: Maybe<Boolean>;
+  facebookUserId?: Maybe<String>;
+  firstName?: Maybe<String>;
+  lastName?: Maybe<String>;
+  email?: Maybe<String>;
+  password?: Maybe<String>;
+  resetToken?: Maybe<String>;
+  resetTokenExpiry?: Maybe<String>;
+  phone1?: Maybe<String>;
+  phone2?: Maybe<String>;
+  primaryPhone?: Maybe<Int>;
+  responseTime?: Maybe<Int>;
+  isSuperHost?: Maybe<Boolean>;
+  permissions?: Maybe<UserUpdatepermissionsInput>;
+}
+
+export interface StateUpdateInput {
+  name?: Maybe<String>;
+  rank?: Maybe<Int>;
+  country?: Maybe<CountryUpdateOneRequiredInput>;
+}
+
+export interface ViewsUpsertWithoutHouseInput {
+  update: ViewsUpdateWithoutHouseDataInput;
+  create: ViewsCreateWithoutHouseInput;
 }
 
 export interface UserWhereInput {
@@ -2014,3720 +6430,18 @@ export interface UserWhereInput {
   NOT?: Maybe<UserWhereInput[] | UserWhereInput>;
 }
 
-export interface LocationWhereInput {
-  id?: Maybe<ID_Input>;
-  id_not?: Maybe<ID_Input>;
-  id_in?: Maybe<ID_Input[] | ID_Input>;
-  id_not_in?: Maybe<ID_Input[] | ID_Input>;
-  id_lt?: Maybe<ID_Input>;
-  id_lte?: Maybe<ID_Input>;
-  id_gt?: Maybe<ID_Input>;
-  id_gte?: Maybe<ID_Input>;
-  id_contains?: Maybe<ID_Input>;
-  id_not_contains?: Maybe<ID_Input>;
-  id_starts_with?: Maybe<ID_Input>;
-  id_not_starts_with?: Maybe<ID_Input>;
-  id_ends_with?: Maybe<ID_Input>;
-  id_not_ends_with?: Maybe<ID_Input>;
-  lat?: Maybe<Float>;
-  lat_not?: Maybe<Float>;
-  lat_in?: Maybe<Float[] | Float>;
-  lat_not_in?: Maybe<Float[] | Float>;
-  lat_lt?: Maybe<Float>;
-  lat_lte?: Maybe<Float>;
-  lat_gt?: Maybe<Float>;
-  lat_gte?: Maybe<Float>;
-  lng?: Maybe<Float>;
-  lng_not?: Maybe<Float>;
-  lng_in?: Maybe<Float[] | Float>;
-  lng_not_in?: Maybe<Float[] | Float>;
-  lng_lt?: Maybe<Float>;
-  lng_lte?: Maybe<Float>;
-  lng_gt?: Maybe<Float>;
-  lng_gte?: Maybe<Float>;
-  address?: Maybe<String>;
-  address_not?: Maybe<String>;
-  address_in?: Maybe<String[] | String>;
-  address_not_in?: Maybe<String[] | String>;
-  address_lt?: Maybe<String>;
-  address_lte?: Maybe<String>;
-  address_gt?: Maybe<String>;
-  address_gte?: Maybe<String>;
-  address_contains?: Maybe<String>;
-  address_not_contains?: Maybe<String>;
-  address_starts_with?: Maybe<String>;
-  address_not_starts_with?: Maybe<String>;
-  address_ends_with?: Maybe<String>;
-  address_not_ends_with?: Maybe<String>;
-  commune?: Maybe<CommuneWhereInput>;
-  createdAt?: Maybe<DateTimeInput>;
-  createdAt_not?: Maybe<DateTimeInput>;
-  createdAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
-  createdAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
-  createdAt_lt?: Maybe<DateTimeInput>;
-  createdAt_lte?: Maybe<DateTimeInput>;
-  createdAt_gt?: Maybe<DateTimeInput>;
-  createdAt_gte?: Maybe<DateTimeInput>;
-  updatedAt?: Maybe<DateTimeInput>;
-  updatedAt_not?: Maybe<DateTimeInput>;
-  updatedAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
-  updatedAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
-  updatedAt_lt?: Maybe<DateTimeInput>;
-  updatedAt_lte?: Maybe<DateTimeInput>;
-  updatedAt_gt?: Maybe<DateTimeInput>;
-  updatedAt_gte?: Maybe<DateTimeInput>;
-  AND?: Maybe<LocationWhereInput[] | LocationWhereInput>;
-  OR?: Maybe<LocationWhereInput[] | LocationWhereInput>;
-  NOT?: Maybe<LocationWhereInput[] | LocationWhereInput>;
-}
-
-export interface CommuneWhereInput {
-  id?: Maybe<ID_Input>;
-  id_not?: Maybe<ID_Input>;
-  id_in?: Maybe<ID_Input[] | ID_Input>;
-  id_not_in?: Maybe<ID_Input[] | ID_Input>;
-  id_lt?: Maybe<ID_Input>;
-  id_lte?: Maybe<ID_Input>;
-  id_gt?: Maybe<ID_Input>;
-  id_gte?: Maybe<ID_Input>;
-  id_contains?: Maybe<ID_Input>;
-  id_not_contains?: Maybe<ID_Input>;
-  id_starts_with?: Maybe<ID_Input>;
-  id_not_starts_with?: Maybe<ID_Input>;
-  id_ends_with?: Maybe<ID_Input>;
-  id_not_ends_with?: Maybe<ID_Input>;
-  name?: Maybe<String>;
-  name_not?: Maybe<String>;
-  name_in?: Maybe<String[] | String>;
-  name_not_in?: Maybe<String[] | String>;
-  name_lt?: Maybe<String>;
-  name_lte?: Maybe<String>;
-  name_gt?: Maybe<String>;
-  name_gte?: Maybe<String>;
-  name_contains?: Maybe<String>;
-  name_not_contains?: Maybe<String>;
-  name_starts_with?: Maybe<String>;
-  name_not_starts_with?: Maybe<String>;
-  name_ends_with?: Maybe<String>;
-  name_not_ends_with?: Maybe<String>;
-  rank?: Maybe<Int>;
-  rank_not?: Maybe<Int>;
-  rank_in?: Maybe<Int[] | Int>;
-  rank_not_in?: Maybe<Int[] | Int>;
-  rank_lt?: Maybe<Int>;
-  rank_lte?: Maybe<Int>;
-  rank_gt?: Maybe<Int>;
-  rank_gte?: Maybe<Int>;
-  city?: Maybe<CityWhereInput>;
-  createdAt?: Maybe<DateTimeInput>;
-  createdAt_not?: Maybe<DateTimeInput>;
-  createdAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
-  createdAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
-  createdAt_lt?: Maybe<DateTimeInput>;
-  createdAt_lte?: Maybe<DateTimeInput>;
-  createdAt_gt?: Maybe<DateTimeInput>;
-  createdAt_gte?: Maybe<DateTimeInput>;
-  updatedAt?: Maybe<DateTimeInput>;
-  updatedAt_not?: Maybe<DateTimeInput>;
-  updatedAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
-  updatedAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
-  updatedAt_lt?: Maybe<DateTimeInput>;
-  updatedAt_lte?: Maybe<DateTimeInput>;
-  updatedAt_gt?: Maybe<DateTimeInput>;
-  updatedAt_gte?: Maybe<DateTimeInput>;
-  AND?: Maybe<CommuneWhereInput[] | CommuneWhereInput>;
-  OR?: Maybe<CommuneWhereInput[] | CommuneWhereInput>;
-  NOT?: Maybe<CommuneWhereInput[] | CommuneWhereInput>;
-}
-
-export interface CityWhereInput {
-  id?: Maybe<ID_Input>;
-  id_not?: Maybe<ID_Input>;
-  id_in?: Maybe<ID_Input[] | ID_Input>;
-  id_not_in?: Maybe<ID_Input[] | ID_Input>;
-  id_lt?: Maybe<ID_Input>;
-  id_lte?: Maybe<ID_Input>;
-  id_gt?: Maybe<ID_Input>;
-  id_gte?: Maybe<ID_Input>;
-  id_contains?: Maybe<ID_Input>;
-  id_not_contains?: Maybe<ID_Input>;
-  id_starts_with?: Maybe<ID_Input>;
-  id_not_starts_with?: Maybe<ID_Input>;
-  id_ends_with?: Maybe<ID_Input>;
-  id_not_ends_with?: Maybe<ID_Input>;
-  name?: Maybe<String>;
-  name_not?: Maybe<String>;
-  name_in?: Maybe<String[] | String>;
-  name_not_in?: Maybe<String[] | String>;
-  name_lt?: Maybe<String>;
-  name_lte?: Maybe<String>;
-  name_gt?: Maybe<String>;
-  name_gte?: Maybe<String>;
-  name_contains?: Maybe<String>;
-  name_not_contains?: Maybe<String>;
-  name_starts_with?: Maybe<String>;
-  name_not_starts_with?: Maybe<String>;
-  name_ends_with?: Maybe<String>;
-  name_not_ends_with?: Maybe<String>;
-  rank?: Maybe<Int>;
-  rank_not?: Maybe<Int>;
-  rank_in?: Maybe<Int[] | Int>;
-  rank_not_in?: Maybe<Int[] | Int>;
-  rank_lt?: Maybe<Int>;
-  rank_lte?: Maybe<Int>;
-  rank_gt?: Maybe<Int>;
-  rank_gte?: Maybe<Int>;
-  state?: Maybe<StateWhereInput>;
-  createdAt?: Maybe<DateTimeInput>;
-  createdAt_not?: Maybe<DateTimeInput>;
-  createdAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
-  createdAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
-  createdAt_lt?: Maybe<DateTimeInput>;
-  createdAt_lte?: Maybe<DateTimeInput>;
-  createdAt_gt?: Maybe<DateTimeInput>;
-  createdAt_gte?: Maybe<DateTimeInput>;
-  updatedAt?: Maybe<DateTimeInput>;
-  updatedAt_not?: Maybe<DateTimeInput>;
-  updatedAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
-  updatedAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
-  updatedAt_lt?: Maybe<DateTimeInput>;
-  updatedAt_lte?: Maybe<DateTimeInput>;
-  updatedAt_gt?: Maybe<DateTimeInput>;
-  updatedAt_gte?: Maybe<DateTimeInput>;
-  AND?: Maybe<CityWhereInput[] | CityWhereInput>;
-  OR?: Maybe<CityWhereInput[] | CityWhereInput>;
-  NOT?: Maybe<CityWhereInput[] | CityWhereInput>;
-}
-
-export interface StateWhereInput {
-  id?: Maybe<ID_Input>;
-  id_not?: Maybe<ID_Input>;
-  id_in?: Maybe<ID_Input[] | ID_Input>;
-  id_not_in?: Maybe<ID_Input[] | ID_Input>;
-  id_lt?: Maybe<ID_Input>;
-  id_lte?: Maybe<ID_Input>;
-  id_gt?: Maybe<ID_Input>;
-  id_gte?: Maybe<ID_Input>;
-  id_contains?: Maybe<ID_Input>;
-  id_not_contains?: Maybe<ID_Input>;
-  id_starts_with?: Maybe<ID_Input>;
-  id_not_starts_with?: Maybe<ID_Input>;
-  id_ends_with?: Maybe<ID_Input>;
-  id_not_ends_with?: Maybe<ID_Input>;
-  name?: Maybe<String>;
-  name_not?: Maybe<String>;
-  name_in?: Maybe<String[] | String>;
-  name_not_in?: Maybe<String[] | String>;
-  name_lt?: Maybe<String>;
-  name_lte?: Maybe<String>;
-  name_gt?: Maybe<String>;
-  name_gte?: Maybe<String>;
-  name_contains?: Maybe<String>;
-  name_not_contains?: Maybe<String>;
-  name_starts_with?: Maybe<String>;
-  name_not_starts_with?: Maybe<String>;
-  name_ends_with?: Maybe<String>;
-  name_not_ends_with?: Maybe<String>;
-  rank?: Maybe<Int>;
-  rank_not?: Maybe<Int>;
-  rank_in?: Maybe<Int[] | Int>;
-  rank_not_in?: Maybe<Int[] | Int>;
-  rank_lt?: Maybe<Int>;
-  rank_lte?: Maybe<Int>;
-  rank_gt?: Maybe<Int>;
-  rank_gte?: Maybe<Int>;
-  country?: Maybe<CountryWhereInput>;
-  createdAt?: Maybe<DateTimeInput>;
-  createdAt_not?: Maybe<DateTimeInput>;
-  createdAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
-  createdAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
-  createdAt_lt?: Maybe<DateTimeInput>;
-  createdAt_lte?: Maybe<DateTimeInput>;
-  createdAt_gt?: Maybe<DateTimeInput>;
-  createdAt_gte?: Maybe<DateTimeInput>;
-  updatedAt?: Maybe<DateTimeInput>;
-  updatedAt_not?: Maybe<DateTimeInput>;
-  updatedAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
-  updatedAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
-  updatedAt_lt?: Maybe<DateTimeInput>;
-  updatedAt_lte?: Maybe<DateTimeInput>;
-  updatedAt_gt?: Maybe<DateTimeInput>;
-  updatedAt_gte?: Maybe<DateTimeInput>;
-  AND?: Maybe<StateWhereInput[] | StateWhereInput>;
-  OR?: Maybe<StateWhereInput[] | StateWhereInput>;
-  NOT?: Maybe<StateWhereInput[] | StateWhereInput>;
-}
-
-export interface CountryWhereInput {
-  id?: Maybe<ID_Input>;
-  id_not?: Maybe<ID_Input>;
-  id_in?: Maybe<ID_Input[] | ID_Input>;
-  id_not_in?: Maybe<ID_Input[] | ID_Input>;
-  id_lt?: Maybe<ID_Input>;
-  id_lte?: Maybe<ID_Input>;
-  id_gt?: Maybe<ID_Input>;
-  id_gte?: Maybe<ID_Input>;
-  id_contains?: Maybe<ID_Input>;
-  id_not_contains?: Maybe<ID_Input>;
-  id_starts_with?: Maybe<ID_Input>;
-  id_not_starts_with?: Maybe<ID_Input>;
-  id_ends_with?: Maybe<ID_Input>;
-  id_not_ends_with?: Maybe<ID_Input>;
-  name?: Maybe<String>;
-  name_not?: Maybe<String>;
-  name_in?: Maybe<String[] | String>;
-  name_not_in?: Maybe<String[] | String>;
-  name_lt?: Maybe<String>;
-  name_lte?: Maybe<String>;
-  name_gt?: Maybe<String>;
-  name_gte?: Maybe<String>;
-  name_contains?: Maybe<String>;
-  name_not_contains?: Maybe<String>;
-  name_starts_with?: Maybe<String>;
-  name_not_starts_with?: Maybe<String>;
-  name_ends_with?: Maybe<String>;
-  name_not_ends_with?: Maybe<String>;
-  createdAt?: Maybe<DateTimeInput>;
-  createdAt_not?: Maybe<DateTimeInput>;
-  createdAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
-  createdAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
-  createdAt_lt?: Maybe<DateTimeInput>;
-  createdAt_lte?: Maybe<DateTimeInput>;
-  createdAt_gt?: Maybe<DateTimeInput>;
-  createdAt_gte?: Maybe<DateTimeInput>;
-  updatedAt?: Maybe<DateTimeInput>;
-  updatedAt_not?: Maybe<DateTimeInput>;
-  updatedAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
-  updatedAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
-  updatedAt_lt?: Maybe<DateTimeInput>;
-  updatedAt_lte?: Maybe<DateTimeInput>;
-  updatedAt_gt?: Maybe<DateTimeInput>;
-  updatedAt_gte?: Maybe<DateTimeInput>;
-  AND?: Maybe<CountryWhereInput[] | CountryWhereInput>;
-  OR?: Maybe<CountryWhereInput[] | CountryWhereInput>;
-  NOT?: Maybe<CountryWhereInput[] | CountryWhereInput>;
-}
-
-export interface BookingWhereInput {
-  id?: Maybe<ID_Input>;
-  id_not?: Maybe<ID_Input>;
-  id_in?: Maybe<ID_Input[] | ID_Input>;
-  id_not_in?: Maybe<ID_Input[] | ID_Input>;
-  id_lt?: Maybe<ID_Input>;
-  id_lte?: Maybe<ID_Input>;
-  id_gt?: Maybe<ID_Input>;
-  id_gte?: Maybe<ID_Input>;
-  id_contains?: Maybe<ID_Input>;
-  id_not_contains?: Maybe<ID_Input>;
-  id_starts_with?: Maybe<ID_Input>;
-  id_not_starts_with?: Maybe<ID_Input>;
-  id_ends_with?: Maybe<ID_Input>;
-  id_not_ends_with?: Maybe<ID_Input>;
-  createdAt?: Maybe<DateTimeInput>;
-  createdAt_not?: Maybe<DateTimeInput>;
-  createdAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
-  createdAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
-  createdAt_lt?: Maybe<DateTimeInput>;
-  createdAt_lte?: Maybe<DateTimeInput>;
-  createdAt_gt?: Maybe<DateTimeInput>;
-  createdAt_gte?: Maybe<DateTimeInput>;
-  updatedAt?: Maybe<DateTimeInput>;
-  updatedAt_not?: Maybe<DateTimeInput>;
-  updatedAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
-  updatedAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
-  updatedAt_lt?: Maybe<DateTimeInput>;
-  updatedAt_lte?: Maybe<DateTimeInput>;
-  updatedAt_gt?: Maybe<DateTimeInput>;
-  updatedAt_gte?: Maybe<DateTimeInput>;
-  bookee?: Maybe<UserWhereInput>;
-  House?: Maybe<HouseWhereInput>;
-  startDate?: Maybe<DateTimeInput>;
-  startDate_not?: Maybe<DateTimeInput>;
-  startDate_in?: Maybe<DateTimeInput[] | DateTimeInput>;
-  startDate_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
-  startDate_lt?: Maybe<DateTimeInput>;
-  startDate_lte?: Maybe<DateTimeInput>;
-  startDate_gt?: Maybe<DateTimeInput>;
-  startDate_gte?: Maybe<DateTimeInput>;
-  endDate?: Maybe<DateTimeInput>;
-  endDate_not?: Maybe<DateTimeInput>;
-  endDate_in?: Maybe<DateTimeInput[] | DateTimeInput>;
-  endDate_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
-  endDate_lt?: Maybe<DateTimeInput>;
-  endDate_lte?: Maybe<DateTimeInput>;
-  endDate_gt?: Maybe<DateTimeInput>;
-  endDate_gte?: Maybe<DateTimeInput>;
-  payment?: Maybe<PaymentHouseWhereInput>;
-  AND?: Maybe<BookingWhereInput[] | BookingWhereInput>;
-  OR?: Maybe<BookingWhereInput[] | BookingWhereInput>;
-  NOT?: Maybe<BookingWhereInput[] | BookingWhereInput>;
-}
-
-export interface PaymentHouseWhereInput {
-  id?: Maybe<ID_Input>;
-  id_not?: Maybe<ID_Input>;
-  id_in?: Maybe<ID_Input[] | ID_Input>;
-  id_not_in?: Maybe<ID_Input[] | ID_Input>;
-  id_lt?: Maybe<ID_Input>;
-  id_lte?: Maybe<ID_Input>;
-  id_gt?: Maybe<ID_Input>;
-  id_gte?: Maybe<ID_Input>;
-  id_contains?: Maybe<ID_Input>;
-  id_not_contains?: Maybe<ID_Input>;
-  id_starts_with?: Maybe<ID_Input>;
-  id_not_starts_with?: Maybe<ID_Input>;
-  id_ends_with?: Maybe<ID_Input>;
-  id_not_ends_with?: Maybe<ID_Input>;
-  createdAt?: Maybe<DateTimeInput>;
-  createdAt_not?: Maybe<DateTimeInput>;
-  createdAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
-  createdAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
-  createdAt_lt?: Maybe<DateTimeInput>;
-  createdAt_lte?: Maybe<DateTimeInput>;
-  createdAt_gt?: Maybe<DateTimeInput>;
-  createdAt_gte?: Maybe<DateTimeInput>;
-  updatedAt?: Maybe<DateTimeInput>;
-  updatedAt_not?: Maybe<DateTimeInput>;
-  updatedAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
-  updatedAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
-  updatedAt_lt?: Maybe<DateTimeInput>;
-  updatedAt_lte?: Maybe<DateTimeInput>;
-  updatedAt_gt?: Maybe<DateTimeInput>;
-  updatedAt_gte?: Maybe<DateTimeInput>;
-  totalPrice?: Maybe<Float>;
-  totalPrice_not?: Maybe<Float>;
-  totalPrice_in?: Maybe<Float[] | Float>;
-  totalPrice_not_in?: Maybe<Float[] | Float>;
-  totalPrice_lt?: Maybe<Float>;
-  totalPrice_lte?: Maybe<Float>;
-  totalPrice_gt?: Maybe<Float>;
-  totalPrice_gte?: Maybe<Float>;
-  booking?: Maybe<BookingWhereInput>;
-  paymentMethod?: Maybe<PaymentAccountWhereInput>;
-  AND?: Maybe<PaymentHouseWhereInput[] | PaymentHouseWhereInput>;
-  OR?: Maybe<PaymentHouseWhereInput[] | PaymentHouseWhereInput>;
-  NOT?: Maybe<PaymentHouseWhereInput[] | PaymentHouseWhereInput>;
-}
-
-export interface PaymentAccountWhereInput {
-  id?: Maybe<ID_Input>;
-  id_not?: Maybe<ID_Input>;
-  id_in?: Maybe<ID_Input[] | ID_Input>;
-  id_not_in?: Maybe<ID_Input[] | ID_Input>;
-  id_lt?: Maybe<ID_Input>;
-  id_lte?: Maybe<ID_Input>;
-  id_gt?: Maybe<ID_Input>;
-  id_gte?: Maybe<ID_Input>;
-  id_contains?: Maybe<ID_Input>;
-  id_not_contains?: Maybe<ID_Input>;
-  id_starts_with?: Maybe<ID_Input>;
-  id_not_starts_with?: Maybe<ID_Input>;
-  id_ends_with?: Maybe<ID_Input>;
-  id_not_ends_with?: Maybe<ID_Input>;
-  createdAt?: Maybe<DateTimeInput>;
-  createdAt_not?: Maybe<DateTimeInput>;
-  createdAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
-  createdAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
-  createdAt_lt?: Maybe<DateTimeInput>;
-  createdAt_lte?: Maybe<DateTimeInput>;
-  createdAt_gt?: Maybe<DateTimeInput>;
-  createdAt_gte?: Maybe<DateTimeInput>;
-  updatedAt?: Maybe<DateTimeInput>;
-  updatedAt_not?: Maybe<DateTimeInput>;
-  updatedAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
-  updatedAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
-  updatedAt_lt?: Maybe<DateTimeInput>;
-  updatedAt_lte?: Maybe<DateTimeInput>;
-  updatedAt_gt?: Maybe<DateTimeInput>;
-  updatedAt_gte?: Maybe<DateTimeInput>;
-  type?: Maybe<PAYMENT_PROVIDER>;
-  type_not?: Maybe<PAYMENT_PROVIDER>;
-  type_in?: Maybe<PAYMENT_PROVIDER[] | PAYMENT_PROVIDER>;
-  type_not_in?: Maybe<PAYMENT_PROVIDER[] | PAYMENT_PROVIDER>;
-  user?: Maybe<UserWhereInput>;
-  payments_every?: Maybe<PaymentHouseWhereInput>;
-  payments_some?: Maybe<PaymentHouseWhereInput>;
-  payments_none?: Maybe<PaymentHouseWhereInput>;
-  paypal?: Maybe<PaypalInformationWhereInput>;
-  creditcard?: Maybe<CreditCardInformationWhereInput>;
-  AND?: Maybe<PaymentAccountWhereInput[] | PaymentAccountWhereInput>;
-  OR?: Maybe<PaymentAccountWhereInput[] | PaymentAccountWhereInput>;
-  NOT?: Maybe<PaymentAccountWhereInput[] | PaymentAccountWhereInput>;
-}
-
-export interface PaypalInformationWhereInput {
-  id?: Maybe<ID_Input>;
-  id_not?: Maybe<ID_Input>;
-  id_in?: Maybe<ID_Input[] | ID_Input>;
-  id_not_in?: Maybe<ID_Input[] | ID_Input>;
-  id_lt?: Maybe<ID_Input>;
-  id_lte?: Maybe<ID_Input>;
-  id_gt?: Maybe<ID_Input>;
-  id_gte?: Maybe<ID_Input>;
-  id_contains?: Maybe<ID_Input>;
-  id_not_contains?: Maybe<ID_Input>;
-  id_starts_with?: Maybe<ID_Input>;
-  id_not_starts_with?: Maybe<ID_Input>;
-  id_ends_with?: Maybe<ID_Input>;
-  id_not_ends_with?: Maybe<ID_Input>;
-  createdAt?: Maybe<DateTimeInput>;
-  createdAt_not?: Maybe<DateTimeInput>;
-  createdAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
-  createdAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
-  createdAt_lt?: Maybe<DateTimeInput>;
-  createdAt_lte?: Maybe<DateTimeInput>;
-  createdAt_gt?: Maybe<DateTimeInput>;
-  createdAt_gte?: Maybe<DateTimeInput>;
-  updatedAt?: Maybe<DateTimeInput>;
-  updatedAt_not?: Maybe<DateTimeInput>;
-  updatedAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
-  updatedAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
-  updatedAt_lt?: Maybe<DateTimeInput>;
-  updatedAt_lte?: Maybe<DateTimeInput>;
-  updatedAt_gt?: Maybe<DateTimeInput>;
-  updatedAt_gte?: Maybe<DateTimeInput>;
-  email?: Maybe<String>;
-  email_not?: Maybe<String>;
-  email_in?: Maybe<String[] | String>;
-  email_not_in?: Maybe<String[] | String>;
-  email_lt?: Maybe<String>;
-  email_lte?: Maybe<String>;
-  email_gt?: Maybe<String>;
-  email_gte?: Maybe<String>;
-  email_contains?: Maybe<String>;
-  email_not_contains?: Maybe<String>;
-  email_starts_with?: Maybe<String>;
-  email_not_starts_with?: Maybe<String>;
-  email_ends_with?: Maybe<String>;
-  email_not_ends_with?: Maybe<String>;
-  paymentAccount?: Maybe<PaymentAccountWhereInput>;
-  AND?: Maybe<PaypalInformationWhereInput[] | PaypalInformationWhereInput>;
-  OR?: Maybe<PaypalInformationWhereInput[] | PaypalInformationWhereInput>;
-  NOT?: Maybe<PaypalInformationWhereInput[] | PaypalInformationWhereInput>;
-}
-
-export interface CreditCardInformationWhereInput {
-  id?: Maybe<ID_Input>;
-  id_not?: Maybe<ID_Input>;
-  id_in?: Maybe<ID_Input[] | ID_Input>;
-  id_not_in?: Maybe<ID_Input[] | ID_Input>;
-  id_lt?: Maybe<ID_Input>;
-  id_lte?: Maybe<ID_Input>;
-  id_gt?: Maybe<ID_Input>;
-  id_gte?: Maybe<ID_Input>;
-  id_contains?: Maybe<ID_Input>;
-  id_not_contains?: Maybe<ID_Input>;
-  id_starts_with?: Maybe<ID_Input>;
-  id_not_starts_with?: Maybe<ID_Input>;
-  id_ends_with?: Maybe<ID_Input>;
-  id_not_ends_with?: Maybe<ID_Input>;
-  createdAt?: Maybe<DateTimeInput>;
-  createdAt_not?: Maybe<DateTimeInput>;
-  createdAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
-  createdAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
-  createdAt_lt?: Maybe<DateTimeInput>;
-  createdAt_lte?: Maybe<DateTimeInput>;
-  createdAt_gt?: Maybe<DateTimeInput>;
-  createdAt_gte?: Maybe<DateTimeInput>;
-  updatedAt?: Maybe<DateTimeInput>;
-  updatedAt_not?: Maybe<DateTimeInput>;
-  updatedAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
-  updatedAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
-  updatedAt_lt?: Maybe<DateTimeInput>;
-  updatedAt_lte?: Maybe<DateTimeInput>;
-  updatedAt_gt?: Maybe<DateTimeInput>;
-  updatedAt_gte?: Maybe<DateTimeInput>;
-  cardNumber?: Maybe<String>;
-  cardNumber_not?: Maybe<String>;
-  cardNumber_in?: Maybe<String[] | String>;
-  cardNumber_not_in?: Maybe<String[] | String>;
-  cardNumber_lt?: Maybe<String>;
-  cardNumber_lte?: Maybe<String>;
-  cardNumber_gt?: Maybe<String>;
-  cardNumber_gte?: Maybe<String>;
-  cardNumber_contains?: Maybe<String>;
-  cardNumber_not_contains?: Maybe<String>;
-  cardNumber_starts_with?: Maybe<String>;
-  cardNumber_not_starts_with?: Maybe<String>;
-  cardNumber_ends_with?: Maybe<String>;
-  cardNumber_not_ends_with?: Maybe<String>;
-  expiresOnMonth?: Maybe<Int>;
-  expiresOnMonth_not?: Maybe<Int>;
-  expiresOnMonth_in?: Maybe<Int[] | Int>;
-  expiresOnMonth_not_in?: Maybe<Int[] | Int>;
-  expiresOnMonth_lt?: Maybe<Int>;
-  expiresOnMonth_lte?: Maybe<Int>;
-  expiresOnMonth_gt?: Maybe<Int>;
-  expiresOnMonth_gte?: Maybe<Int>;
-  expiresOnYear?: Maybe<Int>;
-  expiresOnYear_not?: Maybe<Int>;
-  expiresOnYear_in?: Maybe<Int[] | Int>;
-  expiresOnYear_not_in?: Maybe<Int[] | Int>;
-  expiresOnYear_lt?: Maybe<Int>;
-  expiresOnYear_lte?: Maybe<Int>;
-  expiresOnYear_gt?: Maybe<Int>;
-  expiresOnYear_gte?: Maybe<Int>;
-  securityCode?: Maybe<String>;
-  securityCode_not?: Maybe<String>;
-  securityCode_in?: Maybe<String[] | String>;
-  securityCode_not_in?: Maybe<String[] | String>;
-  securityCode_lt?: Maybe<String>;
-  securityCode_lte?: Maybe<String>;
-  securityCode_gt?: Maybe<String>;
-  securityCode_gte?: Maybe<String>;
-  securityCode_contains?: Maybe<String>;
-  securityCode_not_contains?: Maybe<String>;
-  securityCode_starts_with?: Maybe<String>;
-  securityCode_not_starts_with?: Maybe<String>;
-  securityCode_ends_with?: Maybe<String>;
-  securityCode_not_ends_with?: Maybe<String>;
-  firstName?: Maybe<String>;
-  firstName_not?: Maybe<String>;
-  firstName_in?: Maybe<String[] | String>;
-  firstName_not_in?: Maybe<String[] | String>;
-  firstName_lt?: Maybe<String>;
-  firstName_lte?: Maybe<String>;
-  firstName_gt?: Maybe<String>;
-  firstName_gte?: Maybe<String>;
-  firstName_contains?: Maybe<String>;
-  firstName_not_contains?: Maybe<String>;
-  firstName_starts_with?: Maybe<String>;
-  firstName_not_starts_with?: Maybe<String>;
-  firstName_ends_with?: Maybe<String>;
-  firstName_not_ends_with?: Maybe<String>;
-  lastName?: Maybe<String>;
-  lastName_not?: Maybe<String>;
-  lastName_in?: Maybe<String[] | String>;
-  lastName_not_in?: Maybe<String[] | String>;
-  lastName_lt?: Maybe<String>;
-  lastName_lte?: Maybe<String>;
-  lastName_gt?: Maybe<String>;
-  lastName_gte?: Maybe<String>;
-  lastName_contains?: Maybe<String>;
-  lastName_not_contains?: Maybe<String>;
-  lastName_starts_with?: Maybe<String>;
-  lastName_not_starts_with?: Maybe<String>;
-  lastName_ends_with?: Maybe<String>;
-  lastName_not_ends_with?: Maybe<String>;
-  postalCode?: Maybe<String>;
-  postalCode_not?: Maybe<String>;
-  postalCode_in?: Maybe<String[] | String>;
-  postalCode_not_in?: Maybe<String[] | String>;
-  postalCode_lt?: Maybe<String>;
-  postalCode_lte?: Maybe<String>;
-  postalCode_gt?: Maybe<String>;
-  postalCode_gte?: Maybe<String>;
-  postalCode_contains?: Maybe<String>;
-  postalCode_not_contains?: Maybe<String>;
-  postalCode_starts_with?: Maybe<String>;
-  postalCode_not_starts_with?: Maybe<String>;
-  postalCode_ends_with?: Maybe<String>;
-  postalCode_not_ends_with?: Maybe<String>;
-  country?: Maybe<String>;
-  country_not?: Maybe<String>;
-  country_in?: Maybe<String[] | String>;
-  country_not_in?: Maybe<String[] | String>;
-  country_lt?: Maybe<String>;
-  country_lte?: Maybe<String>;
-  country_gt?: Maybe<String>;
-  country_gte?: Maybe<String>;
-  country_contains?: Maybe<String>;
-  country_not_contains?: Maybe<String>;
-  country_starts_with?: Maybe<String>;
-  country_not_starts_with?: Maybe<String>;
-  country_ends_with?: Maybe<String>;
-  country_not_ends_with?: Maybe<String>;
-  paymentAccount?: Maybe<PaymentAccountWhereInput>;
-  AND?: Maybe<
-    CreditCardInformationWhereInput[] | CreditCardInformationWhereInput
-  >;
-  OR?: Maybe<
-    CreditCardInformationWhereInput[] | CreditCardInformationWhereInput
-  >;
-  NOT?: Maybe<
-    CreditCardInformationWhereInput[] | CreditCardInformationWhereInput
-  >;
-}
-
-export interface PaymentLanlordInfoWhereInput {
-  id?: Maybe<ID_Input>;
-  id_not?: Maybe<ID_Input>;
-  id_in?: Maybe<ID_Input[] | ID_Input>;
-  id_not_in?: Maybe<ID_Input[] | ID_Input>;
-  id_lt?: Maybe<ID_Input>;
-  id_lte?: Maybe<ID_Input>;
-  id_gt?: Maybe<ID_Input>;
-  id_gte?: Maybe<ID_Input>;
-  id_contains?: Maybe<ID_Input>;
-  id_not_contains?: Maybe<ID_Input>;
-  id_starts_with?: Maybe<ID_Input>;
-  id_not_starts_with?: Maybe<ID_Input>;
-  id_ends_with?: Maybe<ID_Input>;
-  id_not_ends_with?: Maybe<ID_Input>;
-  createdAt?: Maybe<DateTimeInput>;
-  createdAt_not?: Maybe<DateTimeInput>;
-  createdAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
-  createdAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
-  createdAt_lt?: Maybe<DateTimeInput>;
-  createdAt_lte?: Maybe<DateTimeInput>;
-  createdAt_gt?: Maybe<DateTimeInput>;
-  createdAt_gte?: Maybe<DateTimeInput>;
-  updatedAt?: Maybe<DateTimeInput>;
-  updatedAt_not?: Maybe<DateTimeInput>;
-  updatedAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
-  updatedAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
-  updatedAt_lt?: Maybe<DateTimeInput>;
-  updatedAt_lte?: Maybe<DateTimeInput>;
-  updatedAt_gt?: Maybe<DateTimeInput>;
-  updatedAt_gte?: Maybe<DateTimeInput>;
-  totalPrice?: Maybe<Float>;
-  totalPrice_not?: Maybe<Float>;
-  totalPrice_in?: Maybe<Float[] | Float>;
-  totalPrice_not_in?: Maybe<Float[] | Float>;
-  totalPrice_lt?: Maybe<Float>;
-  totalPrice_lte?: Maybe<Float>;
-  totalPrice_gt?: Maybe<Float>;
-  totalPrice_gte?: Maybe<Float>;
-  client?: Maybe<UserWhereInput>;
-  House?: Maybe<HouseWhereInput>;
-  moncashTransactId?: Maybe<String>;
-  moncashTransactId_not?: Maybe<String>;
-  moncashTransactId_in?: Maybe<String[] | String>;
-  moncashTransactId_not_in?: Maybe<String[] | String>;
-  moncashTransactId_lt?: Maybe<String>;
-  moncashTransactId_lte?: Maybe<String>;
-  moncashTransactId_gt?: Maybe<String>;
-  moncashTransactId_gte?: Maybe<String>;
-  moncashTransactId_contains?: Maybe<String>;
-  moncashTransactId_not_contains?: Maybe<String>;
-  moncashTransactId_starts_with?: Maybe<String>;
-  moncashTransactId_not_starts_with?: Maybe<String>;
-  moncashTransactId_ends_with?: Maybe<String>;
-  moncashTransactId_not_ends_with?: Maybe<String>;
-  AND?: Maybe<PaymentLanlordInfoWhereInput[] | PaymentLanlordInfoWhereInput>;
-  OR?: Maybe<PaymentLanlordInfoWhereInput[] | PaymentLanlordInfoWhereInput>;
-  NOT?: Maybe<PaymentLanlordInfoWhereInput[] | PaymentLanlordInfoWhereInput>;
-}
-
-export interface NotificationWhereInput {
-  id?: Maybe<ID_Input>;
-  id_not?: Maybe<ID_Input>;
-  id_in?: Maybe<ID_Input[] | ID_Input>;
-  id_not_in?: Maybe<ID_Input[] | ID_Input>;
-  id_lt?: Maybe<ID_Input>;
-  id_lte?: Maybe<ID_Input>;
-  id_gt?: Maybe<ID_Input>;
-  id_gte?: Maybe<ID_Input>;
-  id_contains?: Maybe<ID_Input>;
-  id_not_contains?: Maybe<ID_Input>;
-  id_starts_with?: Maybe<ID_Input>;
-  id_not_starts_with?: Maybe<ID_Input>;
-  id_ends_with?: Maybe<ID_Input>;
-  id_not_ends_with?: Maybe<ID_Input>;
-  createdAt?: Maybe<DateTimeInput>;
-  createdAt_not?: Maybe<DateTimeInput>;
-  createdAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
-  createdAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
-  createdAt_lt?: Maybe<DateTimeInput>;
-  createdAt_lte?: Maybe<DateTimeInput>;
-  createdAt_gt?: Maybe<DateTimeInput>;
-  createdAt_gte?: Maybe<DateTimeInput>;
-  updatedAt?: Maybe<DateTimeInput>;
-  updatedAt_not?: Maybe<DateTimeInput>;
-  updatedAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
-  updatedAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
-  updatedAt_lt?: Maybe<DateTimeInput>;
-  updatedAt_lte?: Maybe<DateTimeInput>;
-  updatedAt_gt?: Maybe<DateTimeInput>;
-  updatedAt_gte?: Maybe<DateTimeInput>;
-  type?: Maybe<NOTIFICATION_TYPE>;
-  type_not?: Maybe<NOTIFICATION_TYPE>;
-  type_in?: Maybe<NOTIFICATION_TYPE[] | NOTIFICATION_TYPE>;
-  type_not_in?: Maybe<NOTIFICATION_TYPE[] | NOTIFICATION_TYPE>;
-  user?: Maybe<UserWhereInput>;
-  link?: Maybe<String>;
-  link_not?: Maybe<String>;
-  link_in?: Maybe<String[] | String>;
-  link_not_in?: Maybe<String[] | String>;
-  link_lt?: Maybe<String>;
-  link_lte?: Maybe<String>;
-  link_gt?: Maybe<String>;
-  link_gte?: Maybe<String>;
-  link_contains?: Maybe<String>;
-  link_not_contains?: Maybe<String>;
-  link_starts_with?: Maybe<String>;
-  link_not_starts_with?: Maybe<String>;
-  link_ends_with?: Maybe<String>;
-  link_not_ends_with?: Maybe<String>;
-  readDate?: Maybe<DateTimeInput>;
-  readDate_not?: Maybe<DateTimeInput>;
-  readDate_in?: Maybe<DateTimeInput[] | DateTimeInput>;
-  readDate_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
-  readDate_lt?: Maybe<DateTimeInput>;
-  readDate_lte?: Maybe<DateTimeInput>;
-  readDate_gt?: Maybe<DateTimeInput>;
-  readDate_gte?: Maybe<DateTimeInput>;
-  AND?: Maybe<NotificationWhereInput[] | NotificationWhereInput>;
-  OR?: Maybe<NotificationWhereInput[] | NotificationWhereInput>;
-  NOT?: Maybe<NotificationWhereInput[] | NotificationWhereInput>;
-}
-
-export interface PictureWhereInput {
-  id?: Maybe<ID_Input>;
-  id_not?: Maybe<ID_Input>;
-  id_in?: Maybe<ID_Input[] | ID_Input>;
-  id_not_in?: Maybe<ID_Input[] | ID_Input>;
-  id_lt?: Maybe<ID_Input>;
-  id_lte?: Maybe<ID_Input>;
-  id_gt?: Maybe<ID_Input>;
-  id_gte?: Maybe<ID_Input>;
-  id_contains?: Maybe<ID_Input>;
-  id_not_contains?: Maybe<ID_Input>;
-  id_starts_with?: Maybe<ID_Input>;
-  id_not_starts_with?: Maybe<ID_Input>;
-  id_ends_with?: Maybe<ID_Input>;
-  id_not_ends_with?: Maybe<ID_Input>;
-  url?: Maybe<String>;
-  url_not?: Maybe<String>;
-  url_in?: Maybe<String[] | String>;
-  url_not_in?: Maybe<String[] | String>;
-  url_lt?: Maybe<String>;
-  url_lte?: Maybe<String>;
-  url_gt?: Maybe<String>;
-  url_gte?: Maybe<String>;
-  url_contains?: Maybe<String>;
-  url_not_contains?: Maybe<String>;
-  url_starts_with?: Maybe<String>;
-  url_not_starts_with?: Maybe<String>;
-  url_ends_with?: Maybe<String>;
-  url_not_ends_with?: Maybe<String>;
-  createdAt?: Maybe<DateTimeInput>;
-  createdAt_not?: Maybe<DateTimeInput>;
-  createdAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
-  createdAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
-  createdAt_lt?: Maybe<DateTimeInput>;
-  createdAt_lte?: Maybe<DateTimeInput>;
-  createdAt_gt?: Maybe<DateTimeInput>;
-  createdAt_gte?: Maybe<DateTimeInput>;
-  updatedAt?: Maybe<DateTimeInput>;
-  updatedAt_not?: Maybe<DateTimeInput>;
-  updatedAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
-  updatedAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
-  updatedAt_lt?: Maybe<DateTimeInput>;
-  updatedAt_lte?: Maybe<DateTimeInput>;
-  updatedAt_gt?: Maybe<DateTimeInput>;
-  updatedAt_gte?: Maybe<DateTimeInput>;
-  AND?: Maybe<PictureWhereInput[] | PictureWhereInput>;
-  OR?: Maybe<PictureWhereInput[] | PictureWhereInput>;
-  NOT?: Maybe<PictureWhereInput[] | PictureWhereInput>;
-}
-
-export interface PricingWhereInput {
-  id?: Maybe<ID_Input>;
-  id_not?: Maybe<ID_Input>;
-  id_in?: Maybe<ID_Input[] | ID_Input>;
-  id_not_in?: Maybe<ID_Input[] | ID_Input>;
-  id_lt?: Maybe<ID_Input>;
-  id_lte?: Maybe<ID_Input>;
-  id_gt?: Maybe<ID_Input>;
-  id_gte?: Maybe<ID_Input>;
-  id_contains?: Maybe<ID_Input>;
-  id_not_contains?: Maybe<ID_Input>;
-  id_starts_with?: Maybe<ID_Input>;
-  id_not_starts_with?: Maybe<ID_Input>;
-  id_ends_with?: Maybe<ID_Input>;
-  id_not_ends_with?: Maybe<ID_Input>;
-  House?: Maybe<HouseWhereInput>;
-  basePrice?: Maybe<Float>;
-  basePrice_not?: Maybe<Float>;
-  basePrice_in?: Maybe<Float[] | Float>;
-  basePrice_not_in?: Maybe<Float[] | Float>;
-  basePrice_lt?: Maybe<Float>;
-  basePrice_lte?: Maybe<Float>;
-  basePrice_gt?: Maybe<Float>;
-  basePrice_gte?: Maybe<Float>;
-  highestPrice?: Maybe<Float>;
-  highestPrice_not?: Maybe<Float>;
-  highestPrice_in?: Maybe<Float[] | Float>;
-  highestPrice_not_in?: Maybe<Float[] | Float>;
-  highestPrice_lt?: Maybe<Float>;
-  highestPrice_lte?: Maybe<Float>;
-  highestPrice_gt?: Maybe<Float>;
-  highestPrice_gte?: Maybe<Float>;
-  currency?: Maybe<CURRENCY>;
-  currency_not?: Maybe<CURRENCY>;
-  currency_in?: Maybe<CURRENCY[] | CURRENCY>;
-  currency_not_in?: Maybe<CURRENCY[] | CURRENCY>;
-  income?: Maybe<Float>;
-  income_not?: Maybe<Float>;
-  income_in?: Maybe<Float[] | Float>;
-  income_not_in?: Maybe<Float[] | Float>;
-  income_lt?: Maybe<Float>;
-  income_lte?: Maybe<Float>;
-  income_gt?: Maybe<Float>;
-  income_gte?: Maybe<Float>;
-  createdAt?: Maybe<DateTimeInput>;
-  createdAt_not?: Maybe<DateTimeInput>;
-  createdAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
-  createdAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
-  createdAt_lt?: Maybe<DateTimeInput>;
-  createdAt_lte?: Maybe<DateTimeInput>;
-  createdAt_gt?: Maybe<DateTimeInput>;
-  createdAt_gte?: Maybe<DateTimeInput>;
-  updatedAt?: Maybe<DateTimeInput>;
-  updatedAt_not?: Maybe<DateTimeInput>;
-  updatedAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
-  updatedAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
-  updatedAt_lt?: Maybe<DateTimeInput>;
-  updatedAt_lte?: Maybe<DateTimeInput>;
-  updatedAt_gt?: Maybe<DateTimeInput>;
-  updatedAt_gte?: Maybe<DateTimeInput>;
-  AND?: Maybe<PricingWhereInput[] | PricingWhereInput>;
-  OR?: Maybe<PricingWhereInput[] | PricingWhereInput>;
-  NOT?: Maybe<PricingWhereInput[] | PricingWhereInput>;
-}
-
-export interface RoomWhereInput {
-  id?: Maybe<ID_Input>;
-  id_not?: Maybe<ID_Input>;
-  id_in?: Maybe<ID_Input[] | ID_Input>;
-  id_not_in?: Maybe<ID_Input[] | ID_Input>;
-  id_lt?: Maybe<ID_Input>;
-  id_lte?: Maybe<ID_Input>;
-  id_gt?: Maybe<ID_Input>;
-  id_gte?: Maybe<ID_Input>;
-  id_contains?: Maybe<ID_Input>;
-  id_not_contains?: Maybe<ID_Input>;
-  id_starts_with?: Maybe<ID_Input>;
-  id_not_starts_with?: Maybe<ID_Input>;
-  id_ends_with?: Maybe<ID_Input>;
-  id_not_ends_with?: Maybe<ID_Input>;
-  label?: Maybe<ROOM_LABELS>;
-  label_not?: Maybe<ROOM_LABELS>;
-  label_in?: Maybe<ROOM_LABELS[] | ROOM_LABELS>;
-  label_not_in?: Maybe<ROOM_LABELS[] | ROOM_LABELS>;
-  house?: Maybe<HouseWhereInput>;
-  picture_previews_every?: Maybe<PictureWhereInput>;
-  picture_previews_some?: Maybe<PictureWhereInput>;
-  picture_previews_none?: Maybe<PictureWhereInput>;
-  video_previews_every?: Maybe<VideoWhereInput>;
-  video_previews_some?: Maybe<VideoWhereInput>;
-  video_previews_none?: Maybe<VideoWhereInput>;
-  createdAt?: Maybe<DateTimeInput>;
-  createdAt_not?: Maybe<DateTimeInput>;
-  createdAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
-  createdAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
-  createdAt_lt?: Maybe<DateTimeInput>;
-  createdAt_lte?: Maybe<DateTimeInput>;
-  createdAt_gt?: Maybe<DateTimeInput>;
-  createdAt_gte?: Maybe<DateTimeInput>;
-  updatedAt?: Maybe<DateTimeInput>;
-  updatedAt_not?: Maybe<DateTimeInput>;
-  updatedAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
-  updatedAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
-  updatedAt_lt?: Maybe<DateTimeInput>;
-  updatedAt_lte?: Maybe<DateTimeInput>;
-  updatedAt_gt?: Maybe<DateTimeInput>;
-  updatedAt_gte?: Maybe<DateTimeInput>;
-  AND?: Maybe<RoomWhereInput[] | RoomWhereInput>;
-  OR?: Maybe<RoomWhereInput[] | RoomWhereInput>;
-  NOT?: Maybe<RoomWhereInput[] | RoomWhereInput>;
-}
-
-export interface VideoWhereInput {
-  id?: Maybe<ID_Input>;
-  id_not?: Maybe<ID_Input>;
-  id_in?: Maybe<ID_Input[] | ID_Input>;
-  id_not_in?: Maybe<ID_Input[] | ID_Input>;
-  id_lt?: Maybe<ID_Input>;
-  id_lte?: Maybe<ID_Input>;
-  id_gt?: Maybe<ID_Input>;
-  id_gte?: Maybe<ID_Input>;
-  id_contains?: Maybe<ID_Input>;
-  id_not_contains?: Maybe<ID_Input>;
-  id_starts_with?: Maybe<ID_Input>;
-  id_not_starts_with?: Maybe<ID_Input>;
-  id_ends_with?: Maybe<ID_Input>;
-  id_not_ends_with?: Maybe<ID_Input>;
-  url?: Maybe<String>;
-  url_not?: Maybe<String>;
-  url_in?: Maybe<String[] | String>;
-  url_not_in?: Maybe<String[] | String>;
-  url_lt?: Maybe<String>;
-  url_lte?: Maybe<String>;
-  url_gt?: Maybe<String>;
-  url_gte?: Maybe<String>;
-  url_contains?: Maybe<String>;
-  url_not_contains?: Maybe<String>;
-  url_starts_with?: Maybe<String>;
-  url_not_starts_with?: Maybe<String>;
-  url_ends_with?: Maybe<String>;
-  url_not_ends_with?: Maybe<String>;
-  createdAt?: Maybe<DateTimeInput>;
-  createdAt_not?: Maybe<DateTimeInput>;
-  createdAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
-  createdAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
-  createdAt_lt?: Maybe<DateTimeInput>;
-  createdAt_lte?: Maybe<DateTimeInput>;
-  createdAt_gt?: Maybe<DateTimeInput>;
-  createdAt_gte?: Maybe<DateTimeInput>;
-  updatedAt?: Maybe<DateTimeInput>;
-  updatedAt_not?: Maybe<DateTimeInput>;
-  updatedAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
-  updatedAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
-  updatedAt_lt?: Maybe<DateTimeInput>;
-  updatedAt_lte?: Maybe<DateTimeInput>;
-  updatedAt_gt?: Maybe<DateTimeInput>;
-  updatedAt_gte?: Maybe<DateTimeInput>;
-  AND?: Maybe<VideoWhereInput[] | VideoWhereInput>;
-  OR?: Maybe<VideoWhereInput[] | VideoWhereInput>;
-  NOT?: Maybe<VideoWhereInput[] | VideoWhereInput>;
-}
-
-export interface ViewsWhereInput {
-  id?: Maybe<ID_Input>;
-  id_not?: Maybe<ID_Input>;
-  id_in?: Maybe<ID_Input[] | ID_Input>;
-  id_not_in?: Maybe<ID_Input[] | ID_Input>;
-  id_lt?: Maybe<ID_Input>;
-  id_lte?: Maybe<ID_Input>;
-  id_gt?: Maybe<ID_Input>;
-  id_gte?: Maybe<ID_Input>;
-  id_contains?: Maybe<ID_Input>;
-  id_not_contains?: Maybe<ID_Input>;
-  id_starts_with?: Maybe<ID_Input>;
-  id_not_starts_with?: Maybe<ID_Input>;
-  id_ends_with?: Maybe<ID_Input>;
-  id_not_ends_with?: Maybe<ID_Input>;
-  lastWeek?: Maybe<Int>;
-  lastWeek_not?: Maybe<Int>;
-  lastWeek_in?: Maybe<Int[] | Int>;
-  lastWeek_not_in?: Maybe<Int[] | Int>;
-  lastWeek_lt?: Maybe<Int>;
-  lastWeek_lte?: Maybe<Int>;
-  lastWeek_gt?: Maybe<Int>;
-  lastWeek_gte?: Maybe<Int>;
-  House?: Maybe<HouseWhereInput>;
-  User_every?: Maybe<UserWhereInput>;
-  User_some?: Maybe<UserWhereInput>;
-  User_none?: Maybe<UserWhereInput>;
-  createdAt?: Maybe<DateTimeInput>;
-  createdAt_not?: Maybe<DateTimeInput>;
-  createdAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
-  createdAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
-  createdAt_lt?: Maybe<DateTimeInput>;
-  createdAt_lte?: Maybe<DateTimeInput>;
-  createdAt_gt?: Maybe<DateTimeInput>;
-  createdAt_gte?: Maybe<DateTimeInput>;
-  updatedAt?: Maybe<DateTimeInput>;
-  updatedAt_not?: Maybe<DateTimeInput>;
-  updatedAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
-  updatedAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
-  updatedAt_lt?: Maybe<DateTimeInput>;
-  updatedAt_lte?: Maybe<DateTimeInput>;
-  updatedAt_gt?: Maybe<DateTimeInput>;
-  updatedAt_gte?: Maybe<DateTimeInput>;
-  AND?: Maybe<ViewsWhereInput[] | ViewsWhereInput>;
-  OR?: Maybe<ViewsWhereInput[] | ViewsWhereInput>;
-  NOT?: Maybe<ViewsWhereInput[] | ViewsWhereInput>;
-}
-
-export type BookingWhereUniqueInput = AtLeastOne<{
-  id: Maybe<ID_Input>;
-}>;
-
-export type CityWhereUniqueInput = AtLeastOne<{
-  id: Maybe<ID_Input>;
-}>;
-
-export type CommuneWhereUniqueInput = AtLeastOne<{
-  id: Maybe<ID_Input>;
-}>;
-
-export type CountryWhereUniqueInput = AtLeastOne<{
-  id: Maybe<ID_Input>;
-}>;
-
-export type CreditCardInformationWhereUniqueInput = AtLeastOne<{
-  id: Maybe<ID_Input>;
-}>;
-
-export type HouseWhereUniqueInput = AtLeastOne<{
-  id: Maybe<ID_Input>;
-}>;
-
-export type HouseFavoritedWhereUniqueInput = AtLeastOne<{
-  id: Maybe<ID_Input>;
-}>;
-
-export interface HouseFavoritedWhereInput {
-  id?: Maybe<ID_Input>;
-  id_not?: Maybe<ID_Input>;
-  id_in?: Maybe<ID_Input[] | ID_Input>;
-  id_not_in?: Maybe<ID_Input[] | ID_Input>;
-  id_lt?: Maybe<ID_Input>;
-  id_lte?: Maybe<ID_Input>;
-  id_gt?: Maybe<ID_Input>;
-  id_gte?: Maybe<ID_Input>;
-  id_contains?: Maybe<ID_Input>;
-  id_not_contains?: Maybe<ID_Input>;
-  id_starts_with?: Maybe<ID_Input>;
-  id_not_starts_with?: Maybe<ID_Input>;
-  id_ends_with?: Maybe<ID_Input>;
-  id_not_ends_with?: Maybe<ID_Input>;
-  createdAt?: Maybe<DateTimeInput>;
-  createdAt_not?: Maybe<DateTimeInput>;
-  createdAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
-  createdAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
-  createdAt_lt?: Maybe<DateTimeInput>;
-  createdAt_lte?: Maybe<DateTimeInput>;
-  createdAt_gt?: Maybe<DateTimeInput>;
-  createdAt_gte?: Maybe<DateTimeInput>;
-  updatedAt?: Maybe<DateTimeInput>;
-  updatedAt_not?: Maybe<DateTimeInput>;
-  updatedAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
-  updatedAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
-  updatedAt_lt?: Maybe<DateTimeInput>;
-  updatedAt_lte?: Maybe<DateTimeInput>;
-  updatedAt_gt?: Maybe<DateTimeInput>;
-  updatedAt_gte?: Maybe<DateTimeInput>;
-  user?: Maybe<UserWhereInput>;
-  house?: Maybe<HouseWhereInput>;
-  AND?: Maybe<HouseFavoritedWhereInput[] | HouseFavoritedWhereInput>;
-  OR?: Maybe<HouseFavoritedWhereInput[] | HouseFavoritedWhereInput>;
-  NOT?: Maybe<HouseFavoritedWhereInput[] | HouseFavoritedWhereInput>;
-}
-
-export type LocationWhereUniqueInput = AtLeastOne<{
-  id: Maybe<ID_Input>;
-}>;
-
-export type NegotiationWhereUniqueInput = AtLeastOne<{
-  id: Maybe<ID_Input>;
-}>;
-
-export interface NegotiationWhereInput {
-  id?: Maybe<ID_Input>;
-  id_not?: Maybe<ID_Input>;
-  id_in?: Maybe<ID_Input[] | ID_Input>;
-  id_not_in?: Maybe<ID_Input[] | ID_Input>;
-  id_lt?: Maybe<ID_Input>;
-  id_lte?: Maybe<ID_Input>;
-  id_gt?: Maybe<ID_Input>;
-  id_gte?: Maybe<ID_Input>;
-  id_contains?: Maybe<ID_Input>;
-  id_not_contains?: Maybe<ID_Input>;
-  id_starts_with?: Maybe<ID_Input>;
-  id_not_starts_with?: Maybe<ID_Input>;
-  id_ends_with?: Maybe<ID_Input>;
-  id_not_ends_with?: Maybe<ID_Input>;
-  createdAt?: Maybe<DateTimeInput>;
-  createdAt_not?: Maybe<DateTimeInput>;
-  createdAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
-  createdAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
-  createdAt_lt?: Maybe<DateTimeInput>;
-  createdAt_lte?: Maybe<DateTimeInput>;
-  createdAt_gt?: Maybe<DateTimeInput>;
-  createdAt_gte?: Maybe<DateTimeInput>;
-  updatedAt?: Maybe<DateTimeInput>;
-  updatedAt_not?: Maybe<DateTimeInput>;
-  updatedAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
-  updatedAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
-  updatedAt_lt?: Maybe<DateTimeInput>;
-  updatedAt_lte?: Maybe<DateTimeInput>;
-  updatedAt_gt?: Maybe<DateTimeInput>;
-  updatedAt_gte?: Maybe<DateTimeInput>;
-  negotiator?: Maybe<UserWhereInput>;
-  House?: Maybe<HouseWhereInput>;
-  offer?: Maybe<Float>;
-  offer_not?: Maybe<Float>;
-  offer_in?: Maybe<Float[] | Float>;
-  offer_not_in?: Maybe<Float[] | Float>;
-  offer_lt?: Maybe<Float>;
-  offer_lte?: Maybe<Float>;
-  offer_gt?: Maybe<Float>;
-  offer_gte?: Maybe<Float>;
-  status?: Maybe<NEGOTIATION_TYPE>;
-  status_not?: Maybe<NEGOTIATION_TYPE>;
-  status_in?: Maybe<NEGOTIATION_TYPE[] | NEGOTIATION_TYPE>;
-  status_not_in?: Maybe<NEGOTIATION_TYPE[] | NEGOTIATION_TYPE>;
-  AND?: Maybe<NegotiationWhereInput[] | NegotiationWhereInput>;
-  OR?: Maybe<NegotiationWhereInput[] | NegotiationWhereInput>;
-  NOT?: Maybe<NegotiationWhereInput[] | NegotiationWhereInput>;
-}
-
-export type NotificationWhereUniqueInput = AtLeastOne<{
-  id: Maybe<ID_Input>;
-}>;
-
-export type PaymentAccountWhereUniqueInput = AtLeastOne<{
-  id: Maybe<ID_Input>;
-}>;
-
-export type PaymentHouseWhereUniqueInput = AtLeastOne<{
-  id: Maybe<ID_Input>;
-}>;
-
-export type PaymentLanlordInfoWhereUniqueInput = AtLeastOne<{
-  id: Maybe<ID_Input>;
-}>;
-
-export type PaypalInformationWhereUniqueInput = AtLeastOne<{
-  id: Maybe<ID_Input>;
-}>;
-
-export type PictureWhereUniqueInput = AtLeastOne<{
-  id: Maybe<ID_Input>;
-}>;
-
-export type PricingWhereUniqueInput = AtLeastOne<{
-  id: Maybe<ID_Input>;
-}>;
-
-export type ReviewWhereUniqueInput = AtLeastOne<{
-  id: Maybe<ID_Input>;
-}>;
-
-export type RoomWhereUniqueInput = AtLeastOne<{
-  id: Maybe<ID_Input>;
-}>;
-
-export type StateWhereUniqueInput = AtLeastOne<{
-  id: Maybe<ID_Input>;
-}>;
-
-export type UserWhereUniqueInput = AtLeastOne<{
-  id: Maybe<ID_Input>;
-  facebookUserId?: Maybe<String>;
-  email?: Maybe<String>;
-}>;
-
-export type VideoWhereUniqueInput = AtLeastOne<{
-  id: Maybe<ID_Input>;
-}>;
-
-export type ViewsWhereUniqueInput = AtLeastOne<{
-  id: Maybe<ID_Input>;
-}>;
-
-export interface AmenitiesCreateInput {
-  id?: Maybe<ID_Input>;
-  House: HouseCreateOneWithoutAmenitiesInput;
-  electricity?: Maybe<Boolean>;
-  electricity_frequency?: Maybe<FREQUENCY>;
-  water_pipe?: Maybe<Boolean>;
-  water_tank?: Maybe<Boolean>;
-  water_frequency?: Maybe<FREQUENCY>;
-  elevator?: Maybe<Boolean>;
-  petsAllowed?: Maybe<Boolean>;
-  internet?: Maybe<Boolean>;
-  kitchen?: Maybe<Boolean>;
-  wirelessInternet?: Maybe<Boolean>;
-  familyKidFriendly?: Maybe<Boolean>;
-  freeParkingOnPremises?: Maybe<Boolean>;
-  hotTub?: Maybe<Boolean>;
-  pool?: Maybe<Boolean>;
-  smokingAllowed?: Maybe<Boolean>;
-  wheelchairAccessible?: Maybe<Boolean>;
-  cableTv?: Maybe<Boolean>;
-  suitableForEvents?: Maybe<Boolean>;
-  dryer?: Maybe<Boolean>;
-  washer?: Maybe<Boolean>;
-  indoorFireHouse?: Maybe<Boolean>;
-  tv?: Maybe<Boolean>;
-  heating?: Maybe<Boolean>;
-  hangers?: Maybe<Boolean>;
-  iron?: Maybe<Boolean>;
-  hairDryer?: Maybe<Boolean>;
-  doorman?: Maybe<Boolean>;
-  paidParkingOffPremises?: Maybe<Boolean>;
-  freeParkingOnStreet?: Maybe<Boolean>;
-  gym?: Maybe<Boolean>;
-  airConditioning?: Maybe<Boolean>;
-  shampoo?: Maybe<Boolean>;
-  essentials?: Maybe<Boolean>;
-  laptopFriendlyWorkspace?: Maybe<Boolean>;
-  privateEntrance?: Maybe<Boolean>;
-  buzzerWirelessIntercom?: Maybe<Boolean>;
-  bathtub?: Maybe<Boolean>;
-  crib?: Maybe<Boolean>;
-}
-
-export interface HouseCreateOneWithoutAmenitiesInput {
-  create?: Maybe<HouseCreateWithoutAmenitiesInput>;
-  connect?: Maybe<HouseWhereUniqueInput>;
-}
-
-export interface HouseCreateWithoutAmenitiesInput {
-  id?: Maybe<ID_Input>;
-  area?: Maybe<Int>;
-  age?: Maybe<Int>;
-  shortDescription?: Maybe<String>;
-  description?: Maybe<String>;
-  maxGuests?: Maybe<Int>;
-  numBedrooms: Int;
-  numBaths: Int;
-  numLivingrooms?: Maybe<Int>;
-  numDiningrooms?: Maybe<Int>;
-  reviews?: Maybe<ReviewCreateManyWithoutHouseInput>;
-  host: UserCreateOneWithoutOwnedHousesInput;
-  pricing?: Maybe<PricingCreateOneWithoutHouseInput>;
-  location: LocationCreateOneInput;
-  leaseType?: Maybe<HOUSE_LEASE_TYPE>;
-  verified?: Maybe<Boolean>;
-  type?: Maybe<HOUSE_TYPES>;
-  residency?: Maybe<House_RESIDENCY>;
-  lease?: Maybe<Int>;
-  rooms?: Maybe<RoomCreateManyWithoutHouseInput>;
-  views?: Maybe<ViewsCreateOneWithoutHouseInput>;
-  bookings?: Maybe<BookingCreateManyWithoutHouseInput>;
-  pictures?: Maybe<PictureCreateManyInput>;
-  contactInfoPayments?: Maybe<PaymentLanlordInfoCreateManyWithoutHouseInput>;
-  popularity?: Maybe<Int>;
-  preview_image?: Maybe<PictureCreateOneInput>;
-  lastRating?: Maybe<Int>;
-  rentOrSell: RENT_OR_SELL;
-}
-
-export interface ReviewCreateManyWithoutHouseInput {
-  create?: Maybe<
-    ReviewCreateWithoutHouseInput[] | ReviewCreateWithoutHouseInput
-  >;
-  connect?: Maybe<ReviewWhereUniqueInput[] | ReviewWhereUniqueInput>;
-}
-
-export interface ReviewCreateWithoutHouseInput {
-  id?: Maybe<ID_Input>;
-  text?: Maybe<String>;
-  stars: Int;
-  user: UserCreateOneWithoutReviewsInput;
-}
-
-export interface UserCreateOneWithoutReviewsInput {
-  create?: Maybe<UserCreateWithoutReviewsInput>;
-  connect?: Maybe<UserWhereUniqueInput>;
-}
-
-export interface UserCreateWithoutReviewsInput {
-  id?: Maybe<ID_Input>;
-  status?: Maybe<Boolean>;
-  facebookUserId?: Maybe<String>;
-  firstName: String;
-  lastName: String;
-  email?: Maybe<String>;
-  password?: Maybe<String>;
-  resetToken?: Maybe<String>;
-  resetTokenExpiry?: Maybe<String>;
-  phone1?: Maybe<String>;
-  phone2?: Maybe<String>;
-  primaryPhone?: Maybe<Int>;
-  responseTime?: Maybe<Int>;
-  isSuperHost?: Maybe<Boolean>;
-  ownedHouses?: Maybe<HouseCreateManyWithoutHostInput>;
-  location?: Maybe<LocationCreateOneInput>;
-  bookings?: Maybe<BookingCreateManyWithoutBookeeInput>;
-  paidContacts?: Maybe<PaymentLanlordInfoCreateManyWithoutClientInput>;
-  notifications?: Maybe<NotificationCreateManyWithoutUserInput>;
-  profilePicture?: Maybe<PictureCreateOneInput>;
-  permissions?: Maybe<UserCreatepermissionsInput>;
-}
-
-export interface HouseCreateManyWithoutHostInput {
-  create?: Maybe<HouseCreateWithoutHostInput[] | HouseCreateWithoutHostInput>;
-  connect?: Maybe<HouseWhereUniqueInput[] | HouseWhereUniqueInput>;
-}
-
-export interface HouseCreateWithoutHostInput {
-  id?: Maybe<ID_Input>;
-  area?: Maybe<Int>;
-  age?: Maybe<Int>;
-  shortDescription?: Maybe<String>;
-  description?: Maybe<String>;
-  maxGuests?: Maybe<Int>;
-  numBedrooms: Int;
-  numBaths: Int;
-  numLivingrooms?: Maybe<Int>;
-  numDiningrooms?: Maybe<Int>;
-  reviews?: Maybe<ReviewCreateManyWithoutHouseInput>;
-  amenities?: Maybe<AmenitiesCreateOneWithoutHouseInput>;
-  pricing?: Maybe<PricingCreateOneWithoutHouseInput>;
-  location: LocationCreateOneInput;
-  leaseType?: Maybe<HOUSE_LEASE_TYPE>;
-  verified?: Maybe<Boolean>;
-  type?: Maybe<HOUSE_TYPES>;
-  residency?: Maybe<House_RESIDENCY>;
-  lease?: Maybe<Int>;
-  rooms?: Maybe<RoomCreateManyWithoutHouseInput>;
-  views?: Maybe<ViewsCreateOneWithoutHouseInput>;
-  bookings?: Maybe<BookingCreateManyWithoutHouseInput>;
-  pictures?: Maybe<PictureCreateManyInput>;
-  contactInfoPayments?: Maybe<PaymentLanlordInfoCreateManyWithoutHouseInput>;
-  popularity?: Maybe<Int>;
-  preview_image?: Maybe<PictureCreateOneInput>;
-  lastRating?: Maybe<Int>;
-  rentOrSell: RENT_OR_SELL;
-}
-
-export interface AmenitiesCreateOneWithoutHouseInput {
-  create?: Maybe<AmenitiesCreateWithoutHouseInput>;
-  connect?: Maybe<AmenitiesWhereUniqueInput>;
-}
-
-export interface AmenitiesCreateWithoutHouseInput {
-  id?: Maybe<ID_Input>;
-  electricity?: Maybe<Boolean>;
-  electricity_frequency?: Maybe<FREQUENCY>;
-  water_pipe?: Maybe<Boolean>;
-  water_tank?: Maybe<Boolean>;
-  water_frequency?: Maybe<FREQUENCY>;
-  elevator?: Maybe<Boolean>;
-  petsAllowed?: Maybe<Boolean>;
-  internet?: Maybe<Boolean>;
-  kitchen?: Maybe<Boolean>;
-  wirelessInternet?: Maybe<Boolean>;
-  familyKidFriendly?: Maybe<Boolean>;
-  freeParkingOnPremises?: Maybe<Boolean>;
-  hotTub?: Maybe<Boolean>;
-  pool?: Maybe<Boolean>;
-  smokingAllowed?: Maybe<Boolean>;
-  wheelchairAccessible?: Maybe<Boolean>;
-  cableTv?: Maybe<Boolean>;
-  suitableForEvents?: Maybe<Boolean>;
-  dryer?: Maybe<Boolean>;
-  washer?: Maybe<Boolean>;
-  indoorFireHouse?: Maybe<Boolean>;
-  tv?: Maybe<Boolean>;
-  heating?: Maybe<Boolean>;
-  hangers?: Maybe<Boolean>;
-  iron?: Maybe<Boolean>;
-  hairDryer?: Maybe<Boolean>;
-  doorman?: Maybe<Boolean>;
-  paidParkingOffPremises?: Maybe<Boolean>;
-  freeParkingOnStreet?: Maybe<Boolean>;
-  gym?: Maybe<Boolean>;
-  airConditioning?: Maybe<Boolean>;
-  shampoo?: Maybe<Boolean>;
-  essentials?: Maybe<Boolean>;
-  laptopFriendlyWorkspace?: Maybe<Boolean>;
-  privateEntrance?: Maybe<Boolean>;
-  buzzerWirelessIntercom?: Maybe<Boolean>;
-  bathtub?: Maybe<Boolean>;
-  crib?: Maybe<Boolean>;
-}
-
-export interface PricingCreateOneWithoutHouseInput {
-  create?: Maybe<PricingCreateWithoutHouseInput>;
-  connect?: Maybe<PricingWhereUniqueInput>;
-}
-
-export interface PricingCreateWithoutHouseInput {
-  id?: Maybe<ID_Input>;
-  basePrice?: Maybe<Float>;
-  highestPrice: Float;
-  currency: CURRENCY;
-  income?: Maybe<Float>;
-}
-
-export interface LocationCreateOneInput {
-  create?: Maybe<LocationCreateInput>;
-  connect?: Maybe<LocationWhereUniqueInput>;
-}
-
-export interface LocationCreateInput {
-  id?: Maybe<ID_Input>;
-  lat?: Maybe<Float>;
-  lng?: Maybe<Float>;
-  address?: Maybe<String>;
-  commune?: Maybe<CommuneCreateOneInput>;
-}
-
-export interface CommuneCreateOneInput {
-  create?: Maybe<CommuneCreateInput>;
-  connect?: Maybe<CommuneWhereUniqueInput>;
-}
-
-export interface CommuneCreateInput {
-  id?: Maybe<ID_Input>;
-  name: String;
-  rank?: Maybe<Int>;
-  city: CityCreateOneInput;
-}
-
-export interface CityCreateOneInput {
-  create?: Maybe<CityCreateInput>;
-  connect?: Maybe<CityWhereUniqueInput>;
-}
-
-export interface CityCreateInput {
-  id?: Maybe<ID_Input>;
-  name: String;
-  rank?: Maybe<Int>;
-  state: StateCreateOneInput;
-}
-
-export interface StateCreateOneInput {
-  create?: Maybe<StateCreateInput>;
-  connect?: Maybe<StateWhereUniqueInput>;
-}
-
-export interface StateCreateInput {
-  id?: Maybe<ID_Input>;
-  name: String;
-  rank?: Maybe<Int>;
-  country: CountryCreateOneInput;
-}
-
-export interface CountryCreateOneInput {
-  create?: Maybe<CountryCreateInput>;
-  connect?: Maybe<CountryWhereUniqueInput>;
-}
-
-export interface CountryCreateInput {
-  id?: Maybe<ID_Input>;
-  name: String;
-}
-
-export interface RoomCreateManyWithoutHouseInput {
-  create?: Maybe<RoomCreateWithoutHouseInput[] | RoomCreateWithoutHouseInput>;
-  connect?: Maybe<RoomWhereUniqueInput[] | RoomWhereUniqueInput>;
-}
-
-export interface RoomCreateWithoutHouseInput {
-  id?: Maybe<ID_Input>;
-  label: ROOM_LABELS;
-  picture_previews?: Maybe<PictureCreateManyInput>;
-  video_previews?: Maybe<VideoCreateManyInput>;
-}
-
-export interface PictureCreateManyInput {
-  create?: Maybe<PictureCreateInput[] | PictureCreateInput>;
-  connect?: Maybe<PictureWhereUniqueInput[] | PictureWhereUniqueInput>;
-}
-
-export interface PictureCreateInput {
-  id?: Maybe<ID_Input>;
-  url: String;
-}
-
-export interface VideoCreateManyInput {
-  create?: Maybe<VideoCreateInput[] | VideoCreateInput>;
-  connect?: Maybe<VideoWhereUniqueInput[] | VideoWhereUniqueInput>;
-}
-
-export interface VideoCreateInput {
-  id?: Maybe<ID_Input>;
-  url: String;
-}
-
-export interface ViewsCreateOneWithoutHouseInput {
-  create?: Maybe<ViewsCreateWithoutHouseInput>;
-  connect?: Maybe<ViewsWhereUniqueInput>;
-}
-
-export interface ViewsCreateWithoutHouseInput {
-  id?: Maybe<ID_Input>;
-  lastWeek: Int;
-  User?: Maybe<UserCreateManyInput>;
-}
-
-export interface UserCreateManyInput {
-  create?: Maybe<UserCreateInput[] | UserCreateInput>;
-  connect?: Maybe<UserWhereUniqueInput[] | UserWhereUniqueInput>;
-}
-
-export interface UserCreateInput {
-  id?: Maybe<ID_Input>;
-  status?: Maybe<Boolean>;
-  facebookUserId?: Maybe<String>;
-  firstName: String;
-  lastName: String;
-  email?: Maybe<String>;
-  password?: Maybe<String>;
-  resetToken?: Maybe<String>;
-  resetTokenExpiry?: Maybe<String>;
-  phone1?: Maybe<String>;
-  phone2?: Maybe<String>;
-  primaryPhone?: Maybe<Int>;
-  responseTime?: Maybe<Int>;
-  isSuperHost?: Maybe<Boolean>;
-  ownedHouses?: Maybe<HouseCreateManyWithoutHostInput>;
-  location?: Maybe<LocationCreateOneInput>;
-  bookings?: Maybe<BookingCreateManyWithoutBookeeInput>;
-  paidContacts?: Maybe<PaymentLanlordInfoCreateManyWithoutClientInput>;
-  notifications?: Maybe<NotificationCreateManyWithoutUserInput>;
-  profilePicture?: Maybe<PictureCreateOneInput>;
-  reviews?: Maybe<ReviewCreateManyWithoutUserInput>;
-  permissions?: Maybe<UserCreatepermissionsInput>;
-}
-
-export interface BookingCreateManyWithoutBookeeInput {
-  create?: Maybe<
-    BookingCreateWithoutBookeeInput[] | BookingCreateWithoutBookeeInput
-  >;
-  connect?: Maybe<BookingWhereUniqueInput[] | BookingWhereUniqueInput>;
-}
-
-export interface BookingCreateWithoutBookeeInput {
-  id?: Maybe<ID_Input>;
-  House: HouseCreateOneWithoutBookingsInput;
-  startDate: DateTimeInput;
-  endDate: DateTimeInput;
-  payment: PaymentHouseCreateOneWithoutBookingInput;
-}
-
-export interface HouseCreateOneWithoutBookingsInput {
-  create?: Maybe<HouseCreateWithoutBookingsInput>;
-  connect?: Maybe<HouseWhereUniqueInput>;
-}
-
-export interface HouseCreateWithoutBookingsInput {
-  id?: Maybe<ID_Input>;
-  area?: Maybe<Int>;
-  age?: Maybe<Int>;
-  shortDescription?: Maybe<String>;
-  description?: Maybe<String>;
-  maxGuests?: Maybe<Int>;
-  numBedrooms: Int;
-  numBaths: Int;
-  numLivingrooms?: Maybe<Int>;
-  numDiningrooms?: Maybe<Int>;
-  reviews?: Maybe<ReviewCreateManyWithoutHouseInput>;
-  amenities?: Maybe<AmenitiesCreateOneWithoutHouseInput>;
-  host: UserCreateOneWithoutOwnedHousesInput;
-  pricing?: Maybe<PricingCreateOneWithoutHouseInput>;
-  location: LocationCreateOneInput;
-  leaseType?: Maybe<HOUSE_LEASE_TYPE>;
-  verified?: Maybe<Boolean>;
-  type?: Maybe<HOUSE_TYPES>;
-  residency?: Maybe<House_RESIDENCY>;
-  lease?: Maybe<Int>;
-  rooms?: Maybe<RoomCreateManyWithoutHouseInput>;
-  views?: Maybe<ViewsCreateOneWithoutHouseInput>;
-  pictures?: Maybe<PictureCreateManyInput>;
-  contactInfoPayments?: Maybe<PaymentLanlordInfoCreateManyWithoutHouseInput>;
-  popularity?: Maybe<Int>;
-  preview_image?: Maybe<PictureCreateOneInput>;
-  lastRating?: Maybe<Int>;
-  rentOrSell: RENT_OR_SELL;
-}
-
-export interface UserCreateOneWithoutOwnedHousesInput {
-  create?: Maybe<UserCreateWithoutOwnedHousesInput>;
-  connect?: Maybe<UserWhereUniqueInput>;
-}
-
-export interface UserCreateWithoutOwnedHousesInput {
-  id?: Maybe<ID_Input>;
-  status?: Maybe<Boolean>;
-  facebookUserId?: Maybe<String>;
-  firstName: String;
-  lastName: String;
-  email?: Maybe<String>;
-  password?: Maybe<String>;
-  resetToken?: Maybe<String>;
-  resetTokenExpiry?: Maybe<String>;
-  phone1?: Maybe<String>;
-  phone2?: Maybe<String>;
-  primaryPhone?: Maybe<Int>;
-  responseTime?: Maybe<Int>;
-  isSuperHost?: Maybe<Boolean>;
-  location?: Maybe<LocationCreateOneInput>;
-  bookings?: Maybe<BookingCreateManyWithoutBookeeInput>;
-  paidContacts?: Maybe<PaymentLanlordInfoCreateManyWithoutClientInput>;
-  notifications?: Maybe<NotificationCreateManyWithoutUserInput>;
-  profilePicture?: Maybe<PictureCreateOneInput>;
-  reviews?: Maybe<ReviewCreateManyWithoutUserInput>;
-  permissions?: Maybe<UserCreatepermissionsInput>;
-}
-
-export interface PaymentLanlordInfoCreateManyWithoutClientInput {
-  create?: Maybe<
-    | PaymentLanlordInfoCreateWithoutClientInput[]
-    | PaymentLanlordInfoCreateWithoutClientInput
-  >;
-  connect?: Maybe<
-    PaymentLanlordInfoWhereUniqueInput[] | PaymentLanlordInfoWhereUniqueInput
-  >;
-}
-
-export interface PaymentLanlordInfoCreateWithoutClientInput {
-  id?: Maybe<ID_Input>;
-  totalPrice: Float;
-  House: HouseCreateOneWithoutContactInfoPaymentsInput;
-  moncashTransactId: String;
-}
-
-export interface HouseCreateOneWithoutContactInfoPaymentsInput {
-  create?: Maybe<HouseCreateWithoutContactInfoPaymentsInput>;
-  connect?: Maybe<HouseWhereUniqueInput>;
-}
-
-export interface HouseCreateWithoutContactInfoPaymentsInput {
-  id?: Maybe<ID_Input>;
-  area?: Maybe<Int>;
-  age?: Maybe<Int>;
-  shortDescription?: Maybe<String>;
-  description?: Maybe<String>;
-  maxGuests?: Maybe<Int>;
-  numBedrooms: Int;
-  numBaths: Int;
-  numLivingrooms?: Maybe<Int>;
-  numDiningrooms?: Maybe<Int>;
-  reviews?: Maybe<ReviewCreateManyWithoutHouseInput>;
-  amenities?: Maybe<AmenitiesCreateOneWithoutHouseInput>;
-  host: UserCreateOneWithoutOwnedHousesInput;
-  pricing?: Maybe<PricingCreateOneWithoutHouseInput>;
-  location: LocationCreateOneInput;
-  leaseType?: Maybe<HOUSE_LEASE_TYPE>;
-  verified?: Maybe<Boolean>;
-  type?: Maybe<HOUSE_TYPES>;
-  residency?: Maybe<House_RESIDENCY>;
-  lease?: Maybe<Int>;
-  rooms?: Maybe<RoomCreateManyWithoutHouseInput>;
-  views?: Maybe<ViewsCreateOneWithoutHouseInput>;
-  bookings?: Maybe<BookingCreateManyWithoutHouseInput>;
-  pictures?: Maybe<PictureCreateManyInput>;
-  popularity?: Maybe<Int>;
-  preview_image?: Maybe<PictureCreateOneInput>;
-  lastRating?: Maybe<Int>;
-  rentOrSell: RENT_OR_SELL;
-}
-
-export interface BookingCreateManyWithoutHouseInput {
-  create?: Maybe<
-    BookingCreateWithoutHouseInput[] | BookingCreateWithoutHouseInput
-  >;
-  connect?: Maybe<BookingWhereUniqueInput[] | BookingWhereUniqueInput>;
-}
-
-export interface BookingCreateWithoutHouseInput {
-  id?: Maybe<ID_Input>;
-  bookee: UserCreateOneWithoutBookingsInput;
-  startDate: DateTimeInput;
-  endDate: DateTimeInput;
-  payment: PaymentHouseCreateOneWithoutBookingInput;
-}
-
-export interface UserCreateOneWithoutBookingsInput {
-  create?: Maybe<UserCreateWithoutBookingsInput>;
-  connect?: Maybe<UserWhereUniqueInput>;
-}
-
-export interface UserCreateWithoutBookingsInput {
-  id?: Maybe<ID_Input>;
-  status?: Maybe<Boolean>;
-  facebookUserId?: Maybe<String>;
-  firstName: String;
-  lastName: String;
-  email?: Maybe<String>;
-  password?: Maybe<String>;
-  resetToken?: Maybe<String>;
-  resetTokenExpiry?: Maybe<String>;
-  phone1?: Maybe<String>;
-  phone2?: Maybe<String>;
-  primaryPhone?: Maybe<Int>;
-  responseTime?: Maybe<Int>;
-  isSuperHost?: Maybe<Boolean>;
-  ownedHouses?: Maybe<HouseCreateManyWithoutHostInput>;
-  location?: Maybe<LocationCreateOneInput>;
-  paidContacts?: Maybe<PaymentLanlordInfoCreateManyWithoutClientInput>;
-  notifications?: Maybe<NotificationCreateManyWithoutUserInput>;
-  profilePicture?: Maybe<PictureCreateOneInput>;
-  reviews?: Maybe<ReviewCreateManyWithoutUserInput>;
-  permissions?: Maybe<UserCreatepermissionsInput>;
-}
-
-export interface NotificationCreateManyWithoutUserInput {
-  create?: Maybe<
-    NotificationCreateWithoutUserInput[] | NotificationCreateWithoutUserInput
-  >;
-  connect?: Maybe<
-    NotificationWhereUniqueInput[] | NotificationWhereUniqueInput
-  >;
-}
-
-export interface NotificationCreateWithoutUserInput {
-  id?: Maybe<ID_Input>;
-  type?: Maybe<NOTIFICATION_TYPE>;
-  link: String;
-  readDate: DateTimeInput;
-}
-
-export interface PictureCreateOneInput {
-  create?: Maybe<PictureCreateInput>;
-  connect?: Maybe<PictureWhereUniqueInput>;
-}
-
-export interface ReviewCreateManyWithoutUserInput {
-  create?: Maybe<ReviewCreateWithoutUserInput[] | ReviewCreateWithoutUserInput>;
-  connect?: Maybe<ReviewWhereUniqueInput[] | ReviewWhereUniqueInput>;
-}
-
-export interface ReviewCreateWithoutUserInput {
-  id?: Maybe<ID_Input>;
-  text?: Maybe<String>;
-  stars: Int;
-  House: HouseCreateOneWithoutReviewsInput;
-}
-
-export interface HouseCreateOneWithoutReviewsInput {
-  create?: Maybe<HouseCreateWithoutReviewsInput>;
-  connect?: Maybe<HouseWhereUniqueInput>;
-}
-
-export interface HouseCreateWithoutReviewsInput {
-  id?: Maybe<ID_Input>;
-  area?: Maybe<Int>;
-  age?: Maybe<Int>;
-  shortDescription?: Maybe<String>;
-  description?: Maybe<String>;
-  maxGuests?: Maybe<Int>;
-  numBedrooms: Int;
-  numBaths: Int;
-  numLivingrooms?: Maybe<Int>;
-  numDiningrooms?: Maybe<Int>;
-  amenities?: Maybe<AmenitiesCreateOneWithoutHouseInput>;
-  host: UserCreateOneWithoutOwnedHousesInput;
-  pricing?: Maybe<PricingCreateOneWithoutHouseInput>;
-  location: LocationCreateOneInput;
-  leaseType?: Maybe<HOUSE_LEASE_TYPE>;
-  verified?: Maybe<Boolean>;
-  type?: Maybe<HOUSE_TYPES>;
-  residency?: Maybe<House_RESIDENCY>;
-  lease?: Maybe<Int>;
-  rooms?: Maybe<RoomCreateManyWithoutHouseInput>;
-  views?: Maybe<ViewsCreateOneWithoutHouseInput>;
-  bookings?: Maybe<BookingCreateManyWithoutHouseInput>;
-  pictures?: Maybe<PictureCreateManyInput>;
-  contactInfoPayments?: Maybe<PaymentLanlordInfoCreateManyWithoutHouseInput>;
-  popularity?: Maybe<Int>;
-  preview_image?: Maybe<PictureCreateOneInput>;
-  lastRating?: Maybe<Int>;
-  rentOrSell: RENT_OR_SELL;
-}
-
-export interface PaymentLanlordInfoCreateManyWithoutHouseInput {
-  create?: Maybe<
-    | PaymentLanlordInfoCreateWithoutHouseInput[]
-    | PaymentLanlordInfoCreateWithoutHouseInput
-  >;
-  connect?: Maybe<
-    PaymentLanlordInfoWhereUniqueInput[] | PaymentLanlordInfoWhereUniqueInput
-  >;
-}
-
-export interface PaymentLanlordInfoCreateWithoutHouseInput {
-  id?: Maybe<ID_Input>;
-  totalPrice: Float;
-  client: UserCreateOneWithoutPaidContactsInput;
-  moncashTransactId: String;
-}
-
-export interface UserCreateOneWithoutPaidContactsInput {
-  create?: Maybe<UserCreateWithoutPaidContactsInput>;
-  connect?: Maybe<UserWhereUniqueInput>;
-}
-
-export interface UserCreateWithoutPaidContactsInput {
-  id?: Maybe<ID_Input>;
-  status?: Maybe<Boolean>;
-  facebookUserId?: Maybe<String>;
-  firstName: String;
-  lastName: String;
-  email?: Maybe<String>;
-  password?: Maybe<String>;
-  resetToken?: Maybe<String>;
-  resetTokenExpiry?: Maybe<String>;
-  phone1?: Maybe<String>;
-  phone2?: Maybe<String>;
-  primaryPhone?: Maybe<Int>;
-  responseTime?: Maybe<Int>;
-  isSuperHost?: Maybe<Boolean>;
-  ownedHouses?: Maybe<HouseCreateManyWithoutHostInput>;
-  location?: Maybe<LocationCreateOneInput>;
-  bookings?: Maybe<BookingCreateManyWithoutBookeeInput>;
-  notifications?: Maybe<NotificationCreateManyWithoutUserInput>;
-  profilePicture?: Maybe<PictureCreateOneInput>;
-  reviews?: Maybe<ReviewCreateManyWithoutUserInput>;
-  permissions?: Maybe<UserCreatepermissionsInput>;
-}
-
-export interface UserCreatepermissionsInput {
-  set?: Maybe<Permission[] | Permission>;
-}
-
-export interface PaymentHouseCreateOneWithoutBookingInput {
-  create?: Maybe<PaymentHouseCreateWithoutBookingInput>;
-  connect?: Maybe<PaymentHouseWhereUniqueInput>;
-}
-
-export interface PaymentHouseCreateWithoutBookingInput {
-  id?: Maybe<ID_Input>;
-  totalPrice: Float;
-  paymentMethod: PaymentAccountCreateOneWithoutPaymentsInput;
-}
-
-export interface PaymentAccountCreateOneWithoutPaymentsInput {
-  create?: Maybe<PaymentAccountCreateWithoutPaymentsInput>;
-  connect?: Maybe<PaymentAccountWhereUniqueInput>;
-}
-
-export interface PaymentAccountCreateWithoutPaymentsInput {
-  id?: Maybe<ID_Input>;
-  type?: Maybe<PAYMENT_PROVIDER>;
-  user: UserCreateOneInput;
-  paypal?: Maybe<PaypalInformationCreateOneWithoutPaymentAccountInput>;
-  creditcard?: Maybe<CreditCardInformationCreateOneWithoutPaymentAccountInput>;
-}
-
-export interface UserCreateOneInput {
-  create?: Maybe<UserCreateInput>;
-  connect?: Maybe<UserWhereUniqueInput>;
-}
-
-export interface PaypalInformationCreateOneWithoutPaymentAccountInput {
-  create?: Maybe<PaypalInformationCreateWithoutPaymentAccountInput>;
-  connect?: Maybe<PaypalInformationWhereUniqueInput>;
-}
-
-export interface PaypalInformationCreateWithoutPaymentAccountInput {
-  id?: Maybe<ID_Input>;
-  email: String;
-}
-
-export interface CreditCardInformationCreateOneWithoutPaymentAccountInput {
-  create?: Maybe<CreditCardInformationCreateWithoutPaymentAccountInput>;
-  connect?: Maybe<CreditCardInformationWhereUniqueInput>;
-}
-
-export interface CreditCardInformationCreateWithoutPaymentAccountInput {
-  id?: Maybe<ID_Input>;
-  cardNumber: String;
-  expiresOnMonth: Int;
-  expiresOnYear: Int;
-  securityCode: String;
-  firstName: String;
-  lastName: String;
-  postalCode: String;
-  country: String;
-}
-
-export interface AmenitiesUpdateInput {
-  House?: Maybe<HouseUpdateOneRequiredWithoutAmenitiesInput>;
-  electricity?: Maybe<Boolean>;
-  electricity_frequency?: Maybe<FREQUENCY>;
-  water_pipe?: Maybe<Boolean>;
-  water_tank?: Maybe<Boolean>;
-  water_frequency?: Maybe<FREQUENCY>;
-  elevator?: Maybe<Boolean>;
-  petsAllowed?: Maybe<Boolean>;
-  internet?: Maybe<Boolean>;
-  kitchen?: Maybe<Boolean>;
-  wirelessInternet?: Maybe<Boolean>;
-  familyKidFriendly?: Maybe<Boolean>;
-  freeParkingOnPremises?: Maybe<Boolean>;
-  hotTub?: Maybe<Boolean>;
-  pool?: Maybe<Boolean>;
-  smokingAllowed?: Maybe<Boolean>;
-  wheelchairAccessible?: Maybe<Boolean>;
-  cableTv?: Maybe<Boolean>;
-  suitableForEvents?: Maybe<Boolean>;
-  dryer?: Maybe<Boolean>;
-  washer?: Maybe<Boolean>;
-  indoorFireHouse?: Maybe<Boolean>;
-  tv?: Maybe<Boolean>;
-  heating?: Maybe<Boolean>;
-  hangers?: Maybe<Boolean>;
-  iron?: Maybe<Boolean>;
-  hairDryer?: Maybe<Boolean>;
-  doorman?: Maybe<Boolean>;
-  paidParkingOffPremises?: Maybe<Boolean>;
-  freeParkingOnStreet?: Maybe<Boolean>;
-  gym?: Maybe<Boolean>;
-  airConditioning?: Maybe<Boolean>;
-  shampoo?: Maybe<Boolean>;
-  essentials?: Maybe<Boolean>;
-  laptopFriendlyWorkspace?: Maybe<Boolean>;
-  privateEntrance?: Maybe<Boolean>;
-  buzzerWirelessIntercom?: Maybe<Boolean>;
-  bathtub?: Maybe<Boolean>;
-  crib?: Maybe<Boolean>;
-}
-
-export interface HouseUpdateOneRequiredWithoutAmenitiesInput {
-  create?: Maybe<HouseCreateWithoutAmenitiesInput>;
-  update?: Maybe<HouseUpdateWithoutAmenitiesDataInput>;
-  upsert?: Maybe<HouseUpsertWithoutAmenitiesInput>;
-  connect?: Maybe<HouseWhereUniqueInput>;
-}
-
-export interface HouseUpdateWithoutAmenitiesDataInput {
-  area?: Maybe<Int>;
-  age?: Maybe<Int>;
-  shortDescription?: Maybe<String>;
-  description?: Maybe<String>;
-  maxGuests?: Maybe<Int>;
-  numBedrooms?: Maybe<Int>;
-  numBaths?: Maybe<Int>;
-  numLivingrooms?: Maybe<Int>;
-  numDiningrooms?: Maybe<Int>;
-  reviews?: Maybe<ReviewUpdateManyWithoutHouseInput>;
-  host?: Maybe<UserUpdateOneRequiredWithoutOwnedHousesInput>;
-  pricing?: Maybe<PricingUpdateOneWithoutHouseInput>;
-  location?: Maybe<LocationUpdateOneRequiredInput>;
-  leaseType?: Maybe<HOUSE_LEASE_TYPE>;
-  verified?: Maybe<Boolean>;
-  type?: Maybe<HOUSE_TYPES>;
-  residency?: Maybe<House_RESIDENCY>;
-  lease?: Maybe<Int>;
-  rooms?: Maybe<RoomUpdateManyWithoutHouseInput>;
-  views?: Maybe<ViewsUpdateOneWithoutHouseInput>;
-  bookings?: Maybe<BookingUpdateManyWithoutHouseInput>;
-  pictures?: Maybe<PictureUpdateManyInput>;
-  contactInfoPayments?: Maybe<PaymentLanlordInfoUpdateManyWithoutHouseInput>;
-  popularity?: Maybe<Int>;
-  preview_image?: Maybe<PictureUpdateOneInput>;
-  lastRating?: Maybe<Int>;
-  rentOrSell?: Maybe<RENT_OR_SELL>;
-}
-
-export interface ReviewUpdateManyWithoutHouseInput {
-  create?: Maybe<
-    ReviewCreateWithoutHouseInput[] | ReviewCreateWithoutHouseInput
-  >;
-  delete?: Maybe<ReviewWhereUniqueInput[] | ReviewWhereUniqueInput>;
-  connect?: Maybe<ReviewWhereUniqueInput[] | ReviewWhereUniqueInput>;
-  set?: Maybe<ReviewWhereUniqueInput[] | ReviewWhereUniqueInput>;
-  disconnect?: Maybe<ReviewWhereUniqueInput[] | ReviewWhereUniqueInput>;
-  update?: Maybe<
-    | ReviewUpdateWithWhereUniqueWithoutHouseInput[]
-    | ReviewUpdateWithWhereUniqueWithoutHouseInput
-  >;
-  upsert?: Maybe<
-    | ReviewUpsertWithWhereUniqueWithoutHouseInput[]
-    | ReviewUpsertWithWhereUniqueWithoutHouseInput
-  >;
-  deleteMany?: Maybe<ReviewScalarWhereInput[] | ReviewScalarWhereInput>;
-  updateMany?: Maybe<
-    | ReviewUpdateManyWithWhereNestedInput[]
-    | ReviewUpdateManyWithWhereNestedInput
-  >;
-}
-
-export interface ReviewUpdateWithWhereUniqueWithoutHouseInput {
-  where: ReviewWhereUniqueInput;
-  data: ReviewUpdateWithoutHouseDataInput;
-}
-
-export interface ReviewUpdateWithoutHouseDataInput {
-  text?: Maybe<String>;
-  stars?: Maybe<Int>;
-  user?: Maybe<UserUpdateOneRequiredWithoutReviewsInput>;
-}
-
-export interface UserUpdateOneRequiredWithoutReviewsInput {
-  create?: Maybe<UserCreateWithoutReviewsInput>;
-  update?: Maybe<UserUpdateWithoutReviewsDataInput>;
-  upsert?: Maybe<UserUpsertWithoutReviewsInput>;
-  connect?: Maybe<UserWhereUniqueInput>;
-}
-
-export interface UserUpdateWithoutReviewsDataInput {
-  status?: Maybe<Boolean>;
-  facebookUserId?: Maybe<String>;
-  firstName?: Maybe<String>;
-  lastName?: Maybe<String>;
-  email?: Maybe<String>;
-  password?: Maybe<String>;
-  resetToken?: Maybe<String>;
-  resetTokenExpiry?: Maybe<String>;
-  phone1?: Maybe<String>;
-  phone2?: Maybe<String>;
-  primaryPhone?: Maybe<Int>;
-  responseTime?: Maybe<Int>;
-  isSuperHost?: Maybe<Boolean>;
-  ownedHouses?: Maybe<HouseUpdateManyWithoutHostInput>;
-  location?: Maybe<LocationUpdateOneInput>;
-  bookings?: Maybe<BookingUpdateManyWithoutBookeeInput>;
-  paidContacts?: Maybe<PaymentLanlordInfoUpdateManyWithoutClientInput>;
-  notifications?: Maybe<NotificationUpdateManyWithoutUserInput>;
-  profilePicture?: Maybe<PictureUpdateOneInput>;
-  permissions?: Maybe<UserUpdatepermissionsInput>;
-}
-
-export interface HouseUpdateManyWithoutHostInput {
-  create?: Maybe<HouseCreateWithoutHostInput[] | HouseCreateWithoutHostInput>;
-  delete?: Maybe<HouseWhereUniqueInput[] | HouseWhereUniqueInput>;
-  connect?: Maybe<HouseWhereUniqueInput[] | HouseWhereUniqueInput>;
-  set?: Maybe<HouseWhereUniqueInput[] | HouseWhereUniqueInput>;
-  disconnect?: Maybe<HouseWhereUniqueInput[] | HouseWhereUniqueInput>;
-  update?: Maybe<
-    | HouseUpdateWithWhereUniqueWithoutHostInput[]
-    | HouseUpdateWithWhereUniqueWithoutHostInput
-  >;
-  upsert?: Maybe<
-    | HouseUpsertWithWhereUniqueWithoutHostInput[]
-    | HouseUpsertWithWhereUniqueWithoutHostInput
-  >;
-  deleteMany?: Maybe<HouseScalarWhereInput[] | HouseScalarWhereInput>;
-  updateMany?: Maybe<
-    HouseUpdateManyWithWhereNestedInput[] | HouseUpdateManyWithWhereNestedInput
-  >;
-}
-
-export interface HouseUpdateWithWhereUniqueWithoutHostInput {
-  where: HouseWhereUniqueInput;
-  data: HouseUpdateWithoutHostDataInput;
-}
-
-export interface HouseUpdateWithoutHostDataInput {
-  area?: Maybe<Int>;
-  age?: Maybe<Int>;
-  shortDescription?: Maybe<String>;
-  description?: Maybe<String>;
-  maxGuests?: Maybe<Int>;
-  numBedrooms?: Maybe<Int>;
-  numBaths?: Maybe<Int>;
-  numLivingrooms?: Maybe<Int>;
-  numDiningrooms?: Maybe<Int>;
-  reviews?: Maybe<ReviewUpdateManyWithoutHouseInput>;
-  amenities?: Maybe<AmenitiesUpdateOneWithoutHouseInput>;
-  pricing?: Maybe<PricingUpdateOneWithoutHouseInput>;
-  location?: Maybe<LocationUpdateOneRequiredInput>;
-  leaseType?: Maybe<HOUSE_LEASE_TYPE>;
-  verified?: Maybe<Boolean>;
-  type?: Maybe<HOUSE_TYPES>;
-  residency?: Maybe<House_RESIDENCY>;
-  lease?: Maybe<Int>;
-  rooms?: Maybe<RoomUpdateManyWithoutHouseInput>;
-  views?: Maybe<ViewsUpdateOneWithoutHouseInput>;
-  bookings?: Maybe<BookingUpdateManyWithoutHouseInput>;
-  pictures?: Maybe<PictureUpdateManyInput>;
-  contactInfoPayments?: Maybe<PaymentLanlordInfoUpdateManyWithoutHouseInput>;
-  popularity?: Maybe<Int>;
-  preview_image?: Maybe<PictureUpdateOneInput>;
-  lastRating?: Maybe<Int>;
-  rentOrSell?: Maybe<RENT_OR_SELL>;
-}
-
-export interface AmenitiesUpdateOneWithoutHouseInput {
-  create?: Maybe<AmenitiesCreateWithoutHouseInput>;
-  update?: Maybe<AmenitiesUpdateWithoutHouseDataInput>;
-  upsert?: Maybe<AmenitiesUpsertWithoutHouseInput>;
-  delete?: Maybe<Boolean>;
-  disconnect?: Maybe<Boolean>;
-  connect?: Maybe<AmenitiesWhereUniqueInput>;
-}
-
-export interface AmenitiesUpdateWithoutHouseDataInput {
-  electricity?: Maybe<Boolean>;
-  electricity_frequency?: Maybe<FREQUENCY>;
-  water_pipe?: Maybe<Boolean>;
-  water_tank?: Maybe<Boolean>;
-  water_frequency?: Maybe<FREQUENCY>;
-  elevator?: Maybe<Boolean>;
-  petsAllowed?: Maybe<Boolean>;
-  internet?: Maybe<Boolean>;
-  kitchen?: Maybe<Boolean>;
-  wirelessInternet?: Maybe<Boolean>;
-  familyKidFriendly?: Maybe<Boolean>;
-  freeParkingOnPremises?: Maybe<Boolean>;
-  hotTub?: Maybe<Boolean>;
-  pool?: Maybe<Boolean>;
-  smokingAllowed?: Maybe<Boolean>;
-  wheelchairAccessible?: Maybe<Boolean>;
-  cableTv?: Maybe<Boolean>;
-  suitableForEvents?: Maybe<Boolean>;
-  dryer?: Maybe<Boolean>;
-  washer?: Maybe<Boolean>;
-  indoorFireHouse?: Maybe<Boolean>;
-  tv?: Maybe<Boolean>;
-  heating?: Maybe<Boolean>;
-  hangers?: Maybe<Boolean>;
-  iron?: Maybe<Boolean>;
-  hairDryer?: Maybe<Boolean>;
-  doorman?: Maybe<Boolean>;
-  paidParkingOffPremises?: Maybe<Boolean>;
-  freeParkingOnStreet?: Maybe<Boolean>;
-  gym?: Maybe<Boolean>;
-  airConditioning?: Maybe<Boolean>;
-  shampoo?: Maybe<Boolean>;
-  essentials?: Maybe<Boolean>;
-  laptopFriendlyWorkspace?: Maybe<Boolean>;
-  privateEntrance?: Maybe<Boolean>;
-  buzzerWirelessIntercom?: Maybe<Boolean>;
-  bathtub?: Maybe<Boolean>;
-  crib?: Maybe<Boolean>;
-}
-
-export interface AmenitiesUpsertWithoutHouseInput {
-  update: AmenitiesUpdateWithoutHouseDataInput;
-  create: AmenitiesCreateWithoutHouseInput;
-}
-
-export interface PricingUpdateOneWithoutHouseInput {
-  create?: Maybe<PricingCreateWithoutHouseInput>;
-  update?: Maybe<PricingUpdateWithoutHouseDataInput>;
-  upsert?: Maybe<PricingUpsertWithoutHouseInput>;
-  delete?: Maybe<Boolean>;
-  disconnect?: Maybe<Boolean>;
-  connect?: Maybe<PricingWhereUniqueInput>;
-}
-
-export interface PricingUpdateWithoutHouseDataInput {
-  basePrice?: Maybe<Float>;
-  highestPrice?: Maybe<Float>;
-  currency?: Maybe<CURRENCY>;
-  income?: Maybe<Float>;
-}
-
-export interface PricingUpsertWithoutHouseInput {
-  update: PricingUpdateWithoutHouseDataInput;
-  create: PricingCreateWithoutHouseInput;
-}
-
-export interface LocationUpdateOneRequiredInput {
-  create?: Maybe<LocationCreateInput>;
-  update?: Maybe<LocationUpdateDataInput>;
-  upsert?: Maybe<LocationUpsertNestedInput>;
-  connect?: Maybe<LocationWhereUniqueInput>;
-}
-
-export interface LocationUpdateDataInput {
-  lat?: Maybe<Float>;
-  lng?: Maybe<Float>;
-  address?: Maybe<String>;
-  commune?: Maybe<CommuneUpdateOneInput>;
-}
-
-export interface CommuneUpdateOneInput {
-  create?: Maybe<CommuneCreateInput>;
-  update?: Maybe<CommuneUpdateDataInput>;
-  upsert?: Maybe<CommuneUpsertNestedInput>;
-  delete?: Maybe<Boolean>;
-  disconnect?: Maybe<Boolean>;
-  connect?: Maybe<CommuneWhereUniqueInput>;
-}
-
-export interface CommuneUpdateDataInput {
-  name?: Maybe<String>;
-  rank?: Maybe<Int>;
-  city?: Maybe<CityUpdateOneRequiredInput>;
-}
-
-export interface CityUpdateOneRequiredInput {
-  create?: Maybe<CityCreateInput>;
-  update?: Maybe<CityUpdateDataInput>;
-  upsert?: Maybe<CityUpsertNestedInput>;
-  connect?: Maybe<CityWhereUniqueInput>;
-}
-
-export interface CityUpdateDataInput {
-  name?: Maybe<String>;
-  rank?: Maybe<Int>;
-  state?: Maybe<StateUpdateOneRequiredInput>;
-}
-
-export interface StateUpdateOneRequiredInput {
-  create?: Maybe<StateCreateInput>;
-  update?: Maybe<StateUpdateDataInput>;
-  upsert?: Maybe<StateUpsertNestedInput>;
-  connect?: Maybe<StateWhereUniqueInput>;
-}
-
-export interface StateUpdateDataInput {
-  name?: Maybe<String>;
-  rank?: Maybe<Int>;
-  country?: Maybe<CountryUpdateOneRequiredInput>;
-}
-
-export interface CountryUpdateOneRequiredInput {
-  create?: Maybe<CountryCreateInput>;
-  update?: Maybe<CountryUpdateDataInput>;
-  upsert?: Maybe<CountryUpsertNestedInput>;
-  connect?: Maybe<CountryWhereUniqueInput>;
-}
-
-export interface CountryUpdateDataInput {
-  name?: Maybe<String>;
-}
-
-export interface CountryUpsertNestedInput {
-  update: CountryUpdateDataInput;
-  create: CountryCreateInput;
-}
-
-export interface StateUpsertNestedInput {
-  update: StateUpdateDataInput;
-  create: StateCreateInput;
-}
-
-export interface CityUpsertNestedInput {
-  update: CityUpdateDataInput;
-  create: CityCreateInput;
-}
-
-export interface CommuneUpsertNestedInput {
-  update: CommuneUpdateDataInput;
-  create: CommuneCreateInput;
-}
-
-export interface LocationUpsertNestedInput {
-  update: LocationUpdateDataInput;
-  create: LocationCreateInput;
-}
-
-export interface RoomUpdateManyWithoutHouseInput {
-  create?: Maybe<RoomCreateWithoutHouseInput[] | RoomCreateWithoutHouseInput>;
-  delete?: Maybe<RoomWhereUniqueInput[] | RoomWhereUniqueInput>;
-  connect?: Maybe<RoomWhereUniqueInput[] | RoomWhereUniqueInput>;
-  set?: Maybe<RoomWhereUniqueInput[] | RoomWhereUniqueInput>;
-  disconnect?: Maybe<RoomWhereUniqueInput[] | RoomWhereUniqueInput>;
-  update?: Maybe<
-    | RoomUpdateWithWhereUniqueWithoutHouseInput[]
-    | RoomUpdateWithWhereUniqueWithoutHouseInput
-  >;
-  upsert?: Maybe<
-    | RoomUpsertWithWhereUniqueWithoutHouseInput[]
-    | RoomUpsertWithWhereUniqueWithoutHouseInput
-  >;
-  deleteMany?: Maybe<RoomScalarWhereInput[] | RoomScalarWhereInput>;
-  updateMany?: Maybe<
-    RoomUpdateManyWithWhereNestedInput[] | RoomUpdateManyWithWhereNestedInput
-  >;
-}
-
-export interface RoomUpdateWithWhereUniqueWithoutHouseInput {
-  where: RoomWhereUniqueInput;
-  data: RoomUpdateWithoutHouseDataInput;
-}
-
-export interface RoomUpdateWithoutHouseDataInput {
-  label?: Maybe<ROOM_LABELS>;
-  picture_previews?: Maybe<PictureUpdateManyInput>;
-  video_previews?: Maybe<VideoUpdateManyInput>;
-}
-
-export interface PictureUpdateManyInput {
-  create?: Maybe<PictureCreateInput[] | PictureCreateInput>;
-  update?: Maybe<
-    | PictureUpdateWithWhereUniqueNestedInput[]
-    | PictureUpdateWithWhereUniqueNestedInput
-  >;
-  upsert?: Maybe<
-    | PictureUpsertWithWhereUniqueNestedInput[]
-    | PictureUpsertWithWhereUniqueNestedInput
-  >;
-  delete?: Maybe<PictureWhereUniqueInput[] | PictureWhereUniqueInput>;
-  connect?: Maybe<PictureWhereUniqueInput[] | PictureWhereUniqueInput>;
-  set?: Maybe<PictureWhereUniqueInput[] | PictureWhereUniqueInput>;
-  disconnect?: Maybe<PictureWhereUniqueInput[] | PictureWhereUniqueInput>;
-  deleteMany?: Maybe<PictureScalarWhereInput[] | PictureScalarWhereInput>;
-  updateMany?: Maybe<
-    | PictureUpdateManyWithWhereNestedInput[]
-    | PictureUpdateManyWithWhereNestedInput
-  >;
-}
-
-export interface PictureUpdateWithWhereUniqueNestedInput {
-  where: PictureWhereUniqueInput;
-  data: PictureUpdateDataInput;
-}
-
-export interface PictureUpdateDataInput {
-  url?: Maybe<String>;
-}
-
-export interface PictureUpsertWithWhereUniqueNestedInput {
-  where: PictureWhereUniqueInput;
-  update: PictureUpdateDataInput;
-  create: PictureCreateInput;
-}
-
-export interface PictureScalarWhereInput {
-  id?: Maybe<ID_Input>;
-  id_not?: Maybe<ID_Input>;
-  id_in?: Maybe<ID_Input[] | ID_Input>;
-  id_not_in?: Maybe<ID_Input[] | ID_Input>;
-  id_lt?: Maybe<ID_Input>;
-  id_lte?: Maybe<ID_Input>;
-  id_gt?: Maybe<ID_Input>;
-  id_gte?: Maybe<ID_Input>;
-  id_contains?: Maybe<ID_Input>;
-  id_not_contains?: Maybe<ID_Input>;
-  id_starts_with?: Maybe<ID_Input>;
-  id_not_starts_with?: Maybe<ID_Input>;
-  id_ends_with?: Maybe<ID_Input>;
-  id_not_ends_with?: Maybe<ID_Input>;
-  url?: Maybe<String>;
-  url_not?: Maybe<String>;
-  url_in?: Maybe<String[] | String>;
-  url_not_in?: Maybe<String[] | String>;
-  url_lt?: Maybe<String>;
-  url_lte?: Maybe<String>;
-  url_gt?: Maybe<String>;
-  url_gte?: Maybe<String>;
-  url_contains?: Maybe<String>;
-  url_not_contains?: Maybe<String>;
-  url_starts_with?: Maybe<String>;
-  url_not_starts_with?: Maybe<String>;
-  url_ends_with?: Maybe<String>;
-  url_not_ends_with?: Maybe<String>;
-  createdAt?: Maybe<DateTimeInput>;
-  createdAt_not?: Maybe<DateTimeInput>;
-  createdAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
-  createdAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
-  createdAt_lt?: Maybe<DateTimeInput>;
-  createdAt_lte?: Maybe<DateTimeInput>;
-  createdAt_gt?: Maybe<DateTimeInput>;
-  createdAt_gte?: Maybe<DateTimeInput>;
-  updatedAt?: Maybe<DateTimeInput>;
-  updatedAt_not?: Maybe<DateTimeInput>;
-  updatedAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
-  updatedAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
-  updatedAt_lt?: Maybe<DateTimeInput>;
-  updatedAt_lte?: Maybe<DateTimeInput>;
-  updatedAt_gt?: Maybe<DateTimeInput>;
-  updatedAt_gte?: Maybe<DateTimeInput>;
-  AND?: Maybe<PictureScalarWhereInput[] | PictureScalarWhereInput>;
-  OR?: Maybe<PictureScalarWhereInput[] | PictureScalarWhereInput>;
-  NOT?: Maybe<PictureScalarWhereInput[] | PictureScalarWhereInput>;
-}
-
-export interface PictureUpdateManyWithWhereNestedInput {
-  where: PictureScalarWhereInput;
-  data: PictureUpdateManyDataInput;
-}
-
-export interface PictureUpdateManyDataInput {
-  url?: Maybe<String>;
-}
-
-export interface VideoUpdateManyInput {
-  create?: Maybe<VideoCreateInput[] | VideoCreateInput>;
-  update?: Maybe<
-    | VideoUpdateWithWhereUniqueNestedInput[]
-    | VideoUpdateWithWhereUniqueNestedInput
-  >;
-  upsert?: Maybe<
-    | VideoUpsertWithWhereUniqueNestedInput[]
-    | VideoUpsertWithWhereUniqueNestedInput
-  >;
-  delete?: Maybe<VideoWhereUniqueInput[] | VideoWhereUniqueInput>;
-  connect?: Maybe<VideoWhereUniqueInput[] | VideoWhereUniqueInput>;
-  set?: Maybe<VideoWhereUniqueInput[] | VideoWhereUniqueInput>;
-  disconnect?: Maybe<VideoWhereUniqueInput[] | VideoWhereUniqueInput>;
-  deleteMany?: Maybe<VideoScalarWhereInput[] | VideoScalarWhereInput>;
-  updateMany?: Maybe<
-    VideoUpdateManyWithWhereNestedInput[] | VideoUpdateManyWithWhereNestedInput
-  >;
-}
-
-export interface VideoUpdateWithWhereUniqueNestedInput {
-  where: VideoWhereUniqueInput;
-  data: VideoUpdateDataInput;
-}
-
-export interface VideoUpdateDataInput {
-  url?: Maybe<String>;
-}
-
-export interface VideoUpsertWithWhereUniqueNestedInput {
-  where: VideoWhereUniqueInput;
-  update: VideoUpdateDataInput;
-  create: VideoCreateInput;
-}
-
-export interface VideoScalarWhereInput {
-  id?: Maybe<ID_Input>;
-  id_not?: Maybe<ID_Input>;
-  id_in?: Maybe<ID_Input[] | ID_Input>;
-  id_not_in?: Maybe<ID_Input[] | ID_Input>;
-  id_lt?: Maybe<ID_Input>;
-  id_lte?: Maybe<ID_Input>;
-  id_gt?: Maybe<ID_Input>;
-  id_gte?: Maybe<ID_Input>;
-  id_contains?: Maybe<ID_Input>;
-  id_not_contains?: Maybe<ID_Input>;
-  id_starts_with?: Maybe<ID_Input>;
-  id_not_starts_with?: Maybe<ID_Input>;
-  id_ends_with?: Maybe<ID_Input>;
-  id_not_ends_with?: Maybe<ID_Input>;
-  url?: Maybe<String>;
-  url_not?: Maybe<String>;
-  url_in?: Maybe<String[] | String>;
-  url_not_in?: Maybe<String[] | String>;
-  url_lt?: Maybe<String>;
-  url_lte?: Maybe<String>;
-  url_gt?: Maybe<String>;
-  url_gte?: Maybe<String>;
-  url_contains?: Maybe<String>;
-  url_not_contains?: Maybe<String>;
-  url_starts_with?: Maybe<String>;
-  url_not_starts_with?: Maybe<String>;
-  url_ends_with?: Maybe<String>;
-  url_not_ends_with?: Maybe<String>;
-  createdAt?: Maybe<DateTimeInput>;
-  createdAt_not?: Maybe<DateTimeInput>;
-  createdAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
-  createdAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
-  createdAt_lt?: Maybe<DateTimeInput>;
-  createdAt_lte?: Maybe<DateTimeInput>;
-  createdAt_gt?: Maybe<DateTimeInput>;
-  createdAt_gte?: Maybe<DateTimeInput>;
-  updatedAt?: Maybe<DateTimeInput>;
-  updatedAt_not?: Maybe<DateTimeInput>;
-  updatedAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
-  updatedAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
-  updatedAt_lt?: Maybe<DateTimeInput>;
-  updatedAt_lte?: Maybe<DateTimeInput>;
-  updatedAt_gt?: Maybe<DateTimeInput>;
-  updatedAt_gte?: Maybe<DateTimeInput>;
-  AND?: Maybe<VideoScalarWhereInput[] | VideoScalarWhereInput>;
-  OR?: Maybe<VideoScalarWhereInput[] | VideoScalarWhereInput>;
-  NOT?: Maybe<VideoScalarWhereInput[] | VideoScalarWhereInput>;
-}
-
-export interface VideoUpdateManyWithWhereNestedInput {
-  where: VideoScalarWhereInput;
-  data: VideoUpdateManyDataInput;
-}
-
-export interface VideoUpdateManyDataInput {
-  url?: Maybe<String>;
-}
-
-export interface RoomUpsertWithWhereUniqueWithoutHouseInput {
-  where: RoomWhereUniqueInput;
-  update: RoomUpdateWithoutHouseDataInput;
-  create: RoomCreateWithoutHouseInput;
-}
-
-export interface RoomScalarWhereInput {
-  id?: Maybe<ID_Input>;
-  id_not?: Maybe<ID_Input>;
-  id_in?: Maybe<ID_Input[] | ID_Input>;
-  id_not_in?: Maybe<ID_Input[] | ID_Input>;
-  id_lt?: Maybe<ID_Input>;
-  id_lte?: Maybe<ID_Input>;
-  id_gt?: Maybe<ID_Input>;
-  id_gte?: Maybe<ID_Input>;
-  id_contains?: Maybe<ID_Input>;
-  id_not_contains?: Maybe<ID_Input>;
-  id_starts_with?: Maybe<ID_Input>;
-  id_not_starts_with?: Maybe<ID_Input>;
-  id_ends_with?: Maybe<ID_Input>;
-  id_not_ends_with?: Maybe<ID_Input>;
-  label?: Maybe<ROOM_LABELS>;
-  label_not?: Maybe<ROOM_LABELS>;
-  label_in?: Maybe<ROOM_LABELS[] | ROOM_LABELS>;
-  label_not_in?: Maybe<ROOM_LABELS[] | ROOM_LABELS>;
-  createdAt?: Maybe<DateTimeInput>;
-  createdAt_not?: Maybe<DateTimeInput>;
-  createdAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
-  createdAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
-  createdAt_lt?: Maybe<DateTimeInput>;
-  createdAt_lte?: Maybe<DateTimeInput>;
-  createdAt_gt?: Maybe<DateTimeInput>;
-  createdAt_gte?: Maybe<DateTimeInput>;
-  updatedAt?: Maybe<DateTimeInput>;
-  updatedAt_not?: Maybe<DateTimeInput>;
-  updatedAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
-  updatedAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
-  updatedAt_lt?: Maybe<DateTimeInput>;
-  updatedAt_lte?: Maybe<DateTimeInput>;
-  updatedAt_gt?: Maybe<DateTimeInput>;
-  updatedAt_gte?: Maybe<DateTimeInput>;
-  AND?: Maybe<RoomScalarWhereInput[] | RoomScalarWhereInput>;
-  OR?: Maybe<RoomScalarWhereInput[] | RoomScalarWhereInput>;
-  NOT?: Maybe<RoomScalarWhereInput[] | RoomScalarWhereInput>;
-}
-
-export interface RoomUpdateManyWithWhereNestedInput {
-  where: RoomScalarWhereInput;
-  data: RoomUpdateManyDataInput;
-}
-
-export interface RoomUpdateManyDataInput {
-  label?: Maybe<ROOM_LABELS>;
-}
-
-export interface ViewsUpdateOneWithoutHouseInput {
-  create?: Maybe<ViewsCreateWithoutHouseInput>;
-  update?: Maybe<ViewsUpdateWithoutHouseDataInput>;
-  upsert?: Maybe<ViewsUpsertWithoutHouseInput>;
-  delete?: Maybe<Boolean>;
-  disconnect?: Maybe<Boolean>;
-  connect?: Maybe<ViewsWhereUniqueInput>;
-}
-
-export interface ViewsUpdateWithoutHouseDataInput {
-  lastWeek?: Maybe<Int>;
-  User?: Maybe<UserUpdateManyInput>;
-}
-
-export interface UserUpdateManyInput {
-  create?: Maybe<UserCreateInput[] | UserCreateInput>;
-  update?: Maybe<
-    | UserUpdateWithWhereUniqueNestedInput[]
-    | UserUpdateWithWhereUniqueNestedInput
-  >;
-  upsert?: Maybe<
-    | UserUpsertWithWhereUniqueNestedInput[]
-    | UserUpsertWithWhereUniqueNestedInput
-  >;
-  delete?: Maybe<UserWhereUniqueInput[] | UserWhereUniqueInput>;
-  connect?: Maybe<UserWhereUniqueInput[] | UserWhereUniqueInput>;
-  set?: Maybe<UserWhereUniqueInput[] | UserWhereUniqueInput>;
-  disconnect?: Maybe<UserWhereUniqueInput[] | UserWhereUniqueInput>;
-  deleteMany?: Maybe<UserScalarWhereInput[] | UserScalarWhereInput>;
-  updateMany?: Maybe<
-    UserUpdateManyWithWhereNestedInput[] | UserUpdateManyWithWhereNestedInput
-  >;
-}
-
-export interface UserUpdateWithWhereUniqueNestedInput {
-  where: UserWhereUniqueInput;
-  data: UserUpdateDataInput;
-}
-
-export interface UserUpdateDataInput {
-  status?: Maybe<Boolean>;
-  facebookUserId?: Maybe<String>;
-  firstName?: Maybe<String>;
-  lastName?: Maybe<String>;
-  email?: Maybe<String>;
-  password?: Maybe<String>;
-  resetToken?: Maybe<String>;
-  resetTokenExpiry?: Maybe<String>;
-  phone1?: Maybe<String>;
-  phone2?: Maybe<String>;
-  primaryPhone?: Maybe<Int>;
-  responseTime?: Maybe<Int>;
-  isSuperHost?: Maybe<Boolean>;
-  ownedHouses?: Maybe<HouseUpdateManyWithoutHostInput>;
-  location?: Maybe<LocationUpdateOneInput>;
-  bookings?: Maybe<BookingUpdateManyWithoutBookeeInput>;
-  paidContacts?: Maybe<PaymentLanlordInfoUpdateManyWithoutClientInput>;
-  notifications?: Maybe<NotificationUpdateManyWithoutUserInput>;
-  profilePicture?: Maybe<PictureUpdateOneInput>;
-  reviews?: Maybe<ReviewUpdateManyWithoutUserInput>;
-  permissions?: Maybe<UserUpdatepermissionsInput>;
-}
-
-export interface LocationUpdateOneInput {
-  create?: Maybe<LocationCreateInput>;
-  update?: Maybe<LocationUpdateDataInput>;
-  upsert?: Maybe<LocationUpsertNestedInput>;
-  delete?: Maybe<Boolean>;
-  disconnect?: Maybe<Boolean>;
-  connect?: Maybe<LocationWhereUniqueInput>;
-}
-
-export interface BookingUpdateManyWithoutBookeeInput {
-  create?: Maybe<
-    BookingCreateWithoutBookeeInput[] | BookingCreateWithoutBookeeInput
-  >;
-  delete?: Maybe<BookingWhereUniqueInput[] | BookingWhereUniqueInput>;
-  connect?: Maybe<BookingWhereUniqueInput[] | BookingWhereUniqueInput>;
-  set?: Maybe<BookingWhereUniqueInput[] | BookingWhereUniqueInput>;
-  disconnect?: Maybe<BookingWhereUniqueInput[] | BookingWhereUniqueInput>;
-  update?: Maybe<
-    | BookingUpdateWithWhereUniqueWithoutBookeeInput[]
-    | BookingUpdateWithWhereUniqueWithoutBookeeInput
-  >;
-  upsert?: Maybe<
-    | BookingUpsertWithWhereUniqueWithoutBookeeInput[]
-    | BookingUpsertWithWhereUniqueWithoutBookeeInput
-  >;
-  deleteMany?: Maybe<BookingScalarWhereInput[] | BookingScalarWhereInput>;
-  updateMany?: Maybe<
-    | BookingUpdateManyWithWhereNestedInput[]
-    | BookingUpdateManyWithWhereNestedInput
-  >;
-}
-
-export interface BookingUpdateWithWhereUniqueWithoutBookeeInput {
-  where: BookingWhereUniqueInput;
-  data: BookingUpdateWithoutBookeeDataInput;
-}
-
-export interface BookingUpdateWithoutBookeeDataInput {
-  House?: Maybe<HouseUpdateOneRequiredWithoutBookingsInput>;
-  startDate?: Maybe<DateTimeInput>;
-  endDate?: Maybe<DateTimeInput>;
-  payment?: Maybe<PaymentHouseUpdateOneRequiredWithoutBookingInput>;
-}
-
-export interface HouseUpdateOneRequiredWithoutBookingsInput {
-  create?: Maybe<HouseCreateWithoutBookingsInput>;
-  update?: Maybe<HouseUpdateWithoutBookingsDataInput>;
-  upsert?: Maybe<HouseUpsertWithoutBookingsInput>;
-  connect?: Maybe<HouseWhereUniqueInput>;
-}
-
-export interface HouseUpdateWithoutBookingsDataInput {
-  area?: Maybe<Int>;
-  age?: Maybe<Int>;
-  shortDescription?: Maybe<String>;
-  description?: Maybe<String>;
-  maxGuests?: Maybe<Int>;
-  numBedrooms?: Maybe<Int>;
-  numBaths?: Maybe<Int>;
-  numLivingrooms?: Maybe<Int>;
-  numDiningrooms?: Maybe<Int>;
-  reviews?: Maybe<ReviewUpdateManyWithoutHouseInput>;
-  amenities?: Maybe<AmenitiesUpdateOneWithoutHouseInput>;
-  host?: Maybe<UserUpdateOneRequiredWithoutOwnedHousesInput>;
-  pricing?: Maybe<PricingUpdateOneWithoutHouseInput>;
-  location?: Maybe<LocationUpdateOneRequiredInput>;
-  leaseType?: Maybe<HOUSE_LEASE_TYPE>;
-  verified?: Maybe<Boolean>;
-  type?: Maybe<HOUSE_TYPES>;
-  residency?: Maybe<House_RESIDENCY>;
-  lease?: Maybe<Int>;
-  rooms?: Maybe<RoomUpdateManyWithoutHouseInput>;
-  views?: Maybe<ViewsUpdateOneWithoutHouseInput>;
-  pictures?: Maybe<PictureUpdateManyInput>;
-  contactInfoPayments?: Maybe<PaymentLanlordInfoUpdateManyWithoutHouseInput>;
-  popularity?: Maybe<Int>;
-  preview_image?: Maybe<PictureUpdateOneInput>;
-  lastRating?: Maybe<Int>;
-  rentOrSell?: Maybe<RENT_OR_SELL>;
-}
-
-export interface UserUpdateOneRequiredWithoutOwnedHousesInput {
-  create?: Maybe<UserCreateWithoutOwnedHousesInput>;
-  update?: Maybe<UserUpdateWithoutOwnedHousesDataInput>;
-  upsert?: Maybe<UserUpsertWithoutOwnedHousesInput>;
-  connect?: Maybe<UserWhereUniqueInput>;
-}
-
-export interface UserUpdateWithoutOwnedHousesDataInput {
-  status?: Maybe<Boolean>;
-  facebookUserId?: Maybe<String>;
-  firstName?: Maybe<String>;
-  lastName?: Maybe<String>;
-  email?: Maybe<String>;
-  password?: Maybe<String>;
-  resetToken?: Maybe<String>;
-  resetTokenExpiry?: Maybe<String>;
-  phone1?: Maybe<String>;
-  phone2?: Maybe<String>;
-  primaryPhone?: Maybe<Int>;
-  responseTime?: Maybe<Int>;
-  isSuperHost?: Maybe<Boolean>;
-  location?: Maybe<LocationUpdateOneInput>;
-  bookings?: Maybe<BookingUpdateManyWithoutBookeeInput>;
-  paidContacts?: Maybe<PaymentLanlordInfoUpdateManyWithoutClientInput>;
-  notifications?: Maybe<NotificationUpdateManyWithoutUserInput>;
-  profilePicture?: Maybe<PictureUpdateOneInput>;
-  reviews?: Maybe<ReviewUpdateManyWithoutUserInput>;
-  permissions?: Maybe<UserUpdatepermissionsInput>;
-}
-
-export interface PaymentLanlordInfoUpdateManyWithoutClientInput {
-  create?: Maybe<
-    | PaymentLanlordInfoCreateWithoutClientInput[]
-    | PaymentLanlordInfoCreateWithoutClientInput
-  >;
-  delete?: Maybe<
-    PaymentLanlordInfoWhereUniqueInput[] | PaymentLanlordInfoWhereUniqueInput
-  >;
-  connect?: Maybe<
-    PaymentLanlordInfoWhereUniqueInput[] | PaymentLanlordInfoWhereUniqueInput
-  >;
-  set?: Maybe<
-    PaymentLanlordInfoWhereUniqueInput[] | PaymentLanlordInfoWhereUniqueInput
-  >;
-  disconnect?: Maybe<
-    PaymentLanlordInfoWhereUniqueInput[] | PaymentLanlordInfoWhereUniqueInput
-  >;
-  update?: Maybe<
-    | PaymentLanlordInfoUpdateWithWhereUniqueWithoutClientInput[]
-    | PaymentLanlordInfoUpdateWithWhereUniqueWithoutClientInput
-  >;
-  upsert?: Maybe<
-    | PaymentLanlordInfoUpsertWithWhereUniqueWithoutClientInput[]
-    | PaymentLanlordInfoUpsertWithWhereUniqueWithoutClientInput
-  >;
-  deleteMany?: Maybe<
-    PaymentLanlordInfoScalarWhereInput[] | PaymentLanlordInfoScalarWhereInput
-  >;
-  updateMany?: Maybe<
-    | PaymentLanlordInfoUpdateManyWithWhereNestedInput[]
-    | PaymentLanlordInfoUpdateManyWithWhereNestedInput
-  >;
-}
-
-export interface PaymentLanlordInfoUpdateWithWhereUniqueWithoutClientInput {
-  where: PaymentLanlordInfoWhereUniqueInput;
-  data: PaymentLanlordInfoUpdateWithoutClientDataInput;
-}
-
-export interface PaymentLanlordInfoUpdateWithoutClientDataInput {
-  totalPrice?: Maybe<Float>;
-  House?: Maybe<HouseUpdateOneRequiredWithoutContactInfoPaymentsInput>;
-  moncashTransactId?: Maybe<String>;
-}
-
-export interface HouseUpdateOneRequiredWithoutContactInfoPaymentsInput {
-  create?: Maybe<HouseCreateWithoutContactInfoPaymentsInput>;
-  update?: Maybe<HouseUpdateWithoutContactInfoPaymentsDataInput>;
-  upsert?: Maybe<HouseUpsertWithoutContactInfoPaymentsInput>;
-  connect?: Maybe<HouseWhereUniqueInput>;
-}
-
-export interface HouseUpdateWithoutContactInfoPaymentsDataInput {
-  area?: Maybe<Int>;
-  age?: Maybe<Int>;
-  shortDescription?: Maybe<String>;
-  description?: Maybe<String>;
-  maxGuests?: Maybe<Int>;
-  numBedrooms?: Maybe<Int>;
-  numBaths?: Maybe<Int>;
-  numLivingrooms?: Maybe<Int>;
-  numDiningrooms?: Maybe<Int>;
-  reviews?: Maybe<ReviewUpdateManyWithoutHouseInput>;
-  amenities?: Maybe<AmenitiesUpdateOneWithoutHouseInput>;
-  host?: Maybe<UserUpdateOneRequiredWithoutOwnedHousesInput>;
-  pricing?: Maybe<PricingUpdateOneWithoutHouseInput>;
-  location?: Maybe<LocationUpdateOneRequiredInput>;
-  leaseType?: Maybe<HOUSE_LEASE_TYPE>;
-  verified?: Maybe<Boolean>;
-  type?: Maybe<HOUSE_TYPES>;
-  residency?: Maybe<House_RESIDENCY>;
-  lease?: Maybe<Int>;
-  rooms?: Maybe<RoomUpdateManyWithoutHouseInput>;
-  views?: Maybe<ViewsUpdateOneWithoutHouseInput>;
-  bookings?: Maybe<BookingUpdateManyWithoutHouseInput>;
-  pictures?: Maybe<PictureUpdateManyInput>;
-  popularity?: Maybe<Int>;
-  preview_image?: Maybe<PictureUpdateOneInput>;
-  lastRating?: Maybe<Int>;
-  rentOrSell?: Maybe<RENT_OR_SELL>;
-}
-
-export interface BookingUpdateManyWithoutHouseInput {
-  create?: Maybe<
-    BookingCreateWithoutHouseInput[] | BookingCreateWithoutHouseInput
-  >;
-  delete?: Maybe<BookingWhereUniqueInput[] | BookingWhereUniqueInput>;
-  connect?: Maybe<BookingWhereUniqueInput[] | BookingWhereUniqueInput>;
-  set?: Maybe<BookingWhereUniqueInput[] | BookingWhereUniqueInput>;
-  disconnect?: Maybe<BookingWhereUniqueInput[] | BookingWhereUniqueInput>;
-  update?: Maybe<
-    | BookingUpdateWithWhereUniqueWithoutHouseInput[]
-    | BookingUpdateWithWhereUniqueWithoutHouseInput
-  >;
-  upsert?: Maybe<
-    | BookingUpsertWithWhereUniqueWithoutHouseInput[]
-    | BookingUpsertWithWhereUniqueWithoutHouseInput
-  >;
-  deleteMany?: Maybe<BookingScalarWhereInput[] | BookingScalarWhereInput>;
-  updateMany?: Maybe<
-    | BookingUpdateManyWithWhereNestedInput[]
-    | BookingUpdateManyWithWhereNestedInput
-  >;
-}
-
-export interface BookingUpdateWithWhereUniqueWithoutHouseInput {
-  where: BookingWhereUniqueInput;
-  data: BookingUpdateWithoutHouseDataInput;
-}
-
-export interface BookingUpdateWithoutHouseDataInput {
-  bookee?: Maybe<UserUpdateOneRequiredWithoutBookingsInput>;
-  startDate?: Maybe<DateTimeInput>;
-  endDate?: Maybe<DateTimeInput>;
-  payment?: Maybe<PaymentHouseUpdateOneRequiredWithoutBookingInput>;
-}
-
-export interface UserUpdateOneRequiredWithoutBookingsInput {
-  create?: Maybe<UserCreateWithoutBookingsInput>;
-  update?: Maybe<UserUpdateWithoutBookingsDataInput>;
-  upsert?: Maybe<UserUpsertWithoutBookingsInput>;
-  connect?: Maybe<UserWhereUniqueInput>;
-}
-
-export interface UserUpdateWithoutBookingsDataInput {
-  status?: Maybe<Boolean>;
-  facebookUserId?: Maybe<String>;
-  firstName?: Maybe<String>;
-  lastName?: Maybe<String>;
-  email?: Maybe<String>;
-  password?: Maybe<String>;
-  resetToken?: Maybe<String>;
-  resetTokenExpiry?: Maybe<String>;
-  phone1?: Maybe<String>;
-  phone2?: Maybe<String>;
-  primaryPhone?: Maybe<Int>;
-  responseTime?: Maybe<Int>;
-  isSuperHost?: Maybe<Boolean>;
-  ownedHouses?: Maybe<HouseUpdateManyWithoutHostInput>;
-  location?: Maybe<LocationUpdateOneInput>;
-  paidContacts?: Maybe<PaymentLanlordInfoUpdateManyWithoutClientInput>;
-  notifications?: Maybe<NotificationUpdateManyWithoutUserInput>;
-  profilePicture?: Maybe<PictureUpdateOneInput>;
-  reviews?: Maybe<ReviewUpdateManyWithoutUserInput>;
-  permissions?: Maybe<UserUpdatepermissionsInput>;
-}
-
-export interface NotificationUpdateManyWithoutUserInput {
-  create?: Maybe<
-    NotificationCreateWithoutUserInput[] | NotificationCreateWithoutUserInput
-  >;
-  delete?: Maybe<NotificationWhereUniqueInput[] | NotificationWhereUniqueInput>;
-  connect?: Maybe<
-    NotificationWhereUniqueInput[] | NotificationWhereUniqueInput
-  >;
-  set?: Maybe<NotificationWhereUniqueInput[] | NotificationWhereUniqueInput>;
-  disconnect?: Maybe<
-    NotificationWhereUniqueInput[] | NotificationWhereUniqueInput
-  >;
-  update?: Maybe<
-    | NotificationUpdateWithWhereUniqueWithoutUserInput[]
-    | NotificationUpdateWithWhereUniqueWithoutUserInput
-  >;
-  upsert?: Maybe<
-    | NotificationUpsertWithWhereUniqueWithoutUserInput[]
-    | NotificationUpsertWithWhereUniqueWithoutUserInput
-  >;
-  deleteMany?: Maybe<
-    NotificationScalarWhereInput[] | NotificationScalarWhereInput
-  >;
-  updateMany?: Maybe<
-    | NotificationUpdateManyWithWhereNestedInput[]
-    | NotificationUpdateManyWithWhereNestedInput
-  >;
-}
-
-export interface NotificationUpdateWithWhereUniqueWithoutUserInput {
-  where: NotificationWhereUniqueInput;
-  data: NotificationUpdateWithoutUserDataInput;
-}
-
-export interface NotificationUpdateWithoutUserDataInput {
-  type?: Maybe<NOTIFICATION_TYPE>;
-  link?: Maybe<String>;
-  readDate?: Maybe<DateTimeInput>;
-}
-
-export interface NotificationUpsertWithWhereUniqueWithoutUserInput {
-  where: NotificationWhereUniqueInput;
-  update: NotificationUpdateWithoutUserDataInput;
-  create: NotificationCreateWithoutUserInput;
-}
-
-export interface NotificationScalarWhereInput {
-  id?: Maybe<ID_Input>;
-  id_not?: Maybe<ID_Input>;
-  id_in?: Maybe<ID_Input[] | ID_Input>;
-  id_not_in?: Maybe<ID_Input[] | ID_Input>;
-  id_lt?: Maybe<ID_Input>;
-  id_lte?: Maybe<ID_Input>;
-  id_gt?: Maybe<ID_Input>;
-  id_gte?: Maybe<ID_Input>;
-  id_contains?: Maybe<ID_Input>;
-  id_not_contains?: Maybe<ID_Input>;
-  id_starts_with?: Maybe<ID_Input>;
-  id_not_starts_with?: Maybe<ID_Input>;
-  id_ends_with?: Maybe<ID_Input>;
-  id_not_ends_with?: Maybe<ID_Input>;
-  createdAt?: Maybe<DateTimeInput>;
-  createdAt_not?: Maybe<DateTimeInput>;
-  createdAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
-  createdAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
-  createdAt_lt?: Maybe<DateTimeInput>;
-  createdAt_lte?: Maybe<DateTimeInput>;
-  createdAt_gt?: Maybe<DateTimeInput>;
-  createdAt_gte?: Maybe<DateTimeInput>;
-  updatedAt?: Maybe<DateTimeInput>;
-  updatedAt_not?: Maybe<DateTimeInput>;
-  updatedAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
-  updatedAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
-  updatedAt_lt?: Maybe<DateTimeInput>;
-  updatedAt_lte?: Maybe<DateTimeInput>;
-  updatedAt_gt?: Maybe<DateTimeInput>;
-  updatedAt_gte?: Maybe<DateTimeInput>;
-  type?: Maybe<NOTIFICATION_TYPE>;
-  type_not?: Maybe<NOTIFICATION_TYPE>;
-  type_in?: Maybe<NOTIFICATION_TYPE[] | NOTIFICATION_TYPE>;
-  type_not_in?: Maybe<NOTIFICATION_TYPE[] | NOTIFICATION_TYPE>;
-  link?: Maybe<String>;
-  link_not?: Maybe<String>;
-  link_in?: Maybe<String[] | String>;
-  link_not_in?: Maybe<String[] | String>;
-  link_lt?: Maybe<String>;
-  link_lte?: Maybe<String>;
-  link_gt?: Maybe<String>;
-  link_gte?: Maybe<String>;
-  link_contains?: Maybe<String>;
-  link_not_contains?: Maybe<String>;
-  link_starts_with?: Maybe<String>;
-  link_not_starts_with?: Maybe<String>;
-  link_ends_with?: Maybe<String>;
-  link_not_ends_with?: Maybe<String>;
-  readDate?: Maybe<DateTimeInput>;
-  readDate_not?: Maybe<DateTimeInput>;
-  readDate_in?: Maybe<DateTimeInput[] | DateTimeInput>;
-  readDate_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
-  readDate_lt?: Maybe<DateTimeInput>;
-  readDate_lte?: Maybe<DateTimeInput>;
-  readDate_gt?: Maybe<DateTimeInput>;
-  readDate_gte?: Maybe<DateTimeInput>;
-  AND?: Maybe<NotificationScalarWhereInput[] | NotificationScalarWhereInput>;
-  OR?: Maybe<NotificationScalarWhereInput[] | NotificationScalarWhereInput>;
-  NOT?: Maybe<NotificationScalarWhereInput[] | NotificationScalarWhereInput>;
-}
-
-export interface NotificationUpdateManyWithWhereNestedInput {
-  where: NotificationScalarWhereInput;
-  data: NotificationUpdateManyDataInput;
-}
-
-export interface NotificationUpdateManyDataInput {
-  type?: Maybe<NOTIFICATION_TYPE>;
-  link?: Maybe<String>;
-  readDate?: Maybe<DateTimeInput>;
-}
-
-export interface PictureUpdateOneInput {
-  create?: Maybe<PictureCreateInput>;
-  update?: Maybe<PictureUpdateDataInput>;
-  upsert?: Maybe<PictureUpsertNestedInput>;
-  delete?: Maybe<Boolean>;
-  disconnect?: Maybe<Boolean>;
-  connect?: Maybe<PictureWhereUniqueInput>;
-}
-
-export interface PictureUpsertNestedInput {
-  update: PictureUpdateDataInput;
-  create: PictureCreateInput;
-}
-
-export interface ReviewUpdateManyWithoutUserInput {
-  create?: Maybe<ReviewCreateWithoutUserInput[] | ReviewCreateWithoutUserInput>;
-  delete?: Maybe<ReviewWhereUniqueInput[] | ReviewWhereUniqueInput>;
-  connect?: Maybe<ReviewWhereUniqueInput[] | ReviewWhereUniqueInput>;
-  set?: Maybe<ReviewWhereUniqueInput[] | ReviewWhereUniqueInput>;
-  disconnect?: Maybe<ReviewWhereUniqueInput[] | ReviewWhereUniqueInput>;
-  update?: Maybe<
-    | ReviewUpdateWithWhereUniqueWithoutUserInput[]
-    | ReviewUpdateWithWhereUniqueWithoutUserInput
-  >;
-  upsert?: Maybe<
-    | ReviewUpsertWithWhereUniqueWithoutUserInput[]
-    | ReviewUpsertWithWhereUniqueWithoutUserInput
-  >;
-  deleteMany?: Maybe<ReviewScalarWhereInput[] | ReviewScalarWhereInput>;
-  updateMany?: Maybe<
-    | ReviewUpdateManyWithWhereNestedInput[]
-    | ReviewUpdateManyWithWhereNestedInput
-  >;
-}
-
-export interface ReviewUpdateWithWhereUniqueWithoutUserInput {
-  where: ReviewWhereUniqueInput;
-  data: ReviewUpdateWithoutUserDataInput;
-}
-
-export interface ReviewUpdateWithoutUserDataInput {
-  text?: Maybe<String>;
-  stars?: Maybe<Int>;
-  House?: Maybe<HouseUpdateOneRequiredWithoutReviewsInput>;
-}
-
-export interface HouseUpdateOneRequiredWithoutReviewsInput {
-  create?: Maybe<HouseCreateWithoutReviewsInput>;
-  update?: Maybe<HouseUpdateWithoutReviewsDataInput>;
-  upsert?: Maybe<HouseUpsertWithoutReviewsInput>;
-  connect?: Maybe<HouseWhereUniqueInput>;
-}
-
-export interface HouseUpdateWithoutReviewsDataInput {
-  area?: Maybe<Int>;
-  age?: Maybe<Int>;
-  shortDescription?: Maybe<String>;
-  description?: Maybe<String>;
-  maxGuests?: Maybe<Int>;
-  numBedrooms?: Maybe<Int>;
-  numBaths?: Maybe<Int>;
-  numLivingrooms?: Maybe<Int>;
-  numDiningrooms?: Maybe<Int>;
-  amenities?: Maybe<AmenitiesUpdateOneWithoutHouseInput>;
-  host?: Maybe<UserUpdateOneRequiredWithoutOwnedHousesInput>;
-  pricing?: Maybe<PricingUpdateOneWithoutHouseInput>;
-  location?: Maybe<LocationUpdateOneRequiredInput>;
-  leaseType?: Maybe<HOUSE_LEASE_TYPE>;
-  verified?: Maybe<Boolean>;
-  type?: Maybe<HOUSE_TYPES>;
-  residency?: Maybe<House_RESIDENCY>;
-  lease?: Maybe<Int>;
-  rooms?: Maybe<RoomUpdateManyWithoutHouseInput>;
-  views?: Maybe<ViewsUpdateOneWithoutHouseInput>;
-  bookings?: Maybe<BookingUpdateManyWithoutHouseInput>;
-  pictures?: Maybe<PictureUpdateManyInput>;
-  contactInfoPayments?: Maybe<PaymentLanlordInfoUpdateManyWithoutHouseInput>;
-  popularity?: Maybe<Int>;
-  preview_image?: Maybe<PictureUpdateOneInput>;
-  lastRating?: Maybe<Int>;
-  rentOrSell?: Maybe<RENT_OR_SELL>;
-}
-
-export interface PaymentLanlordInfoUpdateManyWithoutHouseInput {
-  create?: Maybe<
-    | PaymentLanlordInfoCreateWithoutHouseInput[]
-    | PaymentLanlordInfoCreateWithoutHouseInput
-  >;
-  delete?: Maybe<
-    PaymentLanlordInfoWhereUniqueInput[] | PaymentLanlordInfoWhereUniqueInput
-  >;
-  connect?: Maybe<
-    PaymentLanlordInfoWhereUniqueInput[] | PaymentLanlordInfoWhereUniqueInput
-  >;
-  set?: Maybe<
-    PaymentLanlordInfoWhereUniqueInput[] | PaymentLanlordInfoWhereUniqueInput
-  >;
-  disconnect?: Maybe<
-    PaymentLanlordInfoWhereUniqueInput[] | PaymentLanlordInfoWhereUniqueInput
-  >;
-  update?: Maybe<
-    | PaymentLanlordInfoUpdateWithWhereUniqueWithoutHouseInput[]
-    | PaymentLanlordInfoUpdateWithWhereUniqueWithoutHouseInput
-  >;
-  upsert?: Maybe<
-    | PaymentLanlordInfoUpsertWithWhereUniqueWithoutHouseInput[]
-    | PaymentLanlordInfoUpsertWithWhereUniqueWithoutHouseInput
-  >;
-  deleteMany?: Maybe<
-    PaymentLanlordInfoScalarWhereInput[] | PaymentLanlordInfoScalarWhereInput
-  >;
-  updateMany?: Maybe<
-    | PaymentLanlordInfoUpdateManyWithWhereNestedInput[]
-    | PaymentLanlordInfoUpdateManyWithWhereNestedInput
-  >;
-}
-
-export interface PaymentLanlordInfoUpdateWithWhereUniqueWithoutHouseInput {
-  where: PaymentLanlordInfoWhereUniqueInput;
-  data: PaymentLanlordInfoUpdateWithoutHouseDataInput;
-}
-
-export interface PaymentLanlordInfoUpdateWithoutHouseDataInput {
-  totalPrice?: Maybe<Float>;
-  client?: Maybe<UserUpdateOneRequiredWithoutPaidContactsInput>;
-  moncashTransactId?: Maybe<String>;
-}
-
-export interface UserUpdateOneRequiredWithoutPaidContactsInput {
-  create?: Maybe<UserCreateWithoutPaidContactsInput>;
-  update?: Maybe<UserUpdateWithoutPaidContactsDataInput>;
-  upsert?: Maybe<UserUpsertWithoutPaidContactsInput>;
-  connect?: Maybe<UserWhereUniqueInput>;
-}
-
-export interface UserUpdateWithoutPaidContactsDataInput {
-  status?: Maybe<Boolean>;
-  facebookUserId?: Maybe<String>;
-  firstName?: Maybe<String>;
-  lastName?: Maybe<String>;
-  email?: Maybe<String>;
-  password?: Maybe<String>;
-  resetToken?: Maybe<String>;
-  resetTokenExpiry?: Maybe<String>;
-  phone1?: Maybe<String>;
-  phone2?: Maybe<String>;
-  primaryPhone?: Maybe<Int>;
-  responseTime?: Maybe<Int>;
-  isSuperHost?: Maybe<Boolean>;
-  ownedHouses?: Maybe<HouseUpdateManyWithoutHostInput>;
-  location?: Maybe<LocationUpdateOneInput>;
-  bookings?: Maybe<BookingUpdateManyWithoutBookeeInput>;
-  notifications?: Maybe<NotificationUpdateManyWithoutUserInput>;
-  profilePicture?: Maybe<PictureUpdateOneInput>;
-  reviews?: Maybe<ReviewUpdateManyWithoutUserInput>;
-  permissions?: Maybe<UserUpdatepermissionsInput>;
-}
-
-export interface UserUpdatepermissionsInput {
-  set?: Maybe<Permission[] | Permission>;
-}
-
-export interface UserUpsertWithoutPaidContactsInput {
-  update: UserUpdateWithoutPaidContactsDataInput;
-  create: UserCreateWithoutPaidContactsInput;
-}
-
-export interface PaymentLanlordInfoUpsertWithWhereUniqueWithoutHouseInput {
-  where: PaymentLanlordInfoWhereUniqueInput;
-  update: PaymentLanlordInfoUpdateWithoutHouseDataInput;
-  create: PaymentLanlordInfoCreateWithoutHouseInput;
-}
-
-export interface PaymentLanlordInfoScalarWhereInput {
-  id?: Maybe<ID_Input>;
-  id_not?: Maybe<ID_Input>;
-  id_in?: Maybe<ID_Input[] | ID_Input>;
-  id_not_in?: Maybe<ID_Input[] | ID_Input>;
-  id_lt?: Maybe<ID_Input>;
-  id_lte?: Maybe<ID_Input>;
-  id_gt?: Maybe<ID_Input>;
-  id_gte?: Maybe<ID_Input>;
-  id_contains?: Maybe<ID_Input>;
-  id_not_contains?: Maybe<ID_Input>;
-  id_starts_with?: Maybe<ID_Input>;
-  id_not_starts_with?: Maybe<ID_Input>;
-  id_ends_with?: Maybe<ID_Input>;
-  id_not_ends_with?: Maybe<ID_Input>;
-  createdAt?: Maybe<DateTimeInput>;
-  createdAt_not?: Maybe<DateTimeInput>;
-  createdAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
-  createdAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
-  createdAt_lt?: Maybe<DateTimeInput>;
-  createdAt_lte?: Maybe<DateTimeInput>;
-  createdAt_gt?: Maybe<DateTimeInput>;
-  createdAt_gte?: Maybe<DateTimeInput>;
-  updatedAt?: Maybe<DateTimeInput>;
-  updatedAt_not?: Maybe<DateTimeInput>;
-  updatedAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
-  updatedAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
-  updatedAt_lt?: Maybe<DateTimeInput>;
-  updatedAt_lte?: Maybe<DateTimeInput>;
-  updatedAt_gt?: Maybe<DateTimeInput>;
-  updatedAt_gte?: Maybe<DateTimeInput>;
-  totalPrice?: Maybe<Float>;
-  totalPrice_not?: Maybe<Float>;
-  totalPrice_in?: Maybe<Float[] | Float>;
-  totalPrice_not_in?: Maybe<Float[] | Float>;
-  totalPrice_lt?: Maybe<Float>;
-  totalPrice_lte?: Maybe<Float>;
-  totalPrice_gt?: Maybe<Float>;
-  totalPrice_gte?: Maybe<Float>;
-  moncashTransactId?: Maybe<String>;
-  moncashTransactId_not?: Maybe<String>;
-  moncashTransactId_in?: Maybe<String[] | String>;
-  moncashTransactId_not_in?: Maybe<String[] | String>;
-  moncashTransactId_lt?: Maybe<String>;
-  moncashTransactId_lte?: Maybe<String>;
-  moncashTransactId_gt?: Maybe<String>;
-  moncashTransactId_gte?: Maybe<String>;
-  moncashTransactId_contains?: Maybe<String>;
-  moncashTransactId_not_contains?: Maybe<String>;
-  moncashTransactId_starts_with?: Maybe<String>;
-  moncashTransactId_not_starts_with?: Maybe<String>;
-  moncashTransactId_ends_with?: Maybe<String>;
-  moncashTransactId_not_ends_with?: Maybe<String>;
-  AND?: Maybe<
-    PaymentLanlordInfoScalarWhereInput[] | PaymentLanlordInfoScalarWhereInput
-  >;
-  OR?: Maybe<
-    PaymentLanlordInfoScalarWhereInput[] | PaymentLanlordInfoScalarWhereInput
-  >;
-  NOT?: Maybe<
-    PaymentLanlordInfoScalarWhereInput[] | PaymentLanlordInfoScalarWhereInput
-  >;
-}
-
-export interface PaymentLanlordInfoUpdateManyWithWhereNestedInput {
-  where: PaymentLanlordInfoScalarWhereInput;
-  data: PaymentLanlordInfoUpdateManyDataInput;
-}
-
-export interface PaymentLanlordInfoUpdateManyDataInput {
-  totalPrice?: Maybe<Float>;
-  moncashTransactId?: Maybe<String>;
-}
-
-export interface HouseUpsertWithoutReviewsInput {
-  update: HouseUpdateWithoutReviewsDataInput;
-  create: HouseCreateWithoutReviewsInput;
-}
-
-export interface ReviewUpsertWithWhereUniqueWithoutUserInput {
-  where: ReviewWhereUniqueInput;
-  update: ReviewUpdateWithoutUserDataInput;
-  create: ReviewCreateWithoutUserInput;
-}
-
-export interface ReviewScalarWhereInput {
-  id?: Maybe<ID_Input>;
-  id_not?: Maybe<ID_Input>;
-  id_in?: Maybe<ID_Input[] | ID_Input>;
-  id_not_in?: Maybe<ID_Input[] | ID_Input>;
-  id_lt?: Maybe<ID_Input>;
-  id_lte?: Maybe<ID_Input>;
-  id_gt?: Maybe<ID_Input>;
-  id_gte?: Maybe<ID_Input>;
-  id_contains?: Maybe<ID_Input>;
-  id_not_contains?: Maybe<ID_Input>;
-  id_starts_with?: Maybe<ID_Input>;
-  id_not_starts_with?: Maybe<ID_Input>;
-  id_ends_with?: Maybe<ID_Input>;
-  id_not_ends_with?: Maybe<ID_Input>;
-  createdAt?: Maybe<DateTimeInput>;
-  createdAt_not?: Maybe<DateTimeInput>;
-  createdAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
-  createdAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
-  createdAt_lt?: Maybe<DateTimeInput>;
-  createdAt_lte?: Maybe<DateTimeInput>;
-  createdAt_gt?: Maybe<DateTimeInput>;
-  createdAt_gte?: Maybe<DateTimeInput>;
-  updatedAt?: Maybe<DateTimeInput>;
-  updatedAt_not?: Maybe<DateTimeInput>;
-  updatedAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
-  updatedAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
-  updatedAt_lt?: Maybe<DateTimeInput>;
-  updatedAt_lte?: Maybe<DateTimeInput>;
-  updatedAt_gt?: Maybe<DateTimeInput>;
-  updatedAt_gte?: Maybe<DateTimeInput>;
-  text?: Maybe<String>;
-  text_not?: Maybe<String>;
-  text_in?: Maybe<String[] | String>;
-  text_not_in?: Maybe<String[] | String>;
-  text_lt?: Maybe<String>;
-  text_lte?: Maybe<String>;
-  text_gt?: Maybe<String>;
-  text_gte?: Maybe<String>;
-  text_contains?: Maybe<String>;
-  text_not_contains?: Maybe<String>;
-  text_starts_with?: Maybe<String>;
-  text_not_starts_with?: Maybe<String>;
-  text_ends_with?: Maybe<String>;
-  text_not_ends_with?: Maybe<String>;
-  stars?: Maybe<Int>;
-  stars_not?: Maybe<Int>;
-  stars_in?: Maybe<Int[] | Int>;
-  stars_not_in?: Maybe<Int[] | Int>;
-  stars_lt?: Maybe<Int>;
-  stars_lte?: Maybe<Int>;
-  stars_gt?: Maybe<Int>;
-  stars_gte?: Maybe<Int>;
-  AND?: Maybe<ReviewScalarWhereInput[] | ReviewScalarWhereInput>;
-  OR?: Maybe<ReviewScalarWhereInput[] | ReviewScalarWhereInput>;
-  NOT?: Maybe<ReviewScalarWhereInput[] | ReviewScalarWhereInput>;
-}
-
-export interface ReviewUpdateManyWithWhereNestedInput {
-  where: ReviewScalarWhereInput;
-  data: ReviewUpdateManyDataInput;
-}
-
-export interface ReviewUpdateManyDataInput {
-  text?: Maybe<String>;
-  stars?: Maybe<Int>;
-}
-
-export interface UserUpsertWithoutBookingsInput {
-  update: UserUpdateWithoutBookingsDataInput;
-  create: UserCreateWithoutBookingsInput;
-}
-
-export interface PaymentHouseUpdateOneRequiredWithoutBookingInput {
-  create?: Maybe<PaymentHouseCreateWithoutBookingInput>;
-  update?: Maybe<PaymentHouseUpdateWithoutBookingDataInput>;
-  upsert?: Maybe<PaymentHouseUpsertWithoutBookingInput>;
-  connect?: Maybe<PaymentHouseWhereUniqueInput>;
-}
-
-export interface PaymentHouseUpdateWithoutBookingDataInput {
-  totalPrice?: Maybe<Float>;
-  paymentMethod?: Maybe<PaymentAccountUpdateOneRequiredWithoutPaymentsInput>;
-}
-
-export interface PaymentAccountUpdateOneRequiredWithoutPaymentsInput {
-  create?: Maybe<PaymentAccountCreateWithoutPaymentsInput>;
-  update?: Maybe<PaymentAccountUpdateWithoutPaymentsDataInput>;
-  upsert?: Maybe<PaymentAccountUpsertWithoutPaymentsInput>;
-  connect?: Maybe<PaymentAccountWhereUniqueInput>;
-}
-
-export interface PaymentAccountUpdateWithoutPaymentsDataInput {
-  type?: Maybe<PAYMENT_PROVIDER>;
-  user?: Maybe<UserUpdateOneRequiredInput>;
-  paypal?: Maybe<PaypalInformationUpdateOneWithoutPaymentAccountInput>;
-  creditcard?: Maybe<CreditCardInformationUpdateOneWithoutPaymentAccountInput>;
-}
-
-export interface UserUpdateOneRequiredInput {
-  create?: Maybe<UserCreateInput>;
-  update?: Maybe<UserUpdateDataInput>;
-  upsert?: Maybe<UserUpsertNestedInput>;
-  connect?: Maybe<UserWhereUniqueInput>;
-}
-
-export interface UserUpsertNestedInput {
-  update: UserUpdateDataInput;
-  create: UserCreateInput;
-}
-
-export interface PaypalInformationUpdateOneWithoutPaymentAccountInput {
-  create?: Maybe<PaypalInformationCreateWithoutPaymentAccountInput>;
-  update?: Maybe<PaypalInformationUpdateWithoutPaymentAccountDataInput>;
-  upsert?: Maybe<PaypalInformationUpsertWithoutPaymentAccountInput>;
-  delete?: Maybe<Boolean>;
-  disconnect?: Maybe<Boolean>;
-  connect?: Maybe<PaypalInformationWhereUniqueInput>;
-}
-
-export interface PaypalInformationUpdateWithoutPaymentAccountDataInput {
-  email?: Maybe<String>;
-}
-
-export interface PaypalInformationUpsertWithoutPaymentAccountInput {
-  update: PaypalInformationUpdateWithoutPaymentAccountDataInput;
-  create: PaypalInformationCreateWithoutPaymentAccountInput;
-}
-
-export interface CreditCardInformationUpdateOneWithoutPaymentAccountInput {
-  create?: Maybe<CreditCardInformationCreateWithoutPaymentAccountInput>;
-  update?: Maybe<CreditCardInformationUpdateWithoutPaymentAccountDataInput>;
-  upsert?: Maybe<CreditCardInformationUpsertWithoutPaymentAccountInput>;
-  delete?: Maybe<Boolean>;
-  disconnect?: Maybe<Boolean>;
-  connect?: Maybe<CreditCardInformationWhereUniqueInput>;
-}
-
-export interface CreditCardInformationUpdateWithoutPaymentAccountDataInput {
-  cardNumber?: Maybe<String>;
-  expiresOnMonth?: Maybe<Int>;
-  expiresOnYear?: Maybe<Int>;
-  securityCode?: Maybe<String>;
-  firstName?: Maybe<String>;
-  lastName?: Maybe<String>;
-  postalCode?: Maybe<String>;
-  country?: Maybe<String>;
-}
-
-export interface CreditCardInformationUpsertWithoutPaymentAccountInput {
-  update: CreditCardInformationUpdateWithoutPaymentAccountDataInput;
-  create: CreditCardInformationCreateWithoutPaymentAccountInput;
-}
-
-export interface PaymentAccountUpsertWithoutPaymentsInput {
-  update: PaymentAccountUpdateWithoutPaymentsDataInput;
-  create: PaymentAccountCreateWithoutPaymentsInput;
-}
-
-export interface PaymentHouseUpsertWithoutBookingInput {
-  update: PaymentHouseUpdateWithoutBookingDataInput;
-  create: PaymentHouseCreateWithoutBookingInput;
-}
-
-export interface BookingUpsertWithWhereUniqueWithoutHouseInput {
-  where: BookingWhereUniqueInput;
-  update: BookingUpdateWithoutHouseDataInput;
-  create: BookingCreateWithoutHouseInput;
-}
-
-export interface BookingScalarWhereInput {
-  id?: Maybe<ID_Input>;
-  id_not?: Maybe<ID_Input>;
-  id_in?: Maybe<ID_Input[] | ID_Input>;
-  id_not_in?: Maybe<ID_Input[] | ID_Input>;
-  id_lt?: Maybe<ID_Input>;
-  id_lte?: Maybe<ID_Input>;
-  id_gt?: Maybe<ID_Input>;
-  id_gte?: Maybe<ID_Input>;
-  id_contains?: Maybe<ID_Input>;
-  id_not_contains?: Maybe<ID_Input>;
-  id_starts_with?: Maybe<ID_Input>;
-  id_not_starts_with?: Maybe<ID_Input>;
-  id_ends_with?: Maybe<ID_Input>;
-  id_not_ends_with?: Maybe<ID_Input>;
-  createdAt?: Maybe<DateTimeInput>;
-  createdAt_not?: Maybe<DateTimeInput>;
-  createdAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
-  createdAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
-  createdAt_lt?: Maybe<DateTimeInput>;
-  createdAt_lte?: Maybe<DateTimeInput>;
-  createdAt_gt?: Maybe<DateTimeInput>;
-  createdAt_gte?: Maybe<DateTimeInput>;
-  updatedAt?: Maybe<DateTimeInput>;
-  updatedAt_not?: Maybe<DateTimeInput>;
-  updatedAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
-  updatedAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
-  updatedAt_lt?: Maybe<DateTimeInput>;
-  updatedAt_lte?: Maybe<DateTimeInput>;
-  updatedAt_gt?: Maybe<DateTimeInput>;
-  updatedAt_gte?: Maybe<DateTimeInput>;
-  startDate?: Maybe<DateTimeInput>;
-  startDate_not?: Maybe<DateTimeInput>;
-  startDate_in?: Maybe<DateTimeInput[] | DateTimeInput>;
-  startDate_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
-  startDate_lt?: Maybe<DateTimeInput>;
-  startDate_lte?: Maybe<DateTimeInput>;
-  startDate_gt?: Maybe<DateTimeInput>;
-  startDate_gte?: Maybe<DateTimeInput>;
-  endDate?: Maybe<DateTimeInput>;
-  endDate_not?: Maybe<DateTimeInput>;
-  endDate_in?: Maybe<DateTimeInput[] | DateTimeInput>;
-  endDate_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
-  endDate_lt?: Maybe<DateTimeInput>;
-  endDate_lte?: Maybe<DateTimeInput>;
-  endDate_gt?: Maybe<DateTimeInput>;
-  endDate_gte?: Maybe<DateTimeInput>;
-  AND?: Maybe<BookingScalarWhereInput[] | BookingScalarWhereInput>;
-  OR?: Maybe<BookingScalarWhereInput[] | BookingScalarWhereInput>;
-  NOT?: Maybe<BookingScalarWhereInput[] | BookingScalarWhereInput>;
-}
-
-export interface BookingUpdateManyWithWhereNestedInput {
-  where: BookingScalarWhereInput;
-  data: BookingUpdateManyDataInput;
-}
-
-export interface BookingUpdateManyDataInput {
-  startDate?: Maybe<DateTimeInput>;
-  endDate?: Maybe<DateTimeInput>;
-}
-
-export interface HouseUpsertWithoutContactInfoPaymentsInput {
-  update: HouseUpdateWithoutContactInfoPaymentsDataInput;
-  create: HouseCreateWithoutContactInfoPaymentsInput;
-}
-
-export interface PaymentLanlordInfoUpsertWithWhereUniqueWithoutClientInput {
-  where: PaymentLanlordInfoWhereUniqueInput;
-  update: PaymentLanlordInfoUpdateWithoutClientDataInput;
-  create: PaymentLanlordInfoCreateWithoutClientInput;
-}
-
-export interface UserUpsertWithoutOwnedHousesInput {
-  update: UserUpdateWithoutOwnedHousesDataInput;
-  create: UserCreateWithoutOwnedHousesInput;
-}
-
-export interface HouseUpsertWithoutBookingsInput {
-  update: HouseUpdateWithoutBookingsDataInput;
-  create: HouseCreateWithoutBookingsInput;
-}
-
-export interface BookingUpsertWithWhereUniqueWithoutBookeeInput {
-  where: BookingWhereUniqueInput;
-  update: BookingUpdateWithoutBookeeDataInput;
-  create: BookingCreateWithoutBookeeInput;
-}
-
-export interface UserUpsertWithWhereUniqueNestedInput {
-  where: UserWhereUniqueInput;
-  update: UserUpdateDataInput;
-  create: UserCreateInput;
-}
-
-export interface UserScalarWhereInput {
-  id?: Maybe<ID_Input>;
-  id_not?: Maybe<ID_Input>;
-  id_in?: Maybe<ID_Input[] | ID_Input>;
-  id_not_in?: Maybe<ID_Input[] | ID_Input>;
-  id_lt?: Maybe<ID_Input>;
-  id_lte?: Maybe<ID_Input>;
-  id_gt?: Maybe<ID_Input>;
-  id_gte?: Maybe<ID_Input>;
-  id_contains?: Maybe<ID_Input>;
-  id_not_contains?: Maybe<ID_Input>;
-  id_starts_with?: Maybe<ID_Input>;
-  id_not_starts_with?: Maybe<ID_Input>;
-  id_ends_with?: Maybe<ID_Input>;
-  id_not_ends_with?: Maybe<ID_Input>;
-  createdAt?: Maybe<DateTimeInput>;
-  createdAt_not?: Maybe<DateTimeInput>;
-  createdAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
-  createdAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
-  createdAt_lt?: Maybe<DateTimeInput>;
-  createdAt_lte?: Maybe<DateTimeInput>;
-  createdAt_gt?: Maybe<DateTimeInput>;
-  createdAt_gte?: Maybe<DateTimeInput>;
-  updatedAt?: Maybe<DateTimeInput>;
-  updatedAt_not?: Maybe<DateTimeInput>;
-  updatedAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
-  updatedAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
-  updatedAt_lt?: Maybe<DateTimeInput>;
-  updatedAt_lte?: Maybe<DateTimeInput>;
-  updatedAt_gt?: Maybe<DateTimeInput>;
-  updatedAt_gte?: Maybe<DateTimeInput>;
-  status?: Maybe<Boolean>;
-  status_not?: Maybe<Boolean>;
-  facebookUserId?: Maybe<String>;
-  facebookUserId_not?: Maybe<String>;
-  facebookUserId_in?: Maybe<String[] | String>;
-  facebookUserId_not_in?: Maybe<String[] | String>;
-  facebookUserId_lt?: Maybe<String>;
-  facebookUserId_lte?: Maybe<String>;
-  facebookUserId_gt?: Maybe<String>;
-  facebookUserId_gte?: Maybe<String>;
-  facebookUserId_contains?: Maybe<String>;
-  facebookUserId_not_contains?: Maybe<String>;
-  facebookUserId_starts_with?: Maybe<String>;
-  facebookUserId_not_starts_with?: Maybe<String>;
-  facebookUserId_ends_with?: Maybe<String>;
-  facebookUserId_not_ends_with?: Maybe<String>;
-  firstName?: Maybe<String>;
-  firstName_not?: Maybe<String>;
-  firstName_in?: Maybe<String[] | String>;
-  firstName_not_in?: Maybe<String[] | String>;
-  firstName_lt?: Maybe<String>;
-  firstName_lte?: Maybe<String>;
-  firstName_gt?: Maybe<String>;
-  firstName_gte?: Maybe<String>;
-  firstName_contains?: Maybe<String>;
-  firstName_not_contains?: Maybe<String>;
-  firstName_starts_with?: Maybe<String>;
-  firstName_not_starts_with?: Maybe<String>;
-  firstName_ends_with?: Maybe<String>;
-  firstName_not_ends_with?: Maybe<String>;
-  lastName?: Maybe<String>;
-  lastName_not?: Maybe<String>;
-  lastName_in?: Maybe<String[] | String>;
-  lastName_not_in?: Maybe<String[] | String>;
-  lastName_lt?: Maybe<String>;
-  lastName_lte?: Maybe<String>;
-  lastName_gt?: Maybe<String>;
-  lastName_gte?: Maybe<String>;
-  lastName_contains?: Maybe<String>;
-  lastName_not_contains?: Maybe<String>;
-  lastName_starts_with?: Maybe<String>;
-  lastName_not_starts_with?: Maybe<String>;
-  lastName_ends_with?: Maybe<String>;
-  lastName_not_ends_with?: Maybe<String>;
-  email?: Maybe<String>;
-  email_not?: Maybe<String>;
-  email_in?: Maybe<String[] | String>;
-  email_not_in?: Maybe<String[] | String>;
-  email_lt?: Maybe<String>;
-  email_lte?: Maybe<String>;
-  email_gt?: Maybe<String>;
-  email_gte?: Maybe<String>;
-  email_contains?: Maybe<String>;
-  email_not_contains?: Maybe<String>;
-  email_starts_with?: Maybe<String>;
-  email_not_starts_with?: Maybe<String>;
-  email_ends_with?: Maybe<String>;
-  email_not_ends_with?: Maybe<String>;
-  password?: Maybe<String>;
-  password_not?: Maybe<String>;
-  password_in?: Maybe<String[] | String>;
-  password_not_in?: Maybe<String[] | String>;
-  password_lt?: Maybe<String>;
-  password_lte?: Maybe<String>;
-  password_gt?: Maybe<String>;
-  password_gte?: Maybe<String>;
-  password_contains?: Maybe<String>;
-  password_not_contains?: Maybe<String>;
-  password_starts_with?: Maybe<String>;
-  password_not_starts_with?: Maybe<String>;
-  password_ends_with?: Maybe<String>;
-  password_not_ends_with?: Maybe<String>;
-  resetToken?: Maybe<String>;
-  resetToken_not?: Maybe<String>;
-  resetToken_in?: Maybe<String[] | String>;
-  resetToken_not_in?: Maybe<String[] | String>;
-  resetToken_lt?: Maybe<String>;
-  resetToken_lte?: Maybe<String>;
-  resetToken_gt?: Maybe<String>;
-  resetToken_gte?: Maybe<String>;
-  resetToken_contains?: Maybe<String>;
-  resetToken_not_contains?: Maybe<String>;
-  resetToken_starts_with?: Maybe<String>;
-  resetToken_not_starts_with?: Maybe<String>;
-  resetToken_ends_with?: Maybe<String>;
-  resetToken_not_ends_with?: Maybe<String>;
-  resetTokenExpiry?: Maybe<String>;
-  resetTokenExpiry_not?: Maybe<String>;
-  resetTokenExpiry_in?: Maybe<String[] | String>;
-  resetTokenExpiry_not_in?: Maybe<String[] | String>;
-  resetTokenExpiry_lt?: Maybe<String>;
-  resetTokenExpiry_lte?: Maybe<String>;
-  resetTokenExpiry_gt?: Maybe<String>;
-  resetTokenExpiry_gte?: Maybe<String>;
-  resetTokenExpiry_contains?: Maybe<String>;
-  resetTokenExpiry_not_contains?: Maybe<String>;
-  resetTokenExpiry_starts_with?: Maybe<String>;
-  resetTokenExpiry_not_starts_with?: Maybe<String>;
-  resetTokenExpiry_ends_with?: Maybe<String>;
-  resetTokenExpiry_not_ends_with?: Maybe<String>;
-  phone1?: Maybe<String>;
-  phone1_not?: Maybe<String>;
-  phone1_in?: Maybe<String[] | String>;
-  phone1_not_in?: Maybe<String[] | String>;
-  phone1_lt?: Maybe<String>;
-  phone1_lte?: Maybe<String>;
-  phone1_gt?: Maybe<String>;
-  phone1_gte?: Maybe<String>;
-  phone1_contains?: Maybe<String>;
-  phone1_not_contains?: Maybe<String>;
-  phone1_starts_with?: Maybe<String>;
-  phone1_not_starts_with?: Maybe<String>;
-  phone1_ends_with?: Maybe<String>;
-  phone1_not_ends_with?: Maybe<String>;
-  phone2?: Maybe<String>;
-  phone2_not?: Maybe<String>;
-  phone2_in?: Maybe<String[] | String>;
-  phone2_not_in?: Maybe<String[] | String>;
-  phone2_lt?: Maybe<String>;
-  phone2_lte?: Maybe<String>;
-  phone2_gt?: Maybe<String>;
-  phone2_gte?: Maybe<String>;
-  phone2_contains?: Maybe<String>;
-  phone2_not_contains?: Maybe<String>;
-  phone2_starts_with?: Maybe<String>;
-  phone2_not_starts_with?: Maybe<String>;
-  phone2_ends_with?: Maybe<String>;
-  phone2_not_ends_with?: Maybe<String>;
-  primaryPhone?: Maybe<Int>;
-  primaryPhone_not?: Maybe<Int>;
-  primaryPhone_in?: Maybe<Int[] | Int>;
-  primaryPhone_not_in?: Maybe<Int[] | Int>;
-  primaryPhone_lt?: Maybe<Int>;
-  primaryPhone_lte?: Maybe<Int>;
-  primaryPhone_gt?: Maybe<Int>;
-  primaryPhone_gte?: Maybe<Int>;
-  responseTime?: Maybe<Int>;
-  responseTime_not?: Maybe<Int>;
-  responseTime_in?: Maybe<Int[] | Int>;
-  responseTime_not_in?: Maybe<Int[] | Int>;
-  responseTime_lt?: Maybe<Int>;
-  responseTime_lte?: Maybe<Int>;
-  responseTime_gt?: Maybe<Int>;
-  responseTime_gte?: Maybe<Int>;
-  isSuperHost?: Maybe<Boolean>;
-  isSuperHost_not?: Maybe<Boolean>;
-  AND?: Maybe<UserScalarWhereInput[] | UserScalarWhereInput>;
-  OR?: Maybe<UserScalarWhereInput[] | UserScalarWhereInput>;
-  NOT?: Maybe<UserScalarWhereInput[] | UserScalarWhereInput>;
-}
-
-export interface UserUpdateManyWithWhereNestedInput {
-  where: UserScalarWhereInput;
-  data: UserUpdateManyDataInput;
-}
-
-export interface UserUpdateManyDataInput {
-  status?: Maybe<Boolean>;
-  facebookUserId?: Maybe<String>;
-  firstName?: Maybe<String>;
-  lastName?: Maybe<String>;
-  email?: Maybe<String>;
-  password?: Maybe<String>;
-  resetToken?: Maybe<String>;
-  resetTokenExpiry?: Maybe<String>;
-  phone1?: Maybe<String>;
-  phone2?: Maybe<String>;
-  primaryPhone?: Maybe<Int>;
-  responseTime?: Maybe<Int>;
-  isSuperHost?: Maybe<Boolean>;
-  permissions?: Maybe<UserUpdatepermissionsInput>;
-}
-
-export interface ViewsUpsertWithoutHouseInput {
-  update: ViewsUpdateWithoutHouseDataInput;
-  create: ViewsCreateWithoutHouseInput;
-}
-
 export interface HouseUpsertWithWhereUniqueWithoutHostInput {
   where: HouseWhereUniqueInput;
   update: HouseUpdateWithoutHostDataInput;
   create: HouseCreateWithoutHostInput;
+}
+
+export interface ReviewCreateInput {
+  id?: Maybe<ID_Input>;
+  text?: Maybe<String>;
+  stars: Int;
+  House: HouseCreateOneWithoutReviewsInput;
+  user: UserCreateOneWithoutReviewsInput;
 }
 
 export interface HouseScalarWhereInput {
@@ -5892,9 +6606,20 @@ export interface HouseScalarWhereInput {
   NOT?: Maybe<HouseScalarWhereInput[] | HouseScalarWhereInput>;
 }
 
+export interface HouseUpdateOneRequiredWithoutPricingInput {
+  create?: Maybe<HouseCreateWithoutPricingInput>;
+  update?: Maybe<HouseUpdateWithoutPricingDataInput>;
+  upsert?: Maybe<HouseUpsertWithoutPricingInput>;
+  connect?: Maybe<HouseWhereUniqueInput>;
+}
+
 export interface HouseUpdateManyWithWhereNestedInput {
   where: HouseScalarWhereInput;
   data: HouseUpdateManyDataInput;
+}
+
+export interface PictureUpdateInput {
+  url?: Maybe<String>;
 }
 
 export interface HouseUpdateManyDataInput {
@@ -5917,9 +6642,25 @@ export interface HouseUpdateManyDataInput {
   rentOrSell?: Maybe<RENT_OR_SELL>;
 }
 
+export interface PaymentAccountCreateWithoutPaypalInput {
+  id?: Maybe<ID_Input>;
+  type?: Maybe<PAYMENT_PROVIDER>;
+  user: UserCreateOneInput;
+  payments?: Maybe<PaymentHouseCreateManyWithoutPaymentMethodInput>;
+  creditcard?: Maybe<CreditCardInformationCreateOneWithoutPaymentAccountInput>;
+}
+
 export interface UserUpsertWithoutReviewsInput {
   update: UserUpdateWithoutReviewsDataInput;
   create: UserCreateWithoutReviewsInput;
+}
+
+export interface PaymentLanlordInfoCreateInput {
+  id?: Maybe<ID_Input>;
+  totalPrice: Float;
+  client: UserCreateOneWithoutPaidContactsInput;
+  House: HouseCreateOneWithoutContactInfoPaymentsInput;
+  moncashTransactId: String;
 }
 
 export interface ReviewUpsertWithWhereUniqueWithoutHouseInput {
@@ -5928,10 +6669,18 @@ export interface ReviewUpsertWithWhereUniqueWithoutHouseInput {
   create: ReviewCreateWithoutHouseInput;
 }
 
+export type ReviewWhereUniqueInput = AtLeastOne<{
+  id: Maybe<ID_Input>;
+}>;
+
 export interface HouseUpsertWithoutAmenitiesInput {
   update: HouseUpdateWithoutAmenitiesDataInput;
   create: HouseCreateWithoutAmenitiesInput;
 }
+
+export type StateWhereUniqueInput = AtLeastOne<{
+  id: Maybe<ID_Input>;
+}>;
 
 export interface AmenitiesUpdateManyMutationInput {
   electricity?: Maybe<Boolean>;
@@ -5974,6 +6723,40 @@ export interface AmenitiesUpdateManyMutationInput {
   crib?: Maybe<Boolean>;
 }
 
+export interface LocationUpdateInput {
+  lat?: Maybe<Float>;
+  lng?: Maybe<Float>;
+  address?: Maybe<String>;
+  commune?: Maybe<CommuneUpdateOneInput>;
+}
+
+export interface CreditCardInformationUpdateManyMutationInput {
+  cardNumber?: Maybe<String>;
+  expiresOnMonth?: Maybe<Int>;
+  expiresOnYear?: Maybe<Int>;
+  securityCode?: Maybe<String>;
+  firstName?: Maybe<String>;
+  lastName?: Maybe<String>;
+  postalCode?: Maybe<String>;
+  country?: Maybe<String>;
+}
+
+export interface HouseFavoritedCreateInput {
+  id?: Maybe<ID_Input>;
+  user: UserCreateOneInput;
+  house: HouseCreateOneInput;
+}
+
+export interface PaymentAccountUpsertWithoutCreditcardInput {
+  update: PaymentAccountUpdateWithoutCreditcardDataInput;
+  create: PaymentAccountCreateWithoutCreditcardInput;
+}
+
+export interface UserCreateOneWithoutReviewsInput {
+  create?: Maybe<UserCreateWithoutReviewsInput>;
+  connect?: Maybe<UserWhereUniqueInput>;
+}
+
 export interface BookingCreateInput {
   id?: Maybe<ID_Input>;
   bookee: UserCreateOneWithoutBookingsInput;
@@ -5981,6 +6764,11 @@ export interface BookingCreateInput {
   startDate: DateTimeInput;
   endDate: DateTimeInput;
   payment: PaymentHouseCreateOneWithoutBookingInput;
+}
+
+export interface LocationCreateOneInput {
+  create?: Maybe<LocationCreateInput>;
+  connect?: Maybe<LocationWhereUniqueInput>;
 }
 
 export interface BookingUpdateInput {
@@ -5991,9 +6779,19 @@ export interface BookingUpdateInput {
   payment?: Maybe<PaymentHouseUpdateOneRequiredWithoutBookingInput>;
 }
 
+export interface CountryCreateOneInput {
+  create?: Maybe<CountryCreateInput>;
+  connect?: Maybe<CountryWhereUniqueInput>;
+}
+
 export interface BookingUpdateManyMutationInput {
   startDate?: Maybe<DateTimeInput>;
   endDate?: Maybe<DateTimeInput>;
+}
+
+export interface ViewsCreateOneWithoutHouseInput {
+  create?: Maybe<ViewsCreateWithoutHouseInput>;
+  connect?: Maybe<ViewsWhereUniqueInput>;
 }
 
 export interface CityUpdateInput {
@@ -6002,9 +6800,19 @@ export interface CityUpdateInput {
   state?: Maybe<StateUpdateOneRequiredInput>;
 }
 
+export interface UserCreateOneWithoutOwnedHousesInput {
+  create?: Maybe<UserCreateWithoutOwnedHousesInput>;
+  connect?: Maybe<UserWhereUniqueInput>;
+}
+
 export interface CityUpdateManyMutationInput {
   name?: Maybe<String>;
   rank?: Maybe<Int>;
+}
+
+export interface UserCreateOneWithoutBookingsInput {
+  create?: Maybe<UserCreateWithoutBookingsInput>;
+  connect?: Maybe<UserWhereUniqueInput>;
 }
 
 export interface CommuneUpdateInput {
@@ -6013,18 +6821,54 @@ export interface CommuneUpdateInput {
   city?: Maybe<CityUpdateOneRequiredInput>;
 }
 
+export interface UserSubscriptionWhereInput {
+  mutation_in?: Maybe<MutationType[] | MutationType>;
+  updatedFields_contains?: Maybe<String>;
+  updatedFields_contains_every?: Maybe<String[] | String>;
+  updatedFields_contains_some?: Maybe<String[] | String>;
+  node?: Maybe<UserWhereInput>;
+  AND?: Maybe<UserSubscriptionWhereInput[] | UserSubscriptionWhereInput>;
+  OR?: Maybe<UserSubscriptionWhereInput[] | UserSubscriptionWhereInput>;
+  NOT?: Maybe<UserSubscriptionWhereInput[] | UserSubscriptionWhereInput>;
+}
+
 export interface CommuneUpdateManyMutationInput {
   name?: Maybe<String>;
   rank?: Maybe<Int>;
+}
+
+export interface NegotiationSubscriptionWhereInput {
+  mutation_in?: Maybe<MutationType[] | MutationType>;
+  updatedFields_contains?: Maybe<String>;
+  updatedFields_contains_every?: Maybe<String[] | String>;
+  updatedFields_contains_some?: Maybe<String[] | String>;
+  node?: Maybe<NegotiationWhereInput>;
+  AND?: Maybe<
+    NegotiationSubscriptionWhereInput[] | NegotiationSubscriptionWhereInput
+  >;
+  OR?: Maybe<
+    NegotiationSubscriptionWhereInput[] | NegotiationSubscriptionWhereInput
+  >;
+  NOT?: Maybe<
+    NegotiationSubscriptionWhereInput[] | NegotiationSubscriptionWhereInput
+  >;
 }
 
 export interface CountryUpdateInput {
   name?: Maybe<String>;
 }
 
+export interface ViewsUpdateManyMutationInput {
+  lastWeek?: Maybe<Int>;
+}
+
 export interface CountryUpdateManyMutationInput {
   name?: Maybe<String>;
 }
+
+export type CreditCardInformationWhereUniqueInput = AtLeastOne<{
+  id: Maybe<ID_Input>;
+}>;
 
 export interface CreditCardInformationCreateInput {
   id?: Maybe<ID_Input>;
@@ -6039,9 +6883,18 @@ export interface CreditCardInformationCreateInput {
   paymentAccount?: Maybe<PaymentAccountCreateOneWithoutCreditcardInput>;
 }
 
+export type LocationWhereUniqueInput = AtLeastOne<{
+  id: Maybe<ID_Input>;
+}>;
+
 export interface PaymentAccountCreateOneWithoutCreditcardInput {
   create?: Maybe<PaymentAccountCreateWithoutCreditcardInput>;
   connect?: Maybe<PaymentAccountWhereUniqueInput>;
+}
+
+export interface HouseCreateOneWithoutPricingInput {
+  create?: Maybe<HouseCreateWithoutPricingInput>;
+  connect?: Maybe<HouseWhereUniqueInput>;
 }
 
 export interface PaymentAccountCreateWithoutCreditcardInput {
@@ -6050,6 +6903,12 @@ export interface PaymentAccountCreateWithoutCreditcardInput {
   user: UserCreateOneInput;
   payments?: Maybe<PaymentHouseCreateManyWithoutPaymentMethodInput>;
   paypal?: Maybe<PaypalInformationCreateOneWithoutPaymentAccountInput>;
+}
+
+export interface PaypalInformationCreateInput {
+  id?: Maybe<ID_Input>;
+  email: String;
+  paymentAccount: PaymentAccountCreateOneWithoutPaypalInput;
 }
 
 export interface PaymentHouseCreateManyWithoutPaymentMethodInput {
@@ -6062,15 +6921,31 @@ export interface PaymentHouseCreateManyWithoutPaymentMethodInput {
   >;
 }
 
+export type RoomWhereUniqueInput = AtLeastOne<{
+  id: Maybe<ID_Input>;
+}>;
+
 export interface PaymentHouseCreateWithoutPaymentMethodInput {
   id?: Maybe<ID_Input>;
   totalPrice: Float;
   booking: BookingCreateOneWithoutPaymentInput;
 }
 
+export interface HouseUpdateOneRequiredInput {
+  create?: Maybe<HouseCreateInput>;
+  update?: Maybe<HouseUpdateDataInput>;
+  upsert?: Maybe<HouseUpsertNestedInput>;
+  connect?: Maybe<HouseWhereUniqueInput>;
+}
+
 export interface BookingCreateOneWithoutPaymentInput {
   create?: Maybe<BookingCreateWithoutPaymentInput>;
   connect?: Maybe<BookingWhereUniqueInput>;
+}
+
+export interface AmenitiesCreateOneWithoutHouseInput {
+  create?: Maybe<AmenitiesCreateWithoutHouseInput>;
+  connect?: Maybe<AmenitiesWhereUniqueInput>;
 }
 
 export interface BookingCreateWithoutPaymentInput {
@@ -6079,6 +6954,11 @@ export interface BookingCreateWithoutPaymentInput {
   House: HouseCreateOneWithoutBookingsInput;
   startDate: DateTimeInput;
   endDate: DateTimeInput;
+}
+
+export interface PictureCreateManyInput {
+  create?: Maybe<PictureCreateInput[] | PictureCreateInput>;
+  connect?: Maybe<PictureWhereUniqueInput[] | PictureWhereUniqueInput>;
 }
 
 export interface CreditCardInformationUpdateInput {
@@ -6093,6 +6973,11 @@ export interface CreditCardInformationUpdateInput {
   paymentAccount?: Maybe<PaymentAccountUpdateOneWithoutCreditcardInput>;
 }
 
+export interface HouseCreateOneWithoutContactInfoPaymentsInput {
+  create?: Maybe<HouseCreateWithoutContactInfoPaymentsInput>;
+  connect?: Maybe<HouseWhereUniqueInput>;
+}
+
 export interface PaymentAccountUpdateOneWithoutCreditcardInput {
   create?: Maybe<PaymentAccountCreateWithoutCreditcardInput>;
   update?: Maybe<PaymentAccountUpdateWithoutCreditcardDataInput>;
@@ -6102,11 +6987,37 @@ export interface PaymentAccountUpdateOneWithoutCreditcardInput {
   connect?: Maybe<PaymentAccountWhereUniqueInput>;
 }
 
+export interface PaypalInformationSubscriptionWhereInput {
+  mutation_in?: Maybe<MutationType[] | MutationType>;
+  updatedFields_contains?: Maybe<String>;
+  updatedFields_contains_every?: Maybe<String[] | String>;
+  updatedFields_contains_some?: Maybe<String[] | String>;
+  node?: Maybe<PaypalInformationWhereInput>;
+  AND?: Maybe<
+    | PaypalInformationSubscriptionWhereInput[]
+    | PaypalInformationSubscriptionWhereInput
+  >;
+  OR?: Maybe<
+    | PaypalInformationSubscriptionWhereInput[]
+    | PaypalInformationSubscriptionWhereInput
+  >;
+  NOT?: Maybe<
+    | PaypalInformationSubscriptionWhereInput[]
+    | PaypalInformationSubscriptionWhereInput
+  >;
+}
+
 export interface PaymentAccountUpdateWithoutCreditcardDataInput {
   type?: Maybe<PAYMENT_PROVIDER>;
   user?: Maybe<UserUpdateOneRequiredInput>;
   payments?: Maybe<PaymentHouseUpdateManyWithoutPaymentMethodInput>;
   paypal?: Maybe<PaypalInformationUpdateOneWithoutPaymentAccountInput>;
+}
+
+export interface ViewsUpdateInput {
+  lastWeek?: Maybe<Int>;
+  House?: Maybe<HouseUpdateOneRequiredWithoutViewsInput>;
+  User?: Maybe<UserUpdateManyInput>;
 }
 
 export interface PaymentHouseUpdateManyWithoutPaymentMethodInput {
@@ -6139,14 +7050,76 @@ export interface PaymentHouseUpdateManyWithoutPaymentMethodInput {
   >;
 }
 
+export interface NegotiationWhereInput {
+  id?: Maybe<ID_Input>;
+  id_not?: Maybe<ID_Input>;
+  id_in?: Maybe<ID_Input[] | ID_Input>;
+  id_not_in?: Maybe<ID_Input[] | ID_Input>;
+  id_lt?: Maybe<ID_Input>;
+  id_lte?: Maybe<ID_Input>;
+  id_gt?: Maybe<ID_Input>;
+  id_gte?: Maybe<ID_Input>;
+  id_contains?: Maybe<ID_Input>;
+  id_not_contains?: Maybe<ID_Input>;
+  id_starts_with?: Maybe<ID_Input>;
+  id_not_starts_with?: Maybe<ID_Input>;
+  id_ends_with?: Maybe<ID_Input>;
+  id_not_ends_with?: Maybe<ID_Input>;
+  createdAt?: Maybe<DateTimeInput>;
+  createdAt_not?: Maybe<DateTimeInput>;
+  createdAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  createdAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  createdAt_lt?: Maybe<DateTimeInput>;
+  createdAt_lte?: Maybe<DateTimeInput>;
+  createdAt_gt?: Maybe<DateTimeInput>;
+  createdAt_gte?: Maybe<DateTimeInput>;
+  updatedAt?: Maybe<DateTimeInput>;
+  updatedAt_not?: Maybe<DateTimeInput>;
+  updatedAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  updatedAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  updatedAt_lt?: Maybe<DateTimeInput>;
+  updatedAt_lte?: Maybe<DateTimeInput>;
+  updatedAt_gt?: Maybe<DateTimeInput>;
+  updatedAt_gte?: Maybe<DateTimeInput>;
+  negotiator?: Maybe<UserWhereInput>;
+  House?: Maybe<HouseWhereInput>;
+  offer?: Maybe<Float>;
+  offer_not?: Maybe<Float>;
+  offer_in?: Maybe<Float[] | Float>;
+  offer_not_in?: Maybe<Float[] | Float>;
+  offer_lt?: Maybe<Float>;
+  offer_lte?: Maybe<Float>;
+  offer_gt?: Maybe<Float>;
+  offer_gte?: Maybe<Float>;
+  status?: Maybe<NEGOTIATION_TYPE>;
+  status_not?: Maybe<NEGOTIATION_TYPE>;
+  status_in?: Maybe<NEGOTIATION_TYPE[] | NEGOTIATION_TYPE>;
+  status_not_in?: Maybe<NEGOTIATION_TYPE[] | NEGOTIATION_TYPE>;
+  AND?: Maybe<NegotiationWhereInput[] | NegotiationWhereInput>;
+  OR?: Maybe<NegotiationWhereInput[] | NegotiationWhereInput>;
+  NOT?: Maybe<NegotiationWhereInput[] | NegotiationWhereInput>;
+}
+
 export interface PaymentHouseUpdateWithWhereUniqueWithoutPaymentMethodInput {
   where: PaymentHouseWhereUniqueInput;
   data: PaymentHouseUpdateWithoutPaymentMethodDataInput;
 }
 
+export interface PaymentHouseCreateInput {
+  id?: Maybe<ID_Input>;
+  totalPrice: Float;
+  booking: BookingCreateOneWithoutPaymentInput;
+  paymentMethod: PaymentAccountCreateOneWithoutPaymentsInput;
+}
+
 export interface PaymentHouseUpdateWithoutPaymentMethodDataInput {
   totalPrice?: Maybe<Float>;
   booking?: Maybe<BookingUpdateOneRequiredWithoutPaymentInput>;
+}
+
+export interface HouseCreateOneWithoutAmenitiesInput {
+  create?: Maybe<HouseCreateWithoutAmenitiesInput>;
+  connect?: Maybe<HouseWhereUniqueInput>;
 }
 
 export interface BookingUpdateOneRequiredWithoutPaymentInput {
@@ -6156,6 +7129,13 @@ export interface BookingUpdateOneRequiredWithoutPaymentInput {
   connect?: Maybe<BookingWhereUniqueInput>;
 }
 
+export interface BookingCreateManyWithoutBookeeInput {
+  create?: Maybe<
+    BookingCreateWithoutBookeeInput[] | BookingCreateWithoutBookeeInput
+  >;
+  connect?: Maybe<BookingWhereUniqueInput[] | BookingWhereUniqueInput>;
+}
+
 export interface BookingUpdateWithoutPaymentDataInput {
   bookee?: Maybe<UserUpdateOneRequiredWithoutBookingsInput>;
   House?: Maybe<HouseUpdateOneRequiredWithoutBookingsInput>;
@@ -6163,15 +7143,68 @@ export interface BookingUpdateWithoutPaymentDataInput {
   endDate?: Maybe<DateTimeInput>;
 }
 
-export interface BookingUpsertWithoutPaymentInput {
-  update: BookingUpdateWithoutPaymentDataInput;
-  create: BookingCreateWithoutPaymentInput;
+export interface StateWhereInput {
+  id?: Maybe<ID_Input>;
+  id_not?: Maybe<ID_Input>;
+  id_in?: Maybe<ID_Input[] | ID_Input>;
+  id_not_in?: Maybe<ID_Input[] | ID_Input>;
+  id_lt?: Maybe<ID_Input>;
+  id_lte?: Maybe<ID_Input>;
+  id_gt?: Maybe<ID_Input>;
+  id_gte?: Maybe<ID_Input>;
+  id_contains?: Maybe<ID_Input>;
+  id_not_contains?: Maybe<ID_Input>;
+  id_starts_with?: Maybe<ID_Input>;
+  id_not_starts_with?: Maybe<ID_Input>;
+  id_ends_with?: Maybe<ID_Input>;
+  id_not_ends_with?: Maybe<ID_Input>;
+  name?: Maybe<String>;
+  name_not?: Maybe<String>;
+  name_in?: Maybe<String[] | String>;
+  name_not_in?: Maybe<String[] | String>;
+  name_lt?: Maybe<String>;
+  name_lte?: Maybe<String>;
+  name_gt?: Maybe<String>;
+  name_gte?: Maybe<String>;
+  name_contains?: Maybe<String>;
+  name_not_contains?: Maybe<String>;
+  name_starts_with?: Maybe<String>;
+  name_not_starts_with?: Maybe<String>;
+  name_ends_with?: Maybe<String>;
+  name_not_ends_with?: Maybe<String>;
+  rank?: Maybe<Int>;
+  rank_not?: Maybe<Int>;
+  rank_in?: Maybe<Int[] | Int>;
+  rank_not_in?: Maybe<Int[] | Int>;
+  rank_lt?: Maybe<Int>;
+  rank_lte?: Maybe<Int>;
+  rank_gt?: Maybe<Int>;
+  rank_gte?: Maybe<Int>;
+  country?: Maybe<CountryWhereInput>;
+  createdAt?: Maybe<DateTimeInput>;
+  createdAt_not?: Maybe<DateTimeInput>;
+  createdAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  createdAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  createdAt_lt?: Maybe<DateTimeInput>;
+  createdAt_lte?: Maybe<DateTimeInput>;
+  createdAt_gt?: Maybe<DateTimeInput>;
+  createdAt_gte?: Maybe<DateTimeInput>;
+  updatedAt?: Maybe<DateTimeInput>;
+  updatedAt_not?: Maybe<DateTimeInput>;
+  updatedAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  updatedAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  updatedAt_lt?: Maybe<DateTimeInput>;
+  updatedAt_lte?: Maybe<DateTimeInput>;
+  updatedAt_gt?: Maybe<DateTimeInput>;
+  updatedAt_gte?: Maybe<DateTimeInput>;
+  AND?: Maybe<StateWhereInput[] | StateWhereInput>;
+  OR?: Maybe<StateWhereInput[] | StateWhereInput>;
+  NOT?: Maybe<StateWhereInput[] | StateWhereInput>;
 }
 
-export interface PaymentHouseUpsertWithWhereUniqueWithoutPaymentMethodInput {
-  where: PaymentHouseWhereUniqueInput;
-  update: PaymentHouseUpdateWithoutPaymentMethodDataInput;
-  create: PaymentHouseCreateWithoutPaymentMethodInput;
+export interface PaymentHouseUpdateManyWithWhereNestedInput {
+  where: PaymentHouseScalarWhereInput;
+  data: PaymentHouseUpdateManyDataInput;
 }
 
 export interface PaymentHouseScalarWhereInput {
@@ -6218,582 +7251,15 @@ export interface PaymentHouseScalarWhereInput {
   NOT?: Maybe<PaymentHouseScalarWhereInput[] | PaymentHouseScalarWhereInput>;
 }
 
-export interface PaymentHouseUpdateManyWithWhereNestedInput {
-  where: PaymentHouseScalarWhereInput;
-  data: PaymentHouseUpdateManyDataInput;
+export interface PaymentHouseUpsertWithWhereUniqueWithoutPaymentMethodInput {
+  where: PaymentHouseWhereUniqueInput;
+  update: PaymentHouseUpdateWithoutPaymentMethodDataInput;
+  create: PaymentHouseCreateWithoutPaymentMethodInput;
 }
 
-export interface PaymentHouseUpdateManyDataInput {
-  totalPrice?: Maybe<Float>;
-}
-
-export interface PaymentAccountUpsertWithoutCreditcardInput {
-  update: PaymentAccountUpdateWithoutCreditcardDataInput;
-  create: PaymentAccountCreateWithoutCreditcardInput;
-}
-
-export interface CreditCardInformationUpdateManyMutationInput {
-  cardNumber?: Maybe<String>;
-  expiresOnMonth?: Maybe<Int>;
-  expiresOnYear?: Maybe<Int>;
-  securityCode?: Maybe<String>;
-  firstName?: Maybe<String>;
-  lastName?: Maybe<String>;
-  postalCode?: Maybe<String>;
-  country?: Maybe<String>;
-}
-
-export interface HouseCreateInput {
-  id?: Maybe<ID_Input>;
-  area?: Maybe<Int>;
-  age?: Maybe<Int>;
-  shortDescription?: Maybe<String>;
-  description?: Maybe<String>;
-  maxGuests?: Maybe<Int>;
-  numBedrooms: Int;
-  numBaths: Int;
-  numLivingrooms?: Maybe<Int>;
-  numDiningrooms?: Maybe<Int>;
-  reviews?: Maybe<ReviewCreateManyWithoutHouseInput>;
-  amenities?: Maybe<AmenitiesCreateOneWithoutHouseInput>;
-  host: UserCreateOneWithoutOwnedHousesInput;
-  pricing?: Maybe<PricingCreateOneWithoutHouseInput>;
-  location: LocationCreateOneInput;
-  leaseType?: Maybe<HOUSE_LEASE_TYPE>;
-  verified?: Maybe<Boolean>;
-  type?: Maybe<HOUSE_TYPES>;
-  residency?: Maybe<House_RESIDENCY>;
-  lease?: Maybe<Int>;
-  rooms?: Maybe<RoomCreateManyWithoutHouseInput>;
-  views?: Maybe<ViewsCreateOneWithoutHouseInput>;
-  bookings?: Maybe<BookingCreateManyWithoutHouseInput>;
-  pictures?: Maybe<PictureCreateManyInput>;
-  contactInfoPayments?: Maybe<PaymentLanlordInfoCreateManyWithoutHouseInput>;
-  popularity?: Maybe<Int>;
-  preview_image?: Maybe<PictureCreateOneInput>;
-  lastRating?: Maybe<Int>;
-  rentOrSell: RENT_OR_SELL;
-}
-
-export interface HouseUpdateInput {
-  area?: Maybe<Int>;
-  age?: Maybe<Int>;
-  shortDescription?: Maybe<String>;
-  description?: Maybe<String>;
-  maxGuests?: Maybe<Int>;
-  numBedrooms?: Maybe<Int>;
-  numBaths?: Maybe<Int>;
-  numLivingrooms?: Maybe<Int>;
-  numDiningrooms?: Maybe<Int>;
-  reviews?: Maybe<ReviewUpdateManyWithoutHouseInput>;
-  amenities?: Maybe<AmenitiesUpdateOneWithoutHouseInput>;
-  host?: Maybe<UserUpdateOneRequiredWithoutOwnedHousesInput>;
-  pricing?: Maybe<PricingUpdateOneWithoutHouseInput>;
-  location?: Maybe<LocationUpdateOneRequiredInput>;
-  leaseType?: Maybe<HOUSE_LEASE_TYPE>;
-  verified?: Maybe<Boolean>;
-  type?: Maybe<HOUSE_TYPES>;
-  residency?: Maybe<House_RESIDENCY>;
-  lease?: Maybe<Int>;
-  rooms?: Maybe<RoomUpdateManyWithoutHouseInput>;
-  views?: Maybe<ViewsUpdateOneWithoutHouseInput>;
-  bookings?: Maybe<BookingUpdateManyWithoutHouseInput>;
-  pictures?: Maybe<PictureUpdateManyInput>;
-  contactInfoPayments?: Maybe<PaymentLanlordInfoUpdateManyWithoutHouseInput>;
-  popularity?: Maybe<Int>;
-  preview_image?: Maybe<PictureUpdateOneInput>;
-  lastRating?: Maybe<Int>;
-  rentOrSell?: Maybe<RENT_OR_SELL>;
-}
-
-export interface HouseUpdateManyMutationInput {
-  area?: Maybe<Int>;
-  age?: Maybe<Int>;
-  shortDescription?: Maybe<String>;
-  description?: Maybe<String>;
-  maxGuests?: Maybe<Int>;
-  numBedrooms?: Maybe<Int>;
-  numBaths?: Maybe<Int>;
-  numLivingrooms?: Maybe<Int>;
-  numDiningrooms?: Maybe<Int>;
-  leaseType?: Maybe<HOUSE_LEASE_TYPE>;
-  verified?: Maybe<Boolean>;
-  type?: Maybe<HOUSE_TYPES>;
-  residency?: Maybe<House_RESIDENCY>;
-  lease?: Maybe<Int>;
-  popularity?: Maybe<Int>;
-  lastRating?: Maybe<Int>;
-  rentOrSell?: Maybe<RENT_OR_SELL>;
-}
-
-export interface HouseFavoritedCreateInput {
-  id?: Maybe<ID_Input>;
-  user: UserCreateOneInput;
-  house: HouseCreateOneInput;
-}
-
-export interface HouseCreateOneInput {
-  create?: Maybe<HouseCreateInput>;
-  connect?: Maybe<HouseWhereUniqueInput>;
-}
-
-export interface HouseFavoritedUpdateInput {
-  user?: Maybe<UserUpdateOneRequiredInput>;
-  house?: Maybe<HouseUpdateOneRequiredInput>;
-}
-
-export interface HouseUpdateOneRequiredInput {
-  create?: Maybe<HouseCreateInput>;
-  update?: Maybe<HouseUpdateDataInput>;
-  upsert?: Maybe<HouseUpsertNestedInput>;
-  connect?: Maybe<HouseWhereUniqueInput>;
-}
-
-export interface HouseUpdateDataInput {
-  area?: Maybe<Int>;
-  age?: Maybe<Int>;
-  shortDescription?: Maybe<String>;
-  description?: Maybe<String>;
-  maxGuests?: Maybe<Int>;
-  numBedrooms?: Maybe<Int>;
-  numBaths?: Maybe<Int>;
-  numLivingrooms?: Maybe<Int>;
-  numDiningrooms?: Maybe<Int>;
-  reviews?: Maybe<ReviewUpdateManyWithoutHouseInput>;
-  amenities?: Maybe<AmenitiesUpdateOneWithoutHouseInput>;
-  host?: Maybe<UserUpdateOneRequiredWithoutOwnedHousesInput>;
-  pricing?: Maybe<PricingUpdateOneWithoutHouseInput>;
-  location?: Maybe<LocationUpdateOneRequiredInput>;
-  leaseType?: Maybe<HOUSE_LEASE_TYPE>;
-  verified?: Maybe<Boolean>;
-  type?: Maybe<HOUSE_TYPES>;
-  residency?: Maybe<House_RESIDENCY>;
-  lease?: Maybe<Int>;
-  rooms?: Maybe<RoomUpdateManyWithoutHouseInput>;
-  views?: Maybe<ViewsUpdateOneWithoutHouseInput>;
-  bookings?: Maybe<BookingUpdateManyWithoutHouseInput>;
-  pictures?: Maybe<PictureUpdateManyInput>;
-  contactInfoPayments?: Maybe<PaymentLanlordInfoUpdateManyWithoutHouseInput>;
-  popularity?: Maybe<Int>;
-  preview_image?: Maybe<PictureUpdateOneInput>;
-  lastRating?: Maybe<Int>;
-  rentOrSell?: Maybe<RENT_OR_SELL>;
-}
-
-export interface HouseUpsertNestedInput {
-  update: HouseUpdateDataInput;
-  create: HouseCreateInput;
-}
-
-export interface LocationUpdateInput {
-  lat?: Maybe<Float>;
-  lng?: Maybe<Float>;
-  address?: Maybe<String>;
-  commune?: Maybe<CommuneUpdateOneInput>;
-}
-
-export interface LocationUpdateManyMutationInput {
-  lat?: Maybe<Float>;
-  lng?: Maybe<Float>;
-  address?: Maybe<String>;
-}
-
-export interface NegotiationCreateInput {
-  id?: Maybe<ID_Input>;
-  negotiator: UserCreateOneInput;
-  House: HouseCreateOneInput;
-  offer: Float;
-  status?: Maybe<NEGOTIATION_TYPE>;
-}
-
-export interface NegotiationUpdateInput {
-  negotiator?: Maybe<UserUpdateOneRequiredInput>;
-  House?: Maybe<HouseUpdateOneRequiredInput>;
-  offer?: Maybe<Float>;
-  status?: Maybe<NEGOTIATION_TYPE>;
-}
-
-export interface NegotiationUpdateManyMutationInput {
-  offer?: Maybe<Float>;
-  status?: Maybe<NEGOTIATION_TYPE>;
-}
-
-export interface NotificationCreateInput {
-  id?: Maybe<ID_Input>;
-  type?: Maybe<NOTIFICATION_TYPE>;
-  user: UserCreateOneWithoutNotificationsInput;
-  link: String;
-  readDate: DateTimeInput;
-}
-
-export interface UserCreateOneWithoutNotificationsInput {
-  create?: Maybe<UserCreateWithoutNotificationsInput>;
-  connect?: Maybe<UserWhereUniqueInput>;
-}
-
-export interface UserCreateWithoutNotificationsInput {
-  id?: Maybe<ID_Input>;
-  status?: Maybe<Boolean>;
-  facebookUserId?: Maybe<String>;
-  firstName: String;
-  lastName: String;
-  email?: Maybe<String>;
-  password?: Maybe<String>;
-  resetToken?: Maybe<String>;
-  resetTokenExpiry?: Maybe<String>;
-  phone1?: Maybe<String>;
-  phone2?: Maybe<String>;
-  primaryPhone?: Maybe<Int>;
-  responseTime?: Maybe<Int>;
-  isSuperHost?: Maybe<Boolean>;
-  ownedHouses?: Maybe<HouseCreateManyWithoutHostInput>;
-  location?: Maybe<LocationCreateOneInput>;
-  bookings?: Maybe<BookingCreateManyWithoutBookeeInput>;
-  paidContacts?: Maybe<PaymentLanlordInfoCreateManyWithoutClientInput>;
-  profilePicture?: Maybe<PictureCreateOneInput>;
-  reviews?: Maybe<ReviewCreateManyWithoutUserInput>;
-  permissions?: Maybe<UserCreatepermissionsInput>;
-}
-
-export interface NotificationUpdateInput {
-  type?: Maybe<NOTIFICATION_TYPE>;
-  user?: Maybe<UserUpdateOneRequiredWithoutNotificationsInput>;
-  link?: Maybe<String>;
-  readDate?: Maybe<DateTimeInput>;
-}
-
-export interface UserUpdateOneRequiredWithoutNotificationsInput {
-  create?: Maybe<UserCreateWithoutNotificationsInput>;
-  update?: Maybe<UserUpdateWithoutNotificationsDataInput>;
-  upsert?: Maybe<UserUpsertWithoutNotificationsInput>;
-  connect?: Maybe<UserWhereUniqueInput>;
-}
-
-export interface UserUpdateWithoutNotificationsDataInput {
-  status?: Maybe<Boolean>;
-  facebookUserId?: Maybe<String>;
-  firstName?: Maybe<String>;
-  lastName?: Maybe<String>;
-  email?: Maybe<String>;
-  password?: Maybe<String>;
-  resetToken?: Maybe<String>;
-  resetTokenExpiry?: Maybe<String>;
-  phone1?: Maybe<String>;
-  phone2?: Maybe<String>;
-  primaryPhone?: Maybe<Int>;
-  responseTime?: Maybe<Int>;
-  isSuperHost?: Maybe<Boolean>;
-  ownedHouses?: Maybe<HouseUpdateManyWithoutHostInput>;
-  location?: Maybe<LocationUpdateOneInput>;
-  bookings?: Maybe<BookingUpdateManyWithoutBookeeInput>;
-  paidContacts?: Maybe<PaymentLanlordInfoUpdateManyWithoutClientInput>;
-  profilePicture?: Maybe<PictureUpdateOneInput>;
-  reviews?: Maybe<ReviewUpdateManyWithoutUserInput>;
-  permissions?: Maybe<UserUpdatepermissionsInput>;
-}
-
-export interface UserUpsertWithoutNotificationsInput {
-  update: UserUpdateWithoutNotificationsDataInput;
-  create: UserCreateWithoutNotificationsInput;
-}
-
-export interface NotificationUpdateManyMutationInput {
-  type?: Maybe<NOTIFICATION_TYPE>;
-  link?: Maybe<String>;
-  readDate?: Maybe<DateTimeInput>;
-}
-
-export interface PaymentAccountCreateInput {
-  id?: Maybe<ID_Input>;
-  type?: Maybe<PAYMENT_PROVIDER>;
-  user: UserCreateOneInput;
-  payments?: Maybe<PaymentHouseCreateManyWithoutPaymentMethodInput>;
-  paypal?: Maybe<PaypalInformationCreateOneWithoutPaymentAccountInput>;
-  creditcard?: Maybe<CreditCardInformationCreateOneWithoutPaymentAccountInput>;
-}
-
-export interface PaymentAccountUpdateInput {
-  type?: Maybe<PAYMENT_PROVIDER>;
-  user?: Maybe<UserUpdateOneRequiredInput>;
-  payments?: Maybe<PaymentHouseUpdateManyWithoutPaymentMethodInput>;
-  paypal?: Maybe<PaypalInformationUpdateOneWithoutPaymentAccountInput>;
-  creditcard?: Maybe<CreditCardInformationUpdateOneWithoutPaymentAccountInput>;
-}
-
-export interface PaymentAccountUpdateManyMutationInput {
-  type?: Maybe<PAYMENT_PROVIDER>;
-}
-
-export interface PaymentHouseCreateInput {
-  id?: Maybe<ID_Input>;
-  totalPrice: Float;
-  booking: BookingCreateOneWithoutPaymentInput;
-  paymentMethod: PaymentAccountCreateOneWithoutPaymentsInput;
-}
-
-export interface PaymentHouseUpdateInput {
-  totalPrice?: Maybe<Float>;
-  booking?: Maybe<BookingUpdateOneRequiredWithoutPaymentInput>;
-  paymentMethod?: Maybe<PaymentAccountUpdateOneRequiredWithoutPaymentsInput>;
-}
-
-export interface PaymentHouseUpdateManyMutationInput {
-  totalPrice?: Maybe<Float>;
-}
-
-export interface PaymentLanlordInfoCreateInput {
-  id?: Maybe<ID_Input>;
-  totalPrice: Float;
-  client: UserCreateOneWithoutPaidContactsInput;
-  House: HouseCreateOneWithoutContactInfoPaymentsInput;
-  moncashTransactId: String;
-}
-
-export interface PaymentLanlordInfoUpdateInput {
-  totalPrice?: Maybe<Float>;
-  client?: Maybe<UserUpdateOneRequiredWithoutPaidContactsInput>;
-  House?: Maybe<HouseUpdateOneRequiredWithoutContactInfoPaymentsInput>;
-  moncashTransactId?: Maybe<String>;
-}
-
-export interface PaymentLanlordInfoUpdateManyMutationInput {
-  totalPrice?: Maybe<Float>;
-  moncashTransactId?: Maybe<String>;
-}
-
-export interface PaypalInformationCreateInput {
-  id?: Maybe<ID_Input>;
-  email: String;
-  paymentAccount: PaymentAccountCreateOneWithoutPaypalInput;
-}
-
-export interface PaymentAccountCreateOneWithoutPaypalInput {
-  create?: Maybe<PaymentAccountCreateWithoutPaypalInput>;
-  connect?: Maybe<PaymentAccountWhereUniqueInput>;
-}
-
-export interface PaymentAccountCreateWithoutPaypalInput {
-  id?: Maybe<ID_Input>;
-  type?: Maybe<PAYMENT_PROVIDER>;
-  user: UserCreateOneInput;
-  payments?: Maybe<PaymentHouseCreateManyWithoutPaymentMethodInput>;
-  creditcard?: Maybe<CreditCardInformationCreateOneWithoutPaymentAccountInput>;
-}
-
-export interface PaypalInformationUpdateInput {
-  email?: Maybe<String>;
-  paymentAccount?: Maybe<PaymentAccountUpdateOneRequiredWithoutPaypalInput>;
-}
-
-export interface PaymentAccountUpdateOneRequiredWithoutPaypalInput {
-  create?: Maybe<PaymentAccountCreateWithoutPaypalInput>;
-  update?: Maybe<PaymentAccountUpdateWithoutPaypalDataInput>;
-  upsert?: Maybe<PaymentAccountUpsertWithoutPaypalInput>;
-  connect?: Maybe<PaymentAccountWhereUniqueInput>;
-}
-
-export interface PaymentAccountUpdateWithoutPaypalDataInput {
-  type?: Maybe<PAYMENT_PROVIDER>;
-  user?: Maybe<UserUpdateOneRequiredInput>;
-  payments?: Maybe<PaymentHouseUpdateManyWithoutPaymentMethodInput>;
-  creditcard?: Maybe<CreditCardInformationUpdateOneWithoutPaymentAccountInput>;
-}
-
-export interface PaymentAccountUpsertWithoutPaypalInput {
-  update: PaymentAccountUpdateWithoutPaypalDataInput;
-  create: PaymentAccountCreateWithoutPaypalInput;
-}
-
-export interface PaypalInformationUpdateManyMutationInput {
-  email?: Maybe<String>;
-}
-
-export interface PictureUpdateInput {
-  url?: Maybe<String>;
-}
-
-export interface PictureUpdateManyMutationInput {
-  url?: Maybe<String>;
-}
-
-export interface PricingCreateInput {
-  id?: Maybe<ID_Input>;
-  House: HouseCreateOneWithoutPricingInput;
-  basePrice?: Maybe<Float>;
-  highestPrice: Float;
-  currency: CURRENCY;
-  income?: Maybe<Float>;
-}
-
-export interface HouseCreateOneWithoutPricingInput {
-  create?: Maybe<HouseCreateWithoutPricingInput>;
-  connect?: Maybe<HouseWhereUniqueInput>;
-}
-
-export interface HouseCreateWithoutPricingInput {
-  id?: Maybe<ID_Input>;
-  area?: Maybe<Int>;
-  age?: Maybe<Int>;
-  shortDescription?: Maybe<String>;
-  description?: Maybe<String>;
-  maxGuests?: Maybe<Int>;
-  numBedrooms: Int;
-  numBaths: Int;
-  numLivingrooms?: Maybe<Int>;
-  numDiningrooms?: Maybe<Int>;
-  reviews?: Maybe<ReviewCreateManyWithoutHouseInput>;
-  amenities?: Maybe<AmenitiesCreateOneWithoutHouseInput>;
-  host: UserCreateOneWithoutOwnedHousesInput;
-  location: LocationCreateOneInput;
-  leaseType?: Maybe<HOUSE_LEASE_TYPE>;
-  verified?: Maybe<Boolean>;
-  type?: Maybe<HOUSE_TYPES>;
-  residency?: Maybe<House_RESIDENCY>;
-  lease?: Maybe<Int>;
-  rooms?: Maybe<RoomCreateManyWithoutHouseInput>;
-  views?: Maybe<ViewsCreateOneWithoutHouseInput>;
-  bookings?: Maybe<BookingCreateManyWithoutHouseInput>;
-  pictures?: Maybe<PictureCreateManyInput>;
-  contactInfoPayments?: Maybe<PaymentLanlordInfoCreateManyWithoutHouseInput>;
-  popularity?: Maybe<Int>;
-  preview_image?: Maybe<PictureCreateOneInput>;
-  lastRating?: Maybe<Int>;
-  rentOrSell: RENT_OR_SELL;
-}
-
-export interface PricingUpdateInput {
-  House?: Maybe<HouseUpdateOneRequiredWithoutPricingInput>;
-  basePrice?: Maybe<Float>;
-  highestPrice?: Maybe<Float>;
-  currency?: Maybe<CURRENCY>;
-  income?: Maybe<Float>;
-}
-
-export interface HouseUpdateOneRequiredWithoutPricingInput {
-  create?: Maybe<HouseCreateWithoutPricingInput>;
-  update?: Maybe<HouseUpdateWithoutPricingDataInput>;
-  upsert?: Maybe<HouseUpsertWithoutPricingInput>;
-  connect?: Maybe<HouseWhereUniqueInput>;
-}
-
-export interface HouseUpdateWithoutPricingDataInput {
-  area?: Maybe<Int>;
-  age?: Maybe<Int>;
-  shortDescription?: Maybe<String>;
-  description?: Maybe<String>;
-  maxGuests?: Maybe<Int>;
-  numBedrooms?: Maybe<Int>;
-  numBaths?: Maybe<Int>;
-  numLivingrooms?: Maybe<Int>;
-  numDiningrooms?: Maybe<Int>;
-  reviews?: Maybe<ReviewUpdateManyWithoutHouseInput>;
-  amenities?: Maybe<AmenitiesUpdateOneWithoutHouseInput>;
-  host?: Maybe<UserUpdateOneRequiredWithoutOwnedHousesInput>;
-  location?: Maybe<LocationUpdateOneRequiredInput>;
-  leaseType?: Maybe<HOUSE_LEASE_TYPE>;
-  verified?: Maybe<Boolean>;
-  type?: Maybe<HOUSE_TYPES>;
-  residency?: Maybe<House_RESIDENCY>;
-  lease?: Maybe<Int>;
-  rooms?: Maybe<RoomUpdateManyWithoutHouseInput>;
-  views?: Maybe<ViewsUpdateOneWithoutHouseInput>;
-  bookings?: Maybe<BookingUpdateManyWithoutHouseInput>;
-  pictures?: Maybe<PictureUpdateManyInput>;
-  contactInfoPayments?: Maybe<PaymentLanlordInfoUpdateManyWithoutHouseInput>;
-  popularity?: Maybe<Int>;
-  preview_image?: Maybe<PictureUpdateOneInput>;
-  lastRating?: Maybe<Int>;
-  rentOrSell?: Maybe<RENT_OR_SELL>;
-}
-
-export interface HouseUpsertWithoutPricingInput {
-  update: HouseUpdateWithoutPricingDataInput;
-  create: HouseCreateWithoutPricingInput;
-}
-
-export interface PricingUpdateManyMutationInput {
-  basePrice?: Maybe<Float>;
-  highestPrice?: Maybe<Float>;
-  currency?: Maybe<CURRENCY>;
-  income?: Maybe<Float>;
-}
-
-export interface ReviewCreateInput {
-  id?: Maybe<ID_Input>;
-  text?: Maybe<String>;
-  stars: Int;
-  House: HouseCreateOneWithoutReviewsInput;
-  user: UserCreateOneWithoutReviewsInput;
-}
-
-export interface ReviewUpdateInput {
-  text?: Maybe<String>;
-  stars?: Maybe<Int>;
-  House?: Maybe<HouseUpdateOneRequiredWithoutReviewsInput>;
-  user?: Maybe<UserUpdateOneRequiredWithoutReviewsInput>;
-}
-
-export interface ReviewUpdateManyMutationInput {
-  text?: Maybe<String>;
-  stars?: Maybe<Int>;
-}
-
-export interface RoomCreateInput {
-  id?: Maybe<ID_Input>;
-  label: ROOM_LABELS;
-  house: HouseCreateOneWithoutRoomsInput;
-  picture_previews?: Maybe<PictureCreateManyInput>;
-  video_previews?: Maybe<VideoCreateManyInput>;
-}
-
-export interface HouseCreateOneWithoutRoomsInput {
-  create?: Maybe<HouseCreateWithoutRoomsInput>;
-  connect?: Maybe<HouseWhereUniqueInput>;
-}
-
-export interface HouseCreateWithoutRoomsInput {
-  id?: Maybe<ID_Input>;
-  area?: Maybe<Int>;
-  age?: Maybe<Int>;
-  shortDescription?: Maybe<String>;
-  description?: Maybe<String>;
-  maxGuests?: Maybe<Int>;
-  numBedrooms: Int;
-  numBaths: Int;
-  numLivingrooms?: Maybe<Int>;
-  numDiningrooms?: Maybe<Int>;
-  reviews?: Maybe<ReviewCreateManyWithoutHouseInput>;
-  amenities?: Maybe<AmenitiesCreateOneWithoutHouseInput>;
-  host: UserCreateOneWithoutOwnedHousesInput;
-  pricing?: Maybe<PricingCreateOneWithoutHouseInput>;
-  location: LocationCreateOneInput;
-  leaseType?: Maybe<HOUSE_LEASE_TYPE>;
-  verified?: Maybe<Boolean>;
-  type?: Maybe<HOUSE_TYPES>;
-  residency?: Maybe<House_RESIDENCY>;
-  lease?: Maybe<Int>;
-  views?: Maybe<ViewsCreateOneWithoutHouseInput>;
-  bookings?: Maybe<BookingCreateManyWithoutHouseInput>;
-  pictures?: Maybe<PictureCreateManyInput>;
-  contactInfoPayments?: Maybe<PaymentLanlordInfoCreateManyWithoutHouseInput>;
-  popularity?: Maybe<Int>;
-  preview_image?: Maybe<PictureCreateOneInput>;
-  lastRating?: Maybe<Int>;
-  rentOrSell: RENT_OR_SELL;
-}
-
-export interface RoomUpdateInput {
-  label?: Maybe<ROOM_LABELS>;
-  house?: Maybe<HouseUpdateOneRequiredWithoutRoomsInput>;
-  picture_previews?: Maybe<PictureUpdateManyInput>;
-  video_previews?: Maybe<VideoUpdateManyInput>;
-}
-
-export interface HouseUpdateOneRequiredWithoutRoomsInput {
-  create?: Maybe<HouseCreateWithoutRoomsInput>;
-  update?: Maybe<HouseUpdateWithoutRoomsDataInput>;
-  upsert?: Maybe<HouseUpsertWithoutRoomsInput>;
-  connect?: Maybe<HouseWhereUniqueInput>;
+export interface BookingUpsertWithoutPaymentInput {
+  update: BookingUpdateWithoutPaymentDataInput;
+  create: BookingCreateWithoutPaymentInput;
 }
 
 export interface HouseUpdateWithoutRoomsDataInput {
@@ -6826,498 +7292,434 @@ export interface HouseUpdateWithoutRoomsDataInput {
   rentOrSell?: Maybe<RENT_OR_SELL>;
 }
 
-export interface HouseUpsertWithoutRoomsInput {
-  update: HouseUpdateWithoutRoomsDataInput;
-  create: HouseCreateWithoutRoomsInput;
+export interface PictureCreateOneInput {
+  create?: Maybe<PictureCreateInput>;
+  connect?: Maybe<PictureWhereUniqueInput>;
 }
 
-export interface RoomUpdateManyMutationInput {
-  label?: Maybe<ROOM_LABELS>;
+export interface CityCreateOneInput {
+  create?: Maybe<CityCreateInput>;
+  connect?: Maybe<CityWhereUniqueInput>;
 }
 
-export interface StateUpdateInput {
-  name?: Maybe<String>;
-  rank?: Maybe<Int>;
-  country?: Maybe<CountryUpdateOneRequiredInput>;
+export interface NegotiationUpdateInput {
+  negotiator?: Maybe<UserUpdateOneRequiredInput>;
+  House?: Maybe<HouseUpdateOneRequiredInput>;
+  offer?: Maybe<Float>;
+  status?: Maybe<NEGOTIATION_TYPE>;
 }
 
-export interface StateUpdateManyMutationInput {
-  name?: Maybe<String>;
-  rank?: Maybe<Int>;
-}
-
-export interface UserUpdateInput {
-  status?: Maybe<Boolean>;
-  facebookUserId?: Maybe<String>;
-  firstName?: Maybe<String>;
-  lastName?: Maybe<String>;
-  email?: Maybe<String>;
-  password?: Maybe<String>;
-  resetToken?: Maybe<String>;
-  resetTokenExpiry?: Maybe<String>;
-  phone1?: Maybe<String>;
-  phone2?: Maybe<String>;
-  primaryPhone?: Maybe<Int>;
-  responseTime?: Maybe<Int>;
-  isSuperHost?: Maybe<Boolean>;
-  ownedHouses?: Maybe<HouseUpdateManyWithoutHostInput>;
-  location?: Maybe<LocationUpdateOneInput>;
-  bookings?: Maybe<BookingUpdateManyWithoutBookeeInput>;
-  paidContacts?: Maybe<PaymentLanlordInfoUpdateManyWithoutClientInput>;
-  notifications?: Maybe<NotificationUpdateManyWithoutUserInput>;
-  profilePicture?: Maybe<PictureUpdateOneInput>;
-  reviews?: Maybe<ReviewUpdateManyWithoutUserInput>;
-  permissions?: Maybe<UserUpdatepermissionsInput>;
-}
-
-export interface UserUpdateManyMutationInput {
-  status?: Maybe<Boolean>;
-  facebookUserId?: Maybe<String>;
-  firstName?: Maybe<String>;
-  lastName?: Maybe<String>;
-  email?: Maybe<String>;
-  password?: Maybe<String>;
-  resetToken?: Maybe<String>;
-  resetTokenExpiry?: Maybe<String>;
-  phone1?: Maybe<String>;
-  phone2?: Maybe<String>;
-  primaryPhone?: Maybe<Int>;
-  responseTime?: Maybe<Int>;
-  isSuperHost?: Maybe<Boolean>;
-  permissions?: Maybe<UserUpdatepermissionsInput>;
-}
-
-export interface VideoUpdateInput {
-  url?: Maybe<String>;
-}
-
-export interface VideoUpdateManyMutationInput {
-  url?: Maybe<String>;
-}
-
-export interface ViewsCreateInput {
-  id?: Maybe<ID_Input>;
-  lastWeek: Int;
-  House: HouseCreateOneWithoutViewsInput;
-  User?: Maybe<UserCreateManyInput>;
-}
-
-export interface HouseCreateOneWithoutViewsInput {
-  create?: Maybe<HouseCreateWithoutViewsInput>;
-  connect?: Maybe<HouseWhereUniqueInput>;
-}
-
-export interface HouseCreateWithoutViewsInput {
-  id?: Maybe<ID_Input>;
-  area?: Maybe<Int>;
-  age?: Maybe<Int>;
-  shortDescription?: Maybe<String>;
-  description?: Maybe<String>;
-  maxGuests?: Maybe<Int>;
-  numBedrooms: Int;
-  numBaths: Int;
-  numLivingrooms?: Maybe<Int>;
-  numDiningrooms?: Maybe<Int>;
-  reviews?: Maybe<ReviewCreateManyWithoutHouseInput>;
-  amenities?: Maybe<AmenitiesCreateOneWithoutHouseInput>;
-  host: UserCreateOneWithoutOwnedHousesInput;
-  pricing?: Maybe<PricingCreateOneWithoutHouseInput>;
-  location: LocationCreateOneInput;
-  leaseType?: Maybe<HOUSE_LEASE_TYPE>;
-  verified?: Maybe<Boolean>;
-  type?: Maybe<HOUSE_TYPES>;
-  residency?: Maybe<House_RESIDENCY>;
-  lease?: Maybe<Int>;
-  rooms?: Maybe<RoomCreateManyWithoutHouseInput>;
-  bookings?: Maybe<BookingCreateManyWithoutHouseInput>;
-  pictures?: Maybe<PictureCreateManyInput>;
-  contactInfoPayments?: Maybe<PaymentLanlordInfoCreateManyWithoutHouseInput>;
-  popularity?: Maybe<Int>;
-  preview_image?: Maybe<PictureCreateOneInput>;
-  lastRating?: Maybe<Int>;
-  rentOrSell: RENT_OR_SELL;
-}
-
-export interface ViewsUpdateInput {
-  lastWeek?: Maybe<Int>;
-  House?: Maybe<HouseUpdateOneRequiredWithoutViewsInput>;
-  User?: Maybe<UserUpdateManyInput>;
-}
-
-export interface HouseUpdateOneRequiredWithoutViewsInput {
-  create?: Maybe<HouseCreateWithoutViewsInput>;
-  update?: Maybe<HouseUpdateWithoutViewsDataInput>;
-  upsert?: Maybe<HouseUpsertWithoutViewsInput>;
-  connect?: Maybe<HouseWhereUniqueInput>;
-}
-
-export interface HouseUpdateWithoutViewsDataInput {
-  area?: Maybe<Int>;
-  age?: Maybe<Int>;
-  shortDescription?: Maybe<String>;
-  description?: Maybe<String>;
-  maxGuests?: Maybe<Int>;
-  numBedrooms?: Maybe<Int>;
-  numBaths?: Maybe<Int>;
-  numLivingrooms?: Maybe<Int>;
-  numDiningrooms?: Maybe<Int>;
-  reviews?: Maybe<ReviewUpdateManyWithoutHouseInput>;
-  amenities?: Maybe<AmenitiesUpdateOneWithoutHouseInput>;
-  host?: Maybe<UserUpdateOneRequiredWithoutOwnedHousesInput>;
-  pricing?: Maybe<PricingUpdateOneWithoutHouseInput>;
-  location?: Maybe<LocationUpdateOneRequiredInput>;
-  leaseType?: Maybe<HOUSE_LEASE_TYPE>;
-  verified?: Maybe<Boolean>;
-  type?: Maybe<HOUSE_TYPES>;
-  residency?: Maybe<House_RESIDENCY>;
-  lease?: Maybe<Int>;
-  rooms?: Maybe<RoomUpdateManyWithoutHouseInput>;
-  bookings?: Maybe<BookingUpdateManyWithoutHouseInput>;
-  pictures?: Maybe<PictureUpdateManyInput>;
-  contactInfoPayments?: Maybe<PaymentLanlordInfoUpdateManyWithoutHouseInput>;
-  popularity?: Maybe<Int>;
-  preview_image?: Maybe<PictureUpdateOneInput>;
-  lastRating?: Maybe<Int>;
-  rentOrSell?: Maybe<RENT_OR_SELL>;
-}
-
-export interface HouseUpsertWithoutViewsInput {
-  update: HouseUpdateWithoutViewsDataInput;
-  create: HouseCreateWithoutViewsInput;
-}
-
-export interface ViewsUpdateManyMutationInput {
-  lastWeek?: Maybe<Int>;
-}
-
-export interface AmenitiesSubscriptionWhereInput {
-  mutation_in?: Maybe<MutationType[] | MutationType>;
-  updatedFields_contains?: Maybe<String>;
-  updatedFields_contains_every?: Maybe<String[] | String>;
-  updatedFields_contains_some?: Maybe<String[] | String>;
-  node?: Maybe<AmenitiesWhereInput>;
-  AND?: Maybe<
-    AmenitiesSubscriptionWhereInput[] | AmenitiesSubscriptionWhereInput
-  >;
-  OR?: Maybe<
-    AmenitiesSubscriptionWhereInput[] | AmenitiesSubscriptionWhereInput
-  >;
-  NOT?: Maybe<
-    AmenitiesSubscriptionWhereInput[] | AmenitiesSubscriptionWhereInput
-  >;
-}
-
-export interface BookingSubscriptionWhereInput {
-  mutation_in?: Maybe<MutationType[] | MutationType>;
-  updatedFields_contains?: Maybe<String>;
-  updatedFields_contains_every?: Maybe<String[] | String>;
-  updatedFields_contains_some?: Maybe<String[] | String>;
-  node?: Maybe<BookingWhereInput>;
-  AND?: Maybe<BookingSubscriptionWhereInput[] | BookingSubscriptionWhereInput>;
-  OR?: Maybe<BookingSubscriptionWhereInput[] | BookingSubscriptionWhereInput>;
-  NOT?: Maybe<BookingSubscriptionWhereInput[] | BookingSubscriptionWhereInput>;
-}
-
-export interface CitySubscriptionWhereInput {
-  mutation_in?: Maybe<MutationType[] | MutationType>;
-  updatedFields_contains?: Maybe<String>;
-  updatedFields_contains_every?: Maybe<String[] | String>;
-  updatedFields_contains_some?: Maybe<String[] | String>;
-  node?: Maybe<CityWhereInput>;
-  AND?: Maybe<CitySubscriptionWhereInput[] | CitySubscriptionWhereInput>;
-  OR?: Maybe<CitySubscriptionWhereInput[] | CitySubscriptionWhereInput>;
-  NOT?: Maybe<CitySubscriptionWhereInput[] | CitySubscriptionWhereInput>;
-}
-
-export interface CommuneSubscriptionWhereInput {
-  mutation_in?: Maybe<MutationType[] | MutationType>;
-  updatedFields_contains?: Maybe<String>;
-  updatedFields_contains_every?: Maybe<String[] | String>;
-  updatedFields_contains_some?: Maybe<String[] | String>;
-  node?: Maybe<CommuneWhereInput>;
-  AND?: Maybe<CommuneSubscriptionWhereInput[] | CommuneSubscriptionWhereInput>;
-  OR?: Maybe<CommuneSubscriptionWhereInput[] | CommuneSubscriptionWhereInput>;
-  NOT?: Maybe<CommuneSubscriptionWhereInput[] | CommuneSubscriptionWhereInput>;
-}
-
-export interface CountrySubscriptionWhereInput {
-  mutation_in?: Maybe<MutationType[] | MutationType>;
-  updatedFields_contains?: Maybe<String>;
-  updatedFields_contains_every?: Maybe<String[] | String>;
-  updatedFields_contains_some?: Maybe<String[] | String>;
-  node?: Maybe<CountryWhereInput>;
-  AND?: Maybe<CountrySubscriptionWhereInput[] | CountrySubscriptionWhereInput>;
-  OR?: Maybe<CountrySubscriptionWhereInput[] | CountrySubscriptionWhereInput>;
-  NOT?: Maybe<CountrySubscriptionWhereInput[] | CountrySubscriptionWhereInput>;
-}
-
-export interface CreditCardInformationSubscriptionWhereInput {
-  mutation_in?: Maybe<MutationType[] | MutationType>;
-  updatedFields_contains?: Maybe<String>;
-  updatedFields_contains_every?: Maybe<String[] | String>;
-  updatedFields_contains_some?: Maybe<String[] | String>;
-  node?: Maybe<CreditCardInformationWhereInput>;
-  AND?: Maybe<
-    | CreditCardInformationSubscriptionWhereInput[]
-    | CreditCardInformationSubscriptionWhereInput
-  >;
-  OR?: Maybe<
-    | CreditCardInformationSubscriptionWhereInput[]
-    | CreditCardInformationSubscriptionWhereInput
-  >;
-  NOT?: Maybe<
-    | CreditCardInformationSubscriptionWhereInput[]
-    | CreditCardInformationSubscriptionWhereInput
-  >;
-}
-
-export interface HouseSubscriptionWhereInput {
-  mutation_in?: Maybe<MutationType[] | MutationType>;
-  updatedFields_contains?: Maybe<String>;
-  updatedFields_contains_every?: Maybe<String[] | String>;
-  updatedFields_contains_some?: Maybe<String[] | String>;
-  node?: Maybe<HouseWhereInput>;
-  AND?: Maybe<HouseSubscriptionWhereInput[] | HouseSubscriptionWhereInput>;
-  OR?: Maybe<HouseSubscriptionWhereInput[] | HouseSubscriptionWhereInput>;
-  NOT?: Maybe<HouseSubscriptionWhereInput[] | HouseSubscriptionWhereInput>;
-}
-
-export interface HouseFavoritedSubscriptionWhereInput {
-  mutation_in?: Maybe<MutationType[] | MutationType>;
-  updatedFields_contains?: Maybe<String>;
-  updatedFields_contains_every?: Maybe<String[] | String>;
-  updatedFields_contains_some?: Maybe<String[] | String>;
-  node?: Maybe<HouseFavoritedWhereInput>;
-  AND?: Maybe<
-    | HouseFavoritedSubscriptionWhereInput[]
-    | HouseFavoritedSubscriptionWhereInput
-  >;
-  OR?: Maybe<
-    | HouseFavoritedSubscriptionWhereInput[]
-    | HouseFavoritedSubscriptionWhereInput
-  >;
-  NOT?: Maybe<
-    | HouseFavoritedSubscriptionWhereInput[]
-    | HouseFavoritedSubscriptionWhereInput
-  >;
-}
-
-export interface LocationSubscriptionWhereInput {
-  mutation_in?: Maybe<MutationType[] | MutationType>;
-  updatedFields_contains?: Maybe<String>;
-  updatedFields_contains_every?: Maybe<String[] | String>;
-  updatedFields_contains_some?: Maybe<String[] | String>;
-  node?: Maybe<LocationWhereInput>;
-  AND?: Maybe<
-    LocationSubscriptionWhereInput[] | LocationSubscriptionWhereInput
-  >;
-  OR?: Maybe<LocationSubscriptionWhereInput[] | LocationSubscriptionWhereInput>;
-  NOT?: Maybe<
-    LocationSubscriptionWhereInput[] | LocationSubscriptionWhereInput
-  >;
-}
-
-export interface NegotiationSubscriptionWhereInput {
-  mutation_in?: Maybe<MutationType[] | MutationType>;
-  updatedFields_contains?: Maybe<String>;
-  updatedFields_contains_every?: Maybe<String[] | String>;
-  updatedFields_contains_some?: Maybe<String[] | String>;
-  node?: Maybe<NegotiationWhereInput>;
-  AND?: Maybe<
-    NegotiationSubscriptionWhereInput[] | NegotiationSubscriptionWhereInput
-  >;
-  OR?: Maybe<
-    NegotiationSubscriptionWhereInput[] | NegotiationSubscriptionWhereInput
-  >;
-  NOT?: Maybe<
-    NegotiationSubscriptionWhereInput[] | NegotiationSubscriptionWhereInput
-  >;
-}
-
-export interface NotificationSubscriptionWhereInput {
-  mutation_in?: Maybe<MutationType[] | MutationType>;
-  updatedFields_contains?: Maybe<String>;
-  updatedFields_contains_every?: Maybe<String[] | String>;
-  updatedFields_contains_some?: Maybe<String[] | String>;
-  node?: Maybe<NotificationWhereInput>;
-  AND?: Maybe<
-    NotificationSubscriptionWhereInput[] | NotificationSubscriptionWhereInput
-  >;
-  OR?: Maybe<
-    NotificationSubscriptionWhereInput[] | NotificationSubscriptionWhereInput
-  >;
-  NOT?: Maybe<
-    NotificationSubscriptionWhereInput[] | NotificationSubscriptionWhereInput
-  >;
-}
-
-export interface PaymentAccountSubscriptionWhereInput {
-  mutation_in?: Maybe<MutationType[] | MutationType>;
-  updatedFields_contains?: Maybe<String>;
-  updatedFields_contains_every?: Maybe<String[] | String>;
-  updatedFields_contains_some?: Maybe<String[] | String>;
-  node?: Maybe<PaymentAccountWhereInput>;
-  AND?: Maybe<
-    | PaymentAccountSubscriptionWhereInput[]
-    | PaymentAccountSubscriptionWhereInput
-  >;
-  OR?: Maybe<
-    | PaymentAccountSubscriptionWhereInput[]
-    | PaymentAccountSubscriptionWhereInput
-  >;
-  NOT?: Maybe<
-    | PaymentAccountSubscriptionWhereInput[]
-    | PaymentAccountSubscriptionWhereInput
-  >;
-}
-
-export interface PaymentHouseSubscriptionWhereInput {
-  mutation_in?: Maybe<MutationType[] | MutationType>;
-  updatedFields_contains?: Maybe<String>;
-  updatedFields_contains_every?: Maybe<String[] | String>;
-  updatedFields_contains_some?: Maybe<String[] | String>;
-  node?: Maybe<PaymentHouseWhereInput>;
-  AND?: Maybe<
-    PaymentHouseSubscriptionWhereInput[] | PaymentHouseSubscriptionWhereInput
-  >;
-  OR?: Maybe<
-    PaymentHouseSubscriptionWhereInput[] | PaymentHouseSubscriptionWhereInput
-  >;
-  NOT?: Maybe<
-    PaymentHouseSubscriptionWhereInput[] | PaymentHouseSubscriptionWhereInput
-  >;
-}
-
-export interface PaymentLanlordInfoSubscriptionWhereInput {
-  mutation_in?: Maybe<MutationType[] | MutationType>;
-  updatedFields_contains?: Maybe<String>;
-  updatedFields_contains_every?: Maybe<String[] | String>;
-  updatedFields_contains_some?: Maybe<String[] | String>;
-  node?: Maybe<PaymentLanlordInfoWhereInput>;
-  AND?: Maybe<
-    | PaymentLanlordInfoSubscriptionWhereInput[]
-    | PaymentLanlordInfoSubscriptionWhereInput
-  >;
-  OR?: Maybe<
-    | PaymentLanlordInfoSubscriptionWhereInput[]
-    | PaymentLanlordInfoSubscriptionWhereInput
-  >;
-  NOT?: Maybe<
-    | PaymentLanlordInfoSubscriptionWhereInput[]
-    | PaymentLanlordInfoSubscriptionWhereInput
-  >;
-}
-
-export interface PaypalInformationSubscriptionWhereInput {
-  mutation_in?: Maybe<MutationType[] | MutationType>;
-  updatedFields_contains?: Maybe<String>;
-  updatedFields_contains_every?: Maybe<String[] | String>;
-  updatedFields_contains_some?: Maybe<String[] | String>;
-  node?: Maybe<PaypalInformationWhereInput>;
-  AND?: Maybe<
-    | PaypalInformationSubscriptionWhereInput[]
-    | PaypalInformationSubscriptionWhereInput
-  >;
-  OR?: Maybe<
-    | PaypalInformationSubscriptionWhereInput[]
-    | PaypalInformationSubscriptionWhereInput
-  >;
-  NOT?: Maybe<
-    | PaypalInformationSubscriptionWhereInput[]
-    | PaypalInformationSubscriptionWhereInput
-  >;
-}
-
-export interface PictureSubscriptionWhereInput {
-  mutation_in?: Maybe<MutationType[] | MutationType>;
-  updatedFields_contains?: Maybe<String>;
-  updatedFields_contains_every?: Maybe<String[] | String>;
-  updatedFields_contains_some?: Maybe<String[] | String>;
-  node?: Maybe<PictureWhereInput>;
-  AND?: Maybe<PictureSubscriptionWhereInput[] | PictureSubscriptionWhereInput>;
-  OR?: Maybe<PictureSubscriptionWhereInput[] | PictureSubscriptionWhereInput>;
-  NOT?: Maybe<PictureSubscriptionWhereInput[] | PictureSubscriptionWhereInput>;
-}
-
-export interface PricingSubscriptionWhereInput {
-  mutation_in?: Maybe<MutationType[] | MutationType>;
-  updatedFields_contains?: Maybe<String>;
-  updatedFields_contains_every?: Maybe<String[] | String>;
-  updatedFields_contains_some?: Maybe<String[] | String>;
-  node?: Maybe<PricingWhereInput>;
-  AND?: Maybe<PricingSubscriptionWhereInput[] | PricingSubscriptionWhereInput>;
-  OR?: Maybe<PricingSubscriptionWhereInput[] | PricingSubscriptionWhereInput>;
-  NOT?: Maybe<PricingSubscriptionWhereInput[] | PricingSubscriptionWhereInput>;
-}
-
-export interface ReviewSubscriptionWhereInput {
-  mutation_in?: Maybe<MutationType[] | MutationType>;
-  updatedFields_contains?: Maybe<String>;
-  updatedFields_contains_every?: Maybe<String[] | String>;
-  updatedFields_contains_some?: Maybe<String[] | String>;
-  node?: Maybe<ReviewWhereInput>;
-  AND?: Maybe<ReviewSubscriptionWhereInput[] | ReviewSubscriptionWhereInput>;
-  OR?: Maybe<ReviewSubscriptionWhereInput[] | ReviewSubscriptionWhereInput>;
-  NOT?: Maybe<ReviewSubscriptionWhereInput[] | ReviewSubscriptionWhereInput>;
-}
-
-export interface RoomSubscriptionWhereInput {
-  mutation_in?: Maybe<MutationType[] | MutationType>;
-  updatedFields_contains?: Maybe<String>;
-  updatedFields_contains_every?: Maybe<String[] | String>;
-  updatedFields_contains_some?: Maybe<String[] | String>;
-  node?: Maybe<RoomWhereInput>;
-  AND?: Maybe<RoomSubscriptionWhereInput[] | RoomSubscriptionWhereInput>;
-  OR?: Maybe<RoomSubscriptionWhereInput[] | RoomSubscriptionWhereInput>;
-  NOT?: Maybe<RoomSubscriptionWhereInput[] | RoomSubscriptionWhereInput>;
-}
-
-export interface StateSubscriptionWhereInput {
-  mutation_in?: Maybe<MutationType[] | MutationType>;
-  updatedFields_contains?: Maybe<String>;
-  updatedFields_contains_every?: Maybe<String[] | String>;
-  updatedFields_contains_some?: Maybe<String[] | String>;
-  node?: Maybe<StateWhereInput>;
-  AND?: Maybe<StateSubscriptionWhereInput[] | StateSubscriptionWhereInput>;
-  OR?: Maybe<StateSubscriptionWhereInput[] | StateSubscriptionWhereInput>;
-  NOT?: Maybe<StateSubscriptionWhereInput[] | StateSubscriptionWhereInput>;
-}
-
-export interface UserSubscriptionWhereInput {
-  mutation_in?: Maybe<MutationType[] | MutationType>;
-  updatedFields_contains?: Maybe<String>;
-  updatedFields_contains_every?: Maybe<String[] | String>;
-  updatedFields_contains_some?: Maybe<String[] | String>;
-  node?: Maybe<UserWhereInput>;
-  AND?: Maybe<UserSubscriptionWhereInput[] | UserSubscriptionWhereInput>;
-  OR?: Maybe<UserSubscriptionWhereInput[] | UserSubscriptionWhereInput>;
-  NOT?: Maybe<UserSubscriptionWhereInput[] | UserSubscriptionWhereInput>;
-}
-
-export interface VideoSubscriptionWhereInput {
-  mutation_in?: Maybe<MutationType[] | MutationType>;
-  updatedFields_contains?: Maybe<String>;
-  updatedFields_contains_every?: Maybe<String[] | String>;
-  updatedFields_contains_some?: Maybe<String[] | String>;
-  node?: Maybe<VideoWhereInput>;
-  AND?: Maybe<VideoSubscriptionWhereInput[] | VideoSubscriptionWhereInput>;
-  OR?: Maybe<VideoSubscriptionWhereInput[] | VideoSubscriptionWhereInput>;
-  NOT?: Maybe<VideoSubscriptionWhereInput[] | VideoSubscriptionWhereInput>;
-}
-
-export interface ViewsSubscriptionWhereInput {
-  mutation_in?: Maybe<MutationType[] | MutationType>;
-  updatedFields_contains?: Maybe<String>;
-  updatedFields_contains_every?: Maybe<String[] | String>;
-  updatedFields_contains_some?: Maybe<String[] | String>;
-  node?: Maybe<ViewsWhereInput>;
-  AND?: Maybe<ViewsSubscriptionWhereInput[] | ViewsSubscriptionWhereInput>;
-  OR?: Maybe<ViewsSubscriptionWhereInput[] | ViewsSubscriptionWhereInput>;
-  NOT?: Maybe<ViewsSubscriptionWhereInput[] | ViewsSubscriptionWhereInput>;
+export interface PaymentAccountUpdateWithoutPaypalDataInput {
+  type?: Maybe<PAYMENT_PROVIDER>;
+  user?: Maybe<UserUpdateOneRequiredInput>;
+  payments?: Maybe<PaymentHouseUpdateManyWithoutPaymentMethodInput>;
+  creditcard?: Maybe<CreditCardInformationUpdateOneWithoutPaymentAccountInput>;
 }
 
 export interface NodeNode {
   id: ID_Output;
+}
+
+export interface ViewsPreviousValues {
+  id: ID_Output;
+  lastWeek: Int;
+  createdAt: DateTimeOutput;
+  updatedAt: DateTimeOutput;
+}
+
+export interface ViewsPreviousValuesPromise
+  extends Promise<ViewsPreviousValues>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  lastWeek: () => Promise<Int>;
+  createdAt: () => Promise<DateTimeOutput>;
+  updatedAt: () => Promise<DateTimeOutput>;
+}
+
+export interface ViewsPreviousValuesSubscription
+  extends Promise<AsyncIterator<ViewsPreviousValues>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  lastWeek: () => Promise<AsyncIterator<Int>>;
+  createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+  updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+}
+
+export interface CityEdge {
+  node: City;
+  cursor: String;
+}
+
+export interface CityEdgePromise extends Promise<CityEdge>, Fragmentable {
+  node: <T = CityPromise>() => T;
+  cursor: () => Promise<String>;
+}
+
+export interface CityEdgeSubscription
+  extends Promise<AsyncIterator<CityEdge>>,
+    Fragmentable {
+  node: <T = CitySubscription>() => T;
+  cursor: () => Promise<AsyncIterator<String>>;
+}
+
+export interface User {
+  id: ID_Output;
+  createdAt: DateTimeOutput;
+  updatedAt: DateTimeOutput;
+  status?: Boolean;
+  facebookUserId?: String;
+  firstName: String;
+  lastName: String;
+  email?: String;
+  password?: String;
+  resetToken?: String;
+  resetTokenExpiry?: String;
+  phone1?: String;
+  phone2?: String;
+  primaryPhone: Int;
+  responseTime?: Int;
+  isSuperHost: Boolean;
+  permissions: Permission[];
+}
+
+export interface UserPromise extends Promise<User>, Fragmentable {
+  id: () => Promise<ID_Output>;
+  createdAt: () => Promise<DateTimeOutput>;
+  updatedAt: () => Promise<DateTimeOutput>;
+  status: () => Promise<Boolean>;
+  facebookUserId: () => Promise<String>;
+  firstName: () => Promise<String>;
+  lastName: () => Promise<String>;
+  email: () => Promise<String>;
+  password: () => Promise<String>;
+  resetToken: () => Promise<String>;
+  resetTokenExpiry: () => Promise<String>;
+  phone1: () => Promise<String>;
+  phone2: () => Promise<String>;
+  primaryPhone: () => Promise<Int>;
+  responseTime: () => Promise<Int>;
+  isSuperHost: () => Promise<Boolean>;
+  ownedHouses: <T = FragmentableArray<House>>(args?: {
+    where?: HouseWhereInput;
+    orderBy?: HouseOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => T;
+  location: <T = LocationPromise>() => T;
+  bookings: <T = FragmentableArray<Booking>>(args?: {
+    where?: BookingWhereInput;
+    orderBy?: BookingOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => T;
+  paidContacts: <T = FragmentableArray<PaymentLanlordInfo>>(args?: {
+    where?: PaymentLanlordInfoWhereInput;
+    orderBy?: PaymentLanlordInfoOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => T;
+  notifications: <T = FragmentableArray<Notification>>(args?: {
+    where?: NotificationWhereInput;
+    orderBy?: NotificationOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => T;
+  profilePicture: <T = PicturePromise>() => T;
+  reviews: <T = FragmentableArray<Review>>(args?: {
+    where?: ReviewWhereInput;
+    orderBy?: ReviewOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => T;
+  permissions: () => Promise<Permission[]>;
+}
+
+export interface UserSubscription
+  extends Promise<AsyncIterator<User>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+  updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+  status: () => Promise<AsyncIterator<Boolean>>;
+  facebookUserId: () => Promise<AsyncIterator<String>>;
+  firstName: () => Promise<AsyncIterator<String>>;
+  lastName: () => Promise<AsyncIterator<String>>;
+  email: () => Promise<AsyncIterator<String>>;
+  password: () => Promise<AsyncIterator<String>>;
+  resetToken: () => Promise<AsyncIterator<String>>;
+  resetTokenExpiry: () => Promise<AsyncIterator<String>>;
+  phone1: () => Promise<AsyncIterator<String>>;
+  phone2: () => Promise<AsyncIterator<String>>;
+  primaryPhone: () => Promise<AsyncIterator<Int>>;
+  responseTime: () => Promise<AsyncIterator<Int>>;
+  isSuperHost: () => Promise<AsyncIterator<Boolean>>;
+  ownedHouses: <T = Promise<AsyncIterator<HouseSubscription>>>(args?: {
+    where?: HouseWhereInput;
+    orderBy?: HouseOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => T;
+  location: <T = LocationSubscription>() => T;
+  bookings: <T = Promise<AsyncIterator<BookingSubscription>>>(args?: {
+    where?: BookingWhereInput;
+    orderBy?: BookingOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => T;
+  paidContacts: <
+    T = Promise<AsyncIterator<PaymentLanlordInfoSubscription>>
+  >(args?: {
+    where?: PaymentLanlordInfoWhereInput;
+    orderBy?: PaymentLanlordInfoOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => T;
+  notifications: <T = Promise<AsyncIterator<NotificationSubscription>>>(args?: {
+    where?: NotificationWhereInput;
+    orderBy?: NotificationOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => T;
+  profilePicture: <T = PictureSubscription>() => T;
+  reviews: <T = Promise<AsyncIterator<ReviewSubscription>>>(args?: {
+    where?: ReviewWhereInput;
+    orderBy?: ReviewOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => T;
+  permissions: () => Promise<AsyncIterator<Permission[]>>;
+}
+
+export interface UserNullablePromise
+  extends Promise<User | null>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  createdAt: () => Promise<DateTimeOutput>;
+  updatedAt: () => Promise<DateTimeOutput>;
+  status: () => Promise<Boolean>;
+  facebookUserId: () => Promise<String>;
+  firstName: () => Promise<String>;
+  lastName: () => Promise<String>;
+  email: () => Promise<String>;
+  password: () => Promise<String>;
+  resetToken: () => Promise<String>;
+  resetTokenExpiry: () => Promise<String>;
+  phone1: () => Promise<String>;
+  phone2: () => Promise<String>;
+  primaryPhone: () => Promise<Int>;
+  responseTime: () => Promise<Int>;
+  isSuperHost: () => Promise<Boolean>;
+  ownedHouses: <T = FragmentableArray<House>>(args?: {
+    where?: HouseWhereInput;
+    orderBy?: HouseOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => T;
+  location: <T = LocationPromise>() => T;
+  bookings: <T = FragmentableArray<Booking>>(args?: {
+    where?: BookingWhereInput;
+    orderBy?: BookingOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => T;
+  paidContacts: <T = FragmentableArray<PaymentLanlordInfo>>(args?: {
+    where?: PaymentLanlordInfoWhereInput;
+    orderBy?: PaymentLanlordInfoOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => T;
+  notifications: <T = FragmentableArray<Notification>>(args?: {
+    where?: NotificationWhereInput;
+    orderBy?: NotificationOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => T;
+  profilePicture: <T = PicturePromise>() => T;
+  reviews: <T = FragmentableArray<Review>>(args?: {
+    where?: ReviewWhereInput;
+    orderBy?: ReviewOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => T;
+  permissions: () => Promise<Permission[]>;
+}
+
+export interface CityConnection {
+  pageInfo: PageInfo;
+  edges: CityEdge[];
+}
+
+export interface CityConnectionPromise
+  extends Promise<CityConnection>,
+    Fragmentable {
+  pageInfo: <T = PageInfoPromise>() => T;
+  edges: <T = FragmentableArray<CityEdge>>() => T;
+  aggregate: <T = AggregateCityPromise>() => T;
+}
+
+export interface CityConnectionSubscription
+  extends Promise<AsyncIterator<CityConnection>>,
+    Fragmentable {
+  pageInfo: <T = PageInfoSubscription>() => T;
+  edges: <T = Promise<AsyncIterator<CityEdgeSubscription>>>() => T;
+  aggregate: <T = AggregateCitySubscription>() => T;
+}
+
+export interface Review {
+  id: ID_Output;
+  createdAt: DateTimeOutput;
+  updatedAt: DateTimeOutput;
+  text?: String;
+  stars: Int;
+}
+
+export interface ReviewPromise extends Promise<Review>, Fragmentable {
+  id: () => Promise<ID_Output>;
+  createdAt: () => Promise<DateTimeOutput>;
+  updatedAt: () => Promise<DateTimeOutput>;
+  text: () => Promise<String>;
+  stars: () => Promise<Int>;
+  House: <T = HousePromise>() => T;
+  user: <T = UserPromise>() => T;
+}
+
+export interface ReviewSubscription
+  extends Promise<AsyncIterator<Review>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+  updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+  text: () => Promise<AsyncIterator<String>>;
+  stars: () => Promise<AsyncIterator<Int>>;
+  House: <T = HouseSubscription>() => T;
+  user: <T = UserSubscription>() => T;
+}
+
+export interface ReviewNullablePromise
+  extends Promise<Review | null>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  createdAt: () => Promise<DateTimeOutput>;
+  updatedAt: () => Promise<DateTimeOutput>;
+  text: () => Promise<String>;
+  stars: () => Promise<Int>;
+  House: <T = HousePromise>() => T;
+  user: <T = UserPromise>() => T;
+}
+
+export interface AggregateBooking {
+  count: Int;
+}
+
+export interface AggregateBookingPromise
+  extends Promise<AggregateBooking>,
+    Fragmentable {
+  count: () => Promise<Int>;
+}
+
+export interface AggregateBookingSubscription
+  extends Promise<AsyncIterator<AggregateBooking>>,
+    Fragmentable {
+  count: () => Promise<AsyncIterator<Int>>;
+}
+
+export interface AggregateViews {
+  count: Int;
+}
+
+export interface AggregateViewsPromise
+  extends Promise<AggregateViews>,
+    Fragmentable {
+  count: () => Promise<Int>;
+}
+
+export interface AggregateViewsSubscription
+  extends Promise<AsyncIterator<AggregateViews>>,
+    Fragmentable {
+  count: () => Promise<AsyncIterator<Int>>;
+}
+
+export interface BookingEdge {
+  node: Booking;
+  cursor: String;
+}
+
+export interface BookingEdgePromise extends Promise<BookingEdge>, Fragmentable {
+  node: <T = BookingPromise>() => T;
+  cursor: () => Promise<String>;
+}
+
+export interface BookingEdgeSubscription
+  extends Promise<AsyncIterator<BookingEdge>>,
+    Fragmentable {
+  node: <T = BookingSubscription>() => T;
+  cursor: () => Promise<AsyncIterator<String>>;
+}
+
+export interface ViewsConnection {
+  pageInfo: PageInfo;
+  edges: ViewsEdge[];
+}
+
+export interface ViewsConnectionPromise
+  extends Promise<ViewsConnection>,
+    Fragmentable {
+  pageInfo: <T = PageInfoPromise>() => T;
+  edges: <T = FragmentableArray<ViewsEdge>>() => T;
+  aggregate: <T = AggregateViewsPromise>() => T;
+}
+
+export interface ViewsConnectionSubscription
+  extends Promise<AsyncIterator<ViewsConnection>>,
+    Fragmentable {
+  pageInfo: <T = PageInfoSubscription>() => T;
+  edges: <T = Promise<AsyncIterator<ViewsEdgeSubscription>>>() => T;
+  aggregate: <T = AggregateViewsSubscription>() => T;
 }
 
 export interface Amenities {
@@ -7501,6 +7903,2693 @@ export interface AmenitiesNullablePromise
   crib: () => Promise<Boolean>;
   createdAt: () => Promise<DateTimeOutput>;
   updatedAt: () => Promise<DateTimeOutput>;
+}
+
+export interface AggregateVideo {
+  count: Int;
+}
+
+export interface AggregateVideoPromise
+  extends Promise<AggregateVideo>,
+    Fragmentable {
+  count: () => Promise<Int>;
+}
+
+export interface AggregateVideoSubscription
+  extends Promise<AsyncIterator<AggregateVideo>>,
+    Fragmentable {
+  count: () => Promise<AsyncIterator<Int>>;
+}
+
+export interface AmenitiesSubscriptionPayload {
+  mutation: MutationType;
+  node: Amenities;
+  updatedFields: String[];
+  previousValues: AmenitiesPreviousValues;
+}
+
+export interface AmenitiesSubscriptionPayloadPromise
+  extends Promise<AmenitiesSubscriptionPayload>,
+    Fragmentable {
+  mutation: () => Promise<MutationType>;
+  node: <T = AmenitiesPromise>() => T;
+  updatedFields: () => Promise<String[]>;
+  previousValues: <T = AmenitiesPreviousValuesPromise>() => T;
+}
+
+export interface AmenitiesSubscriptionPayloadSubscription
+  extends Promise<AsyncIterator<AmenitiesSubscriptionPayload>>,
+    Fragmentable {
+  mutation: () => Promise<AsyncIterator<MutationType>>;
+  node: <T = AmenitiesSubscription>() => T;
+  updatedFields: () => Promise<AsyncIterator<String[]>>;
+  previousValues: <T = AmenitiesPreviousValuesSubscription>() => T;
+}
+
+export interface VideoConnection {
+  pageInfo: PageInfo;
+  edges: VideoEdge[];
+}
+
+export interface VideoConnectionPromise
+  extends Promise<VideoConnection>,
+    Fragmentable {
+  pageInfo: <T = PageInfoPromise>() => T;
+  edges: <T = FragmentableArray<VideoEdge>>() => T;
+  aggregate: <T = AggregateVideoPromise>() => T;
+}
+
+export interface VideoConnectionSubscription
+  extends Promise<AsyncIterator<VideoConnection>>,
+    Fragmentable {
+  pageInfo: <T = PageInfoSubscription>() => T;
+  edges: <T = Promise<AsyncIterator<VideoEdgeSubscription>>>() => T;
+  aggregate: <T = AggregateVideoSubscription>() => T;
+}
+
+export interface AmenitiesPreviousValues {
+  id: ID_Output;
+  electricity: Boolean;
+  electricity_frequency?: FREQUENCY;
+  water_pipe: Boolean;
+  water_tank: Boolean;
+  water_frequency?: FREQUENCY;
+  elevator: Boolean;
+  petsAllowed: Boolean;
+  internet: Boolean;
+  kitchen: Boolean;
+  wirelessInternet: Boolean;
+  familyKidFriendly: Boolean;
+  freeParkingOnPremises: Boolean;
+  hotTub: Boolean;
+  pool: Boolean;
+  smokingAllowed: Boolean;
+  wheelchairAccessible: Boolean;
+  cableTv: Boolean;
+  suitableForEvents: Boolean;
+  dryer: Boolean;
+  washer: Boolean;
+  indoorFireHouse: Boolean;
+  tv: Boolean;
+  heating: Boolean;
+  hangers: Boolean;
+  iron: Boolean;
+  hairDryer: Boolean;
+  doorman: Boolean;
+  paidParkingOffPremises: Boolean;
+  freeParkingOnStreet: Boolean;
+  gym: Boolean;
+  airConditioning: Boolean;
+  shampoo: Boolean;
+  essentials: Boolean;
+  laptopFriendlyWorkspace: Boolean;
+  privateEntrance: Boolean;
+  buzzerWirelessIntercom: Boolean;
+  bathtub: Boolean;
+  crib: Boolean;
+  createdAt: DateTimeOutput;
+  updatedAt: DateTimeOutput;
+}
+
+export interface AmenitiesPreviousValuesPromise
+  extends Promise<AmenitiesPreviousValues>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  electricity: () => Promise<Boolean>;
+  electricity_frequency: () => Promise<FREQUENCY>;
+  water_pipe: () => Promise<Boolean>;
+  water_tank: () => Promise<Boolean>;
+  water_frequency: () => Promise<FREQUENCY>;
+  elevator: () => Promise<Boolean>;
+  petsAllowed: () => Promise<Boolean>;
+  internet: () => Promise<Boolean>;
+  kitchen: () => Promise<Boolean>;
+  wirelessInternet: () => Promise<Boolean>;
+  familyKidFriendly: () => Promise<Boolean>;
+  freeParkingOnPremises: () => Promise<Boolean>;
+  hotTub: () => Promise<Boolean>;
+  pool: () => Promise<Boolean>;
+  smokingAllowed: () => Promise<Boolean>;
+  wheelchairAccessible: () => Promise<Boolean>;
+  cableTv: () => Promise<Boolean>;
+  suitableForEvents: () => Promise<Boolean>;
+  dryer: () => Promise<Boolean>;
+  washer: () => Promise<Boolean>;
+  indoorFireHouse: () => Promise<Boolean>;
+  tv: () => Promise<Boolean>;
+  heating: () => Promise<Boolean>;
+  hangers: () => Promise<Boolean>;
+  iron: () => Promise<Boolean>;
+  hairDryer: () => Promise<Boolean>;
+  doorman: () => Promise<Boolean>;
+  paidParkingOffPremises: () => Promise<Boolean>;
+  freeParkingOnStreet: () => Promise<Boolean>;
+  gym: () => Promise<Boolean>;
+  airConditioning: () => Promise<Boolean>;
+  shampoo: () => Promise<Boolean>;
+  essentials: () => Promise<Boolean>;
+  laptopFriendlyWorkspace: () => Promise<Boolean>;
+  privateEntrance: () => Promise<Boolean>;
+  buzzerWirelessIntercom: () => Promise<Boolean>;
+  bathtub: () => Promise<Boolean>;
+  crib: () => Promise<Boolean>;
+  createdAt: () => Promise<DateTimeOutput>;
+  updatedAt: () => Promise<DateTimeOutput>;
+}
+
+export interface AmenitiesPreviousValuesSubscription
+  extends Promise<AsyncIterator<AmenitiesPreviousValues>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  electricity: () => Promise<AsyncIterator<Boolean>>;
+  electricity_frequency: () => Promise<AsyncIterator<FREQUENCY>>;
+  water_pipe: () => Promise<AsyncIterator<Boolean>>;
+  water_tank: () => Promise<AsyncIterator<Boolean>>;
+  water_frequency: () => Promise<AsyncIterator<FREQUENCY>>;
+  elevator: () => Promise<AsyncIterator<Boolean>>;
+  petsAllowed: () => Promise<AsyncIterator<Boolean>>;
+  internet: () => Promise<AsyncIterator<Boolean>>;
+  kitchen: () => Promise<AsyncIterator<Boolean>>;
+  wirelessInternet: () => Promise<AsyncIterator<Boolean>>;
+  familyKidFriendly: () => Promise<AsyncIterator<Boolean>>;
+  freeParkingOnPremises: () => Promise<AsyncIterator<Boolean>>;
+  hotTub: () => Promise<AsyncIterator<Boolean>>;
+  pool: () => Promise<AsyncIterator<Boolean>>;
+  smokingAllowed: () => Promise<AsyncIterator<Boolean>>;
+  wheelchairAccessible: () => Promise<AsyncIterator<Boolean>>;
+  cableTv: () => Promise<AsyncIterator<Boolean>>;
+  suitableForEvents: () => Promise<AsyncIterator<Boolean>>;
+  dryer: () => Promise<AsyncIterator<Boolean>>;
+  washer: () => Promise<AsyncIterator<Boolean>>;
+  indoorFireHouse: () => Promise<AsyncIterator<Boolean>>;
+  tv: () => Promise<AsyncIterator<Boolean>>;
+  heating: () => Promise<AsyncIterator<Boolean>>;
+  hangers: () => Promise<AsyncIterator<Boolean>>;
+  iron: () => Promise<AsyncIterator<Boolean>>;
+  hairDryer: () => Promise<AsyncIterator<Boolean>>;
+  doorman: () => Promise<AsyncIterator<Boolean>>;
+  paidParkingOffPremises: () => Promise<AsyncIterator<Boolean>>;
+  freeParkingOnStreet: () => Promise<AsyncIterator<Boolean>>;
+  gym: () => Promise<AsyncIterator<Boolean>>;
+  airConditioning: () => Promise<AsyncIterator<Boolean>>;
+  shampoo: () => Promise<AsyncIterator<Boolean>>;
+  essentials: () => Promise<AsyncIterator<Boolean>>;
+  laptopFriendlyWorkspace: () => Promise<AsyncIterator<Boolean>>;
+  privateEntrance: () => Promise<AsyncIterator<Boolean>>;
+  buzzerWirelessIntercom: () => Promise<AsyncIterator<Boolean>>;
+  bathtub: () => Promise<AsyncIterator<Boolean>>;
+  crib: () => Promise<AsyncIterator<Boolean>>;
+  createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+  updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+}
+
+export interface UserEdge {
+  node: User;
+  cursor: String;
+}
+
+export interface UserEdgePromise extends Promise<UserEdge>, Fragmentable {
+  node: <T = UserPromise>() => T;
+  cursor: () => Promise<String>;
+}
+
+export interface UserEdgeSubscription
+  extends Promise<AsyncIterator<UserEdge>>,
+    Fragmentable {
+  node: <T = UserSubscription>() => T;
+  cursor: () => Promise<AsyncIterator<String>>;
+}
+
+export interface BookingConnection {
+  pageInfo: PageInfo;
+  edges: BookingEdge[];
+}
+
+export interface BookingConnectionPromise
+  extends Promise<BookingConnection>,
+    Fragmentable {
+  pageInfo: <T = PageInfoPromise>() => T;
+  edges: <T = FragmentableArray<BookingEdge>>() => T;
+  aggregate: <T = AggregateBookingPromise>() => T;
+}
+
+export interface BookingConnectionSubscription
+  extends Promise<AsyncIterator<BookingConnection>>,
+    Fragmentable {
+  pageInfo: <T = PageInfoSubscription>() => T;
+  edges: <T = Promise<AsyncIterator<BookingEdgeSubscription>>>() => T;
+  aggregate: <T = AggregateBookingSubscription>() => T;
+}
+
+export interface AggregateState {
+  count: Int;
+}
+
+export interface AggregateStatePromise
+  extends Promise<AggregateState>,
+    Fragmentable {
+  count: () => Promise<Int>;
+}
+
+export interface AggregateStateSubscription
+  extends Promise<AsyncIterator<AggregateState>>,
+    Fragmentable {
+  count: () => Promise<AsyncIterator<Int>>;
+}
+
+export interface BookingSubscriptionPayload {
+  mutation: MutationType;
+  node: Booking;
+  updatedFields: String[];
+  previousValues: BookingPreviousValues;
+}
+
+export interface BookingSubscriptionPayloadPromise
+  extends Promise<BookingSubscriptionPayload>,
+    Fragmentable {
+  mutation: () => Promise<MutationType>;
+  node: <T = BookingPromise>() => T;
+  updatedFields: () => Promise<String[]>;
+  previousValues: <T = BookingPreviousValuesPromise>() => T;
+}
+
+export interface BookingSubscriptionPayloadSubscription
+  extends Promise<AsyncIterator<BookingSubscriptionPayload>>,
+    Fragmentable {
+  mutation: () => Promise<AsyncIterator<MutationType>>;
+  node: <T = BookingSubscription>() => T;
+  updatedFields: () => Promise<AsyncIterator<String[]>>;
+  previousValues: <T = BookingPreviousValuesSubscription>() => T;
+}
+
+export interface StateConnection {
+  pageInfo: PageInfo;
+  edges: StateEdge[];
+}
+
+export interface StateConnectionPromise
+  extends Promise<StateConnection>,
+    Fragmentable {
+  pageInfo: <T = PageInfoPromise>() => T;
+  edges: <T = FragmentableArray<StateEdge>>() => T;
+  aggregate: <T = AggregateStatePromise>() => T;
+}
+
+export interface StateConnectionSubscription
+  extends Promise<AsyncIterator<StateConnection>>,
+    Fragmentable {
+  pageInfo: <T = PageInfoSubscription>() => T;
+  edges: <T = Promise<AsyncIterator<StateEdgeSubscription>>>() => T;
+  aggregate: <T = AggregateStateSubscription>() => T;
+}
+
+export interface BookingPreviousValues {
+  id: ID_Output;
+  createdAt: DateTimeOutput;
+  updatedAt: DateTimeOutput;
+  startDate: DateTimeOutput;
+  endDate: DateTimeOutput;
+}
+
+export interface BookingPreviousValuesPromise
+  extends Promise<BookingPreviousValues>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  createdAt: () => Promise<DateTimeOutput>;
+  updatedAt: () => Promise<DateTimeOutput>;
+  startDate: () => Promise<DateTimeOutput>;
+  endDate: () => Promise<DateTimeOutput>;
+}
+
+export interface BookingPreviousValuesSubscription
+  extends Promise<AsyncIterator<BookingPreviousValues>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+  updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+  startDate: () => Promise<AsyncIterator<DateTimeOutput>>;
+  endDate: () => Promise<AsyncIterator<DateTimeOutput>>;
+}
+
+export interface AggregateRoom {
+  count: Int;
+}
+
+export interface AggregateRoomPromise
+  extends Promise<AggregateRoom>,
+    Fragmentable {
+  count: () => Promise<Int>;
+}
+
+export interface AggregateRoomSubscription
+  extends Promise<AsyncIterator<AggregateRoom>>,
+    Fragmentable {
+  count: () => Promise<AsyncIterator<Int>>;
+}
+
+export interface AggregateAmenities {
+  count: Int;
+}
+
+export interface AggregateAmenitiesPromise
+  extends Promise<AggregateAmenities>,
+    Fragmentable {
+  count: () => Promise<Int>;
+}
+
+export interface AggregateAmenitiesSubscription
+  extends Promise<AsyncIterator<AggregateAmenities>>,
+    Fragmentable {
+  count: () => Promise<AsyncIterator<Int>>;
+}
+
+export interface RoomConnection {
+  pageInfo: PageInfo;
+  edges: RoomEdge[];
+}
+
+export interface RoomConnectionPromise
+  extends Promise<RoomConnection>,
+    Fragmentable {
+  pageInfo: <T = PageInfoPromise>() => T;
+  edges: <T = FragmentableArray<RoomEdge>>() => T;
+  aggregate: <T = AggregateRoomPromise>() => T;
+}
+
+export interface RoomConnectionSubscription
+  extends Promise<AsyncIterator<RoomConnection>>,
+    Fragmentable {
+  pageInfo: <T = PageInfoSubscription>() => T;
+  edges: <T = Promise<AsyncIterator<RoomEdgeSubscription>>>() => T;
+  aggregate: <T = AggregateRoomSubscription>() => T;
+}
+
+export interface CitySubscriptionPayload {
+  mutation: MutationType;
+  node: City;
+  updatedFields: String[];
+  previousValues: CityPreviousValues;
+}
+
+export interface CitySubscriptionPayloadPromise
+  extends Promise<CitySubscriptionPayload>,
+    Fragmentable {
+  mutation: () => Promise<MutationType>;
+  node: <T = CityPromise>() => T;
+  updatedFields: () => Promise<String[]>;
+  previousValues: <T = CityPreviousValuesPromise>() => T;
+}
+
+export interface CitySubscriptionPayloadSubscription
+  extends Promise<AsyncIterator<CitySubscriptionPayload>>,
+    Fragmentable {
+  mutation: () => Promise<AsyncIterator<MutationType>>;
+  node: <T = CitySubscription>() => T;
+  updatedFields: () => Promise<AsyncIterator<String[]>>;
+  previousValues: <T = CityPreviousValuesSubscription>() => T;
+}
+
+export interface ReviewEdge {
+  node: Review;
+  cursor: String;
+}
+
+export interface ReviewEdgePromise extends Promise<ReviewEdge>, Fragmentable {
+  node: <T = ReviewPromise>() => T;
+  cursor: () => Promise<String>;
+}
+
+export interface ReviewEdgeSubscription
+  extends Promise<AsyncIterator<ReviewEdge>>,
+    Fragmentable {
+  node: <T = ReviewSubscription>() => T;
+  cursor: () => Promise<AsyncIterator<String>>;
+}
+
+export interface CityPreviousValues {
+  id: ID_Output;
+  name: String;
+  rank?: Int;
+  createdAt: DateTimeOutput;
+  updatedAt: DateTimeOutput;
+}
+
+export interface CityPreviousValuesPromise
+  extends Promise<CityPreviousValues>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  name: () => Promise<String>;
+  rank: () => Promise<Int>;
+  createdAt: () => Promise<DateTimeOutput>;
+  updatedAt: () => Promise<DateTimeOutput>;
+}
+
+export interface CityPreviousValuesSubscription
+  extends Promise<AsyncIterator<CityPreviousValues>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  name: () => Promise<AsyncIterator<String>>;
+  rank: () => Promise<AsyncIterator<Int>>;
+  createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+  updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+}
+
+export interface AggregatePricing {
+  count: Int;
+}
+
+export interface AggregatePricingPromise
+  extends Promise<AggregatePricing>,
+    Fragmentable {
+  count: () => Promise<Int>;
+}
+
+export interface AggregatePricingSubscription
+  extends Promise<AsyncIterator<AggregatePricing>>,
+    Fragmentable {
+  count: () => Promise<AsyncIterator<Int>>;
+}
+
+export interface AmenitiesEdge {
+  node: Amenities;
+  cursor: String;
+}
+
+export interface AmenitiesEdgePromise
+  extends Promise<AmenitiesEdge>,
+    Fragmentable {
+  node: <T = AmenitiesPromise>() => T;
+  cursor: () => Promise<String>;
+}
+
+export interface AmenitiesEdgeSubscription
+  extends Promise<AsyncIterator<AmenitiesEdge>>,
+    Fragmentable {
+  node: <T = AmenitiesSubscription>() => T;
+  cursor: () => Promise<AsyncIterator<String>>;
+}
+
+export interface PricingConnection {
+  pageInfo: PageInfo;
+  edges: PricingEdge[];
+}
+
+export interface PricingConnectionPromise
+  extends Promise<PricingConnection>,
+    Fragmentable {
+  pageInfo: <T = PageInfoPromise>() => T;
+  edges: <T = FragmentableArray<PricingEdge>>() => T;
+  aggregate: <T = AggregatePricingPromise>() => T;
+}
+
+export interface PricingConnectionSubscription
+  extends Promise<AsyncIterator<PricingConnection>>,
+    Fragmentable {
+  pageInfo: <T = PageInfoSubscription>() => T;
+  edges: <T = Promise<AsyncIterator<PricingEdgeSubscription>>>() => T;
+  aggregate: <T = AggregatePricingSubscription>() => T;
+}
+
+export interface CommuneSubscriptionPayload {
+  mutation: MutationType;
+  node: Commune;
+  updatedFields: String[];
+  previousValues: CommunePreviousValues;
+}
+
+export interface CommuneSubscriptionPayloadPromise
+  extends Promise<CommuneSubscriptionPayload>,
+    Fragmentable {
+  mutation: () => Promise<MutationType>;
+  node: <T = CommunePromise>() => T;
+  updatedFields: () => Promise<String[]>;
+  previousValues: <T = CommunePreviousValuesPromise>() => T;
+}
+
+export interface CommuneSubscriptionPayloadSubscription
+  extends Promise<AsyncIterator<CommuneSubscriptionPayload>>,
+    Fragmentable {
+  mutation: () => Promise<AsyncIterator<MutationType>>;
+  node: <T = CommuneSubscription>() => T;
+  updatedFields: () => Promise<AsyncIterator<String[]>>;
+  previousValues: <T = CommunePreviousValuesSubscription>() => T;
+}
+
+export interface AggregatePicture {
+  count: Int;
+}
+
+export interface AggregatePicturePromise
+  extends Promise<AggregatePicture>,
+    Fragmentable {
+  count: () => Promise<Int>;
+}
+
+export interface AggregatePictureSubscription
+  extends Promise<AsyncIterator<AggregatePicture>>,
+    Fragmentable {
+  count: () => Promise<AsyncIterator<Int>>;
+}
+
+export interface CommunePreviousValues {
+  id: ID_Output;
+  name: String;
+  rank?: Int;
+  createdAt: DateTimeOutput;
+  updatedAt: DateTimeOutput;
+}
+
+export interface CommunePreviousValuesPromise
+  extends Promise<CommunePreviousValues>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  name: () => Promise<String>;
+  rank: () => Promise<Int>;
+  createdAt: () => Promise<DateTimeOutput>;
+  updatedAt: () => Promise<DateTimeOutput>;
+}
+
+export interface CommunePreviousValuesSubscription
+  extends Promise<AsyncIterator<CommunePreviousValues>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  name: () => Promise<AsyncIterator<String>>;
+  rank: () => Promise<AsyncIterator<Int>>;
+  createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+  updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+}
+
+export interface PictureConnection {
+  pageInfo: PageInfo;
+  edges: PictureEdge[];
+}
+
+export interface PictureConnectionPromise
+  extends Promise<PictureConnection>,
+    Fragmentable {
+  pageInfo: <T = PageInfoPromise>() => T;
+  edges: <T = FragmentableArray<PictureEdge>>() => T;
+  aggregate: <T = AggregatePicturePromise>() => T;
+}
+
+export interface PictureConnectionSubscription
+  extends Promise<AsyncIterator<PictureConnection>>,
+    Fragmentable {
+  pageInfo: <T = PageInfoSubscription>() => T;
+  edges: <T = Promise<AsyncIterator<PictureEdgeSubscription>>>() => T;
+  aggregate: <T = AggregatePictureSubscription>() => T;
+}
+
+export interface PageInfo {
+  hasNextPage: Boolean;
+  hasPreviousPage: Boolean;
+  startCursor?: String;
+  endCursor?: String;
+}
+
+export interface PageInfoPromise extends Promise<PageInfo>, Fragmentable {
+  hasNextPage: () => Promise<Boolean>;
+  hasPreviousPage: () => Promise<Boolean>;
+  startCursor: () => Promise<String>;
+  endCursor: () => Promise<String>;
+}
+
+export interface PageInfoSubscription
+  extends Promise<AsyncIterator<PageInfo>>,
+    Fragmentable {
+  hasNextPage: () => Promise<AsyncIterator<Boolean>>;
+  hasPreviousPage: () => Promise<AsyncIterator<Boolean>>;
+  startCursor: () => Promise<AsyncIterator<String>>;
+  endCursor: () => Promise<AsyncIterator<String>>;
+}
+
+export interface PaypalInformationEdge {
+  node: PaypalInformation;
+  cursor: String;
+}
+
+export interface PaypalInformationEdgePromise
+  extends Promise<PaypalInformationEdge>,
+    Fragmentable {
+  node: <T = PaypalInformationPromise>() => T;
+  cursor: () => Promise<String>;
+}
+
+export interface PaypalInformationEdgeSubscription
+  extends Promise<AsyncIterator<PaypalInformationEdge>>,
+    Fragmentable {
+  node: <T = PaypalInformationSubscription>() => T;
+  cursor: () => Promise<AsyncIterator<String>>;
+}
+
+export interface CountrySubscriptionPayload {
+  mutation: MutationType;
+  node: Country;
+  updatedFields: String[];
+  previousValues: CountryPreviousValues;
+}
+
+export interface CountrySubscriptionPayloadPromise
+  extends Promise<CountrySubscriptionPayload>,
+    Fragmentable {
+  mutation: () => Promise<MutationType>;
+  node: <T = CountryPromise>() => T;
+  updatedFields: () => Promise<String[]>;
+  previousValues: <T = CountryPreviousValuesPromise>() => T;
+}
+
+export interface CountrySubscriptionPayloadSubscription
+  extends Promise<AsyncIterator<CountrySubscriptionPayload>>,
+    Fragmentable {
+  mutation: () => Promise<AsyncIterator<MutationType>>;
+  node: <T = CountrySubscription>() => T;
+  updatedFields: () => Promise<AsyncIterator<String[]>>;
+  previousValues: <T = CountryPreviousValuesSubscription>() => T;
+}
+
+export interface AggregatePaymentLanlordInfo {
+  count: Int;
+}
+
+export interface AggregatePaymentLanlordInfoPromise
+  extends Promise<AggregatePaymentLanlordInfo>,
+    Fragmentable {
+  count: () => Promise<Int>;
+}
+
+export interface AggregatePaymentLanlordInfoSubscription
+  extends Promise<AsyncIterator<AggregatePaymentLanlordInfo>>,
+    Fragmentable {
+  count: () => Promise<AsyncIterator<Int>>;
+}
+
+export interface CountryPreviousValues {
+  id: ID_Output;
+  name: String;
+  createdAt: DateTimeOutput;
+  updatedAt: DateTimeOutput;
+}
+
+export interface CountryPreviousValuesPromise
+  extends Promise<CountryPreviousValues>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  name: () => Promise<String>;
+  createdAt: () => Promise<DateTimeOutput>;
+  updatedAt: () => Promise<DateTimeOutput>;
+}
+
+export interface CountryPreviousValuesSubscription
+  extends Promise<AsyncIterator<CountryPreviousValues>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  name: () => Promise<AsyncIterator<String>>;
+  createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+  updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+}
+
+export interface PaymentLanlordInfoConnection {
+  pageInfo: PageInfo;
+  edges: PaymentLanlordInfoEdge[];
+}
+
+export interface PaymentLanlordInfoConnectionPromise
+  extends Promise<PaymentLanlordInfoConnection>,
+    Fragmentable {
+  pageInfo: <T = PageInfoPromise>() => T;
+  edges: <T = FragmentableArray<PaymentLanlordInfoEdge>>() => T;
+  aggregate: <T = AggregatePaymentLanlordInfoPromise>() => T;
+}
+
+export interface PaymentLanlordInfoConnectionSubscription
+  extends Promise<AsyncIterator<PaymentLanlordInfoConnection>>,
+    Fragmentable {
+  pageInfo: <T = PageInfoSubscription>() => T;
+  edges: <
+    T = Promise<AsyncIterator<PaymentLanlordInfoEdgeSubscription>>
+  >() => T;
+  aggregate: <T = AggregatePaymentLanlordInfoSubscription>() => T;
+}
+
+export interface AmenitiesConnection {
+  pageInfo: PageInfo;
+  edges: AmenitiesEdge[];
+}
+
+export interface AmenitiesConnectionPromise
+  extends Promise<AmenitiesConnection>,
+    Fragmentable {
+  pageInfo: <T = PageInfoPromise>() => T;
+  edges: <T = FragmentableArray<AmenitiesEdge>>() => T;
+  aggregate: <T = AggregateAmenitiesPromise>() => T;
+}
+
+export interface AmenitiesConnectionSubscription
+  extends Promise<AsyncIterator<AmenitiesConnection>>,
+    Fragmentable {
+  pageInfo: <T = PageInfoSubscription>() => T;
+  edges: <T = Promise<AsyncIterator<AmenitiesEdgeSubscription>>>() => T;
+  aggregate: <T = AggregateAmenitiesSubscription>() => T;
+}
+
+export interface PaymentHouseEdge {
+  node: PaymentHouse;
+  cursor: String;
+}
+
+export interface PaymentHouseEdgePromise
+  extends Promise<PaymentHouseEdge>,
+    Fragmentable {
+  node: <T = PaymentHousePromise>() => T;
+  cursor: () => Promise<String>;
+}
+
+export interface PaymentHouseEdgeSubscription
+  extends Promise<AsyncIterator<PaymentHouseEdge>>,
+    Fragmentable {
+  node: <T = PaymentHouseSubscription>() => T;
+  cursor: () => Promise<AsyncIterator<String>>;
+}
+
+export interface CreditCardInformationSubscriptionPayload {
+  mutation: MutationType;
+  node: CreditCardInformation;
+  updatedFields: String[];
+  previousValues: CreditCardInformationPreviousValues;
+}
+
+export interface CreditCardInformationSubscriptionPayloadPromise
+  extends Promise<CreditCardInformationSubscriptionPayload>,
+    Fragmentable {
+  mutation: () => Promise<MutationType>;
+  node: <T = CreditCardInformationPromise>() => T;
+  updatedFields: () => Promise<String[]>;
+  previousValues: <T = CreditCardInformationPreviousValuesPromise>() => T;
+}
+
+export interface CreditCardInformationSubscriptionPayloadSubscription
+  extends Promise<AsyncIterator<CreditCardInformationSubscriptionPayload>>,
+    Fragmentable {
+  mutation: () => Promise<AsyncIterator<MutationType>>;
+  node: <T = CreditCardInformationSubscription>() => T;
+  updatedFields: () => Promise<AsyncIterator<String[]>>;
+  previousValues: <T = CreditCardInformationPreviousValuesSubscription>() => T;
+}
+
+export interface AggregatePaymentAccount {
+  count: Int;
+}
+
+export interface AggregatePaymentAccountPromise
+  extends Promise<AggregatePaymentAccount>,
+    Fragmentable {
+  count: () => Promise<Int>;
+}
+
+export interface AggregatePaymentAccountSubscription
+  extends Promise<AsyncIterator<AggregatePaymentAccount>>,
+    Fragmentable {
+  count: () => Promise<AsyncIterator<Int>>;
+}
+
+export interface CreditCardInformationPreviousValues {
+  id: ID_Output;
+  createdAt: DateTimeOutput;
+  updatedAt: DateTimeOutput;
+  cardNumber: String;
+  expiresOnMonth: Int;
+  expiresOnYear: Int;
+  securityCode: String;
+  firstName: String;
+  lastName: String;
+  postalCode: String;
+  country: String;
+}
+
+export interface CreditCardInformationPreviousValuesPromise
+  extends Promise<CreditCardInformationPreviousValues>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  createdAt: () => Promise<DateTimeOutput>;
+  updatedAt: () => Promise<DateTimeOutput>;
+  cardNumber: () => Promise<String>;
+  expiresOnMonth: () => Promise<Int>;
+  expiresOnYear: () => Promise<Int>;
+  securityCode: () => Promise<String>;
+  firstName: () => Promise<String>;
+  lastName: () => Promise<String>;
+  postalCode: () => Promise<String>;
+  country: () => Promise<String>;
+}
+
+export interface CreditCardInformationPreviousValuesSubscription
+  extends Promise<AsyncIterator<CreditCardInformationPreviousValues>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+  updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+  cardNumber: () => Promise<AsyncIterator<String>>;
+  expiresOnMonth: () => Promise<AsyncIterator<Int>>;
+  expiresOnYear: () => Promise<AsyncIterator<Int>>;
+  securityCode: () => Promise<AsyncIterator<String>>;
+  firstName: () => Promise<AsyncIterator<String>>;
+  lastName: () => Promise<AsyncIterator<String>>;
+  postalCode: () => Promise<AsyncIterator<String>>;
+  country: () => Promise<AsyncIterator<String>>;
+}
+
+export interface PaymentAccountConnection {
+  pageInfo: PageInfo;
+  edges: PaymentAccountEdge[];
+}
+
+export interface PaymentAccountConnectionPromise
+  extends Promise<PaymentAccountConnection>,
+    Fragmentable {
+  pageInfo: <T = PageInfoPromise>() => T;
+  edges: <T = FragmentableArray<PaymentAccountEdge>>() => T;
+  aggregate: <T = AggregatePaymentAccountPromise>() => T;
+}
+
+export interface PaymentAccountConnectionSubscription
+  extends Promise<AsyncIterator<PaymentAccountConnection>>,
+    Fragmentable {
+  pageInfo: <T = PageInfoSubscription>() => T;
+  edges: <T = Promise<AsyncIterator<PaymentAccountEdgeSubscription>>>() => T;
+  aggregate: <T = AggregatePaymentAccountSubscription>() => T;
+}
+
+export interface Views {
+  id: ID_Output;
+  lastWeek: Int;
+  createdAt: DateTimeOutput;
+  updatedAt: DateTimeOutput;
+}
+
+export interface ViewsPromise extends Promise<Views>, Fragmentable {
+  id: () => Promise<ID_Output>;
+  lastWeek: () => Promise<Int>;
+  House: <T = HousePromise>() => T;
+  User: <T = FragmentableArray<User>>(args?: {
+    where?: UserWhereInput;
+    orderBy?: UserOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => T;
+  createdAt: () => Promise<DateTimeOutput>;
+  updatedAt: () => Promise<DateTimeOutput>;
+}
+
+export interface ViewsSubscription
+  extends Promise<AsyncIterator<Views>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  lastWeek: () => Promise<AsyncIterator<Int>>;
+  House: <T = HouseSubscription>() => T;
+  User: <T = Promise<AsyncIterator<UserSubscription>>>(args?: {
+    where?: UserWhereInput;
+    orderBy?: UserOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => T;
+  createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+  updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+}
+
+export interface ViewsNullablePromise
+  extends Promise<Views | null>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  lastWeek: () => Promise<Int>;
+  House: <T = HousePromise>() => T;
+  User: <T = FragmentableArray<User>>(args?: {
+    where?: UserWhereInput;
+    orderBy?: UserOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => T;
+  createdAt: () => Promise<DateTimeOutput>;
+  updatedAt: () => Promise<DateTimeOutput>;
+}
+
+export interface AggregateNotification {
+  count: Int;
+}
+
+export interface AggregateNotificationPromise
+  extends Promise<AggregateNotification>,
+    Fragmentable {
+  count: () => Promise<Int>;
+}
+
+export interface AggregateNotificationSubscription
+  extends Promise<AsyncIterator<AggregateNotification>>,
+    Fragmentable {
+  count: () => Promise<AsyncIterator<Int>>;
+}
+
+export interface HouseSubscriptionPayload {
+  mutation: MutationType;
+  node: House;
+  updatedFields: String[];
+  previousValues: HousePreviousValues;
+}
+
+export interface HouseSubscriptionPayloadPromise
+  extends Promise<HouseSubscriptionPayload>,
+    Fragmentable {
+  mutation: () => Promise<MutationType>;
+  node: <T = HousePromise>() => T;
+  updatedFields: () => Promise<String[]>;
+  previousValues: <T = HousePreviousValuesPromise>() => T;
+}
+
+export interface HouseSubscriptionPayloadSubscription
+  extends Promise<AsyncIterator<HouseSubscriptionPayload>>,
+    Fragmentable {
+  mutation: () => Promise<AsyncIterator<MutationType>>;
+  node: <T = HouseSubscription>() => T;
+  updatedFields: () => Promise<AsyncIterator<String[]>>;
+  previousValues: <T = HousePreviousValuesSubscription>() => T;
+}
+
+export interface NotificationConnection {
+  pageInfo: PageInfo;
+  edges: NotificationEdge[];
+}
+
+export interface NotificationConnectionPromise
+  extends Promise<NotificationConnection>,
+    Fragmentable {
+  pageInfo: <T = PageInfoPromise>() => T;
+  edges: <T = FragmentableArray<NotificationEdge>>() => T;
+  aggregate: <T = AggregateNotificationPromise>() => T;
+}
+
+export interface NotificationConnectionSubscription
+  extends Promise<AsyncIterator<NotificationConnection>>,
+    Fragmentable {
+  pageInfo: <T = PageInfoSubscription>() => T;
+  edges: <T = Promise<AsyncIterator<NotificationEdgeSubscription>>>() => T;
+  aggregate: <T = AggregateNotificationSubscription>() => T;
+}
+
+export interface HousePreviousValues {
+  id: ID_Output;
+  area?: Int;
+  age?: Int;
+  shortDescription?: String;
+  description?: String;
+  maxGuests?: Int;
+  numBedrooms: Int;
+  numBaths: Int;
+  numLivingrooms?: Int;
+  numDiningrooms?: Int;
+  leaseType?: HOUSE_LEASE_TYPE;
+  verified: Boolean;
+  type?: HOUSE_TYPES;
+  residency?: House_RESIDENCY;
+  lease?: Int;
+  popularity?: Int;
+  lastRating: Int;
+  rentOrSell: RENT_OR_SELL;
+  createdAt: DateTimeOutput;
+  updatedAt: DateTimeOutput;
+}
+
+export interface HousePreviousValuesPromise
+  extends Promise<HousePreviousValues>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  area: () => Promise<Int>;
+  age: () => Promise<Int>;
+  shortDescription: () => Promise<String>;
+  description: () => Promise<String>;
+  maxGuests: () => Promise<Int>;
+  numBedrooms: () => Promise<Int>;
+  numBaths: () => Promise<Int>;
+  numLivingrooms: () => Promise<Int>;
+  numDiningrooms: () => Promise<Int>;
+  leaseType: () => Promise<HOUSE_LEASE_TYPE>;
+  verified: () => Promise<Boolean>;
+  type: () => Promise<HOUSE_TYPES>;
+  residency: () => Promise<House_RESIDENCY>;
+  lease: () => Promise<Int>;
+  popularity: () => Promise<Int>;
+  lastRating: () => Promise<Int>;
+  rentOrSell: () => Promise<RENT_OR_SELL>;
+  createdAt: () => Promise<DateTimeOutput>;
+  updatedAt: () => Promise<DateTimeOutput>;
+}
+
+export interface HousePreviousValuesSubscription
+  extends Promise<AsyncIterator<HousePreviousValues>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  area: () => Promise<AsyncIterator<Int>>;
+  age: () => Promise<AsyncIterator<Int>>;
+  shortDescription: () => Promise<AsyncIterator<String>>;
+  description: () => Promise<AsyncIterator<String>>;
+  maxGuests: () => Promise<AsyncIterator<Int>>;
+  numBedrooms: () => Promise<AsyncIterator<Int>>;
+  numBaths: () => Promise<AsyncIterator<Int>>;
+  numLivingrooms: () => Promise<AsyncIterator<Int>>;
+  numDiningrooms: () => Promise<AsyncIterator<Int>>;
+  leaseType: () => Promise<AsyncIterator<HOUSE_LEASE_TYPE>>;
+  verified: () => Promise<AsyncIterator<Boolean>>;
+  type: () => Promise<AsyncIterator<HOUSE_TYPES>>;
+  residency: () => Promise<AsyncIterator<House_RESIDENCY>>;
+  lease: () => Promise<AsyncIterator<Int>>;
+  popularity: () => Promise<AsyncIterator<Int>>;
+  lastRating: () => Promise<AsyncIterator<Int>>;
+  rentOrSell: () => Promise<AsyncIterator<RENT_OR_SELL>>;
+  createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+  updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+}
+
+export interface NegotiationEdge {
+  node: Negotiation;
+  cursor: String;
+}
+
+export interface NegotiationEdgePromise
+  extends Promise<NegotiationEdge>,
+    Fragmentable {
+  node: <T = NegotiationPromise>() => T;
+  cursor: () => Promise<String>;
+}
+
+export interface NegotiationEdgeSubscription
+  extends Promise<AsyncIterator<NegotiationEdge>>,
+    Fragmentable {
+  node: <T = NegotiationSubscription>() => T;
+  cursor: () => Promise<AsyncIterator<String>>;
+}
+
+export interface Video {
+  id: ID_Output;
+  url: String;
+  createdAt: DateTimeOutput;
+  updatedAt: DateTimeOutput;
+}
+
+export interface VideoPromise extends Promise<Video>, Fragmentable {
+  id: () => Promise<ID_Output>;
+  url: () => Promise<String>;
+  createdAt: () => Promise<DateTimeOutput>;
+  updatedAt: () => Promise<DateTimeOutput>;
+}
+
+export interface VideoSubscription
+  extends Promise<AsyncIterator<Video>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  url: () => Promise<AsyncIterator<String>>;
+  createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+  updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+}
+
+export interface VideoNullablePromise
+  extends Promise<Video | null>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  url: () => Promise<String>;
+  createdAt: () => Promise<DateTimeOutput>;
+  updatedAt: () => Promise<DateTimeOutput>;
+}
+
+export interface Negotiation {
+  id: ID_Output;
+  createdAt: DateTimeOutput;
+  updatedAt: DateTimeOutput;
+  offer: Float;
+  status?: NEGOTIATION_TYPE;
+}
+
+export interface NegotiationPromise extends Promise<Negotiation>, Fragmentable {
+  id: () => Promise<ID_Output>;
+  createdAt: () => Promise<DateTimeOutput>;
+  updatedAt: () => Promise<DateTimeOutput>;
+  negotiator: <T = UserPromise>() => T;
+  House: <T = HousePromise>() => T;
+  offer: () => Promise<Float>;
+  status: () => Promise<NEGOTIATION_TYPE>;
+}
+
+export interface NegotiationSubscription
+  extends Promise<AsyncIterator<Negotiation>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+  updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+  negotiator: <T = UserSubscription>() => T;
+  House: <T = HouseSubscription>() => T;
+  offer: () => Promise<AsyncIterator<Float>>;
+  status: () => Promise<AsyncIterator<NEGOTIATION_TYPE>>;
+}
+
+export interface NegotiationNullablePromise
+  extends Promise<Negotiation | null>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  createdAt: () => Promise<DateTimeOutput>;
+  updatedAt: () => Promise<DateTimeOutput>;
+  negotiator: <T = UserPromise>() => T;
+  House: <T = HousePromise>() => T;
+  offer: () => Promise<Float>;
+  status: () => Promise<NEGOTIATION_TYPE>;
+}
+
+export interface HouseFavoritedSubscriptionPayload {
+  mutation: MutationType;
+  node: HouseFavorited;
+  updatedFields: String[];
+  previousValues: HouseFavoritedPreviousValues;
+}
+
+export interface HouseFavoritedSubscriptionPayloadPromise
+  extends Promise<HouseFavoritedSubscriptionPayload>,
+    Fragmentable {
+  mutation: () => Promise<MutationType>;
+  node: <T = HouseFavoritedPromise>() => T;
+  updatedFields: () => Promise<String[]>;
+  previousValues: <T = HouseFavoritedPreviousValuesPromise>() => T;
+}
+
+export interface HouseFavoritedSubscriptionPayloadSubscription
+  extends Promise<AsyncIterator<HouseFavoritedSubscriptionPayload>>,
+    Fragmentable {
+  mutation: () => Promise<AsyncIterator<MutationType>>;
+  node: <T = HouseFavoritedSubscription>() => T;
+  updatedFields: () => Promise<AsyncIterator<String[]>>;
+  previousValues: <T = HouseFavoritedPreviousValuesSubscription>() => T;
+}
+
+export interface LocationEdge {
+  node: Location;
+  cursor: String;
+}
+
+export interface LocationEdgePromise
+  extends Promise<LocationEdge>,
+    Fragmentable {
+  node: <T = LocationPromise>() => T;
+  cursor: () => Promise<String>;
+}
+
+export interface LocationEdgeSubscription
+  extends Promise<AsyncIterator<LocationEdge>>,
+    Fragmentable {
+  node: <T = LocationSubscription>() => T;
+  cursor: () => Promise<AsyncIterator<String>>;
+}
+
+export interface NegotiationConnection {
+  pageInfo: PageInfo;
+  edges: NegotiationEdge[];
+}
+
+export interface NegotiationConnectionPromise
+  extends Promise<NegotiationConnection>,
+    Fragmentable {
+  pageInfo: <T = PageInfoPromise>() => T;
+  edges: <T = FragmentableArray<NegotiationEdge>>() => T;
+  aggregate: <T = AggregateNegotiationPromise>() => T;
+}
+
+export interface NegotiationConnectionSubscription
+  extends Promise<AsyncIterator<NegotiationConnection>>,
+    Fragmentable {
+  pageInfo: <T = PageInfoSubscription>() => T;
+  edges: <T = Promise<AsyncIterator<NegotiationEdgeSubscription>>>() => T;
+  aggregate: <T = AggregateNegotiationSubscription>() => T;
+}
+
+export interface UserPreviousValues {
+  id: ID_Output;
+  createdAt: DateTimeOutput;
+  updatedAt: DateTimeOutput;
+  status?: Boolean;
+  facebookUserId?: String;
+  firstName: String;
+  lastName: String;
+  email?: String;
+  password?: String;
+  resetToken?: String;
+  resetTokenExpiry?: String;
+  phone1?: String;
+  phone2?: String;
+  primaryPhone: Int;
+  responseTime?: Int;
+  isSuperHost: Boolean;
+  permissions: Permission[];
+}
+
+export interface UserPreviousValuesPromise
+  extends Promise<UserPreviousValues>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  createdAt: () => Promise<DateTimeOutput>;
+  updatedAt: () => Promise<DateTimeOutput>;
+  status: () => Promise<Boolean>;
+  facebookUserId: () => Promise<String>;
+  firstName: () => Promise<String>;
+  lastName: () => Promise<String>;
+  email: () => Promise<String>;
+  password: () => Promise<String>;
+  resetToken: () => Promise<String>;
+  resetTokenExpiry: () => Promise<String>;
+  phone1: () => Promise<String>;
+  phone2: () => Promise<String>;
+  primaryPhone: () => Promise<Int>;
+  responseTime: () => Promise<Int>;
+  isSuperHost: () => Promise<Boolean>;
+  permissions: () => Promise<Permission[]>;
+}
+
+export interface UserPreviousValuesSubscription
+  extends Promise<AsyncIterator<UserPreviousValues>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+  updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+  status: () => Promise<AsyncIterator<Boolean>>;
+  facebookUserId: () => Promise<AsyncIterator<String>>;
+  firstName: () => Promise<AsyncIterator<String>>;
+  lastName: () => Promise<AsyncIterator<String>>;
+  email: () => Promise<AsyncIterator<String>>;
+  password: () => Promise<AsyncIterator<String>>;
+  resetToken: () => Promise<AsyncIterator<String>>;
+  resetTokenExpiry: () => Promise<AsyncIterator<String>>;
+  phone1: () => Promise<AsyncIterator<String>>;
+  phone2: () => Promise<AsyncIterator<String>>;
+  primaryPhone: () => Promise<AsyncIterator<Int>>;
+  responseTime: () => Promise<AsyncIterator<Int>>;
+  isSuperHost: () => Promise<AsyncIterator<Boolean>>;
+  permissions: () => Promise<AsyncIterator<Permission[]>>;
+}
+
+export interface AggregateLocation {
+  count: Int;
+}
+
+export interface AggregateLocationPromise
+  extends Promise<AggregateLocation>,
+    Fragmentable {
+  count: () => Promise<Int>;
+}
+
+export interface AggregateLocationSubscription
+  extends Promise<AsyncIterator<AggregateLocation>>,
+    Fragmentable {
+  count: () => Promise<AsyncIterator<Int>>;
+}
+
+export interface HouseFavoritedPreviousValues {
+  id: ID_Output;
+  createdAt: DateTimeOutput;
+  updatedAt: DateTimeOutput;
+}
+
+export interface HouseFavoritedPreviousValuesPromise
+  extends Promise<HouseFavoritedPreviousValues>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  createdAt: () => Promise<DateTimeOutput>;
+  updatedAt: () => Promise<DateTimeOutput>;
+}
+
+export interface HouseFavoritedPreviousValuesSubscription
+  extends Promise<AsyncIterator<HouseFavoritedPreviousValues>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+  updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+}
+
+export interface LocationConnection {
+  pageInfo: PageInfo;
+  edges: LocationEdge[];
+}
+
+export interface LocationConnectionPromise
+  extends Promise<LocationConnection>,
+    Fragmentable {
+  pageInfo: <T = PageInfoPromise>() => T;
+  edges: <T = FragmentableArray<LocationEdge>>() => T;
+  aggregate: <T = AggregateLocationPromise>() => T;
+}
+
+export interface LocationConnectionSubscription
+  extends Promise<AsyncIterator<LocationConnection>>,
+    Fragmentable {
+  pageInfo: <T = PageInfoSubscription>() => T;
+  edges: <T = Promise<AsyncIterator<LocationEdgeSubscription>>>() => T;
+  aggregate: <T = AggregateLocationSubscription>() => T;
+}
+
+export interface HouseFavoritedConnection {
+  pageInfo: PageInfo;
+  edges: HouseFavoritedEdge[];
+}
+
+export interface HouseFavoritedConnectionPromise
+  extends Promise<HouseFavoritedConnection>,
+    Fragmentable {
+  pageInfo: <T = PageInfoPromise>() => T;
+  edges: <T = FragmentableArray<HouseFavoritedEdge>>() => T;
+  aggregate: <T = AggregateHouseFavoritedPromise>() => T;
+}
+
+export interface HouseFavoritedConnectionSubscription
+  extends Promise<AsyncIterator<HouseFavoritedConnection>>,
+    Fragmentable {
+  pageInfo: <T = PageInfoSubscription>() => T;
+  edges: <T = Promise<AsyncIterator<HouseFavoritedEdgeSubscription>>>() => T;
+  aggregate: <T = AggregateHouseFavoritedSubscription>() => T;
+}
+
+export interface AggregateHouseFavorited {
+  count: Int;
+}
+
+export interface AggregateHouseFavoritedPromise
+  extends Promise<AggregateHouseFavorited>,
+    Fragmentable {
+  count: () => Promise<Int>;
+}
+
+export interface AggregateHouseFavoritedSubscription
+  extends Promise<AsyncIterator<AggregateHouseFavorited>>,
+    Fragmentable {
+  count: () => Promise<AsyncIterator<Int>>;
+}
+
+export interface AggregateHouse {
+  count: Int;
+}
+
+export interface AggregateHousePromise
+  extends Promise<AggregateHouse>,
+    Fragmentable {
+  count: () => Promise<Int>;
+}
+
+export interface AggregateHouseSubscription
+  extends Promise<AsyncIterator<AggregateHouse>>,
+    Fragmentable {
+  count: () => Promise<AsyncIterator<Int>>;
+}
+
+export interface Room {
+  id: ID_Output;
+  label: ROOM_LABELS;
+  createdAt: DateTimeOutput;
+  updatedAt: DateTimeOutput;
+}
+
+export interface RoomPromise extends Promise<Room>, Fragmentable {
+  id: () => Promise<ID_Output>;
+  label: () => Promise<ROOM_LABELS>;
+  house: <T = HousePromise>() => T;
+  picture_previews: <T = FragmentableArray<Picture>>(args?: {
+    where?: PictureWhereInput;
+    orderBy?: PictureOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => T;
+  video_previews: <T = FragmentableArray<Video>>(args?: {
+    where?: VideoWhereInput;
+    orderBy?: VideoOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => T;
+  createdAt: () => Promise<DateTimeOutput>;
+  updatedAt: () => Promise<DateTimeOutput>;
+}
+
+export interface RoomSubscription
+  extends Promise<AsyncIterator<Room>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  label: () => Promise<AsyncIterator<ROOM_LABELS>>;
+  house: <T = HouseSubscription>() => T;
+  picture_previews: <T = Promise<AsyncIterator<PictureSubscription>>>(args?: {
+    where?: PictureWhereInput;
+    orderBy?: PictureOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => T;
+  video_previews: <T = Promise<AsyncIterator<VideoSubscription>>>(args?: {
+    where?: VideoWhereInput;
+    orderBy?: VideoOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => T;
+  createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+  updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+}
+
+export interface RoomNullablePromise
+  extends Promise<Room | null>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  label: () => Promise<ROOM_LABELS>;
+  house: <T = HousePromise>() => T;
+  picture_previews: <T = FragmentableArray<Picture>>(args?: {
+    where?: PictureWhereInput;
+    orderBy?: PictureOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => T;
+  video_previews: <T = FragmentableArray<Video>>(args?: {
+    where?: VideoWhereInput;
+    orderBy?: VideoOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => T;
+  createdAt: () => Promise<DateTimeOutput>;
+  updatedAt: () => Promise<DateTimeOutput>;
+}
+
+export interface HouseConnection {
+  pageInfo: PageInfo;
+  edges: HouseEdge[];
+}
+
+export interface HouseConnectionPromise
+  extends Promise<HouseConnection>,
+    Fragmentable {
+  pageInfo: <T = PageInfoPromise>() => T;
+  edges: <T = FragmentableArray<HouseEdge>>() => T;
+  aggregate: <T = AggregateHousePromise>() => T;
+}
+
+export interface HouseConnectionSubscription
+  extends Promise<AsyncIterator<HouseConnection>>,
+    Fragmentable {
+  pageInfo: <T = PageInfoSubscription>() => T;
+  edges: <T = Promise<AsyncIterator<HouseEdgeSubscription>>>() => T;
+  aggregate: <T = AggregateHouseSubscription>() => T;
+}
+
+export interface LocationSubscriptionPayload {
+  mutation: MutationType;
+  node: Location;
+  updatedFields: String[];
+  previousValues: LocationPreviousValues;
+}
+
+export interface LocationSubscriptionPayloadPromise
+  extends Promise<LocationSubscriptionPayload>,
+    Fragmentable {
+  mutation: () => Promise<MutationType>;
+  node: <T = LocationPromise>() => T;
+  updatedFields: () => Promise<String[]>;
+  previousValues: <T = LocationPreviousValuesPromise>() => T;
+}
+
+export interface LocationSubscriptionPayloadSubscription
+  extends Promise<AsyncIterator<LocationSubscriptionPayload>>,
+    Fragmentable {
+  mutation: () => Promise<AsyncIterator<MutationType>>;
+  node: <T = LocationSubscription>() => T;
+  updatedFields: () => Promise<AsyncIterator<String[]>>;
+  previousValues: <T = LocationPreviousValuesSubscription>() => T;
+}
+
+export interface CreditCardInformationEdge {
+  node: CreditCardInformation;
+  cursor: String;
+}
+
+export interface CreditCardInformationEdgePromise
+  extends Promise<CreditCardInformationEdge>,
+    Fragmentable {
+  node: <T = CreditCardInformationPromise>() => T;
+  cursor: () => Promise<String>;
+}
+
+export interface CreditCardInformationEdgeSubscription
+  extends Promise<AsyncIterator<CreditCardInformationEdge>>,
+    Fragmentable {
+  node: <T = CreditCardInformationSubscription>() => T;
+  cursor: () => Promise<AsyncIterator<String>>;
+}
+
+export interface LocationPreviousValues {
+  id: ID_Output;
+  lat?: Float;
+  lng?: Float;
+  address?: String;
+  createdAt: DateTimeOutput;
+  updatedAt: DateTimeOutput;
+}
+
+export interface LocationPreviousValuesPromise
+  extends Promise<LocationPreviousValues>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  lat: () => Promise<Float>;
+  lng: () => Promise<Float>;
+  address: () => Promise<String>;
+  createdAt: () => Promise<DateTimeOutput>;
+  updatedAt: () => Promise<DateTimeOutput>;
+}
+
+export interface LocationPreviousValuesSubscription
+  extends Promise<AsyncIterator<LocationPreviousValues>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  lat: () => Promise<AsyncIterator<Float>>;
+  lng: () => Promise<AsyncIterator<Float>>;
+  address: () => Promise<AsyncIterator<String>>;
+  createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+  updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+}
+
+export interface AggregateCountry {
+  count: Int;
+}
+
+export interface AggregateCountryPromise
+  extends Promise<AggregateCountry>,
+    Fragmentable {
+  count: () => Promise<Int>;
+}
+
+export interface AggregateCountrySubscription
+  extends Promise<AsyncIterator<AggregateCountry>>,
+    Fragmentable {
+  count: () => Promise<AsyncIterator<Int>>;
+}
+
+export interface Pricing {
+  id: ID_Output;
+  basePrice?: Float;
+  highestPrice: Float;
+  currency: CURRENCY;
+  income?: Float;
+  createdAt: DateTimeOutput;
+  updatedAt: DateTimeOutput;
+}
+
+export interface PricingPromise extends Promise<Pricing>, Fragmentable {
+  id: () => Promise<ID_Output>;
+  House: <T = HousePromise>() => T;
+  basePrice: () => Promise<Float>;
+  highestPrice: () => Promise<Float>;
+  currency: () => Promise<CURRENCY>;
+  income: () => Promise<Float>;
+  createdAt: () => Promise<DateTimeOutput>;
+  updatedAt: () => Promise<DateTimeOutput>;
+}
+
+export interface PricingSubscription
+  extends Promise<AsyncIterator<Pricing>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  House: <T = HouseSubscription>() => T;
+  basePrice: () => Promise<AsyncIterator<Float>>;
+  highestPrice: () => Promise<AsyncIterator<Float>>;
+  currency: () => Promise<AsyncIterator<CURRENCY>>;
+  income: () => Promise<AsyncIterator<Float>>;
+  createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+  updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+}
+
+export interface PricingNullablePromise
+  extends Promise<Pricing | null>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  House: <T = HousePromise>() => T;
+  basePrice: () => Promise<Float>;
+  highestPrice: () => Promise<Float>;
+  currency: () => Promise<CURRENCY>;
+  income: () => Promise<Float>;
+  createdAt: () => Promise<DateTimeOutput>;
+  updatedAt: () => Promise<DateTimeOutput>;
+}
+
+export interface CountryConnection {
+  pageInfo: PageInfo;
+  edges: CountryEdge[];
+}
+
+export interface CountryConnectionPromise
+  extends Promise<CountryConnection>,
+    Fragmentable {
+  pageInfo: <T = PageInfoPromise>() => T;
+  edges: <T = FragmentableArray<CountryEdge>>() => T;
+  aggregate: <T = AggregateCountryPromise>() => T;
+}
+
+export interface CountryConnectionSubscription
+  extends Promise<AsyncIterator<CountryConnection>>,
+    Fragmentable {
+  pageInfo: <T = PageInfoSubscription>() => T;
+  edges: <T = Promise<AsyncIterator<CountryEdgeSubscription>>>() => T;
+  aggregate: <T = AggregateCountrySubscription>() => T;
+}
+
+export interface NegotiationSubscriptionPayload {
+  mutation: MutationType;
+  node: Negotiation;
+  updatedFields: String[];
+  previousValues: NegotiationPreviousValues;
+}
+
+export interface NegotiationSubscriptionPayloadPromise
+  extends Promise<NegotiationSubscriptionPayload>,
+    Fragmentable {
+  mutation: () => Promise<MutationType>;
+  node: <T = NegotiationPromise>() => T;
+  updatedFields: () => Promise<String[]>;
+  previousValues: <T = NegotiationPreviousValuesPromise>() => T;
+}
+
+export interface NegotiationSubscriptionPayloadSubscription
+  extends Promise<AsyncIterator<NegotiationSubscriptionPayload>>,
+    Fragmentable {
+  mutation: () => Promise<AsyncIterator<MutationType>>;
+  node: <T = NegotiationSubscription>() => T;
+  updatedFields: () => Promise<AsyncIterator<String[]>>;
+  previousValues: <T = NegotiationPreviousValuesSubscription>() => T;
+}
+
+export interface AggregateCommune {
+  count: Int;
+}
+
+export interface AggregateCommunePromise
+  extends Promise<AggregateCommune>,
+    Fragmentable {
+  count: () => Promise<Int>;
+}
+
+export interface AggregateCommuneSubscription
+  extends Promise<AsyncIterator<AggregateCommune>>,
+    Fragmentable {
+  count: () => Promise<AsyncIterator<Int>>;
+}
+
+export interface NegotiationPreviousValues {
+  id: ID_Output;
+  createdAt: DateTimeOutput;
+  updatedAt: DateTimeOutput;
+  offer: Float;
+  status?: NEGOTIATION_TYPE;
+}
+
+export interface NegotiationPreviousValuesPromise
+  extends Promise<NegotiationPreviousValues>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  createdAt: () => Promise<DateTimeOutput>;
+  updatedAt: () => Promise<DateTimeOutput>;
+  offer: () => Promise<Float>;
+  status: () => Promise<NEGOTIATION_TYPE>;
+}
+
+export interface NegotiationPreviousValuesSubscription
+  extends Promise<AsyncIterator<NegotiationPreviousValues>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+  updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+  offer: () => Promise<AsyncIterator<Float>>;
+  status: () => Promise<AsyncIterator<NEGOTIATION_TYPE>>;
+}
+
+export interface CommuneConnection {
+  pageInfo: PageInfo;
+  edges: CommuneEdge[];
+}
+
+export interface CommuneConnectionPromise
+  extends Promise<CommuneConnection>,
+    Fragmentable {
+  pageInfo: <T = PageInfoPromise>() => T;
+  edges: <T = FragmentableArray<CommuneEdge>>() => T;
+  aggregate: <T = AggregateCommunePromise>() => T;
+}
+
+export interface CommuneConnectionSubscription
+  extends Promise<AsyncIterator<CommuneConnection>>,
+    Fragmentable {
+  pageInfo: <T = PageInfoSubscription>() => T;
+  edges: <T = Promise<AsyncIterator<CommuneEdgeSubscription>>>() => T;
+  aggregate: <T = AggregateCommuneSubscription>() => T;
+}
+
+export interface Picture {
+  id: ID_Output;
+  url: String;
+  createdAt: DateTimeOutput;
+  updatedAt: DateTimeOutput;
+}
+
+export interface PicturePromise extends Promise<Picture>, Fragmentable {
+  id: () => Promise<ID_Output>;
+  url: () => Promise<String>;
+  createdAt: () => Promise<DateTimeOutput>;
+  updatedAt: () => Promise<DateTimeOutput>;
+}
+
+export interface PictureSubscription
+  extends Promise<AsyncIterator<Picture>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  url: () => Promise<AsyncIterator<String>>;
+  createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+  updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+}
+
+export interface PictureNullablePromise
+  extends Promise<Picture | null>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  url: () => Promise<String>;
+  createdAt: () => Promise<DateTimeOutput>;
+  updatedAt: () => Promise<DateTimeOutput>;
+}
+
+export interface BatchPayload {
+  count: Long;
+}
+
+export interface BatchPayloadPromise
+  extends Promise<BatchPayload>,
+    Fragmentable {
+  count: () => Promise<Long>;
+}
+
+export interface BatchPayloadSubscription
+  extends Promise<AsyncIterator<BatchPayload>>,
+    Fragmentable {
+  count: () => Promise<AsyncIterator<Long>>;
+}
+
+export interface NotificationSubscriptionPayload {
+  mutation: MutationType;
+  node: Notification;
+  updatedFields: String[];
+  previousValues: NotificationPreviousValues;
+}
+
+export interface NotificationSubscriptionPayloadPromise
+  extends Promise<NotificationSubscriptionPayload>,
+    Fragmentable {
+  mutation: () => Promise<MutationType>;
+  node: <T = NotificationPromise>() => T;
+  updatedFields: () => Promise<String[]>;
+  previousValues: <T = NotificationPreviousValuesPromise>() => T;
+}
+
+export interface NotificationSubscriptionPayloadSubscription
+  extends Promise<AsyncIterator<NotificationSubscriptionPayload>>,
+    Fragmentable {
+  mutation: () => Promise<AsyncIterator<MutationType>>;
+  node: <T = NotificationSubscription>() => T;
+  updatedFields: () => Promise<AsyncIterator<String[]>>;
+  previousValues: <T = NotificationPreviousValuesSubscription>() => T;
+}
+
+export interface ViewsEdge {
+  node: Views;
+  cursor: String;
+}
+
+export interface ViewsEdgePromise extends Promise<ViewsEdge>, Fragmentable {
+  node: <T = ViewsPromise>() => T;
+  cursor: () => Promise<String>;
+}
+
+export interface ViewsEdgeSubscription
+  extends Promise<AsyncIterator<ViewsEdge>>,
+    Fragmentable {
+  node: <T = ViewsSubscription>() => T;
+  cursor: () => Promise<AsyncIterator<String>>;
+}
+
+export interface NotificationPreviousValues {
+  id: ID_Output;
+  createdAt: DateTimeOutput;
+  updatedAt: DateTimeOutput;
+  type?: NOTIFICATION_TYPE;
+  link: String;
+  readDate: DateTimeOutput;
+}
+
+export interface NotificationPreviousValuesPromise
+  extends Promise<NotificationPreviousValues>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  createdAt: () => Promise<DateTimeOutput>;
+  updatedAt: () => Promise<DateTimeOutput>;
+  type: () => Promise<NOTIFICATION_TYPE>;
+  link: () => Promise<String>;
+  readDate: () => Promise<DateTimeOutput>;
+}
+
+export interface NotificationPreviousValuesSubscription
+  extends Promise<AsyncIterator<NotificationPreviousValues>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+  updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+  type: () => Promise<AsyncIterator<NOTIFICATION_TYPE>>;
+  link: () => Promise<AsyncIterator<String>>;
+  readDate: () => Promise<AsyncIterator<DateTimeOutput>>;
+}
+
+export interface VideoEdge {
+  node: Video;
+  cursor: String;
+}
+
+export interface VideoEdgePromise extends Promise<VideoEdge>, Fragmentable {
+  node: <T = VideoPromise>() => T;
+  cursor: () => Promise<String>;
+}
+
+export interface VideoEdgeSubscription
+  extends Promise<AsyncIterator<VideoEdge>>,
+    Fragmentable {
+  node: <T = VideoSubscription>() => T;
+  cursor: () => Promise<AsyncIterator<String>>;
+}
+
+export interface Notification {
+  id: ID_Output;
+  createdAt: DateTimeOutput;
+  updatedAt: DateTimeOutput;
+  type?: NOTIFICATION_TYPE;
+  link: String;
+  readDate: DateTimeOutput;
+}
+
+export interface NotificationPromise
+  extends Promise<Notification>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  createdAt: () => Promise<DateTimeOutput>;
+  updatedAt: () => Promise<DateTimeOutput>;
+  type: () => Promise<NOTIFICATION_TYPE>;
+  user: <T = UserPromise>() => T;
+  link: () => Promise<String>;
+  readDate: () => Promise<DateTimeOutput>;
+}
+
+export interface NotificationSubscription
+  extends Promise<AsyncIterator<Notification>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+  updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+  type: () => Promise<AsyncIterator<NOTIFICATION_TYPE>>;
+  user: <T = UserSubscription>() => T;
+  link: () => Promise<AsyncIterator<String>>;
+  readDate: () => Promise<AsyncIterator<DateTimeOutput>>;
+}
+
+export interface NotificationNullablePromise
+  extends Promise<Notification | null>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  createdAt: () => Promise<DateTimeOutput>;
+  updatedAt: () => Promise<DateTimeOutput>;
+  type: () => Promise<NOTIFICATION_TYPE>;
+  user: <T = UserPromise>() => T;
+  link: () => Promise<String>;
+  readDate: () => Promise<DateTimeOutput>;
+}
+
+export interface UserConnection {
+  pageInfo: PageInfo;
+  edges: UserEdge[];
+}
+
+export interface UserConnectionPromise
+  extends Promise<UserConnection>,
+    Fragmentable {
+  pageInfo: <T = PageInfoPromise>() => T;
+  edges: <T = FragmentableArray<UserEdge>>() => T;
+  aggregate: <T = AggregateUserPromise>() => T;
+}
+
+export interface UserConnectionSubscription
+  extends Promise<AsyncIterator<UserConnection>>,
+    Fragmentable {
+  pageInfo: <T = PageInfoSubscription>() => T;
+  edges: <T = Promise<AsyncIterator<UserEdgeSubscription>>>() => T;
+  aggregate: <T = AggregateUserSubscription>() => T;
+}
+
+export interface PaymentAccountSubscriptionPayload {
+  mutation: MutationType;
+  node: PaymentAccount;
+  updatedFields: String[];
+  previousValues: PaymentAccountPreviousValues;
+}
+
+export interface PaymentAccountSubscriptionPayloadPromise
+  extends Promise<PaymentAccountSubscriptionPayload>,
+    Fragmentable {
+  mutation: () => Promise<MutationType>;
+  node: <T = PaymentAccountPromise>() => T;
+  updatedFields: () => Promise<String[]>;
+  previousValues: <T = PaymentAccountPreviousValuesPromise>() => T;
+}
+
+export interface PaymentAccountSubscriptionPayloadSubscription
+  extends Promise<AsyncIterator<PaymentAccountSubscriptionPayload>>,
+    Fragmentable {
+  mutation: () => Promise<AsyncIterator<MutationType>>;
+  node: <T = PaymentAccountSubscription>() => T;
+  updatedFields: () => Promise<AsyncIterator<String[]>>;
+  previousValues: <T = PaymentAccountPreviousValuesSubscription>() => T;
+}
+
+export interface VideoPreviousValues {
+  id: ID_Output;
+  url: String;
+  createdAt: DateTimeOutput;
+  updatedAt: DateTimeOutput;
+}
+
+export interface VideoPreviousValuesPromise
+  extends Promise<VideoPreviousValues>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  url: () => Promise<String>;
+  createdAt: () => Promise<DateTimeOutput>;
+  updatedAt: () => Promise<DateTimeOutput>;
+}
+
+export interface VideoPreviousValuesSubscription
+  extends Promise<AsyncIterator<VideoPreviousValues>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  url: () => Promise<AsyncIterator<String>>;
+  createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+  updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+}
+
+export interface PaymentAccountPreviousValues {
+  id: ID_Output;
+  createdAt: DateTimeOutput;
+  updatedAt: DateTimeOutput;
+  type?: PAYMENT_PROVIDER;
+}
+
+export interface PaymentAccountPreviousValuesPromise
+  extends Promise<PaymentAccountPreviousValues>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  createdAt: () => Promise<DateTimeOutput>;
+  updatedAt: () => Promise<DateTimeOutput>;
+  type: () => Promise<PAYMENT_PROVIDER>;
+}
+
+export interface PaymentAccountPreviousValuesSubscription
+  extends Promise<AsyncIterator<PaymentAccountPreviousValues>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+  updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+  type: () => Promise<AsyncIterator<PAYMENT_PROVIDER>>;
+}
+
+export interface AggregateReview {
+  count: Int;
+}
+
+export interface AggregateReviewPromise
+  extends Promise<AggregateReview>,
+    Fragmentable {
+  count: () => Promise<Int>;
+}
+
+export interface AggregateReviewSubscription
+  extends Promise<AsyncIterator<AggregateReview>>,
+    Fragmentable {
+  count: () => Promise<AsyncIterator<Int>>;
+}
+
+export interface PaymentLanlordInfo {
+  id: ID_Output;
+  createdAt: DateTimeOutput;
+  updatedAt: DateTimeOutput;
+  totalPrice: Float;
+  moncashTransactId: String;
+}
+
+export interface PaymentLanlordInfoPromise
+  extends Promise<PaymentLanlordInfo>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  createdAt: () => Promise<DateTimeOutput>;
+  updatedAt: () => Promise<DateTimeOutput>;
+  totalPrice: () => Promise<Float>;
+  client: <T = UserPromise>() => T;
+  House: <T = HousePromise>() => T;
+  moncashTransactId: () => Promise<String>;
+}
+
+export interface PaymentLanlordInfoSubscription
+  extends Promise<AsyncIterator<PaymentLanlordInfo>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+  updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+  totalPrice: () => Promise<AsyncIterator<Float>>;
+  client: <T = UserSubscription>() => T;
+  House: <T = HouseSubscription>() => T;
+  moncashTransactId: () => Promise<AsyncIterator<String>>;
+}
+
+export interface PaymentLanlordInfoNullablePromise
+  extends Promise<PaymentLanlordInfo | null>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  createdAt: () => Promise<DateTimeOutput>;
+  updatedAt: () => Promise<DateTimeOutput>;
+  totalPrice: () => Promise<Float>;
+  client: <T = UserPromise>() => T;
+  House: <T = HousePromise>() => T;
+  moncashTransactId: () => Promise<String>;
+}
+
+export interface PricingEdge {
+  node: Pricing;
+  cursor: String;
+}
+
+export interface PricingEdgePromise extends Promise<PricingEdge>, Fragmentable {
+  node: <T = PricingPromise>() => T;
+  cursor: () => Promise<String>;
+}
+
+export interface PricingEdgeSubscription
+  extends Promise<AsyncIterator<PricingEdge>>,
+    Fragmentable {
+  node: <T = PricingSubscription>() => T;
+  cursor: () => Promise<AsyncIterator<String>>;
+}
+
+export interface PaymentHouseSubscriptionPayload {
+  mutation: MutationType;
+  node: PaymentHouse;
+  updatedFields: String[];
+  previousValues: PaymentHousePreviousValues;
+}
+
+export interface PaymentHouseSubscriptionPayloadPromise
+  extends Promise<PaymentHouseSubscriptionPayload>,
+    Fragmentable {
+  mutation: () => Promise<MutationType>;
+  node: <T = PaymentHousePromise>() => T;
+  updatedFields: () => Promise<String[]>;
+  previousValues: <T = PaymentHousePreviousValuesPromise>() => T;
+}
+
+export interface PaymentHouseSubscriptionPayloadSubscription
+  extends Promise<AsyncIterator<PaymentHouseSubscriptionPayload>>,
+    Fragmentable {
+  mutation: () => Promise<AsyncIterator<MutationType>>;
+  node: <T = PaymentHouseSubscription>() => T;
+  updatedFields: () => Promise<AsyncIterator<String[]>>;
+  previousValues: <T = PaymentHousePreviousValuesSubscription>() => T;
+}
+
+export interface PictureEdge {
+  node: Picture;
+  cursor: String;
+}
+
+export interface PictureEdgePromise extends Promise<PictureEdge>, Fragmentable {
+  node: <T = PicturePromise>() => T;
+  cursor: () => Promise<String>;
+}
+
+export interface PictureEdgeSubscription
+  extends Promise<AsyncIterator<PictureEdge>>,
+    Fragmentable {
+  node: <T = PictureSubscription>() => T;
+  cursor: () => Promise<AsyncIterator<String>>;
+}
+
+export interface PaymentHousePreviousValues {
+  id: ID_Output;
+  createdAt: DateTimeOutput;
+  updatedAt: DateTimeOutput;
+  totalPrice: Float;
+}
+
+export interface PaymentHousePreviousValuesPromise
+  extends Promise<PaymentHousePreviousValues>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  createdAt: () => Promise<DateTimeOutput>;
+  updatedAt: () => Promise<DateTimeOutput>;
+  totalPrice: () => Promise<Float>;
+}
+
+export interface PaymentHousePreviousValuesSubscription
+  extends Promise<AsyncIterator<PaymentHousePreviousValues>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+  updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+  totalPrice: () => Promise<AsyncIterator<Float>>;
+}
+
+export interface PaypalInformationConnection {
+  pageInfo: PageInfo;
+  edges: PaypalInformationEdge[];
+}
+
+export interface PaypalInformationConnectionPromise
+  extends Promise<PaypalInformationConnection>,
+    Fragmentable {
+  pageInfo: <T = PageInfoPromise>() => T;
+  edges: <T = FragmentableArray<PaypalInformationEdge>>() => T;
+  aggregate: <T = AggregatePaypalInformationPromise>() => T;
+}
+
+export interface PaypalInformationConnectionSubscription
+  extends Promise<AsyncIterator<PaypalInformationConnection>>,
+    Fragmentable {
+  pageInfo: <T = PageInfoSubscription>() => T;
+  edges: <T = Promise<AsyncIterator<PaypalInformationEdgeSubscription>>>() => T;
+  aggregate: <T = AggregatePaypalInformationSubscription>() => T;
+}
+
+export interface CreditCardInformation {
+  id: ID_Output;
+  createdAt: DateTimeOutput;
+  updatedAt: DateTimeOutput;
+  cardNumber: String;
+  expiresOnMonth: Int;
+  expiresOnYear: Int;
+  securityCode: String;
+  firstName: String;
+  lastName: String;
+  postalCode: String;
+  country: String;
+}
+
+export interface CreditCardInformationPromise
+  extends Promise<CreditCardInformation>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  createdAt: () => Promise<DateTimeOutput>;
+  updatedAt: () => Promise<DateTimeOutput>;
+  cardNumber: () => Promise<String>;
+  expiresOnMonth: () => Promise<Int>;
+  expiresOnYear: () => Promise<Int>;
+  securityCode: () => Promise<String>;
+  firstName: () => Promise<String>;
+  lastName: () => Promise<String>;
+  postalCode: () => Promise<String>;
+  country: () => Promise<String>;
+  paymentAccount: <T = PaymentAccountPromise>() => T;
+}
+
+export interface CreditCardInformationSubscription
+  extends Promise<AsyncIterator<CreditCardInformation>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+  updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+  cardNumber: () => Promise<AsyncIterator<String>>;
+  expiresOnMonth: () => Promise<AsyncIterator<Int>>;
+  expiresOnYear: () => Promise<AsyncIterator<Int>>;
+  securityCode: () => Promise<AsyncIterator<String>>;
+  firstName: () => Promise<AsyncIterator<String>>;
+  lastName: () => Promise<AsyncIterator<String>>;
+  postalCode: () => Promise<AsyncIterator<String>>;
+  country: () => Promise<AsyncIterator<String>>;
+  paymentAccount: <T = PaymentAccountSubscription>() => T;
+}
+
+export interface CreditCardInformationNullablePromise
+  extends Promise<CreditCardInformation | null>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  createdAt: () => Promise<DateTimeOutput>;
+  updatedAt: () => Promise<DateTimeOutput>;
+  cardNumber: () => Promise<String>;
+  expiresOnMonth: () => Promise<Int>;
+  expiresOnYear: () => Promise<Int>;
+  securityCode: () => Promise<String>;
+  firstName: () => Promise<String>;
+  lastName: () => Promise<String>;
+  postalCode: () => Promise<String>;
+  country: () => Promise<String>;
+  paymentAccount: <T = PaymentAccountPromise>() => T;
+}
+
+export interface AggregatePaymentHouse {
+  count: Int;
+}
+
+export interface AggregatePaymentHousePromise
+  extends Promise<AggregatePaymentHouse>,
+    Fragmentable {
+  count: () => Promise<Int>;
+}
+
+export interface AggregatePaymentHouseSubscription
+  extends Promise<AsyncIterator<AggregatePaymentHouse>>,
+    Fragmentable {
+  count: () => Promise<AsyncIterator<Int>>;
+}
+
+export interface PaymentLanlordInfoSubscriptionPayload {
+  mutation: MutationType;
+  node: PaymentLanlordInfo;
+  updatedFields: String[];
+  previousValues: PaymentLanlordInfoPreviousValues;
+}
+
+export interface PaymentLanlordInfoSubscriptionPayloadPromise
+  extends Promise<PaymentLanlordInfoSubscriptionPayload>,
+    Fragmentable {
+  mutation: () => Promise<MutationType>;
+  node: <T = PaymentLanlordInfoPromise>() => T;
+  updatedFields: () => Promise<String[]>;
+  previousValues: <T = PaymentLanlordInfoPreviousValuesPromise>() => T;
+}
+
+export interface PaymentLanlordInfoSubscriptionPayloadSubscription
+  extends Promise<AsyncIterator<PaymentLanlordInfoSubscriptionPayload>>,
+    Fragmentable {
+  mutation: () => Promise<AsyncIterator<MutationType>>;
+  node: <T = PaymentLanlordInfoSubscription>() => T;
+  updatedFields: () => Promise<AsyncIterator<String[]>>;
+  previousValues: <T = PaymentLanlordInfoPreviousValuesSubscription>() => T;
+}
+
+export interface PaymentAccountEdge {
+  node: PaymentAccount;
+  cursor: String;
+}
+
+export interface PaymentAccountEdgePromise
+  extends Promise<PaymentAccountEdge>,
+    Fragmentable {
+  node: <T = PaymentAccountPromise>() => T;
+  cursor: () => Promise<String>;
+}
+
+export interface PaymentAccountEdgeSubscription
+  extends Promise<AsyncIterator<PaymentAccountEdge>>,
+    Fragmentable {
+  node: <T = PaymentAccountSubscription>() => T;
+  cursor: () => Promise<AsyncIterator<String>>;
+}
+
+export interface PaymentLanlordInfoPreviousValues {
+  id: ID_Output;
+  createdAt: DateTimeOutput;
+  updatedAt: DateTimeOutput;
+  totalPrice: Float;
+  moncashTransactId: String;
+}
+
+export interface PaymentLanlordInfoPreviousValuesPromise
+  extends Promise<PaymentLanlordInfoPreviousValues>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  createdAt: () => Promise<DateTimeOutput>;
+  updatedAt: () => Promise<DateTimeOutput>;
+  totalPrice: () => Promise<Float>;
+  moncashTransactId: () => Promise<String>;
+}
+
+export interface PaymentLanlordInfoPreviousValuesSubscription
+  extends Promise<AsyncIterator<PaymentLanlordInfoPreviousValues>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+  updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+  totalPrice: () => Promise<AsyncIterator<Float>>;
+  moncashTransactId: () => Promise<AsyncIterator<String>>;
+}
+
+export interface NotificationEdge {
+  node: Notification;
+  cursor: String;
+}
+
+export interface NotificationEdgePromise
+  extends Promise<NotificationEdge>,
+    Fragmentable {
+  node: <T = NotificationPromise>() => T;
+  cursor: () => Promise<String>;
+}
+
+export interface NotificationEdgeSubscription
+  extends Promise<AsyncIterator<NotificationEdge>>,
+    Fragmentable {
+  node: <T = NotificationSubscription>() => T;
+  cursor: () => Promise<AsyncIterator<String>>;
+}
+
+export interface PaypalInformation {
+  id: ID_Output;
+  createdAt: DateTimeOutput;
+  updatedAt: DateTimeOutput;
+  email: String;
+}
+
+export interface PaypalInformationPromise
+  extends Promise<PaypalInformation>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  createdAt: () => Promise<DateTimeOutput>;
+  updatedAt: () => Promise<DateTimeOutput>;
+  email: () => Promise<String>;
+  paymentAccount: <T = PaymentAccountPromise>() => T;
+}
+
+export interface PaypalInformationSubscription
+  extends Promise<AsyncIterator<PaypalInformation>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+  updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+  email: () => Promise<AsyncIterator<String>>;
+  paymentAccount: <T = PaymentAccountSubscription>() => T;
+}
+
+export interface PaypalInformationNullablePromise
+  extends Promise<PaypalInformation | null>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  createdAt: () => Promise<DateTimeOutput>;
+  updatedAt: () => Promise<DateTimeOutput>;
+  email: () => Promise<String>;
+  paymentAccount: <T = PaymentAccountPromise>() => T;
+}
+
+export interface HouseFavoritedEdge {
+  node: HouseFavorited;
+  cursor: String;
+}
+
+export interface HouseFavoritedEdgePromise
+  extends Promise<HouseFavoritedEdge>,
+    Fragmentable {
+  node: <T = HouseFavoritedPromise>() => T;
+  cursor: () => Promise<String>;
+}
+
+export interface HouseFavoritedEdgeSubscription
+  extends Promise<AsyncIterator<HouseFavoritedEdge>>,
+    Fragmentable {
+  node: <T = HouseFavoritedSubscription>() => T;
+  cursor: () => Promise<AsyncIterator<String>>;
+}
+
+export interface PaypalInformationSubscriptionPayload {
+  mutation: MutationType;
+  node: PaypalInformation;
+  updatedFields: String[];
+  previousValues: PaypalInformationPreviousValues;
+}
+
+export interface PaypalInformationSubscriptionPayloadPromise
+  extends Promise<PaypalInformationSubscriptionPayload>,
+    Fragmentable {
+  mutation: () => Promise<MutationType>;
+  node: <T = PaypalInformationPromise>() => T;
+  updatedFields: () => Promise<String[]>;
+  previousValues: <T = PaypalInformationPreviousValuesPromise>() => T;
+}
+
+export interface PaypalInformationSubscriptionPayloadSubscription
+  extends Promise<AsyncIterator<PaypalInformationSubscriptionPayload>>,
+    Fragmentable {
+  mutation: () => Promise<AsyncIterator<MutationType>>;
+  node: <T = PaypalInformationSubscription>() => T;
+  updatedFields: () => Promise<AsyncIterator<String[]>>;
+  previousValues: <T = PaypalInformationPreviousValuesSubscription>() => T;
+}
+
+export interface HouseEdge {
+  node: House;
+  cursor: String;
+}
+
+export interface HouseEdgePromise extends Promise<HouseEdge>, Fragmentable {
+  node: <T = HousePromise>() => T;
+  cursor: () => Promise<String>;
+}
+
+export interface HouseEdgeSubscription
+  extends Promise<AsyncIterator<HouseEdge>>,
+    Fragmentable {
+  node: <T = HouseSubscription>() => T;
+  cursor: () => Promise<AsyncIterator<String>>;
+}
+
+export interface PaypalInformationPreviousValues {
+  id: ID_Output;
+  createdAt: DateTimeOutput;
+  updatedAt: DateTimeOutput;
+  email: String;
+}
+
+export interface PaypalInformationPreviousValuesPromise
+  extends Promise<PaypalInformationPreviousValues>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  createdAt: () => Promise<DateTimeOutput>;
+  updatedAt: () => Promise<DateTimeOutput>;
+  email: () => Promise<String>;
+}
+
+export interface PaypalInformationPreviousValuesSubscription
+  extends Promise<AsyncIterator<PaypalInformationPreviousValues>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+  updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+  email: () => Promise<AsyncIterator<String>>;
+}
+
+export interface CreditCardInformationConnection {
+  pageInfo: PageInfo;
+  edges: CreditCardInformationEdge[];
+}
+
+export interface CreditCardInformationConnectionPromise
+  extends Promise<CreditCardInformationConnection>,
+    Fragmentable {
+  pageInfo: <T = PageInfoPromise>() => T;
+  edges: <T = FragmentableArray<CreditCardInformationEdge>>() => T;
+  aggregate: <T = AggregateCreditCardInformationPromise>() => T;
+}
+
+export interface CreditCardInformationConnectionSubscription
+  extends Promise<AsyncIterator<CreditCardInformationConnection>>,
+    Fragmentable {
+  pageInfo: <T = PageInfoSubscription>() => T;
+  edges: <
+    T = Promise<AsyncIterator<CreditCardInformationEdgeSubscription>>
+  >() => T;
+  aggregate: <T = AggregateCreditCardInformationSubscription>() => T;
+}
+
+export interface PaymentAccount {
+  id: ID_Output;
+  createdAt: DateTimeOutput;
+  updatedAt: DateTimeOutput;
+  type?: PAYMENT_PROVIDER;
+}
+
+export interface PaymentAccountPromise
+  extends Promise<PaymentAccount>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  createdAt: () => Promise<DateTimeOutput>;
+  updatedAt: () => Promise<DateTimeOutput>;
+  type: () => Promise<PAYMENT_PROVIDER>;
+  user: <T = UserPromise>() => T;
+  payments: <T = FragmentableArray<PaymentHouse>>(args?: {
+    where?: PaymentHouseWhereInput;
+    orderBy?: PaymentHouseOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => T;
+  paypal: <T = PaypalInformationPromise>() => T;
+  creditcard: <T = CreditCardInformationPromise>() => T;
+}
+
+export interface PaymentAccountSubscription
+  extends Promise<AsyncIterator<PaymentAccount>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+  updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+  type: () => Promise<AsyncIterator<PAYMENT_PROVIDER>>;
+  user: <T = UserSubscription>() => T;
+  payments: <T = Promise<AsyncIterator<PaymentHouseSubscription>>>(args?: {
+    where?: PaymentHouseWhereInput;
+    orderBy?: PaymentHouseOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => T;
+  paypal: <T = PaypalInformationSubscription>() => T;
+  creditcard: <T = CreditCardInformationSubscription>() => T;
+}
+
+export interface PaymentAccountNullablePromise
+  extends Promise<PaymentAccount | null>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  createdAt: () => Promise<DateTimeOutput>;
+  updatedAt: () => Promise<DateTimeOutput>;
+  type: () => Promise<PAYMENT_PROVIDER>;
+  user: <T = UserPromise>() => T;
+  payments: <T = FragmentableArray<PaymentHouse>>(args?: {
+    where?: PaymentHouseWhereInput;
+    orderBy?: PaymentHouseOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => T;
+  paypal: <T = PaypalInformationPromise>() => T;
+  creditcard: <T = CreditCardInformationPromise>() => T;
+}
+
+export interface ViewsSubscriptionPayload {
+  mutation: MutationType;
+  node: Views;
+  updatedFields: String[];
+  previousValues: ViewsPreviousValues;
+}
+
+export interface ViewsSubscriptionPayloadPromise
+  extends Promise<ViewsSubscriptionPayload>,
+    Fragmentable {
+  mutation: () => Promise<MutationType>;
+  node: <T = ViewsPromise>() => T;
+  updatedFields: () => Promise<String[]>;
+  previousValues: <T = ViewsPreviousValuesPromise>() => T;
+}
+
+export interface ViewsSubscriptionPayloadSubscription
+  extends Promise<AsyncIterator<ViewsSubscriptionPayload>>,
+    Fragmentable {
+  mutation: () => Promise<AsyncIterator<MutationType>>;
+  node: <T = ViewsSubscription>() => T;
+  updatedFields: () => Promise<AsyncIterator<String[]>>;
+  previousValues: <T = ViewsPreviousValuesSubscription>() => T;
+}
+
+export interface PictureSubscriptionPayload {
+  mutation: MutationType;
+  node: Picture;
+  updatedFields: String[];
+  previousValues: PicturePreviousValues;
+}
+
+export interface PictureSubscriptionPayloadPromise
+  extends Promise<PictureSubscriptionPayload>,
+    Fragmentable {
+  mutation: () => Promise<MutationType>;
+  node: <T = PicturePromise>() => T;
+  updatedFields: () => Promise<String[]>;
+  previousValues: <T = PicturePreviousValuesPromise>() => T;
+}
+
+export interface PictureSubscriptionPayloadSubscription
+  extends Promise<AsyncIterator<PictureSubscriptionPayload>>,
+    Fragmentable {
+  mutation: () => Promise<AsyncIterator<MutationType>>;
+  node: <T = PictureSubscription>() => T;
+  updatedFields: () => Promise<AsyncIterator<String[]>>;
+  previousValues: <T = PicturePreviousValuesSubscription>() => T;
+}
+
+export interface AggregateCity {
+  count: Int;
+}
+
+export interface AggregateCityPromise
+  extends Promise<AggregateCity>,
+    Fragmentable {
+  count: () => Promise<Int>;
+}
+
+export interface AggregateCitySubscription
+  extends Promise<AsyncIterator<AggregateCity>>,
+    Fragmentable {
+  count: () => Promise<AsyncIterator<Int>>;
+}
+
+export interface PicturePreviousValues {
+  id: ID_Output;
+  url: String;
+  createdAt: DateTimeOutput;
+  updatedAt: DateTimeOutput;
+}
+
+export interface PicturePreviousValuesPromise
+  extends Promise<PicturePreviousValues>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  url: () => Promise<String>;
+  createdAt: () => Promise<DateTimeOutput>;
+  updatedAt: () => Promise<DateTimeOutput>;
+}
+
+export interface PicturePreviousValuesSubscription
+  extends Promise<AsyncIterator<PicturePreviousValues>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  url: () => Promise<AsyncIterator<String>>;
+  createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+  updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
 }
 
 export interface House {
@@ -7754,465 +10843,157 @@ export interface HouseNullablePromise
   updatedAt: () => Promise<DateTimeOutput>;
 }
 
-export interface Review {
+export interface PaymentHouse {
   id: ID_Output;
   createdAt: DateTimeOutput;
   updatedAt: DateTimeOutput;
-  text?: String;
-  stars: Int;
+  totalPrice: Float;
 }
 
-export interface ReviewPromise extends Promise<Review>, Fragmentable {
+export interface PaymentHousePromise
+  extends Promise<PaymentHouse>,
+    Fragmentable {
   id: () => Promise<ID_Output>;
   createdAt: () => Promise<DateTimeOutput>;
   updatedAt: () => Promise<DateTimeOutput>;
-  text: () => Promise<String>;
-  stars: () => Promise<Int>;
-  House: <T = HousePromise>() => T;
-  user: <T = UserPromise>() => T;
+  totalPrice: () => Promise<Float>;
+  booking: <T = BookingPromise>() => T;
+  paymentMethod: <T = PaymentAccountPromise>() => T;
 }
 
-export interface ReviewSubscription
-  extends Promise<AsyncIterator<Review>>,
+export interface PaymentHouseSubscription
+  extends Promise<AsyncIterator<PaymentHouse>>,
     Fragmentable {
   id: () => Promise<AsyncIterator<ID_Output>>;
   createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
   updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
-  text: () => Promise<AsyncIterator<String>>;
-  stars: () => Promise<AsyncIterator<Int>>;
-  House: <T = HouseSubscription>() => T;
-  user: <T = UserSubscription>() => T;
+  totalPrice: () => Promise<AsyncIterator<Float>>;
+  booking: <T = BookingSubscription>() => T;
+  paymentMethod: <T = PaymentAccountSubscription>() => T;
 }
 
-export interface ReviewNullablePromise
-  extends Promise<Review | null>,
+export interface PaymentHouseNullablePromise
+  extends Promise<PaymentHouse | null>,
     Fragmentable {
   id: () => Promise<ID_Output>;
   createdAt: () => Promise<DateTimeOutput>;
   updatedAt: () => Promise<DateTimeOutput>;
-  text: () => Promise<String>;
-  stars: () => Promise<Int>;
-  House: <T = HousePromise>() => T;
-  user: <T = UserPromise>() => T;
+  totalPrice: () => Promise<Float>;
+  booking: <T = BookingPromise>() => T;
+  paymentMethod: <T = PaymentAccountPromise>() => T;
 }
 
-export interface User {
+export interface StateEdge {
+  node: State;
+  cursor: String;
+}
+
+export interface StateEdgePromise extends Promise<StateEdge>, Fragmentable {
+  node: <T = StatePromise>() => T;
+  cursor: () => Promise<String>;
+}
+
+export interface StateEdgeSubscription
+  extends Promise<AsyncIterator<StateEdge>>,
+    Fragmentable {
+  node: <T = StateSubscription>() => T;
+  cursor: () => Promise<AsyncIterator<String>>;
+}
+
+export interface PricingSubscriptionPayload {
+  mutation: MutationType;
+  node: Pricing;
+  updatedFields: String[];
+  previousValues: PricingPreviousValues;
+}
+
+export interface PricingSubscriptionPayloadPromise
+  extends Promise<PricingSubscriptionPayload>,
+    Fragmentable {
+  mutation: () => Promise<MutationType>;
+  node: <T = PricingPromise>() => T;
+  updatedFields: () => Promise<String[]>;
+  previousValues: <T = PricingPreviousValuesPromise>() => T;
+}
+
+export interface PricingSubscriptionPayloadSubscription
+  extends Promise<AsyncIterator<PricingSubscriptionPayload>>,
+    Fragmentable {
+  mutation: () => Promise<AsyncIterator<MutationType>>;
+  node: <T = PricingSubscription>() => T;
+  updatedFields: () => Promise<AsyncIterator<String[]>>;
+  previousValues: <T = PricingPreviousValuesSubscription>() => T;
+}
+
+export interface ReviewConnection {
+  pageInfo: PageInfo;
+  edges: ReviewEdge[];
+}
+
+export interface ReviewConnectionPromise
+  extends Promise<ReviewConnection>,
+    Fragmentable {
+  pageInfo: <T = PageInfoPromise>() => T;
+  edges: <T = FragmentableArray<ReviewEdge>>() => T;
+  aggregate: <T = AggregateReviewPromise>() => T;
+}
+
+export interface ReviewConnectionSubscription
+  extends Promise<AsyncIterator<ReviewConnection>>,
+    Fragmentable {
+  pageInfo: <T = PageInfoSubscription>() => T;
+  edges: <T = Promise<AsyncIterator<ReviewEdgeSubscription>>>() => T;
+  aggregate: <T = AggregateReviewSubscription>() => T;
+}
+
+export interface PricingPreviousValues {
   id: ID_Output;
-  createdAt: DateTimeOutput;
-  updatedAt: DateTimeOutput;
-  status?: Boolean;
-  facebookUserId?: String;
-  firstName: String;
-  lastName: String;
-  email?: String;
-  password?: String;
-  resetToken?: String;
-  resetTokenExpiry?: String;
-  phone1?: String;
-  phone2?: String;
-  primaryPhone: Int;
-  responseTime?: Int;
-  isSuperHost: Boolean;
-  permissions: Permission[];
-}
-
-export interface UserPromise extends Promise<User>, Fragmentable {
-  id: () => Promise<ID_Output>;
-  createdAt: () => Promise<DateTimeOutput>;
-  updatedAt: () => Promise<DateTimeOutput>;
-  status: () => Promise<Boolean>;
-  facebookUserId: () => Promise<String>;
-  firstName: () => Promise<String>;
-  lastName: () => Promise<String>;
-  email: () => Promise<String>;
-  password: () => Promise<String>;
-  resetToken: () => Promise<String>;
-  resetTokenExpiry: () => Promise<String>;
-  phone1: () => Promise<String>;
-  phone2: () => Promise<String>;
-  primaryPhone: () => Promise<Int>;
-  responseTime: () => Promise<Int>;
-  isSuperHost: () => Promise<Boolean>;
-  ownedHouses: <T = FragmentableArray<House>>(args?: {
-    where?: HouseWhereInput;
-    orderBy?: HouseOrderByInput;
-    skip?: Int;
-    after?: String;
-    before?: String;
-    first?: Int;
-    last?: Int;
-  }) => T;
-  location: <T = LocationPromise>() => T;
-  bookings: <T = FragmentableArray<Booking>>(args?: {
-    where?: BookingWhereInput;
-    orderBy?: BookingOrderByInput;
-    skip?: Int;
-    after?: String;
-    before?: String;
-    first?: Int;
-    last?: Int;
-  }) => T;
-  paidContacts: <T = FragmentableArray<PaymentLanlordInfo>>(args?: {
-    where?: PaymentLanlordInfoWhereInput;
-    orderBy?: PaymentLanlordInfoOrderByInput;
-    skip?: Int;
-    after?: String;
-    before?: String;
-    first?: Int;
-    last?: Int;
-  }) => T;
-  notifications: <T = FragmentableArray<Notification>>(args?: {
-    where?: NotificationWhereInput;
-    orderBy?: NotificationOrderByInput;
-    skip?: Int;
-    after?: String;
-    before?: String;
-    first?: Int;
-    last?: Int;
-  }) => T;
-  profilePicture: <T = PicturePromise>() => T;
-  reviews: <T = FragmentableArray<Review>>(args?: {
-    where?: ReviewWhereInput;
-    orderBy?: ReviewOrderByInput;
-    skip?: Int;
-    after?: String;
-    before?: String;
-    first?: Int;
-    last?: Int;
-  }) => T;
-  permissions: () => Promise<Permission[]>;
-}
-
-export interface UserSubscription
-  extends Promise<AsyncIterator<User>>,
-    Fragmentable {
-  id: () => Promise<AsyncIterator<ID_Output>>;
-  createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
-  updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
-  status: () => Promise<AsyncIterator<Boolean>>;
-  facebookUserId: () => Promise<AsyncIterator<String>>;
-  firstName: () => Promise<AsyncIterator<String>>;
-  lastName: () => Promise<AsyncIterator<String>>;
-  email: () => Promise<AsyncIterator<String>>;
-  password: () => Promise<AsyncIterator<String>>;
-  resetToken: () => Promise<AsyncIterator<String>>;
-  resetTokenExpiry: () => Promise<AsyncIterator<String>>;
-  phone1: () => Promise<AsyncIterator<String>>;
-  phone2: () => Promise<AsyncIterator<String>>;
-  primaryPhone: () => Promise<AsyncIterator<Int>>;
-  responseTime: () => Promise<AsyncIterator<Int>>;
-  isSuperHost: () => Promise<AsyncIterator<Boolean>>;
-  ownedHouses: <T = Promise<AsyncIterator<HouseSubscription>>>(args?: {
-    where?: HouseWhereInput;
-    orderBy?: HouseOrderByInput;
-    skip?: Int;
-    after?: String;
-    before?: String;
-    first?: Int;
-    last?: Int;
-  }) => T;
-  location: <T = LocationSubscription>() => T;
-  bookings: <T = Promise<AsyncIterator<BookingSubscription>>>(args?: {
-    where?: BookingWhereInput;
-    orderBy?: BookingOrderByInput;
-    skip?: Int;
-    after?: String;
-    before?: String;
-    first?: Int;
-    last?: Int;
-  }) => T;
-  paidContacts: <
-    T = Promise<AsyncIterator<PaymentLanlordInfoSubscription>>
-  >(args?: {
-    where?: PaymentLanlordInfoWhereInput;
-    orderBy?: PaymentLanlordInfoOrderByInput;
-    skip?: Int;
-    after?: String;
-    before?: String;
-    first?: Int;
-    last?: Int;
-  }) => T;
-  notifications: <T = Promise<AsyncIterator<NotificationSubscription>>>(args?: {
-    where?: NotificationWhereInput;
-    orderBy?: NotificationOrderByInput;
-    skip?: Int;
-    after?: String;
-    before?: String;
-    first?: Int;
-    last?: Int;
-  }) => T;
-  profilePicture: <T = PictureSubscription>() => T;
-  reviews: <T = Promise<AsyncIterator<ReviewSubscription>>>(args?: {
-    where?: ReviewWhereInput;
-    orderBy?: ReviewOrderByInput;
-    skip?: Int;
-    after?: String;
-    before?: String;
-    first?: Int;
-    last?: Int;
-  }) => T;
-  permissions: () => Promise<AsyncIterator<Permission[]>>;
-}
-
-export interface UserNullablePromise
-  extends Promise<User | null>,
-    Fragmentable {
-  id: () => Promise<ID_Output>;
-  createdAt: () => Promise<DateTimeOutput>;
-  updatedAt: () => Promise<DateTimeOutput>;
-  status: () => Promise<Boolean>;
-  facebookUserId: () => Promise<String>;
-  firstName: () => Promise<String>;
-  lastName: () => Promise<String>;
-  email: () => Promise<String>;
-  password: () => Promise<String>;
-  resetToken: () => Promise<String>;
-  resetTokenExpiry: () => Promise<String>;
-  phone1: () => Promise<String>;
-  phone2: () => Promise<String>;
-  primaryPhone: () => Promise<Int>;
-  responseTime: () => Promise<Int>;
-  isSuperHost: () => Promise<Boolean>;
-  ownedHouses: <T = FragmentableArray<House>>(args?: {
-    where?: HouseWhereInput;
-    orderBy?: HouseOrderByInput;
-    skip?: Int;
-    after?: String;
-    before?: String;
-    first?: Int;
-    last?: Int;
-  }) => T;
-  location: <T = LocationPromise>() => T;
-  bookings: <T = FragmentableArray<Booking>>(args?: {
-    where?: BookingWhereInput;
-    orderBy?: BookingOrderByInput;
-    skip?: Int;
-    after?: String;
-    before?: String;
-    first?: Int;
-    last?: Int;
-  }) => T;
-  paidContacts: <T = FragmentableArray<PaymentLanlordInfo>>(args?: {
-    where?: PaymentLanlordInfoWhereInput;
-    orderBy?: PaymentLanlordInfoOrderByInput;
-    skip?: Int;
-    after?: String;
-    before?: String;
-    first?: Int;
-    last?: Int;
-  }) => T;
-  notifications: <T = FragmentableArray<Notification>>(args?: {
-    where?: NotificationWhereInput;
-    orderBy?: NotificationOrderByInput;
-    skip?: Int;
-    after?: String;
-    before?: String;
-    first?: Int;
-    last?: Int;
-  }) => T;
-  profilePicture: <T = PicturePromise>() => T;
-  reviews: <T = FragmentableArray<Review>>(args?: {
-    where?: ReviewWhereInput;
-    orderBy?: ReviewOrderByInput;
-    skip?: Int;
-    after?: String;
-    before?: String;
-    first?: Int;
-    last?: Int;
-  }) => T;
-  permissions: () => Promise<Permission[]>;
-}
-
-export interface Location {
-  id: ID_Output;
-  lat?: Float;
-  lng?: Float;
-  address?: String;
+  basePrice?: Float;
+  highestPrice: Float;
+  currency: CURRENCY;
+  income?: Float;
   createdAt: DateTimeOutput;
   updatedAt: DateTimeOutput;
 }
 
-export interface LocationPromise extends Promise<Location>, Fragmentable {
+export interface PricingPreviousValuesPromise
+  extends Promise<PricingPreviousValues>,
+    Fragmentable {
   id: () => Promise<ID_Output>;
-  lat: () => Promise<Float>;
-  lng: () => Promise<Float>;
-  address: () => Promise<String>;
-  commune: <T = CommunePromise>() => T;
+  basePrice: () => Promise<Float>;
+  highestPrice: () => Promise<Float>;
+  currency: () => Promise<CURRENCY>;
+  income: () => Promise<Float>;
   createdAt: () => Promise<DateTimeOutput>;
   updatedAt: () => Promise<DateTimeOutput>;
 }
 
-export interface LocationSubscription
-  extends Promise<AsyncIterator<Location>>,
+export interface PricingPreviousValuesSubscription
+  extends Promise<AsyncIterator<PricingPreviousValues>>,
     Fragmentable {
   id: () => Promise<AsyncIterator<ID_Output>>;
-  lat: () => Promise<AsyncIterator<Float>>;
-  lng: () => Promise<AsyncIterator<Float>>;
-  address: () => Promise<AsyncIterator<String>>;
-  commune: <T = CommuneSubscription>() => T;
+  basePrice: () => Promise<AsyncIterator<Float>>;
+  highestPrice: () => Promise<AsyncIterator<Float>>;
+  currency: () => Promise<AsyncIterator<CURRENCY>>;
+  income: () => Promise<AsyncIterator<Float>>;
   createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
   updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
 }
 
-export interface LocationNullablePromise
-  extends Promise<Location | null>,
+export interface AggregatePaypalInformation {
+  count: Int;
+}
+
+export interface AggregatePaypalInformationPromise
+  extends Promise<AggregatePaypalInformation>,
     Fragmentable {
-  id: () => Promise<ID_Output>;
-  lat: () => Promise<Float>;
-  lng: () => Promise<Float>;
-  address: () => Promise<String>;
-  commune: <T = CommunePromise>() => T;
-  createdAt: () => Promise<DateTimeOutput>;
-  updatedAt: () => Promise<DateTimeOutput>;
+  count: () => Promise<Int>;
 }
 
-export interface Commune {
-  id: ID_Output;
-  name: String;
-  rank?: Int;
-  createdAt: DateTimeOutput;
-  updatedAt: DateTimeOutput;
-}
-
-export interface CommunePromise extends Promise<Commune>, Fragmentable {
-  id: () => Promise<ID_Output>;
-  name: () => Promise<String>;
-  rank: () => Promise<Int>;
-  city: <T = CityPromise>() => T;
-  createdAt: () => Promise<DateTimeOutput>;
-  updatedAt: () => Promise<DateTimeOutput>;
-}
-
-export interface CommuneSubscription
-  extends Promise<AsyncIterator<Commune>>,
+export interface AggregatePaypalInformationSubscription
+  extends Promise<AsyncIterator<AggregatePaypalInformation>>,
     Fragmentable {
-  id: () => Promise<AsyncIterator<ID_Output>>;
-  name: () => Promise<AsyncIterator<String>>;
-  rank: () => Promise<AsyncIterator<Int>>;
-  city: <T = CitySubscription>() => T;
-  createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
-  updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
-}
-
-export interface CommuneNullablePromise
-  extends Promise<Commune | null>,
-    Fragmentable {
-  id: () => Promise<ID_Output>;
-  name: () => Promise<String>;
-  rank: () => Promise<Int>;
-  city: <T = CityPromise>() => T;
-  createdAt: () => Promise<DateTimeOutput>;
-  updatedAt: () => Promise<DateTimeOutput>;
-}
-
-export interface City {
-  id: ID_Output;
-  name: String;
-  rank?: Int;
-  createdAt: DateTimeOutput;
-  updatedAt: DateTimeOutput;
-}
-
-export interface CityPromise extends Promise<City>, Fragmentable {
-  id: () => Promise<ID_Output>;
-  name: () => Promise<String>;
-  rank: () => Promise<Int>;
-  state: <T = StatePromise>() => T;
-  createdAt: () => Promise<DateTimeOutput>;
-  updatedAt: () => Promise<DateTimeOutput>;
-}
-
-export interface CitySubscription
-  extends Promise<AsyncIterator<City>>,
-    Fragmentable {
-  id: () => Promise<AsyncIterator<ID_Output>>;
-  name: () => Promise<AsyncIterator<String>>;
-  rank: () => Promise<AsyncIterator<Int>>;
-  state: <T = StateSubscription>() => T;
-  createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
-  updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
-}
-
-export interface CityNullablePromise
-  extends Promise<City | null>,
-    Fragmentable {
-  id: () => Promise<ID_Output>;
-  name: () => Promise<String>;
-  rank: () => Promise<Int>;
-  state: <T = StatePromise>() => T;
-  createdAt: () => Promise<DateTimeOutput>;
-  updatedAt: () => Promise<DateTimeOutput>;
-}
-
-export interface State {
-  id: ID_Output;
-  name: String;
-  rank?: Int;
-  createdAt: DateTimeOutput;
-  updatedAt: DateTimeOutput;
-}
-
-export interface StatePromise extends Promise<State>, Fragmentable {
-  id: () => Promise<ID_Output>;
-  name: () => Promise<String>;
-  rank: () => Promise<Int>;
-  country: <T = CountryPromise>() => T;
-  createdAt: () => Promise<DateTimeOutput>;
-  updatedAt: () => Promise<DateTimeOutput>;
-}
-
-export interface StateSubscription
-  extends Promise<AsyncIterator<State>>,
-    Fragmentable {
-  id: () => Promise<AsyncIterator<ID_Output>>;
-  name: () => Promise<AsyncIterator<String>>;
-  rank: () => Promise<AsyncIterator<Int>>;
-  country: <T = CountrySubscription>() => T;
-  createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
-  updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
-}
-
-export interface StateNullablePromise
-  extends Promise<State | null>,
-    Fragmentable {
-  id: () => Promise<ID_Output>;
-  name: () => Promise<String>;
-  rank: () => Promise<Int>;
-  country: <T = CountryPromise>() => T;
-  createdAt: () => Promise<DateTimeOutput>;
-  updatedAt: () => Promise<DateTimeOutput>;
-}
-
-export interface Country {
-  id: ID_Output;
-  name: String;
-  createdAt: DateTimeOutput;
-  updatedAt: DateTimeOutput;
-}
-
-export interface CountryPromise extends Promise<Country>, Fragmentable {
-  id: () => Promise<ID_Output>;
-  name: () => Promise<String>;
-  createdAt: () => Promise<DateTimeOutput>;
-  updatedAt: () => Promise<DateTimeOutput>;
-}
-
-export interface CountrySubscription
-  extends Promise<AsyncIterator<Country>>,
-    Fragmentable {
-  id: () => Promise<AsyncIterator<ID_Output>>;
-  name: () => Promise<AsyncIterator<String>>;
-  createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
-  updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
-}
-
-export interface CountryNullablePromise
-  extends Promise<Country | null>,
-    Fragmentable {
-  id: () => Promise<ID_Output>;
-  name: () => Promise<String>;
-  createdAt: () => Promise<DateTimeOutput>;
-  updatedAt: () => Promise<DateTimeOutput>;
+  count: () => Promise<AsyncIterator<Int>>;
 }
 
 export interface Booking {
@@ -8260,775 +11041,142 @@ export interface BookingNullablePromise
   payment: <T = PaymentHousePromise>() => T;
 }
 
-export interface PaymentHouse {
-  id: ID_Output;
-  createdAt: DateTimeOutput;
-  updatedAt: DateTimeOutput;
-  totalPrice: Float;
-}
-
-export interface PaymentHousePromise
-  extends Promise<PaymentHouse>,
-    Fragmentable {
-  id: () => Promise<ID_Output>;
-  createdAt: () => Promise<DateTimeOutput>;
-  updatedAt: () => Promise<DateTimeOutput>;
-  totalPrice: () => Promise<Float>;
-  booking: <T = BookingPromise>() => T;
-  paymentMethod: <T = PaymentAccountPromise>() => T;
-}
-
-export interface PaymentHouseSubscription
-  extends Promise<AsyncIterator<PaymentHouse>>,
-    Fragmentable {
-  id: () => Promise<AsyncIterator<ID_Output>>;
-  createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
-  updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
-  totalPrice: () => Promise<AsyncIterator<Float>>;
-  booking: <T = BookingSubscription>() => T;
-  paymentMethod: <T = PaymentAccountSubscription>() => T;
-}
-
-export interface PaymentHouseNullablePromise
-  extends Promise<PaymentHouse | null>,
-    Fragmentable {
-  id: () => Promise<ID_Output>;
-  createdAt: () => Promise<DateTimeOutput>;
-  updatedAt: () => Promise<DateTimeOutput>;
-  totalPrice: () => Promise<Float>;
-  booking: <T = BookingPromise>() => T;
-  paymentMethod: <T = PaymentAccountPromise>() => T;
-}
-
-export interface PaymentAccount {
-  id: ID_Output;
-  createdAt: DateTimeOutput;
-  updatedAt: DateTimeOutput;
-  type?: PAYMENT_PROVIDER;
-}
-
-export interface PaymentAccountPromise
-  extends Promise<PaymentAccount>,
-    Fragmentable {
-  id: () => Promise<ID_Output>;
-  createdAt: () => Promise<DateTimeOutput>;
-  updatedAt: () => Promise<DateTimeOutput>;
-  type: () => Promise<PAYMENT_PROVIDER>;
-  user: <T = UserPromise>() => T;
-  payments: <T = FragmentableArray<PaymentHouse>>(args?: {
-    where?: PaymentHouseWhereInput;
-    orderBy?: PaymentHouseOrderByInput;
-    skip?: Int;
-    after?: String;
-    before?: String;
-    first?: Int;
-    last?: Int;
-  }) => T;
-  paypal: <T = PaypalInformationPromise>() => T;
-  creditcard: <T = CreditCardInformationPromise>() => T;
-}
-
-export interface PaymentAccountSubscription
-  extends Promise<AsyncIterator<PaymentAccount>>,
-    Fragmentable {
-  id: () => Promise<AsyncIterator<ID_Output>>;
-  createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
-  updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
-  type: () => Promise<AsyncIterator<PAYMENT_PROVIDER>>;
-  user: <T = UserSubscription>() => T;
-  payments: <T = Promise<AsyncIterator<PaymentHouseSubscription>>>(args?: {
-    where?: PaymentHouseWhereInput;
-    orderBy?: PaymentHouseOrderByInput;
-    skip?: Int;
-    after?: String;
-    before?: String;
-    first?: Int;
-    last?: Int;
-  }) => T;
-  paypal: <T = PaypalInformationSubscription>() => T;
-  creditcard: <T = CreditCardInformationSubscription>() => T;
-}
-
-export interface PaymentAccountNullablePromise
-  extends Promise<PaymentAccount | null>,
-    Fragmentable {
-  id: () => Promise<ID_Output>;
-  createdAt: () => Promise<DateTimeOutput>;
-  updatedAt: () => Promise<DateTimeOutput>;
-  type: () => Promise<PAYMENT_PROVIDER>;
-  user: <T = UserPromise>() => T;
-  payments: <T = FragmentableArray<PaymentHouse>>(args?: {
-    where?: PaymentHouseWhereInput;
-    orderBy?: PaymentHouseOrderByInput;
-    skip?: Int;
-    after?: String;
-    before?: String;
-    first?: Int;
-    last?: Int;
-  }) => T;
-  paypal: <T = PaypalInformationPromise>() => T;
-  creditcard: <T = CreditCardInformationPromise>() => T;
-}
-
-export interface PaypalInformation {
-  id: ID_Output;
-  createdAt: DateTimeOutput;
-  updatedAt: DateTimeOutput;
-  email: String;
-}
-
-export interface PaypalInformationPromise
-  extends Promise<PaypalInformation>,
-    Fragmentable {
-  id: () => Promise<ID_Output>;
-  createdAt: () => Promise<DateTimeOutput>;
-  updatedAt: () => Promise<DateTimeOutput>;
-  email: () => Promise<String>;
-  paymentAccount: <T = PaymentAccountPromise>() => T;
-}
-
-export interface PaypalInformationSubscription
-  extends Promise<AsyncIterator<PaypalInformation>>,
-    Fragmentable {
-  id: () => Promise<AsyncIterator<ID_Output>>;
-  createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
-  updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
-  email: () => Promise<AsyncIterator<String>>;
-  paymentAccount: <T = PaymentAccountSubscription>() => T;
-}
-
-export interface PaypalInformationNullablePromise
-  extends Promise<PaypalInformation | null>,
-    Fragmentable {
-  id: () => Promise<ID_Output>;
-  createdAt: () => Promise<DateTimeOutput>;
-  updatedAt: () => Promise<DateTimeOutput>;
-  email: () => Promise<String>;
-  paymentAccount: <T = PaymentAccountPromise>() => T;
-}
-
-export interface CreditCardInformation {
-  id: ID_Output;
-  createdAt: DateTimeOutput;
-  updatedAt: DateTimeOutput;
-  cardNumber: String;
-  expiresOnMonth: Int;
-  expiresOnYear: Int;
-  securityCode: String;
-  firstName: String;
-  lastName: String;
-  postalCode: String;
-  country: String;
-}
-
-export interface CreditCardInformationPromise
-  extends Promise<CreditCardInformation>,
-    Fragmentable {
-  id: () => Promise<ID_Output>;
-  createdAt: () => Promise<DateTimeOutput>;
-  updatedAt: () => Promise<DateTimeOutput>;
-  cardNumber: () => Promise<String>;
-  expiresOnMonth: () => Promise<Int>;
-  expiresOnYear: () => Promise<Int>;
-  securityCode: () => Promise<String>;
-  firstName: () => Promise<String>;
-  lastName: () => Promise<String>;
-  postalCode: () => Promise<String>;
-  country: () => Promise<String>;
-  paymentAccount: <T = PaymentAccountPromise>() => T;
-}
-
-export interface CreditCardInformationSubscription
-  extends Promise<AsyncIterator<CreditCardInformation>>,
-    Fragmentable {
-  id: () => Promise<AsyncIterator<ID_Output>>;
-  createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
-  updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
-  cardNumber: () => Promise<AsyncIterator<String>>;
-  expiresOnMonth: () => Promise<AsyncIterator<Int>>;
-  expiresOnYear: () => Promise<AsyncIterator<Int>>;
-  securityCode: () => Promise<AsyncIterator<String>>;
-  firstName: () => Promise<AsyncIterator<String>>;
-  lastName: () => Promise<AsyncIterator<String>>;
-  postalCode: () => Promise<AsyncIterator<String>>;
-  country: () => Promise<AsyncIterator<String>>;
-  paymentAccount: <T = PaymentAccountSubscription>() => T;
-}
-
-export interface CreditCardInformationNullablePromise
-  extends Promise<CreditCardInformation | null>,
-    Fragmentable {
-  id: () => Promise<ID_Output>;
-  createdAt: () => Promise<DateTimeOutput>;
-  updatedAt: () => Promise<DateTimeOutput>;
-  cardNumber: () => Promise<String>;
-  expiresOnMonth: () => Promise<Int>;
-  expiresOnYear: () => Promise<Int>;
-  securityCode: () => Promise<String>;
-  firstName: () => Promise<String>;
-  lastName: () => Promise<String>;
-  postalCode: () => Promise<String>;
-  country: () => Promise<String>;
-  paymentAccount: <T = PaymentAccountPromise>() => T;
-}
-
-export interface PaymentLanlordInfo {
-  id: ID_Output;
-  createdAt: DateTimeOutput;
-  updatedAt: DateTimeOutput;
-  totalPrice: Float;
-  moncashTransactId: String;
-}
-
-export interface PaymentLanlordInfoPromise
-  extends Promise<PaymentLanlordInfo>,
-    Fragmentable {
-  id: () => Promise<ID_Output>;
-  createdAt: () => Promise<DateTimeOutput>;
-  updatedAt: () => Promise<DateTimeOutput>;
-  totalPrice: () => Promise<Float>;
-  client: <T = UserPromise>() => T;
-  House: <T = HousePromise>() => T;
-  moncashTransactId: () => Promise<String>;
-}
-
-export interface PaymentLanlordInfoSubscription
-  extends Promise<AsyncIterator<PaymentLanlordInfo>>,
-    Fragmentable {
-  id: () => Promise<AsyncIterator<ID_Output>>;
-  createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
-  updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
-  totalPrice: () => Promise<AsyncIterator<Float>>;
-  client: <T = UserSubscription>() => T;
-  House: <T = HouseSubscription>() => T;
-  moncashTransactId: () => Promise<AsyncIterator<String>>;
-}
-
-export interface PaymentLanlordInfoNullablePromise
-  extends Promise<PaymentLanlordInfo | null>,
-    Fragmentable {
-  id: () => Promise<ID_Output>;
-  createdAt: () => Promise<DateTimeOutput>;
-  updatedAt: () => Promise<DateTimeOutput>;
-  totalPrice: () => Promise<Float>;
-  client: <T = UserPromise>() => T;
-  House: <T = HousePromise>() => T;
-  moncashTransactId: () => Promise<String>;
-}
-
-export interface Notification {
-  id: ID_Output;
-  createdAt: DateTimeOutput;
-  updatedAt: DateTimeOutput;
-  type?: NOTIFICATION_TYPE;
-  link: String;
-  readDate: DateTimeOutput;
-}
-
-export interface NotificationPromise
-  extends Promise<Notification>,
-    Fragmentable {
-  id: () => Promise<ID_Output>;
-  createdAt: () => Promise<DateTimeOutput>;
-  updatedAt: () => Promise<DateTimeOutput>;
-  type: () => Promise<NOTIFICATION_TYPE>;
-  user: <T = UserPromise>() => T;
-  link: () => Promise<String>;
-  readDate: () => Promise<DateTimeOutput>;
-}
-
-export interface NotificationSubscription
-  extends Promise<AsyncIterator<Notification>>,
-    Fragmentable {
-  id: () => Promise<AsyncIterator<ID_Output>>;
-  createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
-  updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
-  type: () => Promise<AsyncIterator<NOTIFICATION_TYPE>>;
-  user: <T = UserSubscription>() => T;
-  link: () => Promise<AsyncIterator<String>>;
-  readDate: () => Promise<AsyncIterator<DateTimeOutput>>;
-}
-
-export interface NotificationNullablePromise
-  extends Promise<Notification | null>,
-    Fragmentable {
-  id: () => Promise<ID_Output>;
-  createdAt: () => Promise<DateTimeOutput>;
-  updatedAt: () => Promise<DateTimeOutput>;
-  type: () => Promise<NOTIFICATION_TYPE>;
-  user: <T = UserPromise>() => T;
-  link: () => Promise<String>;
-  readDate: () => Promise<DateTimeOutput>;
-}
-
-export interface Picture {
-  id: ID_Output;
-  url: String;
-  createdAt: DateTimeOutput;
-  updatedAt: DateTimeOutput;
-}
-
-export interface PicturePromise extends Promise<Picture>, Fragmentable {
-  id: () => Promise<ID_Output>;
-  url: () => Promise<String>;
-  createdAt: () => Promise<DateTimeOutput>;
-  updatedAt: () => Promise<DateTimeOutput>;
-}
-
-export interface PictureSubscription
-  extends Promise<AsyncIterator<Picture>>,
-    Fragmentable {
-  id: () => Promise<AsyncIterator<ID_Output>>;
-  url: () => Promise<AsyncIterator<String>>;
-  createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
-  updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
-}
-
-export interface PictureNullablePromise
-  extends Promise<Picture | null>,
-    Fragmentable {
-  id: () => Promise<ID_Output>;
-  url: () => Promise<String>;
-  createdAt: () => Promise<DateTimeOutput>;
-  updatedAt: () => Promise<DateTimeOutput>;
-}
-
-export interface Pricing {
-  id: ID_Output;
-  basePrice?: Float;
-  highestPrice: Float;
-  currency: CURRENCY;
-  income?: Float;
-  createdAt: DateTimeOutput;
-  updatedAt: DateTimeOutput;
-}
-
-export interface PricingPromise extends Promise<Pricing>, Fragmentable {
-  id: () => Promise<ID_Output>;
-  House: <T = HousePromise>() => T;
-  basePrice: () => Promise<Float>;
-  highestPrice: () => Promise<Float>;
-  currency: () => Promise<CURRENCY>;
-  income: () => Promise<Float>;
-  createdAt: () => Promise<DateTimeOutput>;
-  updatedAt: () => Promise<DateTimeOutput>;
-}
-
-export interface PricingSubscription
-  extends Promise<AsyncIterator<Pricing>>,
-    Fragmentable {
-  id: () => Promise<AsyncIterator<ID_Output>>;
-  House: <T = HouseSubscription>() => T;
-  basePrice: () => Promise<AsyncIterator<Float>>;
-  highestPrice: () => Promise<AsyncIterator<Float>>;
-  currency: () => Promise<AsyncIterator<CURRENCY>>;
-  income: () => Promise<AsyncIterator<Float>>;
-  createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
-  updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
-}
-
-export interface PricingNullablePromise
-  extends Promise<Pricing | null>,
-    Fragmentable {
-  id: () => Promise<ID_Output>;
-  House: <T = HousePromise>() => T;
-  basePrice: () => Promise<Float>;
-  highestPrice: () => Promise<Float>;
-  currency: () => Promise<CURRENCY>;
-  income: () => Promise<Float>;
-  createdAt: () => Promise<DateTimeOutput>;
-  updatedAt: () => Promise<DateTimeOutput>;
-}
-
-export interface Room {
-  id: ID_Output;
-  label: ROOM_LABELS;
-  createdAt: DateTimeOutput;
-  updatedAt: DateTimeOutput;
-}
-
-export interface RoomPromise extends Promise<Room>, Fragmentable {
-  id: () => Promise<ID_Output>;
-  label: () => Promise<ROOM_LABELS>;
-  house: <T = HousePromise>() => T;
-  picture_previews: <T = FragmentableArray<Picture>>(args?: {
-    where?: PictureWhereInput;
-    orderBy?: PictureOrderByInput;
-    skip?: Int;
-    after?: String;
-    before?: String;
-    first?: Int;
-    last?: Int;
-  }) => T;
-  video_previews: <T = FragmentableArray<Video>>(args?: {
-    where?: VideoWhereInput;
-    orderBy?: VideoOrderByInput;
-    skip?: Int;
-    after?: String;
-    before?: String;
-    first?: Int;
-    last?: Int;
-  }) => T;
-  createdAt: () => Promise<DateTimeOutput>;
-  updatedAt: () => Promise<DateTimeOutput>;
-}
-
-export interface RoomSubscription
-  extends Promise<AsyncIterator<Room>>,
-    Fragmentable {
-  id: () => Promise<AsyncIterator<ID_Output>>;
-  label: () => Promise<AsyncIterator<ROOM_LABELS>>;
-  house: <T = HouseSubscription>() => T;
-  picture_previews: <T = Promise<AsyncIterator<PictureSubscription>>>(args?: {
-    where?: PictureWhereInput;
-    orderBy?: PictureOrderByInput;
-    skip?: Int;
-    after?: String;
-    before?: String;
-    first?: Int;
-    last?: Int;
-  }) => T;
-  video_previews: <T = Promise<AsyncIterator<VideoSubscription>>>(args?: {
-    where?: VideoWhereInput;
-    orderBy?: VideoOrderByInput;
-    skip?: Int;
-    after?: String;
-    before?: String;
-    first?: Int;
-    last?: Int;
-  }) => T;
-  createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
-  updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
-}
-
-export interface RoomNullablePromise
-  extends Promise<Room | null>,
-    Fragmentable {
-  id: () => Promise<ID_Output>;
-  label: () => Promise<ROOM_LABELS>;
-  house: <T = HousePromise>() => T;
-  picture_previews: <T = FragmentableArray<Picture>>(args?: {
-    where?: PictureWhereInput;
-    orderBy?: PictureOrderByInput;
-    skip?: Int;
-    after?: String;
-    before?: String;
-    first?: Int;
-    last?: Int;
-  }) => T;
-  video_previews: <T = FragmentableArray<Video>>(args?: {
-    where?: VideoWhereInput;
-    orderBy?: VideoOrderByInput;
-    skip?: Int;
-    after?: String;
-    before?: String;
-    first?: Int;
-    last?: Int;
-  }) => T;
-  createdAt: () => Promise<DateTimeOutput>;
-  updatedAt: () => Promise<DateTimeOutput>;
-}
-
-export interface Video {
-  id: ID_Output;
-  url: String;
-  createdAt: DateTimeOutput;
-  updatedAt: DateTimeOutput;
-}
-
-export interface VideoPromise extends Promise<Video>, Fragmentable {
-  id: () => Promise<ID_Output>;
-  url: () => Promise<String>;
-  createdAt: () => Promise<DateTimeOutput>;
-  updatedAt: () => Promise<DateTimeOutput>;
-}
-
-export interface VideoSubscription
-  extends Promise<AsyncIterator<Video>>,
-    Fragmentable {
-  id: () => Promise<AsyncIterator<ID_Output>>;
-  url: () => Promise<AsyncIterator<String>>;
-  createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
-  updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
-}
-
-export interface VideoNullablePromise
-  extends Promise<Video | null>,
-    Fragmentable {
-  id: () => Promise<ID_Output>;
-  url: () => Promise<String>;
-  createdAt: () => Promise<DateTimeOutput>;
-  updatedAt: () => Promise<DateTimeOutput>;
-}
-
-export interface Views {
-  id: ID_Output;
-  lastWeek: Int;
-  createdAt: DateTimeOutput;
-  updatedAt: DateTimeOutput;
-}
-
-export interface ViewsPromise extends Promise<Views>, Fragmentable {
-  id: () => Promise<ID_Output>;
-  lastWeek: () => Promise<Int>;
-  House: <T = HousePromise>() => T;
-  User: <T = FragmentableArray<User>>(args?: {
-    where?: UserWhereInput;
-    orderBy?: UserOrderByInput;
-    skip?: Int;
-    after?: String;
-    before?: String;
-    first?: Int;
-    last?: Int;
-  }) => T;
-  createdAt: () => Promise<DateTimeOutput>;
-  updatedAt: () => Promise<DateTimeOutput>;
-}
-
-export interface ViewsSubscription
-  extends Promise<AsyncIterator<Views>>,
-    Fragmentable {
-  id: () => Promise<AsyncIterator<ID_Output>>;
-  lastWeek: () => Promise<AsyncIterator<Int>>;
-  House: <T = HouseSubscription>() => T;
-  User: <T = Promise<AsyncIterator<UserSubscription>>>(args?: {
-    where?: UserWhereInput;
-    orderBy?: UserOrderByInput;
-    skip?: Int;
-    after?: String;
-    before?: String;
-    first?: Int;
-    last?: Int;
-  }) => T;
-  createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
-  updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
-}
-
-export interface ViewsNullablePromise
-  extends Promise<Views | null>,
-    Fragmentable {
-  id: () => Promise<ID_Output>;
-  lastWeek: () => Promise<Int>;
-  House: <T = HousePromise>() => T;
-  User: <T = FragmentableArray<User>>(args?: {
-    where?: UserWhereInput;
-    orderBy?: UserOrderByInput;
-    skip?: Int;
-    after?: String;
-    before?: String;
-    first?: Int;
-    last?: Int;
-  }) => T;
-  createdAt: () => Promise<DateTimeOutput>;
-  updatedAt: () => Promise<DateTimeOutput>;
-}
-
-export interface AmenitiesConnection {
+export interface PaymentHouseConnection {
   pageInfo: PageInfo;
-  edges: AmenitiesEdge[];
+  edges: PaymentHouseEdge[];
 }
 
-export interface AmenitiesConnectionPromise
-  extends Promise<AmenitiesConnection>,
+export interface PaymentHouseConnectionPromise
+  extends Promise<PaymentHouseConnection>,
     Fragmentable {
   pageInfo: <T = PageInfoPromise>() => T;
-  edges: <T = FragmentableArray<AmenitiesEdge>>() => T;
-  aggregate: <T = AggregateAmenitiesPromise>() => T;
+  edges: <T = FragmentableArray<PaymentHouseEdge>>() => T;
+  aggregate: <T = AggregatePaymentHousePromise>() => T;
 }
 
-export interface AmenitiesConnectionSubscription
-  extends Promise<AsyncIterator<AmenitiesConnection>>,
+export interface PaymentHouseConnectionSubscription
+  extends Promise<AsyncIterator<PaymentHouseConnection>>,
     Fragmentable {
   pageInfo: <T = PageInfoSubscription>() => T;
-  edges: <T = Promise<AsyncIterator<AmenitiesEdgeSubscription>>>() => T;
-  aggregate: <T = AggregateAmenitiesSubscription>() => T;
+  edges: <T = Promise<AsyncIterator<PaymentHouseEdgeSubscription>>>() => T;
+  aggregate: <T = AggregatePaymentHouseSubscription>() => T;
 }
 
-export interface PageInfo {
-  hasNextPage: Boolean;
-  hasPreviousPage: Boolean;
-  startCursor?: String;
-  endCursor?: String;
+export interface ReviewSubscriptionPayload {
+  mutation: MutationType;
+  node: Review;
+  updatedFields: String[];
+  previousValues: ReviewPreviousValues;
 }
 
-export interface PageInfoPromise extends Promise<PageInfo>, Fragmentable {
-  hasNextPage: () => Promise<Boolean>;
-  hasPreviousPage: () => Promise<Boolean>;
-  startCursor: () => Promise<String>;
-  endCursor: () => Promise<String>;
-}
-
-export interface PageInfoSubscription
-  extends Promise<AsyncIterator<PageInfo>>,
+export interface ReviewSubscriptionPayloadPromise
+  extends Promise<ReviewSubscriptionPayload>,
     Fragmentable {
-  hasNextPage: () => Promise<AsyncIterator<Boolean>>;
-  hasPreviousPage: () => Promise<AsyncIterator<Boolean>>;
-  startCursor: () => Promise<AsyncIterator<String>>;
-  endCursor: () => Promise<AsyncIterator<String>>;
+  mutation: () => Promise<MutationType>;
+  node: <T = ReviewPromise>() => T;
+  updatedFields: () => Promise<String[]>;
+  previousValues: <T = ReviewPreviousValuesPromise>() => T;
 }
 
-export interface AmenitiesEdge {
-  node: Amenities;
-  cursor: String;
-}
-
-export interface AmenitiesEdgePromise
-  extends Promise<AmenitiesEdge>,
+export interface ReviewSubscriptionPayloadSubscription
+  extends Promise<AsyncIterator<ReviewSubscriptionPayload>>,
     Fragmentable {
-  node: <T = AmenitiesPromise>() => T;
-  cursor: () => Promise<String>;
+  mutation: () => Promise<AsyncIterator<MutationType>>;
+  node: <T = ReviewSubscription>() => T;
+  updatedFields: () => Promise<AsyncIterator<String[]>>;
+  previousValues: <T = ReviewPreviousValuesSubscription>() => T;
 }
 
-export interface AmenitiesEdgeSubscription
-  extends Promise<AsyncIterator<AmenitiesEdge>>,
-    Fragmentable {
-  node: <T = AmenitiesSubscription>() => T;
-  cursor: () => Promise<AsyncIterator<String>>;
-}
-
-export interface AggregateAmenities {
+export interface AggregateNegotiation {
   count: Int;
 }
 
-export interface AggregateAmenitiesPromise
-  extends Promise<AggregateAmenities>,
+export interface AggregateNegotiationPromise
+  extends Promise<AggregateNegotiation>,
     Fragmentable {
   count: () => Promise<Int>;
 }
 
-export interface AggregateAmenitiesSubscription
-  extends Promise<AsyncIterator<AggregateAmenities>>,
+export interface AggregateNegotiationSubscription
+  extends Promise<AsyncIterator<AggregateNegotiation>>,
     Fragmentable {
   count: () => Promise<AsyncIterator<Int>>;
 }
 
-export interface BookingConnection {
-  pageInfo: PageInfo;
-  edges: BookingEdge[];
+export interface ReviewPreviousValues {
+  id: ID_Output;
+  createdAt: DateTimeOutput;
+  updatedAt: DateTimeOutput;
+  text?: String;
+  stars: Int;
 }
 
-export interface BookingConnectionPromise
-  extends Promise<BookingConnection>,
+export interface ReviewPreviousValuesPromise
+  extends Promise<ReviewPreviousValues>,
     Fragmentable {
-  pageInfo: <T = PageInfoPromise>() => T;
-  edges: <T = FragmentableArray<BookingEdge>>() => T;
-  aggregate: <T = AggregateBookingPromise>() => T;
+  id: () => Promise<ID_Output>;
+  createdAt: () => Promise<DateTimeOutput>;
+  updatedAt: () => Promise<DateTimeOutput>;
+  text: () => Promise<String>;
+  stars: () => Promise<Int>;
 }
 
-export interface BookingConnectionSubscription
-  extends Promise<AsyncIterator<BookingConnection>>,
+export interface ReviewPreviousValuesSubscription
+  extends Promise<AsyncIterator<ReviewPreviousValues>>,
     Fragmentable {
-  pageInfo: <T = PageInfoSubscription>() => T;
-  edges: <T = Promise<AsyncIterator<BookingEdgeSubscription>>>() => T;
-  aggregate: <T = AggregateBookingSubscription>() => T;
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+  updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+  text: () => Promise<AsyncIterator<String>>;
+  stars: () => Promise<AsyncIterator<Int>>;
 }
 
-export interface BookingEdge {
-  node: Booking;
-  cursor: String;
-}
-
-export interface BookingEdgePromise extends Promise<BookingEdge>, Fragmentable {
-  node: <T = BookingPromise>() => T;
-  cursor: () => Promise<String>;
-}
-
-export interface BookingEdgeSubscription
-  extends Promise<AsyncIterator<BookingEdge>>,
-    Fragmentable {
-  node: <T = BookingSubscription>() => T;
-  cursor: () => Promise<AsyncIterator<String>>;
-}
-
-export interface AggregateBooking {
+export interface AggregateCreditCardInformation {
   count: Int;
 }
 
-export interface AggregateBookingPromise
-  extends Promise<AggregateBooking>,
+export interface AggregateCreditCardInformationPromise
+  extends Promise<AggregateCreditCardInformation>,
     Fragmentable {
   count: () => Promise<Int>;
 }
 
-export interface AggregateBookingSubscription
-  extends Promise<AsyncIterator<AggregateBooking>>,
+export interface AggregateCreditCardInformationSubscription
+  extends Promise<AsyncIterator<AggregateCreditCardInformation>>,
     Fragmentable {
   count: () => Promise<AsyncIterator<Int>>;
 }
 
-export interface CityConnection {
-  pageInfo: PageInfo;
-  edges: CityEdge[];
+export interface Country {
+  id: ID_Output;
+  name: String;
+  createdAt: DateTimeOutput;
+  updatedAt: DateTimeOutput;
 }
 
-export interface CityConnectionPromise
-  extends Promise<CityConnection>,
+export interface CountryPromise extends Promise<Country>, Fragmentable {
+  id: () => Promise<ID_Output>;
+  name: () => Promise<String>;
+  createdAt: () => Promise<DateTimeOutput>;
+  updatedAt: () => Promise<DateTimeOutput>;
+}
+
+export interface CountrySubscription
+  extends Promise<AsyncIterator<Country>>,
     Fragmentable {
-  pageInfo: <T = PageInfoPromise>() => T;
-  edges: <T = FragmentableArray<CityEdge>>() => T;
-  aggregate: <T = AggregateCityPromise>() => T;
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  name: () => Promise<AsyncIterator<String>>;
+  createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+  updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
 }
 
-export interface CityConnectionSubscription
-  extends Promise<AsyncIterator<CityConnection>>,
+export interface CountryNullablePromise
+  extends Promise<Country | null>,
     Fragmentable {
-  pageInfo: <T = PageInfoSubscription>() => T;
-  edges: <T = Promise<AsyncIterator<CityEdgeSubscription>>>() => T;
-  aggregate: <T = AggregateCitySubscription>() => T;
-}
-
-export interface CityEdge {
-  node: City;
-  cursor: String;
-}
-
-export interface CityEdgePromise extends Promise<CityEdge>, Fragmentable {
-  node: <T = CityPromise>() => T;
-  cursor: () => Promise<String>;
-}
-
-export interface CityEdgeSubscription
-  extends Promise<AsyncIterator<CityEdge>>,
-    Fragmentable {
-  node: <T = CitySubscription>() => T;
-  cursor: () => Promise<AsyncIterator<String>>;
-}
-
-export interface AggregateCity {
-  count: Int;
-}
-
-export interface AggregateCityPromise
-  extends Promise<AggregateCity>,
-    Fragmentable {
-  count: () => Promise<Int>;
-}
-
-export interface AggregateCitySubscription
-  extends Promise<AsyncIterator<AggregateCity>>,
-    Fragmentable {
-  count: () => Promise<AsyncIterator<Int>>;
-}
-
-export interface CommuneConnection {
-  pageInfo: PageInfo;
-  edges: CommuneEdge[];
-}
-
-export interface CommuneConnectionPromise
-  extends Promise<CommuneConnection>,
-    Fragmentable {
-  pageInfo: <T = PageInfoPromise>() => T;
-  edges: <T = FragmentableArray<CommuneEdge>>() => T;
-  aggregate: <T = AggregateCommunePromise>() => T;
-}
-
-export interface CommuneConnectionSubscription
-  extends Promise<AsyncIterator<CommuneConnection>>,
-    Fragmentable {
-  pageInfo: <T = PageInfoSubscription>() => T;
-  edges: <T = Promise<AsyncIterator<CommuneEdgeSubscription>>>() => T;
-  aggregate: <T = AggregateCommuneSubscription>() => T;
+  id: () => Promise<ID_Output>;
+  name: () => Promise<String>;
+  createdAt: () => Promise<DateTimeOutput>;
+  updatedAt: () => Promise<DateTimeOutput>;
 }
 
 export interface CommuneEdge {
@@ -9048,41 +11196,173 @@ export interface CommuneEdgeSubscription
   cursor: () => Promise<AsyncIterator<String>>;
 }
 
-export interface AggregateCommune {
+export interface RoomSubscriptionPayload {
+  mutation: MutationType;
+  node: Room;
+  updatedFields: String[];
+  previousValues: RoomPreviousValues;
+}
+
+export interface RoomSubscriptionPayloadPromise
+  extends Promise<RoomSubscriptionPayload>,
+    Fragmentable {
+  mutation: () => Promise<MutationType>;
+  node: <T = RoomPromise>() => T;
+  updatedFields: () => Promise<String[]>;
+  previousValues: <T = RoomPreviousValuesPromise>() => T;
+}
+
+export interface RoomSubscriptionPayloadSubscription
+  extends Promise<AsyncIterator<RoomSubscriptionPayload>>,
+    Fragmentable {
+  mutation: () => Promise<AsyncIterator<MutationType>>;
+  node: <T = RoomSubscription>() => T;
+  updatedFields: () => Promise<AsyncIterator<String[]>>;
+  previousValues: <T = RoomPreviousValuesSubscription>() => T;
+}
+
+export interface AggregateUser {
   count: Int;
 }
 
-export interface AggregateCommunePromise
-  extends Promise<AggregateCommune>,
+export interface AggregateUserPromise
+  extends Promise<AggregateUser>,
     Fragmentable {
   count: () => Promise<Int>;
 }
 
-export interface AggregateCommuneSubscription
-  extends Promise<AsyncIterator<AggregateCommune>>,
+export interface AggregateUserSubscription
+  extends Promise<AsyncIterator<AggregateUser>>,
     Fragmentable {
   count: () => Promise<AsyncIterator<Int>>;
 }
 
-export interface CountryConnection {
-  pageInfo: PageInfo;
-  edges: CountryEdge[];
+export interface RoomPreviousValues {
+  id: ID_Output;
+  label: ROOM_LABELS;
+  createdAt: DateTimeOutput;
+  updatedAt: DateTimeOutput;
 }
 
-export interface CountryConnectionPromise
-  extends Promise<CountryConnection>,
+export interface RoomPreviousValuesPromise
+  extends Promise<RoomPreviousValues>,
     Fragmentable {
-  pageInfo: <T = PageInfoPromise>() => T;
-  edges: <T = FragmentableArray<CountryEdge>>() => T;
-  aggregate: <T = AggregateCountryPromise>() => T;
+  id: () => Promise<ID_Output>;
+  label: () => Promise<ROOM_LABELS>;
+  createdAt: () => Promise<DateTimeOutput>;
+  updatedAt: () => Promise<DateTimeOutput>;
 }
 
-export interface CountryConnectionSubscription
-  extends Promise<AsyncIterator<CountryConnection>>,
+export interface RoomPreviousValuesSubscription
+  extends Promise<AsyncIterator<RoomPreviousValues>>,
     Fragmentable {
-  pageInfo: <T = PageInfoSubscription>() => T;
-  edges: <T = Promise<AsyncIterator<CountryEdgeSubscription>>>() => T;
-  aggregate: <T = AggregateCountrySubscription>() => T;
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  label: () => Promise<AsyncIterator<ROOM_LABELS>>;
+  createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+  updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+}
+
+export interface VideoSubscriptionPayload {
+  mutation: MutationType;
+  node: Video;
+  updatedFields: String[];
+  previousValues: VideoPreviousValues;
+}
+
+export interface VideoSubscriptionPayloadPromise
+  extends Promise<VideoSubscriptionPayload>,
+    Fragmentable {
+  mutation: () => Promise<MutationType>;
+  node: <T = VideoPromise>() => T;
+  updatedFields: () => Promise<String[]>;
+  previousValues: <T = VideoPreviousValuesPromise>() => T;
+}
+
+export interface VideoSubscriptionPayloadSubscription
+  extends Promise<AsyncIterator<VideoSubscriptionPayload>>,
+    Fragmentable {
+  mutation: () => Promise<AsyncIterator<MutationType>>;
+  node: <T = VideoSubscription>() => T;
+  updatedFields: () => Promise<AsyncIterator<String[]>>;
+  previousValues: <T = VideoPreviousValuesSubscription>() => T;
+}
+
+export interface State {
+  id: ID_Output;
+  name: String;
+  rank?: Int;
+  createdAt: DateTimeOutput;
+  updatedAt: DateTimeOutput;
+}
+
+export interface StatePromise extends Promise<State>, Fragmentable {
+  id: () => Promise<ID_Output>;
+  name: () => Promise<String>;
+  rank: () => Promise<Int>;
+  country: <T = CountryPromise>() => T;
+  createdAt: () => Promise<DateTimeOutput>;
+  updatedAt: () => Promise<DateTimeOutput>;
+}
+
+export interface StateSubscription
+  extends Promise<AsyncIterator<State>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  name: () => Promise<AsyncIterator<String>>;
+  rank: () => Promise<AsyncIterator<Int>>;
+  country: <T = CountrySubscription>() => T;
+  createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+  updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+}
+
+export interface StateNullablePromise
+  extends Promise<State | null>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  name: () => Promise<String>;
+  rank: () => Promise<Int>;
+  country: <T = CountryPromise>() => T;
+  createdAt: () => Promise<DateTimeOutput>;
+  updatedAt: () => Promise<DateTimeOutput>;
+}
+
+export interface Commune {
+  id: ID_Output;
+  name: String;
+  rank?: Int;
+  createdAt: DateTimeOutput;
+  updatedAt: DateTimeOutput;
+}
+
+export interface CommunePromise extends Promise<Commune>, Fragmentable {
+  id: () => Promise<ID_Output>;
+  name: () => Promise<String>;
+  rank: () => Promise<Int>;
+  city: <T = CityPromise>() => T;
+  createdAt: () => Promise<DateTimeOutput>;
+  updatedAt: () => Promise<DateTimeOutput>;
+}
+
+export interface CommuneSubscription
+  extends Promise<AsyncIterator<Commune>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  name: () => Promise<AsyncIterator<String>>;
+  rank: () => Promise<AsyncIterator<Int>>;
+  city: <T = CitySubscription>() => T;
+  createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+  updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+}
+
+export interface CommuneNullablePromise
+  extends Promise<Commune | null>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  name: () => Promise<String>;
+  rank: () => Promise<Int>;
+  city: <T = CityPromise>() => T;
+  createdAt: () => Promise<DateTimeOutput>;
+  updatedAt: () => Promise<DateTimeOutput>;
 }
 
 export interface CountryEdge {
@@ -9102,132 +11382,164 @@ export interface CountryEdgeSubscription
   cursor: () => Promise<AsyncIterator<String>>;
 }
 
-export interface AggregateCountry {
-  count: Int;
+export interface UserSubscriptionPayload {
+  mutation: MutationType;
+  node: User;
+  updatedFields: String[];
+  previousValues: UserPreviousValues;
 }
 
-export interface AggregateCountryPromise
-  extends Promise<AggregateCountry>,
+export interface UserSubscriptionPayloadPromise
+  extends Promise<UserSubscriptionPayload>,
     Fragmentable {
-  count: () => Promise<Int>;
+  mutation: () => Promise<MutationType>;
+  node: <T = UserPromise>() => T;
+  updatedFields: () => Promise<String[]>;
+  previousValues: <T = UserPreviousValuesPromise>() => T;
 }
 
-export interface AggregateCountrySubscription
-  extends Promise<AsyncIterator<AggregateCountry>>,
+export interface UserSubscriptionPayloadSubscription
+  extends Promise<AsyncIterator<UserSubscriptionPayload>>,
     Fragmentable {
-  count: () => Promise<AsyncIterator<Int>>;
+  mutation: () => Promise<AsyncIterator<MutationType>>;
+  node: <T = UserSubscription>() => T;
+  updatedFields: () => Promise<AsyncIterator<String[]>>;
+  previousValues: <T = UserPreviousValuesSubscription>() => T;
 }
 
-export interface CreditCardInformationConnection {
-  pageInfo: PageInfo;
-  edges: CreditCardInformationEdge[];
+export interface City {
+  id: ID_Output;
+  name: String;
+  rank?: Int;
+  createdAt: DateTimeOutput;
+  updatedAt: DateTimeOutput;
 }
 
-export interface CreditCardInformationConnectionPromise
-  extends Promise<CreditCardInformationConnection>,
+export interface CityPromise extends Promise<City>, Fragmentable {
+  id: () => Promise<ID_Output>;
+  name: () => Promise<String>;
+  rank: () => Promise<Int>;
+  state: <T = StatePromise>() => T;
+  createdAt: () => Promise<DateTimeOutput>;
+  updatedAt: () => Promise<DateTimeOutput>;
+}
+
+export interface CitySubscription
+  extends Promise<AsyncIterator<City>>,
     Fragmentable {
-  pageInfo: <T = PageInfoPromise>() => T;
-  edges: <T = FragmentableArray<CreditCardInformationEdge>>() => T;
-  aggregate: <T = AggregateCreditCardInformationPromise>() => T;
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  name: () => Promise<AsyncIterator<String>>;
+  rank: () => Promise<AsyncIterator<Int>>;
+  state: <T = StateSubscription>() => T;
+  createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+  updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
 }
 
-export interface CreditCardInformationConnectionSubscription
-  extends Promise<AsyncIterator<CreditCardInformationConnection>>,
+export interface CityNullablePromise
+  extends Promise<City | null>,
     Fragmentable {
-  pageInfo: <T = PageInfoSubscription>() => T;
-  edges: <
-    T = Promise<AsyncIterator<CreditCardInformationEdgeSubscription>>
-  >() => T;
-  aggregate: <T = AggregateCreditCardInformationSubscription>() => T;
+  id: () => Promise<ID_Output>;
+  name: () => Promise<String>;
+  rank: () => Promise<Int>;
+  state: <T = StatePromise>() => T;
+  createdAt: () => Promise<DateTimeOutput>;
+  updatedAt: () => Promise<DateTimeOutput>;
 }
 
-export interface CreditCardInformationEdge {
-  node: CreditCardInformation;
-  cursor: String;
+export interface StatePreviousValues {
+  id: ID_Output;
+  name: String;
+  rank?: Int;
+  createdAt: DateTimeOutput;
+  updatedAt: DateTimeOutput;
 }
 
-export interface CreditCardInformationEdgePromise
-  extends Promise<CreditCardInformationEdge>,
+export interface StatePreviousValuesPromise
+  extends Promise<StatePreviousValues>,
     Fragmentable {
-  node: <T = CreditCardInformationPromise>() => T;
-  cursor: () => Promise<String>;
+  id: () => Promise<ID_Output>;
+  name: () => Promise<String>;
+  rank: () => Promise<Int>;
+  createdAt: () => Promise<DateTimeOutput>;
+  updatedAt: () => Promise<DateTimeOutput>;
 }
 
-export interface CreditCardInformationEdgeSubscription
-  extends Promise<AsyncIterator<CreditCardInformationEdge>>,
+export interface StatePreviousValuesSubscription
+  extends Promise<AsyncIterator<StatePreviousValues>>,
     Fragmentable {
-  node: <T = CreditCardInformationSubscription>() => T;
-  cursor: () => Promise<AsyncIterator<String>>;
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  name: () => Promise<AsyncIterator<String>>;
+  rank: () => Promise<AsyncIterator<Int>>;
+  createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+  updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
 }
 
-export interface AggregateCreditCardInformation {
-  count: Int;
+export interface StateSubscriptionPayload {
+  mutation: MutationType;
+  node: State;
+  updatedFields: String[];
+  previousValues: StatePreviousValues;
 }
 
-export interface AggregateCreditCardInformationPromise
-  extends Promise<AggregateCreditCardInformation>,
+export interface StateSubscriptionPayloadPromise
+  extends Promise<StateSubscriptionPayload>,
     Fragmentable {
-  count: () => Promise<Int>;
+  mutation: () => Promise<MutationType>;
+  node: <T = StatePromise>() => T;
+  updatedFields: () => Promise<String[]>;
+  previousValues: <T = StatePreviousValuesPromise>() => T;
 }
 
-export interface AggregateCreditCardInformationSubscription
-  extends Promise<AsyncIterator<AggregateCreditCardInformation>>,
+export interface StateSubscriptionPayloadSubscription
+  extends Promise<AsyncIterator<StateSubscriptionPayload>>,
     Fragmentable {
-  count: () => Promise<AsyncIterator<Int>>;
+  mutation: () => Promise<AsyncIterator<MutationType>>;
+  node: <T = StateSubscription>() => T;
+  updatedFields: () => Promise<AsyncIterator<String[]>>;
+  previousValues: <T = StatePreviousValuesSubscription>() => T;
 }
 
-export interface HouseConnection {
-  pageInfo: PageInfo;
-  edges: HouseEdge[];
+export interface Location {
+  id: ID_Output;
+  lat?: Float;
+  lng?: Float;
+  address?: String;
+  createdAt: DateTimeOutput;
+  updatedAt: DateTimeOutput;
 }
 
-export interface HouseConnectionPromise
-  extends Promise<HouseConnection>,
+export interface LocationPromise extends Promise<Location>, Fragmentable {
+  id: () => Promise<ID_Output>;
+  lat: () => Promise<Float>;
+  lng: () => Promise<Float>;
+  address: () => Promise<String>;
+  commune: <T = CommunePromise>() => T;
+  createdAt: () => Promise<DateTimeOutput>;
+  updatedAt: () => Promise<DateTimeOutput>;
+}
+
+export interface LocationSubscription
+  extends Promise<AsyncIterator<Location>>,
     Fragmentable {
-  pageInfo: <T = PageInfoPromise>() => T;
-  edges: <T = FragmentableArray<HouseEdge>>() => T;
-  aggregate: <T = AggregateHousePromise>() => T;
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  lat: () => Promise<AsyncIterator<Float>>;
+  lng: () => Promise<AsyncIterator<Float>>;
+  address: () => Promise<AsyncIterator<String>>;
+  commune: <T = CommuneSubscription>() => T;
+  createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+  updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
 }
 
-export interface HouseConnectionSubscription
-  extends Promise<AsyncIterator<HouseConnection>>,
+export interface LocationNullablePromise
+  extends Promise<Location | null>,
     Fragmentable {
-  pageInfo: <T = PageInfoSubscription>() => T;
-  edges: <T = Promise<AsyncIterator<HouseEdgeSubscription>>>() => T;
-  aggregate: <T = AggregateHouseSubscription>() => T;
-}
-
-export interface HouseEdge {
-  node: House;
-  cursor: String;
-}
-
-export interface HouseEdgePromise extends Promise<HouseEdge>, Fragmentable {
-  node: <T = HousePromise>() => T;
-  cursor: () => Promise<String>;
-}
-
-export interface HouseEdgeSubscription
-  extends Promise<AsyncIterator<HouseEdge>>,
-    Fragmentable {
-  node: <T = HouseSubscription>() => T;
-  cursor: () => Promise<AsyncIterator<String>>;
-}
-
-export interface AggregateHouse {
-  count: Int;
-}
-
-export interface AggregateHousePromise
-  extends Promise<AggregateHouse>,
-    Fragmentable {
-  count: () => Promise<Int>;
-}
-
-export interface AggregateHouseSubscription
-  extends Promise<AsyncIterator<AggregateHouse>>,
-    Fragmentable {
-  count: () => Promise<AsyncIterator<Int>>;
+  id: () => Promise<ID_Output>;
+  lat: () => Promise<Float>;
+  lng: () => Promise<Float>;
+  address: () => Promise<String>;
+  commune: <T = CommunePromise>() => T;
+  createdAt: () => Promise<DateTimeOutput>;
+  updatedAt: () => Promise<DateTimeOutput>;
 }
 
 export interface HouseFavorited {
@@ -9266,407 +11578,6 @@ export interface HouseFavoritedNullablePromise
   house: <T = HousePromise>() => T;
 }
 
-export interface HouseFavoritedConnection {
-  pageInfo: PageInfo;
-  edges: HouseFavoritedEdge[];
-}
-
-export interface HouseFavoritedConnectionPromise
-  extends Promise<HouseFavoritedConnection>,
-    Fragmentable {
-  pageInfo: <T = PageInfoPromise>() => T;
-  edges: <T = FragmentableArray<HouseFavoritedEdge>>() => T;
-  aggregate: <T = AggregateHouseFavoritedPromise>() => T;
-}
-
-export interface HouseFavoritedConnectionSubscription
-  extends Promise<AsyncIterator<HouseFavoritedConnection>>,
-    Fragmentable {
-  pageInfo: <T = PageInfoSubscription>() => T;
-  edges: <T = Promise<AsyncIterator<HouseFavoritedEdgeSubscription>>>() => T;
-  aggregate: <T = AggregateHouseFavoritedSubscription>() => T;
-}
-
-export interface HouseFavoritedEdge {
-  node: HouseFavorited;
-  cursor: String;
-}
-
-export interface HouseFavoritedEdgePromise
-  extends Promise<HouseFavoritedEdge>,
-    Fragmentable {
-  node: <T = HouseFavoritedPromise>() => T;
-  cursor: () => Promise<String>;
-}
-
-export interface HouseFavoritedEdgeSubscription
-  extends Promise<AsyncIterator<HouseFavoritedEdge>>,
-    Fragmentable {
-  node: <T = HouseFavoritedSubscription>() => T;
-  cursor: () => Promise<AsyncIterator<String>>;
-}
-
-export interface AggregateHouseFavorited {
-  count: Int;
-}
-
-export interface AggregateHouseFavoritedPromise
-  extends Promise<AggregateHouseFavorited>,
-    Fragmentable {
-  count: () => Promise<Int>;
-}
-
-export interface AggregateHouseFavoritedSubscription
-  extends Promise<AsyncIterator<AggregateHouseFavorited>>,
-    Fragmentable {
-  count: () => Promise<AsyncIterator<Int>>;
-}
-
-export interface LocationConnection {
-  pageInfo: PageInfo;
-  edges: LocationEdge[];
-}
-
-export interface LocationConnectionPromise
-  extends Promise<LocationConnection>,
-    Fragmentable {
-  pageInfo: <T = PageInfoPromise>() => T;
-  edges: <T = FragmentableArray<LocationEdge>>() => T;
-  aggregate: <T = AggregateLocationPromise>() => T;
-}
-
-export interface LocationConnectionSubscription
-  extends Promise<AsyncIterator<LocationConnection>>,
-    Fragmentable {
-  pageInfo: <T = PageInfoSubscription>() => T;
-  edges: <T = Promise<AsyncIterator<LocationEdgeSubscription>>>() => T;
-  aggregate: <T = AggregateLocationSubscription>() => T;
-}
-
-export interface LocationEdge {
-  node: Location;
-  cursor: String;
-}
-
-export interface LocationEdgePromise
-  extends Promise<LocationEdge>,
-    Fragmentable {
-  node: <T = LocationPromise>() => T;
-  cursor: () => Promise<String>;
-}
-
-export interface LocationEdgeSubscription
-  extends Promise<AsyncIterator<LocationEdge>>,
-    Fragmentable {
-  node: <T = LocationSubscription>() => T;
-  cursor: () => Promise<AsyncIterator<String>>;
-}
-
-export interface AggregateLocation {
-  count: Int;
-}
-
-export interface AggregateLocationPromise
-  extends Promise<AggregateLocation>,
-    Fragmentable {
-  count: () => Promise<Int>;
-}
-
-export interface AggregateLocationSubscription
-  extends Promise<AsyncIterator<AggregateLocation>>,
-    Fragmentable {
-  count: () => Promise<AsyncIterator<Int>>;
-}
-
-export interface Negotiation {
-  id: ID_Output;
-  createdAt: DateTimeOutput;
-  updatedAt: DateTimeOutput;
-  offer: Float;
-  status?: NEGOTIATION_TYPE;
-}
-
-export interface NegotiationPromise extends Promise<Negotiation>, Fragmentable {
-  id: () => Promise<ID_Output>;
-  createdAt: () => Promise<DateTimeOutput>;
-  updatedAt: () => Promise<DateTimeOutput>;
-  negotiator: <T = UserPromise>() => T;
-  House: <T = HousePromise>() => T;
-  offer: () => Promise<Float>;
-  status: () => Promise<NEGOTIATION_TYPE>;
-}
-
-export interface NegotiationSubscription
-  extends Promise<AsyncIterator<Negotiation>>,
-    Fragmentable {
-  id: () => Promise<AsyncIterator<ID_Output>>;
-  createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
-  updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
-  negotiator: <T = UserSubscription>() => T;
-  House: <T = HouseSubscription>() => T;
-  offer: () => Promise<AsyncIterator<Float>>;
-  status: () => Promise<AsyncIterator<NEGOTIATION_TYPE>>;
-}
-
-export interface NegotiationNullablePromise
-  extends Promise<Negotiation | null>,
-    Fragmentable {
-  id: () => Promise<ID_Output>;
-  createdAt: () => Promise<DateTimeOutput>;
-  updatedAt: () => Promise<DateTimeOutput>;
-  negotiator: <T = UserPromise>() => T;
-  House: <T = HousePromise>() => T;
-  offer: () => Promise<Float>;
-  status: () => Promise<NEGOTIATION_TYPE>;
-}
-
-export interface NegotiationConnection {
-  pageInfo: PageInfo;
-  edges: NegotiationEdge[];
-}
-
-export interface NegotiationConnectionPromise
-  extends Promise<NegotiationConnection>,
-    Fragmentable {
-  pageInfo: <T = PageInfoPromise>() => T;
-  edges: <T = FragmentableArray<NegotiationEdge>>() => T;
-  aggregate: <T = AggregateNegotiationPromise>() => T;
-}
-
-export interface NegotiationConnectionSubscription
-  extends Promise<AsyncIterator<NegotiationConnection>>,
-    Fragmentable {
-  pageInfo: <T = PageInfoSubscription>() => T;
-  edges: <T = Promise<AsyncIterator<NegotiationEdgeSubscription>>>() => T;
-  aggregate: <T = AggregateNegotiationSubscription>() => T;
-}
-
-export interface NegotiationEdge {
-  node: Negotiation;
-  cursor: String;
-}
-
-export interface NegotiationEdgePromise
-  extends Promise<NegotiationEdge>,
-    Fragmentable {
-  node: <T = NegotiationPromise>() => T;
-  cursor: () => Promise<String>;
-}
-
-export interface NegotiationEdgeSubscription
-  extends Promise<AsyncIterator<NegotiationEdge>>,
-    Fragmentable {
-  node: <T = NegotiationSubscription>() => T;
-  cursor: () => Promise<AsyncIterator<String>>;
-}
-
-export interface AggregateNegotiation {
-  count: Int;
-}
-
-export interface AggregateNegotiationPromise
-  extends Promise<AggregateNegotiation>,
-    Fragmentable {
-  count: () => Promise<Int>;
-}
-
-export interface AggregateNegotiationSubscription
-  extends Promise<AsyncIterator<AggregateNegotiation>>,
-    Fragmentable {
-  count: () => Promise<AsyncIterator<Int>>;
-}
-
-export interface NotificationConnection {
-  pageInfo: PageInfo;
-  edges: NotificationEdge[];
-}
-
-export interface NotificationConnectionPromise
-  extends Promise<NotificationConnection>,
-    Fragmentable {
-  pageInfo: <T = PageInfoPromise>() => T;
-  edges: <T = FragmentableArray<NotificationEdge>>() => T;
-  aggregate: <T = AggregateNotificationPromise>() => T;
-}
-
-export interface NotificationConnectionSubscription
-  extends Promise<AsyncIterator<NotificationConnection>>,
-    Fragmentable {
-  pageInfo: <T = PageInfoSubscription>() => T;
-  edges: <T = Promise<AsyncIterator<NotificationEdgeSubscription>>>() => T;
-  aggregate: <T = AggregateNotificationSubscription>() => T;
-}
-
-export interface NotificationEdge {
-  node: Notification;
-  cursor: String;
-}
-
-export interface NotificationEdgePromise
-  extends Promise<NotificationEdge>,
-    Fragmentable {
-  node: <T = NotificationPromise>() => T;
-  cursor: () => Promise<String>;
-}
-
-export interface NotificationEdgeSubscription
-  extends Promise<AsyncIterator<NotificationEdge>>,
-    Fragmentable {
-  node: <T = NotificationSubscription>() => T;
-  cursor: () => Promise<AsyncIterator<String>>;
-}
-
-export interface AggregateNotification {
-  count: Int;
-}
-
-export interface AggregateNotificationPromise
-  extends Promise<AggregateNotification>,
-    Fragmentable {
-  count: () => Promise<Int>;
-}
-
-export interface AggregateNotificationSubscription
-  extends Promise<AsyncIterator<AggregateNotification>>,
-    Fragmentable {
-  count: () => Promise<AsyncIterator<Int>>;
-}
-
-export interface PaymentAccountConnection {
-  pageInfo: PageInfo;
-  edges: PaymentAccountEdge[];
-}
-
-export interface PaymentAccountConnectionPromise
-  extends Promise<PaymentAccountConnection>,
-    Fragmentable {
-  pageInfo: <T = PageInfoPromise>() => T;
-  edges: <T = FragmentableArray<PaymentAccountEdge>>() => T;
-  aggregate: <T = AggregatePaymentAccountPromise>() => T;
-}
-
-export interface PaymentAccountConnectionSubscription
-  extends Promise<AsyncIterator<PaymentAccountConnection>>,
-    Fragmentable {
-  pageInfo: <T = PageInfoSubscription>() => T;
-  edges: <T = Promise<AsyncIterator<PaymentAccountEdgeSubscription>>>() => T;
-  aggregate: <T = AggregatePaymentAccountSubscription>() => T;
-}
-
-export interface PaymentAccountEdge {
-  node: PaymentAccount;
-  cursor: String;
-}
-
-export interface PaymentAccountEdgePromise
-  extends Promise<PaymentAccountEdge>,
-    Fragmentable {
-  node: <T = PaymentAccountPromise>() => T;
-  cursor: () => Promise<String>;
-}
-
-export interface PaymentAccountEdgeSubscription
-  extends Promise<AsyncIterator<PaymentAccountEdge>>,
-    Fragmentable {
-  node: <T = PaymentAccountSubscription>() => T;
-  cursor: () => Promise<AsyncIterator<String>>;
-}
-
-export interface AggregatePaymentAccount {
-  count: Int;
-}
-
-export interface AggregatePaymentAccountPromise
-  extends Promise<AggregatePaymentAccount>,
-    Fragmentable {
-  count: () => Promise<Int>;
-}
-
-export interface AggregatePaymentAccountSubscription
-  extends Promise<AsyncIterator<AggregatePaymentAccount>>,
-    Fragmentable {
-  count: () => Promise<AsyncIterator<Int>>;
-}
-
-export interface PaymentHouseConnection {
-  pageInfo: PageInfo;
-  edges: PaymentHouseEdge[];
-}
-
-export interface PaymentHouseConnectionPromise
-  extends Promise<PaymentHouseConnection>,
-    Fragmentable {
-  pageInfo: <T = PageInfoPromise>() => T;
-  edges: <T = FragmentableArray<PaymentHouseEdge>>() => T;
-  aggregate: <T = AggregatePaymentHousePromise>() => T;
-}
-
-export interface PaymentHouseConnectionSubscription
-  extends Promise<AsyncIterator<PaymentHouseConnection>>,
-    Fragmentable {
-  pageInfo: <T = PageInfoSubscription>() => T;
-  edges: <T = Promise<AsyncIterator<PaymentHouseEdgeSubscription>>>() => T;
-  aggregate: <T = AggregatePaymentHouseSubscription>() => T;
-}
-
-export interface PaymentHouseEdge {
-  node: PaymentHouse;
-  cursor: String;
-}
-
-export interface PaymentHouseEdgePromise
-  extends Promise<PaymentHouseEdge>,
-    Fragmentable {
-  node: <T = PaymentHousePromise>() => T;
-  cursor: () => Promise<String>;
-}
-
-export interface PaymentHouseEdgeSubscription
-  extends Promise<AsyncIterator<PaymentHouseEdge>>,
-    Fragmentable {
-  node: <T = PaymentHouseSubscription>() => T;
-  cursor: () => Promise<AsyncIterator<String>>;
-}
-
-export interface AggregatePaymentHouse {
-  count: Int;
-}
-
-export interface AggregatePaymentHousePromise
-  extends Promise<AggregatePaymentHouse>,
-    Fragmentable {
-  count: () => Promise<Int>;
-}
-
-export interface AggregatePaymentHouseSubscription
-  extends Promise<AsyncIterator<AggregatePaymentHouse>>,
-    Fragmentable {
-  count: () => Promise<AsyncIterator<Int>>;
-}
-
-export interface PaymentLanlordInfoConnection {
-  pageInfo: PageInfo;
-  edges: PaymentLanlordInfoEdge[];
-}
-
-export interface PaymentLanlordInfoConnectionPromise
-  extends Promise<PaymentLanlordInfoConnection>,
-    Fragmentable {
-  pageInfo: <T = PageInfoPromise>() => T;
-  edges: <T = FragmentableArray<PaymentLanlordInfoEdge>>() => T;
-  aggregate: <T = AggregatePaymentLanlordInfoPromise>() => T;
-}
-
-export interface PaymentLanlordInfoConnectionSubscription
-  extends Promise<AsyncIterator<PaymentLanlordInfoConnection>>,
-    Fragmentable {
-  pageInfo: <T = PageInfoSubscription>() => T;
-  edges: <
-    T = Promise<AsyncIterator<PaymentLanlordInfoEdgeSubscription>>
-  >() => T;
-  aggregate: <T = AggregatePaymentLanlordInfoSubscription>() => T;
-}
-
 export interface PaymentLanlordInfoEdge {
   node: PaymentLanlordInfo;
   cursor: String;
@@ -9686,261 +11597,6 @@ export interface PaymentLanlordInfoEdgeSubscription
   cursor: () => Promise<AsyncIterator<String>>;
 }
 
-export interface AggregatePaymentLanlordInfo {
-  count: Int;
-}
-
-export interface AggregatePaymentLanlordInfoPromise
-  extends Promise<AggregatePaymentLanlordInfo>,
-    Fragmentable {
-  count: () => Promise<Int>;
-}
-
-export interface AggregatePaymentLanlordInfoSubscription
-  extends Promise<AsyncIterator<AggregatePaymentLanlordInfo>>,
-    Fragmentable {
-  count: () => Promise<AsyncIterator<Int>>;
-}
-
-export interface PaypalInformationConnection {
-  pageInfo: PageInfo;
-  edges: PaypalInformationEdge[];
-}
-
-export interface PaypalInformationConnectionPromise
-  extends Promise<PaypalInformationConnection>,
-    Fragmentable {
-  pageInfo: <T = PageInfoPromise>() => T;
-  edges: <T = FragmentableArray<PaypalInformationEdge>>() => T;
-  aggregate: <T = AggregatePaypalInformationPromise>() => T;
-}
-
-export interface PaypalInformationConnectionSubscription
-  extends Promise<AsyncIterator<PaypalInformationConnection>>,
-    Fragmentable {
-  pageInfo: <T = PageInfoSubscription>() => T;
-  edges: <T = Promise<AsyncIterator<PaypalInformationEdgeSubscription>>>() => T;
-  aggregate: <T = AggregatePaypalInformationSubscription>() => T;
-}
-
-export interface PaypalInformationEdge {
-  node: PaypalInformation;
-  cursor: String;
-}
-
-export interface PaypalInformationEdgePromise
-  extends Promise<PaypalInformationEdge>,
-    Fragmentable {
-  node: <T = PaypalInformationPromise>() => T;
-  cursor: () => Promise<String>;
-}
-
-export interface PaypalInformationEdgeSubscription
-  extends Promise<AsyncIterator<PaypalInformationEdge>>,
-    Fragmentable {
-  node: <T = PaypalInformationSubscription>() => T;
-  cursor: () => Promise<AsyncIterator<String>>;
-}
-
-export interface AggregatePaypalInformation {
-  count: Int;
-}
-
-export interface AggregatePaypalInformationPromise
-  extends Promise<AggregatePaypalInformation>,
-    Fragmentable {
-  count: () => Promise<Int>;
-}
-
-export interface AggregatePaypalInformationSubscription
-  extends Promise<AsyncIterator<AggregatePaypalInformation>>,
-    Fragmentable {
-  count: () => Promise<AsyncIterator<Int>>;
-}
-
-export interface PictureConnection {
-  pageInfo: PageInfo;
-  edges: PictureEdge[];
-}
-
-export interface PictureConnectionPromise
-  extends Promise<PictureConnection>,
-    Fragmentable {
-  pageInfo: <T = PageInfoPromise>() => T;
-  edges: <T = FragmentableArray<PictureEdge>>() => T;
-  aggregate: <T = AggregatePicturePromise>() => T;
-}
-
-export interface PictureConnectionSubscription
-  extends Promise<AsyncIterator<PictureConnection>>,
-    Fragmentable {
-  pageInfo: <T = PageInfoSubscription>() => T;
-  edges: <T = Promise<AsyncIterator<PictureEdgeSubscription>>>() => T;
-  aggregate: <T = AggregatePictureSubscription>() => T;
-}
-
-export interface PictureEdge {
-  node: Picture;
-  cursor: String;
-}
-
-export interface PictureEdgePromise extends Promise<PictureEdge>, Fragmentable {
-  node: <T = PicturePromise>() => T;
-  cursor: () => Promise<String>;
-}
-
-export interface PictureEdgeSubscription
-  extends Promise<AsyncIterator<PictureEdge>>,
-    Fragmentable {
-  node: <T = PictureSubscription>() => T;
-  cursor: () => Promise<AsyncIterator<String>>;
-}
-
-export interface AggregatePicture {
-  count: Int;
-}
-
-export interface AggregatePicturePromise
-  extends Promise<AggregatePicture>,
-    Fragmentable {
-  count: () => Promise<Int>;
-}
-
-export interface AggregatePictureSubscription
-  extends Promise<AsyncIterator<AggregatePicture>>,
-    Fragmentable {
-  count: () => Promise<AsyncIterator<Int>>;
-}
-
-export interface PricingConnection {
-  pageInfo: PageInfo;
-  edges: PricingEdge[];
-}
-
-export interface PricingConnectionPromise
-  extends Promise<PricingConnection>,
-    Fragmentable {
-  pageInfo: <T = PageInfoPromise>() => T;
-  edges: <T = FragmentableArray<PricingEdge>>() => T;
-  aggregate: <T = AggregatePricingPromise>() => T;
-}
-
-export interface PricingConnectionSubscription
-  extends Promise<AsyncIterator<PricingConnection>>,
-    Fragmentable {
-  pageInfo: <T = PageInfoSubscription>() => T;
-  edges: <T = Promise<AsyncIterator<PricingEdgeSubscription>>>() => T;
-  aggregate: <T = AggregatePricingSubscription>() => T;
-}
-
-export interface PricingEdge {
-  node: Pricing;
-  cursor: String;
-}
-
-export interface PricingEdgePromise extends Promise<PricingEdge>, Fragmentable {
-  node: <T = PricingPromise>() => T;
-  cursor: () => Promise<String>;
-}
-
-export interface PricingEdgeSubscription
-  extends Promise<AsyncIterator<PricingEdge>>,
-    Fragmentable {
-  node: <T = PricingSubscription>() => T;
-  cursor: () => Promise<AsyncIterator<String>>;
-}
-
-export interface AggregatePricing {
-  count: Int;
-}
-
-export interface AggregatePricingPromise
-  extends Promise<AggregatePricing>,
-    Fragmentable {
-  count: () => Promise<Int>;
-}
-
-export interface AggregatePricingSubscription
-  extends Promise<AsyncIterator<AggregatePricing>>,
-    Fragmentable {
-  count: () => Promise<AsyncIterator<Int>>;
-}
-
-export interface ReviewConnection {
-  pageInfo: PageInfo;
-  edges: ReviewEdge[];
-}
-
-export interface ReviewConnectionPromise
-  extends Promise<ReviewConnection>,
-    Fragmentable {
-  pageInfo: <T = PageInfoPromise>() => T;
-  edges: <T = FragmentableArray<ReviewEdge>>() => T;
-  aggregate: <T = AggregateReviewPromise>() => T;
-}
-
-export interface ReviewConnectionSubscription
-  extends Promise<AsyncIterator<ReviewConnection>>,
-    Fragmentable {
-  pageInfo: <T = PageInfoSubscription>() => T;
-  edges: <T = Promise<AsyncIterator<ReviewEdgeSubscription>>>() => T;
-  aggregate: <T = AggregateReviewSubscription>() => T;
-}
-
-export interface ReviewEdge {
-  node: Review;
-  cursor: String;
-}
-
-export interface ReviewEdgePromise extends Promise<ReviewEdge>, Fragmentable {
-  node: <T = ReviewPromise>() => T;
-  cursor: () => Promise<String>;
-}
-
-export interface ReviewEdgeSubscription
-  extends Promise<AsyncIterator<ReviewEdge>>,
-    Fragmentable {
-  node: <T = ReviewSubscription>() => T;
-  cursor: () => Promise<AsyncIterator<String>>;
-}
-
-export interface AggregateReview {
-  count: Int;
-}
-
-export interface AggregateReviewPromise
-  extends Promise<AggregateReview>,
-    Fragmentable {
-  count: () => Promise<Int>;
-}
-
-export interface AggregateReviewSubscription
-  extends Promise<AsyncIterator<AggregateReview>>,
-    Fragmentable {
-  count: () => Promise<AsyncIterator<Int>>;
-}
-
-export interface RoomConnection {
-  pageInfo: PageInfo;
-  edges: RoomEdge[];
-}
-
-export interface RoomConnectionPromise
-  extends Promise<RoomConnection>,
-    Fragmentable {
-  pageInfo: <T = PageInfoPromise>() => T;
-  edges: <T = FragmentableArray<RoomEdge>>() => T;
-  aggregate: <T = AggregateRoomPromise>() => T;
-}
-
-export interface RoomConnectionSubscription
-  extends Promise<AsyncIterator<RoomConnection>>,
-    Fragmentable {
-  pageInfo: <T = PageInfoSubscription>() => T;
-  edges: <T = Promise<AsyncIterator<RoomEdgeSubscription>>>() => T;
-  aggregate: <T = AggregateRoomSubscription>() => T;
-}
-
 export interface RoomEdge {
   node: Room;
   cursor: String;
@@ -9958,1661 +11614,17 @@ export interface RoomEdgeSubscription
   cursor: () => Promise<AsyncIterator<String>>;
 }
 
-export interface AggregateRoom {
-  count: Int;
-}
-
-export interface AggregateRoomPromise
-  extends Promise<AggregateRoom>,
-    Fragmentable {
-  count: () => Promise<Int>;
-}
-
-export interface AggregateRoomSubscription
-  extends Promise<AsyncIterator<AggregateRoom>>,
-    Fragmentable {
-  count: () => Promise<AsyncIterator<Int>>;
-}
-
-export interface StateConnection {
-  pageInfo: PageInfo;
-  edges: StateEdge[];
-}
-
-export interface StateConnectionPromise
-  extends Promise<StateConnection>,
-    Fragmentable {
-  pageInfo: <T = PageInfoPromise>() => T;
-  edges: <T = FragmentableArray<StateEdge>>() => T;
-  aggregate: <T = AggregateStatePromise>() => T;
-}
-
-export interface StateConnectionSubscription
-  extends Promise<AsyncIterator<StateConnection>>,
-    Fragmentable {
-  pageInfo: <T = PageInfoSubscription>() => T;
-  edges: <T = Promise<AsyncIterator<StateEdgeSubscription>>>() => T;
-  aggregate: <T = AggregateStateSubscription>() => T;
-}
-
-export interface StateEdge {
-  node: State;
-  cursor: String;
-}
-
-export interface StateEdgePromise extends Promise<StateEdge>, Fragmentable {
-  node: <T = StatePromise>() => T;
-  cursor: () => Promise<String>;
-}
-
-export interface StateEdgeSubscription
-  extends Promise<AsyncIterator<StateEdge>>,
-    Fragmentable {
-  node: <T = StateSubscription>() => T;
-  cursor: () => Promise<AsyncIterator<String>>;
-}
-
-export interface AggregateState {
-  count: Int;
-}
-
-export interface AggregateStatePromise
-  extends Promise<AggregateState>,
-    Fragmentable {
-  count: () => Promise<Int>;
-}
-
-export interface AggregateStateSubscription
-  extends Promise<AsyncIterator<AggregateState>>,
-    Fragmentable {
-  count: () => Promise<AsyncIterator<Int>>;
-}
-
-export interface UserConnection {
-  pageInfo: PageInfo;
-  edges: UserEdge[];
-}
-
-export interface UserConnectionPromise
-  extends Promise<UserConnection>,
-    Fragmentable {
-  pageInfo: <T = PageInfoPromise>() => T;
-  edges: <T = FragmentableArray<UserEdge>>() => T;
-  aggregate: <T = AggregateUserPromise>() => T;
-}
-
-export interface UserConnectionSubscription
-  extends Promise<AsyncIterator<UserConnection>>,
-    Fragmentable {
-  pageInfo: <T = PageInfoSubscription>() => T;
-  edges: <T = Promise<AsyncIterator<UserEdgeSubscription>>>() => T;
-  aggregate: <T = AggregateUserSubscription>() => T;
-}
-
-export interface UserEdge {
-  node: User;
-  cursor: String;
-}
-
-export interface UserEdgePromise extends Promise<UserEdge>, Fragmentable {
-  node: <T = UserPromise>() => T;
-  cursor: () => Promise<String>;
-}
-
-export interface UserEdgeSubscription
-  extends Promise<AsyncIterator<UserEdge>>,
-    Fragmentable {
-  node: <T = UserSubscription>() => T;
-  cursor: () => Promise<AsyncIterator<String>>;
-}
-
-export interface AggregateUser {
-  count: Int;
-}
-
-export interface AggregateUserPromise
-  extends Promise<AggregateUser>,
-    Fragmentable {
-  count: () => Promise<Int>;
-}
-
-export interface AggregateUserSubscription
-  extends Promise<AsyncIterator<AggregateUser>>,
-    Fragmentable {
-  count: () => Promise<AsyncIterator<Int>>;
-}
-
-export interface VideoConnection {
-  pageInfo: PageInfo;
-  edges: VideoEdge[];
-}
-
-export interface VideoConnectionPromise
-  extends Promise<VideoConnection>,
-    Fragmentable {
-  pageInfo: <T = PageInfoPromise>() => T;
-  edges: <T = FragmentableArray<VideoEdge>>() => T;
-  aggregate: <T = AggregateVideoPromise>() => T;
-}
-
-export interface VideoConnectionSubscription
-  extends Promise<AsyncIterator<VideoConnection>>,
-    Fragmentable {
-  pageInfo: <T = PageInfoSubscription>() => T;
-  edges: <T = Promise<AsyncIterator<VideoEdgeSubscription>>>() => T;
-  aggregate: <T = AggregateVideoSubscription>() => T;
-}
-
-export interface VideoEdge {
-  node: Video;
-  cursor: String;
-}
-
-export interface VideoEdgePromise extends Promise<VideoEdge>, Fragmentable {
-  node: <T = VideoPromise>() => T;
-  cursor: () => Promise<String>;
-}
-
-export interface VideoEdgeSubscription
-  extends Promise<AsyncIterator<VideoEdge>>,
-    Fragmentable {
-  node: <T = VideoSubscription>() => T;
-  cursor: () => Promise<AsyncIterator<String>>;
-}
-
-export interface AggregateVideo {
-  count: Int;
-}
-
-export interface AggregateVideoPromise
-  extends Promise<AggregateVideo>,
-    Fragmentable {
-  count: () => Promise<Int>;
-}
-
-export interface AggregateVideoSubscription
-  extends Promise<AsyncIterator<AggregateVideo>>,
-    Fragmentable {
-  count: () => Promise<AsyncIterator<Int>>;
-}
-
-export interface ViewsConnection {
-  pageInfo: PageInfo;
-  edges: ViewsEdge[];
-}
-
-export interface ViewsConnectionPromise
-  extends Promise<ViewsConnection>,
-    Fragmentable {
-  pageInfo: <T = PageInfoPromise>() => T;
-  edges: <T = FragmentableArray<ViewsEdge>>() => T;
-  aggregate: <T = AggregateViewsPromise>() => T;
-}
-
-export interface ViewsConnectionSubscription
-  extends Promise<AsyncIterator<ViewsConnection>>,
-    Fragmentable {
-  pageInfo: <T = PageInfoSubscription>() => T;
-  edges: <T = Promise<AsyncIterator<ViewsEdgeSubscription>>>() => T;
-  aggregate: <T = AggregateViewsSubscription>() => T;
-}
-
-export interface ViewsEdge {
-  node: Views;
-  cursor: String;
-}
-
-export interface ViewsEdgePromise extends Promise<ViewsEdge>, Fragmentable {
-  node: <T = ViewsPromise>() => T;
-  cursor: () => Promise<String>;
-}
-
-export interface ViewsEdgeSubscription
-  extends Promise<AsyncIterator<ViewsEdge>>,
-    Fragmentable {
-  node: <T = ViewsSubscription>() => T;
-  cursor: () => Promise<AsyncIterator<String>>;
-}
-
-export interface AggregateViews {
-  count: Int;
-}
-
-export interface AggregateViewsPromise
-  extends Promise<AggregateViews>,
-    Fragmentable {
-  count: () => Promise<Int>;
-}
-
-export interface AggregateViewsSubscription
-  extends Promise<AsyncIterator<AggregateViews>>,
-    Fragmentable {
-  count: () => Promise<AsyncIterator<Int>>;
-}
-
-export interface BatchPayload {
-  count: Long;
-}
-
-export interface BatchPayloadPromise
-  extends Promise<BatchPayload>,
-    Fragmentable {
-  count: () => Promise<Long>;
-}
-
-export interface BatchPayloadSubscription
-  extends Promise<AsyncIterator<BatchPayload>>,
-    Fragmentable {
-  count: () => Promise<AsyncIterator<Long>>;
-}
-
-export interface AmenitiesSubscriptionPayload {
-  mutation: MutationType;
-  node: Amenities;
-  updatedFields: String[];
-  previousValues: AmenitiesPreviousValues;
-}
-
-export interface AmenitiesSubscriptionPayloadPromise
-  extends Promise<AmenitiesSubscriptionPayload>,
-    Fragmentable {
-  mutation: () => Promise<MutationType>;
-  node: <T = AmenitiesPromise>() => T;
-  updatedFields: () => Promise<String[]>;
-  previousValues: <T = AmenitiesPreviousValuesPromise>() => T;
-}
-
-export interface AmenitiesSubscriptionPayloadSubscription
-  extends Promise<AsyncIterator<AmenitiesSubscriptionPayload>>,
-    Fragmentable {
-  mutation: () => Promise<AsyncIterator<MutationType>>;
-  node: <T = AmenitiesSubscription>() => T;
-  updatedFields: () => Promise<AsyncIterator<String[]>>;
-  previousValues: <T = AmenitiesPreviousValuesSubscription>() => T;
-}
-
-export interface AmenitiesPreviousValues {
-  id: ID_Output;
-  electricity: Boolean;
-  electricity_frequency?: FREQUENCY;
-  water_pipe: Boolean;
-  water_tank: Boolean;
-  water_frequency?: FREQUENCY;
-  elevator: Boolean;
-  petsAllowed: Boolean;
-  internet: Boolean;
-  kitchen: Boolean;
-  wirelessInternet: Boolean;
-  familyKidFriendly: Boolean;
-  freeParkingOnPremises: Boolean;
-  hotTub: Boolean;
-  pool: Boolean;
-  smokingAllowed: Boolean;
-  wheelchairAccessible: Boolean;
-  cableTv: Boolean;
-  suitableForEvents: Boolean;
-  dryer: Boolean;
-  washer: Boolean;
-  indoorFireHouse: Boolean;
-  tv: Boolean;
-  heating: Boolean;
-  hangers: Boolean;
-  iron: Boolean;
-  hairDryer: Boolean;
-  doorman: Boolean;
-  paidParkingOffPremises: Boolean;
-  freeParkingOnStreet: Boolean;
-  gym: Boolean;
-  airConditioning: Boolean;
-  shampoo: Boolean;
-  essentials: Boolean;
-  laptopFriendlyWorkspace: Boolean;
-  privateEntrance: Boolean;
-  buzzerWirelessIntercom: Boolean;
-  bathtub: Boolean;
-  crib: Boolean;
-  createdAt: DateTimeOutput;
-  updatedAt: DateTimeOutput;
-}
-
-export interface AmenitiesPreviousValuesPromise
-  extends Promise<AmenitiesPreviousValues>,
-    Fragmentable {
-  id: () => Promise<ID_Output>;
-  electricity: () => Promise<Boolean>;
-  electricity_frequency: () => Promise<FREQUENCY>;
-  water_pipe: () => Promise<Boolean>;
-  water_tank: () => Promise<Boolean>;
-  water_frequency: () => Promise<FREQUENCY>;
-  elevator: () => Promise<Boolean>;
-  petsAllowed: () => Promise<Boolean>;
-  internet: () => Promise<Boolean>;
-  kitchen: () => Promise<Boolean>;
-  wirelessInternet: () => Promise<Boolean>;
-  familyKidFriendly: () => Promise<Boolean>;
-  freeParkingOnPremises: () => Promise<Boolean>;
-  hotTub: () => Promise<Boolean>;
-  pool: () => Promise<Boolean>;
-  smokingAllowed: () => Promise<Boolean>;
-  wheelchairAccessible: () => Promise<Boolean>;
-  cableTv: () => Promise<Boolean>;
-  suitableForEvents: () => Promise<Boolean>;
-  dryer: () => Promise<Boolean>;
-  washer: () => Promise<Boolean>;
-  indoorFireHouse: () => Promise<Boolean>;
-  tv: () => Promise<Boolean>;
-  heating: () => Promise<Boolean>;
-  hangers: () => Promise<Boolean>;
-  iron: () => Promise<Boolean>;
-  hairDryer: () => Promise<Boolean>;
-  doorman: () => Promise<Boolean>;
-  paidParkingOffPremises: () => Promise<Boolean>;
-  freeParkingOnStreet: () => Promise<Boolean>;
-  gym: () => Promise<Boolean>;
-  airConditioning: () => Promise<Boolean>;
-  shampoo: () => Promise<Boolean>;
-  essentials: () => Promise<Boolean>;
-  laptopFriendlyWorkspace: () => Promise<Boolean>;
-  privateEntrance: () => Promise<Boolean>;
-  buzzerWirelessIntercom: () => Promise<Boolean>;
-  bathtub: () => Promise<Boolean>;
-  crib: () => Promise<Boolean>;
-  createdAt: () => Promise<DateTimeOutput>;
-  updatedAt: () => Promise<DateTimeOutput>;
-}
-
-export interface AmenitiesPreviousValuesSubscription
-  extends Promise<AsyncIterator<AmenitiesPreviousValues>>,
-    Fragmentable {
-  id: () => Promise<AsyncIterator<ID_Output>>;
-  electricity: () => Promise<AsyncIterator<Boolean>>;
-  electricity_frequency: () => Promise<AsyncIterator<FREQUENCY>>;
-  water_pipe: () => Promise<AsyncIterator<Boolean>>;
-  water_tank: () => Promise<AsyncIterator<Boolean>>;
-  water_frequency: () => Promise<AsyncIterator<FREQUENCY>>;
-  elevator: () => Promise<AsyncIterator<Boolean>>;
-  petsAllowed: () => Promise<AsyncIterator<Boolean>>;
-  internet: () => Promise<AsyncIterator<Boolean>>;
-  kitchen: () => Promise<AsyncIterator<Boolean>>;
-  wirelessInternet: () => Promise<AsyncIterator<Boolean>>;
-  familyKidFriendly: () => Promise<AsyncIterator<Boolean>>;
-  freeParkingOnPremises: () => Promise<AsyncIterator<Boolean>>;
-  hotTub: () => Promise<AsyncIterator<Boolean>>;
-  pool: () => Promise<AsyncIterator<Boolean>>;
-  smokingAllowed: () => Promise<AsyncIterator<Boolean>>;
-  wheelchairAccessible: () => Promise<AsyncIterator<Boolean>>;
-  cableTv: () => Promise<AsyncIterator<Boolean>>;
-  suitableForEvents: () => Promise<AsyncIterator<Boolean>>;
-  dryer: () => Promise<AsyncIterator<Boolean>>;
-  washer: () => Promise<AsyncIterator<Boolean>>;
-  indoorFireHouse: () => Promise<AsyncIterator<Boolean>>;
-  tv: () => Promise<AsyncIterator<Boolean>>;
-  heating: () => Promise<AsyncIterator<Boolean>>;
-  hangers: () => Promise<AsyncIterator<Boolean>>;
-  iron: () => Promise<AsyncIterator<Boolean>>;
-  hairDryer: () => Promise<AsyncIterator<Boolean>>;
-  doorman: () => Promise<AsyncIterator<Boolean>>;
-  paidParkingOffPremises: () => Promise<AsyncIterator<Boolean>>;
-  freeParkingOnStreet: () => Promise<AsyncIterator<Boolean>>;
-  gym: () => Promise<AsyncIterator<Boolean>>;
-  airConditioning: () => Promise<AsyncIterator<Boolean>>;
-  shampoo: () => Promise<AsyncIterator<Boolean>>;
-  essentials: () => Promise<AsyncIterator<Boolean>>;
-  laptopFriendlyWorkspace: () => Promise<AsyncIterator<Boolean>>;
-  privateEntrance: () => Promise<AsyncIterator<Boolean>>;
-  buzzerWirelessIntercom: () => Promise<AsyncIterator<Boolean>>;
-  bathtub: () => Promise<AsyncIterator<Boolean>>;
-  crib: () => Promise<AsyncIterator<Boolean>>;
-  createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
-  updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
-}
-
-export interface BookingSubscriptionPayload {
-  mutation: MutationType;
-  node: Booking;
-  updatedFields: String[];
-  previousValues: BookingPreviousValues;
-}
-
-export interface BookingSubscriptionPayloadPromise
-  extends Promise<BookingSubscriptionPayload>,
-    Fragmentable {
-  mutation: () => Promise<MutationType>;
-  node: <T = BookingPromise>() => T;
-  updatedFields: () => Promise<String[]>;
-  previousValues: <T = BookingPreviousValuesPromise>() => T;
-}
-
-export interface BookingSubscriptionPayloadSubscription
-  extends Promise<AsyncIterator<BookingSubscriptionPayload>>,
-    Fragmentable {
-  mutation: () => Promise<AsyncIterator<MutationType>>;
-  node: <T = BookingSubscription>() => T;
-  updatedFields: () => Promise<AsyncIterator<String[]>>;
-  previousValues: <T = BookingPreviousValuesSubscription>() => T;
-}
-
-export interface BookingPreviousValues {
-  id: ID_Output;
-  createdAt: DateTimeOutput;
-  updatedAt: DateTimeOutput;
-  startDate: DateTimeOutput;
-  endDate: DateTimeOutput;
-}
-
-export interface BookingPreviousValuesPromise
-  extends Promise<BookingPreviousValues>,
-    Fragmentable {
-  id: () => Promise<ID_Output>;
-  createdAt: () => Promise<DateTimeOutput>;
-  updatedAt: () => Promise<DateTimeOutput>;
-  startDate: () => Promise<DateTimeOutput>;
-  endDate: () => Promise<DateTimeOutput>;
-}
-
-export interface BookingPreviousValuesSubscription
-  extends Promise<AsyncIterator<BookingPreviousValues>>,
-    Fragmentable {
-  id: () => Promise<AsyncIterator<ID_Output>>;
-  createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
-  updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
-  startDate: () => Promise<AsyncIterator<DateTimeOutput>>;
-  endDate: () => Promise<AsyncIterator<DateTimeOutput>>;
-}
-
-export interface CitySubscriptionPayload {
-  mutation: MutationType;
-  node: City;
-  updatedFields: String[];
-  previousValues: CityPreviousValues;
-}
-
-export interface CitySubscriptionPayloadPromise
-  extends Promise<CitySubscriptionPayload>,
-    Fragmentable {
-  mutation: () => Promise<MutationType>;
-  node: <T = CityPromise>() => T;
-  updatedFields: () => Promise<String[]>;
-  previousValues: <T = CityPreviousValuesPromise>() => T;
-}
-
-export interface CitySubscriptionPayloadSubscription
-  extends Promise<AsyncIterator<CitySubscriptionPayload>>,
-    Fragmentable {
-  mutation: () => Promise<AsyncIterator<MutationType>>;
-  node: <T = CitySubscription>() => T;
-  updatedFields: () => Promise<AsyncIterator<String[]>>;
-  previousValues: <T = CityPreviousValuesSubscription>() => T;
-}
-
-export interface CityPreviousValues {
-  id: ID_Output;
-  name: String;
-  rank?: Int;
-  createdAt: DateTimeOutput;
-  updatedAt: DateTimeOutput;
-}
-
-export interface CityPreviousValuesPromise
-  extends Promise<CityPreviousValues>,
-    Fragmentable {
-  id: () => Promise<ID_Output>;
-  name: () => Promise<String>;
-  rank: () => Promise<Int>;
-  createdAt: () => Promise<DateTimeOutput>;
-  updatedAt: () => Promise<DateTimeOutput>;
-}
-
-export interface CityPreviousValuesSubscription
-  extends Promise<AsyncIterator<CityPreviousValues>>,
-    Fragmentable {
-  id: () => Promise<AsyncIterator<ID_Output>>;
-  name: () => Promise<AsyncIterator<String>>;
-  rank: () => Promise<AsyncIterator<Int>>;
-  createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
-  updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
-}
-
-export interface CommuneSubscriptionPayload {
-  mutation: MutationType;
-  node: Commune;
-  updatedFields: String[];
-  previousValues: CommunePreviousValues;
-}
-
-export interface CommuneSubscriptionPayloadPromise
-  extends Promise<CommuneSubscriptionPayload>,
-    Fragmentable {
-  mutation: () => Promise<MutationType>;
-  node: <T = CommunePromise>() => T;
-  updatedFields: () => Promise<String[]>;
-  previousValues: <T = CommunePreviousValuesPromise>() => T;
-}
-
-export interface CommuneSubscriptionPayloadSubscription
-  extends Promise<AsyncIterator<CommuneSubscriptionPayload>>,
-    Fragmentable {
-  mutation: () => Promise<AsyncIterator<MutationType>>;
-  node: <T = CommuneSubscription>() => T;
-  updatedFields: () => Promise<AsyncIterator<String[]>>;
-  previousValues: <T = CommunePreviousValuesSubscription>() => T;
-}
-
-export interface CommunePreviousValues {
-  id: ID_Output;
-  name: String;
-  rank?: Int;
-  createdAt: DateTimeOutput;
-  updatedAt: DateTimeOutput;
-}
-
-export interface CommunePreviousValuesPromise
-  extends Promise<CommunePreviousValues>,
-    Fragmentable {
-  id: () => Promise<ID_Output>;
-  name: () => Promise<String>;
-  rank: () => Promise<Int>;
-  createdAt: () => Promise<DateTimeOutput>;
-  updatedAt: () => Promise<DateTimeOutput>;
-}
-
-export interface CommunePreviousValuesSubscription
-  extends Promise<AsyncIterator<CommunePreviousValues>>,
-    Fragmentable {
-  id: () => Promise<AsyncIterator<ID_Output>>;
-  name: () => Promise<AsyncIterator<String>>;
-  rank: () => Promise<AsyncIterator<Int>>;
-  createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
-  updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
-}
-
-export interface CountrySubscriptionPayload {
-  mutation: MutationType;
-  node: Country;
-  updatedFields: String[];
-  previousValues: CountryPreviousValues;
-}
-
-export interface CountrySubscriptionPayloadPromise
-  extends Promise<CountrySubscriptionPayload>,
-    Fragmentable {
-  mutation: () => Promise<MutationType>;
-  node: <T = CountryPromise>() => T;
-  updatedFields: () => Promise<String[]>;
-  previousValues: <T = CountryPreviousValuesPromise>() => T;
-}
-
-export interface CountrySubscriptionPayloadSubscription
-  extends Promise<AsyncIterator<CountrySubscriptionPayload>>,
-    Fragmentable {
-  mutation: () => Promise<AsyncIterator<MutationType>>;
-  node: <T = CountrySubscription>() => T;
-  updatedFields: () => Promise<AsyncIterator<String[]>>;
-  previousValues: <T = CountryPreviousValuesSubscription>() => T;
-}
-
-export interface CountryPreviousValues {
-  id: ID_Output;
-  name: String;
-  createdAt: DateTimeOutput;
-  updatedAt: DateTimeOutput;
-}
-
-export interface CountryPreviousValuesPromise
-  extends Promise<CountryPreviousValues>,
-    Fragmentable {
-  id: () => Promise<ID_Output>;
-  name: () => Promise<String>;
-  createdAt: () => Promise<DateTimeOutput>;
-  updatedAt: () => Promise<DateTimeOutput>;
-}
-
-export interface CountryPreviousValuesSubscription
-  extends Promise<AsyncIterator<CountryPreviousValues>>,
-    Fragmentable {
-  id: () => Promise<AsyncIterator<ID_Output>>;
-  name: () => Promise<AsyncIterator<String>>;
-  createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
-  updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
-}
-
-export interface CreditCardInformationSubscriptionPayload {
-  mutation: MutationType;
-  node: CreditCardInformation;
-  updatedFields: String[];
-  previousValues: CreditCardInformationPreviousValues;
-}
-
-export interface CreditCardInformationSubscriptionPayloadPromise
-  extends Promise<CreditCardInformationSubscriptionPayload>,
-    Fragmentable {
-  mutation: () => Promise<MutationType>;
-  node: <T = CreditCardInformationPromise>() => T;
-  updatedFields: () => Promise<String[]>;
-  previousValues: <T = CreditCardInformationPreviousValuesPromise>() => T;
-}
-
-export interface CreditCardInformationSubscriptionPayloadSubscription
-  extends Promise<AsyncIterator<CreditCardInformationSubscriptionPayload>>,
-    Fragmentable {
-  mutation: () => Promise<AsyncIterator<MutationType>>;
-  node: <T = CreditCardInformationSubscription>() => T;
-  updatedFields: () => Promise<AsyncIterator<String[]>>;
-  previousValues: <T = CreditCardInformationPreviousValuesSubscription>() => T;
-}
-
-export interface CreditCardInformationPreviousValues {
-  id: ID_Output;
-  createdAt: DateTimeOutput;
-  updatedAt: DateTimeOutput;
-  cardNumber: String;
-  expiresOnMonth: Int;
-  expiresOnYear: Int;
-  securityCode: String;
-  firstName: String;
-  lastName: String;
-  postalCode: String;
-  country: String;
-}
-
-export interface CreditCardInformationPreviousValuesPromise
-  extends Promise<CreditCardInformationPreviousValues>,
-    Fragmentable {
-  id: () => Promise<ID_Output>;
-  createdAt: () => Promise<DateTimeOutput>;
-  updatedAt: () => Promise<DateTimeOutput>;
-  cardNumber: () => Promise<String>;
-  expiresOnMonth: () => Promise<Int>;
-  expiresOnYear: () => Promise<Int>;
-  securityCode: () => Promise<String>;
-  firstName: () => Promise<String>;
-  lastName: () => Promise<String>;
-  postalCode: () => Promise<String>;
-  country: () => Promise<String>;
-}
-
-export interface CreditCardInformationPreviousValuesSubscription
-  extends Promise<AsyncIterator<CreditCardInformationPreviousValues>>,
-    Fragmentable {
-  id: () => Promise<AsyncIterator<ID_Output>>;
-  createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
-  updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
-  cardNumber: () => Promise<AsyncIterator<String>>;
-  expiresOnMonth: () => Promise<AsyncIterator<Int>>;
-  expiresOnYear: () => Promise<AsyncIterator<Int>>;
-  securityCode: () => Promise<AsyncIterator<String>>;
-  firstName: () => Promise<AsyncIterator<String>>;
-  lastName: () => Promise<AsyncIterator<String>>;
-  postalCode: () => Promise<AsyncIterator<String>>;
-  country: () => Promise<AsyncIterator<String>>;
-}
-
-export interface HouseSubscriptionPayload {
-  mutation: MutationType;
-  node: House;
-  updatedFields: String[];
-  previousValues: HousePreviousValues;
-}
-
-export interface HouseSubscriptionPayloadPromise
-  extends Promise<HouseSubscriptionPayload>,
-    Fragmentable {
-  mutation: () => Promise<MutationType>;
-  node: <T = HousePromise>() => T;
-  updatedFields: () => Promise<String[]>;
-  previousValues: <T = HousePreviousValuesPromise>() => T;
-}
-
-export interface HouseSubscriptionPayloadSubscription
-  extends Promise<AsyncIterator<HouseSubscriptionPayload>>,
-    Fragmentable {
-  mutation: () => Promise<AsyncIterator<MutationType>>;
-  node: <T = HouseSubscription>() => T;
-  updatedFields: () => Promise<AsyncIterator<String[]>>;
-  previousValues: <T = HousePreviousValuesSubscription>() => T;
-}
-
-export interface HousePreviousValues {
-  id: ID_Output;
-  area?: Int;
-  age?: Int;
-  shortDescription?: String;
-  description?: String;
-  maxGuests?: Int;
-  numBedrooms: Int;
-  numBaths: Int;
-  numLivingrooms?: Int;
-  numDiningrooms?: Int;
-  leaseType?: HOUSE_LEASE_TYPE;
-  verified: Boolean;
-  type?: HOUSE_TYPES;
-  residency?: House_RESIDENCY;
-  lease?: Int;
-  popularity?: Int;
-  lastRating: Int;
-  rentOrSell: RENT_OR_SELL;
-  createdAt: DateTimeOutput;
-  updatedAt: DateTimeOutput;
-}
-
-export interface HousePreviousValuesPromise
-  extends Promise<HousePreviousValues>,
-    Fragmentable {
-  id: () => Promise<ID_Output>;
-  area: () => Promise<Int>;
-  age: () => Promise<Int>;
-  shortDescription: () => Promise<String>;
-  description: () => Promise<String>;
-  maxGuests: () => Promise<Int>;
-  numBedrooms: () => Promise<Int>;
-  numBaths: () => Promise<Int>;
-  numLivingrooms: () => Promise<Int>;
-  numDiningrooms: () => Promise<Int>;
-  leaseType: () => Promise<HOUSE_LEASE_TYPE>;
-  verified: () => Promise<Boolean>;
-  type: () => Promise<HOUSE_TYPES>;
-  residency: () => Promise<House_RESIDENCY>;
-  lease: () => Promise<Int>;
-  popularity: () => Promise<Int>;
-  lastRating: () => Promise<Int>;
-  rentOrSell: () => Promise<RENT_OR_SELL>;
-  createdAt: () => Promise<DateTimeOutput>;
-  updatedAt: () => Promise<DateTimeOutput>;
-}
-
-export interface HousePreviousValuesSubscription
-  extends Promise<AsyncIterator<HousePreviousValues>>,
-    Fragmentable {
-  id: () => Promise<AsyncIterator<ID_Output>>;
-  area: () => Promise<AsyncIterator<Int>>;
-  age: () => Promise<AsyncIterator<Int>>;
-  shortDescription: () => Promise<AsyncIterator<String>>;
-  description: () => Promise<AsyncIterator<String>>;
-  maxGuests: () => Promise<AsyncIterator<Int>>;
-  numBedrooms: () => Promise<AsyncIterator<Int>>;
-  numBaths: () => Promise<AsyncIterator<Int>>;
-  numLivingrooms: () => Promise<AsyncIterator<Int>>;
-  numDiningrooms: () => Promise<AsyncIterator<Int>>;
-  leaseType: () => Promise<AsyncIterator<HOUSE_LEASE_TYPE>>;
-  verified: () => Promise<AsyncIterator<Boolean>>;
-  type: () => Promise<AsyncIterator<HOUSE_TYPES>>;
-  residency: () => Promise<AsyncIterator<House_RESIDENCY>>;
-  lease: () => Promise<AsyncIterator<Int>>;
-  popularity: () => Promise<AsyncIterator<Int>>;
-  lastRating: () => Promise<AsyncIterator<Int>>;
-  rentOrSell: () => Promise<AsyncIterator<RENT_OR_SELL>>;
-  createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
-  updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
-}
-
-export interface HouseFavoritedSubscriptionPayload {
-  mutation: MutationType;
-  node: HouseFavorited;
-  updatedFields: String[];
-  previousValues: HouseFavoritedPreviousValues;
-}
-
-export interface HouseFavoritedSubscriptionPayloadPromise
-  extends Promise<HouseFavoritedSubscriptionPayload>,
-    Fragmentable {
-  mutation: () => Promise<MutationType>;
-  node: <T = HouseFavoritedPromise>() => T;
-  updatedFields: () => Promise<String[]>;
-  previousValues: <T = HouseFavoritedPreviousValuesPromise>() => T;
-}
-
-export interface HouseFavoritedSubscriptionPayloadSubscription
-  extends Promise<AsyncIterator<HouseFavoritedSubscriptionPayload>>,
-    Fragmentable {
-  mutation: () => Promise<AsyncIterator<MutationType>>;
-  node: <T = HouseFavoritedSubscription>() => T;
-  updatedFields: () => Promise<AsyncIterator<String[]>>;
-  previousValues: <T = HouseFavoritedPreviousValuesSubscription>() => T;
-}
-
-export interface HouseFavoritedPreviousValues {
-  id: ID_Output;
-  createdAt: DateTimeOutput;
-  updatedAt: DateTimeOutput;
-}
-
-export interface HouseFavoritedPreviousValuesPromise
-  extends Promise<HouseFavoritedPreviousValues>,
-    Fragmentable {
-  id: () => Promise<ID_Output>;
-  createdAt: () => Promise<DateTimeOutput>;
-  updatedAt: () => Promise<DateTimeOutput>;
-}
-
-export interface HouseFavoritedPreviousValuesSubscription
-  extends Promise<AsyncIterator<HouseFavoritedPreviousValues>>,
-    Fragmentable {
-  id: () => Promise<AsyncIterator<ID_Output>>;
-  createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
-  updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
-}
-
-export interface LocationSubscriptionPayload {
-  mutation: MutationType;
-  node: Location;
-  updatedFields: String[];
-  previousValues: LocationPreviousValues;
-}
-
-export interface LocationSubscriptionPayloadPromise
-  extends Promise<LocationSubscriptionPayload>,
-    Fragmentable {
-  mutation: () => Promise<MutationType>;
-  node: <T = LocationPromise>() => T;
-  updatedFields: () => Promise<String[]>;
-  previousValues: <T = LocationPreviousValuesPromise>() => T;
-}
-
-export interface LocationSubscriptionPayloadSubscription
-  extends Promise<AsyncIterator<LocationSubscriptionPayload>>,
-    Fragmentable {
-  mutation: () => Promise<AsyncIterator<MutationType>>;
-  node: <T = LocationSubscription>() => T;
-  updatedFields: () => Promise<AsyncIterator<String[]>>;
-  previousValues: <T = LocationPreviousValuesSubscription>() => T;
-}
-
-export interface LocationPreviousValues {
-  id: ID_Output;
-  lat?: Float;
-  lng?: Float;
-  address?: String;
-  createdAt: DateTimeOutput;
-  updatedAt: DateTimeOutput;
-}
-
-export interface LocationPreviousValuesPromise
-  extends Promise<LocationPreviousValues>,
-    Fragmentable {
-  id: () => Promise<ID_Output>;
-  lat: () => Promise<Float>;
-  lng: () => Promise<Float>;
-  address: () => Promise<String>;
-  createdAt: () => Promise<DateTimeOutput>;
-  updatedAt: () => Promise<DateTimeOutput>;
-}
-
-export interface LocationPreviousValuesSubscription
-  extends Promise<AsyncIterator<LocationPreviousValues>>,
-    Fragmentable {
-  id: () => Promise<AsyncIterator<ID_Output>>;
-  lat: () => Promise<AsyncIterator<Float>>;
-  lng: () => Promise<AsyncIterator<Float>>;
-  address: () => Promise<AsyncIterator<String>>;
-  createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
-  updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
-}
-
-export interface NegotiationSubscriptionPayload {
-  mutation: MutationType;
-  node: Negotiation;
-  updatedFields: String[];
-  previousValues: NegotiationPreviousValues;
-}
-
-export interface NegotiationSubscriptionPayloadPromise
-  extends Promise<NegotiationSubscriptionPayload>,
-    Fragmentable {
-  mutation: () => Promise<MutationType>;
-  node: <T = NegotiationPromise>() => T;
-  updatedFields: () => Promise<String[]>;
-  previousValues: <T = NegotiationPreviousValuesPromise>() => T;
-}
-
-export interface NegotiationSubscriptionPayloadSubscription
-  extends Promise<AsyncIterator<NegotiationSubscriptionPayload>>,
-    Fragmentable {
-  mutation: () => Promise<AsyncIterator<MutationType>>;
-  node: <T = NegotiationSubscription>() => T;
-  updatedFields: () => Promise<AsyncIterator<String[]>>;
-  previousValues: <T = NegotiationPreviousValuesSubscription>() => T;
-}
-
-export interface NegotiationPreviousValues {
-  id: ID_Output;
-  createdAt: DateTimeOutput;
-  updatedAt: DateTimeOutput;
-  offer: Float;
-  status?: NEGOTIATION_TYPE;
-}
-
-export interface NegotiationPreviousValuesPromise
-  extends Promise<NegotiationPreviousValues>,
-    Fragmentable {
-  id: () => Promise<ID_Output>;
-  createdAt: () => Promise<DateTimeOutput>;
-  updatedAt: () => Promise<DateTimeOutput>;
-  offer: () => Promise<Float>;
-  status: () => Promise<NEGOTIATION_TYPE>;
-}
-
-export interface NegotiationPreviousValuesSubscription
-  extends Promise<AsyncIterator<NegotiationPreviousValues>>,
-    Fragmentable {
-  id: () => Promise<AsyncIterator<ID_Output>>;
-  createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
-  updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
-  offer: () => Promise<AsyncIterator<Float>>;
-  status: () => Promise<AsyncIterator<NEGOTIATION_TYPE>>;
-}
-
-export interface NotificationSubscriptionPayload {
-  mutation: MutationType;
-  node: Notification;
-  updatedFields: String[];
-  previousValues: NotificationPreviousValues;
-}
-
-export interface NotificationSubscriptionPayloadPromise
-  extends Promise<NotificationSubscriptionPayload>,
-    Fragmentable {
-  mutation: () => Promise<MutationType>;
-  node: <T = NotificationPromise>() => T;
-  updatedFields: () => Promise<String[]>;
-  previousValues: <T = NotificationPreviousValuesPromise>() => T;
-}
-
-export interface NotificationSubscriptionPayloadSubscription
-  extends Promise<AsyncIterator<NotificationSubscriptionPayload>>,
-    Fragmentable {
-  mutation: () => Promise<AsyncIterator<MutationType>>;
-  node: <T = NotificationSubscription>() => T;
-  updatedFields: () => Promise<AsyncIterator<String[]>>;
-  previousValues: <T = NotificationPreviousValuesSubscription>() => T;
-}
-
-export interface NotificationPreviousValues {
-  id: ID_Output;
-  createdAt: DateTimeOutput;
-  updatedAt: DateTimeOutput;
-  type?: NOTIFICATION_TYPE;
-  link: String;
-  readDate: DateTimeOutput;
-}
-
-export interface NotificationPreviousValuesPromise
-  extends Promise<NotificationPreviousValues>,
-    Fragmentable {
-  id: () => Promise<ID_Output>;
-  createdAt: () => Promise<DateTimeOutput>;
-  updatedAt: () => Promise<DateTimeOutput>;
-  type: () => Promise<NOTIFICATION_TYPE>;
-  link: () => Promise<String>;
-  readDate: () => Promise<DateTimeOutput>;
-}
-
-export interface NotificationPreviousValuesSubscription
-  extends Promise<AsyncIterator<NotificationPreviousValues>>,
-    Fragmentable {
-  id: () => Promise<AsyncIterator<ID_Output>>;
-  createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
-  updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
-  type: () => Promise<AsyncIterator<NOTIFICATION_TYPE>>;
-  link: () => Promise<AsyncIterator<String>>;
-  readDate: () => Promise<AsyncIterator<DateTimeOutput>>;
-}
-
-export interface PaymentAccountSubscriptionPayload {
-  mutation: MutationType;
-  node: PaymentAccount;
-  updatedFields: String[];
-  previousValues: PaymentAccountPreviousValues;
-}
-
-export interface PaymentAccountSubscriptionPayloadPromise
-  extends Promise<PaymentAccountSubscriptionPayload>,
-    Fragmentable {
-  mutation: () => Promise<MutationType>;
-  node: <T = PaymentAccountPromise>() => T;
-  updatedFields: () => Promise<String[]>;
-  previousValues: <T = PaymentAccountPreviousValuesPromise>() => T;
-}
-
-export interface PaymentAccountSubscriptionPayloadSubscription
-  extends Promise<AsyncIterator<PaymentAccountSubscriptionPayload>>,
-    Fragmentable {
-  mutation: () => Promise<AsyncIterator<MutationType>>;
-  node: <T = PaymentAccountSubscription>() => T;
-  updatedFields: () => Promise<AsyncIterator<String[]>>;
-  previousValues: <T = PaymentAccountPreviousValuesSubscription>() => T;
-}
-
-export interface PaymentAccountPreviousValues {
-  id: ID_Output;
-  createdAt: DateTimeOutput;
-  updatedAt: DateTimeOutput;
-  type?: PAYMENT_PROVIDER;
-}
-
-export interface PaymentAccountPreviousValuesPromise
-  extends Promise<PaymentAccountPreviousValues>,
-    Fragmentable {
-  id: () => Promise<ID_Output>;
-  createdAt: () => Promise<DateTimeOutput>;
-  updatedAt: () => Promise<DateTimeOutput>;
-  type: () => Promise<PAYMENT_PROVIDER>;
-}
-
-export interface PaymentAccountPreviousValuesSubscription
-  extends Promise<AsyncIterator<PaymentAccountPreviousValues>>,
-    Fragmentable {
-  id: () => Promise<AsyncIterator<ID_Output>>;
-  createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
-  updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
-  type: () => Promise<AsyncIterator<PAYMENT_PROVIDER>>;
-}
-
-export interface PaymentHouseSubscriptionPayload {
-  mutation: MutationType;
-  node: PaymentHouse;
-  updatedFields: String[];
-  previousValues: PaymentHousePreviousValues;
-}
-
-export interface PaymentHouseSubscriptionPayloadPromise
-  extends Promise<PaymentHouseSubscriptionPayload>,
-    Fragmentable {
-  mutation: () => Promise<MutationType>;
-  node: <T = PaymentHousePromise>() => T;
-  updatedFields: () => Promise<String[]>;
-  previousValues: <T = PaymentHousePreviousValuesPromise>() => T;
-}
-
-export interface PaymentHouseSubscriptionPayloadSubscription
-  extends Promise<AsyncIterator<PaymentHouseSubscriptionPayload>>,
-    Fragmentable {
-  mutation: () => Promise<AsyncIterator<MutationType>>;
-  node: <T = PaymentHouseSubscription>() => T;
-  updatedFields: () => Promise<AsyncIterator<String[]>>;
-  previousValues: <T = PaymentHousePreviousValuesSubscription>() => T;
-}
-
-export interface PaymentHousePreviousValues {
-  id: ID_Output;
-  createdAt: DateTimeOutput;
-  updatedAt: DateTimeOutput;
-  totalPrice: Float;
-}
-
-export interface PaymentHousePreviousValuesPromise
-  extends Promise<PaymentHousePreviousValues>,
-    Fragmentable {
-  id: () => Promise<ID_Output>;
-  createdAt: () => Promise<DateTimeOutput>;
-  updatedAt: () => Promise<DateTimeOutput>;
-  totalPrice: () => Promise<Float>;
-}
-
-export interface PaymentHousePreviousValuesSubscription
-  extends Promise<AsyncIterator<PaymentHousePreviousValues>>,
-    Fragmentable {
-  id: () => Promise<AsyncIterator<ID_Output>>;
-  createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
-  updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
-  totalPrice: () => Promise<AsyncIterator<Float>>;
-}
-
-export interface PaymentLanlordInfoSubscriptionPayload {
-  mutation: MutationType;
-  node: PaymentLanlordInfo;
-  updatedFields: String[];
-  previousValues: PaymentLanlordInfoPreviousValues;
-}
-
-export interface PaymentLanlordInfoSubscriptionPayloadPromise
-  extends Promise<PaymentLanlordInfoSubscriptionPayload>,
-    Fragmentable {
-  mutation: () => Promise<MutationType>;
-  node: <T = PaymentLanlordInfoPromise>() => T;
-  updatedFields: () => Promise<String[]>;
-  previousValues: <T = PaymentLanlordInfoPreviousValuesPromise>() => T;
-}
-
-export interface PaymentLanlordInfoSubscriptionPayloadSubscription
-  extends Promise<AsyncIterator<PaymentLanlordInfoSubscriptionPayload>>,
-    Fragmentable {
-  mutation: () => Promise<AsyncIterator<MutationType>>;
-  node: <T = PaymentLanlordInfoSubscription>() => T;
-  updatedFields: () => Promise<AsyncIterator<String[]>>;
-  previousValues: <T = PaymentLanlordInfoPreviousValuesSubscription>() => T;
-}
-
-export interface PaymentLanlordInfoPreviousValues {
-  id: ID_Output;
-  createdAt: DateTimeOutput;
-  updatedAt: DateTimeOutput;
-  totalPrice: Float;
-  moncashTransactId: String;
-}
-
-export interface PaymentLanlordInfoPreviousValuesPromise
-  extends Promise<PaymentLanlordInfoPreviousValues>,
-    Fragmentable {
-  id: () => Promise<ID_Output>;
-  createdAt: () => Promise<DateTimeOutput>;
-  updatedAt: () => Promise<DateTimeOutput>;
-  totalPrice: () => Promise<Float>;
-  moncashTransactId: () => Promise<String>;
-}
-
-export interface PaymentLanlordInfoPreviousValuesSubscription
-  extends Promise<AsyncIterator<PaymentLanlordInfoPreviousValues>>,
-    Fragmentable {
-  id: () => Promise<AsyncIterator<ID_Output>>;
-  createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
-  updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
-  totalPrice: () => Promise<AsyncIterator<Float>>;
-  moncashTransactId: () => Promise<AsyncIterator<String>>;
-}
-
-export interface PaypalInformationSubscriptionPayload {
-  mutation: MutationType;
-  node: PaypalInformation;
-  updatedFields: String[];
-  previousValues: PaypalInformationPreviousValues;
-}
-
-export interface PaypalInformationSubscriptionPayloadPromise
-  extends Promise<PaypalInformationSubscriptionPayload>,
-    Fragmentable {
-  mutation: () => Promise<MutationType>;
-  node: <T = PaypalInformationPromise>() => T;
-  updatedFields: () => Promise<String[]>;
-  previousValues: <T = PaypalInformationPreviousValuesPromise>() => T;
-}
-
-export interface PaypalInformationSubscriptionPayloadSubscription
-  extends Promise<AsyncIterator<PaypalInformationSubscriptionPayload>>,
-    Fragmentable {
-  mutation: () => Promise<AsyncIterator<MutationType>>;
-  node: <T = PaypalInformationSubscription>() => T;
-  updatedFields: () => Promise<AsyncIterator<String[]>>;
-  previousValues: <T = PaypalInformationPreviousValuesSubscription>() => T;
-}
-
-export interface PaypalInformationPreviousValues {
-  id: ID_Output;
-  createdAt: DateTimeOutput;
-  updatedAt: DateTimeOutput;
-  email: String;
-}
-
-export interface PaypalInformationPreviousValuesPromise
-  extends Promise<PaypalInformationPreviousValues>,
-    Fragmentable {
-  id: () => Promise<ID_Output>;
-  createdAt: () => Promise<DateTimeOutput>;
-  updatedAt: () => Promise<DateTimeOutput>;
-  email: () => Promise<String>;
-}
-
-export interface PaypalInformationPreviousValuesSubscription
-  extends Promise<AsyncIterator<PaypalInformationPreviousValues>>,
-    Fragmentable {
-  id: () => Promise<AsyncIterator<ID_Output>>;
-  createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
-  updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
-  email: () => Promise<AsyncIterator<String>>;
-}
-
-export interface PictureSubscriptionPayload {
-  mutation: MutationType;
-  node: Picture;
-  updatedFields: String[];
-  previousValues: PicturePreviousValues;
-}
-
-export interface PictureSubscriptionPayloadPromise
-  extends Promise<PictureSubscriptionPayload>,
-    Fragmentable {
-  mutation: () => Promise<MutationType>;
-  node: <T = PicturePromise>() => T;
-  updatedFields: () => Promise<String[]>;
-  previousValues: <T = PicturePreviousValuesPromise>() => T;
-}
-
-export interface PictureSubscriptionPayloadSubscription
-  extends Promise<AsyncIterator<PictureSubscriptionPayload>>,
-    Fragmentable {
-  mutation: () => Promise<AsyncIterator<MutationType>>;
-  node: <T = PictureSubscription>() => T;
-  updatedFields: () => Promise<AsyncIterator<String[]>>;
-  previousValues: <T = PicturePreviousValuesSubscription>() => T;
-}
-
-export interface PicturePreviousValues {
-  id: ID_Output;
-  url: String;
-  createdAt: DateTimeOutput;
-  updatedAt: DateTimeOutput;
-}
-
-export interface PicturePreviousValuesPromise
-  extends Promise<PicturePreviousValues>,
-    Fragmentable {
-  id: () => Promise<ID_Output>;
-  url: () => Promise<String>;
-  createdAt: () => Promise<DateTimeOutput>;
-  updatedAt: () => Promise<DateTimeOutput>;
-}
-
-export interface PicturePreviousValuesSubscription
-  extends Promise<AsyncIterator<PicturePreviousValues>>,
-    Fragmentable {
-  id: () => Promise<AsyncIterator<ID_Output>>;
-  url: () => Promise<AsyncIterator<String>>;
-  createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
-  updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
-}
-
-export interface PricingSubscriptionPayload {
-  mutation: MutationType;
-  node: Pricing;
-  updatedFields: String[];
-  previousValues: PricingPreviousValues;
-}
-
-export interface PricingSubscriptionPayloadPromise
-  extends Promise<PricingSubscriptionPayload>,
-    Fragmentable {
-  mutation: () => Promise<MutationType>;
-  node: <T = PricingPromise>() => T;
-  updatedFields: () => Promise<String[]>;
-  previousValues: <T = PricingPreviousValuesPromise>() => T;
-}
-
-export interface PricingSubscriptionPayloadSubscription
-  extends Promise<AsyncIterator<PricingSubscriptionPayload>>,
-    Fragmentable {
-  mutation: () => Promise<AsyncIterator<MutationType>>;
-  node: <T = PricingSubscription>() => T;
-  updatedFields: () => Promise<AsyncIterator<String[]>>;
-  previousValues: <T = PricingPreviousValuesSubscription>() => T;
-}
-
-export interface PricingPreviousValues {
-  id: ID_Output;
-  basePrice?: Float;
-  highestPrice: Float;
-  currency: CURRENCY;
-  income?: Float;
-  createdAt: DateTimeOutput;
-  updatedAt: DateTimeOutput;
-}
-
-export interface PricingPreviousValuesPromise
-  extends Promise<PricingPreviousValues>,
-    Fragmentable {
-  id: () => Promise<ID_Output>;
-  basePrice: () => Promise<Float>;
-  highestPrice: () => Promise<Float>;
-  currency: () => Promise<CURRENCY>;
-  income: () => Promise<Float>;
-  createdAt: () => Promise<DateTimeOutput>;
-  updatedAt: () => Promise<DateTimeOutput>;
-}
-
-export interface PricingPreviousValuesSubscription
-  extends Promise<AsyncIterator<PricingPreviousValues>>,
-    Fragmentable {
-  id: () => Promise<AsyncIterator<ID_Output>>;
-  basePrice: () => Promise<AsyncIterator<Float>>;
-  highestPrice: () => Promise<AsyncIterator<Float>>;
-  currency: () => Promise<AsyncIterator<CURRENCY>>;
-  income: () => Promise<AsyncIterator<Float>>;
-  createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
-  updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
-}
-
-export interface ReviewSubscriptionPayload {
-  mutation: MutationType;
-  node: Review;
-  updatedFields: String[];
-  previousValues: ReviewPreviousValues;
-}
-
-export interface ReviewSubscriptionPayloadPromise
-  extends Promise<ReviewSubscriptionPayload>,
-    Fragmentable {
-  mutation: () => Promise<MutationType>;
-  node: <T = ReviewPromise>() => T;
-  updatedFields: () => Promise<String[]>;
-  previousValues: <T = ReviewPreviousValuesPromise>() => T;
-}
-
-export interface ReviewSubscriptionPayloadSubscription
-  extends Promise<AsyncIterator<ReviewSubscriptionPayload>>,
-    Fragmentable {
-  mutation: () => Promise<AsyncIterator<MutationType>>;
-  node: <T = ReviewSubscription>() => T;
-  updatedFields: () => Promise<AsyncIterator<String[]>>;
-  previousValues: <T = ReviewPreviousValuesSubscription>() => T;
-}
-
-export interface ReviewPreviousValues {
-  id: ID_Output;
-  createdAt: DateTimeOutput;
-  updatedAt: DateTimeOutput;
-  text?: String;
-  stars: Int;
-}
-
-export interface ReviewPreviousValuesPromise
-  extends Promise<ReviewPreviousValues>,
-    Fragmentable {
-  id: () => Promise<ID_Output>;
-  createdAt: () => Promise<DateTimeOutput>;
-  updatedAt: () => Promise<DateTimeOutput>;
-  text: () => Promise<String>;
-  stars: () => Promise<Int>;
-}
-
-export interface ReviewPreviousValuesSubscription
-  extends Promise<AsyncIterator<ReviewPreviousValues>>,
-    Fragmentable {
-  id: () => Promise<AsyncIterator<ID_Output>>;
-  createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
-  updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
-  text: () => Promise<AsyncIterator<String>>;
-  stars: () => Promise<AsyncIterator<Int>>;
-}
-
-export interface RoomSubscriptionPayload {
-  mutation: MutationType;
-  node: Room;
-  updatedFields: String[];
-  previousValues: RoomPreviousValues;
-}
-
-export interface RoomSubscriptionPayloadPromise
-  extends Promise<RoomSubscriptionPayload>,
-    Fragmentable {
-  mutation: () => Promise<MutationType>;
-  node: <T = RoomPromise>() => T;
-  updatedFields: () => Promise<String[]>;
-  previousValues: <T = RoomPreviousValuesPromise>() => T;
-}
-
-export interface RoomSubscriptionPayloadSubscription
-  extends Promise<AsyncIterator<RoomSubscriptionPayload>>,
-    Fragmentable {
-  mutation: () => Promise<AsyncIterator<MutationType>>;
-  node: <T = RoomSubscription>() => T;
-  updatedFields: () => Promise<AsyncIterator<String[]>>;
-  previousValues: <T = RoomPreviousValuesSubscription>() => T;
-}
-
-export interface RoomPreviousValues {
-  id: ID_Output;
-  label: ROOM_LABELS;
-  createdAt: DateTimeOutput;
-  updatedAt: DateTimeOutput;
-}
-
-export interface RoomPreviousValuesPromise
-  extends Promise<RoomPreviousValues>,
-    Fragmentable {
-  id: () => Promise<ID_Output>;
-  label: () => Promise<ROOM_LABELS>;
-  createdAt: () => Promise<DateTimeOutput>;
-  updatedAt: () => Promise<DateTimeOutput>;
-}
-
-export interface RoomPreviousValuesSubscription
-  extends Promise<AsyncIterator<RoomPreviousValues>>,
-    Fragmentable {
-  id: () => Promise<AsyncIterator<ID_Output>>;
-  label: () => Promise<AsyncIterator<ROOM_LABELS>>;
-  createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
-  updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
-}
-
-export interface StateSubscriptionPayload {
-  mutation: MutationType;
-  node: State;
-  updatedFields: String[];
-  previousValues: StatePreviousValues;
-}
-
-export interface StateSubscriptionPayloadPromise
-  extends Promise<StateSubscriptionPayload>,
-    Fragmentable {
-  mutation: () => Promise<MutationType>;
-  node: <T = StatePromise>() => T;
-  updatedFields: () => Promise<String[]>;
-  previousValues: <T = StatePreviousValuesPromise>() => T;
-}
-
-export interface StateSubscriptionPayloadSubscription
-  extends Promise<AsyncIterator<StateSubscriptionPayload>>,
-    Fragmentable {
-  mutation: () => Promise<AsyncIterator<MutationType>>;
-  node: <T = StateSubscription>() => T;
-  updatedFields: () => Promise<AsyncIterator<String[]>>;
-  previousValues: <T = StatePreviousValuesSubscription>() => T;
-}
-
-export interface StatePreviousValues {
-  id: ID_Output;
-  name: String;
-  rank?: Int;
-  createdAt: DateTimeOutput;
-  updatedAt: DateTimeOutput;
-}
-
-export interface StatePreviousValuesPromise
-  extends Promise<StatePreviousValues>,
-    Fragmentable {
-  id: () => Promise<ID_Output>;
-  name: () => Promise<String>;
-  rank: () => Promise<Int>;
-  createdAt: () => Promise<DateTimeOutput>;
-  updatedAt: () => Promise<DateTimeOutput>;
-}
-
-export interface StatePreviousValuesSubscription
-  extends Promise<AsyncIterator<StatePreviousValues>>,
-    Fragmentable {
-  id: () => Promise<AsyncIterator<ID_Output>>;
-  name: () => Promise<AsyncIterator<String>>;
-  rank: () => Promise<AsyncIterator<Int>>;
-  createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
-  updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
-}
-
-export interface UserSubscriptionPayload {
-  mutation: MutationType;
-  node: User;
-  updatedFields: String[];
-  previousValues: UserPreviousValues;
-}
-
-export interface UserSubscriptionPayloadPromise
-  extends Promise<UserSubscriptionPayload>,
-    Fragmentable {
-  mutation: () => Promise<MutationType>;
-  node: <T = UserPromise>() => T;
-  updatedFields: () => Promise<String[]>;
-  previousValues: <T = UserPreviousValuesPromise>() => T;
-}
-
-export interface UserSubscriptionPayloadSubscription
-  extends Promise<AsyncIterator<UserSubscriptionPayload>>,
-    Fragmentable {
-  mutation: () => Promise<AsyncIterator<MutationType>>;
-  node: <T = UserSubscription>() => T;
-  updatedFields: () => Promise<AsyncIterator<String[]>>;
-  previousValues: <T = UserPreviousValuesSubscription>() => T;
-}
-
-export interface UserPreviousValues {
-  id: ID_Output;
-  createdAt: DateTimeOutput;
-  updatedAt: DateTimeOutput;
-  status?: Boolean;
-  facebookUserId?: String;
-  firstName: String;
-  lastName: String;
-  email?: String;
-  password?: String;
-  resetToken?: String;
-  resetTokenExpiry?: String;
-  phone1?: String;
-  phone2?: String;
-  primaryPhone: Int;
-  responseTime?: Int;
-  isSuperHost: Boolean;
-  permissions: Permission[];
-}
-
-export interface UserPreviousValuesPromise
-  extends Promise<UserPreviousValues>,
-    Fragmentable {
-  id: () => Promise<ID_Output>;
-  createdAt: () => Promise<DateTimeOutput>;
-  updatedAt: () => Promise<DateTimeOutput>;
-  status: () => Promise<Boolean>;
-  facebookUserId: () => Promise<String>;
-  firstName: () => Promise<String>;
-  lastName: () => Promise<String>;
-  email: () => Promise<String>;
-  password: () => Promise<String>;
-  resetToken: () => Promise<String>;
-  resetTokenExpiry: () => Promise<String>;
-  phone1: () => Promise<String>;
-  phone2: () => Promise<String>;
-  primaryPhone: () => Promise<Int>;
-  responseTime: () => Promise<Int>;
-  isSuperHost: () => Promise<Boolean>;
-  permissions: () => Promise<Permission[]>;
-}
-
-export interface UserPreviousValuesSubscription
-  extends Promise<AsyncIterator<UserPreviousValues>>,
-    Fragmentable {
-  id: () => Promise<AsyncIterator<ID_Output>>;
-  createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
-  updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
-  status: () => Promise<AsyncIterator<Boolean>>;
-  facebookUserId: () => Promise<AsyncIterator<String>>;
-  firstName: () => Promise<AsyncIterator<String>>;
-  lastName: () => Promise<AsyncIterator<String>>;
-  email: () => Promise<AsyncIterator<String>>;
-  password: () => Promise<AsyncIterator<String>>;
-  resetToken: () => Promise<AsyncIterator<String>>;
-  resetTokenExpiry: () => Promise<AsyncIterator<String>>;
-  phone1: () => Promise<AsyncIterator<String>>;
-  phone2: () => Promise<AsyncIterator<String>>;
-  primaryPhone: () => Promise<AsyncIterator<Int>>;
-  responseTime: () => Promise<AsyncIterator<Int>>;
-  isSuperHost: () => Promise<AsyncIterator<Boolean>>;
-  permissions: () => Promise<AsyncIterator<Permission[]>>;
-}
-
-export interface VideoSubscriptionPayload {
-  mutation: MutationType;
-  node: Video;
-  updatedFields: String[];
-  previousValues: VideoPreviousValues;
-}
-
-export interface VideoSubscriptionPayloadPromise
-  extends Promise<VideoSubscriptionPayload>,
-    Fragmentable {
-  mutation: () => Promise<MutationType>;
-  node: <T = VideoPromise>() => T;
-  updatedFields: () => Promise<String[]>;
-  previousValues: <T = VideoPreviousValuesPromise>() => T;
-}
-
-export interface VideoSubscriptionPayloadSubscription
-  extends Promise<AsyncIterator<VideoSubscriptionPayload>>,
-    Fragmentable {
-  mutation: () => Promise<AsyncIterator<MutationType>>;
-  node: <T = VideoSubscription>() => T;
-  updatedFields: () => Promise<AsyncIterator<String[]>>;
-  previousValues: <T = VideoPreviousValuesSubscription>() => T;
-}
-
-export interface VideoPreviousValues {
-  id: ID_Output;
-  url: String;
-  createdAt: DateTimeOutput;
-  updatedAt: DateTimeOutput;
-}
-
-export interface VideoPreviousValuesPromise
-  extends Promise<VideoPreviousValues>,
-    Fragmentable {
-  id: () => Promise<ID_Output>;
-  url: () => Promise<String>;
-  createdAt: () => Promise<DateTimeOutput>;
-  updatedAt: () => Promise<DateTimeOutput>;
-}
-
-export interface VideoPreviousValuesSubscription
-  extends Promise<AsyncIterator<VideoPreviousValues>>,
-    Fragmentable {
-  id: () => Promise<AsyncIterator<ID_Output>>;
-  url: () => Promise<AsyncIterator<String>>;
-  createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
-  updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
-}
-
-export interface ViewsSubscriptionPayload {
-  mutation: MutationType;
-  node: Views;
-  updatedFields: String[];
-  previousValues: ViewsPreviousValues;
-}
-
-export interface ViewsSubscriptionPayloadPromise
-  extends Promise<ViewsSubscriptionPayload>,
-    Fragmentable {
-  mutation: () => Promise<MutationType>;
-  node: <T = ViewsPromise>() => T;
-  updatedFields: () => Promise<String[]>;
-  previousValues: <T = ViewsPreviousValuesPromise>() => T;
-}
-
-export interface ViewsSubscriptionPayloadSubscription
-  extends Promise<AsyncIterator<ViewsSubscriptionPayload>>,
-    Fragmentable {
-  mutation: () => Promise<AsyncIterator<MutationType>>;
-  node: <T = ViewsSubscription>() => T;
-  updatedFields: () => Promise<AsyncIterator<String[]>>;
-  previousValues: <T = ViewsPreviousValuesSubscription>() => T;
-}
-
-export interface ViewsPreviousValues {
-  id: ID_Output;
-  lastWeek: Int;
-  createdAt: DateTimeOutput;
-  updatedAt: DateTimeOutput;
-}
-
-export interface ViewsPreviousValuesPromise
-  extends Promise<ViewsPreviousValues>,
-    Fragmentable {
-  id: () => Promise<ID_Output>;
-  lastWeek: () => Promise<Int>;
-  createdAt: () => Promise<DateTimeOutput>;
-  updatedAt: () => Promise<DateTimeOutput>;
-}
-
-export interface ViewsPreviousValuesSubscription
-  extends Promise<AsyncIterator<ViewsPreviousValues>>,
-    Fragmentable {
-  id: () => Promise<AsyncIterator<ID_Output>>;
-  lastWeek: () => Promise<AsyncIterator<Int>>;
-  createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
-  updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
-}
+export type Long = string;
+
+/*
+The `Boolean` scalar type represents `true` or `false`.
+*/
+export type Boolean = boolean;
+
+/*
+The `Float` scalar type represents signed double-precision fractional values as specified by [IEEE 754](http://en.wikipedia.org/wiki/IEEE_floating_point). 
+*/
+export type Float = number;
 
 /*
 The `ID` scalar type represents a unique identifier, often used to refetch an object or as key for a cache. The ID type appears in a JSON response as a String; however, it is not intended to be human-readable. When expected as an input type, any string (such as `"4"`) or integer (such as `4`) input value will be accepted as an ID.
@@ -11639,18 +11651,6 @@ export type DateTimeInput = Date | string;
 DateTime scalar output type, which is always a string
 */
 export type DateTimeOutput = string;
-
-/*
-The `Boolean` scalar type represents `true` or `false`.
-*/
-export type Boolean = boolean;
-
-/*
-The `Float` scalar type represents signed double-precision fractional values as specified by [IEEE 754](https://en.wikipedia.org/wiki/IEEE_floating_point). 
-*/
-export type Float = number;
-
-export type Long = string;
 
 /**
  * Model Metadata

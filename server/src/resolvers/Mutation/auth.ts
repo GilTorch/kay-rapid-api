@@ -21,12 +21,11 @@ interface Status {
 export const auth = {
   //signup mutation which return token and user
   async signup(parent, args, context: Context, info) {
-
     const password = await bcrypt.hash(args.password, 10);
-    console.log(process.env.PROFILE_PICTURE_ID)
+    console.log(process.env.PROFILE_PICTURE_ID);
     let user = null;
     if (args.profilePicture) {
-      user = await context.prisma.createUser( {
+      user = await context.prisma.createUser({
         ...args,
         password,
         profilePicture: {
@@ -34,51 +33,49 @@ export const auth = {
             url: args.profilePicture
           }
         },
-        permissions:{
-          set: ['STANDARD','ITEMCREATE']
+        permissions: {
+          set: ["STANDARD", "ITEMCREATE"]
         }
-      }
-    )
+      });
     } else {
-      user = await context.prisma.createUser( {
+      user = await context.prisma.createUser({
         ...args,
         password,
-        permissions:{
-          set: ['STANDARD','ITEMCREATE']
+        permissions: {
+          set: ["STANDARD", "ITEMCREATE"]
         }
-      }
-    )
+      });
     }
-  
-    console.log(APP_SECRET)
+
+    console.log(APP_SECRET);
     return {
-      token: jwt.sign({ userId: user.id },process.env.APP_SECRET), //"prismaDbdev123"),
+      token: jwt.sign({ userId: user.id }, process.env.APP_SECRET), //"prismaDbdev123"),
       user
     };
   },
 
   //loging mutation which returns token based on userid and user
   async login(parent, args, context: Context) {
-    const user = await context.prisma.user({ email: args.email } );
+    const user = await context.prisma.user({ email: args.email });
     console.log(user);
     const valid = await bcrypt.compare(
       args.password,
       user ? user.password : ""
     );
     if (!user) {
-      console.log("auth error 1")
-      throw new Error(`no such user found for email ${args.email}`)
+      console.log("auth error 1");
+      throw new Error(`no such user found for email ${args.email}`);
     }
     if (!valid) {
       console.log("auth error2");
-      throw new Error(`Incorrect password`)
+      throw new Error(`Incorrect password`);
     }
     if (!user.status) {
       console.log("auth error3");
       throw new AuthError();
     }
-    console.log("APP SECRET"+process.env.APP_SECRET);
-    console.log(user)
+    console.log("APP SECRET" + process.env.APP_SECRET);
+    console.log(user);
     return {
       token: jwt.sign({ userId: user.id }, process.env.APP_SECRET),
       user
@@ -106,25 +103,24 @@ export const auth = {
     const facebookUser = await getFacebookUser(args.facebookToken);
 
     //query for facebookuser
-    const user = await context.prisma.user( { facebookUserId: facebookUser.id }
-    );
+    const user = await context.prisma.user({ facebookUserId: facebookUser.id });
 
     let userforToken = user;
     //check if user exits if not create new user
     if (!user) {
-      const newUser = await context.prisma.createUser({ 
-          facebookUserId: facebookUser.id,
-          email: facebookUser.email,
-          firstName: facebookUser.first_name,
-          lastName: facebookUser.last_name,
-          profilePicture: {
-            create: {
-              url: facebookUser.picture
-            }
-          } ,
-          permissions:{
-            set: ['STANDARD','ITEMCREATE']
+      const newUser = await context.prisma.createUser({
+        facebookUserId: facebookUser.id,
+        email: facebookUser.email,
+        firstName: facebookUser.first_name,
+        lastName: facebookUser.last_name,
+        profilePicture: {
+          create: {
+            url: facebookUser.picture
           }
+        },
+        permissions: {
+          set: ["STANDARD", "ITEMCREATE"]
+        }
       });
       userforToken = newUser;
     }
@@ -141,12 +137,13 @@ export const auth = {
     if (!user) {
       throw new Error(`No such user found with email ${args.email}`);
     }
-
+    console.log("request password token" + args.email);
     //set a reset token and expiry date for that user
 
     const randomBytesWithPromise = promisify(randomBytes);
     const resetToken = (await randomBytesWithPromise(20)).toString("hex");
     const resetTokenExpiry = "" + Date.now() + 3600000;
+
     const res = await context.prisma.updateUser({
       where: { email: args.email },
       data: {

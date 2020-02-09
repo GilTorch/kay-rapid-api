@@ -1,6 +1,5 @@
 # import  RoomCreateWithoutHouseInput,Room,PictureCreateInput, State, Country , House , Commune, City, User,House_Favorited, Review from "./generated/prisma.graphql"
 
-
 type Query {
   countries: [Country!]!
   states: [State!]!
@@ -11,12 +10,12 @@ type Query {
   topCommunes(c: Int!): [Commune!]!
   topCity(c: Int!): [Commune!]!
   topStates(c: Int!): [State!]!
-  houseFavoritedByUser:[HouseFavorited!]!
-  houseRating(houseId: String!):HouseRating!
+  houseFavoritedByUser: [HouseFavorited!]!
+  houseRating(houseId: String!): HouseRating!
   housesOwnByUser: [House]!
-  housesOwnByUserCount : Int!
-  House(id: String):House!
-  user(id: String):User!
+  housesOwnByUserCount: Int!
+  House(id: String): House!
+  user(id: String): User!
 }
 
 type AuthPayLoad {
@@ -30,10 +29,10 @@ type Message {
 type HouseRating {
   count: Int!
   rating: Float!
-  reviews:[Review!]!
+  reviews: [Review!]!
 }
 
-type count  {
+type count {
   count: Int!
 }
 
@@ -124,6 +123,7 @@ type Mutation {
     rentOrSell: RENT_OR_SELL
   ): House
   updateHouse(
+    houseId: String!
     area: Int
     age: Int
     shortDescription: String
@@ -195,10 +195,6 @@ type Mutation {
   ): Room
 
   createFavoriteHouse(idHouse: String!): HouseFavorited
-  createReview(
-    houseId: String!
-    stars: Int!
-    text: String
-  ): Review
+  createReview(houseId: String!, stars: Int!, text: String): Review
   deleteFavoriteHouse(idHouseFavorite: [ID!]): count
 }

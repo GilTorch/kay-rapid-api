@@ -36,10 +36,10 @@ type House {
   numBaths: Int!
   numLivingrooms: Int
   numDiningrooms: Int
-  reviews: [Review!]!
-  amenities: Amenities @relation(link: INLINE)
+  reviews: [Review!]! @relation(onDelete: CASCADE)
+  amenities: Amenities @relation(link: INLINE onDelete: CASCADE)
   host: User!
-  pricing: Pricing @relation(link: INLINE)
+  pricing: Pricing @relation(link: INLINE onDelete: CASCADE)
   location: Location! 
   leaseType: HOUSE_LEASE_TYPE
   verified: Boolean! @default(value: false)
@@ -47,7 +47,7 @@ type House {
   residency: House_RESIDENCY
   lease: Int
   rooms: [Room!]!
-  views: Views @relation(link: INLINE)
+  views: Views @relation(link: INLINE onDelete: CASCADE)
   bookings: [Booking!]!
   pictures: [Picture!]! @relation(name: "HousePictures")
   contactInfoPayments: [PaymentLanlordInfo!]!
@@ -218,7 +218,7 @@ type HouseFavorited {
   createdAt: DateTime! @createdAt
   updatedAt: DateTime! @updatedAt
   user: User!
-  house: House!
+  house: House! @relation(link: INLINE onDelete: CASCADE)
 }
 
 type Negotiation {
