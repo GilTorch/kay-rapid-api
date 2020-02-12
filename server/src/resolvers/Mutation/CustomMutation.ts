@@ -1,41 +1,41 @@
-import { getUserId, Context, hasPermission } from "../../utils";
+import { getUserId, Context, hasPermission } from '../../utils'
 
 export const CustomMutation = {
-  async createCountry(parent, { name }, context: Context) {
-    return context.prisma.createCountry({ name });
+  async createCountry (parent, { name }, context: Context) {
+    return context.prisma.createCountry({ name })
   },
-  async createState(parent, { name, idCountry }, context: Context) {
+  async createState (parent, { name, idCountry }, context: Context) {
     return context.prisma.createState({
       name,
       country: {
         connect: { id: idCountry }
       }
-    });
+    })
   },
-  async createCity(parent, { name, idState }, context: Context) {
+  async createCity (parent, { name, idState }, context: Context) {
     return context.prisma.createCity({
       name,
       state: {
         connect: { id: idState }
       }
-    });
+    })
   },
-  async createCommune(parent, { name, idCity }, context: Context) {
+  async createCommune (parent, { name, idCity }, context: Context) {
     return context.prisma.createCommune({
       name,
       city: {
         connect: { id: idCity }
       }
-    });
+    })
   },
   // search the houses that the user owns
-  async createHouse(parent, args, context: Context) {
-    const userId = getUserId(context);
+  async createHouse (parent, args, context: Context) {
+    const userId = getUserId(context)
     if (!userId) {
-      throw new Error("You must be logged in");
+      throw new Error('You must be logged in')
     }
-    let x = await context.prisma.user({ id: userId });
-    hasPermission(x, ["STANDARD"]);
+    let x = await context.prisma.user({ id: userId })
+    hasPermission(x, ['STANDARD'])
     return context.prisma.createHouse({
       area: args.area,
       age: args.age,
@@ -124,9 +124,9 @@ export const CustomMutation = {
         }
       },
       rentOrSell: args.rentOrSell
-    });
+    })
   },
-  async updateHouse(parent, args, context: Context) {
+  async updateHouse (parent, args, context: Context) {
     return context.prisma.updateHouse({
       data: {
         area: args.area,
@@ -216,38 +216,30 @@ export const CustomMutation = {
       where: {
         id: args.houseId
       }
-    });
+    })
   },
-  async deleteHouse(parent, args, context: Context) {
+  async deleteHouse (parent, args, context: Context) {
     // fetch all favorites with id of house
-    const favoriteArray = await context.prisma.houseFavoriteds({
+    const userId = getUserId(context)
+    console.log(userId)
+    const [house] = await context.prisma.houses({
       where: {
-        user: {
-          id: getUserId(context)
-        },
-        house: {
-          id: args.id
+        id: args.id,
+        host: {
+          id: userId
         }
       }
-    });
-    console.log(
-      "=============================HOUSE FAVORITED===================\n"
-    );
+    })
 
-    if (favoriteArray.length > 0) {
-      console.log(favoriteArray);
-      favoriteArray.forEach(async favorited => {
-        await context.prisma.deleteHouseFavorited({
-          id: favorited.id
-        });
-      });
+    if (!house) {
+      throw new Error('You are not authorized to delete this house')
     }
 
     return context.prisma.deleteHouse({
-      id: args.id
-    });
+      id: house.id
+    })
   },
-  addroomManyPicture(parent, args, context: Context) {
+  addroomManyPicture (parent, args, context: Context) {
     return context.prisma.createRoom({
       label: args.label,
       house: {
@@ -258,12 +250,12 @@ export const CustomMutation = {
       picture_previews: {
         create: args.picture_previews
       }
-    });
+    })
   },
-  async createFavoriteHouse(parent, args, context: Context) {
-    const userId = getUserId(context);
+  async createFavoriteHouse (parent, args, context: Context) {
+    const userId = getUserId(context)
     if (!userId) {
-      throw new Error("You must be logged in");
+      throw new Error('You must be logged in')
     }
     const [favoriteExists] = await context.prisma.houseFavoriteds({
       where: {
@@ -274,10 +266,10 @@ export const CustomMutation = {
           id: args.idHouse
         }
       }
-    });
+    })
 
     if (favoriteExists) {
-      throw new Error("house already in favorites");
+      throw new Error('house already in favorites')
     }
 
     return context.prisma.createHouseFavorited({
@@ -291,15 +283,15 @@ export const CustomMutation = {
           id: userId
         }
       }
-    });
+    })
   },
-  async createReview(parent, args, context: Context) {
-    const userId = getUserId(context);
+  async createReview (parent, args, context: Context) {
+    const userId = getUserId(context)
     if (!userId) {
-      throw new Error("You must be logged in");
+      throw new Error('You must be logged in')
     }
     if (args.stars > 5) {
-      throw new Error("Ratings can't be superior than 5");
+      throw new Error("Ratings can't be superior than 5")
     }
     const [ReviewExists] = await context.prisma.reviews({
       where: {
@@ -310,10 +302,10 @@ export const CustomMutation = {
           id: args.houseId
         }
       }
-    });
+    })
 
     if (ReviewExists) {
-      throw new Error("You already made a review for this house");
+      throw new Error('You already made a review for this house')
     }
     let review = await context.prisma.createReview({
       stars: args.stars,
@@ -328,7 +320,7 @@ export const CustomMutation = {
           id: userId
         }
       }
-    });
+    })
     ///updating the house averagerating processs
     const count = await context.prisma
       .reviewsConnection({
@@ -339,7 +331,7 @@ export const CustomMutation = {
         }
       })
       .aggregate()
-      .count();
+      .count()
 
     let reviews = await context.prisma.reviews({
       where: {
@@ -347,12 +339,12 @@ export const CustomMutation = {
           id: args.houseId
         }
       }
-    });
+    })
 
     const sumRating = await reviews
       .map(item => item.stars)
-      .reduce((prev, next) => prev + next);
-    const rating = sumRating / count;
+      .reduce((prev, next) => prev + next)
+    const rating = sumRating / count
     const lastRatingHouse = await context.prisma.updateHouse({
       data: {
         lastRating: rating
@@ -360,12 +352,12 @@ export const CustomMutation = {
       where: {
         id: args.houseId
       }
-    });
-    return review;
+    })
+    return review
   },
-  async deleteFavoriteHouse(parent, args, context: Context) {
+  async deleteFavoriteHouse (parent, args, context: Context) {
     return context.prisma.deleteManyHouseFavoriteds({
       id_in: args.idHouseFavorite
-    });
+    })
   }
-};
+}

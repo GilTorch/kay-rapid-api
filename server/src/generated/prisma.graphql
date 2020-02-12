@@ -1767,6 +1767,7 @@ type House {
   numDiningrooms: Int
   reviews(where: ReviewWhereInput, orderBy: ReviewOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Review!]
   amenities: Amenities
+  favorites(where: HouseFavoritedWhereInput, orderBy: HouseFavoritedOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [HouseFavorited!]
   host: User!
   pricing: Pricing
   location: Location!
@@ -1824,6 +1825,7 @@ input HouseCreateInput {
   numDiningrooms: Int
   reviews: ReviewCreateManyWithoutHouseInput
   amenities: AmenitiesCreateOneWithoutHouseInput
+  favorites: HouseFavoritedCreateManyWithoutHouseInput
   host: UserCreateOneWithoutOwnedHousesInput!
   pricing: PricingCreateOneWithoutHouseInput
   location: LocationCreateOneInput!
@@ -1868,6 +1870,11 @@ input HouseCreateOneWithoutContactInfoPaymentsInput {
   connect: HouseWhereUniqueInput
 }
 
+input HouseCreateOneWithoutFavoritesInput {
+  create: HouseCreateWithoutFavoritesInput
+  connect: HouseWhereUniqueInput
+}
+
 input HouseCreateOneWithoutPricingInput {
   create: HouseCreateWithoutPricingInput
   connect: HouseWhereUniqueInput
@@ -1900,6 +1907,7 @@ input HouseCreateWithoutAmenitiesInput {
   numLivingrooms: Int
   numDiningrooms: Int
   reviews: ReviewCreateManyWithoutHouseInput
+  favorites: HouseFavoritedCreateManyWithoutHouseInput
   host: UserCreateOneWithoutOwnedHousesInput!
   pricing: PricingCreateOneWithoutHouseInput
   location: LocationCreateOneInput!
@@ -1932,6 +1940,7 @@ input HouseCreateWithoutBookingsInput {
   numDiningrooms: Int
   reviews: ReviewCreateManyWithoutHouseInput
   amenities: AmenitiesCreateOneWithoutHouseInput
+  favorites: HouseFavoritedCreateManyWithoutHouseInput
   host: UserCreateOneWithoutOwnedHousesInput!
   pricing: PricingCreateOneWithoutHouseInput
   location: LocationCreateOneInput!
@@ -1963,6 +1972,7 @@ input HouseCreateWithoutContactInfoPaymentsInput {
   numDiningrooms: Int
   reviews: ReviewCreateManyWithoutHouseInput
   amenities: AmenitiesCreateOneWithoutHouseInput
+  favorites: HouseFavoritedCreateManyWithoutHouseInput
   host: UserCreateOneWithoutOwnedHousesInput!
   pricing: PricingCreateOneWithoutHouseInput
   location: LocationCreateOneInput!
@@ -1975,6 +1985,38 @@ input HouseCreateWithoutContactInfoPaymentsInput {
   views: ViewsCreateOneWithoutHouseInput
   bookings: BookingCreateManyWithoutHouseInput
   pictures: PictureCreateManyInput
+  popularity: Int
+  preview_image: PictureCreateOneInput
+  lastRating: Int
+  rentOrSell: RENT_OR_SELL!
+}
+
+input HouseCreateWithoutFavoritesInput {
+  id: ID
+  area: Int
+  age: Int
+  shortDescription: String
+  description: String
+  maxGuests: Int
+  numBedrooms: Int!
+  numBaths: Int!
+  numLivingrooms: Int
+  numDiningrooms: Int
+  reviews: ReviewCreateManyWithoutHouseInput
+  amenities: AmenitiesCreateOneWithoutHouseInput
+  host: UserCreateOneWithoutOwnedHousesInput!
+  pricing: PricingCreateOneWithoutHouseInput
+  location: LocationCreateOneInput!
+  leaseType: HOUSE_LEASE_TYPE
+  verified: Boolean
+  type: HOUSE_TYPES
+  residency: House_RESIDENCY
+  lease: Int
+  rooms: RoomCreateManyWithoutHouseInput
+  views: ViewsCreateOneWithoutHouseInput
+  bookings: BookingCreateManyWithoutHouseInput
+  pictures: PictureCreateManyInput
+  contactInfoPayments: PaymentLanlordInfoCreateManyWithoutHouseInput
   popularity: Int
   preview_image: PictureCreateOneInput
   lastRating: Int
@@ -1994,6 +2036,7 @@ input HouseCreateWithoutHostInput {
   numDiningrooms: Int
   reviews: ReviewCreateManyWithoutHouseInput
   amenities: AmenitiesCreateOneWithoutHouseInput
+  favorites: HouseFavoritedCreateManyWithoutHouseInput
   pricing: PricingCreateOneWithoutHouseInput
   location: LocationCreateOneInput!
   leaseType: HOUSE_LEASE_TYPE
@@ -2025,6 +2068,7 @@ input HouseCreateWithoutPricingInput {
   numDiningrooms: Int
   reviews: ReviewCreateManyWithoutHouseInput
   amenities: AmenitiesCreateOneWithoutHouseInput
+  favorites: HouseFavoritedCreateManyWithoutHouseInput
   host: UserCreateOneWithoutOwnedHousesInput!
   location: LocationCreateOneInput!
   leaseType: HOUSE_LEASE_TYPE
@@ -2055,6 +2099,7 @@ input HouseCreateWithoutReviewsInput {
   numLivingrooms: Int
   numDiningrooms: Int
   amenities: AmenitiesCreateOneWithoutHouseInput
+  favorites: HouseFavoritedCreateManyWithoutHouseInput
   host: UserCreateOneWithoutOwnedHousesInput!
   pricing: PricingCreateOneWithoutHouseInput
   location: LocationCreateOneInput!
@@ -2087,6 +2132,7 @@ input HouseCreateWithoutRoomsInput {
   numDiningrooms: Int
   reviews: ReviewCreateManyWithoutHouseInput
   amenities: AmenitiesCreateOneWithoutHouseInput
+  favorites: HouseFavoritedCreateManyWithoutHouseInput
   host: UserCreateOneWithoutOwnedHousesInput!
   pricing: PricingCreateOneWithoutHouseInput
   location: LocationCreateOneInput!
@@ -2118,6 +2164,7 @@ input HouseCreateWithoutViewsInput {
   numDiningrooms: Int
   reviews: ReviewCreateManyWithoutHouseInput
   amenities: AmenitiesCreateOneWithoutHouseInput
+  favorites: HouseFavoritedCreateManyWithoutHouseInput
   host: UserCreateOneWithoutOwnedHousesInput!
   pricing: PricingCreateOneWithoutHouseInput
   location: LocationCreateOneInput!
@@ -2158,7 +2205,17 @@ type HouseFavoritedConnection {
 input HouseFavoritedCreateInput {
   id: ID
   user: UserCreateOneInput!
-  house: HouseCreateOneInput!
+  house: HouseCreateOneWithoutFavoritesInput!
+}
+
+input HouseFavoritedCreateManyWithoutHouseInput {
+  create: [HouseFavoritedCreateWithoutHouseInput!]
+  connect: [HouseFavoritedWhereUniqueInput!]
+}
+
+input HouseFavoritedCreateWithoutHouseInput {
+  id: ID
+  user: UserCreateOneInput!
 }
 
 type HouseFavoritedEdge {
@@ -2181,6 +2238,42 @@ type HouseFavoritedPreviousValues {
   updatedAt: DateTime!
 }
 
+input HouseFavoritedScalarWhereInput {
+  id: ID
+  id_not: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  id_lt: ID
+  id_lte: ID
+  id_gt: ID
+  id_gte: ID
+  id_contains: ID
+  id_not_contains: ID
+  id_starts_with: ID
+  id_not_starts_with: ID
+  id_ends_with: ID
+  id_not_ends_with: ID
+  createdAt: DateTime
+  createdAt_not: DateTime
+  createdAt_in: [DateTime!]
+  createdAt_not_in: [DateTime!]
+  createdAt_lt: DateTime
+  createdAt_lte: DateTime
+  createdAt_gt: DateTime
+  createdAt_gte: DateTime
+  updatedAt: DateTime
+  updatedAt_not: DateTime
+  updatedAt_in: [DateTime!]
+  updatedAt_not_in: [DateTime!]
+  updatedAt_lt: DateTime
+  updatedAt_lte: DateTime
+  updatedAt_gt: DateTime
+  updatedAt_gte: DateTime
+  AND: [HouseFavoritedScalarWhereInput!]
+  OR: [HouseFavoritedScalarWhereInput!]
+  NOT: [HouseFavoritedScalarWhereInput!]
+}
+
 type HouseFavoritedSubscriptionPayload {
   mutation: MutationType!
   node: HouseFavorited
@@ -2201,7 +2294,33 @@ input HouseFavoritedSubscriptionWhereInput {
 
 input HouseFavoritedUpdateInput {
   user: UserUpdateOneRequiredInput
-  house: HouseUpdateOneRequiredInput
+  house: HouseUpdateOneRequiredWithoutFavoritesInput
+}
+
+input HouseFavoritedUpdateManyWithoutHouseInput {
+  create: [HouseFavoritedCreateWithoutHouseInput!]
+  delete: [HouseFavoritedWhereUniqueInput!]
+  connect: [HouseFavoritedWhereUniqueInput!]
+  set: [HouseFavoritedWhereUniqueInput!]
+  disconnect: [HouseFavoritedWhereUniqueInput!]
+  update: [HouseFavoritedUpdateWithWhereUniqueWithoutHouseInput!]
+  upsert: [HouseFavoritedUpsertWithWhereUniqueWithoutHouseInput!]
+  deleteMany: [HouseFavoritedScalarWhereInput!]
+}
+
+input HouseFavoritedUpdateWithoutHouseDataInput {
+  user: UserUpdateOneRequiredInput
+}
+
+input HouseFavoritedUpdateWithWhereUniqueWithoutHouseInput {
+  where: HouseFavoritedWhereUniqueInput!
+  data: HouseFavoritedUpdateWithoutHouseDataInput!
+}
+
+input HouseFavoritedUpsertWithWhereUniqueWithoutHouseInput {
+  where: HouseFavoritedWhereUniqueInput!
+  update: HouseFavoritedUpdateWithoutHouseDataInput!
+  create: HouseFavoritedCreateWithoutHouseInput!
 }
 
 input HouseFavoritedWhereInput {
@@ -2504,6 +2623,7 @@ input HouseUpdateDataInput {
   numDiningrooms: Int
   reviews: ReviewUpdateManyWithoutHouseInput
   amenities: AmenitiesUpdateOneWithoutHouseInput
+  favorites: HouseFavoritedUpdateManyWithoutHouseInput
   host: UserUpdateOneRequiredWithoutOwnedHousesInput
   pricing: PricingUpdateOneWithoutHouseInput
   location: LocationUpdateOneRequiredInput
@@ -2535,6 +2655,7 @@ input HouseUpdateInput {
   numDiningrooms: Int
   reviews: ReviewUpdateManyWithoutHouseInput
   amenities: AmenitiesUpdateOneWithoutHouseInput
+  favorites: HouseFavoritedUpdateManyWithoutHouseInput
   host: UserUpdateOneRequiredWithoutOwnedHousesInput
   pricing: PricingUpdateOneWithoutHouseInput
   location: LocationUpdateOneRequiredInput
@@ -2639,6 +2760,13 @@ input HouseUpdateOneRequiredWithoutContactInfoPaymentsInput {
   connect: HouseWhereUniqueInput
 }
 
+input HouseUpdateOneRequiredWithoutFavoritesInput {
+  create: HouseCreateWithoutFavoritesInput
+  update: HouseUpdateWithoutFavoritesDataInput
+  upsert: HouseUpsertWithoutFavoritesInput
+  connect: HouseWhereUniqueInput
+}
+
 input HouseUpdateOneRequiredWithoutPricingInput {
   create: HouseCreateWithoutPricingInput
   update: HouseUpdateWithoutPricingDataInput
@@ -2678,6 +2806,7 @@ input HouseUpdateWithoutAmenitiesDataInput {
   numLivingrooms: Int
   numDiningrooms: Int
   reviews: ReviewUpdateManyWithoutHouseInput
+  favorites: HouseFavoritedUpdateManyWithoutHouseInput
   host: UserUpdateOneRequiredWithoutOwnedHousesInput
   pricing: PricingUpdateOneWithoutHouseInput
   location: LocationUpdateOneRequiredInput
@@ -2709,6 +2838,7 @@ input HouseUpdateWithoutBookingsDataInput {
   numDiningrooms: Int
   reviews: ReviewUpdateManyWithoutHouseInput
   amenities: AmenitiesUpdateOneWithoutHouseInput
+  favorites: HouseFavoritedUpdateManyWithoutHouseInput
   host: UserUpdateOneRequiredWithoutOwnedHousesInput
   pricing: PricingUpdateOneWithoutHouseInput
   location: LocationUpdateOneRequiredInput
@@ -2739,6 +2869,7 @@ input HouseUpdateWithoutContactInfoPaymentsDataInput {
   numDiningrooms: Int
   reviews: ReviewUpdateManyWithoutHouseInput
   amenities: AmenitiesUpdateOneWithoutHouseInput
+  favorites: HouseFavoritedUpdateManyWithoutHouseInput
   host: UserUpdateOneRequiredWithoutOwnedHousesInput
   pricing: PricingUpdateOneWithoutHouseInput
   location: LocationUpdateOneRequiredInput
@@ -2757,6 +2888,37 @@ input HouseUpdateWithoutContactInfoPaymentsDataInput {
   rentOrSell: RENT_OR_SELL
 }
 
+input HouseUpdateWithoutFavoritesDataInput {
+  area: Int
+  age: Int
+  shortDescription: String
+  description: String
+  maxGuests: Int
+  numBedrooms: Int
+  numBaths: Int
+  numLivingrooms: Int
+  numDiningrooms: Int
+  reviews: ReviewUpdateManyWithoutHouseInput
+  amenities: AmenitiesUpdateOneWithoutHouseInput
+  host: UserUpdateOneRequiredWithoutOwnedHousesInput
+  pricing: PricingUpdateOneWithoutHouseInput
+  location: LocationUpdateOneRequiredInput
+  leaseType: HOUSE_LEASE_TYPE
+  verified: Boolean
+  type: HOUSE_TYPES
+  residency: House_RESIDENCY
+  lease: Int
+  rooms: RoomUpdateManyWithoutHouseInput
+  views: ViewsUpdateOneWithoutHouseInput
+  bookings: BookingUpdateManyWithoutHouseInput
+  pictures: PictureUpdateManyInput
+  contactInfoPayments: PaymentLanlordInfoUpdateManyWithoutHouseInput
+  popularity: Int
+  preview_image: PictureUpdateOneInput
+  lastRating: Int
+  rentOrSell: RENT_OR_SELL
+}
+
 input HouseUpdateWithoutHostDataInput {
   area: Int
   age: Int
@@ -2769,6 +2931,7 @@ input HouseUpdateWithoutHostDataInput {
   numDiningrooms: Int
   reviews: ReviewUpdateManyWithoutHouseInput
   amenities: AmenitiesUpdateOneWithoutHouseInput
+  favorites: HouseFavoritedUpdateManyWithoutHouseInput
   pricing: PricingUpdateOneWithoutHouseInput
   location: LocationUpdateOneRequiredInput
   leaseType: HOUSE_LEASE_TYPE
@@ -2799,6 +2962,7 @@ input HouseUpdateWithoutPricingDataInput {
   numDiningrooms: Int
   reviews: ReviewUpdateManyWithoutHouseInput
   amenities: AmenitiesUpdateOneWithoutHouseInput
+  favorites: HouseFavoritedUpdateManyWithoutHouseInput
   host: UserUpdateOneRequiredWithoutOwnedHousesInput
   location: LocationUpdateOneRequiredInput
   leaseType: HOUSE_LEASE_TYPE
@@ -2828,6 +2992,7 @@ input HouseUpdateWithoutReviewsDataInput {
   numLivingrooms: Int
   numDiningrooms: Int
   amenities: AmenitiesUpdateOneWithoutHouseInput
+  favorites: HouseFavoritedUpdateManyWithoutHouseInput
   host: UserUpdateOneRequiredWithoutOwnedHousesInput
   pricing: PricingUpdateOneWithoutHouseInput
   location: LocationUpdateOneRequiredInput
@@ -2859,6 +3024,7 @@ input HouseUpdateWithoutRoomsDataInput {
   numDiningrooms: Int
   reviews: ReviewUpdateManyWithoutHouseInput
   amenities: AmenitiesUpdateOneWithoutHouseInput
+  favorites: HouseFavoritedUpdateManyWithoutHouseInput
   host: UserUpdateOneRequiredWithoutOwnedHousesInput
   pricing: PricingUpdateOneWithoutHouseInput
   location: LocationUpdateOneRequiredInput
@@ -2889,6 +3055,7 @@ input HouseUpdateWithoutViewsDataInput {
   numDiningrooms: Int
   reviews: ReviewUpdateManyWithoutHouseInput
   amenities: AmenitiesUpdateOneWithoutHouseInput
+  favorites: HouseFavoritedUpdateManyWithoutHouseInput
   host: UserUpdateOneRequiredWithoutOwnedHousesInput
   pricing: PricingUpdateOneWithoutHouseInput
   location: LocationUpdateOneRequiredInput
@@ -2930,6 +3097,11 @@ input HouseUpsertWithoutBookingsInput {
 input HouseUpsertWithoutContactInfoPaymentsInput {
   update: HouseUpdateWithoutContactInfoPaymentsDataInput!
   create: HouseCreateWithoutContactInfoPaymentsInput!
+}
+
+input HouseUpsertWithoutFavoritesInput {
+  update: HouseUpdateWithoutFavoritesDataInput!
+  create: HouseCreateWithoutFavoritesInput!
 }
 
 input HouseUpsertWithoutPricingInput {
@@ -3061,6 +3233,9 @@ input HouseWhereInput {
   reviews_some: ReviewWhereInput
   reviews_none: ReviewWhereInput
   amenities: AmenitiesWhereInput
+  favorites_every: HouseFavoritedWhereInput
+  favorites_some: HouseFavoritedWhereInput
+  favorites_none: HouseFavoritedWhereInput
   host: UserWhereInput
   pricing: PricingWhereInput
   location: LocationWhereInput

@@ -38,6 +38,7 @@ type House {
   numDiningrooms: Int
   reviews: [Review!]! @relation(onDelete: CASCADE)
   amenities: Amenities @relation(link: INLINE onDelete: CASCADE)
+  favorites: [HouseFavorited] @relation(onDelete: CASCADE)
   host: User!
   pricing: Pricing @relation(link: INLINE onDelete: CASCADE)
   location: Location! 
