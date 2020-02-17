@@ -12,6 +12,7 @@ type User {
   resetTokenExpiry: String
   phone1: String
   phone2: String
+  favorites: [HouseFavorited] @relation(onDelete: CASCADE)
   primaryPhone: Int! @default(value: 1)
   responseTime: Int
   isSuperHost: Boolean! @default(value: false)
@@ -219,7 +220,7 @@ type HouseFavorited {
   createdAt: DateTime! @createdAt
   updatedAt: DateTime! @updatedAt
   user: User!
-  house: House! @relation(link: INLINE onDelete: CASCADE)
+  house: House! 
 }
 
 type Negotiation {
