@@ -138,7 +138,7 @@ export const CustomMutation = {
         numBaths: args.numBaths,
         numLivingrooms: args.numLivingrooms,
         numDiningrooms: args.numDiningrooms,
-        leaseType: args.leaseType,
+        leaseType: args.rentOrSell === "SELL" ? "NOT_ASSIGNED" : args.leaseType,
         type: args.type,
         residency: args.residency,
         amenities: {
@@ -183,7 +183,7 @@ export const CustomMutation = {
             crib: args.crib
           }
         },
-        lease: args.lease,
+        lease: args.rentOrSell === "SELL" ? 0 : args.lease,
         pricing: {
           update: {
             highestPrice: args.highestPrice,
