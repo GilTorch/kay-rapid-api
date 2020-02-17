@@ -43,11 +43,11 @@ type House {
   host: User!
   pricing: Pricing @relation(link: INLINE onDelete: CASCADE)
   location: Location! 
-  leaseType: HOUSE_LEASE_TYPE
   verified: Boolean! @default(value: false)
   type: HOUSE_TYPES
   residency: House_RESIDENCY
-  lease: Int
+  leaseType: HOUSE_LEASE_TYPE! @default(value: NOT_ASSIGNED)
+  lease: Int! @default(value: 0)
   rooms: [Room!]!
   views: Views @relation(link: INLINE onDelete: CASCADE)
   bookings: [Booking!]!
@@ -325,6 +325,7 @@ enum HOUSE_LEASE_TYPE {
   WEEKLY
   MONTHLY
   YEARLY
+  NOT_ASSIGNED
 }
 
 enum House_RESIDENCY {
