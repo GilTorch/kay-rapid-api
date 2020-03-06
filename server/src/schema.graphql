@@ -196,5 +196,5 @@ type Mutation {
 
   createFavoriteHouse(idHouse: String!): HouseFavorited
   createReview(houseId: String!, stars: Int!, text: String): Review
-  deleteFavoriteHouse(idHouseFavorite: [ID!]): count
+  deleteFavoriteHouse(idHouse: [ID!]): count
 }

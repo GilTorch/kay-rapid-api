@@ -1175,6 +1175,8 @@ export type HouseOrderByInput =
   | "numBedrooms_DESC"
   | "numBaths_ASC"
   | "numBaths_DESC"
+  | "isFavorite_ASC"
+  | "isFavorite_DESC"
   | "numLivingrooms_ASC"
   | "numLivingrooms_DESC"
   | "numDiningrooms_ASC"
@@ -2047,6 +2049,7 @@ export interface HouseUpdateWithoutAmenitiesDataInput {
   maxGuests?: Maybe<Int>;
   numBedrooms?: Maybe<Int>;
   numBaths?: Maybe<Int>;
+  isFavorite?: Maybe<Boolean>;
   numLivingrooms?: Maybe<Int>;
   numDiningrooms?: Maybe<Int>;
   reviews?: Maybe<ReviewUpdateManyWithoutHouseInput>;
@@ -2296,6 +2299,7 @@ export interface HouseUpdateWithoutViewsDataInput {
   maxGuests?: Maybe<Int>;
   numBedrooms?: Maybe<Int>;
   numBaths?: Maybe<Int>;
+  isFavorite?: Maybe<Boolean>;
   numLivingrooms?: Maybe<Int>;
   numDiningrooms?: Maybe<Int>;
   reviews?: Maybe<ReviewUpdateManyWithoutHouseInput>;
@@ -2358,6 +2362,7 @@ export interface HouseUpdateWithoutFavoritesDataInput {
   maxGuests?: Maybe<Int>;
   numBedrooms?: Maybe<Int>;
   numBaths?: Maybe<Int>;
+  isFavorite?: Maybe<Boolean>;
   numLivingrooms?: Maybe<Int>;
   numDiningrooms?: Maybe<Int>;
   reviews?: Maybe<ReviewUpdateManyWithoutHouseInput>;
@@ -2765,44 +2770,6 @@ export interface CityUpdateOneRequiredInput {
   connect?: Maybe<CityWhereUniqueInput>;
 }
 
-export interface RoomCreateInput {
-  id?: Maybe<ID_Input>;
-  label: ROOM_LABELS;
-  house: HouseCreateOneWithoutRoomsInput;
-  picture_previews?: Maybe<PictureCreateManyInput>;
-  video_previews?: Maybe<VideoCreateManyInput>;
-}
-
-export interface CityUpdateDataInput {
-  name?: Maybe<String>;
-  rank?: Maybe<Int>;
-  state?: Maybe<StateUpdateOneRequiredInput>;
-}
-
-export interface ReviewUpdateInput {
-  text?: Maybe<String>;
-  stars?: Maybe<Int>;
-  House?: Maybe<HouseUpdateOneRequiredWithoutReviewsInput>;
-  user?: Maybe<UserUpdateOneRequiredWithoutReviewsInput>;
-}
-
-export interface StateUpdateOneRequiredInput {
-  create?: Maybe<StateCreateInput>;
-  update?: Maybe<StateUpdateDataInput>;
-  upsert?: Maybe<StateUpsertNestedInput>;
-  connect?: Maybe<StateWhereUniqueInput>;
-}
-
-export type NegotiationWhereUniqueInput = AtLeastOne<{
-  id: Maybe<ID_Input>;
-}>;
-
-export interface StateUpdateDataInput {
-  name?: Maybe<String>;
-  rank?: Maybe<Int>;
-  country?: Maybe<CountryUpdateOneRequiredInput>;
-}
-
 export interface AmenitiesWhereInput {
   id?: Maybe<ID_Input>;
   id_not?: Maybe<ID_Input>;
@@ -2920,11 +2887,32 @@ export interface AmenitiesWhereInput {
   NOT?: Maybe<AmenitiesWhereInput[] | AmenitiesWhereInput>;
 }
 
-export interface CountryUpdateOneRequiredInput {
-  create?: Maybe<CountryCreateInput>;
-  update?: Maybe<CountryUpdateDataInput>;
-  upsert?: Maybe<CountryUpsertNestedInput>;
-  connect?: Maybe<CountryWhereUniqueInput>;
+export interface CityUpdateDataInput {
+  name?: Maybe<String>;
+  rank?: Maybe<Int>;
+  state?: Maybe<StateUpdateOneRequiredInput>;
+}
+
+export interface ReviewUpdateManyMutationInput {
+  text?: Maybe<String>;
+  stars?: Maybe<Int>;
+}
+
+export interface StateUpdateOneRequiredInput {
+  create?: Maybe<StateCreateInput>;
+  update?: Maybe<StateUpdateDataInput>;
+  upsert?: Maybe<StateUpsertNestedInput>;
+  connect?: Maybe<StateWhereUniqueInput>;
+}
+
+export type NegotiationWhereUniqueInput = AtLeastOne<{
+  id: Maybe<ID_Input>;
+}>;
+
+export interface StateUpdateDataInput {
+  name?: Maybe<String>;
+  rank?: Maybe<Int>;
+  country?: Maybe<CountryUpdateOneRequiredInput>;
 }
 
 export interface HouseWhereInput {
@@ -3010,6 +2998,8 @@ export interface HouseWhereInput {
   numBaths_lte?: Maybe<Int>;
   numBaths_gt?: Maybe<Int>;
   numBaths_gte?: Maybe<Int>;
+  isFavorite?: Maybe<Boolean>;
+  isFavorite_not?: Maybe<Boolean>;
   numLivingrooms?: Maybe<Int>;
   numLivingrooms_not?: Maybe<Int>;
   numLivingrooms_in?: Maybe<Int[] | Int>;
@@ -3113,6 +3103,20 @@ export interface HouseWhereInput {
   NOT?: Maybe<HouseWhereInput[] | HouseWhereInput>;
 }
 
+export interface CountryUpdateOneRequiredInput {
+  create?: Maybe<CountryCreateInput>;
+  update?: Maybe<CountryUpdateDataInput>;
+  upsert?: Maybe<CountryUpsertNestedInput>;
+  connect?: Maybe<CountryWhereUniqueInput>;
+}
+
+export interface PricingUpdateManyMutationInput {
+  basePrice?: Maybe<Float>;
+  highestPrice?: Maybe<Float>;
+  currency?: Maybe<CURRENCY>;
+  income?: Maybe<Float>;
+}
+
 export interface CountryUpdateDataInput {
   name?: Maybe<String>;
 }
@@ -3125,6 +3129,7 @@ export interface HouseUpdateWithoutPricingDataInput {
   maxGuests?: Maybe<Int>;
   numBedrooms?: Maybe<Int>;
   numBaths?: Maybe<Int>;
+  isFavorite?: Maybe<Boolean>;
   numLivingrooms?: Maybe<Int>;
   numDiningrooms?: Maybe<Int>;
   reviews?: Maybe<ReviewUpdateManyWithoutHouseInput>;
@@ -3171,6 +3176,7 @@ export interface HouseCreateWithoutPricingInput {
   maxGuests?: Maybe<Int>;
   numBedrooms: Int;
   numBaths: Int;
+  isFavorite?: Maybe<Boolean>;
   numLivingrooms?: Maybe<Int>;
   numDiningrooms?: Maybe<Int>;
   reviews?: Maybe<ReviewCreateManyWithoutHouseInput>;
@@ -3208,8 +3214,13 @@ export interface CommuneUpsertNestedInput {
   create: CommuneCreateInput;
 }
 
-export interface PictureUpdateManyMutationInput {
-  url?: Maybe<String>;
+export interface PricingCreateInput {
+  id?: Maybe<ID_Input>;
+  House: HouseCreateOneWithoutPricingInput;
+  basePrice?: Maybe<Float>;
+  highestPrice: Float;
+  currency: CURRENCY;
+  income?: Maybe<Float>;
 }
 
 export interface LocationUpsertNestedInput {
@@ -3217,8 +3228,8 @@ export interface LocationUpsertNestedInput {
   create: LocationCreateInput;
 }
 
-export interface PaypalInformationUpdateManyMutationInput {
-  email?: Maybe<String>;
+export interface PictureUpdateInput {
+  url?: Maybe<String>;
 }
 
 export interface BookingUpdateManyWithoutBookeeInput {
@@ -3244,9 +3255,8 @@ export interface BookingUpdateManyWithoutBookeeInput {
   >;
 }
 
-export interface PaymentAccountUpsertWithoutPaypalInput {
-  update: PaymentAccountUpdateWithoutPaypalDataInput;
-  create: PaymentAccountCreateWithoutPaypalInput;
+export interface PaypalInformationUpdateManyMutationInput {
+  email?: Maybe<String>;
 }
 
 export interface BookingUpdateWithWhereUniqueWithoutBookeeInput {
@@ -3254,11 +3264,11 @@ export interface BookingUpdateWithWhereUniqueWithoutBookeeInput {
   data: BookingUpdateWithoutBookeeDataInput;
 }
 
-export interface PaymentAccountUpdateOneRequiredWithoutPaypalInput {
-  create?: Maybe<PaymentAccountCreateWithoutPaypalInput>;
-  update?: Maybe<PaymentAccountUpdateWithoutPaypalDataInput>;
-  upsert?: Maybe<PaymentAccountUpsertWithoutPaypalInput>;
-  connect?: Maybe<PaymentAccountWhereUniqueInput>;
+export interface PaymentAccountUpdateWithoutPaypalDataInput {
+  type?: Maybe<PAYMENT_PROVIDER>;
+  user?: Maybe<UserUpdateOneRequiredInput>;
+  payments?: Maybe<PaymentHouseUpdateManyWithoutPaymentMethodInput>;
+  creditcard?: Maybe<CreditCardInformationUpdateOneWithoutPaymentAccountInput>;
 }
 
 export interface BookingUpdateWithoutBookeeDataInput {
@@ -3268,9 +3278,11 @@ export interface BookingUpdateWithoutBookeeDataInput {
   payment?: Maybe<PaymentHouseUpdateOneRequiredWithoutBookingInput>;
 }
 
-export interface PaypalInformationUpdateInput {
-  email?: Maybe<String>;
-  paymentAccount?: Maybe<PaymentAccountUpdateOneRequiredWithoutPaypalInput>;
+export interface PaymentAccountUpdateOneRequiredWithoutPaypalInput {
+  create?: Maybe<PaymentAccountCreateWithoutPaypalInput>;
+  update?: Maybe<PaymentAccountUpdateWithoutPaypalDataInput>;
+  upsert?: Maybe<PaymentAccountUpsertWithoutPaypalInput>;
+  connect?: Maybe<PaymentAccountWhereUniqueInput>;
 }
 
 export interface HouseUpdateOneRequiredWithoutBookingsInput {
@@ -3280,9 +3292,12 @@ export interface HouseUpdateOneRequiredWithoutBookingsInput {
   connect?: Maybe<HouseWhereUniqueInput>;
 }
 
-export interface PaymentAccountCreateOneWithoutPaypalInput {
-  create?: Maybe<PaymentAccountCreateWithoutPaypalInput>;
-  connect?: Maybe<PaymentAccountWhereUniqueInput>;
+export interface PaymentAccountCreateWithoutPaypalInput {
+  id?: Maybe<ID_Input>;
+  type?: Maybe<PAYMENT_PROVIDER>;
+  user: UserCreateOneInput;
+  payments?: Maybe<PaymentHouseCreateManyWithoutPaymentMethodInput>;
+  creditcard?: Maybe<CreditCardInformationCreateOneWithoutPaymentAccountInput>;
 }
 
 export interface HouseUpdateWithoutBookingsDataInput {
@@ -3293,6 +3308,7 @@ export interface HouseUpdateWithoutBookingsDataInput {
   maxGuests?: Maybe<Int>;
   numBedrooms?: Maybe<Int>;
   numBaths?: Maybe<Int>;
+  isFavorite?: Maybe<Boolean>;
   numLivingrooms?: Maybe<Int>;
   numDiningrooms?: Maybe<Int>;
   reviews?: Maybe<ReviewUpdateManyWithoutHouseInput>;
@@ -3316,64 +3332,9 @@ export interface HouseUpdateWithoutBookingsDataInput {
   rentOrSell?: Maybe<RENT_OR_SELL>;
 }
 
-export interface ReviewWhereInput {
-  id?: Maybe<ID_Input>;
-  id_not?: Maybe<ID_Input>;
-  id_in?: Maybe<ID_Input[] | ID_Input>;
-  id_not_in?: Maybe<ID_Input[] | ID_Input>;
-  id_lt?: Maybe<ID_Input>;
-  id_lte?: Maybe<ID_Input>;
-  id_gt?: Maybe<ID_Input>;
-  id_gte?: Maybe<ID_Input>;
-  id_contains?: Maybe<ID_Input>;
-  id_not_contains?: Maybe<ID_Input>;
-  id_starts_with?: Maybe<ID_Input>;
-  id_not_starts_with?: Maybe<ID_Input>;
-  id_ends_with?: Maybe<ID_Input>;
-  id_not_ends_with?: Maybe<ID_Input>;
-  createdAt?: Maybe<DateTimeInput>;
-  createdAt_not?: Maybe<DateTimeInput>;
-  createdAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
-  createdAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
-  createdAt_lt?: Maybe<DateTimeInput>;
-  createdAt_lte?: Maybe<DateTimeInput>;
-  createdAt_gt?: Maybe<DateTimeInput>;
-  createdAt_gte?: Maybe<DateTimeInput>;
-  updatedAt?: Maybe<DateTimeInput>;
-  updatedAt_not?: Maybe<DateTimeInput>;
-  updatedAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
-  updatedAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
-  updatedAt_lt?: Maybe<DateTimeInput>;
-  updatedAt_lte?: Maybe<DateTimeInput>;
-  updatedAt_gt?: Maybe<DateTimeInput>;
-  updatedAt_gte?: Maybe<DateTimeInput>;
-  text?: Maybe<String>;
-  text_not?: Maybe<String>;
-  text_in?: Maybe<String[] | String>;
-  text_not_in?: Maybe<String[] | String>;
-  text_lt?: Maybe<String>;
-  text_lte?: Maybe<String>;
-  text_gt?: Maybe<String>;
-  text_gte?: Maybe<String>;
-  text_contains?: Maybe<String>;
-  text_not_contains?: Maybe<String>;
-  text_starts_with?: Maybe<String>;
-  text_not_starts_with?: Maybe<String>;
-  text_ends_with?: Maybe<String>;
-  text_not_ends_with?: Maybe<String>;
-  stars?: Maybe<Int>;
-  stars_not?: Maybe<Int>;
-  stars_in?: Maybe<Int[] | Int>;
-  stars_not_in?: Maybe<Int[] | Int>;
-  stars_lt?: Maybe<Int>;
-  stars_lte?: Maybe<Int>;
-  stars_gt?: Maybe<Int>;
-  stars_gte?: Maybe<Int>;
-  House?: Maybe<HouseWhereInput>;
-  user?: Maybe<UserWhereInput>;
-  AND?: Maybe<ReviewWhereInput[] | ReviewWhereInput>;
-  OR?: Maybe<ReviewWhereInput[] | ReviewWhereInput>;
-  NOT?: Maybe<ReviewWhereInput[] | ReviewWhereInput>;
+export interface PaymentAccountCreateOneWithoutPaypalInput {
+  create?: Maybe<PaymentAccountCreateWithoutPaypalInput>;
+  connect?: Maybe<PaymentAccountWhereUniqueInput>;
 }
 
 export interface HouseFavoritedUpdateManyWithoutHouseInput {
@@ -3419,6 +3380,7 @@ export interface HouseUpdateInput {
   maxGuests?: Maybe<Int>;
   numBedrooms?: Maybe<Int>;
   numBaths?: Maybe<Int>;
+  isFavorite?: Maybe<Boolean>;
   numLivingrooms?: Maybe<Int>;
   numDiningrooms?: Maybe<Int>;
   reviews?: Maybe<ReviewUpdateManyWithoutHouseInput>;
@@ -3542,6 +3504,7 @@ export interface HouseUpdateWithoutHostDataInput {
   maxGuests?: Maybe<Int>;
   numBedrooms?: Maybe<Int>;
   numBaths?: Maybe<Int>;
+  isFavorite?: Maybe<Boolean>;
   numLivingrooms?: Maybe<Int>;
   numDiningrooms?: Maybe<Int>;
   reviews?: Maybe<ReviewUpdateManyWithoutHouseInput>;
@@ -3768,6 +3731,7 @@ export interface HouseUpdateManyMutationInput {
   maxGuests?: Maybe<Int>;
   numBedrooms?: Maybe<Int>;
   numBaths?: Maybe<Int>;
+  isFavorite?: Maybe<Boolean>;
   numLivingrooms?: Maybe<Int>;
   numDiningrooms?: Maybe<Int>;
   verified?: Maybe<Boolean>;
@@ -3930,6 +3894,7 @@ export interface HouseCreateWithoutAmenitiesInput {
   maxGuests?: Maybe<Int>;
   numBedrooms: Int;
   numBaths: Int;
+  isFavorite?: Maybe<Boolean>;
   numLivingrooms?: Maybe<Int>;
   numDiningrooms?: Maybe<Int>;
   reviews?: Maybe<ReviewCreateManyWithoutHouseInput>;
@@ -4034,6 +3999,7 @@ export interface HouseCreateInput {
   maxGuests?: Maybe<Int>;
   numBedrooms: Int;
   numBaths: Int;
+  isFavorite?: Maybe<Boolean>;
   numLivingrooms?: Maybe<Int>;
   numDiningrooms?: Maybe<Int>;
   reviews?: Maybe<ReviewCreateManyWithoutHouseInput>;
@@ -4106,6 +4072,7 @@ export interface HouseCreateWithoutFavoritesInput {
   maxGuests?: Maybe<Int>;
   numBedrooms: Int;
   numBaths: Int;
+  isFavorite?: Maybe<Boolean>;
   numLivingrooms?: Maybe<Int>;
   numDiningrooms?: Maybe<Int>;
   reviews?: Maybe<ReviewCreateManyWithoutHouseInput>;
@@ -4376,6 +4343,7 @@ export interface HouseCreateWithoutBookingsInput {
   maxGuests?: Maybe<Int>;
   numBedrooms: Int;
   numBaths: Int;
+  isFavorite?: Maybe<Boolean>;
   numLivingrooms?: Maybe<Int>;
   numDiningrooms?: Maybe<Int>;
   reviews?: Maybe<ReviewCreateManyWithoutHouseInput>;
@@ -4468,6 +4436,7 @@ export interface HouseCreateWithoutHostInput {
   maxGuests?: Maybe<Int>;
   numBedrooms: Int;
   numBaths: Int;
+  isFavorite?: Maybe<Boolean>;
   numLivingrooms?: Maybe<Int>;
   numDiningrooms?: Maybe<Int>;
   reviews?: Maybe<ReviewCreateManyWithoutHouseInput>;
@@ -4607,6 +4576,7 @@ export interface HouseUpdateWithoutContactInfoPaymentsDataInput {
   maxGuests?: Maybe<Int>;
   numBedrooms?: Maybe<Int>;
   numBaths?: Maybe<Int>;
+  isFavorite?: Maybe<Boolean>;
   numLivingrooms?: Maybe<Int>;
   numDiningrooms?: Maybe<Int>;
   reviews?: Maybe<ReviewUpdateManyWithoutHouseInput>;
@@ -4700,6 +4670,7 @@ export interface HouseCreateWithoutContactInfoPaymentsInput {
   maxGuests?: Maybe<Int>;
   numBedrooms: Int;
   numBaths: Int;
+  isFavorite?: Maybe<Boolean>;
   numLivingrooms?: Maybe<Int>;
   numDiningrooms?: Maybe<Int>;
   reviews?: Maybe<ReviewCreateManyWithoutHouseInput>;
@@ -5205,6 +5176,7 @@ export interface HouseUpdateWithoutReviewsDataInput {
   maxGuests?: Maybe<Int>;
   numBedrooms?: Maybe<Int>;
   numBaths?: Maybe<Int>;
+  isFavorite?: Maybe<Boolean>;
   numLivingrooms?: Maybe<Int>;
   numDiningrooms?: Maybe<Int>;
   amenities?: Maybe<AmenitiesUpdateOneWithoutHouseInput>;
@@ -5237,6 +5209,7 @@ export interface HouseCreateWithoutViewsInput {
   maxGuests?: Maybe<Int>;
   numBedrooms: Int;
   numBaths: Int;
+  isFavorite?: Maybe<Boolean>;
   numLivingrooms?: Maybe<Int>;
   numDiningrooms?: Maybe<Int>;
   reviews?: Maybe<ReviewCreateManyWithoutHouseInput>;
@@ -5406,12 +5379,11 @@ export interface UserUpsertWithoutPaidContactsInput {
   create: UserCreateWithoutPaidContactsInput;
 }
 
-export interface ReviewCreateInput {
-  id?: Maybe<ID_Input>;
+export interface ReviewUpdateInput {
   text?: Maybe<String>;
-  stars: Int;
-  House: HouseCreateOneWithoutReviewsInput;
-  user: UserCreateOneWithoutReviewsInput;
+  stars?: Maybe<Int>;
+  House?: Maybe<HouseUpdateOneRequiredWithoutReviewsInput>;
+  user?: Maybe<UserUpdateOneRequiredWithoutReviewsInput>;
 }
 
 export interface PaymentLanlordInfoUpsertWithWhereUniqueWithoutHouseInput {
@@ -5556,7 +5528,7 @@ export interface PaymentLanlordInfoUpdateManyDataInput {
   moncashTransactId?: Maybe<String>;
 }
 
-export interface PictureUpdateInput {
+export interface PictureUpdateManyMutationInput {
   url?: Maybe<String>;
 }
 
@@ -5565,11 +5537,9 @@ export interface HouseUpsertWithoutReviewsInput {
   create: HouseCreateWithoutReviewsInput;
 }
 
-export interface PaymentAccountUpdateWithoutPaypalDataInput {
-  type?: Maybe<PAYMENT_PROVIDER>;
-  user?: Maybe<UserUpdateOneRequiredInput>;
-  payments?: Maybe<PaymentHouseUpdateManyWithoutPaymentMethodInput>;
-  creditcard?: Maybe<CreditCardInformationUpdateOneWithoutPaymentAccountInput>;
+export interface PaymentAccountUpsertWithoutPaypalInput {
+  update: PaymentAccountUpdateWithoutPaypalDataInput;
+  create: PaymentAccountCreateWithoutPaypalInput;
 }
 
 export interface ReviewUpsertWithWhereUniqueWithoutUserInput {
@@ -5578,12 +5548,9 @@ export interface ReviewUpsertWithWhereUniqueWithoutUserInput {
   create: ReviewCreateWithoutUserInput;
 }
 
-export interface PaymentAccountCreateWithoutPaypalInput {
-  id?: Maybe<ID_Input>;
-  type?: Maybe<PAYMENT_PROVIDER>;
-  user: UserCreateOneInput;
-  payments?: Maybe<PaymentHouseCreateManyWithoutPaymentMethodInput>;
-  creditcard?: Maybe<CreditCardInformationCreateOneWithoutPaymentAccountInput>;
+export interface PaypalInformationUpdateInput {
+  email?: Maybe<String>;
+  paymentAccount?: Maybe<PaymentAccountUpdateOneRequiredWithoutPaypalInput>;
 }
 
 export interface ReviewScalarWhereInput {
@@ -6165,6 +6132,7 @@ export interface HouseCreateWithoutReviewsInput {
   maxGuests?: Maybe<Int>;
   numBedrooms: Int;
   numBaths: Int;
+  isFavorite?: Maybe<Boolean>;
   numLivingrooms?: Maybe<Int>;
   numDiningrooms?: Maybe<Int>;
   amenities?: Maybe<AmenitiesCreateOneWithoutHouseInput>;
@@ -6563,6 +6531,8 @@ export interface HouseScalarWhereInput {
   numBaths_lte?: Maybe<Int>;
   numBaths_gt?: Maybe<Int>;
   numBaths_gte?: Maybe<Int>;
+  isFavorite?: Maybe<Boolean>;
+  isFavorite_not?: Maybe<Boolean>;
   numLivingrooms?: Maybe<Int>;
   numLivingrooms_not?: Maybe<Int>;
   numLivingrooms_in?: Maybe<Int[] | Int>;
@@ -6726,6 +6696,7 @@ export interface HouseUpdateManyDataInput {
   maxGuests?: Maybe<Int>;
   numBedrooms?: Maybe<Int>;
   numBaths?: Maybe<Int>;
+  isFavorite?: Maybe<Boolean>;
   numLivingrooms?: Maybe<Int>;
   numDiningrooms?: Maybe<Int>;
   verified?: Maybe<Boolean>;
@@ -6776,6 +6747,7 @@ export interface HouseUpdateWithoutRoomsDataInput {
   maxGuests?: Maybe<Int>;
   numBedrooms?: Maybe<Int>;
   numBaths?: Maybe<Int>;
+  isFavorite?: Maybe<Boolean>;
   numLivingrooms?: Maybe<Int>;
   numDiningrooms?: Maybe<Int>;
   reviews?: Maybe<ReviewUpdateManyWithoutHouseInput>;
@@ -6805,9 +6777,12 @@ export interface HouseFavoritedUpsertWithWhereUniqueWithoutHouseInput {
   create: HouseFavoritedCreateWithoutHouseInput;
 }
 
-export interface ReviewUpdateManyMutationInput {
-  text?: Maybe<String>;
-  stars?: Maybe<Int>;
+export interface RoomCreateInput {
+  id?: Maybe<ID_Input>;
+  label: ROOM_LABELS;
+  house: HouseCreateOneWithoutRoomsInput;
+  picture_previews?: Maybe<PictureCreateManyInput>;
+  video_previews?: Maybe<VideoCreateManyInput>;
 }
 
 export interface HouseFavoritedScalarWhereInput {
@@ -6860,13 +6835,64 @@ export interface HouseUpsertWithoutBookingsInput {
   create: HouseCreateWithoutBookingsInput;
 }
 
-export interface PricingCreateInput {
+export interface ReviewWhereInput {
   id?: Maybe<ID_Input>;
-  House: HouseCreateOneWithoutPricingInput;
-  basePrice?: Maybe<Float>;
-  highestPrice: Float;
-  currency: CURRENCY;
-  income?: Maybe<Float>;
+  id_not?: Maybe<ID_Input>;
+  id_in?: Maybe<ID_Input[] | ID_Input>;
+  id_not_in?: Maybe<ID_Input[] | ID_Input>;
+  id_lt?: Maybe<ID_Input>;
+  id_lte?: Maybe<ID_Input>;
+  id_gt?: Maybe<ID_Input>;
+  id_gte?: Maybe<ID_Input>;
+  id_contains?: Maybe<ID_Input>;
+  id_not_contains?: Maybe<ID_Input>;
+  id_starts_with?: Maybe<ID_Input>;
+  id_not_starts_with?: Maybe<ID_Input>;
+  id_ends_with?: Maybe<ID_Input>;
+  id_not_ends_with?: Maybe<ID_Input>;
+  createdAt?: Maybe<DateTimeInput>;
+  createdAt_not?: Maybe<DateTimeInput>;
+  createdAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  createdAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  createdAt_lt?: Maybe<DateTimeInput>;
+  createdAt_lte?: Maybe<DateTimeInput>;
+  createdAt_gt?: Maybe<DateTimeInput>;
+  createdAt_gte?: Maybe<DateTimeInput>;
+  updatedAt?: Maybe<DateTimeInput>;
+  updatedAt_not?: Maybe<DateTimeInput>;
+  updatedAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  updatedAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  updatedAt_lt?: Maybe<DateTimeInput>;
+  updatedAt_lte?: Maybe<DateTimeInput>;
+  updatedAt_gt?: Maybe<DateTimeInput>;
+  updatedAt_gte?: Maybe<DateTimeInput>;
+  text?: Maybe<String>;
+  text_not?: Maybe<String>;
+  text_in?: Maybe<String[] | String>;
+  text_not_in?: Maybe<String[] | String>;
+  text_lt?: Maybe<String>;
+  text_lte?: Maybe<String>;
+  text_gt?: Maybe<String>;
+  text_gte?: Maybe<String>;
+  text_contains?: Maybe<String>;
+  text_not_contains?: Maybe<String>;
+  text_starts_with?: Maybe<String>;
+  text_not_starts_with?: Maybe<String>;
+  text_ends_with?: Maybe<String>;
+  text_not_ends_with?: Maybe<String>;
+  stars?: Maybe<Int>;
+  stars_not?: Maybe<Int>;
+  stars_in?: Maybe<Int[] | Int>;
+  stars_not_in?: Maybe<Int[] | Int>;
+  stars_lt?: Maybe<Int>;
+  stars_lte?: Maybe<Int>;
+  stars_gt?: Maybe<Int>;
+  stars_gte?: Maybe<Int>;
+  House?: Maybe<HouseWhereInput>;
+  user?: Maybe<UserWhereInput>;
+  AND?: Maybe<ReviewWhereInput[] | ReviewWhereInput>;
+  OR?: Maybe<ReviewWhereInput[] | ReviewWhereInput>;
+  NOT?: Maybe<ReviewWhereInput[] | ReviewWhereInput>;
 }
 
 export interface BookingUpsertWithWhereUniqueWithoutBookeeInput {
@@ -6930,6 +6956,7 @@ export interface HouseUpdateDataInput {
   maxGuests?: Maybe<Int>;
   numBedrooms?: Maybe<Int>;
   numBaths?: Maybe<Int>;
+  isFavorite?: Maybe<Boolean>;
   numLivingrooms?: Maybe<Int>;
   numDiningrooms?: Maybe<Int>;
   reviews?: Maybe<ReviewUpdateManyWithoutHouseInput>;
@@ -7250,11 +7277,12 @@ export interface CountryUpdateManyMutationInput {
   name?: Maybe<String>;
 }
 
-export interface PricingUpdateManyMutationInput {
-  basePrice?: Maybe<Float>;
-  highestPrice?: Maybe<Float>;
-  currency?: Maybe<CURRENCY>;
-  income?: Maybe<Float>;
+export interface ReviewCreateInput {
+  id?: Maybe<ID_Input>;
+  text?: Maybe<String>;
+  stars: Int;
+  House: HouseCreateOneWithoutReviewsInput;
+  user: UserCreateOneWithoutReviewsInput;
 }
 
 export interface CreditCardInformationCreateInput {
@@ -7441,6 +7469,7 @@ export interface HouseCreateWithoutRoomsInput {
   maxGuests?: Maybe<Int>;
   numBedrooms: Int;
   numBaths: Int;
+  isFavorite?: Maybe<Boolean>;
   numLivingrooms?: Maybe<Int>;
   numDiningrooms?: Maybe<Int>;
   reviews?: Maybe<ReviewCreateManyWithoutHouseInput>;
@@ -7932,6 +7961,7 @@ export interface House {
   maxGuests?: Int;
   numBedrooms: Int;
   numBaths: Int;
+  isFavorite: Boolean;
   numLivingrooms?: Int;
   numDiningrooms?: Int;
   verified: Boolean;
@@ -7955,6 +7985,7 @@ export interface HousePromise extends Promise<House>, Fragmentable {
   maxGuests: () => Promise<Int>;
   numBedrooms: () => Promise<Int>;
   numBaths: () => Promise<Int>;
+  isFavorite: () => Promise<Boolean>;
   numLivingrooms: () => Promise<Int>;
   numDiningrooms: () => Promise<Int>;
   reviews: <T = FragmentableArray<Review>>(args?: {
@@ -8040,6 +8071,7 @@ export interface HouseSubscription
   maxGuests: () => Promise<AsyncIterator<Int>>;
   numBedrooms: () => Promise<AsyncIterator<Int>>;
   numBaths: () => Promise<AsyncIterator<Int>>;
+  isFavorite: () => Promise<AsyncIterator<Boolean>>;
   numLivingrooms: () => Promise<AsyncIterator<Int>>;
   numDiningrooms: () => Promise<AsyncIterator<Int>>;
   reviews: <T = Promise<AsyncIterator<ReviewSubscription>>>(args?: {
@@ -8127,6 +8159,7 @@ export interface HouseNullablePromise
   maxGuests: () => Promise<Int>;
   numBedrooms: () => Promise<Int>;
   numBaths: () => Promise<Int>;
+  isFavorite: () => Promise<Boolean>;
   numLivingrooms: () => Promise<Int>;
   numDiningrooms: () => Promise<Int>;
   reviews: <T = FragmentableArray<Review>>(args?: {
@@ -9057,23 +9090,20 @@ export interface CommunePreviousValuesSubscription
   updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
 }
 
-export interface PaymentLanlordInfoEdge {
-  node: PaymentLanlordInfo;
-  cursor: String;
+export interface AggregatePaymentLanlordInfo {
+  count: Int;
 }
 
-export interface PaymentLanlordInfoEdgePromise
-  extends Promise<PaymentLanlordInfoEdge>,
+export interface AggregatePaymentLanlordInfoPromise
+  extends Promise<AggregatePaymentLanlordInfo>,
     Fragmentable {
-  node: <T = PaymentLanlordInfoPromise>() => T;
-  cursor: () => Promise<String>;
+  count: () => Promise<Int>;
 }
 
-export interface PaymentLanlordInfoEdgeSubscription
-  extends Promise<AsyncIterator<PaymentLanlordInfoEdge>>,
+export interface AggregatePaymentLanlordInfoSubscription
+  extends Promise<AsyncIterator<AggregatePaymentLanlordInfo>>,
     Fragmentable {
-  node: <T = PaymentLanlordInfoSubscription>() => T;
-  cursor: () => Promise<AsyncIterator<String>>;
+  count: () => Promise<AsyncIterator<Int>>;
 }
 
 export interface AmenitiesConnection {
@@ -9097,20 +9127,27 @@ export interface AmenitiesConnectionSubscription
   aggregate: <T = AggregateAmenitiesSubscription>() => T;
 }
 
-export interface AggregatePaymentHouse {
-  count: Int;
+export interface PaymentLanlordInfoConnection {
+  pageInfo: PageInfo;
+  edges: PaymentLanlordInfoEdge[];
 }
 
-export interface AggregatePaymentHousePromise
-  extends Promise<AggregatePaymentHouse>,
+export interface PaymentLanlordInfoConnectionPromise
+  extends Promise<PaymentLanlordInfoConnection>,
     Fragmentable {
-  count: () => Promise<Int>;
+  pageInfo: <T = PageInfoPromise>() => T;
+  edges: <T = FragmentableArray<PaymentLanlordInfoEdge>>() => T;
+  aggregate: <T = AggregatePaymentLanlordInfoPromise>() => T;
 }
 
-export interface AggregatePaymentHouseSubscription
-  extends Promise<AsyncIterator<AggregatePaymentHouse>>,
+export interface PaymentLanlordInfoConnectionSubscription
+  extends Promise<AsyncIterator<PaymentLanlordInfoConnection>>,
     Fragmentable {
-  count: () => Promise<AsyncIterator<Int>>;
+  pageInfo: <T = PageInfoSubscription>() => T;
+  edges: <
+    T = Promise<AsyncIterator<PaymentLanlordInfoEdgeSubscription>>
+  >() => T;
+  aggregate: <T = AggregatePaymentLanlordInfoSubscription>() => T;
 }
 
 export interface CountrySubscriptionPayload {
@@ -9138,25 +9175,23 @@ export interface CountrySubscriptionPayloadSubscription
   previousValues: <T = CountryPreviousValuesSubscription>() => T;
 }
 
-export interface PaymentHouseConnection {
-  pageInfo: PageInfo;
-  edges: PaymentHouseEdge[];
+export interface PaymentHouseEdge {
+  node: PaymentHouse;
+  cursor: String;
 }
 
-export interface PaymentHouseConnectionPromise
-  extends Promise<PaymentHouseConnection>,
+export interface PaymentHouseEdgePromise
+  extends Promise<PaymentHouseEdge>,
     Fragmentable {
-  pageInfo: <T = PageInfoPromise>() => T;
-  edges: <T = FragmentableArray<PaymentHouseEdge>>() => T;
-  aggregate: <T = AggregatePaymentHousePromise>() => T;
+  node: <T = PaymentHousePromise>() => T;
+  cursor: () => Promise<String>;
 }
 
-export interface PaymentHouseConnectionSubscription
-  extends Promise<AsyncIterator<PaymentHouseConnection>>,
+export interface PaymentHouseEdgeSubscription
+  extends Promise<AsyncIterator<PaymentHouseEdge>>,
     Fragmentable {
-  pageInfo: <T = PageInfoSubscription>() => T;
-  edges: <T = Promise<AsyncIterator<PaymentHouseEdgeSubscription>>>() => T;
-  aggregate: <T = AggregatePaymentHouseSubscription>() => T;
+  node: <T = PaymentHouseSubscription>() => T;
+  cursor: () => Promise<AsyncIterator<String>>;
 }
 
 export interface CountryPreviousValues {
@@ -9184,23 +9219,20 @@ export interface CountryPreviousValuesSubscription
   updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
 }
 
-export interface PaymentAccountEdge {
-  node: PaymentAccount;
-  cursor: String;
+export interface AggregatePaymentAccount {
+  count: Int;
 }
 
-export interface PaymentAccountEdgePromise
-  extends Promise<PaymentAccountEdge>,
+export interface AggregatePaymentAccountPromise
+  extends Promise<AggregatePaymentAccount>,
     Fragmentable {
-  node: <T = PaymentAccountPromise>() => T;
-  cursor: () => Promise<String>;
+  count: () => Promise<Int>;
 }
 
-export interface PaymentAccountEdgeSubscription
-  extends Promise<AsyncIterator<PaymentAccountEdge>>,
+export interface AggregatePaymentAccountSubscription
+  extends Promise<AsyncIterator<AggregatePaymentAccount>>,
     Fragmentable {
-  node: <T = PaymentAccountSubscription>() => T;
-  cursor: () => Promise<AsyncIterator<String>>;
+  count: () => Promise<AsyncIterator<Int>>;
 }
 
 export interface Views {
@@ -9265,29 +9297,25 @@ export interface ViewsNullablePromise
   updatedAt: () => Promise<DateTimeOutput>;
 }
 
-export interface VideoSubscriptionPayload {
-  mutation: MutationType;
-  node: Video;
-  updatedFields: String[];
-  previousValues: VideoPreviousValues;
+export interface PaymentAccountConnection {
+  pageInfo: PageInfo;
+  edges: PaymentAccountEdge[];
 }
 
-export interface VideoSubscriptionPayloadPromise
-  extends Promise<VideoSubscriptionPayload>,
+export interface PaymentAccountConnectionPromise
+  extends Promise<PaymentAccountConnection>,
     Fragmentable {
-  mutation: () => Promise<MutationType>;
-  node: <T = VideoPromise>() => T;
-  updatedFields: () => Promise<String[]>;
-  previousValues: <T = VideoPreviousValuesPromise>() => T;
+  pageInfo: <T = PageInfoPromise>() => T;
+  edges: <T = FragmentableArray<PaymentAccountEdge>>() => T;
+  aggregate: <T = AggregatePaymentAccountPromise>() => T;
 }
 
-export interface VideoSubscriptionPayloadSubscription
-  extends Promise<AsyncIterator<VideoSubscriptionPayload>>,
+export interface PaymentAccountConnectionSubscription
+  extends Promise<AsyncIterator<PaymentAccountConnection>>,
     Fragmentable {
-  mutation: () => Promise<AsyncIterator<MutationType>>;
-  node: <T = VideoSubscription>() => T;
-  updatedFields: () => Promise<AsyncIterator<String[]>>;
-  previousValues: <T = VideoPreviousValuesSubscription>() => T;
+  pageInfo: <T = PageInfoSubscription>() => T;
+  edges: <T = Promise<AsyncIterator<PaymentAccountEdgeSubscription>>>() => T;
+  aggregate: <T = AggregatePaymentAccountSubscription>() => T;
 }
 
 export interface CreditCardInformationSubscriptionPayload {
@@ -9474,20 +9502,46 @@ export interface HouseSubscriptionPayloadSubscription
   previousValues: <T = HousePreviousValuesSubscription>() => T;
 }
 
-export interface AggregateLocation {
-  count: Int;
+export interface Negotiation {
+  id: ID_Output;
+  createdAt: DateTimeOutput;
+  updatedAt: DateTimeOutput;
+  offer: Float;
+  status?: NEGOTIATION_TYPE;
 }
 
-export interface AggregateLocationPromise
-  extends Promise<AggregateLocation>,
-    Fragmentable {
-  count: () => Promise<Int>;
+export interface NegotiationPromise extends Promise<Negotiation>, Fragmentable {
+  id: () => Promise<ID_Output>;
+  createdAt: () => Promise<DateTimeOutput>;
+  updatedAt: () => Promise<DateTimeOutput>;
+  negotiator: <T = UserPromise>() => T;
+  House: <T = HousePromise>() => T;
+  offer: () => Promise<Float>;
+  status: () => Promise<NEGOTIATION_TYPE>;
 }
 
-export interface AggregateLocationSubscription
-  extends Promise<AsyncIterator<AggregateLocation>>,
+export interface NegotiationSubscription
+  extends Promise<AsyncIterator<Negotiation>>,
     Fragmentable {
-  count: () => Promise<AsyncIterator<Int>>;
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+  updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+  negotiator: <T = UserSubscription>() => T;
+  House: <T = HouseSubscription>() => T;
+  offer: () => Promise<AsyncIterator<Float>>;
+  status: () => Promise<AsyncIterator<NEGOTIATION_TYPE>>;
+}
+
+export interface NegotiationNullablePromise
+  extends Promise<Negotiation | null>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  createdAt: () => Promise<DateTimeOutput>;
+  updatedAt: () => Promise<DateTimeOutput>;
+  negotiator: <T = UserPromise>() => T;
+  House: <T = HousePromise>() => T;
+  offer: () => Promise<Float>;
+  status: () => Promise<NEGOTIATION_TYPE>;
 }
 
 export interface HousePreviousValues {
@@ -9499,6 +9553,7 @@ export interface HousePreviousValues {
   maxGuests?: Int;
   numBedrooms: Int;
   numBaths: Int;
+  isFavorite: Boolean;
   numLivingrooms?: Int;
   numDiningrooms?: Int;
   verified: Boolean;
@@ -9524,6 +9579,7 @@ export interface HousePreviousValuesPromise
   maxGuests: () => Promise<Int>;
   numBedrooms: () => Promise<Int>;
   numBaths: () => Promise<Int>;
+  isFavorite: () => Promise<Boolean>;
   numLivingrooms: () => Promise<Int>;
   numDiningrooms: () => Promise<Int>;
   verified: () => Promise<Boolean>;
@@ -9549,6 +9605,7 @@ export interface HousePreviousValuesSubscription
   maxGuests: () => Promise<AsyncIterator<Int>>;
   numBedrooms: () => Promise<AsyncIterator<Int>>;
   numBaths: () => Promise<AsyncIterator<Int>>;
+  isFavorite: () => Promise<AsyncIterator<Boolean>>;
   numLivingrooms: () => Promise<AsyncIterator<Int>>;
   numDiningrooms: () => Promise<AsyncIterator<Int>>;
   verified: () => Promise<AsyncIterator<Boolean>>;
@@ -9563,25 +9620,23 @@ export interface HousePreviousValuesSubscription
   updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
 }
 
-export interface LocationConnection {
-  pageInfo: PageInfo;
-  edges: LocationEdge[];
+export interface LocationEdge {
+  node: Location;
+  cursor: String;
 }
 
-export interface LocationConnectionPromise
-  extends Promise<LocationConnection>,
+export interface LocationEdgePromise
+  extends Promise<LocationEdge>,
     Fragmentable {
-  pageInfo: <T = PageInfoPromise>() => T;
-  edges: <T = FragmentableArray<LocationEdge>>() => T;
-  aggregate: <T = AggregateLocationPromise>() => T;
+  node: <T = LocationPromise>() => T;
+  cursor: () => Promise<String>;
 }
 
-export interface LocationConnectionSubscription
-  extends Promise<AsyncIterator<LocationConnection>>,
+export interface LocationEdgeSubscription
+  extends Promise<AsyncIterator<LocationEdge>>,
     Fragmentable {
-  pageInfo: <T = PageInfoSubscription>() => T;
-  edges: <T = Promise<AsyncIterator<LocationEdgeSubscription>>>() => T;
-  aggregate: <T = AggregateLocationSubscription>() => T;
+  node: <T = LocationSubscription>() => T;
+  cursor: () => Promise<AsyncIterator<String>>;
 }
 
 export interface Room {
@@ -10482,27 +10537,23 @@ export interface PaymentHouseSubscriptionPayloadSubscription
   previousValues: <T = PaymentHousePreviousValuesSubscription>() => T;
 }
 
-export interface PaymentLanlordInfoConnection {
-  pageInfo: PageInfo;
-  edges: PaymentLanlordInfoEdge[];
+export interface PaymentLanlordInfoEdge {
+  node: PaymentLanlordInfo;
+  cursor: String;
 }
 
-export interface PaymentLanlordInfoConnectionPromise
-  extends Promise<PaymentLanlordInfoConnection>,
+export interface PaymentLanlordInfoEdgePromise
+  extends Promise<PaymentLanlordInfoEdge>,
     Fragmentable {
-  pageInfo: <T = PageInfoPromise>() => T;
-  edges: <T = FragmentableArray<PaymentLanlordInfoEdge>>() => T;
-  aggregate: <T = AggregatePaymentLanlordInfoPromise>() => T;
+  node: <T = PaymentLanlordInfoPromise>() => T;
+  cursor: () => Promise<String>;
 }
 
-export interface PaymentLanlordInfoConnectionSubscription
-  extends Promise<AsyncIterator<PaymentLanlordInfoConnection>>,
+export interface PaymentLanlordInfoEdgeSubscription
+  extends Promise<AsyncIterator<PaymentLanlordInfoEdge>>,
     Fragmentable {
-  pageInfo: <T = PageInfoSubscription>() => T;
-  edges: <
-    T = Promise<AsyncIterator<PaymentLanlordInfoEdgeSubscription>>
-  >() => T;
-  aggregate: <T = AggregatePaymentLanlordInfoSubscription>() => T;
+  node: <T = PaymentLanlordInfoSubscription>() => T;
+  cursor: () => Promise<AsyncIterator<String>>;
 }
 
 export interface PaymentHousePreviousValues {
@@ -10530,20 +10581,25 @@ export interface PaymentHousePreviousValuesSubscription
   totalPrice: () => Promise<AsyncIterator<Float>>;
 }
 
-export interface AggregatePaymentAccount {
-  count: Int;
+export interface PaymentHouseConnection {
+  pageInfo: PageInfo;
+  edges: PaymentHouseEdge[];
 }
 
-export interface AggregatePaymentAccountPromise
-  extends Promise<AggregatePaymentAccount>,
+export interface PaymentHouseConnectionPromise
+  extends Promise<PaymentHouseConnection>,
     Fragmentable {
-  count: () => Promise<Int>;
+  pageInfo: <T = PageInfoPromise>() => T;
+  edges: <T = FragmentableArray<PaymentHouseEdge>>() => T;
+  aggregate: <T = AggregatePaymentHousePromise>() => T;
 }
 
-export interface AggregatePaymentAccountSubscription
-  extends Promise<AsyncIterator<AggregatePaymentAccount>>,
+export interface PaymentHouseConnectionSubscription
+  extends Promise<AsyncIterator<PaymentHouseConnection>>,
     Fragmentable {
-  count: () => Promise<AsyncIterator<Int>>;
+  pageInfo: <T = PageInfoSubscription>() => T;
+  edges: <T = Promise<AsyncIterator<PaymentHouseEdgeSubscription>>>() => T;
+  aggregate: <T = AggregatePaymentHouseSubscription>() => T;
 }
 
 export interface PaypalInformation {
@@ -10671,23 +10727,20 @@ export interface PaymentLanlordInfoPreviousValuesSubscription
   moncashTransactId: () => Promise<AsyncIterator<String>>;
 }
 
-export interface LocationEdge {
-  node: Location;
-  cursor: String;
+export interface AggregateLocation {
+  count: Int;
 }
 
-export interface LocationEdgePromise
-  extends Promise<LocationEdge>,
+export interface AggregateLocationPromise
+  extends Promise<AggregateLocation>,
     Fragmentable {
-  node: <T = LocationPromise>() => T;
-  cursor: () => Promise<String>;
+  count: () => Promise<Int>;
 }
 
-export interface LocationEdgeSubscription
-  extends Promise<AsyncIterator<LocationEdge>>,
+export interface AggregateLocationSubscription
+  extends Promise<AsyncIterator<AggregateLocation>>,
     Fragmentable {
-  node: <T = LocationSubscription>() => T;
-  cursor: () => Promise<AsyncIterator<String>>;
+  count: () => Promise<AsyncIterator<Int>>;
 }
 
 export interface PaymentAccount {
@@ -11152,23 +11205,20 @@ export interface PricingPreviousValuesSubscription
   updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
 }
 
-export interface PaymentHouseEdge {
-  node: PaymentHouse;
-  cursor: String;
+export interface AggregatePaymentHouse {
+  count: Int;
 }
 
-export interface PaymentHouseEdgePromise
-  extends Promise<PaymentHouseEdge>,
+export interface AggregatePaymentHousePromise
+  extends Promise<AggregatePaymentHouse>,
     Fragmentable {
-  node: <T = PaymentHousePromise>() => T;
-  cursor: () => Promise<String>;
+  count: () => Promise<Int>;
 }
 
-export interface PaymentHouseEdgeSubscription
-  extends Promise<AsyncIterator<PaymentHouseEdge>>,
+export interface AggregatePaymentHouseSubscription
+  extends Promise<AsyncIterator<AggregatePaymentHouse>>,
     Fragmentable {
-  node: <T = PaymentHouseSubscription>() => T;
-  cursor: () => Promise<AsyncIterator<String>>;
+  count: () => Promise<AsyncIterator<Int>>;
 }
 
 export interface Country {
@@ -11249,47 +11299,25 @@ export interface ReviewSubscriptionPayloadSubscription
   previousValues: <T = ReviewPreviousValuesSubscription>() => T;
 }
 
-export interface Location {
-  id: ID_Output;
-  lat?: Float;
-  lng?: Float;
-  address?: String;
-  createdAt: DateTimeOutput;
-  updatedAt: DateTimeOutput;
+export interface LocationConnection {
+  pageInfo: PageInfo;
+  edges: LocationEdge[];
 }
 
-export interface LocationPromise extends Promise<Location>, Fragmentable {
-  id: () => Promise<ID_Output>;
-  lat: () => Promise<Float>;
-  lng: () => Promise<Float>;
-  address: () => Promise<String>;
-  commune: <T = CommunePromise>() => T;
-  createdAt: () => Promise<DateTimeOutput>;
-  updatedAt: () => Promise<DateTimeOutput>;
-}
-
-export interface LocationSubscription
-  extends Promise<AsyncIterator<Location>>,
+export interface LocationConnectionPromise
+  extends Promise<LocationConnection>,
     Fragmentable {
-  id: () => Promise<AsyncIterator<ID_Output>>;
-  lat: () => Promise<AsyncIterator<Float>>;
-  lng: () => Promise<AsyncIterator<Float>>;
-  address: () => Promise<AsyncIterator<String>>;
-  commune: <T = CommuneSubscription>() => T;
-  createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
-  updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+  pageInfo: <T = PageInfoPromise>() => T;
+  edges: <T = FragmentableArray<LocationEdge>>() => T;
+  aggregate: <T = AggregateLocationPromise>() => T;
 }
 
-export interface LocationNullablePromise
-  extends Promise<Location | null>,
+export interface LocationConnectionSubscription
+  extends Promise<AsyncIterator<LocationConnection>>,
     Fragmentable {
-  id: () => Promise<ID_Output>;
-  lat: () => Promise<Float>;
-  lng: () => Promise<Float>;
-  address: () => Promise<String>;
-  commune: <T = CommunePromise>() => T;
-  createdAt: () => Promise<DateTimeOutput>;
-  updatedAt: () => Promise<DateTimeOutput>;
+  pageInfo: <T = PageInfoSubscription>() => T;
+  edges: <T = Promise<AsyncIterator<LocationEdgeSubscription>>>() => T;
+  aggregate: <T = AggregateLocationSubscription>() => T;
 }
 
 export interface ReviewPreviousValues {
@@ -11698,20 +11726,29 @@ export interface RoomPreviousValuesSubscription
   updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
 }
 
-export interface AggregatePaymentLanlordInfo {
-  count: Int;
+export interface VideoSubscriptionPayload {
+  mutation: MutationType;
+  node: Video;
+  updatedFields: String[];
+  previousValues: VideoPreviousValues;
 }
 
-export interface AggregatePaymentLanlordInfoPromise
-  extends Promise<AggregatePaymentLanlordInfo>,
+export interface VideoSubscriptionPayloadPromise
+  extends Promise<VideoSubscriptionPayload>,
     Fragmentable {
-  count: () => Promise<Int>;
+  mutation: () => Promise<MutationType>;
+  node: <T = VideoPromise>() => T;
+  updatedFields: () => Promise<String[]>;
+  previousValues: <T = VideoPreviousValuesPromise>() => T;
 }
 
-export interface AggregatePaymentLanlordInfoSubscription
-  extends Promise<AsyncIterator<AggregatePaymentLanlordInfo>>,
+export interface VideoSubscriptionPayloadSubscription
+  extends Promise<AsyncIterator<VideoSubscriptionPayload>>,
     Fragmentable {
-  count: () => Promise<AsyncIterator<Int>>;
+  mutation: () => Promise<AsyncIterator<MutationType>>;
+  node: <T = VideoSubscription>() => T;
+  updatedFields: () => Promise<AsyncIterator<String[]>>;
+  previousValues: <T = VideoPreviousValuesSubscription>() => T;
 }
 
 export interface City {
@@ -11753,46 +11790,47 @@ export interface CityNullablePromise
   updatedAt: () => Promise<DateTimeOutput>;
 }
 
-export interface Negotiation {
+export interface Location {
   id: ID_Output;
+  lat?: Float;
+  lng?: Float;
+  address?: String;
   createdAt: DateTimeOutput;
   updatedAt: DateTimeOutput;
-  offer: Float;
-  status?: NEGOTIATION_TYPE;
 }
 
-export interface NegotiationPromise extends Promise<Negotiation>, Fragmentable {
+export interface LocationPromise extends Promise<Location>, Fragmentable {
   id: () => Promise<ID_Output>;
+  lat: () => Promise<Float>;
+  lng: () => Promise<Float>;
+  address: () => Promise<String>;
+  commune: <T = CommunePromise>() => T;
   createdAt: () => Promise<DateTimeOutput>;
   updatedAt: () => Promise<DateTimeOutput>;
-  negotiator: <T = UserPromise>() => T;
-  House: <T = HousePromise>() => T;
-  offer: () => Promise<Float>;
-  status: () => Promise<NEGOTIATION_TYPE>;
 }
 
-export interface NegotiationSubscription
-  extends Promise<AsyncIterator<Negotiation>>,
+export interface LocationSubscription
+  extends Promise<AsyncIterator<Location>>,
     Fragmentable {
   id: () => Promise<AsyncIterator<ID_Output>>;
+  lat: () => Promise<AsyncIterator<Float>>;
+  lng: () => Promise<AsyncIterator<Float>>;
+  address: () => Promise<AsyncIterator<String>>;
+  commune: <T = CommuneSubscription>() => T;
   createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
   updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
-  negotiator: <T = UserSubscription>() => T;
-  House: <T = HouseSubscription>() => T;
-  offer: () => Promise<AsyncIterator<Float>>;
-  status: () => Promise<AsyncIterator<NEGOTIATION_TYPE>>;
 }
 
-export interface NegotiationNullablePromise
-  extends Promise<Negotiation | null>,
+export interface LocationNullablePromise
+  extends Promise<Location | null>,
     Fragmentable {
   id: () => Promise<ID_Output>;
+  lat: () => Promise<Float>;
+  lng: () => Promise<Float>;
+  address: () => Promise<String>;
+  commune: <T = CommunePromise>() => T;
   createdAt: () => Promise<DateTimeOutput>;
   updatedAt: () => Promise<DateTimeOutput>;
-  negotiator: <T = UserPromise>() => T;
-  House: <T = HousePromise>() => T;
-  offer: () => Promise<Float>;
-  status: () => Promise<NEGOTIATION_TYPE>;
 }
 
 export interface CountryConnection {
@@ -11970,25 +12008,23 @@ export interface AggregateHouseSubscription
   count: () => Promise<AsyncIterator<Int>>;
 }
 
-export interface PaymentAccountConnection {
-  pageInfo: PageInfo;
-  edges: PaymentAccountEdge[];
+export interface PaymentAccountEdge {
+  node: PaymentAccount;
+  cursor: String;
 }
 
-export interface PaymentAccountConnectionPromise
-  extends Promise<PaymentAccountConnection>,
+export interface PaymentAccountEdgePromise
+  extends Promise<PaymentAccountEdge>,
     Fragmentable {
-  pageInfo: <T = PageInfoPromise>() => T;
-  edges: <T = FragmentableArray<PaymentAccountEdge>>() => T;
-  aggregate: <T = AggregatePaymentAccountPromise>() => T;
+  node: <T = PaymentAccountPromise>() => T;
+  cursor: () => Promise<String>;
 }
 
-export interface PaymentAccountConnectionSubscription
-  extends Promise<AsyncIterator<PaymentAccountConnection>>,
+export interface PaymentAccountEdgeSubscription
+  extends Promise<AsyncIterator<PaymentAccountEdge>>,
     Fragmentable {
-  pageInfo: <T = PageInfoSubscription>() => T;
-  edges: <T = Promise<AsyncIterator<PaymentAccountEdgeSubscription>>>() => T;
-  aggregate: <T = AggregatePaymentAccountSubscription>() => T;
+  node: <T = PaymentAccountSubscription>() => T;
+  cursor: () => Promise<AsyncIterator<String>>;
 }
 
 export interface PricingConnection {
@@ -12036,6 +12072,11 @@ The `String` scalar type represents textual data, represented as UTF-8 character
 export type String = string;
 
 /*
+The `Boolean` scalar type represents `true` or `false`.
+*/
+export type Boolean = boolean;
+
+/*
 DateTime scalar input type, allowing Date
 */
 export type DateTimeInput = Date | string;
@@ -12044,11 +12085,6 @@ export type DateTimeInput = Date | string;
 DateTime scalar output type, which is always a string
 */
 export type DateTimeOutput = string;
-
-/*
-The `Boolean` scalar type represents `true` or `false`.
-*/
-export type Boolean = boolean;
 
 /**
  * Model Metadata

@@ -1767,6 +1767,7 @@ type House {
   maxGuests: Int
   numBedrooms: Int!
   numBaths: Int!
+  isFavorite: Boolean!
   numLivingrooms: Int
   numDiningrooms: Int
   reviews(where: ReviewWhereInput, orderBy: ReviewOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Review!]
@@ -1826,6 +1827,7 @@ input HouseCreateInput {
   maxGuests: Int
   numBedrooms: Int!
   numBaths: Int!
+  isFavorite: Boolean
   numLivingrooms: Int
   numDiningrooms: Int
   reviews: ReviewCreateManyWithoutHouseInput
@@ -1909,6 +1911,7 @@ input HouseCreateWithoutAmenitiesInput {
   maxGuests: Int
   numBedrooms: Int!
   numBaths: Int!
+  isFavorite: Boolean
   numLivingrooms: Int
   numDiningrooms: Int
   reviews: ReviewCreateManyWithoutHouseInput
@@ -1941,6 +1944,7 @@ input HouseCreateWithoutBookingsInput {
   maxGuests: Int
   numBedrooms: Int!
   numBaths: Int!
+  isFavorite: Boolean
   numLivingrooms: Int
   numDiningrooms: Int
   reviews: ReviewCreateManyWithoutHouseInput
@@ -1973,6 +1977,7 @@ input HouseCreateWithoutContactInfoPaymentsInput {
   maxGuests: Int
   numBedrooms: Int!
   numBaths: Int!
+  isFavorite: Boolean
   numLivingrooms: Int
   numDiningrooms: Int
   reviews: ReviewCreateManyWithoutHouseInput
@@ -2005,6 +2010,7 @@ input HouseCreateWithoutFavoritesInput {
   maxGuests: Int
   numBedrooms: Int!
   numBaths: Int!
+  isFavorite: Boolean
   numLivingrooms: Int
   numDiningrooms: Int
   reviews: ReviewCreateManyWithoutHouseInput
@@ -2037,6 +2043,7 @@ input HouseCreateWithoutHostInput {
   maxGuests: Int
   numBedrooms: Int!
   numBaths: Int!
+  isFavorite: Boolean
   numLivingrooms: Int
   numDiningrooms: Int
   reviews: ReviewCreateManyWithoutHouseInput
@@ -2069,6 +2076,7 @@ input HouseCreateWithoutPricingInput {
   maxGuests: Int
   numBedrooms: Int!
   numBaths: Int!
+  isFavorite: Boolean
   numLivingrooms: Int
   numDiningrooms: Int
   reviews: ReviewCreateManyWithoutHouseInput
@@ -2101,6 +2109,7 @@ input HouseCreateWithoutReviewsInput {
   maxGuests: Int
   numBedrooms: Int!
   numBaths: Int!
+  isFavorite: Boolean
   numLivingrooms: Int
   numDiningrooms: Int
   amenities: AmenitiesCreateOneWithoutHouseInput
@@ -2133,6 +2142,7 @@ input HouseCreateWithoutRoomsInput {
   maxGuests: Int
   numBedrooms: Int!
   numBaths: Int!
+  isFavorite: Boolean
   numLivingrooms: Int
   numDiningrooms: Int
   reviews: ReviewCreateManyWithoutHouseInput
@@ -2165,6 +2175,7 @@ input HouseCreateWithoutViewsInput {
   maxGuests: Int
   numBedrooms: Int!
   numBaths: Int!
+  isFavorite: Boolean
   numLivingrooms: Int
   numDiningrooms: Int
   reviews: ReviewCreateManyWithoutHouseInput
@@ -2423,6 +2434,8 @@ enum HouseOrderByInput {
   numBedrooms_DESC
   numBaths_ASC
   numBaths_DESC
+  isFavorite_ASC
+  isFavorite_DESC
   numLivingrooms_ASC
   numLivingrooms_DESC
   numDiningrooms_ASC
@@ -2458,6 +2471,7 @@ type HousePreviousValues {
   maxGuests: Int
   numBedrooms: Int!
   numBaths: Int!
+  isFavorite: Boolean!
   numLivingrooms: Int
   numDiningrooms: Int
   verified: Boolean!
@@ -2555,6 +2569,8 @@ input HouseScalarWhereInput {
   numBaths_lte: Int
   numBaths_gt: Int
   numBaths_gte: Int
+  isFavorite: Boolean
+  isFavorite_not: Boolean
   numLivingrooms: Int
   numLivingrooms_not: Int
   numLivingrooms_in: [Int!]
@@ -2660,6 +2676,7 @@ input HouseUpdateDataInput {
   maxGuests: Int
   numBedrooms: Int
   numBaths: Int
+  isFavorite: Boolean
   numLivingrooms: Int
   numDiningrooms: Int
   reviews: ReviewUpdateManyWithoutHouseInput
@@ -2692,6 +2709,7 @@ input HouseUpdateInput {
   maxGuests: Int
   numBedrooms: Int
   numBaths: Int
+  isFavorite: Boolean
   numLivingrooms: Int
   numDiningrooms: Int
   reviews: ReviewUpdateManyWithoutHouseInput
@@ -2724,6 +2742,7 @@ input HouseUpdateManyDataInput {
   maxGuests: Int
   numBedrooms: Int
   numBaths: Int
+  isFavorite: Boolean
   numLivingrooms: Int
   numDiningrooms: Int
   verified: Boolean
@@ -2744,6 +2763,7 @@ input HouseUpdateManyMutationInput {
   maxGuests: Int
   numBedrooms: Int
   numBaths: Int
+  isFavorite: Boolean
   numLivingrooms: Int
   numDiningrooms: Int
   verified: Boolean
@@ -2844,6 +2864,7 @@ input HouseUpdateWithoutAmenitiesDataInput {
   maxGuests: Int
   numBedrooms: Int
   numBaths: Int
+  isFavorite: Boolean
   numLivingrooms: Int
   numDiningrooms: Int
   reviews: ReviewUpdateManyWithoutHouseInput
@@ -2875,6 +2896,7 @@ input HouseUpdateWithoutBookingsDataInput {
   maxGuests: Int
   numBedrooms: Int
   numBaths: Int
+  isFavorite: Boolean
   numLivingrooms: Int
   numDiningrooms: Int
   reviews: ReviewUpdateManyWithoutHouseInput
@@ -2906,6 +2928,7 @@ input HouseUpdateWithoutContactInfoPaymentsDataInput {
   maxGuests: Int
   numBedrooms: Int
   numBaths: Int
+  isFavorite: Boolean
   numLivingrooms: Int
   numDiningrooms: Int
   reviews: ReviewUpdateManyWithoutHouseInput
@@ -2937,6 +2960,7 @@ input HouseUpdateWithoutFavoritesDataInput {
   maxGuests: Int
   numBedrooms: Int
   numBaths: Int
+  isFavorite: Boolean
   numLivingrooms: Int
   numDiningrooms: Int
   reviews: ReviewUpdateManyWithoutHouseInput
@@ -2968,6 +2992,7 @@ input HouseUpdateWithoutHostDataInput {
   maxGuests: Int
   numBedrooms: Int
   numBaths: Int
+  isFavorite: Boolean
   numLivingrooms: Int
   numDiningrooms: Int
   reviews: ReviewUpdateManyWithoutHouseInput
@@ -2999,6 +3024,7 @@ input HouseUpdateWithoutPricingDataInput {
   maxGuests: Int
   numBedrooms: Int
   numBaths: Int
+  isFavorite: Boolean
   numLivingrooms: Int
   numDiningrooms: Int
   reviews: ReviewUpdateManyWithoutHouseInput
@@ -3030,6 +3056,7 @@ input HouseUpdateWithoutReviewsDataInput {
   maxGuests: Int
   numBedrooms: Int
   numBaths: Int
+  isFavorite: Boolean
   numLivingrooms: Int
   numDiningrooms: Int
   amenities: AmenitiesUpdateOneWithoutHouseInput
@@ -3061,6 +3088,7 @@ input HouseUpdateWithoutRoomsDataInput {
   maxGuests: Int
   numBedrooms: Int
   numBaths: Int
+  isFavorite: Boolean
   numLivingrooms: Int
   numDiningrooms: Int
   reviews: ReviewUpdateManyWithoutHouseInput
@@ -3092,6 +3120,7 @@ input HouseUpdateWithoutViewsDataInput {
   maxGuests: Int
   numBedrooms: Int
   numBaths: Int
+  isFavorite: Boolean
   numLivingrooms: Int
   numDiningrooms: Int
   reviews: ReviewUpdateManyWithoutHouseInput
@@ -3254,6 +3283,8 @@ input HouseWhereInput {
   numBaths_lte: Int
   numBaths_gt: Int
   numBaths_gte: Int
+  isFavorite: Boolean
+  isFavorite_not: Boolean
   numLivingrooms: Int
   numLivingrooms_not: Int
   numLivingrooms_in: [Int!]
