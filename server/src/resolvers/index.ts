@@ -11,6 +11,11 @@ export const resolvers = {
     ...CustomMutation
   },
   AuthPayLoad,
+  Location: {
+    commune(parent) {
+      return prisma.location({ id: parent.id }).commune();
+    }
+  },
   User: {
     profilePicture(parent) {
       return prisma.user({ id: parent.id }).profilePicture();
